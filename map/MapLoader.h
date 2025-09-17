@@ -65,6 +65,9 @@
         void setTerritories(vector<vector<string>> territories);
         
         //-- Class Methods --//
+
+        string trim(const string& s);
+
         int importMapInfo(const string& filePath);
 
     };

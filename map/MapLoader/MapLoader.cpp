@@ -8,6 +8,15 @@
 #define MAP_INVALID_SECTION 2
 #define MAP_PARSE_ERROR 3
 
+#define INVALID_MAP_PTR 1
+#define INVALID_AUTHOR 2
+#define INVALID_IMAGE 3
+#define INVALID_WRAP 4
+#define INVALID_SCROLL 5
+#define INVALID_WARN 6
+#define INVALID_CONTINENT 7
+#define INVALID_TERRITORY 8
+
 using namespace std;
 
 //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
@@ -19,19 +28,19 @@ MapLoader::MapLoader() {
     this -> wrap = "";
     this -> scrollType = "";
     this -> warn = "";
-    this -> continent = {};
+    this -> continents = {};
     this -> territories = {};
  
 }
 
-MapLoader::MapLoader(string author, string image, string wrap, string scrollType, string warn, map<string, int> continent, vector<vector<string>> territories){
+MapLoader::MapLoader(string author, string image, string wrap, string scrollType, string warn, map<string, int> continents, vector<vector<string>> territories){
     
     this -> author = author;
     this -> image = image;
     this -> wrap = wrap;
     this -> scrollType = scrollType;
     this -> warn = warn;
-    this -> continent = continent;
+    this -> continents = continents;
     this -> territories = territories;
 
 }
@@ -49,7 +58,7 @@ MapLoader::~MapLoader() {
     this -> wrap = other.wrap;
     this -> scrollType = other.scrollType;
     this -> warn = other.warn;
-    this -> continent = other.continent;
+    this -> continents = other.continents;
     this -> territories = other.territories;
  
 }
@@ -63,7 +72,7 @@ MapLoader& MapLoader::operator=(const MapLoader& other) {
         this -> wrap = other.wrap;
         this -> scrollType = other.scrollType;
         this -> warn = other.warn;
-        this -> continent = other.continent;
+        this -> continents = other.continents;
         this -> territories = other.territories;
 
     }
@@ -82,7 +91,7 @@ ostream& operator<<(ostream& os, const MapLoader& mapLoader) {
 
     os << "Continents:\n";
 
-    for (const auto& [name, value] : mapLoader.continent) {
+    for (const auto& [name, value] : mapLoader.continents) {
 
         os << "  " << name << ": " << value << "\n";
     
@@ -125,8 +134,8 @@ void MapLoader::setScrollType(string& scrollType) { this -> scrollType = scrollT
 const string& MapLoader::getWarn() const { return warn; }
 void MapLoader::setWarn(string& warn) { this -> warn = warn; }
 
-const map<string, int>& MapLoader::getContinent() const { return continent; }
-void MapLoader::setContinent(map<string, int> continent) { this -> continent = continent; }
+const map<string, int>& MapLoader::getContinents() const { return continents; }
+void MapLoader::setContinents(map<string, int> continents) { this -> continents = continents; }
 
 const vector<vector<string>>& MapLoader::getTerritories() const {return territories;}
 void MapLoader::setTerritories(vector<vector<string>> territories) { this -> territories = territories; }
@@ -134,11 +143,6 @@ void MapLoader::setTerritories(vector<vector<string>> territories) { this -> ter
 
 //-- Class Methods --//
 
-/**
- * Trims leading and trailing whitespace and carriage returns from a string.
- * @param s The input string to trim.
- * @return The trimmed string.
- */
 string MapLoader::trim(const string& s) {
 
     size_t start = s.find_first_not_of(" \t\r\n"); // Find first non-space character
@@ -147,16 +151,6 @@ string MapLoader::trim(const string& s) {
 
 }
 
-/**
- * Imports map information from a .map file.
- * @param filePath The path to the .map file.
- * @return MAP_OK (0) on success, or an error code on failure.
- * Error Codes:
- * MAP_FILE_NOT_FOUND (1): File could not be opened.
- * MAP_INVALID_SECTION (2): Encountered an unknown section in the file.
- * MAP_PARSE_ERROR (3): Error parsing a line in the file.
- * 
- */
 int MapLoader::importMapInfo(const string& filePath) {
     
     ifstream file(filePath); // Open file buffer on filePath
@@ -211,7 +205,7 @@ int MapLoader::importMapInfo(const string& filePath) {
             try { // Try to convert the bonus value to an integer
 
                 bonusValue = stoi(trim(line.substr(pos + 1))); // Attempt to extract and convert bonus value
-                continent[continentName] = bonusValue; 
+                continents[continentName] = bonusValue; 
 
             } catch (const invalid_argument& e) { // String wasn't an integer
 
@@ -259,8 +253,125 @@ int MapLoader::importMapInfo(const string& filePath) {
 
     //Print out summary of loaded map
     cout << "Map loaded successfully!" << endl;
-    cout << "  Continents loaded: " << continent.size() << endl;
+    cout << "  Continents loaded: " << continents.size() << endl;
     cout << "  Territories loaded: " << territories.size() << endl;
 
     return MAP_OK;
+}
+
+int MapLoader::loadMap(Map* inputMapPtr) {
+
+    if (inputMapPtr == nullptr) {
+
+        cerr << "Error: Input map pointer is null." << endl;
+        return INVALID_MAP_PTR;
+
+    }
+
+    // Create a temporary copy of the input map to avoid modifying the original in case of failure
+    Map* tempMapPtr = new Map(*inputMapPtr);
+
+    //Load metadata into map object
+
+    if(author.empty()) { //Check author metadata
+
+        cerr << "Error: Author metadata is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_AUTHOR;
+
+    } else { tempMapPtr -> setAuthor(author); }
+
+    if(image.empty()) { //Check image metadata
+
+        cerr << "Error: Image metadata is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_IMAGE;
+
+    } else { tempMapPtr -> setImage(image); }
+
+    if(wrap.empty()) { //Check wrap metadata
+
+        cerr << "Error: Wrap metadata is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_WRAP;
+
+    } else { tempMapPtr -> setWrap(wrap); }
+
+    if(scrollType.empty()) { //Check scrollType metadata
+
+        cerr << "Error: ScrollType metadata is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_SCROLL;
+
+    } else { tempMapPtr -> setScrollType(scrollType); }
+
+    if(warn.empty()) { //Check warn metadata
+
+        cerr << "Error: Warn metadata is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_WARN;
+
+    } else { tempMapPtr -> setWarn(warn); }
+
+    // Load continents into map object
+    if(continents.empty()) {
+
+        cerr << "Error: Continent data is missing or invalid." << endl;
+        delete tempMapPtr;
+        return INVALID_CONTINENT;
+
+    } else {
+
+        vector<Continent*> continentPtrs; // To hold pointers to created continents
+
+        for (const auto& [name, value] : continents) {
+
+            if (name.empty() || value <= 0) { // Continent name must be non-empty and bonus value positive
+
+                cerr << "Error: Invalid continent data for continent '" << name << "' with bonus value " << value << "." << endl;
+                
+                for (Continent* c : continentPtrs){ delete c; } // Free previously allocated continent objects
+                delete tempMapPtr;
+
+                return INVALID_CONTINENT;
+
+            }
+
+            Continent* newContinent = new Continent(name, value); // Create new continent
+            continentPtrs.push_back(newContinent);  // Store pointer to new continent
+
+        }
+
+        tempMapPtr -> setContinents(continentPtrs); // Set continents in the map
+
+    // Load territories into map object
+    if(territories.empty()) {
+
+        cerr << "Error: Territory data is missing or invalid." << endl;
+
+        for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
+        delete tempMapPtr;
+        return INVALID_TERRITORY;
+
+    } else {
+
+        for(int i = 0; i < territories.size(); i++) {
+
+            Territory* tempTerritory = new Territory(); //Intialize new territory
+
+            tempTerritory -> setID(territories[i][0]); //Set territory ID
+            tempTerritory -> setXCoord(stoi(territories[i][1])); //Set xCoord. This will ALWAYS be a valid integer due to prior validation in importMapInfo
+            tempTerritory -> setYCoord(stoi(territories[i][2])); //Set yCoord. This will ALWAYS be a valid integer due to prior validation in importMapInfo
+            
+
+            for(int j = 4; j < territories[i].size(); j++){
+
+            }
+
+        }
+
+        return MAP_OK;
+
+    }
+
 }

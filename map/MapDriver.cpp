@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "MapLoader.h"
+#include "MapLoader/MapLoader.h"
 using namespace std;
 
     int main () {
@@ -9,7 +9,7 @@ using namespace std;
         MapLoader mapLoader;
 
         int result = mapLoader.importMapInfo("../Maps/Brazil/Brazil.map");
-
+        
         if (result != 0) {
             cerr << "Failed to load map file with error code: " << result << endl;
             return result;

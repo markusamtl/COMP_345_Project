@@ -1,9 +1,14 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <vector>
 
+#include "../../miscellaneous/StringHandling.h"
 #include "../MapImplementation/Map.h"
 
 using namespace std;
@@ -169,13 +174,6 @@ class MapLoader {
         //-- Class Methods --//
 
         /**
-        * @brief Helper function to trim whitespace from both ends of a string
-        * @param s input string
-        * @return trimmed string 
-        */
-        string trim(const string& s);
-
-        /**
         * @brief Imports and parses map information from a file
         * @param filePath path to the map file
         * @return 0 on success, non-zero error code on failure
@@ -199,6 +197,6 @@ class MapLoader {
          * INVALID_CONTINENT (7): Continent data is missing or invalid
          * INVALID_TERRITORY (8): Territory data is missing or invalid
          */
-        int MapLoader::loadMap(Map* inputMapPtr);
+        pair<int, Map*> MapLoader::loadMap();
 
 };

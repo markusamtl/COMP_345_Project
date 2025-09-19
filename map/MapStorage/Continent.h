@@ -109,4 +109,12 @@ class Continent {
         */
         void setTerritories(const vector<Territory*>& territories);
 
+        //-- Class Methods --//
+
+        /**
+         * @brief Adds a territory to the continent
+         * @param territory pointer to the territory to add to territories list
+         */
+        void addTerritory(Territory* territory);
+
 };

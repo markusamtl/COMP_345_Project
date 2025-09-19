@@ -85,4 +85,11 @@ void Continent::setBonusValue(int bonusValue) { this -> bonusValue = bonusValue;
 const vector<Territory*>& Continent::getTerritories() const { return this -> territories; }
 void Continent::setTerritories(const vector<Territory*>& territories) { this -> territories = territories; }
 
+// -- Class Methods -- //
 
+void Continent::addTerritory(Territory* territory) {
+
+    if (territory == nullptr){ return; } // Ignore null pointers
+    this->territories.push_back(territory);
+
+}

@@ -1,3 +1,4 @@
+#include "Territory.h"
 #include "Continent.h"
 #include <iostream>
 

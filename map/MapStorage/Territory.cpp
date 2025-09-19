@@ -1,4 +1,5 @@
 #include "Territory.h"
+#include "Continent.h"
 #include <iostream>
 
 using namespace std;
@@ -57,6 +58,59 @@ Territory::~Territory() {
 
     neighbors.clear();
     continent = nullptr;
+
+}
+
+Territory::Territory(const Territory& other) {
+
+    this -> ID = other.ID;
+    this -> xCoord = other.xCoord;
+    this -> yCoord = other.yCoord;
+    this -> neighbors = other.neighbors;
+    this -> continent = new Continent(*other.continent); // Deep copy of continent
+    this -> owner = other.owner;
+    this -> numArmies = other.numArmies;
+
+}
+
+Territory& Territory::operator=(const Territory& other) {
+    
+    if (this != &other) { // self-assignment check
+        
+        this -> ID = other.ID;
+        this -> xCoord = other.xCoord;
+        this -> yCoord = other.yCoord;
+        this -> neighbors = other.neighbors;
+        delete this -> continent; // Free existing memory
+        this -> continent = new Continent(*other.continent); // Deep copy of continent
+        this -> owner = other.owner;
+        this -> numArmies = other.numArmies;
+
+    }
+
+    return *this;
+
+}
+
+ostream& operator<<(ostream& os, const Territory& territory) {
+
+    os << "Territory(ID: " << territory.ID 
+       << ", Coordinates: (" << territory.xCoord << ", " << territory.yCoord << ")"
+       << ", Neighbors: [";
+
+    for (size_t i = 0; i < territory.neighbors.size(); ++i) {
+        os << territory.neighbors[i]->ID;
+        if (i < territory.neighbors.size() - 1) {
+            os << ", ";
+        }
+    }
+
+    os << "], Continent: " << (territory.continent ? territory.continent->getID() : "None")
+       << ", Owner: " << territory.owner
+       << ", Num Armies: " << territory.numArmies
+       << ")";
+
+    return os;
 
 }
 

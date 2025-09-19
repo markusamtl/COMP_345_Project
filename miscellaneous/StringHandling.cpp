@@ -14,7 +14,7 @@ string StringHandling::trim(const string& inputStr) {
 }
 
 
-pair<bool, int> isStringAnInt(const string& inputStr) {
+pair<bool, int> StringHandling::isStrInt(const string& inputStr) {
 
     int retVal = 0;
 
@@ -38,6 +38,3 @@ pair<bool, int> isStringAnInt(const string& inputStr) {
     return {true, retVal};
 
 }
-
-
-

@@ -197,6 +197,6 @@ class MapLoader {
          * INVALID_CONTINENT (7): Continent data is missing or invalid
          * INVALID_TERRITORY (8): Territory data is missing or invalid
          */
-        pair<int, Map*> MapLoader::loadMap();
+        pair<int, Map*> loadMap();
 
 };

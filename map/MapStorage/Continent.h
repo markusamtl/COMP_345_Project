@@ -3,9 +3,11 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "Territory.h"
 
 using namespace std;
+
+// Forward declaration to avoid circular dependency
+class Territory;
 
 /**
  * @brief The Continent class represents a continent in the map.

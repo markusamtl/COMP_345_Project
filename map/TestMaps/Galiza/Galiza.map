@@ -1,0 +1,67 @@
+[Map]
+author=Brigantium
+image=Galiza.bmp
+wrap=no
+scroll=none
+warn=no
+
+[Continents]
+A Coruña=4
+Lugo=3
+Ourense=2
+Pontevedra=4
+
+[Territories]
+Ortegal,421,121,A Coruña,Ferrol,Eume,A Mariña Occidental
+Ferrol,350,156,A Coruña,Eume,Ortegal,A Coruña
+Eume,385,201,A Coruña,Ferrol,Ortegal,Betanzos,Terra Chá,A Mariña Occidental
+Betanzos,348,284,A Coruña,Eume,Terra Chá,A Coruña,Terra de Melide,Ordes,Arzúa
+A Coruña,278,264,A Coruña,Betanzos,Ordes,Bergantiños,Ferrol
+Terra de Melide,373,384,A Coruña,Betanzos,Arzúa,Ordes,Terra Chá,Lugo,A Ulloa,Deza
+Bergantiños,167,290,A Coruña,A Coruña,Ordes,Terra de Soneira,Xallas
+Ordes,262,337,A Coruña,A Coruña,Bergantiños,Xallas,Santiago,Arzúa,Betanzos
+Terra de Soneira,100,335,A Coruña,Bergantiños,Xallas,Fisterra
+Arzúa,309,400,A Coruña,Terra de Melide,Betanzos,Ordes,Santiago,Deza
+Fisterra,55,369,A Coruña,Terra de Soneira,Xallas,Muros
+Xallas,130,368,A Coruña,Bergantiños,Terra de Soneira,Fisterra,Muros,Noia,A Barcala,Santiago,Ordes
+Muros,81,436,A Coruña,Xallas,Noia,Fisterra
+A Barcala,155,392,A Coruña,Noia,Xallas,Santiago,
+Santiago,221,418,A Coruña,A Barcala,Xallas,Ordes,Arzúa,Deza,Noia,O Sar,Tabeirós-Terra de Montes
+Noia,152,452,A Coruña,Muros,Santiago,Xallas,A Barcala,O Sar,Barbanza
+O Sar,181,459,A Coruña,Noia,Barbanza,Santiago,Tabeirós-Terra de Montes,Caldas
+Barbanza,133,494,A Coruña,Noia,O Sar,Caldas,O Salnés
+O Salnés,167,553,Pontevedra,Caldas,Pontevedra,Barbanza,O Morrazo
+O Morrazo,174,629,Pontevedra,O Salnés,Pontevedra,Vigo
+Caldas,205,509,Pontevedra,Barbanza,O Salnés,Pontevedra,Tabeirós-Terra de Montes,O Sar
+Vigo,189,683,Pontevedra,O Morrazo,Pontevedra,O Baixo Miño,O Condado,A Paradanta,O Ribeiro
+O Baixo Miño,161,741,Pontevedra,Vigo,O Condado,O Morrazo
+Pontevedra,231,576,Pontevedra,Vigo,O Morrazo,O Salnés,Caldas,Tabeirós-Terra de Montes,O Ribeiro,O Carballiño,
+O Condado,247,683,Pontevedra,Vigo,A Paradanta,o Baixo Miño
+A Paradanta,301,673,Pontevedra,O Condado,Vigo,O Ribeiro,Terra de Celanova
+Tabeirós-Terra de Montes,267,512,Pontevedra,Deza,Santiago,O Sar,Caldas,Pontevedra,o Carballiño
+Deza,343,483,Pontevedra,Tabeirós-Terra de Montes,Santiago,Arzúa,Terra de Melide,O Carballiño,A Ulloa,Chantada
+O Carballiño,354,573,Ourense,O Ribeiro,Pontevedra,Tabeirós-Terra de Montes,Deza,Chantada,Ourense
+O Ribeiro,331,622,Ourense,O Carballiño,Ourense,A Paradanta,Vigo,Pontevedra,Terra de Celanova
+Terra de Celanova,378,680,Ourense,A Paradanta,o Ribeiro,Ourense,Allariz-Maceda,A Limia,Baixa Limia
+Baixa Limia,373,770,Ourense,Terra de Celanova,A Limia
+A Limia,462,727,Ourense,Baixa Limia,Terra de Celanova,Allariz-Maceda,Terra de Caldelas,Verín
+Verín,543,749,Ourense,A Limia,Viana,Terra de Trives,Terra de Caldelas
+Viana,618,693,Ourense,Verín,Terra de Trives,Valdeorras
+Valdeorras,664,607,Ourense,Viana,Terra de Trives,Quiroga
+Terra de Trives,575,630,Ourense,Valdeorras,Viana,Verín,Quiroga,Terra de Caldelas
+Terra de Caldelas,520,620,Ourense,Verin,A Limia,Allariz-Maceda,Ourense,Terra de Lemos,Terra de Trives,Quiroga
+Allariz-Maceda,462,652,Ourense,A Limia,Terra de Celanova,Terra de Caldelas,Ourense
+Ourense,424,605,Ourense,O Carballiño,O Ribeiro,Terra de Celanova,Allariz-Maceda,Terra de Caldelas,Terra de Lemos,Chantada
+Quiroga,599,546,Lugo,Os Ancares,Sarria,Terra de Lemos,Valdeorras,Terra de Trives,Terra de Caldelas
+Terra de Lemos,508,543,Lugo,Quiroga,Chantada,Sarria,Terra de Caldelas,Ourense,
+Chantada,431,513,Lugo,Terra de Lemos,Ourense,O Carballiño,Deza,A Ulloa,Lugo,Sarria
+A Ulloa,415,427,Lugo,Deza,Terra de Melide,Lugo,Chantada
+Sarria,546,453,Lugo,Terra de Lemos,Chantada,Lugo,Quiroga,Os Ancares
+Os Ancares,637,409,Lugo,Quiroga,Sarria,Lugo,A Fonsagrada
+A Fonsagrada,621,322,Lugo,Os Ancares,Lugo,A Mariña Oriental,Meira
+Lugo,488,369,Lugo,A Ulloa,Terra de Melide,Chantada,Sarria,Os Ancares,A Fonsagrada,Meira,Terra Chá
+Meira,584,284,Lugo,A Fonsagrada,Lugo,A Mariña Oriental,A Mariña Central,Terra Chá
+Terra Chá,476,252,Lugo,Meira,A Mariña Central,A Mariña Occidental,Eume,Betanzos,Terra de Melide,Lugo
+A Mariña Oriental,602,171,Lugo,A Fonsagrada,Meira,A Mariña Central
+A Mariña Central,539,164,Lugo,A Mariña Oriental,A Mariña Occidental,Terra Chá,Meira
+A Mariña Occidental,483,125,Lugo,Ortegal,Terra Chá,A Mariña Central,Eume

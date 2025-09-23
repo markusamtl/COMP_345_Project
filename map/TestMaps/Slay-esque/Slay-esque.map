@@ -1,0 +1,112 @@
+[Map]
+author=Zworg2
+warn=yes
+image=Slay-esque.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+North West=4
+West=3
+South=4
+South Central=4
+East Central=5
+East=4
+North East=4
+North=4
+West Central=4
+
+[Territories]
+1m,58,141,North West,38m,2m
+2m,58,175,North West,1m,3m,83m
+3m,86,194,North West,2m,4m,7m,81m
+4m,116,176,North West,3m,5m,7m,8m
+5m,143,156,North West,6m,4m,8m,9m
+6m,145,122,North West,5m
+7m,115,214,North West,3m,4m,8m,11m
+8m,145,196,North West,4m,5m,9m,7m,11m,12m
+9m,172,177,North West,5m,8m,12m,13m,10m
+10m,202,159,North West,14m,9m,13m,20m
+11m,144,233,North West,7m,8m,12m,78m
+12m,174,214,North West,11m,8m,9m,13m,18m
+14m,202,119,North West,15m,10m
+15m,231,100,North West,22m,14m,16m
+16m,231,61,North West,17m,15m
+17m,202,41,North West,66m,16m
+
+13m,202,196,West Central,12m,9m,10m,20m,19m,18m
+18m,202,233,West Central,12m,13m,19m,74m
+19m,232,214,West Central,13m,20m,18m,74m,73m
+20m,232,177,West Central,10m,13m,19m,21m
+21m,260,157,West Central,22m,20m
+71m,316,272,West Central,70m,72m,61m
+72m,289,252,West Central,71m,73m
+73m,258,234,West Central,72m,19m,74m
+74m,230,253,West Central,18m,19m,73m,75m
+75m,231,291,West Central,74m,76m
+76m,203,311,West Central,75m,77m,67m
+
+22m,289,137,North,21m,15m,23m
+23m,317,119,North,22m,24m,25m
+24m,318,85,North,23m,62m
+25m,346,136,North,23m,26m,69m
+26m,375,118,North,25m,27m,29m
+27m,405,99,North,26m,29m,28m
+28m,433,79,North,27m,33m
+29m,403,137,North,26m,27m,30m
+
+30m,434,156,North East,29m,32m,31m
+31m,433,190,North East,30m,47m,52m
+32m,462,137,North East,30m,33m
+33m,491,118,North East,28m,32m,34m
+34m,518,138,North East,33m,35m,46m
+35m,548,118,North East,36m,34m,37m
+36m,547,85,North East,35m
+
+37m,577,138,East,35m,38m
+38m,606,157,East,37m,39m,1m
+39m,605,195,East,38m,40m
+40m,577,215,East,45m,41m,39m
+41m,577,253,East,40m,45m,42m
+42m,605,273,East,41m,43m,44m
+43m,634,234,East,42m,83m
+44m,605,307,East,42m,51m
+
+45m,547,234,East Central,46m,48m,40m,41m
+46m,518,218,East Central,47m,48m,45m,34m
+47m,491,234,East Central,46m,48m,49m,31m
+48m,518,253,East Central,49m,47m,46m,45m
+49m,491,273,East Central,47m,48m,50m
+50m,461,292,East Central,52m,49m,51m
+51m,461,324,East Central,50m,58m,44m
+52m,433,269,East Central,50m,53m,31m
+
+69m,347,218,South Central,25m,70m
+70m,345,251,South Central,69m,71m,68m
+68m,375,273,South Central,70m,53m
+53m,404,291,South Central,68m,52m,54m
+54m,403,331,South Central,53m,55m,58m
+55m,375,348,South Central,54m,60m,56m
+56m,375,386,South Central,55m,60m,57m
+57m,404,407,South Central,56m,58m,59m
+58m,432,386,South Central,51m,54m,57m
+59m,404,439,South Central,57m
+
+60m,345,368,South,61m,62m,55m,56m
+61m,317,347,South,71m,63m,62m,60m
+62m,318,386,South,63m,61m,60m,24m
+63m,288,367,South,64m,61m,62m
+64m,260,349,South,63m,65m
+65m,231,369,South,67m,64m,66m
+66m,230,403,South,65m,17m
+67m,200,350,South,76m,65m,79m
+
+77m,171,290,West,76m,78m
+78m,144,310,West,77m,79m,80m,11m
+79m,144,344,West,78m,67m
+80m,115,290,West,81m,78m
+81m,86,310,West,80m,83m,3m,82m
+82m,87,343,West,81m
+83m,58,287,West,84m,81m,2m,43m
+84m,30,307,West,83m,85m
+85m,30,340,West,84m

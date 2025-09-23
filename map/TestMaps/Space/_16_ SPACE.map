@@ -1,0 +1,97 @@
+[Map]
+image=_16_ SPACE.bmp
+wrap=no
+scroll=none
+warn=no
+author=_MIKE CRUSH_
+
+[Continents]
+Planet A=1
+Planet B=2
+Planet C=1
+Planet D=1
+Planet E=1
+Planet F=1
+Planet G=2
+Planet H=2
+Planet I=2
+
+SHUTTLES=1
+
+Black Hole West=-2
+Black Hole East=-2
+
+
+[Territories]
+
+a1,142,83,Planet A,a2,a3,a4,shuttle north
+a2,114,93,Planet A,a1,a4,d1
+a3,160,111,Planet A,a1,a4
+a4,122,116,Planet A,a1,a2,a3,b1,c2,e4,i6
+
+b1,519,29,Planet B,b2,b3,b4,a4,c2,e4,i6
+b2,474,63,Planet B,b1,b4,b5
+b3,572,49,Planet B,b1,b4,b6,b7
+b4,516,70,Planet B,b1,b2,b3,b5,b6
+b5,491,121,Planet B,b2,b4,b6,b7,Black Hole 1
+b6,552,96,Planet B,b3,b4,b5,b7,d4,g5,h1,i5
+b7,578,128,Planet B,b3,b5,b6
+
+c1,802,92,Planet C,c2,c3,f2
+c2,789,127,Planet C,c1,c3,a4,b1,e4,i6
+c3,819,125,Planet C,c1,c2,Black Hole 2
+
+d1,55,289,Planet D,d2,d3,d4,a2
+d2,25,316,Planet D,d1,d4,d5
+d3,89,293,Planet D,d1,d4,e1,Shuttle North
+d4,53,320,Planet D,d1,d2,d3,d5,b6,g5,h1,i5
+d5,54,357,Planet D,d2,d4
+
+e1,285,323,Planet E,e2,e3,e4,d3,Shuttle North
+e2,334,329,Planet E,e1,e4,Black Hole 1
+e3,272,364,Planet E,e1,e4
+e4,307,352,Planet E,e1,e2,e3,a4,b1,c2,i6
+
+f1,620,243,Planet F,f2,f3
+f2,655,255,Planet F,f1,f4,f5,c1
+f3,604,279,Planet F,f1,f4,Black Hole 1
+f4,628,305,Planet F,f2,f3,f5
+f5,668,299,Planet F,f2,f4,Shuttle East
+
+g1,21,479,Planet G,g2,g3
+g2,50,506,Planet G,g1,g3,g4,g5,Shuttle South
+g3,17,525,Planet G,g1,g2,g4
+g4,32,571,Planet G,g2,g3,g5,g6
+g5,69,564,Planet G,g2,g4,g6,g7,b6,d4,h1,i5
+g6,58,609,Planet G,g4,g5,g7
+g7,121,595,Planet G,g5,g6,Shuttle South,h4
+
+h1,529,465,Planet H,h2,h3,h4,h5,b6,d4,g5,i5
+h2,585,446,Planet H,h1,h5,Shuttle East,i4
+h3,466,470,Planet H,h1,h4
+h4,484,524,Planet H,h1,h3,h5,g7,Shuttle South
+h5,545,517,Planet H,h1,h2,h4,h6
+h6,588,528,Planet H,h5
+
+i1,938,415,Planet I,i2,i3
+i2,880,446,Planet I,i1,i3,i4
+i3,924,479,Planet I,i1,i2,i4,i5
+i4,838,514,Planet I,i2,i3,i5,i6,h2,Shuttle East
+i5,886,560,Planet I,i3,i4,i6,i7,b6,d4,g5,h1
+i6,815,590,Planet I,i4,i5,i7,a4,b1,c2,e4
+i7,922,601,Planet I,i5,i6
+
+Shuttle North,326,126,SHUTTLES,Shuttle South,Shuttle East,a1,d3,e1
+Shuttle South,240,504,SHUTTLES,Shuttle North,Shuttle East,g2,g7,h4
+Shuttle East,811,332,SHUTTLES,Shuttle North,Shuttle South,f5,h2,i4
+
+Black Hole 1,459,255,Black Hole West,Black Hole 2,b5,e2,f3
+Black Hole 2,893,202,Black Hole East,Black Hole 1,C3
+
+
+
+
+
+
+
+

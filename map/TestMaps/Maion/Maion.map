@@ -1,0 +1,92 @@
+[Map]
+author=Sean
+image=maion.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+Drenich=3
+Kujah=3
+Jhaque=2
+Jerai=7
+Polam=5
+Gretica=2
+Jahoni=2
+Mane=1
+Gama=7
+Ieral=3
+Orn Damon=2
+Vague=1
+
+[Territories]
+Andiugh,281,169,Jerai,Clanne,Coirrach,Eruteld,Celesacy
+Radboundes,284,252,Jerai,Bentirfowe,Celesacy,Barsdy,Moaldight Chersonese
+Barsdy,254,330,Jerai,Lornan,Radboundes,Bentirfowe,Vague
+Bentirfowe,247,261,Jerai,Coirrach,Poddenward,Lornan,Radboundes,Celesacy,Barsdy
+Poddenward,207,225,Jerai,Coirrach,Bleerund Islands,Lornan,Bentirfowe
+Lornan,221,286,Jerai,Poddenward,Bentirfowe,Barsdy
+Trestling,143,168,Jerai,Coirrach
+Celesacy,265,212,Jerai,Coirrach,Radboundes,Bentirfowe,Hirn Islands,Andiugh
+Bleerund Islands,177,235,Jerai,Poddenward,Rheerstrand
+Hirn Islands,329,211,Jerai,Celesacy,Moaldight Chersonese
+Eruteld,360,164,Jerai,Andiugh
+Untarne,222,81,Jhaque,Paimairt,Clanne,Heimlpakkt
+Paimairt,207,127,Jhaque,Untarne,Heimlpakkt,Clanne,Coirrach
+Armon,304,117,Jhaque,Clanne
+Clanne,261,106,Jhaque,Untarne,Paimairt,Andiugh,Coirrach,Armon
+Sinspelldich,36,83,Drenich,Ytrindverr,Varnumm,Frore Wastes
+Ytrindverr,57,116,Drenich,Heimlpakkt,Sinspelldich,Varnumm,Ungunkinn
+Varnumm,23,134,Drenich,Ytrindverr,Sinspelldich,Ungunkinn
+Ungunkinn,50,167,Drenich,Ytrindverr,Drerkug,Varnumm
+Drerkug,24,196,Drenich,Ungunkinn,Rheerstrand
+Heimlpakkt,75,107,Drenich,Untarne,Paimairt,Ytrindverr
+Rheerstrand,109,257,Kujah,Drerkug,Whichde,Forthquire,Bleerund Islands
+Whichde,73,277,Kujah,Rheerstrand,Noonde
+Forthquire,106,319,Kujah,Rheerstrand,Noonde
+Noonde,84,325,Kujah,Whichde,Forthquire,Aboquire,Whire Uptly
+Whire Uptly,39,306,Kujah,Noonde,Nowforn
+Aboquire,47,357,Kujah,Noonde,Vague
+Western Iuda,574,137,Gretica,Aida Hira,Reo Lysti,Eastern Iuda,Phaekiri
+Eastern Iuda,627,136,Gretica,Aida Hira,Western Iuda
+Hiadain,475,57,Gretica,Phaekiri
+Phaekiri,490,70,Gretica,Western Iuda,Hiadain
+Reo Lysti,531,154,Gretica,Western Iuda
+Aida Hira,591,193,Gretica,Ziligando,Western Iuda,Eastern Iuda,Pidger
+Moaldight Chersonese,431,274,Polam,Radboundes,Hirn Islands,Yeyecheki,Naghamazi
+Yeyecheki,483,289,Polam,Moaldight Chersonese,Owesu,Naghamazi
+Naghamazi,442,325,Polam,Moaldight Chersonese,Kwanzu,Owesu,Yeyecheki
+Owesu,522,304,Polam,Naghamazi,Yeyecheki,Tura Kulea Nama,Ziligando
+Kwanzu,456,351,Polam,Naghamazi,Vague
+Tura Kulea Nama,589,300,Polam,Owesu,Chitherogg,Ziligando
+Pidger,532,215,Polam,Ziligando,Aida Hira
+Ziligando,554,247,Polam,Owesu,Chitherogg,Tura Kulea Nama,Pidger,Aida Hira
+Chitherogg,615,255,Polam,Tura Kulea Nama,Ziligando,Err Disk
+Sani Noth,696,296,Jahoni,Sedning,Defy Dol,Vague
+Sedning,714,274,Jahoni,Err Disk,Sani Noth,Ochgrandektuellt
+Err Disk,691,266,Jahoni,Chitherogg,Sedning,Ochgrandektuellt,Yusal
+Defy Dol,735,309,Jahoni,Sani Noth,Rousse
+North Mane,716,84,Mane,Egrar,South Mane
+South Mane,713,101,Mane,Yusal,North Mane
+Uttl,812,67,Gama,Gelemark,Fegagun,Egrar,Frore Wastes
+Fegagun,834,121,Gama,Duzca,Venyn,Gelemark,Uttl
+Egrar,755,70,Gama,Gelemark,Uttl,North Mane
+Yusal,740,119,Gama,Gelemark,South Mane,Err Disk
+Gelemark,776,136,Gama,Duzca,Fegagun,Yusal,Egrar,Uttl
+Duzca,815,172,Gama,Kande,Prolunetide,Onluk,Venyn,Gelemark,Fegagun
+Venyn,866,149,Gama,Wheerian Chersonese,Onluk,Duzca,Fegagun
+Wheerian Chersonese,928,151,Gama,Onluk,Frore Wastes,Venyn
+Prolunetide,801,202,Gama,Kande,Ochgrandektuellt,Duzca
+Kande,838,206,Gama,Meningen,Onluk,Prolunetide,Duzca
+Frore Wastes,986,72,Drenich,Wheerian Chersonese,Uttl,Sinspelldich
+Meningen,890,246,Ieral,Tetiskt,Ochgrandektuellt,Indessar,Onluk,Kande
+Ochgrandektuellt,782,243,Ieral,Err Disk,Sedning,Rousse,Tetiskt,Meningen,Prolunetide
+Indessar,874,326,Ieral,Tetiskt,Grefter,Andsly,Meningen
+Tetiskt,827,265,Ieral,Rousse,Indessar,Ochgrandektuellt,Meningen
+Rousse,810,279,Ieral,Defy Dol,Ochgrandektuellt,Tetiskt
+Andsly,924,299,Orn Damon,Nowforn,Indessar
+Grefter,943,336,Orn Damon,Indessar,Nowforn,Vague
+Nowforn,967,310,Orn Damon,Grefter,Andsly,Whire Uptly
+Onluk,885,181,Gama,Meningen,Kande,Wheerian Chersonese,Venyn,Duzca
+Vague,524,420,Vague,Kwanzu,Sani Noth,Grefter,Barsdy,Aboquire
+Coirrach,231,191,Jerai,Bentirfowe,Celesacy,Poddenward,Trestling,Andiugh,Paimairt,Clanne

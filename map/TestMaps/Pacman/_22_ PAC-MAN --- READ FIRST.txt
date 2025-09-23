@@ -1,0 +1,33 @@
+ SEPTEMBER - 2003
+--------------------------------------------------------------------------------------------
+ notes for map # 22 (PAC-MAN)
+
+ - All GHOSTS are connected to each other
+ - All PAC-MEN are connected to each other
+ - The PAC-MAN & GHOST inside the CENTER BOX are connected to each other
+
+
+   I originally intended to release this map at a later date
+   with much more added towards the game-play.
+   
+   Instead I've decided to release this basic PAC-MAN map now 
+   and finish my 'bigger & better' map to be released later : )
+
+   Hope you enjoy this 'basic' version & 
+   anticipate that which is coming *
+
+--------------------------------------------------------------------------------------------
+  
+ (( Make sure you have the newest version of CONQUEST! ))
+    http://www.windowsgames.co.uk/conquest.html
+
+ << If you enjoy this map and would like others,
+    please contact Me at the email address below >>
+
+
+
+            Crush_Conquest@Yahoo.com
+
+
+
+ ... What's eating you !?

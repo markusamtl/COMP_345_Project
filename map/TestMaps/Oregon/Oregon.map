@@ -1,0 +1,56 @@
+[Map]
+author=Timothy Baimbridge
+warn=yes
+image=oregon.bmp
+wrap=no
+scroll=none
+
+[Continents]
+Northwest=3
+Central Valley=5
+Southwest=4
+Portland=5
+Northeast=3
+Southeast=2
+
+[Territories]
+Clatsop,80,46,Northwest,Columbia,Tillamook
+Columbia,125,52,Northwest,Multnomah,Washington,Clatsop
+Tillamook,77,105,Northwest,Clatsop,Washington,Yamhill,Lincoln
+Washington,118,93,Northwest,Columbia,Multnomah,Clackamas,Marion,Yamhill,Tillamook
+Yamhill,110,123,Northwest,Washington,Marion,Polk,Tillamook
+
+Lincoln,69,176,Central Valley,Tillamook,Polk,Benton,Lane
+Polk,99,151,Central Valley,Yamhill,Marion,Linn,Benton,Lincoln
+Marion,138,150,Central Valley,Clackamas,Crook,Linn,Polk,Yamhill,Washington,Wasco
+Linn,151,185,Central Valley,Marion,Crook,Lane,Benton,Polk
+Lane,152,238,Central Valley,Lincoln,Benton,Linn,Crook,Klamath,Douglas
+Benton,97,189,Central Valley,Polk,Linn,Lane,Lincoln
+
+Coos,49,297,Southwest,Douglas,Curry
+Douglas,117,297,Southwest,Lane,Klamath,Jackson,Josephine,Curry,Coos
+Klamath,208,359,Southwest,Crook,Lake,Jackson,Douglas,Lane
+Jackson,139,370,Southwest,Douglas,Klamath,Josephine
+Josephine,88,373,Southwest,Douglas,Jackson,Curry
+Curry,45,370,Southwest,Coos,Douglas,Josephine
+
+Multnomah,150,94,Portland,Wasco,Clackamas,Washington,Columbia
+Clackamas,170,130,Portland,Multnomah,Wasco,Marion,Washington
+Wasco,227,116,Portland,Sherman,Gilliam,Crook,Marion,Clackamas,Multnomah
+
+Sherman,261,113,Northeast,Gilliam,Wasco
+Gilliam,292,122,Northeast,Morrow,Grant,Crook,Wasco,Sherman
+Morrow,328,105,Northeast,Umatilla,Grant,Gilliam
+Umatilla,379,76,Northeast,Wallowa,Union,Grant,Morrow
+Union,425,117,Northeast,Wallowa,Baker,Grant,Umatilla
+Wallowa,475,117,Northeast,Baker,Union,Umatilla
+Baker,450,163,Northeast,Union,Wallowa,Malheur,Grant
+Grant,362,184,Northeast,Morrow,Umatilla,Union,Baker,Malheur,Harney,Crook,Gilliam
+Crook,260,205,Northeast,Wasco,Gilliam,Grant,Harney,Lake,Klamath,Lane,Linn,Marion
+
+Lake,286,333,Southeast,Crook,Harney,Klamath
+Harney,365,287,Southeast,Grant,Malheur,Lake,Crook
+Malheur,455,300,Southeast,Baker,Harney,Grant
+
+
+

@@ -1,0 +1,61 @@
+[Map]
+author=Jon Manning
+image=santorini.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Thirasia=2
+Nea Kemini=3
+Megalochori=6
+Southeast Beaches=3
+Fira=4
+Oia=4
+
+[Territories]
+ThirasiaA,100,275,Thirasia,ThirasiaB,ThirasiaC
+ThirasiaB,150,315,Thirasia,ThirasiaA,ThirasiaC,OiaA,Nea KeminiA
+ThirasiaC,90,385,Thirasia,ThirasiaA,ThirasiaB,ThirasiaD
+ThirasiaD,85,450,Thirasia,ThirasiaC
+
+Nea KeminiA,358,534,Nea Kemini,ThirasiaB,FiraD,Nea KeminiB,Nea KeminiC
+Nea KeminiB,385,574,Nea Kemini,MegalochoriG,Nea KeminiA,Nea KeminiC
+Nea KeminiC,284,594,Nea Kemini,Nea KeminiA,Nea KeminiB,Nea KeminiD
+Nea KeminiD,131,666,Nea Kemini,Nea KeminiC,MegalochoriA
+
+MegalochoriA,239,813,Megalochori,Nea KeminiD,MegalochoriB
+MegalochoriB,383,843,Megalochori,MegalochoriA,MegalochoriC,MegalochoriD
+MegalochoriC,531,751,Megalochori,MegalochoriB,MegalochoriD,MegalochoriE,MegalochoriF,MegalochoriG
+MegalochoriD,571,873,Megalochori,MegalochoriB,MegalochoriC,MegalochoriE,Southeast BeachesA
+MegalochoriE,645,805,Megalochori,MegalochoriC,MegalochoriD,MegalochoriF,Southeast BeachesA
+MegalochoriF,689,706,Megalochori,MegalochoriC,MegalochoriE,MegalochoriG,MegalochoriI,MegalochoriJ,Southeast BeachesB,Southeast BeachesC
+MegalochoriG,604,652,Megalochori,MegalochoriC,MegalochoriF,MegalochoriH,MegalochoriI,Nea KeminiB
+MegalochoriH,572,578,Megalochori,MegalochoriG,MegalochoriI,FiraA,FiraB
+MegalochoriI,659,574,Megalochori,MegalochoriF,MegalochoriG,MegalochoriH,MegalochoriJ,FiraA
+MegalochoriJ,742,583,Megalochori,MegalochoriF,MegalochoriI,FiraA,Southeast BeachesD,Southeast BeachesE
+
+Southeast BeachesA,712,856,Southeast Beaches,MegalochoriD,MegalochoriE,Southeast BeachesB
+Southeast BeachesB,771,774,Southeast Beaches,Southeast BeachesA,Southeast BeachesC,MegalochoriF
+Southeast BeachesC,790,684,Southeast Beaches,Southeast BeachesB,Southeast BeachesD,MegalochoriF
+Southeast BeachesD,799,605,Southeast Beaches,Southeast BeachesC,Southeast BeachesE,MegalochoriJ
+Southeast BeachesE,774,532,Southeast Beaches,Southeast BeachesD,MegalochoriJ,FiraA
+
+FiraA,659,474,Fira,FiraB,FiraC,FiraE,MegalochoriH,MegalochoriI,MegalochoriJ,Southeast BeachesE
+FiraB,563,478,Fira,FiraA,FiraC,FiraD,MegalochoriH
+FiraC,604,403,Fira,FiraA,FiraB,FiraD,FiraE
+FiraD,519,377,Fira,FiraB,FiraC,FiraE,Nea KeminiA,OiaF
+FiraE,595,324,Fira,FiraA,FiraC,FiraD,OiaE,OiaF
+
+OiaA,271,176,Oia,OiaB,ThirasiaB
+OiaB,330,143,Oia,OiaA,OiaC,OiaD
+OiaC,431,139,Oia,OiaB,OiaD,OiaE
+OiaD,402,195,Oia,OiaB,OiaC,OiaE,OiaF
+OiaE,552,221,Oia,OiaC,OiaD,OiaF,FiraE
+OiaF,515,265,Oia,OiaD,OiaE,FiraD,FiraE
+
+
+
+
+
+

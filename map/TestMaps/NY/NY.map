@@ -1,0 +1,83 @@
+[Map]
+author=Jeff Mason
+image=NY.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Western NY=4
+Central NY=10
+St.Lawrence Region=4
+Appalachia Region=5
+Capital Region=8
+Southern NY=4
+
+[Territories]
+Chautauqua,57,408,Western NY,Erie,Cattaraugus
+Niagara,131,268,Western NY,Erie,Orleans,Genesee
+Erie,134,324,Western NY,Niagara,Genesee,Wyoming,Cattaraugus,Chautauqua
+Cattaraugus,134,404,Western NY,Chautauqua,Erie,Wyoming,Allegany
+Orleans,188,260,Western NY,Niagara,Genesee,Monroe
+Genesee,194,294,Western NY,Niagara,Orleans,Monroe,Livingston,Wyoming,Erie
+Wyoming,186,346,Western NY,Erie,Genesee,Livingston,Allegany,Cattaraugus
+Allegany,212,403,Western NY,Cattaraugus,Wyoming,Livingston,Steuben
+Monroe,247,277,Western NY,Orleans,Wayne,Ontario,Livingston,Genesee
+Livingston,240,333,Western NY,Genesee,Monroe,Ontario,Steuben,Allegany,Wyoming
+Steuben,281,404,Western NY,Allegany,Livingston,Ontario,Yates,Schuyler,Chemung
+
+Wayne,319,270,Central NY,Cayuga,Seneca,Ontario,Monroe
+Ontario,293,313,Central NY,Monroe,Wayne,Seneca,Yates,Steuben,Livingston
+Yates,317,348,Central NY,Ontario,Seneca,Schuyler,Steuben
+Schuyler,340,382,Central NY,Steuben,Yates,Seneca,Tompkins,Chemung
+Chemung,353,417,Central NY,Steuben,Schuyler,Tompkins,Tioga
+Seneca,342,324,Central NY,Wayne,Cayuga,Tompkins,Schuyler,Yates,Ontario
+Cayuga,379,317,Central NY,Wayne,Oswego,Onondaga,Cortland,Tompkins,Seneca
+Tompkins,387,368,Central NY,Seneca,Cayuga,Cortland,Tioga,Chemung,Schuyler
+Tioga,410,412,Central NY,Chemung,Tompkins,Cortland,Broome
+Onondaga,419,294,Central NY,Cayuga,Oswego,Madison,Cortland
+Cortland,432,352,Central NY,Cayuga,Onondaga,Madison,Chenango,Broome,Tioga,Tompkins
+Broome,463,419,Central NY,Tioga,Cortland,Chenango,Delaware
+Madison,473,307,Central NY,Onondaga,Oswego,Oneida,Otsego,Chenango,Cortland
+Chenango,485,362,Central NY,Cortland,Madison,Otsego,Delaware,Broome
+
+Oswego,426,233,St.Lawrence Region,Jefferson,Lewis,Oneida,Madison,Onondaga,Cayuga
+Oneida,504,259,St.Lawrence Region,Oswego,Lewis,Herkimer,Otsego,Madison
+Jefferson,448,144,St.Lawrence Region,St.Lawrence,Lewis,Oswego
+Lewis,507,190,St.Lawrence Region,Jefferson,St.Lawrence,Herkimer,Oneida,Oswego
+St.Lawrence,548,83,St.Lawrence Region,Jefferson,Lewis,Herkimer,Hamilton,Franklin
+
+Franklin,632,67,Appalachia Region,St.Lawrence,Hamilton,Essex,Clinton
+Clinton,702,48,Appalachia Region,Franklin,Essex
+Hamilton,615,200,Appalachia Region,Herkimer,St.Lawrence,Franklin,Essex,Warren,Saratoga,Fulton
+Essex,700,140,Appalachia Region,Clinton,Franklin,Hamilton,Warren,Washington
+Fulton,618,278,Appalachia Region,Herkimer,Hamilton,Saratoga,Montgomery
+Warren,681,216,Appalachia Region,Hamilton,Essex,Washington,Saratoga
+Washington,733,243,Appalachia Region,Essex,Warren,Saratoga,Rensselaer
+
+Herkimer,558,274,Capital Region,St.Lawrence,Hamilton,Fulton,Montgomery,Otsego,Oneida,Lewis
+Montgomery,616,313,Capital Region,Herkimer,Fulton,Saratoga,Schenectady,Schoharie,Otsego
+Saratoga,681,282,Capital Region,Hamilton,Warren,Washington,Rensselaer,Albany,Schenectady,Montgomery,Fulton
+Schenectady,661,319,Capital Region,Montgomery,Saratoga,Albany,Schoharie
+Rensselaer,723,330,Capital Region,Washington,Saratoga,Albany,Columbia
+Albany,668,353,Capital Region,Schoharie,Schenectady,Saratoga,Rensselaer,Greene
+Schoharie,621,359,Capital Region,Otsego,Montgomery,Schenectady,Albany,Greene,Delaware
+Otsego,555,343,Capital Region,Chenango,Madison,Oneida,Herkimer,Montgomery,Schoharie,Delaware
+Delaware,558,408,Capital Region,Broome,Chenango,Otsego,Schoharie,Greene,Ulster,Sullivan
+Greene,652,400,Capital Region,Delaware,Schoharie,Albany,Columbia,Ulster
+Columbia,712,404,Capital Region,Rensselaer,Greene,Ulster,Dutchess
+
+Sullivan,579,485,Southern NY,Delaware,Ulster,Orange
+Ulster,637,459,Southern NY,Sullivan,Delaware,Greene,Columbia,Dutchess,Orange
+Dutchess,697,475,Southern NY,Columbia,Ulster,Orange,Putnam
+Orange,628,530,Southern NY,Sullivan,Ulster,Dutchess,Putnam,Rockland
+Putnam,702,513,Southern NY,Dutchess,Orange,Westchester
+Rockland,664,554,Southern NY,Orange,Westchester
+Westchester,688,553,Southern NY,Putnam,Rockland,Bronx
+Bronx,684,600,Southern NY,Westchester,New York,Queens
+New York,672,609,Southern NY,Bronx,Kings,Richmond,Queens
+Richmond,650,636,Southern NY,Kings,New York
+Kings,674,627,Southern NY,Richmond,New York,Queens
+Queens,691,620,Southern NY,Nassau,Bronx,New York,Kings
+Nassau,712,615,Southern NY,Suffolk,Queens
+Suffolk,781,596,Southern NY,Nassau

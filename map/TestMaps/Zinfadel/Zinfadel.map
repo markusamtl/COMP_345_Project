@@ -1,0 +1,68 @@
+[Map]
+author=sid6.7
+image=Zinfadel.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+The Dread Empire=6
+Sidonia=6
+The Free States=20
+Quild=3
+Kandice=4
+Arm Kingdom=2
+Kya' Terra=4
+Kesh=4
+Coo=1
+
+[Territories]
+Nambia,194,34,Kesh,Far Nambia,Zwei,Strol
+Strol,311,51,Kesh,Zwei,Kesh,Nambia
+Zwei,337,27,Kesh,North Zwei,North Kesh,Strol,Nambia
+Kesh,303,84,Kesh,Strol,Yet,Jawed,Krent,North Kesh
+Jawed,197,131,Kesh,GnohGnok,Kesh
+Yet,369,114,Kesh,Kesh
+North Zwei,465,32,Kya' Terra,Far Nambia,Sudin,North Kesh,Zwei
+North Kesh,391,60,Kya' Terra,Sudin,North Zwei,Zwei,Kesh
+Sudin,485,78,Kya' Terra,Aden,Yem,Zelt yem,North Kesh,North Zwei
+Yem,508,118,Kya' Terra,Jeez,Sudin,Zelt yem
+Aden,557,71,Kya' Terra,North Coast,Sudin
+Zelt yem,454,139,Kya' Terra,Jeez,Yem,Quild,Sudin
+Far Nambia,869,61,Kesh,Prime Sidonia,North Zwei,Nambia
+North Coast,589,101,Sidonia,Alentia,Prime Sidonia,Jeez,Aden
+Prime Sidonia,674,141,Sidonia,Alentia,North Coast,Far Nambia
+Alentia,598,193,Sidonia,Near Brid,Manako,South Sidonia,Jeez,North Coast,Prime Sidonia
+Near Brid,727,221,Sidonia,Far Bid,Yorst,Manako,Alentia
+Far Bid,844,266,Sidonia,Relmote,Yorst,Near Brid
+Relmote,16,276,Sidonia,Eropagnis,Far Bid,Sheald
+Jeez,541,158,Sidonia,Alentia,North Coast,Yem,Zelt yem
+South Sidonia,553,246,Sidonia,Alentia,Andor
+Yorst,782,269,The Free States,Far Bid,Near Brid,Manako
+Manako,631,234,The Free States,Near Brid,Yorst,Alentia
+Andor,512,277,The Free States,South Sidonia,From,Licten
+Licten,472,286,The Free States,From,Luxem,Andor,Cooland
+Luxem,400,264,The Free States,Winers,Licten,Defel,Krent
+Ucaam,322,345,The Free States,Long Island,De Smit,Defel
+GnohGnok,143,170,The Free States,Jawed,Eropagnis
+Eropagnis,31,226,The Free States,GnohGnok,Relmote
+Deberg,275,236,Kandice,Hayti,Krent
+Krent,328,217,Kandice,Winers,Luxem,Deberg,Kesh
+Hayti,257,321,Kandice,De Smit,Deberg
+Defel,349,310,Kandice,Luxem,Ucaam
+De Smit,286,357,Kandice,Long Island,Hayti,Ucaam
+Sheald,160,397,Arm Kingdom,The Dread Nothing,Long Island,Relmote
+Cooland,513,334,Coo,Licten,Looland
+Looland,563,354,Coo,Cooland,Dearth
+Dearth,636,394,The Dread Empire,Looland,Culling,Harm
+Culling,743,418,The Dread Empire,Dearth,Fillet,East Purge
+Fillet,754,488,The Dread Empire,East Purge,Culling
+East Purge,711,466,The Dread Empire,Harm,Shear,Culling,Fillet
+Shear,668,441,The Dread Empire,East Purge,Harm
+Harm,572,426,The Dread Empire,Dearth,Shear,East Purge,Near Dread
+Near Dread,482,414,The Dread Empire,Harm,The Dread Nothing
+Long Island,319,401,The Dread Empire,The Dread Nothing,Ucaam,De Smit,Sheald
+The Dread Nothing,250,481,The Dread Empire,Near Dread,Long Island,Sheald
+Quild,447,187,Quild,Zelt yem,Winers,From
+Winers,409,214,Quild,Quild,Krent,Luxem,From
+From,478,224,Quild,Quild,Winers,Andor,Licten

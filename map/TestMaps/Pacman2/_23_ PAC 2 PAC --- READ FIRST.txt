@@ -1,0 +1,38 @@
+ SEPTEMBER - 2003
+--------------------------------------------------------------------------------------------
+ notes for map # 23 (PAC 2 PAC)
+
+ -- This is actually PART II of the first PAC-MAN map (#22) *
+
+
+ - All GHOSTS are connected to each other
+ - All PAC-MAN characters are connected to each other
+ - The PAC-MAN & GHOST inside the CENTER BOX are connected to each other
+ 
+ -- The above rules apply to the 'MS. PAC-MAN' side of the map also.
+ -- The PAC-MAN & MS.PAC-MAN inside the center boxes connect to each other, 
+    as do the 2 GHOSTS inside the center box.
+
+
+ - If you enjoy these types of maps,  please drop Me a note and let Me know - thanks!
+ - If you'd like to see other types of maps please let Me know also *
+   Your input is appreciated : )
+
+--------------------------------------------------------------------------------------------
+  
+ (( Make sure you have the newest version of CONQUEST! ))
+    http://www.windowsgames.co.uk/conquest.html
+
+ << If you enjoy this map and would like others,
+    please contact Me at the email address below >>
+
+             
+    ********  Crush_Conquest@Yahoo.com  ********
+
+
+
+
+ SUPERTRAMP 'The Logical Song'
+
+
+ 

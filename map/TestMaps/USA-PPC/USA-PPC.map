@@ -1,0 +1,66 @@
+[Map]
+author=Chris Bair
+image=USA-PPC.bmp
+wrap=yes
+scroll=horizontal
+warn=no
+
+[Continents]
+West=7
+Plains=15
+Midwest=6
+South East=7
+North East=11
+Pacific=3
+
+[Territories]
+Rhode Island,346,67,North East,Conneticut,Massachusetts
+Conneticut,338,69,North East,Rhode Island,New York,Massachusetts
+Massachusetts,341,61,North East,Rhode Island,New Hampshire,New York,Vermont,Conneticut
+Maine,353,32,North East,New Hampshire
+New Hampshire,341,51,North East,Massachusetts,Maine,Vermont
+Vermont,334,45,North East,New York,Massachusetts,New Hampshire
+New York,321,59,North East,Conneticut,Massachusetts,Vermont,New Jersey,Pennsylvania
+New Jersey,329,80,Midwest,New York,Pennsylvania,Delaware
+Delaware,327,97,Midwest,New Jersey,Maryland
+Virginia,312,111,Midwest,North Carolina,Maryland
+Maryland,318,96,Midwest,Pennsylvania,Delaware,West Virginia,Virginia
+Pennsylvania,306,82,Midwest,New York,New Jersey,Ohio,West Virginia,Maryland
+West Virginia,292,104,Midwest,Kentucky,Pennsylvania,Ohio,Maryland
+Ohio,276,91,Midwest,Kentucky,Pennsylvania,Michigan,Indiana,West Virginia
+Kentucky,262,117,Midwest,Illinois,Tennessee,Indiana,Ohio,West Virginia
+Indiana,255,99,Midwest,Illinois,Kentucky,Ohio,Michigan
+Michigan,259,66,Midwest,Ohio,Indiana,Wisconsin
+Wisconsin,226,58,Midwest,Minnesota,Illinois,Michigan
+Illinois,233,99,Midwest,Wisconsin,Indiana,Kentucky
+North Carolina,309,131,South East,South Carolina,Virginia
+South Carolina,298,148,South East,Georgia,North Carolina
+Georgia,281,163,South East,Alabama,Florida,South Carolina,Tennessee
+Alabama,257,161,South East,Tennessee,Mississippi,Georgia,Florida
+Tennessee,253,135,South East,Kentucky,Alabama,Mississippi,Georgia
+Mississippi,235,164,South East,Louisiana,Tennessee,Alabama
+Florida,304,201,South East,Georgia,Alabama
+Louisiana,215,176,Plains,Mississippi,Arkansas,Texas
+Texas,165,176,Plains,Oklahoma,Louisiana,New Mexico,Arkansas
+New Mexico,118,144,Plains,Oklahoma,Colorado,Texas,Arizona
+Oklahoma,178,140,Plains,Missouri,Kansas,New Mexico,Texas,Arkansas,Colorado
+Arkansas,211,147,Plains,Missouri,Oklahoma,Louisiana,Texas
+Missouri,216,116,Plains,Nebraska,Iowa,Kansas,Arkansas,Oklahoma
+Kansas,175,113,Plains,Nebraska,Missouri,Oklahoma,Colorado
+Colorado,124,104,Plains,Nebraska,Kansas,New Mexico,Wyoming,Oklahoma
+Wyoming,115,72,Plains,Nebraska,Montana,Colorado,South Dakota
+Nebraska,171,86,Plains,Iowa,Wyoming,Colorado,Kansas,Missouri,South Dakota
+Iowa,204,82,Plains,Minnesota,Nebraska,South Dakota,Missouri
+Minnesota,197,41,Plains,North Dakota,South Dakota,Iowa,Wisconsin
+South Dakota,159,61,Plains,Minnesota,Nebraska,Iowa,Montana,Wyoming,North Dakota
+North Dakota,157,34,Plains,Minnesota,Montana,South Dakota
+Montana,106,36,Plains,Idaho,Wyoming,North Dakota,South Dakota
+Idaho,73,56,West,Washingon,Nevada,Utah,Oregon,Montana
+Utah,83,101,West,Arizona,Idaho,Nevada
+Arizona,75,136,West,New Mexico,Utah,Nevada,California
+Nevada,52,93,West,Arizona,California,Idaho,Oregon,Utah
+California,29,114,West,Arizona,Nevada,Oregon,Hawaii
+Oregon,37,45,West,California,Washingon,Idaho,Nevada
+Washingon,47,18,West,Alaska,Oregon,Idaho
+Alaska,43,192,Pacific,Hawaii,Washingon
+Hawaii,130,223,Pacific,California,Alaska

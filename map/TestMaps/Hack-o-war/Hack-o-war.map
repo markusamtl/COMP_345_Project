@@ -1,0 +1,90 @@
+[Map]
+author=GiGi
+warn=yes
+image=hack-o-war.bmp
+wrap=no
+scroll=horizontal,vertical
+
+[Continents]
+Gooooooooogle=1
+Micro $'oft=3
+Solar Computers=2
+Hackers=2
+Intela=1
+CIA=3
+MIT=2
+FBI=3
+Wall Street=2
+
+[Territories]
+g01,112,159,Gooooooooogle,g02,g04
+g02,250,159,Gooooooooogle,g01,g04,g03
+g03,112,276,Gooooooooogle,g02,w01,c0,f00,Mi03,i00,h01,m05,s00
+g04,250,276,Gooooooooogle,g01,g02
+
+m01,426,74,Micro $'oft,m02,m04
+m02,528,75,Micro $'oft,m01,m04,m03,m06
+m03,647,67,Micro $'oft,m02,c221,c11,f03,f06,Mi04,h03,w02
+m04,434,174,Micro $'oft,m01,m02,m05,m08
+m05,547,166,Micro $'oft,m06,m04,w01,c0,f00,Mi03,i00,h01,g03,s00
+m06,664,167,Micro $'oft,m02,m05,m08,m09
+m07,425,271,Micro $'oft,m08,c221,c11,f03,f06,Mi04,h03,w02
+m08,541,264,Micro $'oft,m06,m04,m09,m07
+m09,664,263,Micro $'oft,m06,m08
+
+s00,1097,331,Solar Computers,s05,w01,c0,f00,Mi03,i00,h01,m05,g03
+s01,825,66,Solar Computers,s02,s04
+s02,941,66,Solar Computers,s01,s03,s05
+s03,1061,66,Solar Computers,s02,s06
+s04,825,161,Solar Computers,s01,s05,s07
+s05,941,161,Solar Computers,s02,s04,s06,s08,s00
+s06,1061,161,Solar Computers,s03,s05,s09
+s07,825,259,Solar Computers,s04,s08
+s08,941,259,Solar Computers,s05,s07,s09
+s09,1061,259,Solar Computers,s06,s08
+
+h01,1212,82,Hackers,h02,w01,c0,f00,Mi03,i00,m05,g03,s00
+h02,1212,174,Hackers,h01,h03
+h03,1212,272,Hackers,h02,m03,m07
+
+i00,184,538,Intela,i01,w01,c0,f00,Mi03,h01,m05,g03,s00
+i01,184,431,Intela,i00,i02,i03,i04,i05
+i02,59,486,Intela,i01,i03,i04,i05
+i03,322,486,Intela,i02,i01,i04,i05
+i04,81,624,Intela,i02,i03,i01,i05
+i05,285,624,Intela,i02,i03,i04,i01
+
+Mi01,152,755,MIT,Mi02,Mi04
+Mi02,302,756,MIT,Mi01,Mi05
+Mi03,222,841,MIT,Mi05,w01,c0,f00,i00,h01,m05,g03,s00
+Mi04,147,917,MIT,Mi01,Mi05,m03,m07
+Mi05,301,918,MIT,Mi03,Mi02,Mi04
+
+f00,844,840,FBI,f01,f04,w01,c0,Mi03,i00,h01,m05,g03,s00
+f01,731,794,FBI,f00,f02
+f02,627,794,FBI,f01,f03
+f03,517,794,FBI,f02,f06,m03,m07
+f04,734,887,FBI,f00,f05
+f05,624,886,FBI,f04,f06
+f06,515,885,FBI,f05,f03,m03,m07
+
+c0,683,421,CIA,c1,c2,w01,f00,Mi03,i00,h01,m05,g03,s00
+c1,591,484,CIA,c0,c2,c11,c12
+c2,785,484,CIA,c0,c1,c21,c22
+c11,478,568,CIA,c1,c12,c111,c112,m03,m07
+c12,613,568,CIA,c1,c11
+c21,736,566,CIA,c2,c22,c211,c212
+c22,861,568,CIA,c2,c21,c221
+c111,445,650,CIA,c11,c112
+c112,546,650,CIA,c11,c111
+c211,650,651,CIA,c21,c212
+c212,753,650,CIA,c21,c211
+c221,864,651,CIA,c22,m03,m07
+
+w00,996,559,Wall Street,w01,w02,w11,w12,w13,w14
+w01,956,429,Wall Street,w00,c0,f00,Mi03,i00,h01,m05,g03,s00
+w02,963,699,Wall Street,w00,m03,m07
+w11,1138,430,Wall Street,w00,w12,w13,w14
+w12,1138,515,Wall Street,w00,w11,w13,w14
+w13,1138,610,Wall Street,w00,w12,w11,w14
+w14,1138,696,Wall Street,w00,w12,w13,w11

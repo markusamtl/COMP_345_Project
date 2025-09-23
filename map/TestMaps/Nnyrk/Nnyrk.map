@@ -1,0 +1,62 @@
+[Map]
+author=Sid6.7
+warn=yes
+image=Nnyrk.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+Waste=1
+Solamnia=4
+Lund=3
+Elvish=4
+Ergoth=6
+Kothas=4
+Estwilde=5
+Palan=2
+Sack=3
+
+[Territories]
+Dust,317,695,Waste,Ice,Kharolis,Coast,Silvanesti
+Ice,320,787,Waste,Dust
+
+Caergoth,141,487,Solamnia,Solam,Garnet,Abanasinia,S. Ergoth
+Garnet,186,471,Solamnia,Solam,Caergoth,Throt
+Throt,218,444,Solamnia,Solam,Garnet,Est
+Solam,227,365,Solamnia,Garnet,Caergoth,Throt,Est,NWaste,Palanthas
+
+Goodlund,498,432,Lund,Badlund,Balifor
+Badlund,540,499,Lund,Goodlund,Kotha,Silvanesti
+Balifor,466,455,Lund,Goodlund,Khur,Kern
+
+Silvanesti,394,605,Elvish,Dust,Coast,Thoradin,Khur,Badlund
+Qualinesti,138,607,Elvish,Abanasinia,Kharolis
+
+N. Ergoth,64,415,Ergoth,S. Ergoth
+S. Ergoth,58,574,Ergoth,N. Ergoth,Caergoth,Sancrist,Enstar
+Cristyne,16,577,Ergoth,Sancrist
+Sancrist,23,520,Ergoth,S. Ergoth,Cristyne
+Enstar,93,685,Ergoth,S. Ergoth,Nostar
+Nostar,55,682,Ergoth,Enstar
+
+Kotha,507,288,Kothas,Badlund,Mithas,Saifhum
+Mithas,476,267,Kothas,Kotha,Saifhum
+Karthay,442,226,Kothas,Kern,Palanthas
+Saifhum,417,280,Kothas,Kern,Mithas,Kotha
+
+Nordmar,313,236,Estwilde,Est,Kern
+Kern,378,351,Estwilde,Saifhum,Nordmar,Balifor,Khur,Khalkist,Karthay
+Est,270,379,Estwilde,Solam,Throt,Nordmar,Khalkist
+Khalkist,329,420,Estwilde,Est,Kern,Thoradin,Khur
+Thoradin,350,531,Estwilde,Khalkist,Khur,Silvanesti,Coast
+Khur,400,500,Estwilde,Thoradin,Khalkist,Kern,Balifor,Silvanesti
+
+Coast,295,613,Sack,Thoradin,Silvanesti,Kharolis,Dust
+Abanasinia,172,575,Sack,Qualinesti,Caergoth
+Kharolis,213,638,Sack,Qualinesti,Coast,Dust
+
+Palanthas,152,362,Palan,Solam,Karthay
+NWaste,220,304,Palan,Solam
+
+
+

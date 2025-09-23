@@ -1,0 +1,54 @@
+[Map]
+author=Robert Leahey
+image=IrelandSmall_rkl.bmp
+wrap=no
+scroll=vertical
+warn=no
+
+[Continents]
+Donegal=2
+Ulster (N. Ire.)=4
+Ulster (Rep. Ire.)=3
+Connaught=4
+Leinster=7
+Munster=5
+
+[Territories]
+Derry,167,54,Ulster (N. Ire.),N. Donegal,Tyrone,Antrim
+Antrim,190,52,Ulster (N. Ire.),Derry,Down
+Down,203,98,Ulster (N. Ire.),Antrim,Armegh
+Armegh,179,101,Ulster (N. Ire.),Down,Louth,Monaghan,Tyrone
+Tyrone,154,81,Ulster (N. Ire.),N. Donegal,S. Donegal,Derry,Armegh,Fermanagh,Monaghan
+Fermanagh,139,96,Ulster (N. Ire.),S. Donegal,Tyrone,Leitiim,N. Cavan,Monaghan
+Monaghan,163,108,Ulster (Rep. Ire.),Armegh,Fermanagh,N. Cavan,S. Cavan,Tyrone
+N. Cavan,140,112,Ulster (Rep. Ire.),Fermanagh,Leitiim,Longford,S. Cavan,Monaghan
+Mayo,69,119,Connaught,Sligo,W. Galway,Roscommon,E. Galway
+Sligo,99,108,Connaught,Leitiim,Roscommon,Mayo
+Leitiim,116,98,Connaught,S. Donegal,Fermanagh,N. Cavan,Longford,Roscommon,Sligo
+E. Galway,94,161,Connaught,Mayo,Roscommon,Clare,Offaly
+W. Galway,56,157,Connaught,Mayo
+Roscommon,112,132,Connaught,Leitiim,Sligo,Mayo,E. Galway,Longford,Offaly,Westmeath
+W. Donegal,127,46,Donegal,N. Donegal,S. Donegal
+N. Donegal,148,41,Donegal,W. Donegal,Derry,Tyrone
+S. Donegal,119,67,Donegal,W. Donegal,Tyrone,Fermanagh,Leitiim
+S. Cavan,158,127,Ulster (Rep. Ire.),N. Cavan,Monaghan,Longford,Westmeath,Meath,Louth
+Longford,134,135,Leinster,N. Cavan,S. Cavan,Leitiim,Roscommon,Westmeath
+Louth,184,127,Leinster,Armegh,S. Cavan,Meath
+Meath,175,145,Leinster,S. Cavan,Westmeath,Louth,Dublin,Kildare
+Westmeath,150,151,Leinster,S. Cavan,Roscommon,Longford,Offaly,Meath,Kildare
+Offaly,136,171,Leinster,E. Galway,Roscommon,Westmeath,Kildare,Laois,Tipperary
+Kildare,167,174,Leinster,Westmeath,Meath,Dublin,Wicklow,Carlow,Laois,Offaly
+Dublin,191,162,Leinster,Meath,Kildare,Wicklow
+Laois,145,186,Leinster,Kildare,Offaly,Kilkenny,Tipperary,Carlow
+Wicklow,188,189,Leinster,Dublin,Kildare,Carlow,Westford
+Kilkenny,148,219,Leinster,Laois,Carlow,Westford,Tipperary,Waterford
+Carlow,164,210,Leinster,Kildare,Laois,Wicklow,Kilkenny,Westford
+Westford,182,225,Leinster,Wicklow,Carlow,Kilkenny
+Clare,83,195,Munster,E. Galway,Tipperary,Limerick,Kerry
+Tipperary,121,215,Munster,Offaly,Laois,Kilkenny,Clare,Limerick,Waterford,E. Cork
+Kerry,51,243,Munster,Clare,Limerick,W. Cork
+Limerick,88,219,Munster,Clare,Tipperary,Kerry,W. Cork,E. Cork
+W. Cork,72,267,Munster,Limerick,Kerry,E. Cork
+E. Cork,96,257,Munster,Tipperary,Limerick,Waterford,W. Cork
+Waterford,130,248,Munster,Kilkenny,Tipperary,E. Cork
+

@@ -1,0 +1,59 @@
+[Map]
+author=Dave
+warn=yes
+image=Daves_World.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+West Detshire=2
+North Detshire=8
+South Detshire=7
+Stottington=3
+New Hanston=5
+Isle's of Lef=2
+
+[Territories]
+Harod's Plains,247,39,West Detshire,West Scholl,Kilshire,Pickerington
+West Scholl,233,68,West Detshire,Harod's Plains,Kilshire
+Pickerington,284,39,West Detshire,Harod's Plains,Kilshire
+Kilshire,266,72,West Detshire,West Scholl,Harod's Plains,Pickerington,Sh'an,Trel,Venton
+
+Sh'an,318,47,North Detshire,Kilshire,Benshon,Trel
+Trel,318,74,North Detshire,Kilshire,Sh'an,Benshon,Venton,North Ren
+Venton,298,87,North Detshire,Kilshire,Trel,North Ren,Krel's Mountains
+Benshon,344,74,North Detshire,Sh'an,Trel,North Ren,New Ren,Eastern Scholl
+North Ren,317,105,North Detshire,New Ren,Benshon,Trel,Venton,Krel's Mountains,South Ren
+New Ren,351,109,North Detshire,Benshon,North Ren,Eastern Scholl
+Eastern Scholl,386,107,North Detshire,Benshon,New Ren,Southeast Scholl,The Dinar
+Krel's Mountains,282,120,North Detshire,Venton,North Ren,South Ren,Upper Haslow
+South Ren,313,134,North Detshire,Krel's Mountains,North Ren,Upper Haslow,Edminton
+
+Upper Haslow,263,162,South Detshire,Nessex,Lower Haslow,The Heartland,Edminton,Krel's Mountains,South Ren
+Edminton,313,161,South Detshire,Upper Haslow,South Ren,The Heartland,Faulkland,Southeast Scholl
+Southeast Scholl,354,168,South Detshire,Edminton,Faulkland,Eastern Scholl
+The Heartland,293,181,South Detshire,Upper Haslow,Lower Haslow,Edminton,Faulkland
+Nessex,230,179,South Detshire,Langston,Upper Haslow,Lower Haslow
+Lower Haslow,262,204,South Detshire,Nessex,Upper Haslow,The Heartland,Faulkland
+Faulkland,325,204,South Detshire,Lower Haslow,The Heartland,Edminton,Southeast Scholl
+Port O'Elle,169,192,South Detshire,Devington,Langston
+Langston,201,195,South Detshire,Port O'Elle,Devington,Nessex
+Devington,175,213,South Detshire,Lower Jaw,Port O'Elle,Langston
+
+Hab's Marsh,30,165,Stottington,Runted Strait,Upper Jaw,The Stunt
+The Stunt,55,179,Stottington,Hab's Marsh,Upper Jaw,Lower Jaw
+Upper Jaw,87,162,Stottington,Hab's Marsh,The Stunt,Lower Jaw,Jagged Strait
+Lower Jaw,96,198,Stottington,The Stunt,Upper Jaw,Devington
+
+Tell Tale,23,39,New Hanston,Stephy Land
+Stephy Land,51,39,New Hanston,Tell Tale,The Dinar,Runted Strait,North Dunes
+The Dinar,29,84,New Hanston,Stephy Land,Runted Strait,Eastern Scholl
+Runted Strait,53,74,New Hanston,The Dinar,Stephy Land,Hab's Marsh
+North Dunes,95,32,New Hanston,Stephy Land,South Dunes,Jagged Strait
+South Dunes,82,65,New Hanston,North Dunes
+Jagged Strait,117,63,New Hanston,North Dunes,Raulkin's Holt,Upper Jaw
+
+Raulkin's Holt,143,84,Isle's of Lef,Jagged Strait,Merit's Holt,Riveth Isle
+Merit's Holt,170,79,Isle's of Lef,Raulkin's Holt,Riveth Isle
+Riveth Isle,173,117,Isle's of Lef,Raulkin's Holt,Merit's Holt
+

@@ -1,0 +1,122 @@
+[Map]
+author=Chus Suárez
+warn=yes
+image=Canarias.bmp
+wrap=yes
+scroll=none
+
+[Continents]
+Fuerteventura=3
+Lanzarote=4
+Gran Canaria Noreste=6
+Gran Canaria Suroeste=5
+Tenerife Noreste=6
+Tenerife Noroeste=5
+Tenerife Centro Sur=5
+La Palma=7
+La Gomera=3
+Hierro=1
+
+[Territories]
+Lobos,1060,275,Fuerteventura,La Oliva
+La Oliva,1020,310,Fuerteventura,Lobos,Puerto Cabras,Yaiza
+Puerto Cabras,1010,365,Fuerteventura,La Oliva,Betancuria,Antigua,Arrecife
+Antigua,1010,410,Fuerteventura,Puerto Cabras,Betancuria,Tuineje
+Betancuria,960,390,Fuerteventura,Puerto Cabras,Antigua,Pájara
+Tuineje,970,450,Fuerteventura,Antigua,Pájara
+Pájara,875,510,Fuerteventura,Betancuria,Tuineje,Las Palmas de Gran Canaria
+
+La Graciosa,1160,110,Lanzarote,Haría
+Haría,1170,135,Lanzarote,La Graciosa,Teguise
+Teguise,1140,170,Lanzarote,Haría, Arrecife,San Bartolomé,Tinajo
+Arrecife,1140,200,Lanzarote,Teguise,San Bartolomé,Puerto Cabras,Las Palmas de Gran Canaria
+San Bartolomé,1125,200,Lanzarote,Teguise,Arrecife,Tinajo,Tías
+Tías,1110,205,Lanzarote,San Bartolomé,Tinajo,Yaiza
+Tinajo,1100,175,Lanzarote,Teguise,San Bartolomé,Tías,Yaiza
+Yaiza,1075,205,Lanzarote,Tinajo,Tías,La Oliva
+
+Las Palmas de Gran Canaria,710,380,Gran Canaria Noreste,Arucas,Teror,Santa Brígida,Telde,Pájara,Santa Cruz de Tenerife,Arrecife
+Arucas,680,370,Gran Canaria Noreste,Las Palmas de Gran Canaria,Teror,Firgas,Moya
+Firgas,666,385,Gran Canaria Noreste,Arucas,Teror,Valleseco,Moya
+Moya,655,385,Gran Canaria Noreste,Arucas,Firgas,Valleseco,Santa Mª de Guía
+Santa Mª de Guía,645,375,Gran Canaria Noreste,Moya,Gáldar
+Santa Brígida,695,410,Gran Canaria Noreste,Las Palmas de Gran Canaria,Teror,Telde,Valsequillo,Vega de San Mateo
+Teror,675,400,Gran Canaria Noreste,Las Palmas de Gran Canaria,Arucas,Firgas,Santa Brígida,Valleseco, Vega de San Mateo
+Valleseco,660,410,Gran Canaria Noreste,Firgas,Moya,Teror,Vega de San Mateo,Tejeda
+Telde,725,430,Gran Canaria Noreste,Las Palmas de Gran Canaria,Santa Brígida,Valsequillo,Ingenio
+Valsequillo,685,435,Gran Canaria Noreste,Santa Brígida,Telde,Vega de San Mateo, San Bartolomé de Tirajana
+Vega de San Mateo,666,430,Gran Canaria Noreste,Santa Brígida,Teror,Valleseco,Valsequillo,Tejeda,San Bartolomé de Tirajana
+
+Gáldar,620,375,Gran Canaria Suroeste,Santa Mª de Guía,Agaete,Artenara
+Agaete,610,400,Gran Canaria Suroeste,Gáldar,Artenara,Santa Cruz de Tenerife
+Tejeda,630,445,Gran Canaria Suroeste,Valleseco,Vega de San Mateo,Artenara,San Bartolomé de Tirajana,Mogán,San Nicolás de Tolentino
+Artenara,615,425,Gran Canaria Suroeste,Gáldar,Agaete,Tejeda,San Nicolás de Tolentino
+Ingenio,725,455,Gran Canaria Suroeste,Telde,Agüimes
+Agüimes,710,470,Gran Canaria Suroeste,Ingenio,Santa Lucía de Tirajana
+Santa Lucía de Tirajana,700,485,Gran Canaria Suroeste,Agüimes,San Bartolomé de Tirajana
+San Bartolomé de Tirajana,660,490,Gran Canaria Suroeste,Valsequillo,Vega de San Mateo,Tejeda,Santa Lucía de Tirajana,Mogán
+Mogán,610,490,Gran Canaria Suroeste,Tejeda,San Bartolomé de Tirajana,San Nicolás de Tolentino
+San Nicolás de Tolentino,575,455,Gran Canaria Suroeste,Tejeda,Artenara,Mogán
+
+Santa Cruz de Tenerife,590,200,Tenerife Noreste,La Laguna,El Rosario,Las Palmas de Gran Canaria,Agaete,Valverde,Santa Cruz de La Palma,San Sebastián
+La Laguna,550,220,Tenerife Noreste,Santa Cruz de Tenerife,Tegueste,Tacoronte,El Rosario
+Tegueste,545,205,Tenerife Noreste,La Laguna
+Tacoronte,520,222,Tenerife Noreste,La Laguna,El Sauzal,El Rosario
+El Sauzal,511,230,Tenerife Noreste,Tacoronte,La Matanza de Acentejo,El Rosario
+La Matanza de Acentejo,505,235,Tenerife Noreste,El Sauzal,La Victoria de Acentejo
+La Victoria de Acentejo,505,250,Tenerife Noreste,La Matanza de Acentejo,Santa Úrsula,Candelaria
+Santa Úrsula,490,250,Tenerife Noreste,La Victoria de Acentejo,Arafo,La Orotava
+Candelaria,525,265,Tenerife Noreste,La Victoria de Acentejo,El Rosario,Arafo
+El Rosario,535,240,Tenerife Noreste,Santa Cruz de Tenerife,La Laguna,Tacoronte,El Sauzal,Candelaria
+Arafo,505,275,Tenerife Noreste,Santa Úrsula,Candelaria,Güimar,La Orotava
+
+Puerto de la Cruz,470,255,Tenerife Noroeste,La Orotava,Los Realejos
+Los Realejos,460,275,Tenerife Noroeste,Puerto de la Cruz,La Orotava,San Juan de la Rambla
+San Juan de la Rambla,442,265,Tenerife Noroeste,Los Realejos,La Guancha
+La Guancha,440,277,Tenerife Noroeste,San Juan de la Rambla,Icod de los Vinos
+Icod de los Vinos,420,285,Tenerife Noroeste,La Guancha,Garachico,La Orotava
+Garachico,400,270,Tenerife Noroeste,Santiago del Teide,Los Silos,El Tanque,Icod de los Vinos
+El Tanque,395,285,Tenerife Noroeste,Santiago del Teide,Los Silos,Garachico
+Los Silos,380,275,Tenerife Noroeste,Buenavista del Norte,Santiago del Teide,El Tanque,Garachico
+Buenavista del Norte,360,280,Tenerife Noroeste,Los Silos,Santiago del Teide
+Santiago del Teide,385,305,Tenerife Noroeste,Guía de Isora,Buenavista del Norte,El Tanque,Los Silos,Garachico
+
+La Orotava,445,315,Tenerife Centro Sur,Santa Úrsula,Arafo,Puerto de la Cruz,Los Realejos,Guía de Isora,Vilaflor,Granadilla de Abona,Arico,Güimar,Icod de los Vinos
+Guía de Isora,400,330,Tenerife Centro Sur,Santiago del Teide,Adeje,La Orotava
+Adeje,410,365,Tenerife Centro Sur,Guía de Isora,Arona,Vilaflor
+Vilaflor,440,355,Tenerife Centro Sur,Adeje,Arona,San Miguel,Granadilla de Abona,La Orotava
+Arona,430,395,Tenerife Centro Sur,Adeje,Vilaflor,San Miguel,San Sebastián
+San Miguel,447,380,Tenerife Centro Sur,Arona,Vilaflor,Granadilla de Abona
+Granadilla de Abona,470,370,Tenerife Centro Sur,Vilaflor,San Miguel,La Orotava,Arico
+Arico,490,340,Tenerife Centro Sur,Granadilla de Abona,Fasnia,La Orotava
+Fasnia,505,320,Tenerife Centro Sur,Arico,Güimar
+Güimar,510,300,Tenerife Centro Sur,Arafo,Fasnia,La Orotava
+
+Santa Cruz de La Palma,175,105,La Palma,Breña Alta,El Paso,Puntallana,San Sebastián,Valverde,Santa Cruz de Tenerife
+Breña Alta,170,120,La Palma,Santa Cruz de La Palma,El Paso,Breña Baja
+Breña Baja,185,130,La Palma,Breña Alta,El Paso,Mazo
+Mazo,175,155,La Palma,Breña Baja,Fuencaliente,El Paso
+Fuencaliente,155,185,La Palma,Mazo,El Paso,Los Llanos de Aridane
+Los Llanos de Aridane,140,140,La Palma,Fuencaliente,El Paso,Tazacorte,Tijarafe
+Tazacorte,132,130,La Palma,Los Llanos de Aridane,Tijarafe
+El Paso,150,110,La Palma,Santa Cruz de La Palma,Breña Alta,Breña Baja,Mazo,Fuencaliente,Los Llanos de Aridane,Tijarafe,Garafía,San Andrés y Sauces,Puntallana
+Tijarafe,125,100,La Palma,Los Llanos de Aridane,Tazacorte,El Paso,Puntagorda
+Puntagorda,110,80,La Palma,Tijarafe,Garafía
+Garafía,140,70,La Palma,Puntagorda,El Paso,Barlovento
+Barlovento,170,65,La Palma,Garafía,San Andrés y Sauces
+San Andrés y Sauces,180,75,La Palma,Barlovento,Puntallana,El Paso
+Puntallana,190,90,La Palma,Santa Cruz de La Palma,San Andrés y Sauces,El Paso
+
+San Sebastián,320,380,La Gomera,Hermigüa,Alajeró,Santa Cruz de La Palma,Valverde,Santa Cruz de Tenerife,Arona
+Hermigüa,300,355,La Gomera,San Sebastián,Agulo
+Agulo,295,340,La Gomera,Hermigüa,Vallehermoso
+Vallehermoso,270,340,La Gomera,Agulo,Valle Gran Rey,Alajeró
+Valle Gran Rey,255,370,La Gomera,Vallehermoso
+Alajeró,285,400,La Gomera,San Sebastián,Vallehermoso
+
+Valverde,125,500,Hierro,Frontera,Santa Cruz de La Palma,San Sebastián,Santa Cruz de Tenerife
+Frontera,65,535,Hierro,Valverde
+
+
+
+

@@ -1,0 +1,69 @@
+[Map]
+image=galaxy.bmp
+author=Tim Blaisdell
+wrap=no
+scroll=horizontal
+warn=no
+
+[Continents]
+Alpha=5
+Beta=5
+Gamma=5
+Delta=5
+Galactic Wormhole=10
+
+[Territories]
+
+Wormhole,148,148,Galactic Wormhole
+
+Alpha 1-1,86,138,Alpha,Alpha 1-2,Alpha 2-1,Gamma 1-2,WormHole
+Alpha 2-1,70,138,Alpha,Alpha 2-2,Alpha 3-1,Alpha 1-1,Gamma 2-2,WormHole,Gamma 1-2,Gamma 3-2
+Alpha 3-1,57,138,Alpha,Alpha 3-2,Alpha 4-1,Alpha 2-1,Gamma 3-2,WormHole
+Alpha 4-1,44,138,Alpha,Alpha 4-2,Alpha 5-1,Alpha 3-1,Gamma 4-2,WormHole,Gamma 3-2,Gamma 5-2
+Alpha 5-1,29,138,Alpha,Alpha 5-2,Alpha 6-1,Alpha 4-1,Gamma 5-2,WormHole
+Alpha 6-1,13,138,Alpha,Alpha 6-2,Alpha 5-1,Gamma 6-2,WormHole,Gamma 5-2
+Alpha 1-2,96,111,Alpha,Alpha 1-1,Alpha 2-2,Beta 1-1,WormHole
+Alpha 2-2,85,103,Alpha,Alpha 2-1,Alpha 3-2,Alpha 1-2,Beta 2-1,WormHole,Beta 1-1,Beta 3-1
+Alpha 3-2,72,96,Alpha,Alpha 3-1,Alpha 4-2,Alpha 2-2,Beta 3-1,WormHole
+Alpha 4-2,61,87,Alpha,Alpha 4-1,Alpha 5-2,Alpha 3-2,Beta 4-1,WormHole,Beta 3-1,Beta 5-1
+Alpha 5-2,49,79,Alpha,Alpha 5-1,Alpha 6-2,Alpha 4-2,Beta 5-1,WormHole
+Alpha 6-2,47,60,Alpha,Alpha 6-1,Alpha 5-2,Beta 6-1,WormHole,Beta 5-1
+
+Beta 1-1,166,88,Beta,Beta 1-2,Beta 2-1,Alpha 1-2,WormHole,Alpha 2-2
+Beta 2-1,166,73,Beta,Beta 2-2,Beta 3-1,Beta 1-1,Alpha 2-2,WormHole
+Beta 3-1,166,58,Beta,Beta 3-2,Beta 4-1,Beta 2-1,Alpha 3-2,WormHole,Alpha 2-2,Alpha 4-2
+Beta 4-1,166,44,Beta,Beta 4-2,Beta 5-1,Beta 3-1,Alpha 4-2,WormHole
+Beta 5-1,166,30,Beta,Beta 5-2,Beta 6-1,Beta 4-1,Alpha 5-2,WormHole,Alpha 4-2,Alpha 6-2
+Beta 6-1,166,15,Beta,Beta 6-2,Beta 5-1,Alpha 6-2,WormHole
+Beta 1-2,186,96,Beta,Beta 1-1,Beta 2-2,Delta 1-1,WormHole,Delta 2-1
+Beta 2-2,192,85,Beta,Beta 2-1,Beta 3-2,Beta 1-2,Delta 2-1,WormHole
+Beta 3-2,200,73,Beta,Beta 3-1,Beta 4-2,Beta 2-2,Delta 3-1,WormHole,Delta 2-1,Delta 4-1
+Beta 4-2,209,60,Beta,Beta 4-1,Beta 5-2,Beta 3-2,Delta 4-1,WormHole
+Beta 5-2,213,48,Beta,Beta 5-1,Beta 6-2,Beta 4-2,Delta 5-1,WormHole,Delta 4-1,Delta 6-1
+Beta 6-2,220,34,Beta,Beta 6-1,Beta 5-2,Delta 6-1,WormHole
+
+Gamma 1-1,136,212,Gamma,Gamma 1-2,Gamma 2-1,Delta 1-2,WormHole,Delta 2-2
+Gamma 2-1,136,227,Gamma,Gamma 2-2,Gamma 3-1,Gamma 1-1,Delta 2-2,WormHole
+Gamma 3-1,136,242,Gamma,Gamma 3-2,Gamma 4-1,Gamma 2-1,Delta 3-2,WormHole,Delta 2-2,Delta 4-2
+Gamma 4-1,136,257,Gamma,Gamma 4-2,Gamma 5-1,Gamma 3-1,Delta 4-2,WormHole
+Gamma 5-1,136,270,Gamma,Gamma 5-2,Gamma 6-1,Gamma 4-1,Delta 5-2,WormHole,Delta 4-2,Delta 6-2
+Gamma 6-1,136,286,Gamma,Gamma 6-2,Gamma 5-1,Delta 6-2,WormHole
+Gamma 1-2,111,202,Gamma,Gamma 1-1,Gamma 2-2,Alpha 1-1,WormHole,Alpha 2-1
+Gamma 2-2,102,213,Gamma,Gamma 2-1,Gamma 3-2,Gamma 1-2,Alpha 2-1,WormHole
+Gamma 3-2,94,226,Gamma,Gamma 3-1,Gamma 4-2,Gamma 2-2,Alpha 3-1,WormHole,Alpha 2-1,Alpha 4-1
+Gamma 4-2,86,240,Gamma,Gamma 4-1,Gamma 5-2,Gamma 3-2,Alpha 4-1,WormHole
+Gamma 5-2,81,251,Gamma,Gamma 5-1,Gamma 6-2,Gamma 4-2,Alpha 5-1,WormHole,Alpha 4-1,Alpha 6-1
+Gamma 6-2,72,263,Gamma,Gamma 6-1,Gamma 5-2,Alpha 6-1,WormHole
+
+Delta 1-1,212,160,Delta,Delta 1-2,Delta 2-1,Beta 1-2,WormHole
+Delta 2-1,226,160,Delta,Delta 2-2,Delta 3-1,Delta 1-1,Beta 2-2,WormHole,Beta 1-2,Beta 3-2
+Delta 3-1,240,160,Delta,Delta 3-2,Delta 4-1,Delta 2-1,Beta 3-2,WormHole
+Delta 4-1,256,160,Delta,Delta 4-2,Delta 5-1,Delta 3-1,Beta 4-2,WormHole,Beta 3-2,Beta 5-2
+Delta 5-1,271,160,Delta,Delta 5-2,Delta 6-1,Delta 4-1,Beta 5-2,WormHole
+Delta 6-1,284,160,Delta,Delta 6-2,Delta 5-1,Beta 6-2,WormHole,Beta 5-2
+Delta 1-2,201,186,Delta,Delta 1-1,Delta 2-2,Gamma 1-1,WormHole
+Delta 2-2,211,196,Delta,Delta 2-1,Delta 3-2,Delta 1-2,Gamma 2-1,WormHole,Gamma 1-1,Gamma 3-1
+Delta 3-2,225,204,Delta,Delta 3-1,Delta 4-2,Delta 2-2,Gamma 3-1,WormHole
+Delta 4-2,235,212,Delta,Delta 4-1,Delta 5-2,Delta 3-2,Gamma 4-1,WormHole,Gamma 3-1,Gamma 5-1
+Delta 5-2,252,217,Delta,Delta 5-1,Delta 6-2,Delta 4-2,Gamma 5-1,WormHole
+Delta 6-2,262,226,Delta,Delta 6-1,Delta 5-2,Gamma 6-1,WormHole,Gamma 5-1

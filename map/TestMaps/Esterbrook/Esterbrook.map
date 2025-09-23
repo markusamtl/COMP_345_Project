@@ -1,0 +1,83 @@
+[Map]
+image=Esterbrook.bmp
+wrap=yes
+scroll=horizontal
+author=dmn1500(at)yahoo.com
+warn=yes
+
+[Continents]
+Aven=5
+Benta=3
+Centon=6
+Delta=2
+Easton=4
+Frenta=6
+Gimland=5
+Hewa=7
+
+[Territories]
+Ashta,103,150,Aven,Albour,Anbell,Afella
+Albour,180,145,Aven,Ashta,Afella,Ang City
+Anbell,75,205,Aven,Ashta,Afella,Humber
+Afella,148,210,Aven,Ashta,Albour,Anbell,Ang City,Awell,Atech,Beauton
+Ang City,217,192,Aven,Albour,Afella,Awell,Earge
+Awell,214,235,Aven,Afella,Ang City,Atech
+Atech,213,280,Aven,Afella,Awell,Beauton
+
+Bellville,130,335,Benta,Beauton,Bankshore
+Beauton,177,333,Benta,Afella,Atech,Bellville,Bankshore,Cungli
+Bankshore,144,392,Benta,Bellville,Beauton,Brell,Baybury Park,Bankshore,Hack County
+Brell,164,458,Benta,Bankshore,Baybury Park
+Baybury Park,215,423,Benta,Bankshore,Brell,Clip Boro
+
+Cungli,261,368,Centon,Beauton,Cellaroe
+Cellaroe,297,402,Centon,Cungli,Clip Boro,Cad Town
+Clip Boro,287,444,Centon,Baybury Park,Cellaroe,Cad Town,Covid
+Cever,388,383,Centon,Deshire,Cad Town,Cid
+Cad Town,356,425,Centon,Cellaroe,Clip Boro,Cever,Covid,Climmy,Cid
+Covid,342,473,Centon,Clip Boro,Cad Town,Climmy,Cid
+Climmy,379,473,Centon,Covid,Cad Town,Cid
+Cid,425,476,Centon,Cever,Cad Town,Covid,Climmy,Hall
+
+Drofk,447,288,Delta,Divitt
+Divitt,457,331,Delta,Drofk,Deshire,Dunt
+Deshire,471,373,Delta,Deshire,Divitt,Dunt,Cever
+Dunt,530,360,Delta,Divitt,Deshire
+
+Earge,293,127,Easton,Ang City,East Brick,Ember,Feast Lookout
+East Brick,303,167,Easton,Earge,Ember,Ever City
+Ember,354,149,Easton,Earge,East Brick,Frogville,Ever City
+Ever City,344,205,Easton,East Brick,Ember,Ender,Ecoli
+Ender,322,242,Easton,Ever City,Ecoli
+Ecoli,377,234,Easton,Ever City,Ender
+
+Frogville,476,151,Frenta,Ember,Forttown
+Forttown,536,132,Frenta,Frogville,Feast Lookout,Fever
+Feast Lookout,500,80,Frenta,Forttown,Faden,Earge
+Faden,596,67,Frenta,Feast Lookout,Fever,Fillopolly
+Fever,591,105,Frenta,Forttown,Faden,Fillopolly
+Fillopolly,650,66,Frenta,Faden,Fever,Fed,Flight
+Fed,669,133,Frenta,Fillopolly,Flight,Gower
+Flight,710,97,Frenta,Fillopolly,Fed
+
+Grangor,555,225,Gimland,Green Hollow,Gry,Granger
+Green Hollow,529,270,Gimland,Grangor,Granger
+Gry,606,228,Gimland,Grangor,Granger,Gife
+Granger,597,280,Gimland,Grangor,Green Hollow,Gry,Gife,Haven
+Gife,653,255,Gimland,Gry,Granger,Gower
+Gower,692,271,Gimland,Gife,Fed
+
+Hall,609,455,Hewa,Cid,Hightstown,Hust,Harrier,Haven
+Hightstown,630,530,Hewa,Hall,Hust,Hue City
+Hust,663,488,Hewa,Hall,Hightstown,Hue City,Horn,Harrier
+Hue City,720,522,Hewa,Hightstown,Hust,Horn
+Horn,724,469,Hewa,Hust,Hue City,Harrier,Hack County
+Harrier,666,437,Hewa,Hall,Hust,Horn,Haven,Hack County
+Haven,633,397,Hewa,Hall,Harrier,Hack County,Humber,Granger
+Hack County,715,419,Hewa,Horn,Harrier,Haven,Humber,Bankshore
+Humber,700,364,Hewa,Haven,Hack County,Anbell
+
+
+
+
+

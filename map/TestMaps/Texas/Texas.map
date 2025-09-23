@@ -1,0 +1,43 @@
+[Map]
+author=RickShaw
+image=Texas.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Panhandle=6
+Praries and Lakes=4
+Piney Woods=4
+Gulf Coast=3
+South Texas=3
+Hill Country=4
+The Big Bend=4
+
+[Territories]
+Northern Panhandle,236,53,Panhandle,Western Panhandle,Eastern Panhandle
+Western Panhandle,220,130,Panhandle,Northern Panhandle,Southwestern Panhandle,South Central Panhandle,Eastern Panhandle
+Southwestern Panhandle,188,192,Panhandle,Western Panhandle,BIg Bend,South Central Panhandle
+Eastern Panhandle,324,150,Panhandle,Northern Panhandle,Western Panhandle,Southeastern Panhandle,Red River Country,Dallas Fort Worth
+South Central Panhandle,252,208,Panhandle,Western Panhandle,Southwestern Panhandle,BIg Bend,North West Hill Country,Southeastern Panhandle
+Southeastern Panhandle,318,233,Panhandle,North West Hill Country,South Central Panhandle,Eastern Panhandle,Dallas Fort Worth,North East Hill Country
+Red River Country,444,164,Praries and Lakes,Eastern Panhandle,Dallas Fort Worth,Northern Piney Woods
+Northern Piney Woods,538,209,Piney Woods,Red River Country,Dallas Fort Worth,Southern Piney Woods
+Dallas Fort Worth,430,229,Praries and Lakes,Southeastern Panhandle,Eastern Panhandle,Red River Country,Northern Piney Woods,Southern Piney Woods,Pecan Plains,North East Hill Country
+Pecan Plains,443,281,Praries and Lakes,Dallas Fort Worth,North East Hill Country,Southern Plains,Southern Piney Woods
+Southern Plains,441,352,Praries and Lakes,North East Hill Country,Plains,Central Gulf Coast,Eastern Gulf Coast,Pecan Plains,South East Hill country
+Southern Piney Woods,540,299,Piney Woods,Dallas Fort Worth,Pecan Plains,Northern Piney Woods,Eastern Gulf Coast
+Eastern Gulf Coast,509,366,Gulf Coast,Southern Plains,Southern Piney Woods,Central Gulf Coast
+Central Gulf Coast,457,401,Gulf Coast,Plains,Southern Plains,Eastern Gulf Coast,Southern Gulf Coast
+Southern Gulf Coast,407,478,Gulf Coast,Plains,Central Gulf Coast,Rio Grande
+Rio Grande,361,501,South Texas,Plains,Southern Gulf Coast
+Plains,369,424,South Texas,North South Texas,Rio Grande,Southern Gulf Coast,Southern Plains,Central Gulf Coast,South East Hill country
+North South Texas,316,418,South Texas,South West Hill Country,Plains,South East Hill country
+South East Hill country,348,343,Hill Country,North East Hill Country,South West Hill Country,North South Texas,Plains,Southern Plains
+North East Hill Country,353,292,Hill Country,North West Hill Country,Southeastern Panhandle,Dallas Fort Worth,South East Hill country,Pecan Plains,Southern Plains
+North West Hill Country,279,296,Hill Country,BIg Bend,Gila Bend,South Central Panhandle,Southeastern Panhandle,North East Hill Country,South West Hill Country
+South West Hill Country,300,357,Hill Country,Gila Bend,North West Hill Country,South East Hill country,North South Texas
+Gila Bend,222,330,The Big Bend,BIg Bend,South West Hill Country,North West Hill Country
+BIg Bend,170,280,The Big Bend,Southwestern Panhandle,Westmost Texas,El Paso,Gila Bend,North West Hill Country,South Central Panhandle
+Westmost Texas,101,250,The Big Bend,BIg Bend,El Paso
+El Paso,99,329,The Big Bend,BIg Bend,Westmost Texas

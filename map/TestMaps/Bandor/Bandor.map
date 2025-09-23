@@ -1,0 +1,106 @@
+[Map]
+image=Bandor.bmp
+wrap=yes
+scroll=horizontal
+author=dmn1500(at)yahoo.com
+warn=yes
+
+[Continents]
+Moor=5
+Zoor=6
+Kapaya=4
+Twohan=4
+Buevel=2
+Wobel=6
+Habol=5
+Flourn=3
+Lednah=6
+Slate=2
+Auro=3
+Peatot=4
+
+[Territories]
+Manay,141,98,Moor,Lodor,Griffin,New Bane
+Lodor,118,151,Moor,Nighbell,Griffin,Manay
+Griffin,172,148,Moor,Nighbell,Bree,New Bane,Pilat,Manay,Lodor
+New Bane,209,137,Moor,Manay,Griffin,Pilat,Gaul
+Pilat,263,167,Moor,Griffin,Bree,Fade,Jenkey,Orsuel,New Bane,Gaul
+Gaul,252,106,Moor,New Bane,Pilat,Nextune
+Nextune,257,62,Moor,Gaul,Bash
+
+Paladin,33,225,Zoor,Kondoora,Nighbell,Prush
+Kondoora,82,237,Zoor,Paladin,Nighbell,Smate,Uhn
+Nighbell,104,190,Zoor,Lodor,Griffin,Paladin,Kondoora,Smate,Bree
+Uhn,114,264,Zoor,Kondoora,Smate,Oakwell,Reddon
+Oakwell,136,296,Zoor,Uhn,Smate,Carnivol
+Smate,177,231,Zoor,Oakwell,Uhn,Kondoora,Nighbell,Bree,Fade
+Bree,204,192,Zoor,Griffin,Pilat,Nighbell,Smate,Fade
+Fade,241,248,Zoor,Smate,Bree,Pilat,Jenkey,Tallon
+
+Tallon,226,325,Kapaya,Fade,Jiku,Yi,Albrite
+Yi,382,366,Kapaya,Jiku,Quag,Songhed,Zarnat,Forgeville,Tallon
+Jiku,305,414,Kapaya,Tallon,Yi,Quag,Limball
+Limball,335,466,Kapaya,Jiku,Quag,Songhed
+Songhed,408,467,Kapaya,Limball,Quag,Yi,Hemitt
+Quag,356,425,Kapaya,Jiku,Yi,Limball,Songhed
+
+Reddon,56,387,Twohan,Carnivol,Beed,La Menge,Uhn
+Carnivol,127,400,Twohan,Oakwell,Reddon,Beed
+Beed,81,462,Twohan,Reddon,Carnivol,La Menge,Haven
+La Menge,45,505,Twohan,Reddon,Beed,Haven,Preda
+Haven,110,525,Twohan,La Menge,Beed,Pono
+
+Pono,170,479,Buevel,Haven,Albrite,Vineland
+Albrite,228,451,Buevel,Tallon,Pono,Vineland,Brair
+Vineland,228,526,Buevel,Pono,Albrite,Brair
+Brair,271,502,Buevel,Albrite,Vineland
+
+Zarnat,481,380,Wobel,Yi,Scape,Arven,Kent
+Arven,501,427,Wobel,Zarnat,Kent,Jung,Solomon
+Kent,542,395,Wobel,Vitis,Jung,Arven,Zarnat
+Jung,543,430,Wobel,Vitis,Wedock,Booth,Solomon,Arven,Kent
+Solomon,490,480,Wobel,Arven,Jung,Booth,Fort Grax,Hemitt
+Hemitt,480,539,Wobel,Songhed,Dridd,Solomon,Fort Grax
+Fort Grax,567,535,Wobel,Solomon,Hemitt,Hord,Booth,Trodo
+Hord,624,521,Wobel,Fort Grax,Trodo,Preda
+
+Vitis,578,373,Habol,Kent,Jung,Wedock,Thyme
+Thyme,623,396,Habol,Vitis,Wedock,Acru,Gency
+Wedock,605,438,Habol,Vitis,Thyme,Acru,Trodo,Booth,Jung
+Booth,540,479,Habol,Wedock,Trodo,Fort Grax,Solomon,Jung
+Trodo,597,480,Habol,Wedock,Booth,Preda,Acru,Fort Grax,Hord
+Preda,664,488,Habol,Acru,Trodo,Hord,La Menge
+Acru,660,445,Habol,Thyme,Wedock,Trodo,Preda
+
+Emote,605,320,Flourn,Gency
+Gency,650,311,Flourn,Emote,Miya,Nerve,Thyme
+Miya,688,286,Flourn,Gency,Nerve,Od
+Nerve,687,344,Flourn,Gency,Miya
+
+Gitech,562,64,Lednah,Neptide,Dridd,Row
+Neptide,622,111,Lednah,Prush,Krell,Gitech
+Krell,619,176,Lednah,Neptide,Od,Drut,Half,Klip
+Od,654,205,Lednah,Prush,Krell,Drut,Miya
+Drut,597,229,Lednah,Krell,Od,Half,Scape
+Half,546,219,Lednah,Krell,Drut,Scape
+Scape,553,260,Lednah,Half,Drut,Sound,Zarnat
+Prush,709,176,Lednah,Neptide,Od,Paladin
+
+Tiful,518,128,Slate,Row,Hem,Ower
+Hem,533,158,Slate,Tiful,Ower,Klip
+Ower,550,123,Slate,Tiful,Hem,Klip
+Klip,565,157,Slate,Hem,Ower,Krell
+
+Bash,390,75,Auro,Jumdrell,Me Si,Orsuel,Nextune
+Jumdrell,425,39,Auro,Bash,Me Si,Dridd
+Me Si,442,88,Auro,Bash,Jumdrell,Dridd,Row,Orsuel,Yack
+Dridd,482,46,Auro,Jumdrell,Me Si,Row,Hemitt,Gitech
+Row,493,83,Auro,Me Si,Dridd,Gitech,Tiful
+
+Jenkey,315,217,Peatot,Fade,Pilat,Orsuel,Liven,Forgeville
+Orsuel,387,144,Peatot,Jenkey,Liven,Yack,Bash,Me Si,Pilat
+Yack,428,172,Peatot,Me Si,Orsuel,Liven
+Liven,392,219,Peatot,Orsuel,Yack,Sound,Forgeville,Jenkey
+Sound,438,278,Peatot,Scape,Forgeville,Liven
+Forgeville,373,276,Peatot,Jenkey,Liven,Sound,Yi
+

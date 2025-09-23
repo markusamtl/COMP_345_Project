@@ -1,0 +1,64 @@
+[Map]
+author=Ian Gibson
+image=antarctica.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Antarctic Peninsula=3
+Marie Byrd Land=6
+South Pole=1
+Antarctic Wastes=7
+Enderby Land=2
+Wilkes Land=5
+Victoria Land=3
+Queen Maud Land=4
+
+[Territories]
+Territory01,146,322,Antarctic Peninsula,Territory02,Territory14,Territory09,Territory06,Territory08
+Territory02,155,246,Antarctic Peninsula,Territory03,Territory04,Territory01
+Territory03,102,199,Antarctic Peninsula,Territory04,Territory02
+Territory04,111,230,Antarctic Peninsula,Territory03,Territory02
+Territory05,263,220,Marie Byrd Land,Territory15,Territory06,Territory41
+Territory06,272,304,Marie Byrd Land,Territory01,Territory15,Territory05,Territory08,Territory07,Territory18,Territory19
+Territory07,318,341,Marie Byrd Land,Territory08,Territory06,Territory13,Territory16,Territory19
+Territory08,250,392,Marie Byrd Land,Territory01,Territory09,Territory10,Territory11,Territory07,Territory06,Territory13
+Territory09,184,387,Marie Byrd Land,Territory01,Territory10,Territory08
+Territory10,206,461,Marie Byrd Land,Territory09,Territory08,Territory11
+Territory11,274,470,Marie Byrd Land,Territory08,Territory12,Territory10
+Territory12,330,489,Marie Byrd Land,Territory11,Territory40
+Territory13,377,392,Marie Byrd Land,Territory08,Territory07,Territory16,Territory24,Territory39,Territory26
+Territory14,222,268,Antarctic Peninsula,Territory01,Territory15
+Territory15,247,257,Marie Byrd Land,Territory14,Territory06,Territory05
+Territory16,409,343,South Pole,Territory07,Territory13,Territory17,Territory19,Territory26
+Territory17,383,328,South Pole,Territory16
+Territory18,334,211,Antarctic Wastes,Territory06,Territory19,Territory42,Territory41
+Territory19,382,253,Antarctic Wastes,Territory06,Territory16,Territory18,Territory20,Territory26,Territory42,Territory07
+Territory20,453,220,Antarctic Wastes,Territory19,Territory21,Territory42,Territory46,Territory26,Territory25
+Territory21,537,226,Antarctic Wastes,Territory25,Territory22,Territory20,Territory46,Territory27
+Territory22,612,283,Antarctic Wastes,Territory21,Territory23,Territory25,Territory29,Territory31,Territory30,Territory27
+Territory23,587,399,Antarctic Wastes,Territory24,Territory22,Territory34,Territory31,Territory25,Territory33
+Territory24,475,426,Antarctic Wastes,Territory13,Territory26,Territory25,Territory23,Territory39,Territory34,Territory38
+Territory25,533,338,Antarctic Wastes,Territory24,Territory26,Territory21,Territory22,Territory23,Territory20
+Territory26,457,334,Antarctic Wastes,Territory16,Territory24,Territory19,Territory25,Territory20,Territory13
+Territory27,594,150,Enderby Land,Territory21,Territory29,Territory46,Territory45,Territory22,Territory28
+Territory28,644,132,Enderby Land,Territory29,Territory45,Territory27
+Territory29,657,194,Enderby Land,Territory22,Territory30,Territory27,Territory28
+Territory30,705,284,Wilkes Land,Territory32,Territory31,Territory22,Territory29
+Territory31,668,349,Wilkes Land,Territory32,Territory33,Territory30,Territory23,Territory22
+Territory32,713,413,Wilkes Land,Territory35,Territory30,Territory31,Territory33
+Territory33,635,458,Wilkes Land,Territory34,Territory35,Territory32,Territory31,Territory23
+Territory34,569,481,Wilkes Land,Territory38,Territory24,Territory23,Territory33,Territory35
+Territory35,604,560,Wilkes Land,Territory37!,Territory37,Territory38,Territory34,Territory32,Territory33
+Territory37,523,569,Victoria Land,Territory39,Territory38,Territory37!,Territory35
+Territory37!,474,591,Victoria Land,Territory39,Territory37,Territory35
+Territory38,507,499,Victoria Land,Territory39,Territory37,Territory35,Territory34,Territory24
+Territory39,454,502,Victoria Land,Territory40,Territory38,Territory37,Territory37!,Territory24,Territory13
+Territory40,424,521,Victoria Land,Territory39,Territory12
+Territory41,314,143,Queen Maud Land,Territory05,Territory42,Territory43,Territory18
+Territory42,389,137,Queen Maud Land,Territory19,Territory18,Territory20,Territory44,Territory41,Territory43,Territory46
+Territory43,370,67,Queen Maud Land,Territory44,Territory41,Territory42,Territory45
+Territory44,462,91,Queen Maud Land,Territory46,Territory45,Territory43,Territory42
+Territory45,529,74,Queen Maud Land,Territory28,Territory44,Territory46,Territory43,Territory27
+Territory46,506,148,Queen Maud Land,Territory20,Territory21,Territory27,Territory44,Territory45,Territory42

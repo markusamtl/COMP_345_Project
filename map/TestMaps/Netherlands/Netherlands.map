@@ -1,0 +1,118 @@
+[Map]
+author=Ron van den Berg
+warn=yes
+image=Netherlands.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Germany=4
+Belgium=3
+NHolland=7
+SHolland=6
+Zeeland=5
+NBrabant=7
+Limburg=5
+Utrecht=4
+Gelderland=7
+Overijssel=7
+Flevoland=4
+Drenthe=4
+Friesland=7
+Groningen=6
+
+[Territories]
+Emden,330,47,Germany,Nieder,Delfzijl
+NRhein,315,236,Germany,Nieder,Westfalen,enschede,ruurlo,Zelhem,bemmel,venlo
+Nieder,326,133,Germany,Emden,NRhein,Pekela,Emmen,enschede,almelo,ommen
+westfalen,292,327,Germany,NRhein,Hasselt,Heerlen,Echt,Venlo,weert
+
+Gent,64,344,Belgium,antwerpen,Terneuzen
+Antwerpen,129,327,Belgium,Hasselt,Gent,Roosendaal,Breda,bladel
+Hasselt,179,340,Belgium,Antwerpen,Westfalen,Maastricht,echt,weert,deurne,bladel
+
+Texel,136,87,NHolland,den Helder,Vlieland
+Den Helder,140,117,NHolland,texel,Enkhuizen,Alkmaar,bildt
+Enkhuizen,161,136,NHolland,Hoorn,Den Helder,Alkmaar
+Alkmaar,128,143,NHolland,Den Helder,Enkhuizen,Hoorn,Amsterdam,Haarlem
+Hoorn,146,149,NHolland,Enkhuizen,Amsterdam,Alkmaar
+Amsterdam,142,172,NHolland,Hoorn,Haarlem,Alkmaar,Bilt,Breukelen,almeer
+Haarlem,121,170,NHolland,Alkmaar,Amsterdam,Leiden,Breukelen
+
+Leiden,112,198,SHolland,Gouda,Den Haag,haarlem,Breukelen
+Gouda,125,212,SHolland,Leiden,den haag,Rotterdam,Dortdrecht,breukelen,woerden
+Den Haag,96,215,SHolland,Leiden,rotterdam,gouda
+Rotterdam,110,238,SHolland,Gouda,den haag,Dirksland,Dortdrecht,moerdijk
+Dortdrecht,138,233,SHolland,Gouda,Rotterdam,waaldijk,tiel,woerden
+Dirksland,85,246,SHolland,Rotterdam,SchouwenDuiven,Moerdijk
+
+SchouwenDuiven,70,255,Zeeland,tholen,goes,dirksland
+Tholen,88,267,Zeeland,schouwenduiven,goes,moerdijk,roosendaal
+Goes,42,272,Zeeland,schouwenduiven,tholen,terneuzen,roosendaal
+Terneuzen,66,301,Zeeland,goes,gent
+
+Moerdijk,114,264,NBrabant,roosendaal,breda,waaldijk,tholen,rotterdam,dirksland
+Roosendaal,103,278,NBrabant,moerdijk,breda,antwerpen,tholen,goes
+Breda,141,270,NBrabant,moerdijk,roosendaal,waaldijk,bladel,eindhoven, antwerpen
+Waaldijk,144,254,NBrabant,moerdijk,breda,oss,tiel,dortdrecht
+Bladel,164,296,NBrabant,breda,eindhoven,Deurne,antwerpen,hasselt
+Oss,173,257,NBrabant,waaldijk,eindhoven,mill,tiel,druten
+Eindhoven,172,277,NBrabant,breda,bladel,oss,mill,Deurne
+Mill,199,263,NBrabant,oss,eindhoven,Deurne,venlo,mook,druten
+Deurne,193,294,NBrabant,bladel,eindhoven,mill,mook,weert,hasselt
+
+Mook,218,285,Limburg,Venlo,Weert,mill,deurne
+Venlo,222,263,Limburg,Mook,Weert,westfalen,Nrhein,mill,bemmel
+Weert,211,309,Limburg,Mook,Venlo,Echt,hasselt,deurne,westfalen
+Echt,217,329,Limburg,Weert,Maastricht,Heerlen,westfalen,hasselt
+Maastricht,204,359,Limburg,Echt,Heerlen,hasselt
+Heerlen,219,348,Limburg,Echt,Maastricht,westfalen
+
+Breukelen,133,196,Utrecht,woerden,amsterdam,leiden,gouda,haarlem
+Woerden,142,210,Utrecht,Breukelen,utrecht,gouda,dortdrecht
+Utrecht,160,216,Utrecht,woerden,bilt,ede,arnhem,tiel,druten
+Bilt,159,196,Utrecht,utrecht,amsterdam,ede
+
+Tiel,158,238,Gelderland,druten,utrecht,dortdrecht,waaldijk,oss
+Druten,182,241,Gelderland,Tiel,arnhem,bemmel,utrecht,oss,mill
+Arnhem,185,216,Gelderland,druten,ede,bemmel,apeldoorn,utrecht
+Ede,180,197,Gelderland,arnhem,apeldoorn,epe,bilt,utrecht,zeewolde
+Bemmel,215,232,Gelderland,druten,arnhem,zelhem,apeldoorn,venlo,nrhein
+Zelhem,237,221,Gelderland,bemmel,ruurlo,apeldoorn,nrhein
+Ruurlo,257,207,Gelderland,zelhem,apeldoorn,nrhein,enschede,hof
+Apeldoorn,215,205,Gelderland,arnhem,ede,bemmel,zelhem,ruurlo,epe,raalte
+Epe,207,178,Gelderland,ede,apeldoorn,raalte,kampen,zeewolde
+
+Steenwijk,229,127,Overijssel,ommen,kampen,Nijefurd,Heereveen,nopolder,wolde
+Ommen,250,146,Overijssel,steenwijk,kampen,raalte,almelo,wolde,emmen,nieder
+Kampen,222,158,Overijssel,steenwijk,ommen,raalte,epe,lelystad
+Raalte,238,171,Overijssel,ommen,kampen,hof,epe,apeldoorn
+Hof,256,185,Overijssel,raalte,almelo,enschede,ruurlo
+Almelo,265,164,Overijssel,ommen,hof,enschede,nieder
+Enschede,284,186,Overijssel,hof,almelo,nieder,nrhein,ruurlo
+
+Almeer,168,169,Flevoland,lelystad,zeewolde,amsterdam
+Lelystad,193,154,Flevoland,Almeer,zeewolde,NOpolder,kampen
+Zeewolde,185,172,Flevoland,Almeer,lelystad,ede,epe
+NOPolder,206,131,Flevoland,lelystad,steenwijk,nijefurd
+
+Wolde,249,118,Drenthe,emmen,borger,assen,steenwijk,ommen,heereveen
+Emmen,283,133,Drenthe,wolde,borger,nieder,ommen
+Borger,279,115,Drenthe,wolde,emmen,assen,groningen,pekela
+Assen,260,104,Drenthe,wolde,borger,heereveen,zuidhorn,groningen
+
+Leeuwarden,206,89,Friesland,dantumadeel,bildt,heereveen,nijefurd
+Dantumadeel,218,63,Friesland,leeuwarden,bildt,heereveen,ameland,marne,zuidhorn
+Bildt,184,83,Friesland,leeuwarden,dantumadeel,nijefurd,terschelling,den helder
+Heereveen,228,96,Friesland,leeuwarden,dantumadeel,nijefurd,steenwijk,wolde,assen,zuidhorn
+Nijefurd,192,111,Friesland,leeuwarden,bildt,heereveen,steenwijk,nopolder
+Schiermonnikoog,236,39,Friesland,ameland,marne
+Ameland,199,44,Friesland,schiermonnikoog,terschelling,dantumadeel
+Terschelling,170,50,Friesland,bildt,ameland,vlieland
+Vlieland,146,69,Friesland,terschelling,texel
+
+Pekela,294,101,Groningen,Groningen,Delfzijl,Nieder,borger
+Groningen,275,87,Groningen,Pekela,Delfzijl,Zuidhorn,Assen,borger
+Delfzijl,292,75,Groningen,Pekela,Groningen,Marne,Zuidhorn,Emden
+Marne,255,57,Groningen,Delfzijl,Zuidhorn,Schiermonnikoog,Dantumadeel
+Zuidhorn,248,77,Groningen,Groningen,Delfzijl,Marne,Dantumadeel,assen,heereveen

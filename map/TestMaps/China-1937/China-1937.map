@@ -1,0 +1,81 @@
+[Map]
+author=Sid6.7
+warn=no
+image=China-1937.bmp
+wrap=yes
+scroll=none
+
+[Continents]
+Zhang=3
+Li=12
+Disputed=5
+Feng=5
+Chek=4
+Yan=3
+Korea=2
+Japan=7
+Philippines=2
+Vietnam=2
+Laos=2
+Okinawa=1
+Mongolia=1
+
+
+
+
+
+[Territories]
+
+Minamoto Shogun,682,290,Japan,Ashikaga Shogun,Kyushu,Shikoku
+Ashikaga Shogun,714,242,Japan,Minamoto Shogun,Tokugawa Shogun
+Tokugawa Shogun,731,161,Japan,Hokkaido,Ashikaga Shogun
+Hokkaido,749,5,Japan,Tokugawa Shogun
+Kyushu,642,379,Japan,Naha,Minamoto Shogun
+Shikoku,687,356,Japan,Minamoto Shogun
+
+Naha,660,470,Okinawa,Kyushu
+
+Vientiane,42,707,Laos,Hanoi,Yunnan
+
+Ulan,201,46,Mongolia,Suiyuan,Ningxia,Gangsu,Rehe,Xinjiang,Hebei
+
+Luzon,549,734,Philippines
+
+Seoul,567,206,Korea,Minamoto Shogun,Manchuria
+
+Hanoi,117,753,Vietnam,Guangdong,Vientiane,Yunnan,Guangxi
+
+Manchuria,553,37,Zhang,Seoul,Rehe
+Rehe,461,81,Zhang,Manchuria,Hebei,Handong,Ulan
+
+Yunnan,17,563,Li,Vientiane,Hanoi,Guangxi,Sichuan,Guizhou,Xikang
+Guangxi,168,597,Li,Guangdong,Yunnan,Hanoi,Guizhou,Guangdong
+Guangdong,329,572,Li,Fujian,Hong Kong isle,Maccau isle,Hanian isle,Hanoi,Jiangxi,Guangxi,Guizhou,Hunan,Hanoi
+Jiangxi,407,465,Li,Fujian,Guangdong,Hunan,Hubei,Fujian,Zhejiang
+Hunan,319,476,Li,Guangdong,Guizhou,Sichuan,Hubei,Jiangxi
+Guizhou,253,526,Li,Guangdong,Guangxi,Sichuan,Hunan,Yunnan
+Sichuan,99,444,Li,Xikang,Yunnan,Guizhou,Gangsu,Shaanxi,Hubei,Hunan
+Hubei,357,404,Li,Hunan,Zhejiang,Jiangxi,Henan,Shaanxi,Sichuan
+Hong Kong isle,318,642,Li,Guangdong,Maccau isle
+Maccau isle,270,647,Li,Guangdong,Hong Kong isle
+Hanian isle,178,713,Li,Guangdong
+
+Henan,347,348,Feng,Shanxi,Jiangshu,Zhejiang,Hubei,Shaanxi
+Shanxi,290,288,Feng,Henan,Ningxia,Suiyuan,Handong,Gangsu,Shaanxi,Hebei,Jiangshu
+Suiyuan,273,163,Feng,Ulan,Ningxia,Shanxi,Hebei,Handong
+Ningxia,161,163,Feng,Ulan,Gangsu,Xinjiang,Suiyuan,Shanxi
+
+Gangsu,173,294,Disputed,Ulan,Xinjiang,Ningxia,Shanxi,Sichuan,Xikang,Shaanxi
+Xikang,31,292,Disputed,Xinjiang,Gangsu,Sichuan,Yunnan
+Xinjiang,21,117,Disputed,Ningxia,Ulan,Gangsu,Xikang
+Shaanxi,238,353,Disputed,Sichuan,Gangsu,Shanxi,Henan,Hubei
+
+Hebei,383,122,Yan,Ulan,Suiyuan,Rehe,Handong,Shanxi
+Handong,362,199,Yan,Hebei,Rehe,Shanxi,Jiangshu,Suiyuan
+
+Jiangshu,397,306,Chek,Zhejiang,Henan,Handong,Shanxi
+Zhejiang,462,400,Chek,Fujian,Jiangshu,Minamoto Shogun,Jiangxi,Hubei,Henan
+Fujian,446,505,Chek,Taiwan,Zhejiang,Guangdong,Jiangxi
+Taiwan,519,577,Chek,Luzon,Fujian
+
+

@@ -1,0 +1,91 @@
+[Map]
+author=Rob Werhand
+image=Wisconsin.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Northwestern Wisconsin=2
+North Central Wisconsin=2
+Northeastern Wisconsin=2
+Western Wisconsin=3
+Central Wisconsin=3
+Eastern Wisconsin=2
+Wisconsin River and West=2
+Southwestern Wisconsin=2
+Southeastern Wisconsin=2
+
+[Territories]
+Douglas,174,129,Northwestern Wisconsin,Bayfield,Burnett,Washburn
+Bayfield,257,122,Northwestern Wisconsin,Douglas,Ashland,Sawyer
+Burnett,117,221,Northwestern Wisconsin,Douglas,Polk,Barron,Washburn
+Washburn,190,220,Northwestern Wisconsin,Douglas,Burnett,Barron,Sawyer
+Sawyer,264,228,Northwestern Wisconsin,Bayfield,Washburn,Ashland,Price,Rusk
+Polk,108,295,Northwestern Wisconsin,Burnett,Barron,St. Croix
+Barron,180,299,Northwestern Wisconsin,Burnett,Washburn,Polk,Dunn,Chippewa,Rusk
+Rusk,263,293,Northwestern Wisconsin,Sawyer,Barron,Chippewa,Taylor,Price
+Ashland,328,176,North Central Wisconsin,Bayfield,Sawyer,Price,Iron
+Iron,397,178,North Central Wisconsin,Ashland,Price,Vilas
+Vilas,468,196,North Central Wisconsin,Iron,Oneida,Forest,Price
+Price,368,261,North Central Wisconsin,Sawyer,Rusk,Ashland,Iron,Taylor,Lincoln,Oneida,Vilas
+Oneida,470,252,North Central Wisconsin,Vilas,Price,Lincoln,Langlade,Forest
+Taylor,348,343,North Central Wisconsin,Rusk,Price,Chippewa,Clark,Marathon,Lincoln
+Lincoln,446,326,North Central Wisconsin,Price,Oneida,Taylor,Marathon,Langlade
+Marathon,437,399,North Central Wisconsin,Taylor,Lincoln,Clark,Wood,Portage,Shawano,Langlade
+Florence,610,232,Northeastern Wisconsin,Forest,Marinette
+Forest,568,278,Northeastern Wisconsin,Vilas,Oneida,Langlade,Oconto,Marinette,Florence
+Marinette,644,291,Northeastern Wisconsin,Forest,Florence,Oconto
+Langlade,525,333,Northeastern Wisconsin,Oneida,Lincoln,Marathon,Forest,Shawano,Menominee,Oconto
+Oconto,626,381,Northeastern Wisconsin,Forest,Marinette,Langlade,Menominee,Shawano,Brown
+Menominee,573,375,Northeastern Wisconsin,Langlade,Shawano,Oconto
+Shawano,542,412,Northeastern Wisconsin,Marathon,Langlade,Menominee,Oconto,Waupaca,Outagamie,Brown
+St. Croix,103,367,Western Wisconsin,Polk,Pierce,Dunn
+Dunn,172,382,Western Wisconsin,Barron,St. Croix,Pierce,Pepin,Eau Claire,Chippewa
+Chippewa,251,370,Western Wisconsin,Barron,Rusk,Taylor,Dunn,Eau Claire,Clark
+Pierce,105,421,Western Wisconsin,St. Croix,Dunn,Pepin
+Pepin,173,437,Western Wisconsin,Dunn,Pierce,Buffalo,Eau Claire
+Eau Claire,251,424,Western Wisconsin,Dunn,Chippewa,Pepin,Buffalo,Trempealeau,Jackson,Clark
+Clark,329,424,Western Wisconsin,Taylor,Marathon,Chippewa,Eau Claire,Wood,Jackson
+Buffalo,190,480,Western Wisconsin,Pepin,Eau Claire,Trempealeau
+Trempealeau,239,490,Western Wisconsin,Eau Claire,Buffalo,La Crosse,Jackson
+Jackson,295,499,Western Wisconsin,Eau Claire,Clark,Trempealeau,La Crosse,Monroe,Juneau,Wood
+Wood,402,474,Central Wisconsin,Marathon,Clark,Jackson,Juneau,Adams,Portage
+Portage,477,476,Central Wisconsin,Marathon,Wood,Adams,Waushara,Waupaca
+Waupaca,539,477,Central Wisconsin,Shawano,Portage,Waushara,Winnebago,Outagamie
+Adams,438,555,Central Wisconsin,Wood,Portage,Juneau,Columbia,Marquette,Waushara
+Waushara,503,539,Central Wisconsin,Portage,Waupaca,Adams,Winnebago,Green Lake,Marquette
+Marquette,488,588,Central Wisconsin,Adams,Waushara,Columbia,Green Lake
+Green Lake,533,591,Central Wisconsin,Waushara,Marquette,Winnebago,Fond du Lac,Dodge,Columbia
+Outagamie,606,484,Eastern Wisconsin,Shawano,Waupaca,Winnebago,Calumet,Brown
+Brown,665,484,Eastern Wisconsin,Shawano,Oconto,Outagamie,Calumet,Manitowoc,Kewaunee
+Kewaunee,714,463,Eastern Wisconsin,Brown,Door,Manitowoc
+Door,726,419,Eastern Wisconsin,Kewaunee
+Winnebago,576,547,Eastern Wisconsin,Waupaca,Waushara,Green Lake,Outagamie,Fond du Lac,Calumet
+Calumet,642,543,Eastern Wisconsin,Outagamie,Brown,Winnebago,Fond du Lac,Sheboygan,Manitowoc
+Manitowoc,687,536,Eastern Wisconsin,Brown,Kewaunee,Calumet,Sheboygan
+Fond du Lac,592,598,Eastern Wisconsin,Green Lake,Winnebago,Calumet,Dodge,Washington,Sheboygan
+Sheboygan,675,606,Eastern Wisconsin,Calumet,Manitowoc,Fond du Lac,Ozaukee,Washington
+La Crosse,272,573,Wisconsin River and West,Trempealeau,Jackson,Monroe,Vernon
+Monroe,330,568,Wisconsin River and West,Jackson,La Crosse,Vernon,Juneau
+Juneau,392,570,Wisconsin River and West,Jackson,Wood,Adams,Monroe,Sauk,Vernon
+Vernon,293,629,Wisconsin River and West,La Crosse,Monroe,Juneau,Crawford,Richland,Sauk
+Crawford,297,685,Wisconsin River and West,Vernon,Grant,Richland
+Richland,354,665,Wisconsin River and West,Vernon,Crawford,Grant,Iowa,Sauk
+Sauk,416,659,Wisconsin River and West,Juneau,Vernon,Richland,Iowa,Dane,Columbia
+Grant,313,753,Southwestern Wisconsin,Crawford,Richland,Iowa,Lafayette
+Iowa,390,736,Southwestern Wisconsin,Richland,Sauk,Grant,Lafayette,Green,Dane
+Lafayette,389,792,Southwestern Wisconsin,Grant,Iowa,Green
+Columbia,497,652,Southwestern Wisconsin,Adams,Marquette,Green Lake,Sauk,Dane,Dodge
+Dane,479,724,Southwestern Wisconsin,Sauk,Iowa,Green,Rock,Columbia,Jefferson,Dodge
+Green,459,790,Southwestern Wisconsin,Iowa,Dane,Lafayette,Rock
+Rock,528,792,Southwestern Wisconsin,Dane,Green,Jefferson,Walworth
+Dodge,576,664,Southeastern Wisconsin,Green Lake,Fond du Lac,Dane,Columbia,Jefferson,Waukesha,Washington
+Washington,637,670,Southeastern Wisconsin,Fond du Lac,Sheboygan,Dodge,Waukesha,Ozaukee
+Ozaukee,673,654,Southeastern Wisconsin,Sheboygan,Washington,Milwaukee
+Jefferson,567,726,Southeastern Wisconsin,Dane,Rock,Dodge,Walworth,Waukesha
+Waukesha,630,730,Southeastern Wisconsin,Dodge,Washington,Jefferson,Walworth,Racine,Milwaukee
+Milwaukee,673,737,Southeastern Wisconsin,Ozaukee,Waukesha,Racine
+Walworth,599,791,Southeastern Wisconsin,Rock,Jefferson,Waukesha,Racine,Kenosha
+Racine,662,775,Southeastern Wisconsin,Waukesha,Milwaukee,Walworth,Kenosha
+Kenosha,662,805,Southeastern Wisconsin,Walworth,Racine

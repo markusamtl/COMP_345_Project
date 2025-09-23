@@ -1,0 +1,92 @@
+[Map]
+author=Sid6.7
+image=Filipino.bmp
+wrap=no
+scroll=vertical
+warn=yes
+
+[Continents]
+Ilocos=4
+Cagayan=4
+Cordillera=5
+Central Luzon=6
+Southern Luzon=9
+Bicol=5
+Western Visayas=5
+Central Visayas=3
+Eastern Visayas=5
+Western Mindanao=1
+Central Mindanao=2
+Northern Mindanao=3
+Southern Mindanao=5
+Caraga=4
+Musilm Mindanao=4
+
+[Territories]
+Ilocos Norte,105,70,Ilocos,Kalinga,Abra,Ilocos Sur
+Ilocos Sur,97,108,Ilocos,Ilocos Norte,Abra,La Union
+La Union,96,139,Ilocos,Ilocos Sur,Abra,Benguet,Pangasinan
+Pangasinan,86,168,Ilocos,La Union,Benguet,Nueva Ecija,Tarlac,Zambales Norte
+Cagayan,181,63,Cagayan,Kalinga,Isabela Del Norte
+Isabela Del Norte,186,119,Cagayan,Kalinga,Mountain,Isabela Del Sur,Aurora,Ifugao,Cagayan
+Isabela Del Sur,158,146,Cagayan,Ifugao,Nueva Vizcaya,Isabela Del Norte,Aurora
+Nueva Vizcaya,136,160,Cagayan,Nueva Ecija,Benguet,Ifugao,Aurora,Isabela Del Sur
+Abra,117,97,Cordillera,Ilocos Norte,Ilocos Sur,La Union,Kalinga,Mountain,Benguet
+Benguet,110,150,Cordillera,La Union,Pangasinan,Nueva Ecija,Abra,Nueva Vizcaya,Ifugao,Mountain
+Kalinga,134,75,Cordillera,Ilocos Norte,Cagayan,Isabela Del Norte,Mountain,Abra
+Mountain,130,120,Cordillera,Kalinga,Abra,Benguet,Isabela Del Norte,Ifugao
+Ifugao,136,135,Cordillera,Benguet,Mountain,Nueva Vizcaya,Isabela Del Sur,Isabela Del Norte
+Bataan,91,213,Central Luzon,Zambales Sur,Pampanga
+Zambales Sur,84,201,Central Luzon,Zambales Norte,Tarlac,Pampanga,Bataan
+Palawan,63,486,Southern Luzon,Mindoro Occ.
+Aurora,146,181,Southern Luzon,Nueva Vizcaya,Isabela Del Sur,Isabela Del Norte,Quezon,Rizal
+Cavite,112,239,Southern Luzon,Laguna,Batangas
+Mindoro Occ.,143,338,Southern Luzon,Batangas,Mindoro Ori.,Palawan
+Rizal,134,214,Southern Luzon,Bulucan,Laguna,Quezon,Aurora
+Batangas,127,272,Southern Luzon,Cavite,Laguna,Quezon,Mindoro Occ.
+Laguna,143,253,Southern Luzon,Bulucan,Rizal,Cavite,Batangas,Quezon
+Mindoro Ori.,159,326,Southern Luzon,Mindoro Occ.,Aklan
+Quezon,179,263,Southern Luzon,Nueva Ecija,Bulucan,Aurora,Rizal,Batangas,Laguna,Carmines Norte,Carmines Sur
+Zambales Norte,79,187,Central Luzon,Pangasinan,Tarlac,Zambales Sur
+Nueva Ecija,122,184,Central Luzon,Pangasinan,Tarlac,Pampanga,Benguet,Nueva Vizcaya,Quezon,Bulucan
+Tarlac,94,190,Central Luzon,Pangasinan,Zambales Norte,Zambales Sur,Nueva Ecija
+Pampanga,104,199,Central Luzon,Zambales Sur,Bataan,Bulucan,Nueva Ecija
+Bulucan,126,201,Central Luzon,Pampanga,Nueva Ecija,Quezon,Rizal,Laguna
+Albay,272,296,Bicol,Sorsogon,Carmines Sur
+Carmines Sur,267,277,Bicol,Albay,Carmines Norte,Quezon
+Sorsogon,303,311,Bicol,Northern Samar,Masbate,Albay
+Carmines Norte,245,254,Bicol,Quezon,Carmines Sur
+Masbate,270,350,Bicol,Iloilo,Sorsogon
+Aklan,216,412,Western Visayas,Mindoro Ori.,Capiz,Antique
+Capiz,235,417,Western Visayas,Aklan,Antique,Iloilo
+Iloilo,242,437,Western Visayas,Antique,Capiz,Masbate,Negros Occ.
+Antique,203,448,Western Visayas,Aklan,Capiz,Iloilo
+Negros Occ.,249,483,Western Visayas,Iloilo,Negros Ori.,Cebu
+Bohol,332,503,Central Visayas,Cebu,Southern Lyte
+Cebu,312,471,Central Visayas,Negros Occ.,Bohol
+Negros Ori.,241,514,Central Visayas,Negros Occ.,Zamboanga Del Sur
+Leyte,357,433,Eastern Visayas,Southern Lyte,Western Samar
+Western Samar,359,391,Eastern Visayas,Leyte,Eastern Samar,Northern Samar
+Eastern Samar,380,382,Eastern Visayas,Southern Lyte,Western Samar,Northern Samar
+Northern Samar,339,360,Eastern Visayas,Eastern Samar,Western Samar,Sorsogon
+Southern Lyte,386,450,Eastern Visayas,Bohol,Suriagao Del Norte,Leyte,Eastern Samar
+Lanao Del Norte,329,613,Western Mindanao,Zamboanga Del Norte,Bukidnon,North Cotabato,Lanao Del Sur
+Zamboanga Del Norte,288,614,Western Mindanao,Zamboanga Del Sur,Misamis Occ.,Lanao Del Norte
+Misamis Occ.,299,586,Western Mindanao,Zamboanga Del Sur,Zamboanga Del Norte
+Zamboanga Del Sur,250,607,Western Mindanao,Negros Ori.,Misamis Occ.,Zamboanga Del Norte
+Bukidnon,377,612,Northern Mindanao,Lanao Del Norte,North Cotabato,Surangani,Davao,Agusan Del Sur,Agusan Del Norte
+Davao,417,637,Southern Mindanao,Surangani,Davao Ori.,Agusan Del Sur,Bukidnon
+Davao Ori.,448,643,Southern Mindanao,Davao,Suriagao Del Sur,Agusan Del Sur
+Davao Del Sur,374,716,Southern Mindanao,South Cotabato,Sultan Kurdat,Surangani
+Sultan Kurdat,314,720,Southern Mindanao,Lanao Del Sur,North Cotabato,South Cotabato,Maguindanao,Davao Del Sur
+Surangani,373,654,Southern Mindanao,North Cotabato,Davao Del Sur,Davao,Bukidnon
+North Cotabato,343,646,Central Mindanao,Lanao Del Norte,Lanao Del Sur,Sultan Kurdat,Surangani,Bukidnon
+South Cotabato,325,693,Central Mindanao,Sultan Kurdat,Davao Del Sur
+Agusan Del Norte,407,568,Caraga,Bukidnon,Agusan Del Sur,Suriagao Del Norte,Suriagao Del Sur
+Suriagao Del Norte,436,533,Caraga,Southern Lyte,Agusan Del Norte,Suriagao Del Sur
+Agusan Del Sur,418,598,Caraga,Davao,Bukidnon,Davao Ori.,Suriagao Del Sur,Agusan Del Norte
+Suriagao Del Sur,440,581,Caraga,Davao Ori.,Agusan Del Sur,Agusan Del Norte,Suriagao Del Norte
+Lanao Del Sur,317,646,Musilm Mindanao,Lanao Del Norte,Maguindanao,Sultan Kurdat,North Cotabato
+Maguindanao,305,661,Musilm Mindanao,Sulu,Lanao Del Sur,Sultan Kurdat
+Tawi Tawi,152,757,Musilm Mindanao,Sulu
+Sulu,186,707,Musilm Mindanao,Maguindanao,Tawi Tawi

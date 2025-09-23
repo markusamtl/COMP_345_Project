@@ -1,0 +1,75 @@
+[Map]
+author=Andrea Usai (n-drx@libero.it)
+image=AuCircles.bmp
+wrap=no
+scroll=none
+warn=yes
+created=01.2005
+legal=Copyright ©2005 Andrea Usai (n-drx@libero.it)
+serial=AU-006
+
+[Continents]
+North-western slice=1
+North-eastern slice=1
+South-western slice=1
+South-eastern slice=1
+North-western circle=-1
+North-eastern circle=-1
+South-western circle=-1
+South-eastern circle=-1
+Small circles=6
+
+[Territories]
+NW Slice 01,45,273,North-western slice,NW Slice 02
+NW Slice 02,104,284,North-western slice,NW Slice 01,NW Slice 03
+NW Slice 03,173,265,North-western slice,NW Slice 02,NW Slice 04,North-western circle
+NW Slice 04,138,202,North-western slice,NW Slice 03,NW Slice 05
+NW Slice 05,89,169,North-western slice,NW Slice 04,NW Slice 06
+NW Slice 06,169,89,North-western slice,NW Slice 05,NW Slice 07
+NW Slice 07,202,138,North-western slice,NW Slice 06,NW Slice 08
+NW Slice 08,265,173,North-western slice,NW Slice 07,NW Slice 09,North-western circle
+NW Slice 09,284,104,North-western slice,NW Slice 08,NW Slice 10
+NW Slice 10,273,45,North-western slice,NW Slice 09
+
+NE Slice 01,733,273,North-eastern slice,NE Slice 02
+NE Slice 02,674,284,North-eastern slice,NE Slice 03,NE Slice 01
+NE Slice 03,605,265,North-eastern slice,NE Slice 04,NE Slice 02,North-eastern circle
+NE Slice 04,640,202,North-eastern slice,NE Slice 03,NE Slice 05
+NE Slice 05,689,169,North-eastern slice,NE Slice 06,NE Slice 04
+NE Slice 06,609,89,North-eastern slice,NE Slice 07,NE Slice 05
+NE Slice 07,576,138,North-eastern slice,NE Slice 08,NE Slice 06
+NE Slice 08,513,173,North-eastern slice,NE Slice 09,NE Slice 07,North-eastern circle
+NE Slice 09,494,104,North-eastern slice,NE Slice 08,NE Slice 10
+NE Slice 10,505,45,North-eastern slice,NE Slice 09
+
+SW Slice 01,45,401,South-western slice,SW Slice 02
+SW Slice 02,104,390,South-western slice,SW Slice 03,SW Slice 01
+SW Slice 03,173,409,South-western slice,SW Slice 04,SW Slice 02,South-western circle
+SW Slice 04,138,472,South-western slice,SW Slice 05,SW Slice 03
+SW Slice 05,89,505,South-western slice,SW Slice 06,SW Slice 04
+SW Slice 06,169,585,South-western slice,SW Slice 07,SW Slice 05
+SW Slice 07,202,536,South-western slice,SW Slice 08,SW Slice 06
+SW Slice 08,265,501,South-western slice,SW Slice 09,SW Slice 07,South-western circle
+SW Slice 09,284,570,South-western slice,SW Slice 10,SW Slice 08
+SW Slice 10,273,629,South-western slice,SW Slice 09
+
+SE Slice 01,733,401,South-eastern slice,SE Slice 02
+SE Slice 02,674,390,South-eastern slice,SE Slice 01,SE Slice 03
+SE Slice 03,605,409,South-eastern slice,SE Slice 02,SE Slice 04,South-eastern circle
+SE Slice 04,640,472,South-eastern slice,SE Slice 05,SE Slice 03
+SE Slice 05,689,505,South-eastern slice,SE Slice 04,SE Slice 06
+SE Slice 06,609,585,South-eastern slice,SE Slice 07,SE Slice 05
+SE Slice 07,576,536,South-eastern slice,SE Slice 06,SE Slice 08
+SE Slice 08,513,501,South-eastern slice,SE Slice 07,SE Slice 09,South-eastern circle
+SE Slice 09,494,570,South-eastern slice,SE Slice 10,SE Slice 08
+SE Slice 10,505,629,South-eastern slice,SE Slice 09
+
+North-western circle,322,304,North-western circle,NW Slice 08,NW Slice 03,North-eastern circle,South-western circle,NW Small circle
+North-eastern circle,456,304,North-eastern circle,NE Slice 08,NE Slice 03,North-western circle,South-eastern circle,NE Small circle
+South-western circle,322,370,South-western circle,SW Slice 03,SW Slice 08,South-eastern circle,North-western circle,SW Small circle
+South-eastern circle,456,370,South-eastern circle,SE Slice 08,SE Slice 03,South-western circle,North-eastern circle,SE Small circle
+
+NW Small circle,321,265,Small circles,North-western circle
+NE Small circle,457,265,Small circles,North-eastern circle
+SW Small circle,321,409,Small circles,South-western circle
+SE Small circle,457,409,Small circles,South-eastern circle

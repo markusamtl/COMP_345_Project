@@ -1,0 +1,94 @@
+[Map]
+author=Sid6.7
+warn=yes
+image=breminor.bmp
+wrap=yes
+scroll=none
+
+[Continents]
+Ishyr=8
+Nyslavadd=5
+Sherna=3
+Eslebi=2
+Ahze=2
+Nanigei=2
+Toroth=5
+Laladen=4
+Nythoria=2
+Borada=4
+Deadlands=3
+Valithra=3
+Kakehun=4
+Dafoth=2
+Far Ishyr=2
+Ulgoth=4
+Dunihk=6
+
+
+
+
+
+[Territories]
+
+Khellmora,672,127,Ishyr,Adims Foot,Bishop,Alta Nell
+Adims Foot,670,174,Ishyr,Khellmora,Blasted Spine
+Bishop,734,107,Ishyr,Far Ishyr,Sortella Nivall,Khellmora
+Sortella Nivall,658,66,Ishyr,far Ishyr,Bishop,Noroska,Alta Nell,Thogule Moreth,Ithwick
+Alta Nell,590,136,Ishyr,Bernwood,Sortella Nivall,Khellmora
+Bernwood,525,171,Ishyr,Alta Nell,Noroska,Ithwick,Donoth
+Noroska,520,100,Ishyr,Sortella Nivall,Bernwood,Ithwick
+
+Willerwood,16,428,Nyslavadd,Darkening,Pillon
+Darkening,40,342,Nyslavadd,Willerwood,Fire Plains,Deadlands
+Fire Plains,138,342,Nyslavadd,Darkening,Glourwoode,Soul Forest
+Soul Forest,117,455,Nyslavadd,Fire Plains,Pillon
+Pillon,80,502,Nyslavadd,Soul Forest,Willerwood,Purge
+
+Blasted Spine,866,500,Sherna,Adims Foot,Hesara,Meepr,Borada,Seddamora
+Hesara,820,580,Sherna,Gorth Dnor,Blasted Spine
+
+Eslatarr,345,250,Eslebi,Borada,Nythoria,Grogenfelle,Bhoot,Immerdarke
+
+Seddamora,473,279,Ahze,Borada,Nythoria,Blasted Spine
+
+Nanigei,460,547,Nanigei,Borada,Dire,Slaughterwoods
+
+Far Ishyr,848,108,Far Ishyr,Bishop,Sortella Nivall
+
+Torinarr,240,386,Toroth,Balakoore,Wandering,Belke,Glourwoode
+Wandering,215,451,Toroth,Torinarr,Belke,Abbeskel,Purge
+Belke,243,440,Toroth,Torinarr,Abbeskel,Wandering
+Abbeskel,260,470,Toroth,Belke,Wandering,Purge
+
+Borada,420,420,Borada,Seddamora,Grogenfelle,Eslatarr,Blasted Spine,Nanigei,Slaughterwoods
+
+Bhoot,298,330,Laladen,Dorneph,Balakoore,Eslatarr
+Dorneph,311,349,Laladen,Balakoore,Bhoot
+Balakoore,290,365,Laladen,Dorneph,Bhoot,Torinarr,Purge,Ash Plains
+
+Deadlands,50,192,Deadlands,Thogule Moreth,Darkening
+
+Ithwick,449,116,Valithra,Noroska,Bernwood,Donoth,Sortella Nivall,West March
+Donoth,436,170,Valithra,Bernwood,Nythoria,West March,Ithwick
+West March,385,160,Valithra,Thogule Moreth,Immerdarke,Nythoria,Donoth,Ithwick
+
+Nythoria,395,219,Nythoria,West March,Donoth,Seddamora,Eslatarr,Grogenfelle,Immerdarke
+Grogenfelle,412,259,Nythoria,Nythoria,Borada,Eslatarr
+
+Glourwoode,214,273,Kakehun,Fire Plains,Thogule Moreth,Immerdarke,Torinarr
+Thogule Moreth,218,120,Kakehun,Sortella Nivall,Immerdarke,Glourwoode,West March,Deadlands
+Immerdarke,296,199,Kakehun,Glourwoode,Thogule Moreth,Eslatarr,West March,Nythoria
+
+Purge,226,520,Dafoth,Pillon,Wandering,Abbeskel,Balakoore,Ash Plains,Grellentok
+
+Whale,694,584,Ulgoth,Kr'Khar
+Kr'Khar,709,565,Ulgoth,Whale,Meepr
+Meepr,737,579,Ulgoth,Kr'khar,Blasted Spine
+
+Ash Plains,330,520,Dunihk,Purge,Grellentok,Slaughterwoods,Gorth Dnor,Balakoore
+Grellentok,324,567,Dunihk,Purge,Ash Plains,Gorth Dnor
+Dire,404,569,Dunihk,Nanigei,Gorth Dnor,Slaughterwoods
+Slaughterwoods,400,500,Dunihk,Nanigei,Borada,Dire,Gorth Dnor,Ash Plains
+Gorth Dnor,372,542,Dunihk,Hesara,Ash Plains,Grellentok,Dire,Slaughterwoods
+
+

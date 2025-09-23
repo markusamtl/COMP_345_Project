@@ -1,0 +1,118 @@
+[Map]
+author=Stewart Ainsworth
+image=Europe-800AD.bmp
+wrap=no
+scroll=horizontal
+warn=yes
+
+[Continents]
+Ireland=2
+Britain=6
+Frankish Kingdom=8
+Iberian Peninsula=3
+Mediterranean Sea=6
+Southern Europe=5
+Central Europe=6
+Scandinavia=2
+Eastern Roman Empire=7
+
+[Territories]
+Ulaid,58,148,Ireland,Dalriada,Strathclyde,Connacht,Laigin
+Connacht,35,167,Ireland,Ulaid,Laigin,Muma
+Muma,36,205,Ireland,Connacht,Laigin
+Laigin,60,182,Ireland,Gwynedd,Muma,Connacht,Ulaid
+
+Picts,104,87,Britain,Dalriada
+Dalriada,84,106,Britain,Ulaid,Strathclyde,Northumbria,Picts
+Strathclyde,97,134,Britain,Ulaid,Dalriada,Northumbria
+Northumbria,127,149,Britain,Dalriada,Strathclyde,Mercia
+Mercia,137,197,Britain,Northumbria,Gwynedd,Powys,Gwent,Eastanglia,Essex,Sussex,Wessex
+Eastanglia,171,198,Britain,Mercia,Essex
+Essex,161,217,Britain,Eastanglia,Mercia,Sussex,Kent
+Kent,168,230,Britain,Essex,Sussex,Neustria
+Sussex,149,232,Britain,Kent,Essex,Mercia,Wessex
+Wessex,122,233,Britain,Mercia,Sussex,Gwent,West Wealas,Neustria
+West Wealas,88,248,Britain,Wessex,Britanny
+Gwent,109,216,Britain,Mercia,Wessex,Dyfed,Powys
+Dyfed,96,211,Britain,Powys,Gwent
+Powys,109,201,Britain,Gwynedd,Mercia,Gwent,Dyfed
+Gwynedd,106,187,Britain,Laigin,Mercia,Powys
+
+Saxony,272,198,Frankish Kingdom,Thuringia,Austrasia,Saxons,Abodrites,Liutizes,Helvetians
+Thuringia,317,229,Frankish Kingdom,Saxony,Austrasia,Helvetians,Sorbs,Bohemia
+Austrasia,255,255,Frankish Kingdom,Saxony,Thuringia,Neustria,Burgundy,Alemannia,Bavaria,Bohemia
+Alemannia,283,306,Frankish Kingdom,Italy,Bavaria,Austrasia,Burgundy
+Bavaria,334,300,Frankish Kingdom,Austrasia,Alemannia,Italy,Carantania,Bohemia,Moravians,Valt Basin
+Carantania,374,332,Frankish Kingdom,Bavaria,Italy,Croats,Braniches,Valt Basin,East Land
+Italy,305,360,Frankish Kingdom,Carantania,Bavaria,Alemannia,Burgundy,Corsica,Papal States,Croats
+Burgundy,239,344,Frankish Kingdom,Italy,Alemannia,Austrasia,Neustria,Aquitaine,Gothia
+Neustria,185,283,Frankish Kingdom,Wessex,Kent,Britanny,Aquitaine,Burgundy,Austrasia
+Britanny,120,303,Frankish Kingdom,West Wealas,Aquitaine,Neustria
+Aquitaine,180,360,Frankish Kingdom,Gascony,Gothia,Burgundy,Neustria,Britanny,Cordova
+Gascony,155,405,Frankish Kingdom,Aquitaine,Vascones
+Gothia,193,417,Frankish Kingdom,Aquitaine,Burgundy,Cordova,Mallorca
+
+Galicia,64,416,Iberian Peninsula,Vascones,Cordova
+Vascones,129,405,Iberian Peninsula,Gascony,Galicia,Cordova
+Asturias,36,462,Iberian Peninsula,Cordova
+Cordova,92,471,Iberian Peninsula,Aquitaine,Gothia,Asturias,Galicia,Vascones,Mallorca
+
+Mallorca,199,468,Mediterranean Sea,Cordova,Gothia,Sardinia
+Corsica,287,419,Mediterranean Sea,Italy,Papal States,Sardinia
+Sardinia,282,472,Mediterranean Sea,Corsica,Mallorca,Barbagia
+Barbagia,290,457,Mediterranean Sea,Sardinia,Sicily
+Sicily,359,505,Mediterranean Sea,Barbagia,Calabria
+Papal States,331,413,Mediterranean Sea,Italy,Spoleto,Naples,Corsica,Benevento
+Spoleto,350,411,Mediterranean Sea,Papal States,Benevento,Croats
+Naples,358,439,Mediterranean Sea,Papal States,Benevento
+Benevento,379,442,Mediterranean Sea,Papal States,Naples,Calabria,Spoleto,Dalmatia,Dypracria
+Calabria,391,479,Mediterranean Sea,Sicily,Benevento
+
+Croats,391,372,Southern Europe,Carantania,Spoleto,Italy,Dalmatia,Narentanes,Braniches
+Dalmatia,397,399,Southern Europe,Benevento,Dioclea,Narentanes,Croats,Dypracria
+Narentanes,413,389,Southern Europe,Croats,Braniches,Serbs,Dioclea,Dalmatia
+Braniches,442,366,Southern Europe,Carantania,East Land,Avars,Bulgaria,Timpchans,Serbs,Narentanes,Croats
+Serbs,447,399,Southern Europe,Braniches,Bersits,Timpchans,Dioclea,Narentanes,Salonica
+Dioclea,435,417,Southern Europe,Dalmatia,Narentanes,Serbs,Bersits,Dypracria
+Bersits,461,426,Southern Europe,Dioclea,Serbs,Dragovits,Dypracria,Salonica
+Dragovits,457,444,Southern Europe,Bersits,Zagorcenians,Dypracria,Salonica
+Zagorcenians,460,462,Southern Europe,Dragovits,Dypracria,Cephalonia,Hellas,Salonica
+Timpchans,470,386,Southern Europe,Serbs,Braniches,Bulgaria,Salonica
+Bulgaria,524,372,Southern Europe,Timpchans,Braniches,Valt Basin,Avars,Salonica,Macedonia,Thrace
+
+Saxons,295,171,Central Europe,Saxony,Abodrites,Danes
+Abodrites,325,171,Central Europe,Saxons,Saxony,Veleti,Liutizes
+Veleti,350,177,Central Europe,Liutizes,Pomeranians,Abodrites
+Pomeranians,389,180,Central Europe,Veleti,Liutizes,Helvetians,Sorbs,Polaries
+Liutizes,348,200,Central Europe,Saxony,Abodrites,Veleti,Pomeranians,Helvetians
+Helvetians,343,214,Central Europe,Saxony,Thuringia,Sorbs,Pomeranians,Liutizes
+Sorbs,361,234,Central Europe,Thuringia,Pomeranians,Polaries,Helvetians,Bohemia
+Bohemia,362,265,Central Europe,Thuringia,Austrasia,Bavaria,Black Croats,Sorbs,Polaries,Moravians
+Polaries,408,227,Central Europe,Pomeranians,Sorbs,Bohemia,Black Croats
+Black Croats,414,259,Central Europe,Polaries,Bohemia,Moravians,Valt Basin
+Moravians,390,277,Central Europe,Bavaria,Bohemia,Black Croats,Valt Basin
+Valt Basin,444,287,Central Europe,Moravians,Black Croats,East Land,Avars,Carantania,Bavaria,Bulgaria
+East Land,416,328,Central Europe,Braniches,Carantania,Avars,Valt Basin
+Avars,486,328,Central Europe,Braniches,East Land,Braniches,Bulgaria,Valt Basin
+
+Danes,290,112,Scandinavia,Saxons,Norvegians,Gotars
+Norvegians,247,38,Scandinavia,Danes
+Gotars,369,80,Scandinavia,Danes,Sviars
+Sviars,393,33,Scandinavia,Gotars
+
+Dypracria,443,455,Eastern Roman Empire,Dalmatia,Bersits,Dragovits,Zagorcenians,Benevento,Cephalonia,Dioclea
+Cephalonia,455,485,Eastern Roman Empire,Zagorcenians,Dypracria,Peloponnesus,Hellas
+Peloponnesus,468,506,Eastern Roman Empire,Crete,Cephalonia,Hellas
+Hellas,479,483,Eastern Roman Empire,Thracesia,Cephalonia,Peloponnesus,Zagorcenians,Salonica
+Salonica,483,435,Eastern Roman Empire,Hellas,Macedonia,Zagorcenians,Bulgaria,Timpchans,Serbs,Bersits,Dragovits
+Macedonia,515,429,Eastern Roman Empire,Bulgaria,Salonica,Thrace,Opsicia
+Thrace,546,426,Eastern Roman Empire,Bulgaria,Macedonia,Optimaia
+Optimaia,584,444,Eastern Roman Empire,Thrace,Opsicia,Eucellaria
+Opsicia,571,465,Eastern Roman Empire,Eucellaria,Optimaia,Macedonia,Thracesia,Anatolia
+Thracesia,555,495,Eastern Roman Empire,Hellas,Opsicia,Anatolia,Cibyarhaeot
+Cibyarhaeot,583,524,Eastern Roman Empire,Crete,Thracesia,Anatolia,Cyprus
+Crete,517,549,Eastern Roman Empire,Cibyarhaeot,Peloponnesus
+Cyprus,629,550,Eastern Roman Empire,Cibyarhaeot,Anatolia
+Anatolia,618,500,Eastern Roman Empire,Cyprus,Cibyarhaeot,Thracesia,Opsicia,Eucellaria,Armenia
+Eucellaria,623,463,Eastern Roman Empire,Anatolia,Opsicia,Optimaia,Armenia
+Armenia,683,464,Eastern Roman Empire,Eucellaria,Anatolia

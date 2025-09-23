@@ -1,0 +1,79 @@
+[Map]
+author=Andrea Usai (n-drx@libero.it)
+image=AuRatsMaze.bmp
+wrap=yes
+scroll=vertical
+warn=yes
+created=09.2004
+legal=Copyright ©2004 Andrea Usai (n-drx@libero.it)
+serial=AU-002
+
+[Continents]
+Upper R=4
+Upper A=4
+Upper T=6
+Upper S=1
+Upper Line=7
+Lower R=4
+Lower A=4
+Lower T=5
+Lower S=1
+Lower Line=6
+
+[Territories]
+Upper R-1,30,280,Upper R,Upper Line-1,Upper R-2
+Upper R-2,50,220,Upper R,Upper R-1,Upper R-3,Upper R-5,Upper R-6
+Upper R-3,30,140,Upper R,Upper R-2,Upper R-4,Lower Line-1
+Upper R-4,90,110,Upper R,Upper R-3,Upper R-5
+Upper R-5,125,190,Upper R,Upper R-2,Upper A-3,Upper R-4
+Upper R-6,100,270,Upper R,Upper R-2,Upper Line-2,Upper A-1
+
+Upper A-1,190,265,Upper A,Upper R-6,Upper A-2,Upper A-5
+Upper A-2,240,210,Upper A,Upper A-1,Upper A-3,Upper A-5
+Upper A-3,200,130,Upper A,Upper A-2,Upper R-5,Upper A-4
+Upper A-4,280,130,Upper A,Upper A-3,Upper T-2
+Upper A-5,290,265,Upper A,Upper A-1,Upper A-2,Upper T-1
+
+Upper T-1,410,265,Upper T,Upper A-5,Upper Line-4,Upper S-1,Upper T-2
+Upper T-2,410,180,Upper T,Upper T-1,Upper T-3,Upper A-4,Upper S-4
+Upper T-3,410,110,Upper T,Lower Line-3,Upper T-2
+
+Upper S-1,540,290,Upper S,Upper S-2,Upper T-1
+Upper S-2,595,275,Upper S,Upper S-1,Upper S-3,Upper Line-5
+Upper S-3,580,210,Upper S,Upper S-2,Upper S-4
+Upper S-4,530,150,Upper S,Upper S-3,Upper S-5,Upper T-2
+Upper S-5,580,110,Upper S,Upper S-4
+
+Upper Line-1,65,350,Upper Line,Upper R-1,Lower R-3
+Upper Line-2,195,350,Upper Line,Upper R-6,Lower A-4,Upper Line-3
+Upper Line-3,340,350,Upper Line,Upper Line-2,Upper Line-4
+Upper Line-4,470,350,Upper Line,Upper Line-3,Upper T-1,Lower T-3
+Upper Line-5,580,350,Upper Line,Lower S-5,Upper S-2
+
+Lower R-1,30,600,Lower R,Lower R-2,Lower Line-1
+Lower R-2,50,540,Lower R,Lower R-1,Lower R-3,Lower R-5,Lower R-6
+Lower R-3,30,460,Lower R,Lower R-2,Upper Line-1,Lower R-4
+Lower R-4,90,430,Lower R,Lower R-3,Lower R-5
+Lower R-5,125,510,Lower R,Lower R-4,Lower R-2,Lower A-3
+Lower R-6,100,590,Lower R,Lower Line-2,Lower R-2,Lower A-1
+
+Lower A-1,190,585,Lower A,Lower R-6,Lower A-5,Lower A-2
+Lower A-2,240,530,Lower A,Lower A-1,Lower A-5,Lower A-4
+Lower A-3,200,450,Lower A,Lower R-5,Lower A-4
+Lower A-4,280,450,Lower A,Upper Line-2,Lower T-2,Lower A-2,Lower A-3
+Lower A-5,290,585,Lower A,Lower A-1,Lower A-2,Lower T-1
+
+Lower T-1,410,585,Lower T,Lower Line-3,Lower A-5,Lower T-2,Lower S-1
+Lower T-2,410,500,Lower T,Lower T-1,Lower T-3,Lower A-4
+Lower T-3,410,430,Lower T,Lower T-2,Upper Line-4
+
+Lower S-1,540,610,Lower S,Lower T-1,Lower S-2
+Lower S-2,595,595,Lower S,Lower S-1,Lower S-3,Lower Line-4
+Lower S-3,580,530,Lower S,Lower S-2,Lower S-4
+Lower S-4,530,470,Lower S,Lower S-3,Lower S-5
+Lower S-5,580,430,Lower S,Lower S-4,Upper Line-5
+
+Lower Line-1,65,670,Lower Line,Lower R-1,Upper R-3
+Lower Line-2,200,670,Lower Line,Lower Line-3,Lower R-6
+Lower Line-3,360,670,Lower Line,Lower Line-2,Lower T-1,Upper T-3
+Lower Line-4,525,670,Lower Line,Lower S-2

@@ -1,0 +1,49 @@
+[Map]
+image=kosova.bmp
+wrap=yes
+scroll=Yes
+
+[Continents]
+Peja Region=5
+Mitrovica Region=5
+Prizren Region=5
+Prishtina Region=5
+Gjilan Region=5
+
+[Territories]
+Peja,70,190,Peja Region,Burim,Klina,Gjakova,Deçan
+Burim,115,155,Peja Region,Zubin Potok,Skenderaj,Klina,Peja
+Klina,140,205,Peja Region,Peja,Burim,Skenderaj,Malisheva,Rahovec,Gjakova
+Gjakova,95,275,Peja Region,Deçan,Peja,Klina,Rahovec,Prizren
+Deçan,60,230,Peja Region,Peja,Gjakova
+
+Skenderaj,175,170,Mitrovica Region,Zubin Potok,Mitrovica,Vushtrri,Drenas,Malisheva,Klina,Burim
+Zubin Potok,150,110,Mitrovica Region,Zveçan,Mitrovica,Skenderaj,Burim
+Zveçan,183,99,Mitrovica Region,Leposaviq,Mitrovica,Zubin Potok
+Leposaviq,185,60,Mitrovica Region,Zveçan,Mitrovica,Besiana
+Mitrovica,210,110,Mitrovica Region,Zveçan,Leposaviq,Besiana,Vushtrri,Skenderaj,Zubin Potok
+Vushtrri,225,150,Mitrovica Region,Mitrovica,Besiana,Kastriot,Drenas,Skenderaj
+
+Malisheva,170,245,Prizren Region,Klina,Skenderaj,Drenas,Lipjan,Theranda,Rahovec
+Theranda,195,290,Prizren Region,Malisheva,Lipjan,Shtime,Ferizaj,Shterpcë,Prizren,Rahovec
+Rahovec,140,270,Prizren Region,Gjakova,Klina,Malisheva,Theranda,Prizren
+Prizren,165,330,Prizren Region,Gjakova,Rahovec,Theranda,Shterpcë,Sharr
+Sharr,155,390,Prizren Region,Prizren
+
+Besiana,270,125,Prishtina Region,Leposaviq,Mitrovica,Vushtrri,Kastriot,Prishtina
+Kastriot,245,185,Prishtina Region,Vushtrri,Besiana,Prishtina,Fushë Kosova,Drenas
+Prishtina,290,185,Prishtina Region,Fushë Kosova,Kastriot,Besiana,Kamenica,Novo Berda,Lipjan
+Fushë Kosova,240,206,Prishtina Region,Drenas,Kastriot,Prishtina,Lipjan
+Drenas,200,210,Prishtina Region,Skenderaj,Vushtrri,Kastriot,Fushë Kosova,Lipjan,Malisheva
+Lipjan,250,235,Prishtina Region,Drenas,Fushë Kosova,Prishtina,Novo Berda,Gjilan,Shtime,Ferizaj,Theranda,Malisheva
+Shtime,234,264,Prishtina Region,Lipjan,Ferizaj,Theranda
+
+Kamenica,370,210,Gjilan Region,Prishtina,Novo Berda,Gjilan
+Novo Berda,320,215,Gjilan Region,Prishtina,Kamenica,Gjilan,Lipjan
+Gjilan,330,255,Gjilan Region,Novo Berda,Kamenica,Viti,Ferizaj,Lipjan
+Viti,315,295,Gjilan Region,Gjilan,Kaçanik,Ferizaj
+Ferizaj,265,285,Gjilan Region,Shtime,Lipjan,Gjilan,Viti,Kaçanik,Shterpcë,Theranda
+Kaçanik,285,330,Gjilan Region,Ferizaj,Viti,Shterpcë
+Shterpcë,235,325,Gjilan Region,Prizren,Theranda,Ferizaj,Kaçanik
+
+

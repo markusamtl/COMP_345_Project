@@ -1,0 +1,125 @@
+[Map]
+author=Walid Ezzedine
+warn=yes
+image=senegal.bmp
+wrap=no
+scroll=horizontal,vertical
+
+
+
+[Continents]
+Cote du Senegal=4
+Sine Saloum=5
+Valle du Fleuve=3
+Region de L'Est=5
+Senegal Oriental=3
+Casamance=3
+
+
+[Territories]
+
+A1,124,286,Cote du Senegal,F1,A2,A3,A4
+A2,155,264,Cote du Senegal,A1,A3,A5
+A3,180,300,Cote du Senegal,A4,A5,A6,A7,A9,A1,A2
+A4,160,330,Cote du Senegal,A1,A3,A7,A9
+A5,200,230,Cote du Senegal,C1,B9,A6,A3,A2
+A6,236,288,Cote du Senegal,A5,B9,B8,A8,A7,A3
+A7,202,338,Cote du Senegal,A4,A3,A6,A8,A9,Kaolack
+A8,266,336,Cote du Senegal,A9,A7,A6,B8,B6,Kaolack
+A9,181,370,Cote du Senegal,A4,A3,A7,A8,Kaolack,B2
+
+
+Kaolack,253,387,Sine Saloum,A9,A7,A8,B6,B5,B4,B3,B2
+B2,190,403,Sine Saloum,A9,Kaolack,B3
+B3,217,425,Sine Saloum,Kaolack,B2,B4
+B4,278,428,Sine Saloum,Kaolack,B3,B5
+B5,326,406,Sine Saloum,Kaolack,B4,B6,B7,F5
+B6,395,334,Sine Saloum,Kaolack,A8,B8,B7,B5,D1,D8,D10
+B7,427,407,Sine Saloum,B5,B6,D10
+B8,317,280,Sine Saloum,A6,A8,B9,B6,C3,D1
+B9,278,243,Sine Saloum,A6,A5,C1,C3,B8
+
+
+C1,256,159,Valle du Fleuve,A5,B9,C3,C2
+C2,298,83,Valle du Fleuve,C1,C3,C4
+C3,337,171,Valle du Fleuve,C1,C2,C4,C5,B8,B9,D1
+C4,372,113,Valle du Fleuve,C2,C3,C5,C6
+C5,440,152,Valle du Fleuve,C3,C4,C6,C7,D2,D1
+C6,444,71,Valle du Fleuve,C4,C5,C7
+C7,556,129,Valle du Fleuve,C6,C5,D2,D3
+
+D1,432,236,Region de L'Est,B6,B8,C3,C5,D2,D5,D7,D8
+D2,526,201,Region de L'Est,D1,C5,C7,D3,D5
+D3,622,207,Region de L'Est,C7,D2,D5,D4
+D4,714,304,Region de L'Est,D5,D3,E3,E2
+D5,641,306,Region de L'Est,D6,D2,D3,D4,D9,D1,D7,E2
+D6,602,288,Region de L'Est,D5,D7
+D7,536,311,Region de L'Est,D1,D5,D6,D9,D8
+D8,506,361,Region de L'Est,B6,D1,D7,D9,E1,D10
+D9,614,375,Region de L'Est,D8,D7,D5,E2,E1
+D10,492,418,Region de L'Est,B7,B6,D8,E1,F8
+
+
+E1,600,450,Senegal Oriental,D10,D8,D9,E2,E4,E5,F8
+E2,699,405,Senegal Oriental,D9,D5,D4,E3,E4,E1
+E3,755,406,Senegal Oriental,D4,E2,E4,E7
+E4,693,460,Senegal Oriental,E1,E2,E3,E5,E6,E7
+E5,643,529,Senegal Oriental,E1,E4,E6,F9
+E6,734,530,Senegal Oriental,E5,E4,E7
+E7,812,518,Senegal Oriental,E6,E4,E3
+
+
+F1,216,517,Casamance,A1,F2,F3
+F2,213,565,Casamance,F1,F4
+F3,316,504,Casamance,F1,F4,F5,F6
+F4,308,556,Casamance,F2,F3,F6
+F5,386,478,Casamance,B5,F3,F6,F7
+F6,425,529,Casamance,F3,F4,F5,F7,F8,F9
+F7,444,487,Casamance,F5,F6,F8
+F8,527,494,Casamance,D10,F7,F9,E1,F6
+F9,540,533,Casamance,F6,F8,E5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

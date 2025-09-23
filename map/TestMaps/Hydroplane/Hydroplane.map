@@ -1,0 +1,29 @@
+[Map]
+author=Zenji Yamada & 1C
+image=Hydroplane.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Dock=4
+Hills=4
+Forests=3
+Shore=2
+
+[Territories]
+Control tower,191,397,Shore,Landing sphere,Road 1,Military Base
+Landing sphere,190,469,Shore,Road 1,Control tower
+Road 1,257,453,Shore,Landing sphere,Control tower,Radar,Radiostation,Military Base
+Road 2,281,72,Forests,Oil Depot,Forest 1,Repair workshops,Ammo Depot
+Forest 1,390,68,Forests,Road 2,Repair workshops,Forest 2
+Repair workshops,401,213,Forests,Radiostation,Ammo Depot,Road 2,Forest 1,Forest 2
+Forest 2,551,178,Forests,Repair workshops,Forest 1,Road 3
+Hill,530,472,Hills,Radiostation,Radar,Road 3
+Radar,369,479,Hills,Road 1,Radiostation,Hill
+Radiostation,384,373,Hills,Road 1,Military Base,Radar,Road 3,Hill,Repair workshops
+Road 3,541,366,Hills,Radiostation,Hill,Forest 2
+Military Base,294,343,Dock,Road 1,Control tower,U-Boat,Ammo Depot,Radiostation
+U-Boat,277,309,Dock,Military Base,Oil Depot,Ammo Depot
+Oil Depot,263,250,Dock,Ammo Depot,U-Boat,Road 2
+Ammo Depot,339,256,Dock,Military Base,Repair workshops,Oil Depot,U-Boat,Road 2

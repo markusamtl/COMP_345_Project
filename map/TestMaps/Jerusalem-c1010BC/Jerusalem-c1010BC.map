@@ -1,0 +1,84 @@
+[Map]
+author=Gavin Casey
+image=Jerusalem-c1010BC.bmp
+wrap=no
+scroll=vertical
+warn=yes
+
+[Continents]
+Cities of Refuge-North=1
+Cities of Refuge-Central=2
+Cities of Refuge-South=3
+Phoenicians=1
+Hivities=0
+Aramities=2
+Northern Israel=5
+7 Kings of the North=4
+TransJordan Israel=6
+Hill Country Israel=6
+City of Jerusalem=3
+Southern Israel=7
+Philistines=4
+Edomities=1
+Moabities=2
+Ammonities=2
+Egyptians=1
+
+[Territories]
+Golan,509,237,Cities of Refuge-North,East Manasseh,Ramoth in Gilead,Damascus,Taanach,Shechem
+Kedesh,440,146,Cities of Refuge-North,North Dan,Naphtali,Tyre,Megiddo,Damascus
+
+Ramoth in Gilead,555,303,Cities of Refuge-Central,Gad,East Manasseh,Rabbah,Golan
+Shechem,390,390,Cities of Refuge-Central,Ephraim,Manasseh,Jerusalem,Taanach,Golan
+
+Hebron,355,546,Cities of Refuge-South,Judah,Jerusalem,Beersheba
+Bezer,520,478,Cities of Refuge-South,Ammon,Reuben,Gad,Rabbah,Jericho,Kir Hareseth
+
+Phoenicia,402,72,Phoenicians,Tyre,Hivite,Naphtali,Asher,North Dan
+Tyre,367,98,Phoenicians,Asher,Phoenicia,Dor,Kedesh
+
+Hivite,468,54,Hivities,Aram,East Manasseh,North Dan,Phoenicia
+
+Damascus,599,38,Aramities,Aram,Golan,Kedesh
+Aram,546,80,Aramities,Damascus,East Manasseh,North Dan,Hivite
+
+Asher,344,190,Northern Israel,Tyre,Phoenicia,Naphtali,Zebulun,Dor,Manasseh
+Zebulun,366,242,Northern Israel,Asher,Naphtali,Issachar,Megiddo,Manasseh
+Naphtali,402,192,Northern Israel,Asher,Phoenicia,North Dan,Kedesh,East Manasseh,Gad,Issachar,Zebulun
+North Dan,448,114,Northern Israel,Hivite,Kedesh,East Manasseh,Naphtali,Aram,Phoenicia
+
+Dor,303,276,7 Kings of the North,Asher,Manasseh,Megiddo,Tyre,Joppa
+Megiddo,360,270,7 Kings of the North,Zebulun,Manasseh,Issachar,Dor,Taanach,Kedesh
+Taanach,370,290,7 Kings of the North,Issachar,Manasseh,Megiddo,Golan,Shechem
+
+East Manasseh,551,184,TransJordan Israel,Aram,Hivite,North Dan,Gad,Naphtali,Ramoth in Gilead,Golan
+Gad,460,419,TransJordan Israel,Rabbah,Ammon,Bezer,Reuben,Naphtali,Issachar,Manasseh,Ramoth in Gilead,East Manasseh,Jericho
+Reuben,463,547,TransJordan Israel,Jericho,Gad,Bezer,Ammon,Moab,Benjamin
+
+Ephraim,327,446,Hill Country Israel,Shechem,Manasseh,Benjamin,Dan,Joppa,Jerusalem,Jericho
+Manasseh,331,353,Hill Country Israel,Shechem,Gad,Ephraim,Taanach,Issachar,Megiddo,Asher,Zebulun,Dor
+Issachar,405,279,Hill Country Israel,Gad,Manasseh,Taanach,Megiddo,Zebulun,Naphtali
+Dan,277,473,Hill Country Israel,Joppa,Ephraim,Benjamin,Judah,Jerusalem,Philistia
+
+Jerusalem,381,487,City of Jerusalem,Ephraim,Benjamin,Jericho,Judah,Hebron,Dan,Ashdod,Shechem
+
+Judah,268,566,Southern Israel,Dan,Benjamin,Hebron,Jerusalem,Edom,Ezion Geber,Simeon,Moab,Philistia,Egypt
+Beersheba,291,626,Southern Israel,Simeon,Hebron,Gaza,Ezion Geber
+Simeon,244,678,Southern Israel,Judah,Beersheba,Kir Hareseth,Egypt
+Ezion Geber,305,990,Southern Israel,Edom,Judah,Beersheba,Egypt
+Jericho,424,474,Southern Israel,Gad,Reuben,Benjamin,Jerusalem,Bezer,Ephraim
+Benjamin,360,464,Southern Israel,Ephraim,Jerusalem,Judah,Reuben,Dan,Jericho
+
+Ashdod,239,488,Philistines,Joppa,Philistia,Jerusalem
+Philistia,213,531,Philistines,Judah,Gaza,Ashdod,Dan
+Gaza,186,569,Philistines,Philistia,Beersheba
+Joppa,267,414,Philistines,Dan,Ephraim,Ashdod,Dor
+
+Edom,407,846,Edomities,Moab,Judah,Ezion Geber,Egypt
+
+Moab,451,629,Moabities,Ammon,Reuben,Edom,Judah,Kir Hareseth
+Kir Hareseth,489,666,Moabities,Moab,Bezer,Simeon
+Rabbah,535,440,Ammonities,Gad,Ammon,Bezer,Ramoth in Gilead
+Ammon,601,510,Ammonities,Gad,Bezer,Reuben,Moab,Rabbah
+
+Egypt,130,835,Egyptians,Ezion Geber,Judah,Edom,Simeon

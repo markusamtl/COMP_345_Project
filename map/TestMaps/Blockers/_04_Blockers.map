@@ -1,0 +1,138 @@
+[Map]
+author=Mike Crush
+warn=yes
+image=_04_Blockers.bmp
+wrap=yes
+scroll=horizontal, vertical
+
+
+[Continents]
+Blocker1=2
+Blocker2=2
+Blocker3=1
+Blocker4=1
+Blocker5=1
+Blocker6=1
+Blocker7=1
+Blocker8=2
+Blocker9=2
+Big Blocker=10
+
+
+[Territories]
+1,479,160,Blocker1,12,35,47,81
+35,51,324,Blocker2,36,1,47,81
+37,177,323,Blocker3,4,36,38,62
+39,326,322,Blocker4,8,38,40,66
+41,476,323,Blocker5,12,40,42,70
+43,627,323,Blocker6,16,42,44,45,74
+45,776,322,Blocker7,20,43,44,46,78
+47,903,323,Blocker8,46,1,35,81
+81,477,479,Blocker9,70,1,35,47
+
+2,103,214,Big Blocker,3,23
+3,142,214,Big Blocker,2,4
+4,176,214,Big Blocker,3,5,37
+5,214,214,Big Blocker,4,6
+6,253,214,Big Blocker,5,7,24
+7,289,214,Big Blocker,6,8
+8,325,214,Big Blocker,7,9,39
+9,363,214,Big Blocker,8,10
+10,402,214,Big Blocker,9,11,25
+11,438,214,Big Blocker,10,12
+12,476,214,Big Blocker,1,11,13,41
+13,515,214,Big Blocker,12,14
+14,552,214,Big Blocker,13,15,26
+15,589,214,Big Blocker,14,16
+16,626,214,Big Blocker,15,17,43
+17,663,214,Big Blocker,16,18
+18,701,214,Big Blocker,17,19,27
+19,738,214,Big Blocker,18,20
+20,775,214,Big Blocker,19,21,45
+21,811,214,Big Blocker,20,22
+22,850,214,Big Blocker,21,28
+
+23,101,250,Big Blocker,2,29
+24,252,250,Big Blocker,6,30
+25,400,250,Big Blocker,10,31
+26,552,250,Big Blocker,14,32
+27,701,250,Big Blocker,18,33
+28,849,250,Big Blocker,22,34
+
+29,102,286,Big Blocker,23,36
+30,252,286,Big Blocker,24,38
+31,400,286,Big Blocker,25,40
+32,551,286,Big Blocker,26,42
+33,700,286,Big Blocker,27,44
+34,850,286,Big Blocker,28,46
+
+36,102,321,Big Blocker,29,35,37,48
+38,251,321,Big Blocker,30,37,39,49
+40,401,321,Big Blocker,31,39,41,50
+42,552,321,Big Blocker,32,41,43,51
+44,701,321,Big Blocker,33,43,45,52
+46,849,321,Big Blocker,34,45,47,53
+
+48,102,359,Big Blocker,36,54
+49,252,359,Big Blocker,38,55
+50,403,359,Big Blocker,40,56
+51,552,359,Big Blocker,42,57
+52,701,359,Big Blocker,44,58
+53,850,359,Big Blocker,46,59
+
+54,103,393,Big Blocker,48,60
+55,252,393,Big Blocker,49,64
+56,402,393,Big Blocker,50,68
+57,551,393,Big Blocker,51,72
+58,701,393,Big Blocker,52,76
+59,850,393,Big Blocker,53,80
+
+60,103,430,Big Blocker,54,61
+61,140,430,Big Blocker,60,62
+62,179,430,Big Blocker,37,61,63
+63,214,430,Big Blocker,62,64
+64,252,430,Big Blocker,55,63,65
+65,290,430,Big Blocker,64,66
+66,326,430,Big Blocker,39,65,67
+67,363,430,Big Blocker,66,68
+68,402,430,Big Blocker,56,67,69
+69,440,430,Big Blocker,68,70
+70,476,430,Big Blocker,41,69,71,81
+71,515,430,Big Blocker,70,72
+72,552,430,Big Blocker,57,71,73
+73,590,430,Big Blocker,72,74
+74,627,430,Big Blocker,43,73,75
+75,664,430,Big Blocker,74,76
+76,701,430,Big Blocker,58,75,77
+77,740,430,Big Blocker,76,78
+78,777,430,Big Blocker,45,77,79
+79,813,430,Big Blocker,78,80
+80,850,430,Big Blocker,59,79
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

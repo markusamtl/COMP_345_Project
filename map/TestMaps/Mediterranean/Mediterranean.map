@@ -1,0 +1,67 @@
+[Map]
+author=Sean O'Connor
+warn=yes
+image=Mediterranean.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Western Europe=5
+Italy=6
+North Africa=7
+Middle East=5
+Balkans=6
+Eastern Europe=5
+
+[Territories]
+Portugal,58,92,Western Europe,Western Spain,Southern Spain
+Western Spain,90,69,Western Europe,Portugal,Eastern Spain,Southern Spain
+Eastern Spain,131,78,Western Europe,Southern France,Southern Spain,Western Spain
+Southern Spain,95,116,Western Europe,Portugal,Eastern Spain,Western Spain,Northern Morocco
+Southern France,175,47,Western Europe,Eastern Spain,Northern France,Switzerland,Northern Italy,Sardinia
+Northern France,176,13,Western Europe,Switzerland,Southern France
+Switzerland,237,12,Western Europe,Northern France,Austria,Northern Italy,Southern France
+
+Northern Italy,258,49,Italy,Southern France,Switzerland,Austria,Croatia,Southern Italy,Sardinia
+Sardinia,234,98,Italy,Southern France,Northern Italy,Tunisia
+Sicily,285,133,Italy,Southern Italy,Tunisia
+Southern Italy,298,92,Italy,Croatia,Albania,Northern Italy,Sicily
+
+Northern Morocco,82,173,North Africa,Southern Morocco,Southern Spain,Northern Algeria,Western Algeria
+Southern Morocco,30,211,North Africa,Western Algeria,Northern Morocco
+Northern Algeria,174,173,North Africa,Northern Morocco,Tunisia,Western Algeria,Eastern Algeria
+Western Algeria,97,216,North Africa,Northern Morocco,Southern Morocco,Northern Algeria,Eastern Algeria
+Eastern Algeria,188,220,North Africa,Northern Algeria,Western Algeria,Tunisia,Western Libya
+Tunisia,229,170,North Africa,Sardinia,Northern Algeria,Eastern Algeria,Sardinia,Sicily,Western Libya
+Western Libya,277,217,North Africa,Tunisia,Eastern Algeria,Eastern Libya
+Eastern Libya,369,219,North Africa,Western Libya,Crete,Western Egypt
+Western Egypt,429,223,North Africa,Eastern Libya,Eastern Egypt
+Eastern Egypt,481,222,North Africa,Western Egypt,Israel,Jordan
+
+Croatia,310,42,Balkans,Austria,Hungary,Yugoslavia,Northern Italy,Southern Italy
+Yugoslavia,353,58,Balkans,Croatia,Hungary,Romania,Bulgaria,Greece,Albania
+Albania,347,88,Balkans,Yugoslavia,Greece,Southern Italy
+Greece,366,108,Balkans,Albania,Crete,Yugoslavia,Bulgaria,Western Turkey
+Crete,399,162,Balkans,Greece,Eastern Libya,Western Turkey
+
+Austria,287,11,Eastern Europe,Switzerland,Northern Italy,Hungary,Croatia
+Hungary,339,13,Eastern Europe,Austria,Croatia,Yugoslavia,Romania
+Romania,411,26,Eastern Europe,Hungary,Ukraine,Bulgaria,Yugoslavia
+Bulgaria,398,68,Eastern Europe,Romania,Western Turkey,Greece,Yugoslavia
+Ukraine,502,13,Eastern Europe,Romania,Eastern Turkey
+
+Western Turkey,441,113,Middle East,Bulgaria,Greece,Crete,Central Turkey
+Central Turkey,485,104,Middle East,Western Turkey,Eastern Turkey,Cyprus
+Eastern Turkey,535,107,Middle East,Ukraine,Central Turkey,Syria
+Syria,544,156,Middle East,Eastern Turkey,Cyprus,Lebanon,Israel,Jordan
+Lebanon,521,170,Middle East,Syria,Israel,Cyprus
+Cyprus,486,162,Middle East,Central Turkey,Syria,Lebanon
+Israel,517,203,Middle East,Lebanon,Jordan,Eastern Egypt,Syria
+Jordan,538,212,Middle East,Eastern Egypt,Israel,Syria
+
+
+
+
+
+
+

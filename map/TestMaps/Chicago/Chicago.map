@@ -1,0 +1,134 @@
+[Map]
+image=Chicago.bmp
+wrap=no
+scroll=vertical
+author=Mayor Daley
+warn=yes
+
+[Continents]
+The Northwest Side=8
+The West Side=5
+Rogers Park=6
+Lakeview=8
+Lincoln Park=9
+Bucktown-Logan=7
+The Loop=10
+Bronzeville=9
+The Near West Side=9
+Hyde Park=6
+Pilsen-Little Village=4
+Bridgeport-Yards=7
+The Southwest Side=7
+Englewood=4
+The South Shore=4
+Deering=5
+Beverly-Roseland=6
+
+[Territories]
+Edison Park,92,55,The Northwest Side,Norwood Park
+Norwood Park,105,99,The Northwest Side,Edison Park,Forest Glen,Jefferson Park,Portage Park,OHare
+Forest Glen,154,64,The Northwest Side,Sauganash,Jefferson Park,Norwood Park
+Jefferson Park,155,110,The Northwest Side,Norwood Park,Forest Glen,Sauganash,Portage Park
+Sauganash,192,88,The Northwest Side,North Park,Albany Park,Portage Park,Jefferson Park,Forest Glen
+North Park,224,110,The Northwest Side,Sauganash,West Rogers Park,Lincoln Square,Albany Park
+Albany Park,224,132,The Northwest Side,North Park,Lincoln Square,Ravenswood,Irving Park,Portage Park,Sauganash
+Irving Park,223,157,The Northwest Side,Albany Park,Ravenswood,North Center,Avondale,Hermosa,Portage Park
+Portage Park,164,159,The Northwest Side,Jefferson Park,Sauganash,Albany Park,Norwood Park,Irving Park,Cragin,Belmont Central,Dunning
+Dunning,104,171,The Northwest Side,Portage Park,Belmont Central,Montclare,OHare
+OHare,50,140,The Northwest Side,Norwood Park,Dunning
+
+West Rogers Park,259,66,Rogers Park,North Park,Lincoln Square,Edgewater,East Rogers Park
+East Rogers Park,294,51,Rogers Park,West Rogers Park,Edgewater
+Edgewater,309,96,Rogers Park,East Rogers Park,Uptown,Ravenswood,Lincoln Square,West Rogers Park
+Uptown,320,140,Rogers Park,Wrigleyville,Ravenswood,Edgewater
+Ravenswood,280,136,Rogers Park,Lincoln Square,Edgewater,Uptown,Wrigleyville,North Center,Irving Park,Albany Park
+Lincoln Square,270,114,Rogers Park,West Rogers Park,Edgewater,Ravenswood,Albany Park,North Park
+
+North Center,274,160,Lakeview,Ravenswood,Wrigleyville,Roscoe Village,Avondale,Irving Park
+Wrigleyville,315,177,Lakeview,Ravenswood,Uptown,LP,DePaul,Roscoe Village,North Center
+Roscoe Village,278,185,Lakeview,North Center,Wrigleyville,DePaul,Bucktown,Avondale
+
+DePaul,309,216,Lincoln Park,Roscoe Village,Wrigleyville,LP,River North,Goose Island,Bucktown
+LP,340,222,Lincoln Park,Wrigleyville,River North,DePaul
+River North,342,261,Lincoln Park,DePaul,LP,Loop,West Loop,Goose Island
+
+Avondale,245,190,Bucktown-Logan,Irving Park,North Center,Roscoe Village,Bucktown,Logan Square,Hermosa
+Bucktown,274,215,Bucktown-Logan,Avondale,Roscoe Village,DePaul,Wicker Park,West Town,Logan Square
+Wicker Park,284,246,Bucktown-Logan,Bucktown,Goose Island,Ukranian Village,West Town
+Goose Island,310,269,Bucktown-Logan,DePaul,River North,West Loop,Ukranian Village,Wicker Park
+Ukranian Village,281,271,Bucktown-Logan,Wicker Park,Goose Island,West Loop,West Town
+West town,259,248,Bucktown-Logan,Logan Square,Bucktown,Wicker Park,Ukranian Village,West Loop,Garfield Park,Humboldt Park
+Humboldt Park,221,259,Bucktown-Logan,Hermosa,Logan Square,West Town,Garfield Park,Austin
+Logan Square,236,218,Bucktown-Logan,Avondale,Bucktown,West Town,Humboldt Park,Hermosa
+
+Montclare,113,202,The West Side,Dunning,Belmont Central,Saleswood
+Belmont Central,140,206,The West Side,Dunning,Portage Park,Cragin,Austin,Saleswood,Montclare
+Cragin,177,207,The West Side,Portage Park,Hermosa,Austin,Belmont Central
+Austin,173,278,The West Side,Belmont Central,Cragin,Hermosa,Humboldt Park,Garfield Park,Lawndale,Saleswood
+Garfield Park,227,300,The West Side,Humboldt Park,West Town,West Loop,Taylor,Lawndale,Austin
+Lawndale,226,334,The West Side,Austin,Garfield Park,Taylor,Pilsen,Little Village
+Saleswood,113,223,The West Side,Montclare,Belmont Central,Austin
+Hermosa,205,221,The West Side,Irving Park,Avondale,Logan Square,Humboldt Park,Austin,Cragin
+
+Loop,358,300,The Loop,River North,South Loop,University Village,West Loop
+
+West Loop,307,295,The Near West Side,West Town,Ukranian Village,Goose Island,River North,Loop,University Village,Taylor,Garfield Park
+University Village,314,323,The Near West Side,West Loop,Loop,South Loop,Pilsen,Taylor
+Taylor,271,314,The Near West Side,Garfield Park,West Loop,University Village,Lawndale
+
+Pilsen,290,353,Pilsen-Little Village,University Village,South Loop,Chinatown,Bridgeport,McKinley Park,Little Village,Lawndale
+Little Village,231,372,Pilsen-Little Village,Lawndale,Pilsen,Brighton Park,Archer Heights
+
+South Loop,360,340,Bronzeville,Loop,Douglas,Chinatown,Pilsen,University Village
+Chinatown,338,360,Bronzeville,Pilsen,South Loop,Douglas,Bridgeport
+Douglas,362,378,Bronzeville,South Loop,Oaklawn,Grand Boulevard,Bridgeport,Chinatown
+Oaklawn,384,401,Bronzeville,Douglas,Kenwood,Grand Boulevard
+Kenwood,394,432,Bronzeville,UofC,Grand Boulevard,Oaklawn
+Grand Boulevard,362,426,Bronzeville,Douglas,Oaklawn,Kenwood,UofC,Washington Park,Back of the Yards,Canaryville
+
+UofC,400,461,Hyde Park,Grand Boulevard,Kenwood,Woodlawn,Washington Park
+Washington Park,360,461,Hyde Park,Grand Boulevard,UofC,Woodlawn,Grand Crossing,East Englewood,Back of the Yards
+
+Bridgeport,319,386,Bridgeport-Yards,Pilsen,Chinatown,Douglas,Canaryville,Back of the Yards,McKinley Park
+Canaryville,330,418,Bridgeport-Yards,Bridgeport,Grand Boulevard,Back of the Yards
+Back of the Yards,300,433,Bridgeport-Yards,McKinley Park,Bridgeport,Canaryville,Grand Boulevard,Washington Park,East Englewood,West Englewood,Gage Park,Brighton Park
+McKinley Park,290,389,Bridgeport-Yards,Pilsen,Bridgeport,Back of the Yards,Brighton Park
+
+West Englewood,293,490,Englewood,Back of the Yards,East Englewood,Gresham,Marquette Park,Gage Park
+East Englewood,327,492,Englewood,Back of the Yards,Washington Park,Grand Crossing,Gresham,West Englewood
+Gresham,306,551,Englewood,West Englewood,East Englewood,Grand Crossing,Chatham,Roseland,Brainerd,Beverly,Ashburn
+
+Garfield Ridge,166,461,The Southwest Side,Archer Heights,West Elsdon,Clearing
+Archer Heights,209,430,The Southwest Side,Little Village,Gage Park,Brighton Park,West Elsdon,Garfield Ridge
+Brighton Park,248,411,The Southwest Side,Little Village,McKinley Park,Back of the Yards,Gage Park,Archer Heights
+West Elsdon,214,463,The Southwest Side,Archer Heights,Gage Park,Marquette Park,West Lawn,Clearing,Garfield Ridge
+Gage Park,253,455,The Southwest Side,Archer Heights,Brighton Park,Back of the Yards,West Englewood,Marquette Park,West Elsdon
+Marquette Park,254,504,The Southwest Side,Gage Park,West Englewood,Ashburn,West Lawn,West Elsdon
+Ashburn,241,549,The Southwest Side,West Lawn,Marquette Park,Gresham,Beverly,Scottsdale
+Scottsdale,200,552,The Southwest Side,West Lawn,Ashburn
+West Lawn,214,502,The Southwest Side,West Elsdon,Marquette Park,Ashburn,Scottsdale,Clearing
+Clearing,144,483,The Southwest Side,Garfield Ridge,West Elsdon,West Lawn
+
+Woodlawn,396,485,The South Shore,Washington Park,UofC,South Shore,Grand Crossing
+South Shore,422,518,The South Shore,Woodlawn,South Chicago,Avalon Park,Grand Crossing
+South Chicago,458,561,The South Shore,South Shore,East Side,Calumet Heights,Avalon Park
+Calumet Heights,424,577,The South Shore,Avalon Park,South Chicago,South Deering,Jeffery Manor,Burnside
+Burnside,391,583,The South Shore,Chatham,Calumet Heights,Pullman
+Chatham,366,562,The South Shore,Grand Crossing,Avalon Park,Burnside,Roseland,Gresham
+Avalon Park,407,555,The South Shore,Grand Crossing,South Shore,South Chicago,Calumet Heights,Chatham
+Grand Crossing,363,522,The South Shore,Washington Park,Woodlawn,South Shore,Avalon Park,Chatham,Gresham,East Englewood
+
+Jeffery Manor,437,605,Deering,Calumet Heights,South Deering
+Pullman,390,625,Deering,Burnside,South Deering,Riverdale,Roseland
+South Deering,433,647,Deering,Calumet Heights,Jeffery Manor,East Side,Hegewisch,Riverdale,Pullman
+East Side,481,629,Deering,South Chicago,Hegewisch,South Deering
+Hegewisch,468,721,Deering,South Deering,East Side,Riverdale
+Riverdale,377,716,Deering,Pullman,South Deering,Hegewisch,West Pullman,Roseland
+
+Beverly,282,614,Beverly-Roseland,Ashburn,Gresham,Brainerd,Morgan Park,Mount Greenwood
+Brainerd,317,606,Beverly-Roseland,Gresham,Roseland,Morgan Park,Beverly
+Roseland,358,632,Beverly-Roseland,Gresham,Chatham,Pullman,Riverdale,West Pullman,Morgan Park,Brainerd
+West Pullman,336,683,Beverly-Roseland,Morgan Park,Roseland,Riverdale
+Morgan Park,279,655,Beverly-Roseland,Mount Greenwood,Beverly,Brainerd,Roseland,West Pullman
+Mount Greenwood,233,644,Beverly-Roseland,Beverly,Morgan Park
+

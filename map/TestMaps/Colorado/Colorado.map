@@ -1,0 +1,92 @@
+[Map]
+author=Eric Brown
+warn=yes
+image=Colorado.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+North West=3
+South West=3
+South Colorado=4
+South East=4
+Colorado Springs and Pueblo=5
+Central Colorado=5
+Denver Area=6
+Northern Colorado=4
+North East=3
+
+[Territories]
+Moffat,128,67,North West,Routt,Rio Blanco
+Routt,273,90,North West,Jackson,Grand,Eagle,Garfield,Rio Blanco,Moffat
+Jackson,353,79,North West,Larimer,Grand,Routt
+Rio Blanco,117,171,North West,Moffat,Routt,Garfield
+Grand,371,160,North West,Routt,Jackson,Larimer,Boulder,Gilpin,Clear Creek,Summit,Eagle
+Garfield,206,231,North West,Rio Blanco,Routt,Eagle,Pitkin,Mesa
+Eagle,307,233,North West,Garfield,Routt,Grand,Summit,Lake,Pitkin
+Summit,388,246,North West,Eagle,Grand,Clear Creek,Park
+
+Mesa,77,322,South West,Garfield,Pitkin,Delta,Montrose,Gunnison
+Pitkin,280,300,South West,Mesa,Garfield,Eagle,Lake,Chaffee,Gunnison
+Delta,164,351,South West,Mesa,Gunnison,Montrose
+Gunnison,265,378,South West,Ouray,Montrose,Delta,Mesa,Pitkin,Chaffee,Saguache,Hinsdale
+Montrose,151,408,South West,Mesa,Delta,Gunnison,Ouray,San Miguel
+Ouray,174,463,South West,San Miguel,Montrose,Gunnison,Hinsdale,San Juan
+San Miguel,85,481,South West,Montrose,Ouray,San Juan,Dolores
+Hinsdale,225,500,South West,La Plata,San Juan,Ouray,Gunnison,Saguache,Mineral,Archuleta
+Dolores,80,520,South West,San Miguel,San Juan,Montezuma
+San Juan,185,523,South West,Dolores,San Miguel,Ouray,Hinsdale,La Plata
+Montezuma,59,582,South West,Dolores,La Plata
+La Plata,160,593,South West,Montezuma,San Juan,Hinsdale,Archuleta
+Archuleta,254,620,South West,La Plata,Hinsdale,Mineral,Conejos
+
+Saguache,347,478,South Colorado,Mineral,Hinsdale,Gunnison,Chaffee,Fremont,Custer,Huerfano,Alamosa,Rio Grande
+Mineral,270,540,South Colorado,Hinsdale,Saguache,Rio Grande,Archuleta
+Rio Grande,340,560,South Colorado,Mineral,Saguache,Alamosa,Conejos
+Alamosa,413,560,South Colorado,Rio Grande,Saguache,Huerfano,Costilla,Conejos
+Huerfano,523,547,South Colorado,Alamosa,Saguache,Custer,Pueblo,Las Animas,Costilla
+Conejos,366,619,South Colorado,Archuleta,Rio Grande,Alamosa,Costilla
+Costilla,461,601,South Colorado,Conejos,Alamosa,Huerfano,Las Animas
+Las Animas,630,613,South Colorado,Costilla,Huerfano,Pueblo,Otero,Bent,Baca
+Elbert,611,278,South East,Douglas,Arapahoe,Lincoln,El Paso
+Lincoln,700,327,South East,El Paso,Elbert,Washington,Kit Carson,Cheyenne,Kiowa,Crowley
+Kit Carson,800,291,South East,Lincoln,Washington,Yuma,Cheyenne
+Cheyenne,800,361,South East,Lincoln,Kit Carson,Kiowa
+Crowley,666,444,South East,Pueblo,Lincoln,Kiowa,Otero
+Kiowa,795,426,South East,Crowley,Lincoln,Cheyenne,Prowers,Bent,Otero
+Otero,670,510,South East,Pueblo,Crowley,Kiowa,Bent,Las Animas
+Bent,753,510,South East,Otero,Kiowa,Prowers,Baca,Las Animas
+Prowers,835,510,South East,Bent,Kiowa,Baca
+Baca,821,602,South East,Las Animas,Bent,Prowers
+
+El Paso,573,360,Colorado Springs and Pueblo,Teller,Douglas,Elbert,Lincoln,Pueblo,Fremont
+Pueblo,573,465,Colorado Springs and Pueblo,Custer,Fremont,El Paso,Crowley,Otero,Las Animas,Huerfano
+
+Lake,350,300,Central Colorado,Pitkin,Eagle,Park,Chaffee
+Park,430,320,Central Colorado,Chaffee,Lake,Summit,Clear Creek,Jefferson,Teller,Fremont
+Chaffee,370,380,Central Colorado,Gunnison,Pitkin,Lake,Park,Fremont,Saguache
+Teller,493,354,Central Colorado,Park,Douglas,El Paso,Fremont
+Fremont,453,419,Central Colorado,Saguache,Chaffee,Park,Teller,El Paso,Pueblo,Custer
+Custer,470,480,Central Colorado,Saguache,Fremont,Pueblo,Huerfano
+
+Boulder,472,170,Denver Area,Grand,Larimer,Weld,Broomfield,Adams,Jefferson,Gilpin
+Broomfield,507,192,Denver Area,Jefferson,Boulder,Adams
+Adams,580,200,Denver Area,Denver,Jefferson,Broomfield,Boulder,Weld,Morgan,Washington,Arapahoe
+Gilpin,453,200,Denver Area,Grand,Boulder,Jefferson,Clear Creek
+Clear Creek,439,224,Denver Area,Summit,Grand,Gilpin,Jefferson,Park
+Jefferson,487,243,Denver Area,Park,Clear Creek,Gilpin,Boulder,Broomfield,Adams,Arapahoe,Douglas,Denver
+Denver,517,219,Denver Area,Jefferson,Adams,Arapahoe
+Douglas,525,280,Denver Area,Jefferson,Arapahoe,Elbert,El Paso,Teller
+Arapahoe,588,232,Denver Area,Jefferson,Denver,Adams,Washington,Elbert,Douglas
+
+Larimer,459,73,Northern Colorado,Grand,Jackson,Weld,Boulder
+Weld,571,92,Northern Colorado,Boulder,Larimer,Logan,Morgan,Adams
+
+Logan,743,62,North East,Morgan,Weld,Sedgwick,Phillips,Yuma,Washington
+Sedgwick,832,37,North East,Logan,Phillips
+Phillips,833,77,North East,Logan,Sedgwick,Yuma
+Morgan,660,132,North East,Weld,Logan,Washington,Adams
+Washington,739,181,North East,Arapahoe,Adams,Morgan,Logan,Yuma,Kit Carson,Lincoln
+Yuma,827,176,North East,Washington,Logan,Phillips,Kit Carson
+
+

@@ -1,0 +1,49 @@
+[Map]
+author=Tre (Houston Texas)
+warn=yes
+image=Houston.bmp
+wrap=yes
+scroll=no
+
+[Continents]
+Inner Loop=6
+Inner Belt=8
+Greater Houston Area=12
+
+[Territories]
+Houston,375,296,Inner Loop,Brays,Jensen,Polk,Memorial Park
+West University,353,333,Inner Loop,Bellaire,Brays,Memorial Park,Bunker Hill Village
+Bellaire,331,354,Inner Loop,West University,Brays,Meyerland,Bunker Hill Village
+Brays,382,336,Inner Loop,Polk,Foster Place,West University,Bellaire,Brookside Village,Houston
+Memorial Park,349,300,Inner Loop,West University,Bunker Hill Village,Houston Heights,Houston,Jensen
+Bunker Hill Village,312,302,Inner Loop,West University,Bellaire,Memorial Park,Houston Heights,Bellaire West
+Houston Heights,340,259,Inner Loop,Bunker Hill Village,Memorial Park,Jensen,Spring Valley,Highland Heights
+Jensen,378,256,Inner Loop,Houston,Memorial Park,Houston Heights,Westfield Estates,Northeast Inner loop
+Northeast Inner Loop,408,269,Inner Loop,Jensen,Polk,Harrisburg,Beaumont Place
+Polk,402,306,Inner Loop,Northeast Inner Loop,Houston,Harrisburg,Brays
+Harrisburg,429,314,Inner Loop,Northeast Inner Loop,Polk,Foster Place,Pasadena,Jacinto City
+Foster Place,401,360,Inner Loop,Brays,Harrisburg,Brookside Village
+
+Brookside Village,415,421,Inner Belt,Foster Place,Brays,Meyerland,Pasadena,Southeast Houston
+Meyerland,300,394,Inner Belt,Stafford,Sugarland,Bellaire West,Bellaire,Brookside Village,Southwest Houston
+Stafford,242,428,Inner Belt,Meyerland,Sugarland,Southwest Houston
+Sugarland,225,351,Inner Belt,Stafford,Meyerland,Bellaire West,West Southwest Houston
+Bellaire West,259,304,Inner Belt,Sugarland,Meyerland,Bunker Hill Village,Spring Valley,West Southwest Houston
+Spring Valley,254,251,Inner Belt,Bellaire West,Houston Heights,Highland Heights,West Northwest Houston
+Highland Heights,298,196,Inner Belt,Spring Valley,Houston Heights,Aldine,Westfield Estates,Northwest Houston
+Aldine,356,166,Inner Belt,Highland Heights,Westfield Estates,Northeast Houston
+Westfield Estates,389,187,Inner Belt,Highland Heights,Aldine,Jensen,Beaumont Place,Northeast Houston
+Beaumont Place,476,217,Inner Belt,Northeast Inner Loop,Westfield Estates,Jacinto City,East Northeast Houston
+Jacinto City,477,308,Inner Belt,Beaumont Place,Harrisburg,Pasadena,East Southeast Houston
+Pasadena,479,359,Inner Belt,Jacinto City,Harrisburg,Brookside Village,East Southeast Houston
+
+Northeast Houston,391,62,Greater Houston Area,Aldine,Westfield Estates,East Northeast Houston,Northwest Houston
+Northwest Houston,218,63,Greater Houston Area,Highland Heights,Northeast Houston,West Northwest Houston
+East Northeast Houston,606,135,Greater Houston Area,Beaumont Place,Northeast Houston,East Southeast Houston
+West Northwest Houston,102,202,Greater Houston Area,Spring Valley,Northwest Houston,West Southwest Houston
+Southeast Houston,466,530,Greater Houston Area,Brookside Village,East Southeast Houston,Southwest Houston
+Southwest Houston,238,527,Greater Houston Area,Stafford,Meyerland,Southeast Houston,West Southwest Houston
+East Southeast Houston,643,389,Greater Houston Area,Jacinto City,Pasadena,East Northeast Houston,Southeast Houston
+West Southwest Houston,94,368,Greater Houston Area,Sugarland,Bellaire West,West Southwest Houston,Southwest Houston,West Northwest Houston
+
+

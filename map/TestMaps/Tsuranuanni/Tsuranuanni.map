@@ -1,0 +1,88 @@
+[Map]
+author=Ben "Twared" Brendle
+image=Tsuranuanni.bmp
+wrap=no
+scroll=horitzontal
+
+[Continents]
+Outpost Isles=1
+Ambolina=3
+Neshska=7
+Inrodaka=6
+North Szetac=4
+South Szetac=5
+Hokani=9
+Lash=7
+Coltari=2
+Honshoni=6
+Sweto=4
+Dustari=2
+
+[Territories]
+Ambolina1,37,36,Ambolina,Ambolina2,Ambolina3
+Ambolina2,40,70,Ambolina,Ambolina1,Ambolina3
+Ambolina3,78,70,Ambolina,Ambolina1,Ambolina2,Ambolina4,Neshska1,Neshska2
+Ambolina4,70,114,Ambolina,Ambolina3,Isles1,Neshska4
+
+Isles1,23,119,Outpost Isles,Ambolina4,Isles2
+Isles2,44,171,Outpost Isles,Isles1,Inrodaka6
+
+Neshska1,127,53,Neshska,Ambolina3,Neshska2,Neshska3,Neshska4,Inrodaka1,Inrodaka4
+Neshska2,110,78,Neshska,Ambolina3,Neshska1,Neshska3,Neshska4
+Neshska3,121,93,Neshska,Neshska1,Neshska2,Neshska4
+Neshska4,127,115,Neshska,Ambolina4,Neshska1,Neshska2,Neshska3,Neshska5,Neshska6,Neshska7,Inrodaka4
+Neshska5,98,131,Neshska,Neshska4,Dustari1
+Neshska6,164,102,Neshska,Neshska4,Neshska7,Inrodaka6
+Neshska7,161,127,Neshska,Neshska4,Neshska6,Inrodaka6
+
+Inrodaka1,162,43,Inrodaka,Neshska1,Inrodaka2,Inrodaka4
+Inrodaka2,185,45,Inrodaka,Inrodaka1,Inrodaka3,Inrodaka4,Inrodaka5
+Inrodaka3,203,42,Inrodaka,Inrodaka2,Inrodaka5,Szetac1,Szetac2
+Inrodaka4,168,72,Inrodaka,Neshska1,Neshska4,Inrodaka1,Inrodaka2,Inrodaka5,Inrodaka6
+Inrodaka5,197,70,Inrodaka,Inrodaka2,Inrodaka3,Inrodaka4,Inrodaka6,Szetac2,Szetac3
+Inrodaka6,191,112,Inrodaka,Inrodaka4,Inrodaka5,Neshska6,Neshska7,Isles2,Szetac3,Szetac5,Szetac6
+
+Szetac1,259,37,North Szetac,Inrodaka3,Szetac2,Szetac1,Hokani1
+Szetac2,228,54,North Szetac,Inrodaka3,Inrodaka5,Szetac3,Szetac1,Hokani1
+Szetac3,217,81,North Szetac,Inrodaka5,Inrodaka6,Szetac2,Szetac4,Szetac5,Hokani1,Hokani3
+Szetac4,235,87,South Szetac,Szetac3,Szetac5,Hokani3
+Szetac5,225,109,South Szetac,Szetac3,Szetac4,Inrodaka6,Szetac6,Szetac7,Szetac8,Hokani3,Hokani5
+Szetac6,209,130,South Szetac,Szetac5,Szetac7,Inrodaka6
+Szetac7,207,152,South Szetac,Szetac5,Szetac6,Szetac8,Sweto1
+Szetac8,240,145,South Szetac,Szetac5,Szetac7,Hokani5,Hokani6
+
+Hokani1,293,53,Hokani,Szetac1,Szetac2,Szetac3,Hokani2,Hokani3
+Hokani2,315,43,Hokani,Hokani1,Hokani3,Hokani4,Coltari1,Lash1
+Hokani3,287,81,Hokani,Hokani1,Hokani2,Hokani4,Hokani5,Szetac3,Szetac4,Szetac5
+Hokani4,324,91,Hokani,Hokani2,Hokani3,Hokani5,Hokani7,Lash1,Lash2,Lash3,Lash4
+Hokani5,276,113,Hokani,Hokani3,Hokani4,Hokani6,Hokani7,Szetac5,Szetac8
+Hokani6,266,140,Hokani,Hokani5,Hokani7,Szetac8
+Hokani7,288,149,Hokani,Hokani4,Hokani5,Hokani6,Hokani8,Lash5
+Hokani8,280,177,Hokani,Hokani7,Sweto1
+
+Coltari1,367,29,Coltari,Hokani2,Lash1,Coltari2,Coltari3
+Coltari2,391,20,Coltari,Coltari1,Coltari3
+Coltari3,384,48,Coltari,Coltari1,Coltari2,Lash2
+
+Lash1,347,49,Lash,Hokani2,Hokani4,Coltari1,Lash2
+Lash2,373,74,Lash,Lash1,Lash3,Coltari3,Hokani4
+Lash3,354,109,Lash,Lash2,Hokani4,Lash4,Lash6,Honshoni1
+Lash4,324,126,Lash,Lash3,Lash5,Lash6,Hokani4
+Lash5,321,146,Lash,Lash4,Lash6,Hokani7
+Lash6,346,151,Lash,Lash3,Lash4,Lash5,Lash7,Honshoni3
+Lash7,324,183,Lash,Lash6,Sweto1
+
+Honshoni1,390,141,Honshoni,Lash3,Honshoni2
+Honshoni2,387,172,Honshoni,Honshoni1,Honshoni3,Honshoni4
+Honshoni3,358,187,Honshoni,Lash6,Honshoni2,Honshoni4,Honshoni5,Honshoni6
+Honshoni4,384,187,Honshoni,Honshoni2,Honshoni3,Honshoni6
+Honshoni5,354,213,Honshoni,Honshoni3,Honshoni6
+Honshoni6,392,200,Honshoni,Honshoni3,Honshoni4,Honshoni5,Sweto3
+
+Sweto1,342,245,Sweto,Szetac7,Hokani8,Lash7,Sweto2,Sweto4
+Sweto2,363,253,Sweto,Sweto1,Sweto3,Sweto4
+Sweto3,391,246,Sweto,Sweto2,Sweto4,Honshoni6
+Sweto4,373,267,Sweto,Sweto1,Sweto2,Sweto3,Dustari2
+
+Dustari1,228,266,Dustari,Dustari2,Neshska5
+Dustari2,264,267,Dustari,Dustari1,Sweto4

@@ -1,0 +1,84 @@
+[Map]
+author=
+image=Dunhelm.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Northern Kingdom=5
+Nothran Wastes=5
+Isle of Alaric=5
+Empire of Light=7
+Free Islands=7
+Castle Point=2
+Westruy=4
+Southern Kingdom=5
+
+[Territories]
+Northern Point,156,108,Northern Kingdom,Frozen,Waste,Midway,Ionia,Mude
+Rhin,264,105,Northern Kingdom,Midway,Portway,Haven,Mude
+Ionia,131,153,Northern Kingdom,Northern Point,Midway,Rock,Mude
+Rock,123,217,Northern Kingdom,Midway,Ionia,Riverside,Wal,Horde,Hecta
+Riverside,192,236,Northern Kingdom,Rock,Rine,Hecta
+Dun,268,251,Northern Kingdom,Monas,Rild,Rine,Deraga,Portway
+Horde,31,59,Nothran Wastes,Lavae,Frozen,Rock,Glaci
+Lavae,26,126,Nothran Wastes,Teror,Horde
+Border,30,257,Nothran Wastes,Wal,Teror,Warrent,Lovorg
+Rube,480,126,Isle of Alaric,Vorgen,Central,Alaric
+Central,446,166,Isle of Alaric,Rube,Vorgen,Monas
+Monas,438,184,Isle of Alaric,Central,Dunhelm,Dun,Deraga,Portway,Vorgen
+Port Sun,488,422,Empire of Light,Dunhelm,Empten,Grain
+Empten,488,467,Empire of Light,Port Sun,Baren,Grain,Heat
+Sand,369,521,Empire of Light,Baren,Darl,Dust
+Port Shine,209,516,Empire of Light,Dust,Rogue
+Patch,90,438,Free Islands,Rogue,Dreygar,Debt
+Debt,26,443,Free Islands,Patch,Siren
+Siren,13,417,Free Islands,Debt,Lovorg
+Lovorg,40,391,Free Islands,Siren,Freeport,Dreygar,Border
+Dreygar,40,425,Free Islands,Patch,Freeport,Lovorg
+Freeport,65,405,Free Islands,Lovorg,Met,Dreygar,Darkstorme
+Jeska,127,424,Free Islands,Castle Point,Darkstorme,Rogue
+Castle Point,222,428,Castle Point,Darl,Jeska,Southern Point,Gateway
+Wal,100,252,Westruy,Westruy,Border,Rock,Wokken,Warrent
+Met,114,362,Westruy,Freeport,Westruy,Wikken,Wakken
+Gateway,203,364,Westruy,Castle Point,Wikken,Estmost,Dral,Southern Point,Wakken,Rivermouth
+Southern Point,243,381,Southern Kingdom,Castle Point,Dral,Gateway
+Bene,367,351,Southern Kingdom,Dunhelm,Deraga
+Dunhelm,429,350,Southern Kingdom,Monas,Bene,Port Sun,Civil,Deraga
+Portway,297,122,Northern Kingdom,Rhin,Haven,Edge,Vorgen,Deraga,Dun,Monas
+Baren,433,512,Empire of Light,Empten,Sand,Heat
+Darkstorme,113,415,Free Islands,Jeska,Freeport
+Alaric,481,86,Isle of Alaric,Angus,Vorgen,Rube
+Angus,403,50,Isle of Alaric,Alaric,Herwgo
+Waste,148,46,Nothran Wastes,Endsea,Northern Point,Glaci,Frozen
+Darl,303,493,Empire of Light,Castle Point,Dust,Sand
+Estmost,194,294,Westruy,Wikken,Gateway,Rivermouth,Wokken
+Rogue,100,462,Free Islands,Patch,Jeska,Port Shine
+Dust,258,519,Empire of Light,Port Shine,Darl,Sand
+Wikken,166,354,Westruy,Met,Westruy,Estmost,Gateway,Wakken,Wokken
+Frozen,99,56,Nothran Wastes,Waste,Glaci,Horde,Northern Point
+Vorgen,447,129,Isle of Alaric,Alaric,Rube,Central,Portway,Deraga,Monas
+Deraga,332,315,Southern Kingdom,Rivermouth,Dral,Bene,Portway,Dun,Monas,Vorgen,Dunhelm
+Dral,264,344,Southern Kingdom,Rivermouth,Deraga,Southern Point,Gateway,Royal Isle
+Rivermouth,250,281,Southern Kingdom,Estmost,Deraga,Dral,Gateway
+Haven,282,161,Northern Kingdom,Portway,Rild,Edge,Midway,Rhin
+Rild,272,206,Northern Kingdom,Haven,Dun,Rine,Midway,Edge,Hecta
+Rine,218,249,Northern Kingdom,Dun,Riverside,Rild,Hecta
+Glaci,105,6,Nothran Wastes,Waste,Frozen,Horde
+Endsea,278,31,Nothran Wastes,Herwgo,Waste
+Westruy,71,319,Westruy,Wal,Met,Wikken,Warrent,Wokken
+Wakken,159,386,Westruy,Met,Wikken,Gateway
+Grain,524,447,Empire of Light,Empten,Port Sun
+Herwgo,393,48,Isle of Alaric,Angus,Endsea
+Edge,307,155,Northern Kingdom,Portway,Haven,Rild
+Hecta,193,206,Northern Kingdom,Midway,Rock,Riverside,Rild,Rine
+Midway,212,171,Northern Kingdom,Mude,Northern Point,Ionia,Rock,Hecta,Rild,Haven,Rhin
+Mude,221,106,Northern Kingdom,Midway,Northern Point,Ionia,Rhin
+Warrent,56,285,Westruy,Westruy,Border,Wal
+Royal Isle,319,388,Southern Kingdom,Dral,Civil
+Civil,371,412,Southern Kingdom,Royal Isle,Dunhelm,Heat
+Heat,407,441,Empire of Light,Empten,Civil,Baren
+Teror,18,194,Nothran Wastes,Lavae,Border
+Wokken,154,282,Westruy,Wal,Estmost,Wikken,Westruy
+

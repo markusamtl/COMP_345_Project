@@ -1,0 +1,109 @@
+[Map]
+author=Mike Crush
+warn=yes
+image=_03_Asteroids.bmp
+wrap=yes
+scroll=horizontal,vertical
+
+
+
+[Continents]
+Field One=3
+Field Two=2
+Field Three=3
+Field Four=2
+Field Five=2
+Field Six=2
+Field Seven=3
+Field Eight=2
+Center Asteroid=10
+
+[Territories]
+
+X,481,318,Center Asteroid,a1,a2,a3,a4,a5,a6,a7,a8
+
+a1,464,282,Center Asteroid,X,a2,a8,b1
+a2,491,279,Center Asteroid,X,a1,a3,c1
+a3,519,302,Center Asteroid,X,a2,a4,d1
+a4,529,333,Center Asteroid,X,a3,a5,e1
+a5,492,357,Center Asteroid,X,a4,a6,f1
+a6,457,355,Center Asteroid,X,a5,a7,g1
+a7,439,341,Center Asteroid,X,a6,a8,h1
+a8,448,311,Center Asteroid,X,a7,a1,i1
+
+b1,419,217,Field One,b2,b3,a1
+b2,361,163,Field One,b1,b4,b5
+b3,401,142,Field One,b1,b6,b7
+b4,299,118,Field One,b2
+b5,319,91,Field One,b2,b9
+b6,363,77,Field One,b3
+b7,390,62,Field One,b3
+b8,91,150,Field One,b9,b10,b11,i4
+b9,176,112,Field One,b5,b8,b11
+b10,70,108,Field One,b8,b11
+b11,121,89,Field One,b8,b9,b10
+
+c1,511,211,Field Two,c2,c3,a2
+c2,485,128,Field Two,c1,c4,c5
+c3,538,134,Field Two,c1,c6,c7,d2
+c4,440,51,Field Two,c2
+c5,485,50,Field Two,c2
+c6,556,58,Field Two,c3
+c7,600,77,Field Two,c3
+
+d1,576,262,Field Three,d2,d3,a3
+d2,614,171,Field Three,d1,d4,d5,c3
+d3,651,218,Field Three,d1,d6,d7
+d4,659,110,Field Three,d2
+d5,688,144,Field Three,d2
+d6,714,179,Field Three,d3
+d7,732,222,Field Three,d3,d8
+d8,845,264,Field Three,d7,d9,d10
+d9,880,241,Field Three,d8,d10,d11
+d10,877,286,Field Three,d8,d9,d11,e5
+d11,907,310,Field Three,d10,d9
+
+e1,602,338,Field Four,e2,e3,a4
+e2,681,314,Field Four,e1,e4,e5
+e3,665,366,Field Four,e1,e6,e7
+e4,753,294,Field Four,e2
+e5,751,339,Field Four,e2,d10
+e6,738,406,Field Four,e3
+e7,715,441,Field Four,e3
+
+f1,549,405,Field Five,f2,f3,a5,g1
+f2,624,450,Field Five,f1,f4,f5
+f3,572,486,Field Five,f1,f6,f7
+f4,680,500,Field Five,f2
+f5,649,523,Field Five,f2
+f6,608,549,Field Five,f3
+f7,573,564,Field Five,f3
+
+g1,448,420,Field Six,g2,g3,a6,f1
+g2,484,509,Field Six,g1,g4,g5
+g3,410,487,Field Six,g1,g6,g7
+g4,517,577,Field Six,g2
+g5,469,580,Field Six,g2
+g6,401,568,Field Six,g3
+g7,347,535,Field Six,g3,h12
+
+h1,367,355,Field Seven,h2,h3,a7,i1
+h2,333,431,Field Seven,h1,h4,h5
+h3,296,371,Field Seven,h1,h6,h7
+h4,291,497,Field Seven,h2
+h5,257,457,Field Seven,h2
+h6,226,393,Field Seven,h3
+h7,220,361,Field Seven,h3,h8
+h8,124,441,Field Seven,h7,h9
+h9,94,437,Field Seven,h8,h10
+h10,124,489,Field Seven,h9,h11,h12
+h11,91,543,Field Seven,h10,h12
+h12,209,548,Field Seven,h11,h10,g7
+
+i1,371,274,Field Eight,i2,i3,a8,h1
+i2,295,271,Field Eight,i1,i4,i5
+i3,316,202,Field Eight,i1,i6,i7
+i4,211,292,Field Eight,i2,b8
+i5,223,248,Field Eight,i2
+i6,244,186,Field Eight,i3
+i7,268,151,Field Eight,i3

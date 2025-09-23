@@ -1,0 +1,66 @@
+[Map]
+image=indonesia.bmp
+wrap=no
+scroll=none
+author=Liam
+warn=yes
+
+[Continents]
+Sumatra=4
+Kalimantan=4
+Java=3
+Nusa Tenggarra=4
+Sulawesi=4
+Kepulauan=2
+Irian Jaya=3
+Halmahera=1
+Ceram=1
+Buru=1
+
+
+[Territories]
+Aceh,45,70,Sumatra,North Sumatra
+North Sumatra,80,120,Sumatra,Aceh,Riau,West Sumatra
+Riau,140,180,Sumatra,North Sumatra,West Sumatra,Jambi
+West Sumatra,115,210,Sumatra,North Sumatra,Riau,Jambi,Bengkulu
+Jambi,165,240,Sumatra,Riau,West Sumatra,Bengkulu,South Sumatra
+Bengkulu,155,290,Sumatra,West Sumatra,South Sumatra,Jambi,Lampung
+South Sumatra,200,280,Sumatra,Palau Bangka,Lampung,Bengkulu,Jambi
+Palau Bangka,232,272,Sumatra,South Sumatra,West Kalimantan
+Lampung,210,330,Sumatra,Bengkulu,South Sumatra,West Java
+
+West Kalimantan,345,210,Kalimantan,North Kalimantan,Central Kalimantan,Palau Bangka,Central Java
+Central Kalimantan,400,260,Kalimantan,West Kalimantan,North Kalimantan,South Kalimantan,Central Java
+North Kalimantan,455,170,Kalimantan,West Kalimantan,Central Kalimantan,South Kalimantan,Central Sulawesi
+South Kalimantan,435,300,Kalimantan,Central Kalimantan,North Kalimantan
+
+West Java,265,405,Java,Lampung,Central Java
+Central Java,330,420,Java,West Java,West Kalimantan,Central Kalimantan,East Java
+East Java,375,440,Java,Central Java,Lombok
+
+Lombok,432,460,Nusa Tenggarra,East Java,Bali,South Sulawesi
+Bali,458,470,Nusa Tenggarra,Lombok,West Komodo
+West Komodo,485,475,Nusa Tenggarra,East Komodo,Bali
+East Komodo,510,470,Nusa Tenggarra,West Komodo,Flores,Rinca
+Flores,555,470,Nusa Tenggarra,East Komodo,West Timor,Rinca
+Rinca,548,510,Nusa Tenggarra,Flores,East Komodo,West Timor
+West Timor,635,510,Nusa Tenggarra,Flores,Rinca,East Timor
+East Timor,665,485,Nusa Tenggarra,West Timor,Kepulauan Tanimbar
+
+
+South Sulawesi,535,315,Sulawesi,Lombok,Central Sulawesi,Kolaka
+Kolaka,580,345,Sulawesi,Buru,South Sulawesi
+Central Sulawesi,540,260,Sulawesi,South Sulawesi,North Sulawesi,North Kalimantan
+North Sulawesi,620,210,Sulawesi,Central Sulawesi,Halmahera
+
+Kepulauan Tanimbar,790,450,Kepulauan,East Timor,Kepulauan Aru
+Kepulauan Aru,845,420,Kepulauan,Kepulauan Tanimbar,SW Irian Jaya,West Irian Jaya
+
+Central Irian Jaya,950,370,Irian Jaya,SW Irian Jaya,West Irian Jaya
+SW Irian Jaya,932,465,Irian Jaya,Kepulauan Aru,Central Irian Jaya
+West Irian Jaya,865,340,Irian Jaya,Ceram,Central Irian Jaya,NW Irian Jaya,Kepulauan Aru
+NW Irian Jaya,820,270,Irian Jaya,West Irian Jaya,Halmahera
+
+Halmahera,716,222,Halmahera,NW Irian Jaya,North Sulawesi,Ceram
+Ceram,735,315,Ceram,Halmahera,West Irian Jaya,Buru
+Buru,685,325,Buru,Ceram,Kolaka

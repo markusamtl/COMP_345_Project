@@ -1,0 +1,72 @@
+[Map]
+author=Matt Ryan
+image=AussiWorld.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Northeast Aussi=2
+Southeast Aussi=2
+Southwest Aussi=2
+Northwest Aussi=2
+North Asiac=7
+South Asiac=7
+
+[Territories]
+1,173,120,Northwest Aussi,2,3
+2,166,168,Northwest Aussi,1,3,4
+3,225,112,Northwest Aussi,1,2,4
+4,233,184,Northwest Aussi,3,7,2
+5,362,242,North Asiac,55,11,10,6
+6,298,238,North Asiac,5,10,9,7
+7,260,255,North Asiac,4,6,9,8
+8,239,256,North Asiac,7,9
+9,274,290,North Asiac,8,7,6,10,11
+10,325,278,North Asiac,9,6,5,11
+11,297,342,North Asiac,9,10,5,55,14,12,13
+12,255,409,North Asiac,11,14,47,13
+13,223,413,North Asiac,11,12,47
+14,465,362,North Asiac,11,12,55,15,56,31,42,47
+15,486,255,North Asiac,16,18,14,55
+16,531,126,North Asiac,15
+17,632,126,North Asiac,18
+18,593,261,North Asiac,15,17,19,56
+19,669,346,North Asiac,18,25,24,23,22,21,20,56
+20,760,419,North Asiac,56,19,21
+21,807,399,North Asiac,19,22,20
+22,771,346,North Asiac,19,23,21
+23,749,300,North Asiac,19,24,22
+24,721,270,North Asiac,19,25,23
+25,773,261,North Asiac,19,26,24
+26,922,147,Northeast Aussi,25,27,29
+27,850,147,Northeast Aussi,26,28
+28,853,99,Northeast Aussi,27,29
+29,932,88,Northeast Aussi,26,28
+30,683,450,South Asiac,56,36,35,34,31
+31,419,461,South Asiac,14,30,33,32,43,42
+32,549,500,South Asiac,31,33,34,35,37
+33,564,446,South Asiac,31,34,32
+34,609,459,South Asiac,30,35,32,33
+35,658,486,South Asiac,30,36,37,32,34
+36,691,509,South Asiac,30,37,35
+37,676,541,South Asiac,32,35,36,38
+38,679,607,Southeast Aussi,37,41,40,39
+39,834,596,Southeast Aussi,38,40,41
+40,881,550,Southeast Aussi,38,39,41
+41,768,655,Southeast Aussi,38,39,40
+42,309,464,South Asiac,14,31,43,47
+43,335,503,South Asiac,42,31,44,47
+44,292,514,South Asiac,47,43,45,48
+45,273,523,South Asiac,46,48,44
+46,254,526,South Asiac,51,50,49,48,45
+47,245,444,South Asiac,12,13,14,42,43,44,48,49
+48,261,505,South Asiac,47,44,45,46,49
+49,242,508,South Asiac,47,48,46,50
+50,237,525,South Asiac,49,46,51
+51,181,571,Southwest Aussi,46,50,52,53
+52,160,601,Southwest Aussi,51,53
+53,151,650,Southwest Aussi,52,51,54
+54,94,631,Southwest Aussi,53
+55,417,241,North Asiac,15,14,11,5
+56,592,346,North Asiac,14,18,19,20,30

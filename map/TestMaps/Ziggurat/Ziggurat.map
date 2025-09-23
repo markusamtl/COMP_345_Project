@@ -1,0 +1,68 @@
+[Map]
+author=Mahks
+image=ziggurat.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Left Top=2
+Left Upper Mid=3
+Left Lower Mid=4
+Left Bottom=3
+Right Top=2
+Right Upper Mid=3
+Right Lower Mid=4
+Right Bottom=3
+
+[Territories]
+Stone 01,250,38,Left Top,Stone 26,Stone 02
+Stone 02,225,63,Left Top,Stone 01,Stone 03,Stone 04
+Stone 03,200,88,Left Top,Stone 02,Stone 04,Stone 06,Stone 05
+Stone 04,250,88,Left Top,Stone 02,Stone 03,Stone 28,Stone 06
+Stone 05,177,114,Left Upper Mid,Stone 03,Stone 06,Stone 08,Stone 07
+Stone 06,227,114,Left Upper Mid,Stone 03,Stone 05,Stone 04,Stone 09,Stone 08
+Stone 07,150,139,Left Upper Mid,Stone 05,Stone 08,Stone 11,Stone 10
+Stone 08,200,139,Left Upper Mid,Stone 05,Stone 07,Stone 06,Stone 09,Stone 12,Stone 11
+Stone 09,250,139,Left Upper Mid,Stone 06,Stone 12,Stone 08,Stone 32
+Stone 10,125,164,Left Lower Mid,Stone 07,Stone 11,Stone 14,Stone 13
+Stone 11,175,164,Left Lower Mid,Stone 07,Stone 10,Stone 12,Stone 15,Stone 08,Stone 14
+Stone 12,225,164,Left Lower Mid,Stone 09,Stone 08,Stone 11,Stone 15,Stone 16
+Stone 13,100,189,Left Lower Mid,Stone 10,Stone 14,Stone 18,Stone 17
+Stone 14,150,189,Left Lower Mid,Stone 10,Stone 13,Stone 15,Stone 19,Stone 18,Stone 11
+Stone 15,200,189,Left Lower Mid,Stone 12,Stone 16,Stone 11,Stone 14,Stone 19,Stone 20
+Stone 16,250,189,Left Lower Mid,Stone 12,Stone 38,Stone 20,Stone 15
+Stone 17,75,214,Left Bottom,Stone 13,Stone 18,Stone 22,Stone 21
+Stone 18,125,214,Left Bottom,Stone 13,Stone 17,Stone 23,Stone 19,Stone 14,Stone 22
+Stone 19,175,214,Left Bottom,Stone 15,Stone 23,Stone 18,Stone 14,Stone 20,Stone 24
+Stone 20,225,214,Left Bottom,Stone 16,Stone 25,Stone 15,Stone 19,Stone 24
+Stone 21,50,239,Left Bottom,Stone 17,Stone 22
+Stone 22,100,239,Left Bottom,Stone 17,Stone 23,Stone 21,Stone 18
+Stone 23,150,239,Left Bottom,Stone 24,Stone 19,Stone 18,Stone 22
+Stone 24,200,239,Left Bottom,Stone 25,Stone 23,Stone 19,Stone 20
+Stone 25,250,239,Left Bottom,Stone 46,Stone 20,Stone 24
+Stone 26,350,38,Right Top,Stone 01,Stone 27
+Stone 27,375,63,Right Top,Stone 26,Stone 28,Stone 29
+Stone 28,350,88,Right Top,Stone 04,Stone 27,Stone 29,Stone 30
+Stone 29,400,88,Right Top,Stone 27,Stone 28,Stone 30,Stone 31
+Stone 30,375,114,Right Upper Mid,Stone 29,Stone 31,Stone 33,Stone 28,Stone 32
+Stone 31,425,114,Right Upper Mid,Stone 29,Stone 34,Stone 33,Stone 30
+Stone 32,350,139,Right Upper Mid,Stone 09,Stone 33,Stone 30,Stone 35
+Stone 33,400,139,Right Upper Mid,Stone 31,Stone 32,Stone 30,Stone 35,Stone 36,Stone 34
+Stone 34,450,139,Right Upper Mid,Stone 31,Stone 33,Stone 36,Stone 37
+Stone 35,375,164,Right Lower Mid,Stone 33,Stone 38,Stone 39,Stone 36,Stone 32
+Stone 36,425,164,Right Lower Mid,Stone 33,Stone 34,Stone 37,Stone 35,Stone 39,Stone 40
+Stone 37,475,164,Right Lower Mid,Stone 34,Stone 41,Stone 40,Stone 36
+Stone 38,350,189,Right Lower Mid,Stone 16,Stone 35,Stone 39,Stone 42
+Stone 39,400,189,Right Lower Mid,Stone 35,Stone 38,Stone 42,Stone 43,Stone 40,Stone 36
+Stone 40,450,189,Right Lower Mid,Stone 37,Stone 39,Stone 43,Stone 44,Stone 41,Stone 36
+Stone 41,500,189,Right Lower Mid,Stone 37,Stone 40,Stone 45,Stone 44
+Stone 42,375,214,Right Bottom,Stone 39,Stone 43,Stone 47,Stone 46,Stone 38
+Stone 43,425,214,Right Bottom,Stone 39,Stone 40,Stone 44,Stone 48,Stone 47,Stone 42
+Stone 44,475,214,Right Bottom,Stone 40,Stone 41,Stone 45,Stone 49,Stone 48,Stone 43
+Stone 45,525,214,Right Bottom,Stone 41,Stone 50,Stone 49,Stone 44
+Stone 46,350,239,Right Bottom,Stone 25,Stone 42,Stone 47
+Stone 47,400,239,Right Bottom,Stone 43,Stone 42,Stone 46,Stone 48
+Stone 48,450,239,Right Bottom,Stone 44,Stone 43,Stone 47,Stone 49
+Stone 49,500,239,Right Bottom,Stone 45,Stone 44,Stone 48,Stone 50
+Stone 50,550,239,Right Bottom,Stone 45,Stone 49

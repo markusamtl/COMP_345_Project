@@ -1,0 +1,76 @@
+[Map]
+image=_29_ Tunnavassun.bmp
+wrap=yes
+scroll=vertical
+warn=no
+author=_MIKE CRUSH_
+
+[Continents]
+
+Hopi=2
+Big Sok=3
+Ministah=1
+Meedeeuhm=3
+Sinter=1
+Urth=2
+Flavnoilian=2
+Passatan=2
+Ministahtoo=1
+
+
+[Territories]
+
+ho1,63,25,Hopi,ho2,ho3,ho4,bs7
+ho2,49,61,Hopi,ho1,ho3,ho5,fl2
+ho3,75,51,Hopi,ho1,ho2,ho4,ho5
+ho4,98,33,Hopi,ho1,ho3,me2
+ho5,75,78,Hopi,ho2,ho3,bs1
+
+bs1,117,124,Big Sok,bs2,bs3,bs4,ho5,me1
+bs2,71,154,Big Sok,bs1,bs3,bs5
+bs3,110,167,Big Sok,bs1,bs2,bs4,bs5,bs6,bs7
+bs4,146,145,Big Sok,bs1,bs3,bs7,me4,si2
+bs5,56,212,Big Sok,bs2,bs3,bs6,mi1
+bs6,83,213,Big Sok,bs3,bs5,bs7,mi3
+bs7,132,212,Big Sok,bs3,bs4,bs6,ho1,me1,ur4
+
+mi1,29,240,Ministah,mi2,mi3,bs5
+mi2,15,250,Ministah,mi1,mi3,mo2
+mi3,31,258,Ministah,mi1,mi2,bs6
+
+me1,186,72,Meedeeuhm,me2,me3,me4,me5,bs1,bs7,si1
+me2,156,53,Meedeeuhm,me1,ho4
+me3,206,38,Meedeeuhm,me1,ur4
+me4,169,102,Meedeeuhm,me1,bs4
+me5,224,90,Meedeeuhm,me1,fl1
+
+si1,214,151,Sinter,si2,si3,me1,fl4,pa1
+si2,209,172,Sinter,si1,si3,bs4
+si3,228,168,Sinter,si1,si2,ur2
+
+ur1,210,215,Urth,ur2,ur3,ur4
+ur2,253,221,Urth,ur1,ur3,ur5,si3,pa3,mo3
+ur3,230,228,Urth,ur1,ur2,ur4,ur5
+ur4,203,242,Urth,ur1,ur3,ur5,bs7,me3
+ur5,232,255,Urth,ur2,ur3,ur4
+
+fl1,283,85,Flavnoilian,fl2,fl3,fl4,me5
+fl2,320,78,Flavnoilian,fl1,fl3,fl5,ho2
+fl3,305,99,Flavnoilian,fl1,fl2,fl4,fl5
+fl4,286,117,Flavnoilian,fl1,fl3,fl5,pa1,si1
+fl5,323,117,Flavnoilian,fl2,fl3,fl4,pa3
+
+pa1,303,167,Passatan,pa2,pa3,fl4,si1
+pa2,277,186,Passatan,pa1,pa3
+pa3,311,201,Passatan,pa1,pa2,fl5,ur2,mo1
+
+mo1,320,246,Ministahtoo,mo2,mo3,pa3
+mo2,338,248,Ministahtoo,mo1,mo3,mi2
+mo3,326,263,Ministahtoo,mo1,mo2,ur2
+
+
+
+
+
+
+

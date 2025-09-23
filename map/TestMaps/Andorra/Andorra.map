@@ -1,0 +1,70 @@
+[Map]
+author=Planellas
+warn=yes
+image=Andorra.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Sant Julia=9
+Andorra la Vella=10
+Escaldes-Engordany=10
+Encamp=14
+Canillo=13
+La Massana=11
+Ordino=12
+
+[Territories]
+Juberri,60,290,Sant Julia,Rabassa,Sant Julia,Canolich
+Canolich,40,270,Sant Julia,Juberri,Sant Julia,Bixessarri
+Rabassa,100,275,Sant Julia,Juberri,Sant Julia,Gran Valira,Prat Primer,Pic Negre
+Sant Julia,67,255,Sant Julia,Juberri,Santa Coloma,Bixessarri,Canolich,Rabassa
+Bixessarri,46,234,Sant Julia,Canolich,Sant Julia,Santa Coloma,Pic d'Enclar
+
+Santa Coloma,73,220,Andorra la Vella,Pic d'Enclar,Bixessarri,Sant Julia,Gran Valira,Andorra la Vella
+Pic d'Enclar,63,206,Andorra la Vella,Andorra la Vella,Pic de Carroi,Santa Coloma,Bixessarri
+Andorra la Vella,91,202,Andorra la Vella,Pic d'Enclar,Sispony,Escaldes-engordany,Gran Valira,Santa Coloma
+Gran Valira,95,228,Andorra la Vella,Prat Primer,Santa Coloma,Rabassa,Andorra la Vella,Perafita
+Prat Primer,117,240,Andorra la Vella,Rabassa,Gran Valira,Perafita,Pic Negre
+
+Escaldes-engordany,114,199,Escaldes-Engordany,Obaga,Riu Madriu,Perafita,Andorra la Vella,Sispony
+Perafita,139,231,Escaldes-Engordany,Riu Madriu,La Portelleta,Pic Negre,Prat Primer,Gran Valira,Escaldes-engordany
+Riu Madriu,183,241,Escaldes-Engordany,Escaldes-engordany,Obaga,Alt del Griu,Montmalus,La Portelleta,Perafita
+Montmalus,181,224,Escaldes-Engordany,Alt del Griu,Riu Madriu
+La Portelleta,173,257,Escaldes-Engordany,Riu Madriu,Perafita,Pic Negre
+Pic Negre,139,262,Escaldes-Engordany,La Portelleta,Perafita,Prat Primer,Rabassa
+
+Encamp,140,167,Encamp,Obaga,Alt del Griu,Meritxell,Ordino,La Massana
+Obaga,127,185,Encamp,Encamp,Alt del Griu,Riu Madriu,Escaldes-engordany,Sispony
+Alt del Griu,176,190,Encamp,Encamp,Meritxell,Terreny Concordia,Pessons,Port Envalira,Montmalus,Riu Madriu,Obaga
+Port Envalira,249,212,Encamp,Pas de la Casa,Pessons,Alt del Griu
+Pas de la Casa,265,161,Encamp,Pessons,Port Envalira,Terreny Concordia,Soldeu
+Pessons,222,190,Encamp,Pas de la Casa,Port Envalira,Alt del Griu,Terreny Concordia
+Terreny Concordia,213,150,Encamp,Pessons,Pas de la Casa,Soldeu,Ransol,Canillo,Meritxell,Alt del Griu
+
+Canillo,170,126,Canillo,Meritxell,Terreny Concordia,Ransol,Pic Estanyó,Port,Ordino
+Meritxell,154,146,Canillo,Ordino,Encamp,Alt del Griu,Terreny Concordia,Canillo
+Port,148,105,Canillo,Pic Estanyó,Casamanya,La Cortinada,Ordino,Canillo
+Pic Estanyó,167,85,Canillo,Canillo,Port,Casamanya,Ransol
+Ransol,199,82,Canillo,Canillo,Pic Estanyó,Casamanya,Terreny Concordia,Soldeu,Vall d'Incles,Estanys Juclar
+Vall d'Incles,225,99,Canillo,Estanys Juclar,Soldeu,Ransol
+Estanys Juclar,255,79,Canillo,Ransol,Vall d'Incles,Soldeu
+Soldeu,241,119,Canillo,Solana,Pas de la Casa,Terreny Concordia,Ransol,Vall d'Incles,Estanys Juclar
+Solana,280,120,Canillo,Soldeu
+
+La Massana,89,155,La Massana,Sispony,Pic de Carroi,Erts,Ordino,Encamp
+Sispony,93,177,La Massana,Obaga,Escaldes-engordany,Andorra la Vella,Pic de Carroi,La Massana
+Pic de Carroi,61,176,La Massana,La Massana,Sispony,Pic d'Enclar,Pal,Erts
+Pal,46,138,La Massana,Erts,Pic de Carroi,Comapedrosa,Arinsal
+Erts,80,135,La Massana,Arinsal,La Cortinada,Ordino,La Massana,Pic de Carroi,Pal
+Arinsal,70,113,La Massana,Pal,Comapedrosa,Llorts,La Cortinada,Erts
+Comapedrosa,46,95,La Massana,Arinsal,Pal,Arcalis
+
+Ordino,119,136,Ordino,La Cortinada,Erts,La Massana,Encamp,Meritxell,Canillo,Port
+La Cortinada,96,111,Ordino,Ordino,Port,Casamanya,Llorts,Arinsal,Erts
+Llorts,93,91,Ordino,Arinsal,La Cortinada,Casamanya,Arcalis
+Arcalis,84,72,Ordino,Comapedrosa,Llorts,El Serrat,Tristaina
+El Serrat,115,64,Ordino,Arcalis,Port Siguer,Casamanya
+Tristaina,78,41,Ordino,Port Siguer,Arcalis
+Port Siguer,120,33,Ordino,Casamanya,El Serrat,Tristaina
+Casamanya,136,75,Ordino,El Serrat,Port Siguer,Ransol,Pic Estanyó,Port,La Cortinada,Llorts

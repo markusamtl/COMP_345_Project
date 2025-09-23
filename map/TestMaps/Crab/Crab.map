@@ -1,0 +1,81 @@
+[Map]
+author=Zworg2
+warn=yes
+image=Crab.bmp
+wrap=no
+scroll=Horizontal
+
+[Continents]
+carapace=5
+left claw=3
+right claw=3
+left legs=5
+right legs=5
+eyes=1
+
+[Territories]
+1,235,39,left claw,3
+2,254,61,left claw,3
+3,214,59,left claw,1,2,4,5
+4,169,109,left claw,3,5,6
+5,201,128,left claw,3,4
+6,153,211,left claw,4,7,8
+7,194,219,left claw,6,8,27,28
+8,184,254,left claw,6,7,28
+
+9,183,297,left legs,28,29,10
+10,121,275,left legs,9,11
+11,83,248,left legs,12,10
+12,66,212,left legs,11
+13,46,339,left legs,14
+14,72,347,left legs,13,15
+15,116,338,left legs,14,16
+16,189,336,left legs,15,17,19
+17,269,337,left legs,29,16,19,18
+18,306,354,left legs,17,19,20,29
+19,235,357,left legs,16,17,18,20,21
+20,223,384,left legs,18,19,26
+21,123,384,left legs,19,22
+22,92,414,left legs,21,23
+23,74,445,left legs,22
+24,141,470,left legs,25
+25,156,446,left legs,24,26
+26,180,412,left legs,20,25
+
+27,270,224,carapace,33,34,28,7
+28,249,265,carapace,29,30,34,27,7,8,9
+29,372,335,carapace,28,30,31,48,56,18,17,9
+30,366,293,carapace,34,31,29,28
+31,492,268,carapace,32,34,30,29,47,42
+32,473,229,carapace,33,34,31
+33,385,183,carapace,36,35,27,34,32
+34,368,230,carapace,33,32,31,30,28,27
+
+35,324,156,eyes,33
+36,445,158,eyes,33
+
+37,508,45,right claw,38,39,40
+38,468,67,right claw,37,39
+39,503,105,right claw,38,37,40,41
+40,570,106,right claw,37,39,41
+41,592,214,right claw,39,40,42
+42,559,250,right claw,41,31
+
+43,669,221,right legs,44
+44,654,250,right legs,43,45
+45,610,281,right legs,44,46
+46,560,301,right legs,47,45
+47,520,302,right legs,31,46
+48,523,336,right legs,49,55,56,29
+49,616,338,right legs,48,50
+50,670,346,right legs,51,49
+51,699,341,right legs,50
+52,675,438,right legs,53
+53,655,415,right legs,54,52
+54,603,372,right legs,55,53
+55,521,358,right legs,48,54,57,56
+56,445,349,right legs,29,48,55,57
+57,510,380,right legs,56,55,58
+58,556,408,right legs,57,59
+59,581,442,right legs,58,60
+60,596,465,right legs,59

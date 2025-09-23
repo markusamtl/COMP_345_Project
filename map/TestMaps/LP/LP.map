@@ -1,0 +1,29 @@
+[Map]
+image=LP.bmp
+wrap=no
+scroll=none
+author=Ashley
+warn=yes
+
+[Continents]
+Linkin=3
+Park=3
+Left Side=2
+Top and Bottom=3
+Right Side=2
+
+[Territories]
+1L,95,142,Linkin,2L,9LS,8LS
+2L,169,218,Linkin,1L,3P,7TB
+
+3P,184,111,Park,2L,4P,10TB
+4P,260,131,Park,3P,5RS,6RS
+
+5RS,353,64,Right Side,10TB,6RS,4P
+6RS,349,221,Right Side,5RS,7TB,4P
+
+8LS,38,277,Left Side,9LS,1L,7TB
+9LS,39,13,Left Side,10TB,8LS,1L
+
+7TB,178,275,Top and Bottom,8LS,6RS,2L
+10TB,179,13,Top and Bottom,9LS,5RS,3P

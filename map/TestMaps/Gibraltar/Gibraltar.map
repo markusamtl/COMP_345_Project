@@ -1,0 +1,42 @@
+[Map]
+author=L Bruzon
+image=Gibraltar.bmp
+wrap=yes
+scroll=vertical
+warn=yes
+
+[Continents]
+Airport=4
+Town=4
+Harbour=6
+Beaches=5
+Europa=3
+Upper Rock=4
+
+[Territories]
+Runway,340,36,Airport,Airport South,Airport Beach,North Mole Reclamation
+Airport Beach,404,104,Airport,Airport South,Runway,Eastern Beach
+Airport South,323,104,Airport,Runway,Airport Beach,Northern Look Out Point,Main Street,North Mole Reclamation
+North Mole Reclamation,192,114,Harbour,Detatched Mole,Queensway,Runway,Coaling Island,Airport South
+Queensway,227,199,Harbour,Main Street,North Mole Reclamation,Coaling Island,9,Red Sands
+Main Street,267,221,Town,Queensway,Red Sands,Airport South,Center Look Out Point
+Coaling Island,197,242,Harbour,North Mole Reclamation,Detatched Mole,Queensway,9,South Mole
+Detatched Mole,133,265,Harbour,Coaling Island,North Mole Reclamation,9,South Mole
+9,238,361,Harbour,Coaling Island,Detatched Mole,South Mole,Red Sands,Queensway,Parsons Lodge
+South Mole,225,429,Harbour,9,Parsons Lodge,Detatched Mole,Coaling Island,Red Sands
+Parsons Lodge,278,473,Town,Europa Shrine,South Mole,Red Sands,Gun Point,Europa Mosque,9
+Europa Shrine,292,563,Europa,Parsons Lodge,Europa Mosque,Europa Point
+Europa Mosque,322,555,Europa,Europa Point,Europa Shrine,Refinary,Parsons Lodge
+Europa Point,313,639,Europa,Europa Mosque,Europa Shrine
+Refinary,374,555,Europa,Tunnel Way,Europa Mosque
+Tunnel Way,402,428,Beaches,Refinary,Gun Point,Sandy Bay
+Gun Point,359,418,Upper Rock,Parsons Lodge,Tunnel Way,Center Look Out Point
+Red Sands,281,370,Town,9,Main Street,Parsons Lodge,South Mole,Queensway
+Center Look Out Point,324,311,Upper Rock,Northern Look Out Point,Gun Point,Main Street
+South Catchments,366,343,Beaches,Sandy Bay,Caleta,North Catchments
+Caleta,395,267,Beaches,South Catchments,North Catchments,Eastern Beach,Sandy Bay
+North Catchments,366,283,Beaches,Caleta,Northern Look Out Point,Eastern Beach,South Catchments
+Sandy Bay,389,338,Beaches,Tunnel Way,South Catchments,Caleta
+Northern Look Out Point,353,192,Upper Rock,Airport South,North Catchments,Center Look Out Point
+Eastern Beach,401,206,Beaches,North Catchments,Caleta,Airport Beach
+

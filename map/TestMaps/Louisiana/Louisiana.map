@@ -1,0 +1,94 @@
+[Map]
+author=Ken Graci
+image=Louisiana.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Airways=8
+Sportsmans Paradise=7
+Crossroads=9
+Cajun Country=8
+Greater New Orleans=3
+Plantation Country=6
+
+[Territories]
+
+Bossier,70,60,Airways,Caddo, Red River, Bienville, Webster, Jefferson, Lafayette
+Lafayette,219,322,Airways,Acadia, Saint Landry, Saint Martin 1, Vermilion, Iberia, Bossier, Jefferson
+Jefferson,403,358,Airways,Saint Charles, Orleans, Lafourche, Plaquemines, Saint Tammany, Bossier, Lafayette
+
+Caddo,40,70,Sportsmans Paradise,De Soto,Bossier,Red River
+Webster,94,67,Sportsmans Paradise,Bossier, Bienville,Claiborne 
+Claiborne,120,50,Sportsmans Paradise,Webster, Bienville,Lincoln, Union 
+Union,185,50,Sportsmans Paradise,Lincoln, Claiborne, Ouachita, Morehouse
+Morehouse,240,50,Sportsmans Paradise,Union, Ouachita, Richland, West Carroll
+West Carroll,272,51,Sportsmans Paradise,Morehouse, Richland, East Carroll
+East Carroll,290,62,Sportsmans Paradise,West Carroll, Richland, Madison
+De Soto,56,127,Sportsmans Paradise,Caddo, Red River, Sabine, Natchitoches
+Red River,96,125,Sportsmans Paradise,Caddo, De Soto, Bossier, Bienville, Natchitoches
+Bienville,126,97,Sportsmans Paradise,Bossier, Webster, Claiborne, Lincoln, Jackson, Winn, Natchitoches,Red River
+Lincoln,155,69,Sportsmans Paradise,Bienville, Claiborne, Union, Ouachita, Jackson
+Jackson,168,100,Sportsmans Paradise,Bienville, Lincoln, Ouachita, Caldwell, Winn
+Ouachita,208,87,Sportsmans Paradise,Lincoln, Union, Morehouse, Richland, Caldwell, Jackson
+Caldwell,207,129,Sportsmans Paradise,Jackson, Ouachita, Richland, Franklin, Catahoula, La Salle, Winn
+Richland,243,89,Sportsmans Paradise,Ouachita, Morehouse, West Carroll, East Carroll, Madison, Franklin, Caldwell
+Franklin,251,120,Sportsmans Paradise,Caldwell, Richland, Madison, Tensas, Catahoula
+Madison,290,94,Sportsmans Paradise,Richland, East Carroll, Franklin, Tensas
+Tensas,281,136,Sportsmans Paradise,Franklin, Madison, Catahoula, Concordia
+
+
+Sabine,75,181,Crossroads,De Soto, Natchitoches, Vernon
+Natchitoches,115,168,Crossroads,Sabine, De Soto, Red River, Vernon, Winn, Grant, Rapides, Bienville
+Winn,160,138,Crossroads,Natchitoches, Bienville, Jackson, Caldwell, La Salle, Grant
+Grant,175,175,Crossroads,Natchitoches, Winn, La Salle, Rapides
+La Salle,205,169,Crossroads,Grant, Winn, Caldwell, Catahoula, Rapides, Avoyelle
+Catahoula,231,167,Crossroads,La Salle, Caldwell, Franklin, Tensas, Concordia, Avoyelle
+Concordia,257,190,Crossroads,Catahoula, Tensas, Avoyelle
+Vernon,100,230,Crossroads,sabine, Natchitoches, Rapides, Allen, Beauregard
+Rapides,170,222,Crossroads,Vernon, Natchitoches, Grant, La Salle, Avoyelle, Evangeline, Allen
+Avoyelle,222,231,Crossroads,Rapides, La Salle, Catahoula, Concordia, Pointe Coupee, Saint Landry, Evangeline
+Beauregard,93,273,Crossroads,Vernon, Allen,  Calcasieu
+
+
+Calcasieu,96,316,Cajun Country,Cameron, Jefferson Davis, Beauregard
+Cameron,104,352,Cajun Country,Calcasieu, Jefferson Davis, Vermilion
+Allen,144,274,Cajun Country,Beauregard, Vernon, Rapides, Evangeline, Jefferson Davis
+Jefferson Davis,144,318,Cajun Country,Calcasieu, Allen, Acadia, Cameron, Vermilion
+Evangeline,183,268,Cajun Country,Allen, Rapides, Avoyelle, Saint Landry, Acadia
+Acadia,180,310,Cajun Country,Jefferson Davis, Evangeline, Saint Landry, Lafayette, Vermilion
+Vermilion,191,360,Cajun Country,Cameron, Jefferson Davis, Acadia, Lafayette, Iberia
+Saint Landry,222,279,Cajun Country,Evangeline, Avoyelle, Pointe Coupee, Saint Martin 1, Lafayette, Acadia
+Saint Martin 1,244,319,Cajun Country,Lafayette, Saint Landry, Iberville, Iberia
+Saint Martin 2,288,358,Cajun Country,Saint Mary, Iberia, Assumption
+Iberia,241,352,Cajun Country,Vermilion, Lafayette, Saint Martin 1, saint Martin 2, Iberville, Saint Mary, Assumption
+Saint Mary,275,378,Cajun Country,Iberia, Saint Martin 2, Terrebonne, Assumption
+Assumption,309,355,Cajun Country,Saint Martin 2, Iberia, Iberville, Ascension, Saint James, Lafourche, Terrebonne, Saint Mary
+Terrebonne,328,403,Cajun Country,Saint Mary, Assumption, Lafourche
+Lafourche,368,385,Cajun Country,Terrebonne, Assumption, Saint James, Saint John, Saint Charles, Jefferson, Grand Isle
+Grand Isle,418,432,Cajun Country,Lafourche
+
+
+Pointe Coupee,270,278,Plantation Country,West Feliciana, East Baton Rouge, West Baton Rouge, Iberville, Saint Landry, Avoyelle
+West Feliciana,278,253,Plantation Country,Pointe Coupee, East Feliciana
+East Feliciana,310,257,Plantation Country,West Feliciana, Saint Helena, East Baton Rouge
+Saint Helena,340,258,Plantation Country,East Feliciana, Tangipahoa, Livingston, East Baton Rouge
+East Baton Rouge,306,287,Plantation Country,West Baton Rouge,Pointe Coupee, East Feliciana, Livingston, Ascension, Iberville, Saint Helena
+West Baton Rouge,281,298,Plantation Country,Pointe Coupee, East Baton Rouge, Iberville
+Iberville,295,322,Plantation Country,Saint Martin 1, Pointe Coupee, West Baton Rouge, East Baton Rouge, Ascension, Iberia, Assumption
+Ascension,324,324,Plantation Country,Iberville, East Baton Rouge, Livingston, Saint James, Assumption, Saint John
+Saint James,333,344,Plantation Country,Assumption, Ascension, Saint John, Lafourche
+Saint John,355,336,Plantation Country,Saint James, Ascension, Livingston, Tangipahoa, Saint Charles, Lafourche
+Saint Charles,377,355,Plantation Country,Saint John, Jefferson, Lafourche
+Livingston,344,296,Plantation Country,East Baton Rouge, Saint Helena, Tangipahoa, Saint John, Ascension
+
+Orleans,402,347,Greater New Orleans,Jefferson, Saint Bernard, Plaquemines, Saint Tammany
+Plaquemines,430,389,Greater New Orleans,Jefferson, Orleans, Saint Bernard
+Saint Bernard,453,359,Greater New Orleans,Orleans, Plaquemines
+Saint Tammany,409,291,Greater New Orleans,Jefferson, Tangipahoa, Washington, Orleans
+Tangipahoa,368,276,Greater New Orleans,Saint Tammany, Washington,Saint Helena, Livingston, Saint John
+Washington,408,257,Greater New Orleans,Tangipahoa, Saint Tammany
+
+
+ 

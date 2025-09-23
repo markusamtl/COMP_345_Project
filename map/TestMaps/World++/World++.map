@@ -1,0 +1,85 @@
+[Map]
+author=Daniel Chavarrías
+image=world++.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+North America=6
+South America=4
+Central America=3
+Africa=4
+Europe=8
+Asia=8
+Australasia=2
+
+[Territories]
+Alaska,70,165,North America,Northwest Territory,Alberta,Kamchatka
+Northwest Territory,141,166,North America,Alaska,Alberta,Ontario,Greenland
+Alberta,139,202,North America,Alaska,Northwest Territory,Ontario,Western United States
+Greenland,320,115,North America,Northwest Territory,Ontario,Quebec,Iceland,Svalbard
+Ontario,195,206,North America,Northwest Territory,Alberta,Greenland,Quebec,Western United States,Eastern United States
+Quebec,249,205,North America,Greenland,Ontario,Eastern United States,Azores
+Western United States,151,243,North America,Alberta,Ontario,Eastern United States,Mexico,Hawaii
+Eastern United States,211,255,North America,Ontario,Quebec,Western United States,Mexico,Cuba,Canary Islands
+Hawaii,41,295,North America,Western United States,Japan
+
+Mexico,179,301,Central America,Western United States,Eastern United States,Venezuala,Cuba
+Cuba,234,295,Central America,Eastern United States,Rep. Dominicana,Mexico
+Rep. Dominicana,246,305,Central America,Cuba,Venezuala,Canary Islands
+
+
+Venezuala,256,342,South America,Peru,Brazil,Rep. Dominicana,Mexico
+Peru,258,388,South America,Venezuala,Brazil,Argentina
+Argentina,255,446,South America,Peru,Brazil,New Zealand,Falkland Islands
+Brazil,303,380,South America,Venezuala,Peru,Argentina,North Africa
+Falkland Islands,299,481,South America,Argentina,South Africa
+
+North Africa,419,304,Africa,Brazil,Western Europe,Southern Europe,Egypt,East Africa,Congo,Canary Islands
+Congo,469,357,Africa,North Africa,East Africa,South Africa
+South Africa,477,410,Africa,Congo,East Africa,Madagascar,Falkland Islands
+Madagascar,532,400,Africa,East Africa,South Africa
+East Africa,513,337,Africa,Egypt,Middle East,Congo,North Africa,South Africa,Madagascar,Maldivas
+Egypt,474,288,Africa,Southern Europe,North Africa,Middle East,East Africa
+
+Iceland,374,167,Europe,Greenland,Great Britain,Scandinavia
+Great Britain,413,205,Europe,Iceland,Scandinavia,Western Europe,Northern Europe
+Western Europe,420,240,Europe,Great Britain,Northern Europe,Southern Europe,North Africa,Canary Islands,Azores
+Scandinavia,460,166,Europe,Iceland,Great Britain,Northern Europe,Ukraine,Svalbard
+Northern Europe,457,213,Europe,Great Britain,Scandinavia,Ukraine,Southern Europe,Western Europe
+Southern Europe,467,237,Europe,Northern Europe,Ukraine,Middle East,Egypt,North Africa,Western Europe
+Ukraine,524,196,Europe,Ural,Afghanistan,Middle East,Southern Europe,Northern Europe,Scandinavia,New Zembla
+Svalbard,439,83,Europe,Scandinavia,Greenland
+Canary Islands,370,281,Europe,Western Europe,Eastern United States,Rep. Dominicana,North Africa
+Azores,337,247,Europe,Western Europe,Quebec
+New Zembla,557,139,Europe,Ukraine,Ural
+
+Middle East,528,272,Asia,Ukraine,Afghanistan,India,Southern Europe,Egypt,East Africa,Maldivas
+Ural,606,175,Asia,Siberia,China,Afghanistan,Ukraine,New Zembla
+Afghanistan,577,232,Asia,Ural,China,India,Middle East,Ukraine
+India,606,290,Asia,China,Siam,Afghanistan,Middle East,Sri Lanka
+Siberia,660,149,Asia,Yatusk,Irkutsk,Mongolia,China,Ural
+China,660,258,Asia,Ural,Siberia,Mongolia,Siam,India,Afghanistan
+Siam,665,309,Asia,China,India,Indonesia
+Mongolia,701,228,Asia,Siberia,Irkutsk,Japan,China,Kamchatka
+Irkutsk,694,192,Asia,Siberia,Yatusk,Kamchatka,Mongolia
+Yatusk,734,159,Asia,Siberia,Irkutsk,Kamchatka
+Kamchatka,800,166,Asia,Yatusk,Irkutsk,Japan,Alaska,Mongolia
+Japan,754,262,Asia,Kamchatka,Mongolia,Hawaii,Philippines
+Philippines,736,311,Asia,Indonesia,Japan
+Sri Lanka,610,336,Asia,India,Maldivas
+Maldivas,580,343,Asia,Sri Lanka,Indonesia,East Africa,Middle East
+
+Indonesia,689,352,Australasia,Siam,New Guinea,Western Australia,Philippines,Maldivas
+New Guinea,763,365,Australasia,Indonesia,Western Australia,Eastern Australia
+Western Australia,725,412,Australasia,Indonesia,New Guinea,Eastern Australia
+Eastern Australia,771,420,Australasia,Western Australia,New Guinea,New Zealand
+New Zealand,852,462,Australasia,Eastern Australia,Argentina
+
+
+
+
+
+
+

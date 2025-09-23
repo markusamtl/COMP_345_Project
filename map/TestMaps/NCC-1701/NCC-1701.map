@@ -1,0 +1,98 @@
+[Map]
+author=Brian Donnelly
+warn=yes
+image=NCC-1701.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Main Bridge=8
+Forward Saucer=3
+Port Saucer=3
+Starboard Saucer=3
+Aft Saucer=3
+Torpedo Bay=3
+Engineering=8
+Shuttle Bay=3
+Port Nacel=4
+Starboard Nacel=4
+
+[Territories]
+Sector 0-1,95,110,Main Bridge,Sector 0-2,Sector 0-8,Sector 1-1
+Sector 0-2,100,105,Main Bridge,Sector 0-1,Sector 0-3,Sector 1-2
+Sector 0-3,108,104,Main Bridge,Sector 0-2,Sector 0-4,Sector 1-3
+Sector 0-4,113,109,Main Bridge,Sector 0-3,Sector 0-5,Sector 1-4
+Sector 0-5,113,117,Main Bridge,Sector 0-4,Sector 0-6,Sector 1-5
+Sector 0-6,107,123,Main Bridge,Sector 0-5,Sector 0-7,Sector 1-6
+Sector 0-7,100,123,Main Bridge,Sector 0-6,Sector 0-8,Sector 1-7
+Sector 0-8,96,116,Main Bridge,Sector 0-7,Sector 0-1,Sector 1-8
+
+Sector 1-1,73,102,Forward Saucer,Sector 1-2,Sector 2-1,Sector 0-1,Sector 1-8
+Sector 1-8,73,125,Forward Saucer,Sector 1-1,Sector 2-8,Sector 1-7,Sector 0-8
+Sector 2-1,41,92,Forward Saucer,Sector 1-1,Sector 2-8,Sector 2-2
+Sector 2-8,41,139,Forward Saucer,Sector 2-7,Sector 1-8,Sector 2-1
+
+Sector 1-7,90,143,Port Saucer,Sector 0-7,Sector 1-6,Sector 1-8,Sector 2-7
+Sector 2-7,77,173,Port Saucer,Sector 2-6,Sector 2-8,Sector 1-7
+Sector 1-6,115,143,Port Saucer,Sector 1-5,Sector 2-6,Sector 1-7,Sector 0-6
+Sector 2-6,129,172,Port Saucer,Sector 2-5,Sector 2-7,Sector 1-6
+
+Sector 1-2,91,87,Starboard Saucer,Sector 1-3,Sector 1-1,Sector 0-2,Sector 2-2
+Sector 2-2,78,59,Starboard Saucer,Sector 1-2,Sector 2-1,Sector 2-3
+Sector 2-3,126,60,Starboard Saucer,Sector 2-2,Sector 2-4,Sector 1-3
+Sector 1-3,116,86,Starboard Saucer,Sector 2-3,Sector 1-4,Sector 1-2,Sector 0-3
+
+Sector 1-4,134,103,Aft Saucer,Sector 0-4,Sector 1-3,Sector 1-5,Sector 2-4
+Sector 2-4,164,92,Aft Saucer,Sector 1-4,Sector 2-3,Sector 2-5,T-Bay,Eng-S-1
+Sector 1-5,136,126,Aft Saucer,Sector 0-5,Sector 1-4,Sector 1-6,Sector 2-5
+Sector 2-5,165,137,Aft Saucer,Sector 1-5,Sector 2-6,Sector 2-4,T-Bay,Eng-P-1
+
+T-Bay,199,113,Torpedo Bay,Sector 2-4,Sector 2-5,Eng-S-1,Eng-P-1,Eng-S-2,Eng-P-2
+
+Eng-P-1,193,131,Engineering,T-Bay,Sector 2-5,Eng-P-2
+Eng-S-1,193,99,Engineering,T-Bay,Sector 2-4,Eng-S-2
+Eng-P-2,217,129,Engineering,T-Bay,Eng-P-1,Eng-P-3,Eng-S-2
+Eng-S-2,217,102,Engineering,T-Bay,Eng-S-1,Eng-S-3,Eng-P-2
+Eng-P-3,241,128,Engineering,Eng-P-2,Eng-P-4,Eng-S-3
+Eng-S-3,242,102,Engineering,Eng-S-2,Eng-S-4,Eng-P-3
+Eng-P-4,261,126,Engineering,Eng-S-4,Eng-P-5,Eng-P-3,Nacel-P-1
+Eng-S-4,261,104,Engineering,Eng-P-4,Eng-S-5,Eng-S-3,Nacel-S-1
+Eng-P-5,275,128,Engineering,Eng-P-4,Eng-P-6,Eng-S-5
+Eng-S-5,275,105,Engineering,Eng-S-4,Eng-S-6,Eng-P-5
+Eng-P-6,294,126,Engineering,Eng-P-5,Shuttle-P-1,Eng-S-6
+Eng-S-6,295,104,Engineering,Eng-S-5,Shuttle-S-1,Eng-P-6
+
+Shuttle-P-1,319,125,Shuttle Bay,Eng-P-6,Shuttle-S-1,Shuttle-P-2
+Shuttle-S-1,319,105,Shuttle Bay,Eng-S-6,Shuttle-P-1,Shuttle-S-2
+Shuttle-P-2,340,126,Shuttle Bay,Shuttle-P-1,Shuttle-S-2,Shuttle-P-3
+Shuttle-S-2,340,105,Shuttle Bay,Shuttle-S-1,Shuttle-P-2,Shuttle-S-3
+Shuttle-P-3,356,120,Shuttle Bay,Shuttle-P-2,Shuttle-S-3
+Shuttle-S-3,356,109,Shuttle Bay,Shuttle-S-2,Shuttle-P-3
+
+Nacel-P-1,261,156,Port Nacel,Eng-P-4,Nacel-P-2
+Nacel-P-2,262,180,Port Nacel,Nacel-P-1,Nacel-P-3,Nacel-P-7
+Nacel-P-3,245,180,Port Nacel,Nacel-P-2,Nacel-P-4
+Nacel-P-4,227,180,Port Nacel,Nacel-P-3,Nacel-P-5
+Nacel-P-5,209,180,Port Nacel,Nacel-P-4,Nacel-P-6
+Nacel-P-6,192,179,Port Nacel,Nacel-P-5
+Nacel-P-7,278,179,Port Nacel,Nacel-P-8,Nacel-P-2
+Nacel-P-8,293,180,Port Nacel,Nacel-P-7,Nacel-P-9
+Nacel-P-9,309,180,Port Nacel,Nacel-P-8,Nacel-P-10
+Nacel-P-10,325,180,Port Nacel,Nacel-P-9,Nacel-P-11
+Nacel-P-11,341,180,Port Nacel,Nacel-P-10,Nacel-P-12
+Nacel-P-12,355,180,Port Nacel,Nacel-P-11,Nacel-P-13
+Nacel-P-13,368,179,Port Nacel,Nacel-P-12
+
+Nacel-S-1,261,75,Starboard Nacel,Eng-S-4,Nacel-S-2
+Nacel-S-2,262,49,Starboard Nacel,Nacel-S-1,Nacel-S-3,Nacel-S-7
+Nacel-S-3,247,48,Starboard Nacel,Nacel-S-2,Nacel-S-4
+Nacel-S-4,227,48,Starboard Nacel,Nacel-S-3,Nacel-S-5
+Nacel-S-5,209,48,Starboard Nacel,Nacel-S-4,Nacel-S-6
+Nacel-S-6,192,48,Starboard Nacel,Nacel-S-5
+Nacel-S-7,278,48,Starboard Nacel,Nacel-S-8,Nacel-S-2
+Nacel-S-8,293,48,Starboard Nacel,Nacel-S-7,Nacel-S-9
+Nacel-S-9,309,49,Starboard Nacel,Nacel-S-8,Nacel-S-10
+Nacel-S-10,325,49,Starboard Nacel,Nacel-S-9,Nacel-S-11
+Nacel-S-11,341,49,Starboard Nacel,Nacel-S-10,Nacel-S-12
+Nacel-S-12,355,49,Starboard Nacel,Nacel-S-11,Nacel-S-13
+Nacel-S-13,369,49,Starboard Nacel,Nacel-S-12

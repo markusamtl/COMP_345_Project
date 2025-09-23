@@ -1,0 +1,133 @@
+[Map]
+image=France.bmp
+wrap=no
+scroll=none
+author=Terry Lobert
+
+[Continents]
+Alsace/Lorraine=1
+Aquitaine=2
+Auvergne/Limousin=3
+Bretagne=1
+Bourgogne/Franche-Comte=3
+Centre=3
+Champagne-Ardenne=2
+Ile-de-France=2
+Languedoc-Roussillon=2
+Midi-Pyrenees=4
+Normandie=2
+Pays de la Loire=2
+Nord-Pas-de-Calais/Picardie=1
+Poitou-Charentes=2
+Provence-Alpes-Cote d'Azur=3
+Rhone-Alpes=3
+
+[Territories]
+Aisne,530,170,Nord-Pas-de-Calais/Picardie,Nord,Somme,Oise,Ardennes,Marne,Seine-Et-Marne 
+Nord,520,110,Nord-Pas-de-Calais/Picardie,Pas-De-Calais,Aisne
+Oise,460,190,Nord-Pas-de-Calais/Picardie,Somme,Aisne,Seine-Maritime,Eure,Val D'Oise,Seine-Et-Marne
+Pas-De-Calais,460,100,Nord-Pas-de-Calais/Picardie,Nord,Somme
+Somme,460,150,Nord-Pas-de-Calais/Picardie,Pas-De-Calais,Aisne,Oise,Seine-Maritime
+
+Seine-Maritime,380,170,Normandie,Somme,Oise,Eure
+Eure,380,220,Normandie,Seine-Maritime,Oise,Val D'Oise,Yvelines,Eure-Et-Loir,Orne,Calvados
+Calvados,300,220,Normandie,Eure,Orne,Manche
+Orne,340,250,Normandie,Eure,Eure-Et-Loir,Sarthe,Mayenne,Manche,Calvados
+Manche,240,200,Normandie,Calvados,Orne,Mayenne,Ille-Et-Vilaine
+
+Finistere,80,270,Bretagne,Cotes-Du-Nord,Morbihan
+Cotes-Du-Nord,140,270,Bretagne,Finistere,Morbihan,Ille-Et-Vilaine
+Morbihan,150,320,Bretagne,Finistere,Cotes-Du-Nord,Loire Atlantique,Ille-Et-Vilaine
+Ille-Et-Vilaine,220,300,Bretagne,Cotes-Du-Nord,Morbihan,Loire Atlantique,Mayenne,Manche
+
+Loire Atlantique,220,360,Pays de la Loire,Morbihan,Ille-Et-Vilaine,Maine-Et-Loire,Vendee
+Mayenne,280,300,Pays de la Loire,Manche,Orne,Sarthe,Maine-Et-Loire,Ille-Et-Vilaine
+Sarthe,330,320,Pays de la Loire,Orne,Loir-Et-Cher,Inore-Et-Loire,Maine-Et-Loire,Mayenne
+Maine-Et-Loire,290,370,Pays de la Loire,Mayenne,Sarthe,Inore-Et-loire,Vienne,Deux Sevres,Vendee,Loire Atlantique
+Vendee,240,430,Pays de la Loire,Loire Atlantique,Maine-Et-Loire,Deux Sevres,Charente Maritime
+
+Charente Maritime,270,500,Poitou-Charentes,Vendee,Deux Sevres,Charente,Gironde
+Deux Sevres,290,440,Poitou-Charentes,Vendee,Maine-Et-Loire,Vienne,Charente,Charente Maritime
+Vienne,340,440,Poitou-Charentes,Maine-Et-Loire,Inore-Et-Loire,Indre,Haute Vienne,Charente,Deux Sevres
+Charente,320,520,Poitou-Charentes,Deux Sevres,Vienne,Haute Vienne,Dordogne,Charente Maritime
+
+Gironde,270,610,Aquitaine,Charente Maritime,Dordogne,Lot-Et-Garonne,Landes
+Landes,250,680,Aquitaine,Gironde,Lot-Et-Garonne,Gers,Pyrenees Atlantiques
+Pyrenees Atlantiques,260,740,Aquitaine,Landes,Hautes Pyrenees
+Dordogne,360,580,Aquitaine,Charente,Haute Vienne,Correze,Lot,Lot-Et-Garonne,Gironde
+Lot-Et-Garonne,340,640,Aquitaine,Dordogne,Lot,Tarn-Et-Garonne,Gers,Landes,Gironde
+
+Val D'Oise,450,218,Ile-de-France,Eure,Oise,Seine-Et-Marne,Paris,Yvelines
+Seine-Et-Marne,500,260,Ile-de-France,Oise,Aisne,Marne,Aube,Yonne,Loiret,Essonne,Val D'Oise
+Essonne,460,270,Ile-de-France,Yvelines,Paris,Seine-Et-Marne,Loiret,Eure-Et-Loir
+Yvelines,430,240,Ile-de-France,Val D'Oise,Paris,Essonne,Eure-Et-Loir,Eure
+Paris,458,238,Ile-de-France,Val D'Oise,Essonne,Yvelines
+
+Eure-Et-Loir,400,290,Centre,Eure,Yvelines,Essonne,Loiret,Loir-Et-Cher,Orne
+Loiret,460,330,Centre,Eure-Et-Loir,Essonne,Seine-Et-Marne,Yonne,Cher,Loir-Et-Cher
+Loir-Et-Cher,400,350,Centre,Eure-Et-Loir,Loiret,Cher,Indre,Inore-Et-Loire,Sarthe
+Inore-Et-Loire,360,380,Centre,Loir-Et-Cher,Indre,Vienne,Maine-Et-Loire,Sarthe
+Indre,410,430,Centre,Loir-Et-Cher,Cher,Creuse,Haute Vienne,Vienne,Inore-Et-Loire
+Cher,470,400,Centre,Loiret,Nievre,Allier,Indre,Loir-Et-Cher,Creuse
+
+Ardennes,590,170,Champagne-Ardenne,Aisne,Marne,Meuse
+Marne,580,230,Champagne-Ardenne,Ardennes,Meuse,Haute Marne,Aube,Seine-Et-Marne,Aisne
+Aube,570,290,Champagne-Ardenne,Marne,Haute Marne,Cote D'Or,Yonne,Seine-Et-Marne
+Haute Marne,640,310,Champagne-Ardenne,Marne,Meuse,Vosges,Haute Saone,Cote D'Or,Aube
+
+Meuse,640,230,Alsace/Lorraine,Meurthe-Et-Moselle,Vosges,Haute Marne,Marne,Ardennes
+Meurthe-Et-Moselle,690,260,Alsace/Lorraine,Moselle,Vosges,Meuse
+Moselle,710,220,Alsace/Lorraine,Bas Rhin,Meurthe-Et-Moselle
+Bas Rhin,770,250,Alsace/Lorraine,Moselle,Haut Rhin,Vosges
+Haut Rhin,760,320,Alsace/Lorraine,Bas Rhin,Vosges,Belfont
+Vosges,710,300,Alsace/Lorraine,Meurthe-Et-Moselle,Bas Rhin,Haut Rhin,Haute Saone,Haute Marne,Meuse
+
+Yonne,540,340,Bourgogne/Franche-Comte,Seine-Et-Marne,Aube,Cote D'Or,Nievre,Loiret
+Cote D'Or,600,370,Bourgogne/Franche-Comte,Aube,Haute Marne,Haute Saone,Jura,Saone-Et-Loire,Nievre,Yonne
+Nievre,530,400,Bourgogne/Franche-Comte,Yonne,Cote D'Or,Saone-Et-Loire,Allier,Cher
+Saone-Et-Loire,600,440,Bourgogne/Franche-Comte,Cote D'Or,Jura,Ain,Rhone,Loire,Allier,Nievre
+Haute Saone,690,340,Bourgogne/Franche-Comte,Vosges,Belfont,Doubs,Jura,Cote D'Or,Haute Marne
+Belfont,738,342,Bourgogne/Franche-Comte,Haut Rhin,Doubs,Haute Saone
+Doubs,700,390,Bourgogne/Franche-Comte,Haute Saone,Belfont,Jura
+Jura,670,430,Bourgogne/Franche-Comte,Haute Saone,Doubs,Ain,Saone-Et-Loire,Cote D'Or
+
+Creuse,440,490,Auvergne/Limousin,Indre,Allier,Puy-De-Dome,Correze,Haute Vienne,Cher
+Allier,520,460,Auvergne/Limousin,Cher,Nievre,Saone-Et-Loire,Loire,Creuse,Puy-De-Dome
+Haute Vienne,390,510,Auvergne/Limousin,Indre,Creuse,Correze,Dordogne,Charente,Vienne
+Correze,430,550,Auvergne/Limousin,Creuse,Puy-De-Dome,Cantal,Lot,Dordogne,Haute Vienne
+Puy-De-Dome,510,520,Auvergne/Limousin,Allier,Loire,Haute Loire,Cantal,Correze,Creuse
+Cantal,480,570,Auvergne/Limousin,Puy-De-Dome,Haute Loire,Lozere,Aveyron,Lot,Correze
+Haute Loire,550,580,Auvergne/Limousin,Puy-De-Dome,Loire,Ardeche,Lozere,Cantal
+
+Loire,570,510,Rhone-Alpes,Saone-Et-Loire,Rhone,Ardeche,Haute Loire,Puy-De-Dome,Allier,Isere
+Ain,650,485,Rhone-Alpes,Jura,Haute Savoie,Savoie,Isere,Rhone,Saone-Et-Loire 
+Rhone,610,520,Rhone-Alpes,Saone-Et-Loire,Ain,Isere,Loire
+Haute Savoie,720,480,Rhone-Alpes,Ain,Savoie
+Savoie,730,540,Rhone-Alpes,Haute Savoie,Hautes Alpes,Isere,Ain
+Isere,670,560,Rhone-Alpes,Ain,Savoie,Hautes Alpes,Drome,Rhone,Ardeche,Loire
+Drome,640,610,Rhone-Alpes,Isere,Hautes Alpes,Alpes-De-Haute-Provence,Vauclose,Ardeche
+Ardeche,590,610,Rhone-Alpes,Loire,Drome,Gard,Lozere,Haute Loire,Loire,Isere
+
+Vauclose,640,670,Provence-Alpes-Cote d'Azur,Drome,Alpes-De-Haute-Provence,Bouches-Du-Rhone,Gard
+Hautes Alpes,720,610,Provence-Alpes-Cote d'Azur,Savoie,Isere,Drome,Alpes-De-Haute-Provence
+Alpes-de-Haute-Provence,710,660,Provence-Alpes-Cote d'Azur,Drome,Hautes Alpes,Alpes-Maritimes,Var,Bouches-Du-Rhone,Vauclose
+Alpes-Maritimes,770,670,Provence-Alpes-Cote d'Azur,Alpes-de-Haute-Provence,Var,Haute Corse
+Var,710,730,Provence-Alpes-Cote d'Azur,Alpes-Maritimes,Alpes-de-Haute-Provence,Bouches-Du-Rhone
+Bouches-Du-Rhone,630,710,Provence-Alpes-Cote d'Azur,Gard,Vauclose,Var,Alpes-de-Haute-Provence
+Haute Corse,910,800,Provence-Alpes-Cote d'Azur,Alpes-Maritimes,Corse-Du-Sud
+Corse-Du-Sud,910,870,Provence-Alpes-Cote d'Azur,Haute Corse,Herault
+
+Lot,410,620,Midi-Pyrenees,Correze,Cantal,Aveyron,Tarn-Et-Garonne,Lot-Et-Garonne,Dordogne
+Aveyron,480,650,Midi-Pyrenees,Cantal,Lozere,Gard,Herault,Tarn,Tarn-Et-Garonne,Lot
+Tarn-Et-Garonne,390,670,Midi-Pyrenees,Lot,Aveyron,Tarn,Haute Garonne,Gers,Lot-Et-Garonne
+Gers,340,700,Midi-Pyrenees,Lot-Et-Garonne,Tarn-Et-Garonne,Haute Garonne,Hautes Pyrenees,Landes
+Hautes Pyrenees,320,760,Midi-Pyrenees,Gers,Haute Garonne,Pyrenees Atlantiques
+Haute Garonne,400,720,Midi-Pyrenees,Gers,Tarn-Et-Garonne,Tarn,Ariege,Hautes Pyrenees,Aude
+Ariege,400,770,Midi-Pyrenees,Haute Garonne,Aude,Pyrenees Orientales
+Tarn,450,690,Midi-Pyrenees,Aveyron,Herault,Aude,Haute Garonne,Tarn-ET-Garonne
+
+Lozere,530,630,Languedoc-Roussillon,Haute Loire,Ardeche,Gard,Aveyron,Cantal
+Gard,590,680,Languedoc-Roussillon,Lozere,Ardeche,Vauclose,Bouches-Du-Rhone,Herault,Aveyron
+Herault,520,720,Languedoc-Roussillon,Gard,Corse-Du-Sud,Aude,Tarn,Aveyron
+Aude,460,760,Languedoc-Roussillon,Tarn,Herault,Pyrenees Orientales,Ariege,Haute Garonne
+Pyrenees Orientales,480,800,Languedoc-Roussillon,Aude,Ariege

@@ -1,0 +1,81 @@
+[Map]
+author=Michel Stöcklin
+image=Bourscheid.bmp
+wrap=no
+scroll=horizontal
+warn=yes
+
+[Continents]
+1. Ringmauer (innen)=5
+1. Ringmauer (aussen)=2
+2. Ringmauer (innen)=8
+2. Ringmauer (aussen)=5
+3. Ringmauer (innen-vorne)=10
+3. Ringmauer (innen-hinten)=8
+3. Ringmauer (aussen)=12
+Bollwerk (innen)=4
+Bollwerk (aussen)=3
+
+[Territories]
+a01,585,254,1. Ringmauer (innen),a02,a03,a04,a05,b01,b02,c02,c04,c05,c06
+a02,619,286,1. Ringmauer (innen),a01,a03,c02,c03
+a03,651,259,1. Ringmauer (innen),a01,a02,a04,c03
+a04,678,230,1. Ringmauer (innen),a01,a03,c03,c04
+a05,671,184,1. Ringmauer (innen),a01,b02,c05,f08
+
+b01,519,244,1. Ringmauer (aussen),a01,c02,c06
+b02,613,208,1. Ringmauer (aussen),a01,a05,c06
+
+c01,482,324,2. Ringmauer (innen),c02,d01,d02,d05,e07,e08
+c02,516,284,2. Ringmauer (innen),a01,a02,b01,c01,c03,c06,c07,d02,d03,d05
+c03,661,305,2. Ringmauer (innen),a02,a03,a04,c02,c04,d03,d04,f03
+c04,714,235,2. Ringmauer (innen),a01,a04,c03,c05,f04
+c05,719,195,2. Ringmauer (innen),a01,a05,c04,f04,f08
+c06,555,173,2. Ringmauer (innen),a01,b01,b02,c02,c07,f08,g10
+c07,453,215,2. Ringmauer (innen),c02,c06,d05
+
+d01,363,251,2. Ringmauer (aussen),c01,d05,e01,e07
+d02,609,356,2. Ringmauer (aussen),c01,c02,d03,e08
+d03,631,352,2. Ringmauer (aussen),c02,c03,d02,e08,f03
+d04,716,290,2. Ringmauer (aussen),c03,f03
+d05,401,218,2. Ringmauer (aussen),c01,c02,c07,d01,e01
+
+e01,309,243,3. Ringmauer (innen-vorne),d01,d05,e02,e07,g01,g02,g11,h04
+e02,339,340,3. Ringmauer (innen-vorne),e01,e03,e07,g02
+e03,393,395,3. Ringmauer (innen-vorne),e02,e04,e07,g02,g03,g04
+e04,459,441,3. Ringmauer (innen-vorne),e03,e05,e07,g04
+e05,538,486,3. Ringmauer (innen-vorne),e04,e08,g05,g06
+e06,627,529,3. Ringmauer (innen-vorne),e08,g06,g07
+e07,432,367,3. Ringmauer (innen-vorne),c01,d01,e01,e02,e03,e04,e08
+e08,579,425,3. Ringmauer (innen-vorne),c01,d02,d03,e05,e06,e07,e09,f03,g06,g07
+e09,671,450,3. Ringmauer (innen-vorne),e08,f01,f03,g07
+
+f01,723,411,3. Ringmauer (innen-hinten),e09,f02,f03,g07,g08
+f02,757,370,3. Ringmauer (innen-hinten),f01,f03,g08
+f03,715,333,3. Ringmauer (innen-hinten),c03,d03,d04,e08,e09,f01,f02,f04,f05,g08
+f04,775,234,3. Ringmauer (innen-hinten),c04,c05,f03,f05,f06,f07,f08,g08,g09
+f05,810,334,3. Ringmauer (innen-hinten),f03,f04,g08
+f06,830,244,3. Ringmauer (innen-hinten),f04,g08
+f07,763,179,3. Ringmauer (innen-hinten),f04
+f08,691,134,3. Ringmauer (innen-hinten),a05,c05,c06,f04,g09,g10
+
+g01,222,265,3. Ringmauer (aussen),e01,g02,h04,i02
+g02,293,336,3. Ringmauer (aussen),e01,e02,e03,g01,g03
+g03,339,416,3. Ringmauer (aussen),e03,g02,g04
+g04,414,451,3. Ringmauer (aussen),e03,e04,g03,g05
+g05,482,506,3. Ringmauer (aussen),e05,g04,g06
+g06,555,540,3. Ringmauer (aussen),e05,e06,e08,g05
+g07,670,526,3. Ringmauer (aussen),e06,e08,e09,f01
+g08,861,221,3. Ringmauer (aussen),f01,f02,f03,f04,f05,f06,g09
+g09,833,128,3. Ringmauer (aussen),f04,f08,g08
+g10,616,98,3. Ringmauer (aussen),c06,f08
+g11,279,187,3. Ringmauer (aussen),e01,h04
+
+h01,155,146,Bollwerk (innen),h02,h03,i01,i02,i03
+h02,175,182,Bollwerk (innen),h01,h03,i02
+h03,208,192,Bollwerk (innen),h01,h02,h04,i02,i03
+h04,241,214,Bollwerk (innen),e01,g01,g11,h03,i02
+
+i01,97,148,Bollwerk (aussen),h01,i02
+i02,138,199,Bollwerk (aussen),g01,h01,h02,h03,h04,i01
+i03,192,143,Bollwerk (aussen),h01,h03

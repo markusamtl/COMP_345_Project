@@ -1,0 +1,39 @@
+[Map]
+image=_14_ Loopies.bmp
+wrap=no
+scroll=none
+warn=no
+author=_MIKE CRUSH_
+
+[Continents]
+loopie box=-1
+loopie left=3
+loopie right=2
+
+[Territories]
+loopie box,473,110,loopie box,ll9,lr9
+
+ll1,305,181,loopie left,ll2,lr1
+ll2,307,198,loopie left,ll1,ll3
+ll3,308,219,loopie left,ll2,ll4
+ll4,310,240,loopie left,ll3,ll5
+ll5,310,263,loopie left,ll4,ll6
+ll6,312,288,loopie left,ll5,ll7
+ll7,315,319,loopie left,ll6,ll8
+ll8,316,356,loopie left,ll7,ll9
+ll9,322,401,loopie left,ll8,loopie box
+
+lr1,614,183,loopie right,lr2,ll1
+lr2,616,200,loopie right,lr1,lr3
+lr3,616,219,loopie right,lr2,lr4
+lr4,616,241,loopie right,lr3,lr5
+lr5,619,264,loopie right,lr4,lr6
+lr6,621,290,loopie right,lr5,lr7
+lr7,622,321,loopie right,lr6,lr8
+lr8,619,357,loopie right,lr7,lr9
+lr9,624,405,loopie right,lr8,loopie box
+
+
+
+
+

@@ -1,0 +1,55 @@
+[Map]
+author=Planellas
+warn=yes
+image=Catalunya.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Catalunya Occidental=6
+Catalunya Oriental=8
+Catalunya Central=11
+Catalunya Sud=8
+
+[Territories]
+Vall d'Aran,65,29,Catalunya Occidental,Pallars Sobira,Alta Ribagorça
+Pallars Sobira,95,47,Catalunya Occidental,Vall d'Aran,Alta Ribagorça,Pallars Jussa,Alt Urgell
+Alta Ribagorça,63,56,Catalunya Occidental,Vall d'Aran,Pallars Sobira,Pallars Jussa
+Pallars Jussa,76,94,Catalunya Occidental,Alta Ribagorça,Pallars Sobira,Alt Urgell,La Noguera
+Alt Urgell,114,79,Catalunya Occidental,Pallars Sobira,Pallars Jussa,La Noguera,Solsones,Bergueda,Cerdanya
+Cerdanya,151,63,Catalunya Oriental,Alt Urgell,Bergueda,Ripolles
+Bergueda,158,96,Catalunya Central,Cerdanya,Ripolles,Osona,Bages,Solsones,Alt Urgell
+Solsones,124,108,Catalunya Central,Bergueda,Bages,Anoia,La Segarra,La Noguera,Alt Urgell
+Ripolles,189,74,Catalunya Oriental,Cerdanya,Bergueda,Osona,Garrotxa
+Garrotxa,217,84,Catalunya Oriental,Ripolles,Osona,La Selva,Girones,Pla de l'Estany,Alt Emporda
+Alt Emporda,252,66,Catalunya Oriental,Garrotxa,Pla de l'Estany,Girones,Baix Emporda
+Pla de l'Estany,240,88,Catalunya Oriental,Alt Emporda,Girones,Garrotxa
+Baix Emporda,267,105,Catalunya Oriental,Alt Emporda,Girones
+Girones,245,104,Catalunya Oriental,Baix Emporda,La Selva,Garrotxa,Pla de l'Estany,Alt Emporda
+La Selva,231,121,Catalunya Oriental,Girones,Garrotxa,Osona,Valles Oriental,El Maresme
+Osona,193,108,Catalunya Oriental,Ripolles,Garrotxa,La Selva,Valles Oriental,Bages,Bergueda
+Bages,159,135,Catalunya Central,Bergueda,Osona,Valles Oriental,Valles Occidental,Baix Llobregat,Anoia,Solsones
+Valles Oriental,201,145,Catalunya Oriental,Osona,La Selva,El Maresme,Barcelones,Valles Occidental,Bages
+Valles Occidental,179,160,Catalunya Central,Valles Oriental,Barcelones,Baix Llobregat,Bages
+El Maresme,213,154,Catalunya Oriental,La Selva,Valles Oriental,Barcelones
+Barcelones,191,177,Catalunya Central,El Maresme,Valles Oriental,Valles Occidental,Baix Llobregat
+Baix Llobregat,175,183,Catalunya Central,Barcelones,Valles Occidental,Bages,Anoia,Alt penedes,Garraf
+Alt penedes,150,182,Catalunya Central,Baix Llobregat,Garraf,Baix penedes,Alt Camp,Anoia
+Baix penedes,134,196,Catalunya Sud,Garraf,Alt penedes,Alt Camp,Tarragones
+Garraf,158,196,Catalunya Central,Baix Llobregat,Alt penedes,Baix penedes
+Anoia,137,158,Catalunya Central,Solsones,Bages,Baix Llobregat,Alt penedes,Alt Camp,Conca de Barbera,La Segarra
+La Segarra,111,145,Catalunya Central,Solsones,Anoia,Conca de Barbera,l'Urgell,La Noguera
+La Noguera,72,128,Catalunya Occidental,Pallars Jussa,Alt Urgell,Solsones,La Segarra,l'Urgell,El Pla d'Urgell,El Segria
+El Segria,46,169,Catalunya Occidental,La Noguera,El Pla d'Urgell,Les Garrigues,Ribera d'Ebre
+El Pla d'Urgell,75,157,Catalunya Occidental,La Noguera,l'Urgell,Les Garrigues,El Segria
+l'Urgell,92,161,Catalunya Central,La Noguera,La Segarra,Conca de Barbera,Les Garrigues,El Pla d'Urgell
+Les Garrigues,70,181,Catalunya Sud,El Segria,El Pla d'Urgell,l'Urgell,Conca de Barbera,Priorat,Ribera d'Ebre
+Conca de Barbera,105,178,Catalunya Sud,La Segarra,Anoia,Alt Camp,Baix Camp,Priorat,Les Garrigues,l'Urgell
+Alt Camp,115,192,Catalunya Sud,Conca de Barbera,Anoia,Alt penedes,Baix penedes,Tarragones,Baix Camp
+Tarragones,114,212,Catalunya Sud,Baix Camp,Alt Camp,Baix penedes
+Baix Camp,89,212,Catalunya Sud,Tarragones,Alt Camp,Conca de Barbera,Priorat,Ribera d'Ebre,Baix Ebre
+Priorat,69,207,Catalunya Sud,Baix Camp,Ribera d'Ebre,Les Garrigues,Conca de Barbera
+Ribera d'Ebre,56,224,Catalunya Sud,El Segria,Les Garrigues,Priorat,Baix Camp,Baix Ebre,Terra Alta
+Terra Alta,33,230,Catalunya Sud,Baix Ebre,Ribera d'Ebre
+Baix Ebre,48,253,Catalunya Sud,Ribera d'Ebre,Terra Alta,Baix Camp,Montsia
+Montsia,44,277,Catalunya Sud,Baix Ebre

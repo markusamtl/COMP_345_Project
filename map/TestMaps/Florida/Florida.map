@@ -1,0 +1,78 @@
+[map]
+author=Punjab
+warn=yes
+image=Florida.bmp
+wrap=no
+scroll=horizontal
+
+[continents]
+Florida=1
+
+[territories]
+Escambia,120,30,Florida,Santa Rosa
+Santa Rosa,140,30,Florida,Escambia,Okaloosa
+Okaloosa,170,40,Florida,Santa Rosa,Walton
+Walton,190,40,Florida,Okaloosa,Holmes,Washington,Bay
+Holmes,220,35,Florida,Walton,Washington,Jackson
+Washington,220,55,Florida,Walton,Holmes,Jackson,Bay
+Bay,220,70,Florida,Walton,Washington,Jackson,Calhoun,Gulf
+Jackson,250,40,Florida,Holmes,Washington,Bay,Calhoun,Gadsen,Liberty
+Calhoun,250,70,Florida,Jackson,Bay,Gulf,Gadsen,Liberty
+Gulf,250,100,Florida,Bay,Calhoun,Liberty,Franklin
+Gadsen,285,60,Florida,Jackson,Calhoun,Liberty,Leon
+Liberty,270,75,Florida,Jackson,Calhoun,Gulf,Gadsen,Franklin,Leon,Wakulla
+Franklin,270,100,Florida,Gulf,Liberty,Wakulla
+Leon,300,70,Florida,Gadsen,Liberty,Wakulla,Jefferson
+Wakulla,300,85,Florida,Liberty,Franklin,Leon,Jefferson
+Jefferson,320,70,Florida,Leon,Wakulla,Madison,Taylor
+Madison,340,70,Florida,Jefferson,Taylor,Hamilton,Suwannee,Lafayette
+Taylor,340,90,Florida,Jefferson,Madison,Lafayette,Dixie
+Hamilton,370,60,Florida,Madison,Suwannee,Columbia
+Suwannee,370,80,Florida,Madison,Hamilton,Lafayette,Columbia,Gilchrist
+Lafayette,370,100,Florida,Madison,Taylor,Suwannee,Dixie,Gilchrist
+Dixie,370,120,Florida,Taylor,Lafayette,Gilchrist,Levy
+Columbia,390,90,Florida,Hamilton,Suwannee,Gilchrist,Baker,Union,Alachua
+Gilchrist,390,120,Florida,Suwannee,Lafayette,Dixie,Columbia,Levy,Alachua
+Levy,390,150,Florida,Dixie,Gilchrist,Alachua,Marion,Citrus
+Baker,415,80,Florida,Columbia,Union,Nassau,Duval,Bradford,Clay
+Union,410,98,Florida,Baker,Columbia,Alachua,Bradford
+Alachua,410,120,Florida,Union,Columbia,Gilchrist,Levy,Bradford,Putnam,Marion
+Nassau,442,57,Florida,Baker,Duval
+Duval,442,78,Florida,Nassau,Baker,Clay,St. Johns
+Bradford,421,103,Florida,Union,Baker,Alachua,Clay
+Clay,440,105,Florida,Duval,Baker,Bradford,St. Johns,Putnam
+St. Johns,465,108,Florida,Duval,Clay,Putnam,Flagler
+Putnam,440,125,Florida,Clay,St. Johns,Alachua,Marion,Flagler,Volusia
+Marion,425,155,Florida,Putnam,Alachua,Levy,Volusia,Citrus,Sumter,Lake
+Flagler,470,140,Florida,St. Johns,Putnam,Volusia
+Volusia,480,165,Florida,Flagler,Putnam,Marion,Lake,Seminole,Brevard
+Citrus,400,175,Florida,Levy,Marion,Sumter,Hernando
+Sumter,428,187,Florida,Citrus,Marion,Lake,Hernando,Pasco,Polk
+Lake,443,192,Florida,Sumter,Marion,Volusia,Seminole,Orange,Polk,Osceola
+Hernando,407,194,Florida,Citrus,Sumter,Pasco
+Pasco,413,213,Florida,Hernando,Sumter,Pinellas,Hillsborough,Polk
+Seminole,477,183,Florida,Lake,Volusia,Orange
+Orange,468,200,Florida,Lake,Seminole,Brevard,Polk,Osceola
+Brevard,507,215,Florida,Orange,Volusia,Osceola,Indian River
+Pinellas,388,241,Florida,Pasco,Hillsborough
+Hillsborough,415,240,Florida,Pinellas,Pasco,Polk,Manatee,Hardee
+Polk,445,235,Florida,Hillsborough,Sumter,Lake,Orange,Osceola,Pasco,Manatee,Highlands,Okeechobee,Hardee
+Osceola,485,230,Florida,Polk,Lake,Orange,Brevard,Indian River,Highlands,Okeechobee
+Indian River,516,252,Florida,Osceola,Brevard,Okeechobee,St. Lucie
+Manatee,418,262,Florida,Hillsborough,Polk,Hardee,Desoto,Sarasota
+Sarasota,411,289,Florida,Manatee,Desoto,Charlotte
+Hardee,442,265,Florida,Manatee,Hillsborough,Polk,Highlands,Desoto
+Desoto,442,285,Florida,Manatee,Hardee,Highlands,Sarasota,Charlotte,Glades
+Highlands,470,280,Florida,Desoto,Hardee,Polk,Osceola,Okeechobee,Charlotte,Glades
+Okeechobee,499,272,Florida,Highlands,Polk,Osceola,Indian River,Martin,St. Lucie,Glades
+St. Lucie,522,274,Florida,Indian River,Okeechobee,Martin
+Martin,530,294,Florida,St. Lucie,Okeechobee,Palm Beach
+Charlotte,440,305,Florida,Sarasota,Desoto,Highlands,Glades,Lee,Hendry
+Glades,474,305,Florida,Charlotte,Highlands,Okeechobee,Desoto,Lee,Hendry
+Lee,447,329,Florida,Charlotte,Hendry,Glades,Collier
+Hendry,485,330,Florida,Lee,Charlotte,Glades,Collier,Broward,Palm Beach
+Palm Beach,525,320,Florida,Hendry,Martin,Broward
+Collier,465,355,Florida,Lee,Hendry,Broward,Monroe,Miami-Dade
+Broward,520,355,Florida,Palm Beach,Hendry,Collier,Miami-Dade
+Monroe,490,400,Florida,Collier,Miami-Dade
+Miami-Dade,515,390,Florida,Monroe,Collier,Broward

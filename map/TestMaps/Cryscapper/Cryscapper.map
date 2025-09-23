@@ -1,0 +1,40 @@
+[Map]
+author=Sid6.7
+image=cryscapper.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Beagle Hotel=9
+Arms Apartments=8
+Wallis Plaza=4
+Heli Pads=3
+Eicher Park=1
+Main Street=2
+
+[Territories]
+Main Street,414,359,Main Street,Apartment Office,Wallis Mini Mart,Beagle Cafe & Gift,Park
+Park,592,434,Eicher Park,Storage,Main Street
+Apartment Office,606,300,Arms Apartments,Storage,Mr. Berts Apt.,Main Street
+Storage,688,314,Arms Apartments,Park,Apartment Office
+Mr. Berts Apt.,682,257,Arms Apartments,Apartment Office,Unit #2
+Unit #2,657,206,Arms Apartments,Mr. Berts Apt.,Tom & Lisa Apt.,Mrs. Gills Apt
+Tom & Lisa Apt.,707,162,Arms Apartments,Unit #2,Mrs. Gills Apt,Territory20,Bob & Jills Apt.
+Mrs. Gills Apt,814,121,Arms Apartments,Tom & Lisa Apt.,Bob & Jills Apt.,Unit #2
+Bob & Jills Apt.,645,111,Arms Apartments,Tom & Lisa Apt.,Heli Pad #3,Mrs. Gills Apt
+Hotel Office,95,372,Beagle Hotel,The Paris Suite,Beagle Cafe & Gift
+Beagle Cafe & Gift,157,374,Beagle Hotel,Main Street,Hotel Office,The Paris Suite
+The Paris Suite,151,326,Beagle Hotel,Beagle Cafe & Gift,Hotel Office,The Venice Suite,3rd Floor Foyer
+The Venice Suite,86,269,Beagle Hotel,The Paris Suite,3rd Floor Foyer,The Swiss Suite
+3rd Floor Foyer,302,271,Beagle Hotel,The Paris Suite,The Venice Suite,The Swiss Suite
+The Swiss Suite,200,231,Beagle Hotel,3rd Floor Foyer,The Venice Suite,The Honeymoon Suite,Empty Room
+The Honeymoon Suite,198,182,Beagle Hotel,The Swiss Suite,Empty Room,Heli Pad #1
+Empty Room,124,173,Beagle Hotel,The Swiss Suite,The Honeymoon Suite,Heli Pad #1
+Wallis Mini Mart,440,280,Wallis Plaza,Croft & Krill Law Office,Main Street
+Croft & Krill Law Office,463,204,Wallis Plaza,Bummer Insurance,Wallis Mini Mart
+Bummer Insurance,425,168,Wallis Plaza,Heli Pad #2,Croft & Krill Law Office,Territory20
+Territory20,515,176,Wallis Plaza,Tom & Lisa Apt.,Bummer Insurance
+Heli Pad #1,121,142,Heli Pads,Heli Pad #3,The Honeymoon Suite,Empty Room,Heli Pad #2
+Heli Pad #2,427,122,Heli Pads,Heli Pad #3,Bummer Insurance,Heli Pad #1
+Heli Pad #3,764,75,Heli Pads,Bob & Jills Apt.,Heli Pad #2,Heli Pad #1

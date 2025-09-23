@@ -1,0 +1,55 @@
+[Map]
+author=Sid6.7
+image=falklands.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+East Falklands=5
+Southern Falklands=3
+West Falklands=5
+Seal Island=1
+North Islands=1
+Jason Islands=2
+Weddell=2
+
+[Territories]
+Stanley,841,263,East Falklands,Teal Inlet,Fitzroy,Port Louis,No mans Land
+Volunteer Pt.,874,201,East Falklands,Port Louis
+Port Louis,799,195,East Falklands,Stanley,Volunteer Pt.
+Teal Inlet,706,185,East Falklands,Bombilla,No mans Land,Stanley
+Salvadore,743,163,East Falklands,Bombilla,Territory05
+Territory05,597,90,East Falklands,Bombilla,Salvadore
+Bombilla,659,204,East Falklands,Port San Carlos,No mans Land,Teal Inlet,Territory05,Salvadore
+Port San Carlos,581,189,East Falklands,Darwin,Port Howard,No mans Land,Bombilla
+Darwin,599,311,East Falklands,Goose Green,Port San Carlos,No mans Land,Fitzroy
+No mans Land,657,278,East Falklands,Darwin,Port San Carlos,Bombilla,Fitzroy,Teal Inlet,Stanley
+Fitzroy,767,312,East Falklands,Darwin,No mans Land,Stanley
+Goose Green,571,331,Southern Falklands,North Arm,Walker Creek,Darwin,Chartres
+Walker Creek,631,383,Southern Falklands,North Arm,Lively Isalnd,Goose Green
+North Arm,505,455,Southern Falklands,Bull Pt.,Goose Green,Walker Creek,Fox Bay
+Bull Pt.,490,526,Southern Falklands,Seal Island,North Arm,Speedwell Island,George Island
+Speedwell Island,418,496,Southern Falklands,Bull Pt.
+George Island,412,553,Southern Falklands,Bull Pt.
+Lively Isalnd,716,412,Southern Falklands,Walker Creek
+Seal Island,570,580,Seal Island,Bull Pt.
+Pebble Island,416,106,North Islands,Port Howard
+Kepel Island,345,124,North Islands,Shallow Bay
+Saunders Island,303,135,North Islands,Shallow Bay
+Steeple Jason isl.,29,25,Jason Islands,Grand Jason Isl.
+Grand Jason Isl.,75,45,Jason Islands,Steeple Jason isl.,Flat Jason Island
+Flat Jason Island,125,55,Jason Islands,Grand Jason Isl.,South Jason Isl.
+South Jason Isl.,101,104,Jason Islands,Flat Jason Island,Roy Cove
+Weddell,99,379,Weddell,Port Stephens,Dunnose Head,Beaver Isl.
+Beaver Isl.,28,358,Weddell,Weddell
+Roy Cove,243,190,West Falklands,South Jason Isl.,Crooked Inlet
+Crooked Inlet,275,245,West Falklands,Roy Cove,Hill Cove,Chartres
+Shallow Bay,334,167,West Falklands,Hill Cove,Saunders Island,Kepel Island
+Hill Cove,322,200,West Falklands,Crooked Inlet,Chartres,Port Howard,Shallow Bay
+Port Howard,458,246,West Falklands,Hill Cove,Pebble Island,Chartres,Port San Carlos
+Chartres,335,293,West Falklands,Crooked Inlet,Hill Cove,Port Howard,Dunnose Head,Fox Bay,Goose Green
+Fox Bay,288,397,West Falklands,Chartres,Dunnose Head,Spring Pt.,Port Stephens,North Arm
+Spring Pt.,231,350,West Falklands,Fox Bay
+Dunnose Head,274,289,West Falklands,Chartres,Fox Bay,Weddell
+Port Stephens,144,459,West Falklands,Fox Bay,Weddell

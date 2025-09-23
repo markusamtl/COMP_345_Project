@@ -1,0 +1,38 @@
+[Map]
+author=Swen Kinkel
+image=Sachsen-Anhalt-2005.bmp
+wrap=no
+scroll=no
+warn=yes
+
+[Continents]
+MAGDEBURG=2
+HALLE=1
+DESSAU=1
+SACHSEN-ANHALT=15
+
+[Territories]
+Burgenlandkreis,365,717,SACHSEN-ANHALT,Weißenfels,Merseburg-Querfurt
+Weißenfels,345,670,SACHSEN-ANHALT,Burgenlandkreis,Merseburg-Querfurt
+Merseburg-Querfurt,300,625,SACHSEN-ANHALT,Burgenlandkreis,Weißenfels,Halle (Saale),Saalkreis,Mansfelder Land,Sangerhausen
+Halle (Saale),335,577,HALLE,Merseburg-Querfurt,Saalkreis
+Saalkreis,308,548,SACHSEN-ANHALT,Merseburg-Querfurt,Halle (Saale),Mansfelder Land,Bernburg,Köthen,Bitterfeld
+Mansfelder Land,250,550,SACHSEN-ANHALT,Merseburg-Querfurt,Saalkreis,Sangerhausen,Quedlinburg,Aschersleben-Staßfurt,Bernburg
+Sangerhausen,150,565,SACHSEN-ANHALT,Merseburg-Querfurt,Mansfelder Land,Quedlinburg
+Wernigerode,88,470,SACHSEN-ANHALT,Quedlinburg,Halberstadt
+Quedlinburg,160,488,SACHSEN-ANHALT,Mansfelder Land,Sangerhausen,Wernigerode,Aschersleben-Staßfurt,Halberstadt,Bördekreis
+Aschersleben-Staßfurt,222,464,SACHSEN-ANHALT,Mansfelder Land,Quedlinburg,Bernburg,Schönebeck,Bördekreis
+Bernburg,280,490,SACHSEN-ANHALT,Saalkreis,Mansfelder Land,Aschersleben-Staßfurt,Köthen,Schönebeck
+Köthen,333,484,SACHSEN-ANHALT,Saalkreis,Bernburg,Bitterfeld,Dessau,Anhalt-Zerbst,Schönebeck
+Bitterfeld,404,525,SACHSEN-ANHALT,Saalkreis,Köthen,Dessau,Wittenberg
+Dessau,380,460,DESSAU,Köthen,Bitterfeld,Wittenberg,Anhalt-Zerbst
+Wittenberg,510,470,SACHSEN-ANHALT,Bitterfeld,Dessau,Anhalt-Zerbst
+Anhalt-Zerbst,385,410,SACHSEN-ANHALT,Köthen,Dessau,Wittenberg,Schönebeck,Jerichower Land
+Schönebeck,282,420,SACHSEN-ANHALT,Aschersleben-Staßfurt,Bernburg,Köthen,Anhalt-Zerbst,Magdeburg,Bördekreis,Jerichower Land
+Magdeburg,264,368,MAGDEBURG,Schönebeck,Bördekreis,Ohre-Kreis,Jerichower Land
+Halberstadt,128,419,SACHSEN-ANHALT,Wernigerode,Quedlinburg,Bördekreis
+Bördekreis,185,400,SACHSEN-ANHALT,Quedlinburg,Aschersleben-Staßfurt,Schönebeck,Magdeburg,Halberstadt,Ohre-Kreis
+Ohre-Kreis,225,300,SACHSEN-ANHALT,Magdeburg,Bördekreis,Stendal,Altmarkkreis Salzwedel,Jerichower Land
+Jerichower Land,330,310,SACHSEN-ANHALT,Anhalt-Zerbst,Schönebeck,Magdeburg,Ohre-Kreis,Stendal
+Stendal,290,200,SACHSEN-ANHALT,Ohre-Kreis,Jerichower Land,Altmarkkreis Salzwedel
+Altmarkkreis Salzwedel,180,200,SACHSEN-ANHALT,Ohre-Kreis,Stendal

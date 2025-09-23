@@ -1,0 +1,68 @@
+[Map]
+author=John Zuber
+image=GeoGem.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+Three Corners=3
+Quad Circle=2
+Top Side=3
+Diamond=2
+Right Side=3
+Tri Circle=2
+Bottom Side=3
+Box=4
+Left Side=3
+Triangle=4
+
+[Territories]
+A,20,24,Three Corners,B,M
+M,775,40,Three Corners,L,N,A
+U,791,448,Three Corners,T,AD
+
+B,50,56,Quad Circle,A,C,D
+C,107,56,Quad Circle,B,E,F
+D,51,114,Quad Circle,B,E,AI
+E,106,112,Quad Circle,C,D,F,AI
+
+F,196,67,Top Side,C,E,G,AI,AJ
+G,317,58,Top Side,F,H,AJ,AK
+H,457,68,Top Side,G,I,P,AK
+I,574,45,Top Side,J,K,P,H
+
+J,618,87,Diamond,I,K,P
+K,666,87,Diamond,I,J,L,P
+L,714,84,Diamond,K,M,N,O,P
+N,761,84,Diamond,L,M,O
+
+O,765,164,Right Side,L,N,P,R,AI
+P,530,151,Right Side,H,I,J,K,L,O,R,Q,AK,AL
+Q,544,247,Right Side,P,R,W,X,AL,AN
+R,684,280,Right Side,P,O,Q,S,V,W,AH,AE
+
+S,749,356,Tri Circle,R,V,T
+T,745,424,Tri Circle,S,U,V,W
+V,695,389,Tri Circle,R,S,T,W
+
+W,575,420,Bottom Side,Q,R,V,T,X
+X,463,374,Bottom Side,Q,W,Y,AL,AN
+Y,348,376,Bottom Side,X,Z,AG,AL,AM
+Z,237,384,Bottom Side,Y,AB,AF,AG
+
+AB,161,437,Box,Z,AC
+AC,101,387,Box,AB,AD,AE,AF,AG,AH
+AD,33,436,Box,AC,U
+AE,29,340,Box,AC,AH,R
+AF,166,339,Box,Z,AC,AG
+
+AG,181,258,Left Side,Y,Z,AC,AF,AH,AI,AJ,AL,AM
+AH,41,263,Left Side,AC,AE,AG,AI,R
+AI,147,174,Left Side,D,E,F,AG,AH,AJ,O
+AJ,304,181,Left Side,F,G,AG,AI,AK,AL
+
+AK,406,158,Triangle,G,H,P,AJ,AL
+AL,407,228,Triangle,P,Q,X,Y,AG,AJ,AK,AN,AM
+AM,341,264,Triangle,Y,AG,AL
+AN,465,264,Triangle,Q,X,AL

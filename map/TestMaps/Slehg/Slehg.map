@@ -1,0 +1,111 @@
+[Map]
+author=Sid6.7
+warn=yes
+image=Slehg.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+Albadia=4
+Hegemony=8
+Dunahnae=2
+Darakeene=6
+Durrover=2
+Gleam=2
+KarriaUria=4
+Vera Tre=5
+Vesh=11
+Toe=4
+Bleak=5
+Perforate=6
+Inferno=7
+Bridgecity=5
+
+[Territories]
+Horat,406,127,Albadia,Sifin,Thurfas,Plains
+Sifin,354,117,Albadia,Horat,Yorek,Plains
+Yorek,255,114,Albadia,Sifin
+Thurfas,410,172,Albadia,Scrub,Horat
+
+Calastia,643,474,Hegemony,Lageni,Geleeda,Ankila,Rahoch
+Ankila,523,463,Hegemony,Calastia,Geleeda,Zathiske
+Zathiske,469,442,Hegemony,Virduk,Ankila,Geleeda
+Virduk,451,376,Hegemony,Fester,New Venir,Zathiske,Geleeda,Ganjus
+New Venir,500,360,Hegemony,Lageni,Geleeda,Virduk,Ontenazu,Ganjus
+Lageni,582,398,Hegemony,Irontooth,Calastia,New Venir,Geleeda,Durrover
+Rahoch,575,515,Hegemony,Calastia,Fangsfall
+Geleeda,527,412,Hegemony,Virduk,New Venir,Lageni,Calastia,Ankila,Zathiske
+
+Dun,89,356,Dunahnae,Ertik
+Ertik,140,356,Dunahnae,Dun,Ukrudan
+
+Meliad,219,220,Darakeene,Karan,Arborth,Canntontown
+Provark,235,276,Darakeene,Karan,Arborth,Gaurak,Ukrudan
+Karan,188,232,Darakeene,Tarrak,Meliad,Arborth,Provark,Canntontown
+Arborth,241,233,Darakeene,Meliad,Canntontown,Gaurak,Karan,Provark
+Canntontown,237,186,Darakeene,Gaurak,Arborth,Meliad,Karan,Plains,Trum,Glutton
+Trum,251,155,Darakeene,Glutton,Canntontown
+
+Durrover,643,382,Durrover,Irontooth,Lageni
+
+Valley,388,294,Gleam,Stricken,Glivid
+Glivid,408,316,Gleam,Hollow,Valley,Ganjus,Fester
+Murmur,306,286,Gleam,Ukrudan,Hollow,Khet,Plains,Gaurak
+Hollow,342,295,Gleam,Murmur,Khet,Stricken,Glivid,Fester
+Stricken,386,270,Gleam,Valley,Hollow
+
+Tarrak,105,165,KarriaUria,Karan,Uria,Drift
+Uria,45,191,KarriaUria,Tarrak
+Drift,75,235,KarriaUria,Tarrak,Solemnaic
+Solemnaic,89,240,KarriaUria,Drift
+
+Ontenazu,535,328,Vera Tre,New Venir,Ganjus
+Ganjus,474,295,Vera Tre,Virduk,New Venir,Ontenazu,Glivid,Amalthea,Veratre
+Veratre,467,247,Vera Tre,Ganjus,Amalthea,Savanah,Plains
+Amalthea,542,260,Vera Tre,Ganjus,Veratre
+
+Hedrad,694,268,Vesh,Kelderstep,Godface
+Godface,736,193,Vesh,Hedrad,Toe Isle,Mullis Town,Moanscar
+Mullis Town,645,186,Vesh,Moanscar,Kelderstep,Godface
+Mansk,628,151,Vesh,Moanscar,Lede
+Cordrada,687,132,Vesh,Moanscar,Toe Isle,Lede
+Lede,633,99,Vesh,Cordrada,Moanscar,Bridge,Mansk
+Sorporatra,626,294,Vesh,Kelderstep,Corean,Irontooth
+Corean,688,370,Vesh,Sorporatra
+Kelderstep,598,211,Vesh,Sorporatra,Mullis Town,Moanscar,Bridge,Hedrad
+Moanscar,667,169,Vesh,Mullis Town,Godface,Lede,Mansk,Cordrada,Kelderstep
+Irontooth,596,323,Vesh,Sorporatra,Durrover,Lageni
+
+Toe Isle,778,84,Toe,Godface,Cordrada
+
+Bridge,549,140,Bridgecity,Savanah,Lede,Kelderstep
+
+Savanah,478,160,Bleak,Bridge,Krakadom,Scrub,Veratre
+Krakadom,518,106,Bleak,Savanah
+
+Scrub,415,198,Perforate,Savanah,Thurfas,Plains
+Khet,342,252,Perforate,Murmur,Non,Plains,Hollow
+Gaurak,276,229,Perforate,Murmur,Provark,Canntontown,Arborth,Plains
+Plains,344,207,Perforate,Gaurak,Glutton,Scrub,Non,Khet,Murmur,Sifin,Canntontown,Veratre,Horat
+Glutton,292,156,Perforate,Trum,Plains,Canntontown
+Non,339,233,Perforate,Plains,Khet
+
+Devil,117,429,Inferno,Fangsfall,Khanthet,Ukrudan
+Ukrudan,243,363,Inferno,Ertik,Murmur,Khanthet,Fester,Devil,Provark
+Fester,381,379,Inferno,Virduk,Ukrudan,Swelt,Hollow,Glivid
+Swelt,379,441,Inferno,Khanthet,Fester
+Asaathicity,280,494,Inferno,Khanthet
+Khanthet,264,449,Inferno,Asaathicity,Swelt,Ukrudan,Devil
+Fangsfall,102,480,Inferno,Devil,Rahoch
+
+
+
+
+
+
+
+
+
+
+
+

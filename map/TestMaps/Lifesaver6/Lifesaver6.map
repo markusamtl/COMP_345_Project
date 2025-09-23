@@ -1,0 +1,84 @@
+[Map]
+author=Rob Werhand
+image=Lifesaver6.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Top Circle=1
+Bottom Circle=1
+Upper Left Circle=1
+Lower Left Circle=1
+Upper Right Circle=1
+Lower Right Circle=1
+Center Circle=-2
+Left Arch=-2
+Right Arch=-2
+Upper Left Arch=-2
+Lower Left Arch=-2
+Upper Right Arch=-2
+Lower Right Arch=-2
+
+[Territories]
+Territory00,628,203,Top Circle,Territory05,Territory06,Territory01,Territory02,Territory03,Territory04
+Territory01,532,165,Top Circle,Territory00,Territory06,Territory02,Territory51
+Territory02,628,109,Top Circle,Territory00,Territory01,Territory03
+Territory03,719,171,Top Circle,Territory00,Territory04,Territory02,Territory55
+Territory04,718,245,Top Circle,Territory00,Territory05,Territory03
+Territory05,626,295,Top Circle,Territory00,Territory42,Territory06,Territory04
+Territory06,543,239,Top Circle,Territory00,Territory01,Territory05
+Territory07,629,692,Bottom Circle,Territory08,Territory13,Territory12,Territory11,Territory10,Territory09
+Territory08,623,595,Bottom Circle,Territory07,Territory42,Territory09,Territory13
+Territory09,720,657,Bottom Circle,Territory07,Territory08,Territory10
+Territory10,721,737,Bottom Circle,Territory07,Territory11,Territory09,Territory58
+Territory11,634,790,Bottom Circle,Territory07,Territory12,Territory10
+Territory12,547,727,Bottom Circle,Territory07,Territory13,Territory11,Territory52
+Territory13,547,648,Bottom Circle,Territory07,Territory08,Territory12
+Territory14,211,278,Upper Left Circle,Territory15,Territory20,Territory19,Territory18,Territory17,Territory16
+Territory15,300,317,Upper Left Circle,Territory14,Territory20,Territory16,Territory42
+Territory16,212,378,Upper Left Circle,Territory14,Territory17,Territory15
+Territory17,139,345,Upper Left Circle,Territory14,Territory18,Territory45,Territory16
+Territory18,120,241,Upper Left Circle,Territory14,Territory17,Territory19
+Territory19,211,178,Upper Left Circle,Territory14,Territory20,Territory18
+Territory20,277,216,Upper Left Circle,Territory14,Territory19,Territory15,Territory49
+Territory21,209,626,Lower Left Circle,Territory26,Territory25,Territory24,Territory23,Territory22,Territory27
+Territory22,294,590,Lower Left Circle,Territory21,Territory23,Territory42,Territory27
+Territory23,284,702,Lower Left Circle,Territory21,Territory24,Territory22,Territory54
+Territory24,214,723,Lower Left Circle,Territory21,Territory23,Territory25
+Territory25,130,660,Lower Left Circle,Territory21,Territory26,Territory24
+Territory26,144,555,Lower Left Circle,Territory21,Territory25,Territory27,Territory43
+Territory27,209,532,Lower Left Circle,Territory21,Territory26,Territory22
+Territory28,1053,276,Upper Right Circle,Territory29,Territory34,Territory33,Territory32,Territory31,Territory30
+Territory29,959,316,Upper Right Circle,Territory28,Territory42,Territory34,Territory30
+Territory30,979,208,Upper Right Circle,Territory28,Territory29,Territory31,Territory57
+Territory31,1052,182,Upper Right Circle,Territory28,Territory30,Territory32
+Territory32,1144,249,Upper Right Circle,Territory28,Territory31,Territory33
+Territory33,1123,357,Upper Right Circle,Territory28,Territory32,Territory34,Territory48
+Territory34,1049,375,Upper Right Circle,Territory28,Territory29,Territory33
+Territory35,1052,619,Lower Right Circle,Territory36,Territory37,Territory38,Territory39,Territory40,Territory41
+Territory36,962,585,Lower Right Circle,Territory35,Territory42,Territory37,Territory41
+Territory37,1054,523,Lower Right Circle,Territory35,Territory36,Territory38
+Territory38,1126,554,Lower Right Circle,Territory35,Territory39,Territory37,Territory46
+Territory39,1136,675,Lower Right Circle,Territory35,Territory40,Territory38
+Territory40,1050,724,Lower Right Circle,Territory35,Territory41,Territory39
+Territory41,979,688,Lower Right Circle,Territory35,Territory36,Territory60,Territory40
+Territory42,628,448,Center Circle,Territory05,Territory08,Territory15,Territory22,Territory29,Territory36
+Territory43,90,497,Left Arch,Territory26,Territory44
+Territory44,79,450,Left Arch,Territory45,Territory43
+Territory45,94,405,Left Arch,Territory17,Territory44
+Territory46,1175,493,Right Arch,Territory38,Territory47
+Territory47,1183,449,Right Arch,Territory48,Territory46
+Territory48,1173,405,Right Arch,Territory33,Territory47
+Territory49,329,122,Upper Left Arch,Territory20,Territory50
+Territory50,402,83,Upper Left Arch,Territory49,Territory51
+Territory51,472,105,Upper Left Arch,Territory01,Territory50
+Territory52,469,795,Lower Left Arch,Territory12,Territory53
+Territory53,396,813,Lower Left Arch,Territory54,Territory52
+Territory54,330,770,Lower Left Arch,Territory23,Territory53
+Territory55,796,111,Upper Right Arch,Territory03,Territory56
+Territory56,867,88,Upper Right Arch,Territory55,Territory57
+Territory57,934,129,Upper Right Arch,Territory30,Territory56
+Territory58,797,790,Lower Right Arch,Territory10,Territory59
+Territory59,868,812,Lower Right Arch,Territory58,Territory60
+Territory60,936,770,Lower Right Arch,Territory41,Territory59

@@ -1,0 +1,72 @@
+[Map]
+author=http://visatiesa.ten.lt
+image=Lithuania.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Utena Country=3
+Vilnius Country=4
+Alytus Country=1
+Marijampole Country=2
+Kaunas Country=4
+Taurage Country=2
+Telsiai Country=2
+Klaipeda Country=2
+Panevezys Country=2
+Siauliai Country=3
+
+[Territories]
+Ignalina m.,570,186,Utena Country,Utena m.,Svencionys m.,Zarasai m.
+Zarasai m.,551,133,Utena Country,Rokiskis m.,Utena m.,Ignalina m.
+Utena m.,506,172,Utena Country,Anyksciai m.,Zarasai m.,Ignalina m.,Rokiskis m.,Moletai m.,Svencionys m.
+Anyksciai m.,444,165,Utena Country,Kupiskis m.,Panevezys m.,Rokiskis m.,Utena m.,Ukmerge m.,Moletai m.
+Moletai m.,494,226,Utena Country,Utena m.,Svencionys m.,Anyksciai m.,Ukmerge m.,Vilnius m.,Sirvintos m.
+Svencionys m.,538,241,Vilnius Country,Utena m.,Ignalina m.,Moletai m.,Vilnius m.
+Vilnius m.,477,307,Vilnius Country,Moletai m.,Sirvintos m.,Svencionys m.,Salcininkai m.,Trakai m.,Elektrenai m.
+Trakai m.,418,351,Vilnius Country,Varena m.,Alytus m.,Prienai m.,Kaisadoriai m.,Vilnius m.,Salcininkai m.,Elektrenai m.
+Elektrenai m.,410,312,Vilnius Country,Kaisadoriai m.,Vilnius m.,Sirvintos m.,Trakai m.
+Sirvintos m.,429,262,Vilnius Country,Jonava m.,Moletai m.,Vilnius m.,Elektrenai m.,Ukmerge m.,Kaisadoriai m.
+Salcininkai m.,464,379,Vilnius Country,Varena m.,Vilnius m.,Trakai m.
+Ukmerge m.,409,215,Vilnius Country,Kedainiai m.,Jonava m.,Panevezys m.,Anyksciai m.,Moletai m.,Sirvintos m.
+Varena m.,389,421,Alytus Country,Druskininkai m.,Alytus m.,Trakai m.,Salcininkai m.
+Lazdijai m.,293,409,Alytus Country,Kalvarija m.,Mariampole m.,Alytus m.,Druskininkai m.
+Druskininkai m.,333,443,Alytus Country,Lazdijai m.,Alytus m.,Varena m.
+Alytus m.,340,377,Alytus Country,Mariampole m.,Lazdijai m.,Druskininkai m.,Varena m.,Prienai m.,Trakai m.
+Mariampole m.,274,345,Marijampole Country,Vilkaviskis m.,Kalvarija m.,Lazdijai m.,Alytus m.,Prienai m.,Kazlu Ruda m.
+Vilkaviskis m.,225,341,Marijampole Country,Kazlu Ruda m.,Sakiai m.,Mariampole m.,Kalvarija m.
+Kalvarija m.,249,379,Marijampole Country,Vilkaviskis m.,Mariampole m.,Lazdijai m.
+Kazlu Ruda m.,280,305,Marijampole Country,Sakiai m.,Vilkaviskis m.,Kaunas m.,Prienai m.,Mariampole m.
+Sakiai m.,238,276,Marijampole Country,Jurbarkas m.,Kazlu Ruda m.,Kaunas m.,Vilkaviskis m.
+Prienai m.,331,332,Kaunas Country,Mariampole m.,Kazlu Ruda m.,Alytus m.,Kaunas m.,Kaisadoriai m.,Trakai m.
+Kaisadoriai m.,375,299,Kaunas Country,Prienai m.,Kaunas m.,Jonava m.,Elektrenai m.,Trakai m.,Sirvintos m.
+Kaunas m.,314,267,Kaunas Country,Jurbarkas m.,Sakiai m.,Kazlu Ruda m.,Prienai m.,Kaisadoriai m.,Jonava m.,Rasiainiai m.,Kedainiai m.
+Jonava m.,366,249,Kaunas Country,Kaisadoriai m.,Kaunas m.,Kedainiai m.,Sirvintos m.,Ukmerge m.
+Kedainiai m.,329,202,Kaunas Country,Kaunas m.,Rasiainiai m.,Jonava m.,Panevezys m.,Ukmerge m.,Radviliskis m.
+Rasiainiai m.,252,193,Kaunas Country,Taurage m.,Jurbarkas m.,Kaunas m.,Kedainiai m.,Radviliskis m.,Kelme m.
+Jurbarkas m.,217,233,Taurage Country,Pagegiai m.,Taurage m.,Rasiainiai m.,Sakiai m.,Kaunas m.
+Taurage m.,167,215,Taurage Country,Silute m.,Pagegiai m.,Jurbarkas m.,Rasiainiai m.,Silale m.
+Pagegiai m.,125,233,Taurage Country,Silute m.,Taurage m.,Jurbarkas m.
+Silale m.,155,169,Taurage Country,Klaipeda m.,Silute m.,Taurage m.,Telsiai m.,Rietavas m.,Kelme m.
+Rietavas m.,136,132,Telsiai Country,Klaipeda m.,Silale m.,Telsiai m.,Plunge m.
+Plunge m.,116,92,Telsiai Country,Klaipeda m.,Kretinga m.,Skuodas m.,Telsiai m.,Rietavas m.,Mazeikiai m.
+Telsiai m.,170,98,Telsiai Country,Silale m.,Kelme m.,Siauliai m.,Akmene m.,Plunge m.,Rietavas m.,Mazeikiai m.
+Mazeikiai m.,162,34,Telsiai Country,Skuodas m.,Akmene m.,Plunge m.,Telsiai m.
+Skuodas m.,98,46,Klaipeda Country,Kretinga m.,Plunge m.,Mazeikiai m.
+Kretinga m.,67,84,Klaipeda Country,Klaipeda m.,Palanga m.,Skuodas m.,Plunge m.
+Palanga m.,45,86,Klaipeda Country,Klaipeda m.,Kretinga m.
+Klaipeda m.,75,138,Klaipeda Country,Nerija m.,Silute m.,Kretinga m.,Palanga m.,Plunge m.,Rietavas m.,Silale m.
+Silute m.,90,196,Klaipeda Country,Klaipeda m.,Silale m.,Taurage m.,Pagegiai m.
+Nerija m.,38,184,Klaipeda Country,Klaipeda m.
+Kelme m.,205,150,Siauliai Country,Silale m.,Rasiainiai m.,Telsiai m.,Siauliai m.,Radviliskis m.
+Siauliai m.,246,89,Siauliai Country,Kelme m.,Telsiai m.,Radviliskis m.,Pakruojis m.,Joniskis m.,Akmene m.
+Radviliskis m.,301,143,Siauliai Country,Kedainiai m.,Rasiainiai m.,Kelme m.,Siauliai m.,Pakruojis m.,Panevezys m.
+Pakruojis m.,324,82,Siauliai Country,Siauliai m.,Joniskis m.,Radviliskis m.,Pasvalys m.,Panevezys m.
+Joniskis m.,283,43,Siauliai Country,Siauliai m.,Akmene m.,Pakruojis m.
+Akmene m.,220,37,Siauliai Country,Siauliai m.,Telsiai m.,Mazeikiai m.,Joniskis m.
+Pasvalys m.,376,73,Panevezys Country,Pakruojis m.,Birzai m.,Panevezys m.
+Birzai m.,420,48,Panevezys Country,Pasvalys m.,Kupiskis m.,Panevezys m.,Rokiskis m.
+Rokiskis m.,497,89,Panevezys Country,Birzai m.,Kupiskis m.,Zarasai m.,Utena m.,Anyksciai m.
+Kupiskis m.,439,115,Panevezys Country,Rokiskis m.,Panevezys m.,Birzai m.,Anyksciai m.
+Panevezys m.,369,150,Panevezys Country,Kedainiai m.,Pakruojis m.,Pasvalys m.,Birzai m.,Kupiskis m.,Ukmerge m.,Anyksciai m.,Radviliskis m.

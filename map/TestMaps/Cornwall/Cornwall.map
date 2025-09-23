@@ -1,0 +1,24 @@
+[Map]
+image=Cornwall.bmp
+wrap=no
+scroll=horizontal
+author=Lawrence Watkiss-Veal (lwvlawrence@netscape.net)
+warn=yes
+
+[Continents]
+North=1
+East=1
+South=1
+West=2
+
+[Territories]
+wa,58,732,West,wb
+wb,273,655,West,wa,wc,wd,sa
+wc,303,806,West,wb,wd
+wd,361,704,West,wb,wc,sa
+sa,410,590,South,wb,wd,na,sb
+sb,536,525,South,sa,na,nb,ea
+na,426,463,North,sa,sb,nb
+nb,582,350,North,na,sb,ea,eb
+ea,776,455,East,sb,nb,eb
+eb,765,241,East,nb,ea

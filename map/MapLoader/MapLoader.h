@@ -96,7 +96,7 @@ class MapLoader {
         * @brief Mutator for author
         * @param author string to set
         */
-        void setAuthor(string& author);
+        void setAuthor(const string& author);
         
 
         /**
@@ -109,7 +109,7 @@ class MapLoader {
         * @brief Mutator for image
         * @param image string to set 
         */
-        void setImage(string& image);
+        void setImage(const string& image);
         
         /**
         * @brief Accessor for wrap
@@ -121,7 +121,7 @@ class MapLoader {
         * @brief Mutator for wrap
         * @param wrap string to set 
         */
-        void setWrap(string& wrap);
+        void setWrap(const string& wrap);
 
         /**
         * @brief Accessor for scrollType
@@ -133,7 +133,7 @@ class MapLoader {
         * @brief Mutator for scrollType
         * @param scrollType string to set 
         */
-        void setScrollType(string& scrollType);
+        void setScrollType(const string& scrollType);
 
         /**
         * @brief Accessor for warn
@@ -145,7 +145,7 @@ class MapLoader {
         * @brief Mutator for warn 
         * @param warn string to set
         */
-        void setWarn(string& warn);
+        void setWarn(const string& warn);
 
         /**
         * @brief Accessor and Mutator for continents
@@ -157,7 +157,7 @@ class MapLoader {
         * @brief Mutator for continents
         * @param continents map to set 
         */
-        void setContinents(map<string, int> continents);
+        void setContinents(const map<string, int> continents);
 
         /**
         * @brief Accessor for territories
@@ -169,7 +169,7 @@ class MapLoader {
         * @brief Mutator for territories
         * @param territories vector of territories to set
         */
-        void setTerritories(vector<vector<string>> territories);
+        void setTerritories(const vector<vector<string>> territories);
         
         //-- Class Methods --//
 

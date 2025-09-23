@@ -1,0 +1,37 @@
+[Map]
+author=_MIKE CRUSH_
+image=_46_ small - SQUASH.bmp
+wrap=yes
+scroll=none
+warn=no
+
+[Continents]
+SQUASH=1000
+
+[Territories]
+Territory00,51,109,SQUASH,Territory03,Territory01
+Territory01,65,149,SQUASH,Territory00,Territory03,Territory02,Territory05,Territory04
+Territory02,56,197,SQUASH,Territory01,Territory05,Territory06
+Territory03,93,116,SQUASH,Territory00,Territory01,Territory04,Territory07
+Territory04,116,152,SQUASH,Territory05,Territory03,Territory07,Territory08,Territory06,Territory01
+Territory05,93,182,SQUASH,Territory02,Territory01,Territory04,Territory06
+Territory06,125,202,SQUASH,Territory02,Territory05,Territory04,Territory09,Territory08
+Territory07,138,116,SQUASH,Territory03,Territory04,Territory10,Territory08
+Territory08,162,151,SQUASH,Territory07,Territory04,Territory06,Territory10,Territory11,Territory09
+Territory09,168,199,SQUASH,Territory06,Territory08,Territory12,Territory11
+Territory10,179,110,SQUASH,Territory07,Territory08,Territory13,Territory11
+Territory11,203,161,SQUASH,Territory10,Territory08,Territory09,Territory12,Territory14,Territory13
+Territory12,215,200,SQUASH,Territory09,Territory11,Territory14
+Territory13,225,121,SQUASH,Territory10,Territory11,Territory14,Territory15,Territory16
+Territory14,245,178,SQUASH,Territory12,Territory11,Territory13,Territory16,Territory20
+Territory15,267,109,SQUASH,Territory13,Territory17,Territory16
+Territory16,278,148,SQUASH,Territory13,Territory15,Territory17,Territory19,Territory14
+Territory17,314,116,SQUASH,Territory15,Territory16,Territory19,Territory18
+Territory18,357,122,SQUASH,Territory17,Territory21,Territory19,Territory22
+Territory19,332,164,SQUASH,Territory16,Territory20,Territory23,Territory22,Territory17,Territory18
+Territory20,314,200,SQUASH,Territory14,Territory19,Territory23
+Territory21,402,116,SQUASH,Territory18,Territory24,Territory22
+Territory22,372,164,SQUASH,Territory19,Territory18,Territory23,Territory25,Territory24,Territory21
+Territory23,351,203,SQUASH,Territory20,Territory19,Territory22,Territory25
+Territory24,405,164,SQUASH,Territory22,Territory25,Territory21
+Territory25,393,203,SQUASH,Territory22,Territory23,Territory24

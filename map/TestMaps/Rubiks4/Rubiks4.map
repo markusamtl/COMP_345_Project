@@ -1,0 +1,112 @@
+[Map]
+author=Rob Werhand
+image=Rubiks4.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Top=3
+Back Left=3
+Back Right=3
+Front Left=3
+Front Right=3
+Bottom=3
+
+[Territories]
+Territory00,455,205,Top,Territory04,Territory01,Territory51,Territory64
+Territory01,494,220,Top,Territory00,Territory05,Territory02,Territory65
+Territory02,535,233,Top,Territory06,Territory03,Territory01,Territory66
+Territory04,433,235,Top,Territory00,Territory05,Territory08,Territory50
+Territory05,472,249,Top,Territory04,Territory09,Territory06,Territory01
+Territory06,513,263,Top,Territory05,Territory10,Territory07,Territory02
+Territory07,555,278,Top,Territory11,Territory06,Territory03,Territory34
+Territory08,413,264,Top,Territory04,Territory12,Territory09,Territory49
+Territory09,454,277,Top,Territory05,Territory08,Territory13,Territory10
+Territory10,493,290,Top,Territory09,Territory06,Territory11,Territory14
+Territory11,535,305,Top,Territory10,Territory15,Territory07,Territory33
+Territory12,396,289,Top,Territory08,Territory13,Territory16,Territory48
+Territory13,436,302,Top,Territory12,Territory09,Territory14,Territory17
+Territory14,479,316,Top,Territory13,Territory15,Territory10,Territory18
+Territory15,519,330,Top,Territory14,Territory11,Territory32,Territory19
+Territory16,384,326,Back Left,Territory20,Territory17,Territory12,Territory48
+Territory17,423,342,Back Left,Territory21,Territory16,Territory18,Territory13
+Territory18,463,356,Back Left,Territory19,Territory22,Territory17,Territory14
+Territory19,507,370,Back Left,Territory23,Territory18,Territory32,Territory15
+Territory20,383,362,Back Left,Territory21,Territory16,Territory24,Territory52
+Territory21,421,374,Back Left,Territory17,Territory20,Territory25,Territory22
+Territory22,462,387,Back Left,Territory21,Territory26,Territory23,Territory18
+Territory23,506,406,Back Left,Territory22,Territory27,Territory19,Territory36
+Territory24,385,397,Back Left,Territory20,Territory25,Territory28,Territory56
+Territory25,422,408,Back Left,Territory21,Territory26,Territory24,Territory29
+Territory26,465,426,Back Left,Territory22,Territory25,Territory30,Territory27
+Territory27,509,438,Back Left,Territory26,Territory31,Territory23,Territory40
+Territory28,385,429,Back Left,Territory24,Territory29,Territory92,Territory60
+Territory29,422,444,Back Left,Territory25,Territory28,Territory30,Territory93
+Territory30,465,456,Back Left,Territory26,Territory29,Territory31,Territory94
+Territory31,508,471,Back Left,Territory30,Territory27,Territory44,Territory95
+Territory32,546,359,Back Right,Territory33,Territory36,Territory15,Territory19
+Territory33,566,333,Back Right,Territory32,Territory37,Territory34,Territory11
+Territory34,586,305,Back Right,Territory33,Territory38,Territory35,Territory07
+Territory35,604,279,Back Right,Territory34,Territory39,Territory03,Territory67
+Territory36,546,392,Back Right,Territory32,Territory37,Territory40,Territory23
+Territory37,564,367,Back Right,Territory36,Territory33,Territory38,Territory41
+Territory38,584,342,Back Right,Territory37,Territory42,Territory34,Territory39
+Territory39,604,313,Back Right,Territory35,Territory38,Territory43,Territory71
+Territory40,547,425,Back Right,Territory36,Territory41,Territory44,Territory27
+Territory41,565,401,Back Right,Territory37,Territory42,Territory45,Territory40
+Territory42,584,376,Back Right,Territory41,Territory46,Territory43,Territory38
+Territory43,603,350,Back Right,Territory42,Territory39,Territory47,Territory75
+Territory44,546,458,Back Right,Territory45,Territory40,Territory31,Territory95
+Territory45,565,430,Back Right,Territory41,Territory44,Territory46,Territory91
+Territory46,586,406,Back Right,Territory42,Territory47,Territory45,Territory87
+Territory03,580,248,Top,Territory07,Territory02,Territory35,Territory67
+Territory47,604,382,Back Right,Territory43,Territory46,Territory79,Territory83
+Territory48,705,352,Front Left,Territory49,Territory52,Territory12,Territory16
+Territory49,758,311,Front Left,Territory48,Territory53,Territory50,Territory08
+Territory50,812,265,Front Left,Territory49,Territory54,Territory51,Territory04
+Territory51,870,214,Front Left,Territory55,Territory50,Territory64,Territory00
+Territory52,731,414,Front Left,Territory48,Territory53,Territory56,Territory20
+Territory53,785,369,Front Left,Territory52,Territory49,Territory57,Territory54
+Territory54,843,320,Front Left,Territory53,Territory58,Territory55,Territory50
+Territory55,896,277,Front Left,Territory59,Territory54,Territory51,Territory68
+Territory56,756,479,Front Left,Territory52,Territory57,Territory60,Territory24
+Territory57,810,432,Front Left,Territory53,Territory58,Territory56,Territory61
+Territory58,868,386,Front Left,Territory57,Territory54,Territory59,Territory62
+Territory59,926,338,Front Left,Territory58,Territory63,Territory55,Territory72
+Territory60,785,541,Front Left,Territory56,Territory61,Territory92,Territory28
+Territory61,845,495,Front Left,Territory60,Territory57,Territory62,Territory88
+Territory62,900,448,Front Left,Territory58,Territory63,Territory61,Territory84
+Territory63,955,401,Front Left,Territory62,Territory59,Territory80,Territory76
+Territory64,925,197,Front Right,Territory65,Territory68,Territory51,Territory00
+Territory65,963,214,Front Right,Territory69,Territory66,Territory64,Territory01
+Territory66,1003,235,Front Right,Territory67,Territory70,Territory65,Territory02
+Territory67,1042,251,Front Right,Territory66,Territory71,Territory03,Territory35
+Territory68,952,258,Front Right,Territory64,Territory69,Territory72,Territory55
+Territory69,992,274,Front Right,Territory73,Territory70,Territory65,Territory68
+Territory70,1029,292,Front Right,Territory66,Territory74,Territory71,Territory69
+Territory71,1071,310,Front Right,Territory67,Territory70,Territory75,Territory39
+Territory72,982,321,Front Right,Territory73,Territory68,Territory76,Territory59
+Territory73,1021,336,Front Right,Territory69,Territory74,Territory77,Territory72
+Territory74,1058,355,Front Right,Territory70,Territory73,Territory78,Territory75
+Territory75,1098,373,Front Right,Territory74,Territory71,Territory79,Territory43
+Territory76,1011,386,Front Right,Territory72,Territory77,Territory80,Territory63
+Territory77,1048,404,Front Right,Territory73,Territory76,Territory78,Territory81
+Territory78,1090,422,Front Right,Territory74,Territory77,Territory79,Territory82
+Territory79,1129,439,Front Right,Territory78,Territory75,Territory83,Territory47
+Territory80,994,444,Bottom,Territory84,Territory81,Territory63,Territory76
+Territory81,1033,465,Bottom,Territory80,Territory85,Territory82,Territory77
+Territory82,1073,484,Bottom,Territory86,Territory83,Territory81,Territory78
+Territory83,1109,501,Bottom,Territory82,Territory87,Territory79,Territory47
+Territory84,936,492,Bottom,Territory88,Territory85,Territory80,Territory62
+Territory85,975,511,Bottom,Territory89,Territory86,Territory84,Territory81
+Territory86,1015,529,Bottom,Territory90,Territory85,Territory82,Territory87
+Territory87,1052,549,Bottom,Territory86,Territory83,Territory91,Territory46
+Territory88,879,540,Bottom,Territory92,Territory89,Territory84,Territory61
+Territory89,917,558,Bottom,Territory93,Territory88,Territory90,Territory85
+Territory90,962,577,Bottom,Territory89,Territory86,Territory91,Territory94
+Territory91,996,598,Bottom,Territory90,Territory87,Territory95,Territory45
+Territory92,824,586,Bottom,Territory93,Territory88,Territory60,Territory28
+Territory93,864,605,Bottom,Territory92,Territory89,Territory94,Territory29
+Territory94,904,627,Bottom,Territory95,Territory90,Territory93,Territory30
+Territory95,943,644,Bottom,Territory91,Territory94,Territory44,Territory31

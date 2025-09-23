@@ -1,0 +1,118 @@
+[Map]
+image=Sarrowquand.bmp
+wrap=no
+scroll=yes
+warn=no
+author= Rowen Morland
+
+
+
+[Continents]
+
+Barrados Forests=1
+Raider Villages=2
+Eastern Expanse=1
+Imperial Foothold=2
+Old Salia=3
+Barony=4
+Republic of Sar=5
+Central Reserves=0
+Western Expanse=1
+Nore=2
+Western Sarrowquand=4
+Lakes Region=5
+Northern Wastelands=0
+
+[Territories]
+
+Sarri Frontier,1055,121,Eastern Expanse,Village of Kurt,East Plains Bay, Upper East Plains
+East Plains Bay,1007,239,Eastern Expanse,Sarri Frontier,Upper East Plains,Middle East Plains
+Upper East Plains,1101,251,Eastern Expanse,Sarri Frontier,East Plains Bay,Middle East Plains,Lower East Plains
+Middle East Plains,1025,339,Eastern Expanse,East Plains Bay,Upper East Plains,Eastern Salia,Lower East Plains
+Lower East Plains,1106,391,Eastern Expanse,Upper East Plains,Middle East Plains,Port Salia,Fern Deep,Eastern Salia 
+
+Eastern Salia,1026,383,Old Salia,Middle East Plains,Fern Deep 
+Port Salia,1039,456,Old Salia,Fern Deep,Lower East Plains,Rowenoak
+Fern Deep,1005,420,Old Salia,Eastern Salia,Lower East Plains,Port Salia,Fern Forest
+Fern Forest,949,435,Old Salia,Fern Deep,Salia,Salian Valley,Salian Bay
+Salia,859,398,Old Salia,Esken Forest,Fern Forest,Salian Valley,Fort Wayland,Vis,Nerin
+Salian Valley,883,448,Old Salia,Fern Forest,Salian Bay,Haston,Nerin,Rowenoak,Salia
+Salian Bay,893,489,Old Salia,Salian Valley,Rowenoak,Fern Forest
+
+Powell,740,118,Imperial Foothold,Tyraiyne,Upper Wastes Passage,Village of Enses,Village of Dun
+Tyraiyne,664,117,Imperial Foothold,Powell,Dunisdon,Upper Wastes Passage,Lonesome Isle
+Dunisdon,611,141,Imperial Foothold,Tyraiyne,Upper Wastes Passage,Drek,White Raven Heights
+Drek,556,129,Imperial Foothold,Dunisdon,Hortin
+Hortin,484,140,Imperial Foothold,Drek,Raviendorf
+Lonesome Isle,360,27,Imperial Foothold,Tyraiyne,Uranium Fields
+
+Upper Wastes Passage,687,195,Northern Wastelands,Powell,Tyraiyne,Dunisdon,Exile
+Lower Wastes Passage,717,361,Northern Wastelands,Sorten Forest,Fort Pariah,Outcast,Pariah
+Outcast,686,294,Northern Wastelands,Lower Wastes Passage,Sorten Forest,Fire Forest
+Exile,743,206,Northern Wastelands,Upper Wastes Passage,Powell,Pariah
+Pariah,771,285,Northern Wastelands,Lower Wastes Passage,Fort Pariah,Exile,Lower Wastes Passage,Village of Dun
+
+Village of Kurt,975,107,Raider Villages, Village of Enses, Sarri Frontier,Village of Dun
+Village of Enses,804,75,Raider Villages,Village of Kurt,Powell,Village of Dun,Village of Kurt,Lonesome Isle
+Village of Dun,833,189,Raider Villages,Village of Enses,East Plains Bay,Village of Lug,Village of Kurt,Powell
+Village of Lug,859,311,Raider Villages,Village of Dun,Esken Forest,Fort Wayland,East Plains Bay,Middle East Plains
+
+Esken Forest,876,360,Barrados Forests,Village of Lug,Fort Wayland,Salia
+Sorten Forest,656,401,Barrados Forests,Sarros,Fort Harrow,Lower Wastes Passage
+Gant Forest,714,501,Barrados Forests,North Forken,South Forken
+Barrow Forest,790,542,Barrados Forests,Sar,Rowenoak,Seret,Psiden
+
+Sarros,666,456,Barony,Fort Harrow,Sorten Forest,North Forken,Westward
+North Forken,681,485,Barony,South Forken,Sarros,Gant Forest,Nox,Fort Harrow
+South Forken,733,517,Barony,North Forken,Gant Forest,Sar,Nox,Psiden
+Psiden,756,539,Barony,South Forken,Sar,Barrow Forest,Seret,Gateway Isle
+
+Fort Wayland,800,376,Republic of Sar,Salia,Esken Forest,Village of Lug,Fort Pariah,Sancset,Vis
+Fort Pariah,747,391,Republic of Sar,Fort Wayland,Fort Harrow,Sancset,Lower Wastes Passage
+Fort Harrow,711,423,Republic of Sar,Sorten Forest,Sarros,Nox,Sancset,Fort Pariah,North Forken
+Nox,738,465,Republic of Sar,Sar,Sancset,Fort Harrow,North Forken,South Forken
+Sancset,766,425,Republic of Sar,Sar,Nox,Vis,Fort Wayland,Fort Pariah,Fort Harrow
+Vis,803,429,Republic of Sar,Sar,Nerin,Sancset,Salia,Fort Wayland
+Nerin,821,447,Republic of Sar,Salian Valley,Vis,Sar,Haston
+Haston,831,479,Republic of Sar,Salian Valley,Nerin,Sar,Rowenoak
+Rowenoak,836,525,Republic of Sar,Haston,Salian Valley,Salian Bay,Sar,Seret,Barrow Forest,Port Salia
+Seret,808,565,Republic of Sar,Barrow Forest,Rowenoak,Psiden
+
+Sar,785,486,Republic of Sar,Rowenoak,Haston,Nerin,Vis,Sancset,Nox,South Forken,Barrow Forest,Psiden
+
+Gateway Isle,649,616,Western Expanse,Psiden,Kerry,Westward,Overwatch
+Westward,610,509,Western Expanse,Sarros,Gateway Isle
+Kerry,488,543,Western Expanse,Gateway Isle,Sekret
+Sekret,420,563,Western Expanse,Kerry,Sassen
+Overwatch,231,621,Western Expanse,Gateway Isle,Tranquility Bay,Sassen
+
+Raviendorf,408,136,Nore,Hortin,Grey
+Grey,328,146,Nore,Raviendorf,White Raven Heights,Sarrowquand City,Osildorn,White Raven Heights
+White Raven Heights,227,141,Nore,Grey,Sarrowquand City,Uranium Fields,Morran Industrial,Dunisdon
+Uranium Fields,89,116,Nore,Moran Industrial,White Raven Heights,Morran Industrial
+
+
+Snake Pass,411,245,Central Reserves,Soren Reserve,Grey,Fire Forest,Porinisant
+Soren Reserve,523,224,Central Reserves,Snake Pass,Fire Forest,Drek,Hortin
+Fire Forest,506,388,Central Reserves,Snake Pass,Soren Reserve,Iguana Path,Kerry,Sekret,Sassen,Porinisant
+Iguana Path,404,423,Central Reserves,Fire Forest,Heron,Roost
+
+Sassen,318,548,Western Sarrowquand,Quetzalli,Roost,Haven,Sekret
+Morran Industrial,140,201,Western Sarrowquand,Uranium Fields,White Raven Heights,Royalle,Sarrowquand City
+Royalle,108,310,Western Sarrowquand,Morran Industrial,Sarrowquand City,Judacius,New Saria,Indigo Lake,New Saria
+Judacius,96,407,Western Sarrowquand,Royalle,New Saria,Renaissance,Tranquility Bay
+Tranquility Bay,84,474,Western Sarrowquand,Temple,Judacius,Renaissance
+Renaissance,160,477,Western Sarrowquand,Tranquility Bay,Judacius,New Saria,Haven
+New Saria,181,406,Western Sarrowquand,Lofin,Royalle,Judacius,Haven,Indigo Lake,Renaissance
+Haven,219,518,Western Sarrowquand,Sassen,Quetzalli,Renaissance,New Saria,Renaissance,Lofin,Renaissance
+Temple,104,552,Western Sarrowquand,Tranquility Bay
+
+Roost,327,441,Lakes Region,Iguana Path,Sassen,Heron,Quetzalli
+Quetzalli,281,468,Lakes Region,Roost,Sassen,Haven,Lofin
+Heron,333,379,Lakes Region,Roost,Iguana Path,Azure Lake,Porinisant
+Azure Lake,285,382,Lakes Region,Indigo Lake,Heron,Lofin
+Porinisant,324,282,Lakes Region,Snake Pass,Osildorn,Indigo Lake,Heron
+Osildorn,323,203,Lakes Region,Sarrowquand City,Grey,Porinisant,Indigo Lake
+Sarrowquand City,245,209,Lakes Region,Grey,White Raven Heights,Morran Industrial,Osildorn,Indigo Lake,Royalle
+Lofin,239,431,Lakes Region,New Saria,Haven,Quetzalli,Azure Lake,Indigo Lake
+Indigo Lake,245,311,Lakes Region,Royalle,New Saria,Lofin,Azure Lake,Porinisant,Sarrowquand City,Osildorn

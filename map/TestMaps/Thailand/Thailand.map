@@ -1,0 +1,108 @@
+[Map]
+image=Thailand.bmp
+wrap=no
+scroll=none
+author=Liam
+warn=yes
+
+[Continents]
+Northern Thailand=5
+Isaan=5
+Eastern Thailand=3
+Southern Thailand=4
+Central Thailand=4
+Bangkok=1
+
+
+
+[Territories]
+Chiang Mai,90,110,Northern Thailand,Mae Hong Son,Chiang Rai,Lampang,Lamphun,Tak
+Tak,100,210,Northern Thailand,Mae Hong Son,Lampang,Lamphun,Nakhon Sawan,Uthai Thani,Sukhothai,Kanchanaburi,Kamphaeng Phet,Chiang Mai
+Mae Hong Son,45,105,Northern Thailand,Chiang Mai,Tak,Nakhon Sawan
+Kamphaeng Phet,140,250,Northern Thailand,Tak,Phitsanulok,Nakhon Sawan,Sukhothai,Phichit
+Nakhon Sawan,190,295,Northern Thailand,Tak,Uthai Thani,Kamphaeng Phet,Phetchabun,Phichit,Mae Hong Son,Lop Buri,Kanchanaburi,Chai Nat
+Phetchabun,230,260,Northern Thailand,Nakhon Sawan,Phitsanulok,Phichit,Kalasin,Chaiyaphum,Loei,Lop Buri
+Phichit,190,255,Northern Thailand,Nakhon Sawan,Phetchabun,Phitsanulok,Kamphaeng Phet
+Phitsanulok,200,215,Northern Thailand,Phetchabun,Kamphaeng Phet,Sukhothai,Uttaradit,Phichit,Loei
+Uthai Thani,130,315,Northern Thailand,Tak,Nakhon Sawan,Kanchanaburi,Suphan Buri,Chai Nat
+Lampang,140,135,Northern Thailand,Chiang Mai,Chiang Rai,Tak,Phayao,Phrae,Lamphun,Sukhothai
+Lamphun,105,132,Northern Thailand,Chiang Mai,Tak,Lampang
+Sukhothai,150,200,Northern Thailand,Phitsanulok,Lampang,Kamphaeng Phet,Phrae,Uttaradit,Tak
+Chiang Rai,150,55,Northern Thailand,Chiang Mai,Lampang,Phayao
+Nan,215,110,Northern Thailand,Phayao,Uttaradit,Phayao,Phrae
+Phayao,175,85,Northern Thailand,Chiang Rai,Phrae,Lampang,Nan
+Phrae,175,140,Northern Thailand,Phayao,Nan,Lampang,Sukhothai,Uttaradit
+Uttaradit,190,170,Northern Thailand,Phitsanulok,Nan,Phrae,Sukhothai
+
+
+Kalasin,375,230,Isaan,Nakhon Ratchasima,Phetchabun,Sakon Nakhon,Udon Thani,Mukdahan,Roi Et,Khon Kaen,Maha Sarakham
+Mukdahan,420,230,Isaan,Amnat Charoen,Kalasin,Nakhon Phanom,Sakon Nakhon,Yasothon,Roi Et
+Nakhon Phanom,435,190,Isaan,Mukdahan,Sakon Nakhon,Nong Khai
+Nong Khai,375,142,Isaan,Nakhon Phanom,Sakon Nakhon,Udon Thani,Loei
+Sakon Nakhon,390,200,Isaan,Kalasin,Nakhon Phanom,Nong Khai,Mukdahan,Udon Thani
+Udon Thani,345,200,Isaan,Kalasin,Nong Khai,Sakon Nakhon,Nong Bua Lamphu,Khon Kaen
+Amnat Charoen,444,275,Isaan,Ubon Ratchathani,Yasothon,Mukdahan
+Maha Sarakham,350,270,Isaan,Buri Ram,Kalasin,Khon Kaen,Surin,Roi Et
+Roi Et,385,280,Isaan,Surin,Si Sa Ket,Kalasin,Yasothon,Maha Sarakham,Mukdahan
+Si Sa Ket,420,345,Isaan,Surin,Roi Et,Ubon Ratchathani,Yasothon
+Surin,380,345,Isaan,Buri Ram,Si Sa Ket,Roi Et,Maha Sarakham
+Ubon Ratchathani,465,320,Isaan,Si Sa Ket,Amnat Charoen,Yasothon
+Yasothon,420,280,Isaan,Si Sa Ket,Amnat Charoen,Mukdahan,Roi Et,Ubon Ratchathani
+Buri Ram,345,345,Isaan,Sa Kaeo,Nakhon Ratchasima,Maha Sarakham,Surin,Khon Kaen
+Chaiyaphum,270,270,Isaan,Nakhon Ratchasima,Khon Kaen,Phetchabun
+Khon Kaen,320,250,Isaan,Buri Ram,Kalasin,Nakhon Ratchasima,Chaiyaphum,Loei,Nong Bua Lamphu,Maha Sarakham,Udon Thani
+Loei,260,190,Isaan,Nong Khai,Phetchabun,Khon Kaen,Nong Bua Lamphu,Phitsanulok
+Nakhon Ratchasima,295,325,Isaan,Sa Kaeo,Prachin Buri,Buri Ram,Kalasin,Chaiyaphum,Khon Kaen,Prachin Buri,Saraburi,Lop Buri,Nakhon Nayok
+Nong Bua Lamphu,305,205,Isaan,Loei,Udon Thani,Khon Kaen
+
+
+
+Chachoengsao,260,410,Eastern Thailand,Chanthaburi,Sa Kaeo,Prachin Buri,Rayong,Chon Buri,Nakhon Nayok,Samut Prakan,Bangkok
+Chanthaburi,290,450,Eastern Thailand,Trat,Chachoengsao,Chon Buri,Rayong,Sa Kaeo
+Chon Buri,245,430,Eastern Thailand,Chanthaburi,Rayong,Chachoengsao
+Prachin Buri,265,380,Eastern Thailand,Sa Kaeo,Nakhon Ratchasima,Chachoengsao,Nakhon Nayok
+Rayong,252,455,Eastern Thailand,Chanthaburi,Chon Buri,Chachoengsao
+Sa Kaeo,300,400,Eastern Thailand,Chanthaburi,Chachoengsao,Prachin Buri,Nakhon Ratchasima,Buri Ram
+Trat,315,480,Eastern Thailand,Chanthaburi
+
+
+Krabi,115,725,Southern Thailand,Nakhon Si Thammarat,Trang,Phang Nga,Surat Thani
+Nakhon Si Thammarat,160,720,Southern Thailand,Krabi,Songkhla,Surat Thani,Trang,Phatthalung
+Phatthalung,170,760,Southern Thailand,Songkhla,Satun,Trang,Nakhon Si Thammarat
+Surat Thani,105,670,Southern Thailand,Chumphon,Ranong,Phang Nga,Nakhon Si Thammarat,Krabi
+Trang,140,755,Southern Thailand,Krabi,Satun,Nakhon Si Thammarat,Phatthalung
+Narathiwat,270,840,Southern Thailand,Pattani,Yala
+Pattani,250,804,Southern Thailand,Narathiwat,Songkhla,Yala
+Satun,165,802,Southern Thailand,Songkhla,Phatthalung,Trang
+Songkhla,200,804,Southern Thailand,Yala,Pattani,Nakhon Si Thammarat,Phatthalung,Satun
+Yala,240,830,Southern Thailand,Narathiwat,Songkhla,Pattani
+Chumphon,110,600,Southern Thailand,Ranong,Surat Thani,Prachuap Khiri Khan
+Phang Nga,67,705,Southern Thailand,Ranong,Surat Thani,Phuket,Krabi
+Phuket,72,740,Southern Thailand,Phang Nga
+Ranong,96,614,Southern Thailand,Chumphon,Surat Thani,Phang Nga
+
+
+Ang Thong,187,350,Central Thailand,Suphan Buri,Sing Buri,Ayutthaya,Lop Buri
+Ayutthaya,195,370,Central Thailand,Ang Thong,Suphan Buri,Lop Buri,Saraburi,Nakhon Pathom,Pathum Thani,Nonthaburi
+Chai Nat,170,320,Central Thailand,Sing Buri,Suphan Buri,Nakhon Sawan,Uthai Thani
+Lop Buri,220,320,Central Thailand,Ayutthaya,Saraburi,Sing Buri,Nakhon Ratchasima,Ang Thong,Phetchabun,Nakhon Sawan
+Nakhon Nayok,234,375,Central Thailand,Chachoengsao,Saraburi,Prachin Buri,Nakhon Ratchasima
+Saraburi,225,350,Central Thailand,Lop Buri,Nakhon Nayok,Pathum Thani,Ayutthaya,Nakhon Ratchasima
+Sing Buri,190,330,Central Thailand,Ang Thong,Chai Nat,Lop Buri,Suphan Buri
+
+Nakhon Pathom,175,390,Central Thailand,Samut Sakhon,Ratchaburi,Bangkok,Nonthaburi,Ayutthaya,Suphan Buri,Kanchanaburi
+Nonthaburi,193,390,Central Thailand,Bangkok,Nakhon Pathom,Pathum Thani,Ayutthaya
+Pathum Thani,208,384,Central Thailand,Bangkok,Nonthaburi,Saraburi,Ayutthaya
+Samut Prakan,210,407,Central Thailand,Bangkok,Chachoengsao
+Samut Sakhon,178,408,Central Thailand,Bangkok,Nakhon Pathom,Ratchaburi,Samut Songkhram
+
+Kanchanaburi,110,360,Central Thailand,Ratchaburi,Suphan Buri,Tak,Nakhon Sawan,Uthai Thani,Nakhon Pathom
+Phetchaburi,145,450,Central Thailand,Prachuap Khiri Khan,Ratchaburi,Samut Songkhram
+Prachuap Khiri Khan,150,490,Central Thailand,Phetchaburi,Chumphon
+Ratchaburi,140,414,Central Thailand,Phetchaburi,Kanchanaburi,Samut Songkhram,Samut Sakhon,Nakhon Pathom
+Samut Songkhram,165,418,Central Thailand,Samut Sakhon,Phetchaburi,Ratchaburi
+Suphan Buri,167,360,Central Thailand,Kanchanaburi,Ang Thong,Ayutthaya,Chai Nat,Nakhon Pathom,Sing Buri,Uthai Thani
+
+Bangkok,205,398,Bangkok,Samut Prakan,Nonthaburi,Pathum Thani,Chachoengsao,Samut Sakhon,Nakhon Pathom
+
+

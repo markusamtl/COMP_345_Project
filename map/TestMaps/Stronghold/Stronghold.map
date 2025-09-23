@@ -1,0 +1,77 @@
+[Map]
+author=Mahks
+image=Stronghold.bmp
+wrap=no
+scroll=none
+warn=no
+
+[Continents]
+The Keep=4
+The Armoury=3
+The Treasury=3
+NW Tower=2
+NE Tower=2
+SE Tower=2
+SW Tower=2
+Penta Farms=4
+Hexa Farms=4
+Circle Farms=4
+Castle Areas=0
+Siege Equipment=-4
+
+[Territories]
+Keep,398,305,The Keep,Courtyard1,Courtyard6,Courtyard4,Courtyard2,Courtyard3,Courtyard5
+Armoury,509,195,The Armoury,E Stairway,Courtyard4,Courtyard5
+Treasury,281,198,The Treasury,W Stairway,Courtyard3,Courtyard2
+NW Tower,193,118,NW Tower,W Wall1,N Wall1
+NE Tower,609,123,NE Tower,N Wall4,E Wall1
+SE Tower,606,392,SE Tower,E Wall 3,S Wall5
+SW Tower,193,390,SW Tower,W Wall3,S Wall1
+Penta Farm1,278,65,Penta Farms,Penta Farm2,W Entrance,Penta Farm3
+Penta Farm2,78,100,Penta Farms,Penta Farm1,Penta Farm3,W Catapult
+Penta Farm3,151,277,Penta Farms,Penta Farm2,W Catapult,Penta Farm1,Penta Farm4
+Penta Farm4,100,378,Penta Farms,W Catapult,Penta Farm5,Circle Farm1,Penta Farm3
+Penta Farm5,78,501,Penta Farms,Penta Farm4,Circle Farm1,Circle Farm2
+Hexa Farm1,523,75,Hexa Farms,Hexa Farm2,E Entrance,Hexa Farm3
+Hexa Farm2,723,100,Hexa Farms,E Catapult,Hexa Farm3,Hexa Farm1
+Hexa Farm3,659,277,Hexa Farms,Hexa Farm4,E Catapult,Hexa Farm2,Hexa Farm1
+Hexa Farm4,732,377,Hexa Farms,Circle Farm5,Hexa Farm5,Hexa Farm3,E Catapult
+Hexa Farm5,725,475,Hexa Farms,Circle Farm5,Hexa Farm4
+Circle Farm1,274,474,Circle Farms,Penta Farm5,Penta Farm4,Circle Farm2,W Ladder
+Circle Farm2,179,525,Circle Farms,Penta Farm5,Circle Farm1,Circle Farm3
+Circle Farm3,398,525,Circle Farms,W Ladder,Circle Farm2,Circle Farm4,E Ladder
+Circle Farm4,574,517,Circle Farms,Circle Farm3,E Ladder,Circle Farm5
+Circle Farm5,674,552,Circle Farms,Circle Farm4,Hexa Farm5,Hexa Farm4
+W Ladder,352,481,Siege Equipment,Circle Farm1,E Ladder,Circle Farm3,S Wall2
+E Ladder,480,481,Siege Equipment,W Ladder,Circle Farm3,S Wall4,Circle Farm4
+W Catapult,82,219,Siege Equipment,Penta Farm2,Penta Farm3,Penta Farm4,Courtyard2,Courtyard1,Courtyard3
+E Catapult,718,220,Siege Equipment,Hexa Farm4,Hexa Farm3,Hexa Farm2,Courtyard6,Courtyard5,Courtyard4
+W Entrance,343,73,Castle Areas,E Entrance,Penta Farm1,Gate Door
+E Entrance,443,72,Castle Areas,Hexa Farm1,W Entrance,Gate Door
+N Wall1,268,129,Castle Areas,NW Tower,N Wall2,W Wall1
+N Wall2,333,129,Castle Areas,N Wall1,Gate House
+Gate House,396,131,Castle Areas,N Wall2,N Wall3
+N Wall3,464,129,Castle Areas,Gate House,N Wall4
+N Wall4,529,130,Castle Areas,NE Tower,N Wall3,E Wall1
+E Wall1,583,193,Castle Areas,NE Tower,E Wall2,N Wall4
+E Wall2,585,268,Castle Areas,E Stairway,E Wall1,E Wall 3
+E Wall 3,585,332,Castle Areas,SE Tower,E Wall2,S Wall5
+S Wall5,527,385,Castle Areas,SE Tower,S Wall4,E Wall 3
+S Wall4,459,383,Castle Areas,S Wall5,S Wall3
+S Wall3,396,385,Castle Areas,S Wall4,S Wall2
+S Wall2,333,383,Castle Areas,S Wall3,S Wall1
+S Wall1,266,384,Castle Areas,SW Tower,S Wall2,W Wall3
+W Wall3,213,337,Castle Areas,W Wall2,SW Tower,S Wall1
+W Wall2,214,253,Castle Areas,W Stairway,W Wall1,W Wall3
+W Wall1,216,178,Castle Areas,W Wall2,NW Tower,N Wall1
+Courtyard2,328,281,Castle Areas,Courtyard1,Treasury,W Stairway,Keep,Courtyard3
+Courtyard1,325,330,Castle Areas,Courtyard2,Keep,W Stairway,W Secret Passage
+Courtyard5,464,274,Castle Areas,Courtyard6,Keep,Courtyard4,E Stairway,Armoury
+Courtyard6,470,329,Castle Areas,Courtyard5,Keep,E Stairway,E Secret Passage
+Gate Door,395,191,Castle Areas,Courtyard4,Courtyard3,W Entrance,E Entrance
+Courtyard4,431,234,Castle Areas,Courtyard5,Keep,Courtyard3,Gate Door,Armoury
+Courtyard3,360,233,Castle Areas,Courtyard4,Treasury,Gate Door,Keep,Courtyard2
+W Stairway,275,267,Castle Areas,Treasury,W Secret Passage,Courtyard1,Courtyard2,W Wall2
+E Stairway,524,273,Castle Areas,Armoury,Courtyard6,E Secret Passage,E Wall2,Courtyard5
+W Secret Passage,272,331,Castle Areas,W Stairway,Courtyard1,Penta Farm5
+E Secret Passage,531,330,Castle Areas,E Stairway,Courtyard6,Hexa Farm5

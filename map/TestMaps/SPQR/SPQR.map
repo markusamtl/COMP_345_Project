@@ -1,0 +1,69 @@
+[Map]
+author=Alex Ubiali
+image=SPQR.bmp
+wrap=no
+scroll=horizontal
+warn=yes
+
+[Continents]
+Iberia=5
+Gallia=7
+Britannia=2
+Germania=8
+Italia=10
+Africa=6
+Illyricum=3
+Graecia=10
+Asia=10
+Oriens=6
+
+[Territories]
+Tarraconensis,145,330,Iberia,Aquitania,Narbonensis,Baleares,Baetica,Lusitania
+Lusitania,55,340,Iberia,Tarraconensis,Baetica
+Baetica,85,400,Iberia,Lusitania,Tarraconensis,Mauretania Tingitana
+Baleares,230,386,Iberia,Tarraconensis,Sardinia
+Lugdunensis,240,180,Gallia,Belgica,Germania Superior,Narbonensis,Aquitania,Britannia
+Aquitania,235,245,Gallia,Lugdunensis,Narbonensis,Tarraconensis
+Narbonensis,285,295,Gallia,Lugdunensis,Germania Superior,Alpes,Corsica,Tarraconensis,Aquitania
+Belgica,290,155,Gallia,Britannia,Lugdunensis,Germania Superior,Germania Inferior
+Britannia,220,80,Britannia,Lugdunensis,Belgica,Hibernia
+Hibernia,150,45,Britannia,Britannia
+Germania Inferior,335,120,Germania,Belgica,Germania Superior
+Germania Superior,340,200,Germania,Belgica,Raetia,Germania Inferior,Narbonensis,Lugdunensis
+Raetia,385,215,Germania,Germania Superior,Alpes,Italia,Noricum
+Noricum,430,225,Germania,Raetia,Italia,Illyricum,Pannonia
+Alpes,333,266,Italia,Narbonensis,Raetia,Italia
+Corsica,340,345,Italia,Sardinia,Narbonensis,Italia
+Sardinia,335,390,Italia,Corsica,Baleares,Italia
+Sicilia,425,455,Italia,Africa,Italia
+Italia,400,330,Italia,Alpes,Raetia,Noricum,Illyricum,Epyrus,Sicilia,Sardinia,Corsica
+Mauretania Tingitana,85,485,Africa,Baetica,Mauretania Caesarensis
+Mauretania Caesarensis,200,500,Africa,Mauretania Tingitana,Africa,Numidia
+Numidia,295,545,Africa,Mauretania Caesarensis,Africa,Cyrenaica
+Africa,330,485,Africa,Sicilia,Numidia,Mauretania Caesarensis
+Cyrenaica,590,625,Africa,Numidia,Aegyptus,Creta
+Illyricum,495,305,Illyricum,Italia,Noricum,Pannonia,Moesia,Macedonia
+Pannonia,490,230,Illyricum,Noricum,Illyricum,Moesia
+Moesia,615,310,Graecia,Thracia,Macedonia,Dacia,Pannonia,Illyricum
+Thracia,625,350,Graecia,Moesia,Macedonia,Asia,Bithynia
+Macedonia,560,375,Graecia,Moesia,Thracia,Illyricum,Epyrus,Achaea
+Epyrus,535,390,Graecia,Macedonia,Achaea,Italia
+Achaea,570,450,Graecia,Macedonia,Epyrus,Creta
+Creta,623,502,Graecia,Achaea,Asia,Cyrenaica
+Dacia,630,250,Graecia,Moesia,Taurica
+Asia,685,420,Asia,Thracia,Bithynia,Galatia,Cappadocia,Lycia,Creta
+Bithynia,745,350,Asia,Asia,Thracia,Pontus,Galatia,Cappadocia,Taurica
+Pontus,860,340,Asia,Bithynia,Cappadocia,Armenia
+Armenia,930,335,Asia,Pontus,Cappadocia,Assyria
+Galatia,750,380,Asia,Asia,Bithynia,Cappadocia
+Cappadocia,800,405,Asia,Galatia,Lycia,Cilicia,Syria,Mesopotamia,Armenia,Pontus,Bithynia,Asia
+Lycia,713,455,Asia,Asia,Cappadocia,Cilicia
+Cilicia,770,452,Asia,Lycia,Cyprus,Cappadocia
+Taurica,750,250,Asia,Dacia,Bithynia
+Cyprus,777,487,Asia,Cilicia,Syria
+Aegyptus,730,625,Oriens,Cyrenaica,Arabia Petraea
+Arabia Petraea,830,580,Oriens,Aegyptus,Judaea,Syria
+Judaea,825,535,Oriens,Arabia Petraea,Syria
+Syria,845,455,Oriens,Arabia Petraea,Judaea,Mesopotamia,Cappadocia,Cyprus
+Mesopotamia,920,415,Oriens,Syria,Cappadocia,Assyria
+Assyria,960,390,Oriens,Mesopotamia,Armenia

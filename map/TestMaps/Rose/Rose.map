@@ -1,0 +1,50 @@
+[Map]
+author=Rob Werhand
+image=Rose.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Carpel=2
+Inner Petals=3
+Middle Petals=3
+Outer Petals=3
+Left Leaf=1
+Right Leaf=1
+Bottom Leaf=1
+
+[Territories]
+Territory00,648,383,Carpel,Territory03,Territory02,Territory01
+Territory01,713,430,Carpel,Territory00,Territory04,Territory02,Territory03
+Territory02,618,453,Carpel,Territory00,Territory01,Territory04,Territory03,Territory05
+Territory03,625,317,Carpel,Territory00,Territory01,Territory02,Territory06,Territory04,Territory05
+Territory05,595,476,Carpel,Territory02,Territory06,Territory08,Territory04,Territory10,Territory03
+Territory04,736,453,Carpel,Territory01,Territory02,Territory05,Territory10,Territory03,Territory06
+Territory06,608,273,Inner Petals,Territory05,Territory03,Territory07,Territory04,Territory08,Territory10
+Territory07,589,239,Inner Petals,Territory06,Territory12,Territory10,Territory08,Territory11,Territory09
+Territory08,563,508,Inner Petals,Territory05,Territory09,Territory06,Territory10,Territory11,Territory07
+Territory09,536,528,Inner Petals,Territory08,Territory14,Territory07,Territory11,Territory16,Territory12
+Territory10,777,467,Inner Petals,Territory05,Territory11,Territory04,Territory06,Territory07,Territory08
+Territory11,810,483,Inner Petals,Territory10,Territory16,Territory08,Territory07,Territory12,Territory09
+Territory12,572,189,Middle Petals,Territory07,Territory13,Territory11,Territory09,Territory16,Territory14
+Territory13,553,146,Middle Petals,Territory12,Territory18,Territory14,Territory16,Territory15,Territory17
+Territory14,503,554,Middle Petals,Territory09,Territory15,Territory12,Territory13,Territory17,Territory16
+Territory15,472,585,Middle Petals,Territory14,Territory20,Territory13,Territory18,Territory22,Territory17
+Territory16,844,511,Middle Petals,Territory11,Territory17,Territory09,Territory12,Territory14,Territory13
+Territory17,878,535,Middle Petals,Territory16,Territory22,Territory14,Territory13,Territory18,Territory15
+Territory18,528,96,Outer Petals,Territory13,Territory15,Territory17,Territory20,Territory22,Territory19
+Territory19,515,62,Outer Petals,Territory25,Territory21,Territory20,Territory18,Territory22,Territory23,Territory28
+Territory20,445,614,Outer Petals,Territory15,Territory21,Territory18,Territory19,Territory23,Territory22
+Territory21,409,641,Outer Petals,Territory20,Territory19,Territory23,Territory25,Territory24,Territory30,Territory31
+Territory22,913,560,Outer Petals,Territory17,Territory23,Territory15,Territory18,Territory19,Territory20
+Territory23,945,579,Outer Petals,Territory22,Territory20,Territory19,Territory21,Territory31,Territory32,Territory28,Territory29
+Territory24,292,415,Left Leaf,Territory26,Territory25,Territory21
+Territory25,314,348,Left Leaf,Territory24,Territory19,Territory26,Territory21
+Territory28,907,193,Right Leaf,Territory29,Territory19,Territory23,Territory27
+Territory29,963,231,Right Leaf,Territory28,Territory27,Territory23
+Territory30,655,784,Bottom Leaf,Territory31,Territory21
+Territory31,718,746,Bottom Leaf,Territory30,Territory21,Territory23,Territory32
+Territory32,789,752,Bottom Leaf,Territory31,Territory23
+Territory27,931,133,Right Leaf,Territory28,Territory29
+Territory26,271,309,Left Leaf,Territory25,Territory24

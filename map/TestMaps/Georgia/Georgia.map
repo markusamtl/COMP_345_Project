@@ -1,0 +1,182 @@
+[Map]
+author=Rob Werhand
+image=Georgia.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Northwest=5
+Mountains=5
+Metro Atlanta=5
+Northeast=6
+West Central=5
+Middle=6
+East Central=6
+Middle Flint=7
+Southwest=6
+Coastal=4
+Heart of Georgia=8
+Southeast=7
+
+[Territories]
+Dade,42,59,Northwest,Walker
+Walker,61,85,Northwest,Dade,Catoosa,Whitfield,Gordon,Chattooga,Floyd
+Catoosa,83,60,Northwest,Walker,Whitfield
+Whitfield,101,75,Northwest,Walker,Catoosa,Murray,Gordon
+Murray,129,76,Northwest,Whitfield,Gordon,Fannin,Gilmer
+Fannin,180,60,Northwest,Gilmer,Murray,Union,Lumpkin
+Gilmer,160,89,Northwest,Gordon,Pickens,Fannin,Dawson,Murray
+Chattooga,58,116,Northwest,Walker,Floyd
+Gordon,112,115,Northwest,Walker,Whitfield,Floyd,Bartow,Murray,Pickens,Gilmer
+Pickens,158,122,Northwest,Gordon,Gilmer,Cherokee,Dawson
+Floyd,71,151,Northwest,Chattooga,Gordon,Bartow,Polk,Walker
+Bartow,115,153,Northwest,Floyd,Polk,Paulding,Gordon,Cobb,Cherokee
+Polk,72,186,Northwest,Floyd,Bartow,Paulding,Haralson
+Haralson,70,214,Northwest,Polk,Carroll,Paulding
+Paulding,112,201,Northwest,Polk,Bartow,Carroll,Douglas,Cobb,Haralson
+Union,218,71,Mountains,Fannin,Lumpkin,White,Towns
+Towns,247,59,Mountains,Rabun,Union,Habersham,White
+Rabun,280,65,Mountains,Towns,Habersham
+Forsyth,199,152,Mountains,Hall,Cherokee,North Fulton,Gwinnett,Dawson
+Dawson,199,130,Mountains,Cherokee,Pickens,Gilmer,Lumpkin,Forsyth,Hall
+Lumpkin,215,109,Mountains,Fannin,Union,Dawson,Hall,White
+White,243,98,Mountains,Union,Towns,Lumpkin,Hall,Habersham
+Habersham,270,101,Mountains,Rabun,Towns,Hall,Banks,Stephens,White
+Hall,237,139,Mountains,Forsyth,Gwinnett,Lumpkin,Dawson,Habersham,Banks,White,Jackson
+Banks,272,136,Mountains,Hall,Habersham,Stephens,Franklin,Jackson,Madison
+Stephens,295,109,Mountains,Habersham,Banks,Franklin
+Franklin,303,136,Mountains,Banks,Stephens,Hart,Madison
+Hart,336,137,Mountains,Franklin,Elbert,Madison
+Cherokee,158,154,Metro Atlanta,Cobb,Bartow,Pickens,Dawson,Forsyth,North Fulton
+Cobb,147,195,Metro Atlanta,Douglas,Cherokee,North Fulton,South Fulton,Paulding,Bartow
+Douglas,124,229,Metro Atlanta,Paulding,Carroll,Cobb,South Fulton
+North Fulton,179,180,Metro Atlanta,Cobb,Cherokee,South Fulton,Dekalb,Gwinnett,Forsyth
+South Fulton,152,234,Metro Atlanta,Douglas,Cobb,Coweta,Fayette,Clayton,Dekalb,North Fulton,Carroll
+Gwinnett,211,196,Metro Atlanta,North Fulton,Dekalb,Forsyth,Hall,Barrow,Walton,Rockdale
+Dekalb,188,223,Metro Atlanta,South Fulton,North Fulton,Gwinnett,Rockdale,Henry,Clayton
+Fayette,155,267,Metro Atlanta,South Fulton,Clayton,Coweta,Spalding
+Clayton,172,248,Metro Atlanta,South Fulton,Dekalb,Henry,Fayette,Spalding
+Henry,194,267,Metro Atlanta,Dekalb,Clayton,Rockdale,Spalding,Butts,Newton
+Rockdale,211,235,Metro Atlanta,Dekalb,Henry,Newton,Walton,Gwinnett
+Jackson,268,169,Northeast,Hall,Banks,Madison,Barrow,Clarke
+Madison,305,170,Northeast,Banks,Franklin,Elbert,Oglethorpe,Clarke,Jackson,Hart
+Elbert,347,172,Northeast,Hart,Madison,Oglethorpe,Wilkes,Lincoln
+Barrow,247,190,Northeast,Gwinnett,Jackson,Oconee,Walton
+Walton,246,218,Northeast,Gwinnett,Rockdale,Barrow,Oconee,Morgan,Newton
+Oconee,284,213,Northeast,Barrow,Clarke,Walton,Morgan,Greene,Oglethorpe
+Clarke,289,194,Northeast,Madison,Jackson,Oconee,Oglethorpe
+Oglethorpe,318,203,Northeast,Elbert,Madison,Clarke,Greene,Oconee,Wilkes,Taliaferro
+Greene,312,249,Northeast,Oconee,Oglethorpe,Morgan,Putnam,Hancock,Taliaferro
+Morgan,270,247,Northeast,Oconee,Greene,Jasper,Newton,Walton,Putnam
+Newton,232,251,Northeast,Rockdale,Henry,Butts,Morgan,Walton,Jasper
+Jasper,249,284,Northeast,Butts,Morgan,Newton,Monroe,Jones,Putnam
+Carroll,85,249,West Central,Haralson,Paulding,Heard,Coweta,Douglas,South Fulton
+Heard,79,285,West Central,Carroll,Coweta,Troup
+Coweta,120,278,West Central,Carroll,Heard,Troup,Meriwether,South Fulton,Spalding,Fayette
+Troup,91,325,West Central,Heard,Coweta,Meriwether,Harris
+Meriwether,129,320,West Central,Troup,Coweta,Spalding,Pike,Upson,Harris,Talbot
+Spalding,180,292,West Central,Meriwether,Pike,Lamar,Butts,Coweta,Fayette,Henry,Clayton
+Pike,164,316,West Central,Meriwether,Spalding,Lamar,Upson
+Butts,218,289,West Central,Lamar,Spalding,Henry,Newton,Jasper,Monroe
+Lamar,193,317,West Central,Pike,Spalding,Butts,Upson,Monroe
+Upson,178,345,West Central,Meriwether,Pike,Lamar,Talbot,Taylor,Crawford,Monroe
+Putnam,284,284,Middle,Jasper,Morgan,Greene,Jones,Baldwin,Hancock
+Monroe,224,328,Middle,Upson,Lamar,Butts,Jasper,Crawford,Jones,Bibb
+Jones,265,326,Middle,Jasper,Monroe,Bibb,Twiggs,Wilkinson,Baldwin,Putnam
+Baldwin,301,319,Middle,Jones,Putnam,Wilkinson,Hancock,Washington
+Crawford,215,367,Middle,Upson,Taylor,Peach,Monroe,Bibb
+Bibb,249,357,Middle,Houston,Peach,Crawford,Jones,Twiggs,Monroe
+Peach,233,390,Middle,Macon,Houston,Crawford,Bibb
+Houston,254,407,Middle,Bleckley,Macon,Dooly,Peach,Pulaski,Bibb,Twiggs
+Twiggs,280,375,Middle,Bleckley,Houston,Bibb,Wilkinson,Jones
+Wilkinson,310,357,Middle,Johnson,Laurens,Twiggs,Jones,Baldwin,Washington
+Pulaski,272,436,Middle,Bleckley,Dodge,Wilcox,Dooly,Houston
+Wilkes,361,220,East Central,Oglethorpe,Elbert,Taliaferro,Warren,Lincoln,McDuffie
+Lincoln,398,222,East Central,Elbert,Wilkes,McDuffie,Columbia
+Taliaferro,346,250,East Central,Greene,Hancock,Warren,Wilkes,Oglethorpe
+Hancock,333,291,East Central,Glascock,Greene,Baldwin,Putnam,Washington,Warren,Taliaferro
+Warren,368,270,East Central,Hancock,Taliaferro,Wilkes,Glascock,Jefferson,McDuffie
+McDuffie,391,262,East Central,Wilkes,Lincoln,Warren,Columbia,Richmond,Jefferson
+Columbia,416,253,East Central,Lincoln,Richmond,McDuffie
+Washington,351,330,East Central,Johnson,Wilkinson,Baldwin,Hancock,Glascock,Jefferson
+Glascock,377,296,East Central,Washington,Warren,Jefferson,Hancock
+Jefferson,400,319,East Central,Emanuel,Johnson,Glascock,Washington,Warren,Burke,Richmond,McDuffie
+Richmond,439,277,East Central,Columbia,McDuffie,Jefferson,Burke
+Burke,446,316,East Central,Emanuel,Jefferson,Richmond,Jenkins,Screven
+Jenkins,454,359,East Central,Emanuel,Burke,Screven,Bulloch
+Screven,494,361,East Central,Burke,Jenkins,Bulloch,Effingham
+Harris,104,366,Middle Flint,Troup,Meriwether,Muscogee,Talbot
+Talbot,149,373,Middle Flint,Meriwether,Upson,Harris,Muscogee,Chattahoochee,Marion,Taylor
+Taylor,182,394,Middle Flint,Upson,Marion,Macon,Talbot,Crawford,Schley
+Muscogee,108,397,Middle Flint,Harris,Chattahoochee,Talbot
+Chattahoochee,120,422,Middle Flint,Muscogee,Marion,Stewart,Talbot
+Marion,149,418,Middle Flint,Sumter,Chattahoochee,Webster,Talbot,Taylor,Schley
+Schley,174,434,Middle Flint,Marion,Sumter,Macon,Taylor
+Macon,207,421,Middle Flint,Sumter,Dooly,Schley,Taylor,Peach,Houston
+Clay,97,529,Middle Flint,Quitman,Randolph,Early,Calhoun
+Quitman,91,489,Middle Flint,Stewart,Clay,Randolph
+Randolph,119,503,Middle Flint,Stewart,Quitman,Clay,Webster,Calhoun,Terrell
+Stewart,112,457,Middle Flint,Chattahoochee,Quitman,Randolph,Webster
+Webster,147,463,Middle Flint,Stewart,Randolph,Marion,Sumter,Terrell
+Sumter,186,463,Middle Flint,Marion,Webster,Schley,Macon,Dooly,Crisp,Terrell,Lee
+Dooly,234,448,Middle Flint,Wilcox,Sumter,Crisp,Macon,Houston,Pulaski
+Crisp,238,481,Middle Flint,Turner,Wilcox,Sumter,Dooly,Lee,Worth
+Terrell,159,504,Southwest,Randolph,Webster,Sumter,Dougherty,Lee,Calhoun
+Lee,193,503,Southwest,Sumter,Crisp,Worth,Dougherty,Terrell
+Worth,229,545,Southwest,Tift,Turner,Crisp,Colquitt,Mitchell,Dougherty,Lee
+Calhoun,135,538,Southwest,Clay,Randolph,Early,Baker,Dougherty,Terrell
+Dougherty,184,535,Southwest,Baker,Mitchell,Worth,Calhoun,Terrell,Lee
+Early,105,560,Southwest,Clay,Miller,Baker,Calhoun,Seminole
+Miller,122,586,Southwest,Early,Seminole,Baker,Decatur
+Baker,155,563,Southwest,Early,Miller,Decatur,Calhoun,Dougherty,Mitchell
+Mitchell,190,582,Southwest,Decatur,Baker,Grady,Thomas,Colquitt,Dougherty,Worth
+Colquitt,239,585,Southwest,Brooks,Cook,Thomas,Tift,Worth,Mitchell
+Seminole,106,616,Southwest,Early,Miller,Decatur
+Decatur,139,628,Southwest,Seminole,Miller,Baker,Mitchell,Grady
+Grady,182,629,Southwest,Decatur,Thomas,Mitchell
+Thomas,221,632,Southwest,Brooks,Grady,Colquitt,Mitchell
+Bulloch,485,416,Coastal,Candler,Emanuel,Evans,Jenkins,Screven,Effingham,Bryan
+Effingham,530,417,Coastal,Bulloch,Screven,Bryan,Chatham
+Chatham,556,469,Coastal,Bryan,Effingham
+Bryan,510,458,Coastal,Evans,Bulloch,Effingham,Chatham,Liberty
+Liberty,509,491,Coastal,Tattnall,Evans,Bryan,Long,McIntosh
+Long,483,507,Coastal,Tattnall,Wayne,Liberty,McIntosh
+McIntosh,521,539,Coastal,Wayne,Liberty,Long,Glynn
+Glynn,507,577,Coastal,Brantley,Wayne,McIntosh,Camden
+Camden,492,618,Coastal,Brantley,Charlton,Glynn
+Johnson,377,373,Heart of Georgia,Wilkinson,Washington,Jefferson,Laurens,Emanuel
+Emanuel,414,388,Heart of Georgia,Jefferson,Burke,Jenkins,Bulloch,Johnson,Treutlen,Toombs,Candler
+Treutlen,383,413,Heart of Georgia,Laurens,Emanuel,Wheeler,Montgomery
+Candler,442,413,Heart of Georgia,Bulloch,Emanuel,Tattnall,Evans
+Laurens,340,403,Heart of Georgia,Wilkinson,Bleckley,Dodge,Johnson,Treutlen,Wheeler
+Bleckley,293,410,Heart of Georgia,Houston,Pulaski,Twiggs,Laurens,Dodge
+Dodge,313,450,Heart of Georgia,Pulaski,Bleckley,Wilcox,Laurens,Wheeler,Telfair
+Wilcox,278,473,Heart of Georgia,Crisp,Dooly,Pulaski,Dodge,Telfair,Ben Hill,Turner
+Telfair,337,481,Heart of Georgia,Dodge,Wilcox,Wheeler,Jeff Davis,Coffee,Ben Hill
+Wheeler,361,449,Heart of Georgia,Dodge,Laurens,Telfair,Jeff Davis,Montgomery,Treutlen
+Montgomery,388,446,Heart of Georgia,Wheeler,Treutlen,Toombs,Jeff Davis
+Toombs,410,456,Heart of Georgia,Emanuel,Montgomery,Jeff Davis,Appling,Tattnall
+Tattnall,447,471,Heart of Georgia,Liberty,Long,Appling,Wayne,Evans,Candler,Toombs
+Evans,465,446,Heart of Georgia,Bryan,Bulloch,Liberty,Tattnall,Candler
+Jeff Davis,371,499,Heart of Georgia,Coffee,Wheeler,Telfair,Montgomery,Appling,Toombs,Bacon
+Appling,416,505,Heart of Georgia,Bacon,Jeff Davis,Wayne,Tattnall,Toombs,Pierce
+Wayne,459,529,Heart of Georgia,Long,McIntosh,Glynn,Appling,Tattnall,Pierce,Brantley
+Turner,258,513,Southeast,Crisp,Tift,Worth,Irwin,Ben Hill,Wilcox
+Ben Hill,306,506,Southeast,Turner,Irwin,Coffee,Telfair,Wilcox
+Tift,271,548,Southeast,Colquitt,Cook,Worth,Berrien,Irwin,Turner
+Irwin,300,530,Southeast,Tift,Turner,Berrien,Ben Hill,Coffee
+Coffee,349,537,Southeast,Jeff Davis,Berrien,Irwin,Ben Hill,Atkinson,Bacon,Ware,Telfair
+Bacon,397,532,Southeast,Appling,Coffee,Ware,Pierce,Jeff Davis
+Ware,398,589,Southeast,Clinch,Atkinson,Coffee,Pierce,Bacon,Brantley,Charlton
+Pierce,425,560,Southeast,Ware,Brantley,Bacon,Wayne,Appling
+Brantley,454,582,Southeast,Camden,Glynn,Ware,Charlton,Pierce,Wayne
+Charlton,433,622,Southeast,Camden,Ware,Brantley
+Cook,280,593,Southeast,Colquitt,Brooks,Lowndes,Berrien,Tift
+Berrien,305,571,Southeast,Lowndes,Cook,Tift,Lanier,Atkinson,Coffee,Irwin
+Atkinson,347,572,Southeast,Lanier,Berrien,Clinch,Ware,Coffee
+Brooks,258,635,Southeast,Colquitt,Thomas,Cook,Lowndes
+Lowndes,301,637,Southeast,Brooks,Cook,Berrien,Lanier,Echols
+Lanier,324,605,Southeast,Lowndes,Echols,Clinch,Atkinson,Berrien
+Clinch,364,619,Southeast,Echols,Lanier,Ware,Atkinson
+Echols,334,647,Southeast,Lowndes,Lanier,Clinch

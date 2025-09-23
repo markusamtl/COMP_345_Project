@@ -1,0 +1,65 @@
+[Map]
+author=Sid6.7
+image=Evasas.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Ghez=9
+Urmaskis=18
+Farn=2
+Silte=2
+Etir=4
+Ikoont=6
+Meech=3
+Kelm=3
+
+[Territories]
+Kuba,787,404,Ghez,CHelm,Tiago,Vana,South Farn
+Vana,766,451,Ghez,Kuba,Tiago,Beech,South Farn
+Tiago,851,432,Ghez,CHelm,Kuba,Vana,Beech,Hola
+Beech,833,477,Ghez,Tiago,Vana,Hola,Adios
+Hola,46,423,Ghez,Tiago,Beech,Mano,Adios,Drantos
+Adios,64,474,Ghez,Beech,Teno,Mano,Hola
+Mano,119,442,Ghez,Chaaps,Teno,Hola,Adios
+Teno,172,469,Ghez,Chaaps,Ixco,Adios,Mano
+Ixco,214,493,Ghez,Calif,Teno
+Pulco,189,302,Etir,Aja,Koont
+Aja,225,346,Etir,Chaaps,Pulco
+Chaaps,192,401,Etir,Calif,Teno,Mano,Aja
+Calif,259,478,Etir,Cruzar,Chaaps,Ixco
+Cruzar,392,388,Meech,Leza,Calif
+Leza,480,379,Meech,Bete,Buscht,Cruzar
+Bete,593,386,Meech,North Farn,Buscht,Leza
+North Farn,697,400,Farn,South Farn,Bete
+South Farn,726,427,Farn,Kuba,Vana,North Farn
+Peens,803,145,Silte,Kinks,Yurals,Pons
+Pons,840,188,Silte,Peens,CHelm
+CHelm,858,364,Kelm,Pons,Kuba,Tiago,Drantos
+Drantos,29,360,Kelm,CHelm,Hola,Tamerthan
+Tamerthan,68,318,Kelm,Drantos,Koont
+Koont,147,247,Ikoont,Pulco,Tamerthan,Marzha
+Marzha,136,182,Ikoont,Koont,Blaso,Ermain
+Blaso,153,124,Ikoont,Marzha,Ermain
+Ermain,214,114,Ikoont,Marzha,Blaso,North Barrens,Witzland,Talia
+Witzland,321,92,Ikoont,Ermain,North Barrens,Talia
+Talia,323,133,Ikoont,Ermain,Witzland,Pusha
+North Barrens,135,30,Urmaskis,Ermain,Witzland,Eastern Wastes
+Eastern Wastes,822,18,Urmaskis,North Barrens,Belos,Yurals
+Yurals,766,44,Urmaskis,Peens,Eastern Wastes,Kinks,Belos
+Belos,724,18,Urmaskis,Eastern Wastes,Kinks,Minks,Yurals
+Kinks,713,56,Urmaskis,Peens,Engrad,Yurals,Belos,Minks
+Minks,669,34,Urmaskis,Engrad,Kinks,Belos
+Engrad,631,67,Urmaskis,Krimea,Dansk,Minks,Kinks
+Scova,612,124,Urmaskis,Talingrod,Krimea,Bolshek,Dansk
+Dansk,544,96,Urmaskis,Scova,Engrad,Bolshek
+Krimea,678,123,Urmaskis,Talingrod,Scova,Engrad
+Talingrod,652,162,Urmaskis,Nodgrod,Scova,Krimea
+Nodgrod,608,174,Urmaskis,Molshek,Talingrod
+Bolshek,545,124,Urmaskis,Molshek,Scova,Dansk,Pusha
+Molshek,567,197,Urmaskis,Kev,Bolshek,Nodgrod
+Kev,548,226,Urmaskis,Boond,Buscht,Molshek
+Buscht,526,248,Urmaskis,Bete,Leza,Kev
+Pusha,457,95,Urmaskis,Talia,Bolshek
+Boond,424,239,Urmaskis,Kev

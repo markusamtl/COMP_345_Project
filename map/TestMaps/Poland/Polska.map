@@ -1,0 +1,75 @@
+[Map]
+author=Pikad
+warn=yes
+image=Polska.bmp
+wrap=no
+scroll=no
+
+[Continents]
+Pomorze=4
+Mazury=3
+Wielkopolska=5
+Mazowsze=8
+Podlasie=4
+Slask=6
+Malopolska=5
+Podkarpackie=4
+
+
+[Territories]
+Szczecin,90,145,Pomorze,Gryfino,Stargard Szczecinski,Gryfice
+Gryfino,90,210,Pomorze,Gorzow,Stargard Szczecinski,Szczecin
+Gryfice,150,120,Pomorze,Szczecin,Stargard Szczecinski,Drawsko Pomorskie,Kolobrzeg
+Stargard Szczecinski,155,160,Pomorze,Szczecin,Gryfino,Gorzow,Pila,Walcz,Starogard Gdanski,Drawsko Pomorskie,Gryfice
+Kolobrzeg,200,75,Pomorze,Gryfice,Drawsko Pomorskie,Gdansk
+Drawsko Pomorskie,190,135,Pomorze,Gryfice,Stargard Szczecinski,Starogard Gdanski,Gdansk,Kolobrzeg
+Walcz,185,205,Pomorze,Stargard Szczecinski,Pila,Konin,Bydgoszcz,Starogard Gdanski
+Gdansk,245,65,Pomorze,Kolobrzeg,Drawsko Pomorskie,Starogard Gdanski,Malbork
+Starogard Gdanski,235,150,Pomorze,Drawsko Pomorskie,Stargard Szczecinski,Walcz,Bydgoszcz,Kwidzyn,Malbork,Gdansk
+Bydgoszcz,250,215,Pomorze,Walcz,Konin,Torun_Plock,Kwidzyn,Starogard Gdanski
+Malbork,290,110,Pomorze,Gdansk,Starogard Gdanski,Kwidzyn,Olsztyn,Elblag
+Kwidzyn,280,155,Pomorze,Starogard Gdanski,Bydgoszcz,Torun_Plock,Przasnysz,Olsztyn,Malbork
+
+Elblag,340,80,Mazury,Malbork,Olsztyn,Gizycko
+Olsztyn,355,135,Mazury,Malbork,Kwidzyn,Przasnysz,Lomza,Gizycko,Elblag
+Przasnysz,350,175,Mazury,Kwidzyn,Torun_Plock,Wolomin,Lomza,Olsztyn
+Lomza,445,160,Mazury,Olsztyn,Przasnysz,Wolomin,Siedlce,Bialystok,Suwalki,Gizycko
+Gizycko,410,80,Mazury,Elblag,Olsztyn,Lomza,Suwalki
+Suwalki,490,100,Mazury,Gizycko,Lomza,Bialystok
+
+Gorzow,100,270,Wielkopolska,Zielona Gora,Grodzisk,Gryfino,Stargard Szczecinski,Pila
+Pila,170,255,Wielkopolska,Gorzow,Grodzisk,Poznan,Konin,Walcz,Stargard Szczecinski
+Konin,240,255,Wielkopolska,Walcz,Pila,Poznan,Lodz,Torun_Plock,Bydgoszcz
+Zielona Gora,115,370,Wielkopolska,Gorzow,Grodzisk,Lubin,Jelenia Gora
+Grodzisk,144,317,Wielkopolska,Gorzow,Zielona Gora,Lubin,Poznan,Pila
+Poznan,228,319,Wielkopolska,Pila,Grodzisk,Lubin,Wroclaw,Czestochowa,Lodz,Konin
+Lubin,174,345,Wielkopolska,Grodzisk,Zielona Gora,Jelenia Gora,Wroclaw,Poznan
+Jelenia Gora,147,407,Wielkopolska,Opole,Wroclaw,Lubin,Zielona Gora
+
+Torun_Plock,323,221,Mazowsze,Bydgoszcz,Konin,Lodz,Warszawa,Wolomin,Przasnysz,Kwidzyn
+Wolomin,420,225,Mazowsze,Torun_Plock,Warszawa,Siedlce,Lomza,Przasnysz
+Lodz,323,290,Mazowsze,Konin,Poznan,Czestochowa,Piotrkow,Warszawa,Torun_Plock
+Warszawa,412,304,Mazowsze,Torun_Plock,Lodz,Piotrkow,Szydlowiec,Zamosc,Lublin,Siedlce,Wolomin
+Piotrkow,338,335,Mazowsze,Lodz,Czestochowa,Kielce,Szydlowiec,Warszawa
+Szydlowiec,410,385,Mazowsze,Piotrkow,Kielce,Rzeszow,Zamosc,Warszawa
+
+Bialystok,520,170,Podlasie,Suwalki,Lomza,Siedlce,Biala Podlaska
+Siedlce,476,234,Podlasie,Lomza,Wolomin,Warszawa,Lublin,Biala Podlaska,Bialystok
+Biala Podlaska,520,237,Podlasie,Bialystok,Siedlce,Lublin
+Lublin,529,283,Podlasie,Biala Podlaska,Siedlce,Warszawa,Zamosc,Chelm
+Zamosc,497,358,Podlasie,Lublin,Warszawa,Szydlowiec,Rzeszow,Lezajsk,Chelm
+Chelm,549,346,Podlasie,Lublin,Zamosc,Lezajsk
+
+czestochowa,287,376,Slask,Poznan,Wroclaw,Katowice,Kielce,Piotrkow,Lodz
+Wroclaw,229,393,Slask,Poznan,Lubin,Jelenia Gora,Opole,Katowice,Czestochowa
+Opole,242,444,Slask,Wroclaw,Jelenia Gora,Katowice
+Katowice,294,454,Slask,Czestochowa,Wroclaw,Opole,Krakow,Kielce
+
+Kielce,381,433,Malopolska,Piotrkow,Czestochowa,Katowice,Krakow,Nowy Sacz,Krosno,Rzeszow,Szydlowiec
+Krakow,343,513,Malopolska,Katowice,Kielce,Nowy Sacz
+Nowy Sacz,405,506,Malopolska,Kielce,Krakow,Krosno
+
+Rzeszow,462,411,Podkarpackie,Zamosc,Szydlowiec,Kielce,Krosno,Przemysl,Lezajsk
+Lezajsk,545,413,Podkarpackie,Chelm,Zamosc,Rzeszow,Przemysl
+Krosno,465,500,Podkarpackie,Rzeszow,Kielce,Nowy Sacz,Przemysl
+Przemysl,521,470,Podkarpackie,Lezajsk,Rzeszow,Krosno

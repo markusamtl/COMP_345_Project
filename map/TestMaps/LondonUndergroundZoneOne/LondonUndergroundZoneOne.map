@@ -1,0 +1,119 @@
+[Map]
+author=Stewart Ainsworth
+image=LondonUndergroundZoneOne.bmp
+Wrap=no
+Scroll=horizintal
+warn=yes
+
+[Continents]
+Mornington Crescent=1
+Northern -Charing +=4
+Northern -Bank=4
+Piccadilly=5
+Victoria -North=2
+Victoria=2
+District=3
+Bakerloo=2
+Central=6
+Hammersmith & City=5
+Circle=6
+Jubilee=2
+
+[Territories]
+MCT,510,20,Mornington Crescent,EUN
+
+EUN,511,71,Northern -Charing +,MCT,EUV,WST
+WST,481,126,Northern -Charing +,EUN,EUV,GST,OXC
+GST,481,185,Northern -Charing +,WST,TCN
+TCN,480,250,Northern -Charing +,GST,TCC,LSN
+LSN,481,282,Northern -Charing +,TCN,CH+,LSP
+CH+,481,379,Northern -Charing +,PIC,LSN,EBC,EBN
+EBN,481,435,Northern -Charing +,EBC,CH+,WLN
+WLN,481,513,Northern -Charing +,WLJ,EBN
+
+KPN,588,86,Northern -Bank,EUV,KPH,KPV,ANG
+ANG,668,86,Northern -Bank,KPN,OST
+OST,727,113,Northern -Bank,ANG,MGN
+MGN,727,198,Northern -Bank,OST,MGH,BKN
+BKN,728,306,Northern -Bank,MGN,BKC,MMT,LBN
+LBN,727,432,Northern -Bank,LBJ,BOR,BKN
+BOR,632,558,Northern -Bank,LBN,E&C
+E&C,528,666,Northern -Bank,BOR,WLJ
+
+RSQ,558,184,Piccadilly,KPH,HBP
+HBP,553,229,Piccadilly,RSQ,CGD,HBC
+CGD,507,274,Piccadilly,HBP,LSP
+LSP,492,293,Piccadilly,CGD,LSN,PIC
+PIC,417,316,Piccadilly,LSP,GPK,OXC,CH+
+GPK,310,316,Piccadilly,BST,OXC,PIC,WMR,VIV,HPC
+HPC,274,332,Piccadilly,GPK,KNB
+KNB,242,363,Piccadilly,HPC,SKP
+SKP,187,409,Piccadilly,KNB,GRP,SKC
+GRP,156,409,Piccadilly,ECP,SKP,GRC
+ECP,96,413,Piccadilly,ECD,GRP
+
+H&I,795,20,Victoria -North,KPV
+KPV,587,59,Victoria -North,H&I,KPN,EUV
+EUV,536,71,Victoria -North,EUN,KPV,KPN,WST
+
+VIV,311,439,Victoria,VIC,GPK,PIM
+PIM,310,555,Victoria,VIV,VAU
+VAU,329,664,Victoria,PIM
+
+KEO,68,348,District,ECD
+ECD,96,396,District,KEO,ECP,HSK
+HSK,115,306,District,ECD,GRC,NHG
+NHG,115,235,District,HSK,QUW,BAY
+BAY,115,181,District,PDD,NHG
+PDD,115,142,District,BAY,PDB,ERH
+
+PDB,92,120,Bakerloo,PDD,ERB
+ERB,166,120,Bakerloo,PDB,MBN
+MBN,240,120,Bakerloo,ERB,BSB
+BSB,294,120,Bakerloo,MBN,BSH,RPK,BST
+RPK,354,156,Bakerloo,BSB,OXC
+
+QUW,158,238,Central,NHG,LRG
+LRG,220,238,Central,QUW,MBA
+MBA,252,238,Central,LRG,BST
+BST,294,238,Central,MBA,OXC,BSB,GPK
+OXC,370,238,Central,BST,RPK,WST,TCC,PIC,GPK
+TCC,468,238,Central,OXC,TCN,HBC
+HBC,540,238,Central,TCC,HBP,CHL
+CHL,595,238,Central,STP,HBC
+STP,647,264,Central,CHL,BKC
+BKC,714,294,Central,STP,BKN,LSC,WLJ
+LSC,831,200,Central,LSH,BNG,BKC
+BNG,962,148,Central,LSC
+
+PDH,103,96,Hammersmith & City,ERH
+ERH,193,102,Hammersmith & City,PDH,BSH,PDD
+BSH,313,100,Hammersmith & City,ERH,BSB,GPS
+GPS,418,104,Hammersmith & City,BSH,EUS
+EUS,521,104,Hammersmith & City,GPS,KPH
+KPH,587,104,Hammersmith & City,EUS,KPN,FDN,RSQ
+FDN,633,134,Hammersmith & City,KPH,BAR
+BAR,655,155,Hammersmith & City,FDN,MGH
+MGH,722,180,Hammersmith & City,BAR,MGN,LSH
+LSH,830,180,Hammersmith & City,MGH,ALD,AGE,LSC
+AGE,941,266,Hammersmith & City,LSH,TRH
+
+ALD,870,282,Circle,LSH,TRH
+TRH,855,330,Circle,AGE,ALD,MMT
+MMT,745,326,Circle,TRH,BKN,CST
+CST,652,328,Circle,MMT,MAN
+MAN,610,348,Circle,CST,BKF
+BKF,590,369,Circle,MAN,TPL
+TPL,557,403,Circle,BKF,EBC
+EBC,492,427,Circle,CH+,TPL,WLJ,EBN,WMR
+WMR,420,424,Circle,WLJ,EBC,GPK,SJP
+SJP,347,424,Circle,WMR,VIC
+VIC,304,422,Circle,SSQ,SJP,VIV
+SSQ,265,424,Circle,SKC,VIC
+SKC,187,428,Circle,SSQ,SKP,GRC
+GRC,156,428,Circle,HSK,GRP,SKC
+
+WLJ,494,500,Jubilee,BKC,SWK,WLN,WMR,EBC,E&C
+SWK,571,545,Jubilee,WLJ,LBJ
+LBJ,717,446,Jubilee,SWK,LBN,BER
+BER,857,446,Jubilee,LBJ

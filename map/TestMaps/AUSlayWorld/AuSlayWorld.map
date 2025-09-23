@@ -1,0 +1,67 @@
+[Map]
+author=Andrea Usai (n-drx@libero.it)
+image=AuSlayWorld.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+created=08.2004
+legal=Copyright ©2004 Andrea Usai (n-drx@libero.it)
+serial=AU-001
+
+[Continents]
+Africa=5
+Asia=7
+Europe=6
+Greenland=3
+North America=6
+Oceania=2
+South America=3
+
+[Territories]
+Congo,335,245,Africa,Western Africa,Northern Africa,Eastern Africa,South Africa
+Eastern Africa,390,250,Africa,Congo,Northern Africa,Middle East,Madagascar,South Africa
+Madagascar,395,290,Africa,Eastern Africa,South Africa
+Middle East,395,210,Africa,Northern Africa,Eastern Africa,Turkey,Western Asia
+Northern Africa,340,200,Africa,Western Africa,Congo,Eastern Africa,Middle East,Turkey,Spain
+South Africa,350,300,Africa,Madagascar,Congo,Eastern Africa
+Western Africa,290,230,Africa,Brazil,Northern Africa,Congo
+
+China,505,170,Asia,Siberia,Western Asia,Siam,India,Japan
+India,450,225,Asia,Western Asia,China,Siam
+Japan,565,185,Asia,China,Siberia
+Siam,495,215,Asia,China,India,Indonesia
+Siberia,515,95,Asia,Russia,Western Asia,Alaska,Japan,China
+Western Asia,445,155,Asia,Russia,Turkey,Middle East,Siberia,China,India
+
+Eastern Europe,360,145,Europe,Middle Europe,Scandinavia,Russia
+Middle Europe,322,160,Europe,Spain,Eastern Europe
+Russia,400,140,Europe,Turkey,Siberia,Scandinavia,Eastern Europe,Western Asia
+Scandinavia,350,105,Europe,UK,Eastern Europe,Russia
+Spain,300,175,Europe,Middle Europe,Northern Africa,UK
+Turkey,375,180,Europe,Northern Africa,Middle East,Western Asia,Russia
+UK,305,140,Europe,Iceland,Spain,Scandinavia
+
+Ellesmere,160,65,Greenland,Northern Canada,Baffin,North Greenland
+Iceland,280,115,Greenland,South Greenland,UK
+North Greenland,235,55,Greenland,Ellesmere,Baffin,South Greenland
+South Greenland,235,110,Greenland,Quebec,Iceland,North Greenland
+
+Alaska,45,125,North America,Northern Canada,Southern Canada,Siberia
+Baffin,175,100,North America,Northern Canada,Quebec,Ellesmere,North Greenland
+Eastern USA,170,175,North America,Southern Canada,Western USA,Mexico,Quebec,Venezuela
+Mexico,130,220,North America,Eastern USA,Western USA,Venezuela
+Northern Canada,110,95,North America,Alaska,Southern Canada,Baffin,Ellesmere
+Quebec,195,145,North America,Eastern USA,Baffin,South Greenland
+Southern Canada,90,145,North America,Northern Canada,Alaska,Western USA,Eastern USA
+Western USA,95,175,North America,Southern Canada,Eastern USA,Mexico
+
+Eastern Australia,585,310,Oceania,Middle Australia,New Guinea
+Indonesia,515,255,Oceania,Siam,New Guinea,Western Australia
+Middle Australia,555,295,Oceania,Western Australia,Eastern Australia
+New Guinea,570,265,Oceania,Indonesia,Eastern Australia
+Western Australia,530,315,Oceania,Middle Australia,Indonesia
+
+Argentina,180,345,South America,Peru,Brazil
+Brazil,235,285,South America,Venezuela,Peru,Argentina,Western Africa
+Peru,175,275,South America,Venezuela,Brazil,Argentina
+Venezuela,190,245,South America,Mexico,Peru,Brazil,Eastern USA

@@ -1,0 +1,115 @@
+[Map]
+author=John Fowler
+image=Massachusetts.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Berkshires=5
+Worcester=6
+Boston=5
+North Shore=3
+South Shore=4
+Cape Code=3
+
+[Territories]
+Territory01,130,150,Berkshires,Territory04,Territory05,Territory02
+Territory02,83,327,Berkshires,Territory01,Territory03,Territory06
+Territory03,58,436,Berkshires,Territory02,Territory07
+Territory04,214,149,Berkshires,Territory01,Territory05,Territory09,Territory08
+Territory05,180,248,Berkshires,Territory01,Territory06,Territory10,Territory09,Territory04
+Territory06,196,341,Berkshires,Territory02,Territory05,Territory07,Territory24,Territory10,Territory13
+Territory07,159,416,Berkshires,Territory03,Territory06,Territory24
+Territory08,319,137,Berkshires,Territory04,Territory09,Territory11,Territory17
+Territory09,275,209,Berkshires,Territory10,Territory04,Territory08,Territory11,Territory05
+Territory10,265,279,Berkshires,Territory05,Territory06,Territory13,Territory12,Territory09,Territory11
+Territory11,355,211,Berkshires,Territory10,Territory08,Territory16,Territory12,Territory09
+Territory12,347,286,Berkshires,Territory10,Territory13,Territory11,Territory16,Territory31
+Territory13,334,353,Berkshires,Territory24,Territory10,Territory12,Territory14,Territory06,Territory15,Territory99
+Territory14,314,450,Berkshires,Territory24,Territory13,Territory15
+Territory15,359,463,Berkshires,Territory14,Territory32,Territory13,Territory99
+Territory16,419,241,Worcester,Territory11,Territory17,Territory30,Territory12,Territory31
+Territory17,453,182,Worcester,Territory16,Territory18,Territory08,Territory30
+Territory18,519,165,Worcester,Territory17,Territory19,Territory23,Territory25,Territory30
+Territory19,629,159,Worcester,Territory18,Territory20,Territory22,Territory23,Territory26
+Territory20,723,165,Worcester,Territory19,Territory22,Territory43,Territory21
+Territory21,735,253,Worcester,Territory28,Territory22,Territory20,Territory43,Territory50,Territory42
+Territory22,665,216,Worcester,Territory19,Territory26,Territory28,Territory20,Territory21
+Territory23,587,209,Worcester,Territory18,Territory25,Territory19,Territory26
+Territory24,240,441,Berkshires,Territory07,Territory06,Territory13,Territory14
+Territory25,546,248,Worcester,Territory18,Territory30,Territory23,Territory27
+Territory26,624,248,Worcester,Territory19,Territory22,Territory28,Territory27,Territory23
+Territory27,583,285,Worcester,Territory25,Territory29,Territory26,Territory28
+Territory28,664,292,Worcester,Territory26,Territory38,Territory39,Territory21,Territory42,Territory22,Territory27,Territory29
+Territory29,549,323,Worcester,Territory27,Territory30,Territory34,Territory35,Territory28
+Territory30,496,272,Worcester,Territory16,Territory25,Territory29,Territory17,Territory18,Territory34,Territory31
+Territory31,430,302,Worcester,Territory16,Territory30,Territory99,Territory12
+Territory32,424,459,Worcester,Territory15,Territory33,Territory99
+Territory33,493,466,Worcester,Territory34,Territory36,Territory32
+Territory34,507,384,Worcester,Territory29,Territory33,Territory36,Territory35,Territory30,Territory99
+Territory35,573,388,Worcester,Territory29,Territory34,Territory36,Territory37,Territory38
+Territory36,547,462,Worcester,Territory34,Territory35,Territory33,Territory37
+Territory37,617,459,Worcester,Territory35,Territory36,Territory38,Territory39,Territory40
+Territory38,645,372,Worcester,Territory35,Territory28,Territory39,Territory37
+Territory39,704,412,Worcester,Territory38,Territory37,Territory41,Territory40,Territory42,Territory28
+Territory40,751,489,Worcester,Territory37,Territory39,Territory41,Territory55
+Territory41,774,419,Worcester,Territory39,Territory42,Territory40,Territory55,Territory54
+Territory42,757,342,Worcester,Territory39,Territory28,Territory21,Territory50,Territory54,Territory41
+Territory43,794,183,Boston,Territory20,Territory21,Territory44,Territory49,Territory50
+Territory44,863,173,Boston,Territory43,Territory49,Territory48,Territory47,Territory45
+Territory45,943,163,Boston,Territory44,Territory47,Territory63,Territory46
+Territory46,1006,213,Boston,Territory69,Territory47,Territory62,Territory45,Territory63,Territory98
+Territory47,951,223,Boston,Territory44,Territory48,Territory45,Territory46,Territory98
+Territory48,894,262,Boston,Territory51,Territory44,Territory47,Territory52,Territory49,Territory98
+Territory49,843,238,Boston,Territory51,Territory44,Territory43,Territory50,Territory48
+Territory50,807,301,Boston,Territory21,Territory42,Territory51,Territory49,Territory43,Territory54
+Territory51,873,304,Boston,Territory50,Territory54,Territory53,Territory52,Territory48,Territory49
+Territory52,936,330,Boston,Territory51,Territory48,Territory58,Territory53,Territory61,Territory98
+Territory53,900,385,Boston,Territory55,Territory51,Territory52,Territory56,Territory58,Territory54
+Territory54,851,365,Boston,Territory42,Territory55,Territory51,Territory53,Territory41,Territory50
+Territory55,835,455,Boston,Territory41,Territory40,Territory54,Territory53,Territory56
+Territory56,914,468,Boston,Territory55,Territory53,Territory58,Territory57,Territory75,Territory74
+Territory57,982,443,Boston,Territory56,Territory58,Territory59,Territory73,Territory72
+Territory58,958,394,Boston,Territory52,Territory56,Territory57,Territory59,Territory61,Territory53
+Territory59,1037,402,Boston,Territory57,Territory61,Territory58,Territory60,Territory71,Territory72
+Territory60,1095,392,Boston,Territory59,Territory70
+Territory61,1000,347,Boston,Territory52,Territory62,Territory59,Territory58,Territory98
+Territory62,1028,272,Boston,Territory46,Territory69,Territory61,Territory98
+Territory63,997,129,North Shore,Territory45,Territory64,Territory66,Territory69,Territory46
+Territory64,1021,95,North Shore,Territory63,Territory65,Territory66
+Territory65,1078,67,North Shore,Territory64,Territory66
+Territory66,1094,147,North Shore,Territory63,Territory64,Territory65,Territory67,Territory68,Territory69
+Territory67,1173,164,North Shore,Territory66,Territory68
+Territory68,1097,200,North Shore,Territory66,Territory67,Territory69
+Territory69,1054,207,North Shore,Territory62,Territory63,Territory68,Territory66,Territory46
+Territory70,1129,421,South Shore,Territory60,Territory71,Territory80
+Territory71,1102,466,South Shore,Territory59,Territory72,Territory79,Territory80,Territory70
+Territory72,1042,482,South Shore,Territory59,Territory57,Territory78,Territory71,Territory79,Territory73
+Territory73,990,495,South Shore,Territory57,Territory78,Territory74,Territory77,Territory72
+Territory74,956,526,South Shore,Territory56,Territory76,Territory73,Territory77,Territory75
+Territory75,913,543,South Shore,Territory56,Territory76,Territory74
+Territory76,925,599,South Shore,Territory75,Territory74,Territory77,Territory85
+Territory77,1001,561,South Shore,Territory76,Territory78,Territory73,Territory74,Territory85,Territory84,Territory83
+Territory78,1048,532,South Shore,Territory72,Territory73,Territory77,Territory83,Territory79
+Territory79,1104,528,South Shore,Territory78,Territory72,Territory71,Territory80,Territory82,Territory83
+Territory80,1145,506,South Shore,Territory79,Territory81,Territory71,Territory70,Territory82
+Territory81,1192,581,South Shore,Territory80,Territory82,Territory89,Territory90
+Territory82,1136,582,South Shore,Territory79,Territory81,Territory89,Territory83,Territory80
+Territory83,1090,581,South Shore,Territory78,Territory77,Territory79,Territory82,Territory88,Territory84,Territory89
+Territory84,1056,612,South Shore,Territory77,Territory83,Territory88,Territory86,Territory85
+Territory85,973,638,South Shore,Territory76,Territory77,Territory84,Territory86
+Territory86,1009,657,South Shore,Territory84,Territory85,Territory87,Territory88
+Territory87,1022,734,South Shore,Territory86,Territory88
+Territory88,1084,683,South Shore,Territory83,Territory84,Territory86,Territory87,Territory89
+Territory89,1158,644,South Shore,Territory82,Territory88,Territory81,Territory90,Territory83
+Territory90,1209,670,Cape Code,Territory81,Territory89,Territory92,Territory91
+Territory91,1209,737,Cape Code,Territory90,Territory92,Territory93
+Territory92,1270,693,Cape Code,Territory90,Territory95,Territory91
+Territory93,1198,851,Cape Code,Territory91,Territory94
+Territory94,1430,922,Cape Code,Territory93,Territory96
+Territory95,1368,685,Cape Code,Territory92,Territory96
+Territory96,1429,670,Cape Code,Territory94,Territory95,Territory97
+Territory97,1434,538,Cape Code,Territory96
+Territory98,979,293,Boston,Territory62,Territory61,Territory52,Territory48,Territory47,Territory46
+Territory99,430,374,Worcester,Territory13,Territory32,Territory34,Territory31,Territory15

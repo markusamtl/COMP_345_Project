@@ -1,0 +1,52 @@
+[Map]
+author=stub
+image=BUNKERv1.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Command Room=1
+Weapon Caches=6
+Outside=2
+Entry=3
+Corridors=5
+Mess Hall=2
+Kitchen/Supplies=3
+Living Areas=4
+Spare Room=0
+
+
+[Territories]
+Helipad,130,400,Outside,Outer
+Outer,100,200,Outside,Helipad,Entry 1
+
+Entry 1,205,180,Entry,Outer,Entry 2
+Entry 2,314,186,Entry,Entry 1,Kitchen, Corridor 1
+
+Kitchen,465,185,Kitchen/Supplies,Supply Room,Mess Hall,Entry 2
+Supply Room,610,185,Kitchen/Supplies,Kitchen
+
+Mess Hall,415,315,Mess Hall,Kitchen,Corridor 2
+
+Corridor 1,270,400,Corridors,Entry 2,Corridor 2, Corridor 3
+Corridor 2,525,420,Corridors,Corridor 1,Corridor 4,Weapons Cache 1,Weapons Cache 3,Mess Hall,Command Room
+Corridor 3,525,520,Corridors,Corridor 1,Corridor 4,Weapons Cache 1,Weapons Cache 2,Weapons Cache 3,Weapons Cache 4,Weapons Cache 5
+Corridor 4,855,280,Corridors,Showers,Locker Room, Dormitory,Corridor 2,Corridor 3,Spare Room
+
+Weapons Cache 1,348,467,Weapon Caches,Corridor 2,Corridor 3
+Weapons Cache 2,457,467,Weapon Caches,Corridor 3
+Weapons Cache 3,560,467,Weapon Caches,Corridor 2,Corridor 3
+Weapons Cache 4,670,467,Weapon Caches,Corridor 3
+Weapons Cache 5,780,467,Weapon Caches,Corridor 3
+
+Showers,742,180,Living Areas,Corridor 4,Locker Room
+Locker Room,742,324,Living Areas,Corridor 4,Showers
+Dormitory,940,280,Living Areas,Corridor 4
+
+Spare Room,930,485,Spare Room,Corridor 4
+
+
+Command Room,616,332,Command Room,Corridor 2
+
+

@@ -1,0 +1,63 @@
+[Map]
+author=
+image=Weatherby.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+West Coast=4
+North Point=5
+The Dam=3
+Kerns Corner=4
+The Compound=7
+The Plains=4
+Camelot=2
+Stinky Cove=2
+No Man's Land=3
+
+[Territories]
+Good Win Luck,174,370,West Coast,Happy Place,Horstman Homeland,Territory02
+Territory02,144,458,West Coast,Happy Place,Good Win Luck,Territory18,C-Point,Meyer
+Meyer,95,511,West Coast,Territory18,Territory02,Territory19
+Barry Lane,267,184,North Point,Grass Pad,Barry Coast,The Eye,Leer Landing,Land
+The Eye,235,231,North Point,Grass Pad,Barry Lane,Leer Landing
+Barry Coast,350,198,North Point,Barry Stinky,Barry Lane,Land
+Land,310,282,North Point,Barry Coast,Barry Lane,Leer Landing,Dunno
+Leer Landing,254,285,North Point,Barry Lane,The Eye,Land,Horstman Homeland,Dunno
+Dunno,285,338,North Point,Land,Horstman Homeland,Venita Point,Leer Landing
+Horstman Homeland,239,347,North Point,Good Win Luck,Leer Landing,Dunno,Venita Point
+Venita Point,264,389,North Point,Pierce Pad,Horstman Homeland,Dunno
+Territory13,492,607,The Dam,Territory14,Plane 3,Plain too
+Territory14,428,625,The Dam,Plane 3,Territory13,Bob
+Territory17,23,489,Kerns Corner,Roberts Road Park,Territory18,Jenkins Hill
+Territory18,67,477,Kerns Corner,Roberts Road Park,Happy Place,Territory17,Territory19,Meyer,Territory02
+Territory19,77,562,Kerns Corner,Territory18,Jenkins Hill,Territory43,Meyer
+Jenkins Hill,25,612,Kerns Corner,Territory17,Territory19,Territory43
+Vindicating Vice,392,361,The Compound,Knop Nest,Wedmans War Cove,Pierce Pad
+Wedmans War Cove,438,349,The Compound,Knop Nest,Plain 1,Vindicating Vice
+Knop Nest,396,411,The Compound,Ellis Island,Pierce Pad,Vindicating Vice,Wedmans War Cove,Plain 1
+Ellis Island,395,448,The Compound,Plain too,77th Terr,C-Point,Knop Nest,Pierce Pad
+77th Terr,389,487,The Compound,The Village,Plane 3,Plain too,Ellis Island,C-Point
+C-Point,298,486,The Compound,Territory02,The Castle,77th Terr,Ellis Island,Pierce Pad
+Plane 3,387,568,The Plains,Territory14,Territory13,The Village,77th Terr,Plain too,Bob
+Plain too,479,467,The Plains,Territory13,Plane 3,77th Terr,Ellis Island,Plain 1
+Plain 1,484,364,The Plains,Plain too,Knop Nest,Wedmans War Cove,Sewer Forest
+The Castle,255,578,Camelot,The Village,C-Point
+The Village,311,562,Camelot,The Castle,Plane 3,77th Terr,Bob
+Territory34,476,200,Stinky Cove,Stinkland,Territory36,Territory39,Sewer Forest
+Barry Stinky,455,158,Stinky Cove,Territory36,Territory39,Barry Coast
+Territory36,435,222,Stinky Cove,Stinkland,Barry Stinky,Territory34
+Stinkland,482,266,Stinky Cove,Sewer Forest,Territory36,Territory34
+Sewer Forest,513,292,Stinky Cove,Plain 1,Stinkland,Territory39,Territory34
+Territory39,513,173,Stinky Cove,Sewer Forest,Territory34,Barry Stinky
+Roberts Road Park,36,385,No Man's Land,Drainage,Territory42,Happy Place,Territory17,Territory18
+Happy Place,119,381,No Man's Land,Territory42,Roberts Road Park,Good Win Luck,Territory02,Territory18
+Territory42,132,294,No Man's Land,Drainage,Happy Place,Roberts Road Park,Steep Hill
+Grass Pad,186,202,No Man's Land,Steep Hill,The Eye,Barry Lane
+Drainage,66,215,No Man's Land,Territory42,Roberts Road Park
+Territory43,78,644,Kerns Corner,Bob,Jenkins Hill,Territory19
+Bob,288,651,The Dam,The Village,Plane 3,Territory14,Territory43
+Steep Hill,184,284,No Man's Land,Territory42,Grass Pad
+Pierce Pad,350,425,The Compound,Knop Nest,C-Point,Ellis Island,Vindicating Vice,Venita Point
+

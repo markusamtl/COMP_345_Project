@@ -1,0 +1,124 @@
+[Map]
+author=Sid6.7
+image=hawk.bmp
+wrap=no
+scroll=horizontal
+warn=no
+
+[Continents]
+Sultanates=4
+Furyondy=18
+Iuz=8
+Greyhawk=13
+Sea Princes=7
+Frost Giants=5
+Nyrond=9
+The Kingdom=11
+Sea Barons=3
+The Brotherhood=6
+Ironlands=4
+Aerdi Isles=9
+Hepmonaland=10
+
+[Territories]
+Yecha,181,166,Sultanates,Burneal,Ekbir,Tusmit
+Ekbir,110,236,Sultanates,Zief,Tusmit,Yecha
+Tusmit,137,251,Sultanates,Zief,Ket,Yecha,Ekbir
+Ket,171,268,Sultanates,Tusmit,Bissel,Perrenland,Zief
+Zief,40,302,Sultanates,Ekbir,Tusmit,Ket
+
+Furyondy,272,211,Furyondy,Hornlands,Shield lands,Clatspur,Veluna
+Veluna,216,257,Furyondy,Furyondy,Perrenland,Gran March,Gnarley,Bissel
+Perrenland,221,181,Furyondy,Veluna,Clatspur,Burneal,Ket
+Clatspur,238,185,Furyondy,Furyondy,Burneal,Perrenland
+Shield lands,336,196,Furyondy,Admundfort,Hornlands,Furyondy,Bandits
+Admundfort,348,213,Furyondy,Shield lands
+Bissel,176,306,Furyondy,Ket,Gran March,Keoland,Veluna
+Gran March,231,297,Furyondy,Bissel,Keoland,Ulek Duchy,Veluna
+Ulek Duchy,259,305,Furyondy,Gran March,Ulek County,Keoland,Ulek
+Ulek County,297,304,Furyondy,Ulek Duchy,Ulek,Celene
+Ulek,282,314,Furyondy,Ulek County,Ulek Duchy,Pomarj,Celene,Gnarley,Keoland
+Keoland,191,350,Furyondy,Bissel,Gran March,Ulek Duchy,Gradsul,Geoff,Sterich,Yeomanry,The Hold,Ulek
+Gradsul,240,371,Furyondy,Keoland,Jetsom
+Gnarley,308,264,Furyondy,Hawk,Veluna,Celene,Ulek,Pomarj
+Celene,300,284,Furyondy,Gnarley,Ulek,Ulek County
+Yeomanry,159,394,Furyondy,Keoland
+Sterich,132,374,Furyondy,Keoland
+Geoff,124,343,Furyondy,Keoland
+
+
+Burneal,218,101,Iuz,Black Ice,Blackmoor,Iuz,Perrenland,Yecha,Cold Marsh,Clatspur
+Black Ice,250,32,Iuz,Blackmoor,Burneal
+Blackmoor,264,58,Iuz,Cold Marsh,Black Ice,Burneal
+Cold Marsh,298,79,Iuz,Blackmoor,Iuz,Hornlands,Burneal
+Iuz,302,104,Iuz,Cold Marsh,Burneal,Hornlands
+Hornlands,339,137,Iuz,Iuz,Cold Marsh,Shield Lands,Furyondy,The Barrens
+The Barrens,384,126,Iuz,Hornlands,Stonefist,Tenh
+
+Hawk,331,232,Greyhawk,Gnarley,Cairn,Abbor Alz
+
+
+The Hold,196,409,Sea Princes,Keoland,Flotsam
+Pomarj,341,327,Sea Princes,Ulek,Gnarley
+Jetsom,261,387,Sea Princes,Gradsul,Fairwind,Hesuel
+Fairwind,254,403,Sea Princes,Jetsom,Flotsam,Amedio
+Flotsam,237,412,Sea Princes,Fairwind,The Hold
+Amedio,253,460,Sea Princes
+
+Ratik,522,176,Frost Giants,Bone March,Schnai
+Fruztii,516,100,Frost Giants,Schnai,Tenh,Stonefist
+Schnai,613,109,Frost Giants,Fruztii,Cruski,Ratik
+Stonefist,465,94,Frost Giants,Tenh,The Barrens,Fruztii
+Cruski,624,70,Frost Giants,Schnai
+
+Tenh,459,150,Nyrond,Pale,Stonefist,Fruztii,The Barrens
+Pale,478,156,Nyrond,Tenh,Bandits,Rel Mord
+Bandits,380,178,Nyrond,Pale,Urnst County,Shield lands
+Rel Mord,468,227,Nyrond,Pale,Almor,Urnst County,Urnst Duchy
+Urnst County,414,208,Nyrond,Bandits,Rel Mord
+Almor,510,268,Nyrond,Rel Mord,Rauxes
+Urnst Duchy,400,259,Nyrond,Rel Mord,Cairn,Abbor Alz
+Cairn,365,239,Nyrond,Hawk,Abbor Alz,Urnst Duchy
+Abbor Alz,354,260,Nyrond,Hawk,Cairn,Urnst Duchy
+
+Ahlissa,463,367,The Kingdom,Rauxes,Sunndi,Irongate,Idee
+Rauxes,544,328,The Kingdom,Ahlissa,Medegia,Province,Almor,Asperdi,Sulward
+Medegia,582,383,The Kingdom,Sulward,Spindrift,Asperdi,Rauxes
+Province,583,224,The Kingdom,Asperdi,Rauxes,Bone March
+Bone March,569,208,The Kingdom,Province,Ratik
+
+Asperdi,640,300,Sea Barons,Rauxes,Spindrift,Province,Medegia
+
+Hesuel,414,464,The Brotherhood,Vast Swamp,Onnwal,Jetsom
+Vast Swamp,454,450,The Brotherhood,Hesuel,Sunndi,Idee,Hepmonaland
+
+Onnwal,398,392,Ironlands,Hesuel,Irongate
+Irongate,429,390,Ironlands,Onnwal,Ahlissa,Idee
+Idee,432,404,Ironlands,Vast Swamp,Ahlissa,Irongate
+Sunndi,473,406,Ironlands,Vast Swamp,Ahlissa
+
+Spindrift,651,403,Aerdi Isles,Asperdi,Medegia,Sulward
+Sulward,587,442,Aerdi Isles,Medegia,Rauxes,Spindrift,Hepmonaland
+
+Hepmonaland,605,471,Hepmonaland
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

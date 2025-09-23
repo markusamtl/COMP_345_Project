@@ -1,0 +1,93 @@
+[Map]
+author=Sid6.7
+warn=no
+image=drak.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+Ghoster=5
+Ravesbalon=2
+Schlask=2
+Vorag=2
+Zircopan=1
+Subios=3
+Porrequis=2
+Horseisles=3
+S. Ocean=3
+C. Ocean=3
+Krish=1
+Chaton=3
+Nagel=1
+Morgel=2
+Folith=1
+Spirito=4
+Chielio=3
+Felinio=5
+Gaiavio=7
+Arkamio=2
+Zuracio=2
+Vesperio=3
+
+
+[Territories]
+
+Wraith,37,95,Ghoster
+
+Div Folith,193,217,Folith,Elebrithien
+
+Rave,38,332,Ravesbalon,Caridia,Morg
+
+Brass,69,430,Schlask,Caridia,Vor,Eastridge
+
+Vor,72,572,Vorag,Brass,Copan,Merliad
+
+Copan,50,651,Zircopan,Vor,Sim,Agony
+
+Sim,207,720,Subios,Copan,Prosa,Merliad
+
+Prosa,245,843,Porrequis,Sim,Tardique,Hegemony
+
+Tardique,473,902,Horseisles,Prosa,Hoof,Hegemony
+
+Krik,717,547,Krish,Lag,Westridge,Vorin
+
+Lag,722,402,Nagel,Krik,Morg,Tigoland
+
+Solmund,691,311,Zuracio,Alliance,Tigoland
+
+Morg,878,418,Morgel,Rave,Lag,Alliance
+
+Chato,456,498,Chaton,Lyrador,Felinia
+
+Arkam,728,759,Arkamio,Efalien,Hoof
+Efalien,760,769,Arkamio,Arkam,Precott
+
+Precott,841,793,S. Ocean,Efalien,Agony,Dalonna
+Agony,873,727,S. Ocean,Precott,Copan,Eastridge
+Dalonna,863,836,S. Ocean,Precott
+
+Westridge,804,552,C. Ocean,Eastridge,Krik
+Eastridge,835,567,C. Ocean,Agony,Westridge,Brass
+
+Gan,123,160,Spirito,Wraith,Caridia,Elebrithien
+Caridia,87,237,Spirito,Gan,Elebrithien,Rave,Brass
+Elebrithien,149,305,Spirito,Caridia,Gan,Qitlan,Div Folith
+
+Diapordo,308,213,Chielio,P. Chielio
+P. Chielio,315,326,Chielio,Diapordo,Qitlan
+
+Theocracy,750,208,Vesperio,Alliance,Wraith
+Alliance,815,261,Vesperio,Morg,Theocracy,Solmund
+
+Hoof,589,707,Gaiavio,Vorin,Arkam,Tardique
+Lyrador,571,515,Gaiavio,Vorin,Tigoland,Chato,Robaryl
+Vorin,648,509,Gaiavio,Tigoland,Hoof,Lyrador,Krik
+Tigoland,608,341,Gaiavio,Lyrador,Vorin,Lyrador,Robaryl,Solmund,Carka,Lag
+Robaryl,513,340,Gaiavio,Carka,Tigoland,Lyrador
+Carka,521,229,Gaiavio,Robaryl,Tigoland
+
+Hegemony,355,728,Felinio,Felinia,Merliad,Tardique,Prosa
+Felinia,354,582,Felinio,Qitlan,Hegemony,Merliad,Chato
+Qitlan,290,473,Felinio,P. Chielio,Felinia,Merliad,Elebrithien
+Merliad,240,619,Felinio,Felinia,Hegemony,Qitlan,Sim,Vor

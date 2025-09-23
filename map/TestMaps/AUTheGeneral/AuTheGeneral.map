@@ -1,0 +1,114 @@
+[Map]
+author=Andrea Usai (n-drx@libero.it)
+image=AuTheGeneral.bmp
+wrap=no
+scroll=vertical
+warn=no
+created=01.2005
+legal=Copyright ©2005 Andrea Usai (n-drx@libero.it)
+serial=AU-004
+
+[Continents]
+Northern bomb 1=-2
+Northern bomb 2=-1
+Northern field=2
+Northern flag=2
+Southern bomb 1=-2
+Southern bomb 2=-1
+Southern field=2
+Southern flag=2
+
+[Territories]
+Northern bomb 1,506,99,Northern bomb 1,North-16,North-17
+
+Northern bomb 2,250,163,Northern bomb 2,North-21,North-22
+
+North-1,58,35,Northern field,North-11,North-2
+North-2,122,35,Northern field,North-1,North-3
+North-3,186,35,Northern field,North-2,North-12,North-4
+North-4,250,35,Northern field,North-3,North-13,North-5
+North-5,314,35,Northern field,North-6,North-4,North-14
+North-6,378,35,Northern field,North-5,North-15,North-7
+North-7,442,35,Northern field,North-16,North-6,North-8
+North-8,506,35,Northern field,North-7,North-9,Northern bomb 1
+North-9,570,35,Northern field,North-8,North-17,North-10
+North-10,634,35,Northern field,North-9,North-18
+North-11,58,99,Northern field,North-1,North-19,Northern flag
+North-12,186,99,Northern field,North-3,North-13,North-21,Northern flag
+North-13,250,99,Northern field,North-12,North-4,North-14,Northern bomb 2
+North-14,314,99,Northern field,North-13,North-5,North-15,North-22
+North-15,378,99,Northern field,North-6,North-14,North-23,North-16
+North-16,442,99,Northern field,North-15,North-7,North-24
+North-17,570,99,Northern field,North-9,North-18,North-26
+North-18,634,99,Northern field,North-10,North-17,North-27
+North-19,58,163,Northern field,North-28,North-11,North-20
+North-20,122,163,Northern field,North-21,North-19,North-29
+North-21,186,163,Northern field,North-20,North-12,North-30
+North-22,314,163,Northern field,North-23,North-32,North-14
+North-23,378,163,Northern field,North-15,North-24,North-22,North-33
+North-24,442,163,Northern field,North-34,North-23,North-16,North-25
+North-25,506,163,Northern field,North-26,North-24,North-35,Northern bomb 1
+North-26,570,163,Northern field,North-17,North-36,North-27,North-25
+North-27,634,163,Northern field,North-18,North-26,North-37
+North-28,58,227,Northern field,North-19,North-29,North-38
+North-29,122,227,Northern field,North-28,North-30,North-20,North-39
+North-30,186,227,Northern field,North-21,North-31,North-29,North-39
+North-31,250,227,Northern field,North-30,North-32,Northern bomb 2
+North-32,314,227,Northern field,North-22,North-33,North-31,South-40
+North-33,378,227,Northern field,North-32,North-23,North-34,South-39
+North-34,442,227,Northern field,North-24,North-35,North-33
+North-35,506,227,Northern field,North-25,North-34,North-36
+North-36,570,227,Northern field,North-26,North-37,North-35,South-38
+North-37,634,227,Northern field,North-36,North-27,South-37
+North-38,58,291,Northern field,North-28,North-40,North-39
+North-39,122,291,Northern field,North-30,North-29,North-38,North-40,South-36
+North-40,58,355,Northern field,North-38,North-39,South-28
+
+Northern flag,122,99,Northern flag,North-2,North-20
+
+Southern bomb 1,122,547,Southern bomb 1,South-18,South-17
+
+Southern bomb 2,570,419,Southern bomb 2,South-30,South-29
+
+South-1,634,611,Southern field,South-11,South-2
+South-2,570,611,Southern field,South-3,South-1,South-12
+South-3,506,611,Southern field,South-4,South-13,South-2
+South-4,442,611,Southern field,South-5,South-3,South-14
+South-5,378,611,Southern field,South-6,South-4
+South-6,314,611,Southern field,South-7,South-5,South-15
+South-7,250,611,Southern field,South-8,South-16,South-6
+South-8,186,611,Southern field,South-9,South-7,South-17
+South-9,122,611,Southern field,South-10,South-8,Southern bomb 1
+South-10,58,611,Southern field,South-9,South-18
+South-11,634,547,Southern field,South-1,South-12,South-19
+South-12,570,547,Southern field,South-2,South-13,South-20,South-11
+South-13,506,547,Southern field,South-3,South-12,South-14,South-21
+South-14,442,547,Southern field,South-4,South-22,South-13,Southern flag
+South-15,314,547,Southern field,South-6,South-16,South-24,Southern flag
+South-16,250,547,Southern field,South-7,South-15,South-17,South-25
+South-17,186,547,Southern field,South-8,South-16,South-26
+South-18,58,547,Southern field,South-10,South-28
+South-19,634,483,Southern field,South-20,South-29,South-11
+South-20,570,483,Southern field,South-12,South-21,South-19,Southern bomb 2
+South-21,506,483,Southern field,South-30,South-22,South-20,South-13
+South-22,442,483,Southern field,South-14,South-31,South-21,South-23
+South-23,378,483,Southern field,South-24,South-22,South-32
+South-24,314,483,Southern field,South-15,South-25,South-23,South-33
+South-25,250,483,Southern field,South-26,South-16,South-34,South-24
+South-26,186,483,Southern field,South-17,South-27,South-35,South-25
+South-27,122,483,Southern field,South-28,South-26,South-36,Southern bomb 1
+South-28,58,483,Southern field,South-18,South-27,South-36,North-40
+South-29,634,419,Southern field,South-37,South-19
+South-30,506,419,Southern field,South-31,South-38,South-21
+South-31,442,419,Southern field,South-39,South-32,South-22,South-30
+South-32,378,419,Southern field,South-31,South-23,South-33,South-39
+South-33,314,419,Southern field,South-34,South-24,South-32,South-40
+South-34,250,419,Southern field,South-25,South-35,South-40,South-33
+South-35,186,419,Southern field,South-36,South-26,South-34
+South-36,122,419,Southern field,South-28,South-35,South-27,North-39
+South-37,634,355,Southern field,South-38,South-29,North-37
+South-38,570,355,Southern field,South-30,South-37,North-36,Southern bomb 2
+South-39,378,355,Southern field,South-40,South-31,South-32,North-33
+South-40,314,355,Southern field,South-34,South-39,South-33,North-32
+
+Southern flag,378,547,Southern flag,South-23,South-5

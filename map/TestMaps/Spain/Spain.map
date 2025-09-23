@@ -1,0 +1,100 @@
+[Map]
+author=Daniel Chavarrías
+image=spain.bmp
+wrap=no
+scroll=horitzontal
+
+
+[Continents]
+Galicia=2
+Asturias y Cantabria=2
+Euskadi=3
+Navarra=1
+Aragon=3
+Catalunya=3
+Illes Balears=1
+Pais Valencia=3
+Region de Murcia=1
+Andalucia=7
+Islas Canarias=1
+Extremadura=2
+Castilla Leon=8
+Comunidad de Madrid=1
+Castilla la Mancha=5
+La Rioja=1
+
+
+[Territories]
+A Coruña,66,42,Galicia,Pontevedra,Lugo
+Lugo,100,51,Galicia,A Coruña,Pontevedra,Ourense,Oviedo,Leon
+Pontevedra,59,75,Galicia,A Coruña,Lugo,Ourense
+Ourense,91,89,Galicia,Leon,Zamora,Lugo,Pontevedra
+
+Oviedo,162,32,Asturias y Cantabria,Lugo,Leon,Santander
+Santander,238,40,Asturias y Cantabria,Oviedo,Leon,Palencia,Burgos,Vizcaya
+
+Vizcaya,284,41,Euskadi,Santander,Burgos,Alava,Guipuzcoa
+Alava,289,62,Euskadi,Vizcaya,Burgos,Logroño,Pamplona,Guipuzcoa
+Guipuzcoa,310,41,Euskadi,Vizcaya,Alava,Pamplona
+
+Pamplona,334,69,Navarra,Guipuzcoa,Alava,Logroño,Zaragoza,Huesca
+
+Huesca,395,94,Aragon,Pamplona,Lleida,Zaragoza
+Zaragoza,347,125,Aragon,Lleida,Tarragona,Pamplona,Logroño,Soria,Guadalajara,Teruel,Huesca
+Teruel,358,175,Aragon,Tarragona,Castellon,Valencia,Guadalajara,Cuenca,Zaragoza
+
+Lleida,445,103,Catalunya,Huesca,Zaragoza,Tarragona,Barcelona,Girona
+Girona,513,90,Catalunya,Lleida,Barcelona
+Barcelona,479,112,Catalunya,Lleida,Tarragona,Mallorca,Girona
+Tarragona,417,158,Catalunya,Barcelona,Lleida,Zaragoza,Teruel,Castellon
+
+Mallorca,531,221,Illes Balears,Menorca,Valencia,Barcelona,Ibiza
+Menorca,576,197,Illes Balears,Mallorca
+Ibiza,468,256,Illes Balears,Mallorca
+
+Castellon,392,196,Pais Valencia,Valencia,Tarragona,Teruel
+Valencia,371,244,Pais Valencia,Alicante,Mallorca,Teruel,Cuenca,Albacete,Castellon
+Alicante,376,285,Pais Valencia,Valencia,Albacete,Murcia
+
+Murcia,342,313,Region de Murcia,Alicante,Albacete,Almeria,Granada,Jaen
+
+Huelva,109,329,Andalucia,Badajoz,Sevilla
+Sevilla,157,343,Andalucia,Badajoz,Huelva,Cadiz,Cordoba,Malaga
+Cordoba,196,311,Andalucia,Badajoz,Sevilla,Malaga,Granada,Jaen,Ciudad Real
+Jaen,250,318,Andalucia,Ciudad Real,Cordoba,Granada,Murcia,Albacete
+Granada,253,361,Andalucia,Jaen,Murcia,Almeria,Malaga,Cordoba
+Almeria,306,356,Andalucia,Murcia,Granada
+Malaga,194,374,Andalucia,Cadiz,Sevilla,Cordoba,Granada
+Cadiz,150,388,Andalucia,Sevilla,Malaga,Ceuta y Melilla,Tenerife
+Ceuta y Melilla,153,434,Andalucia,Cadiz
+
+Palma,461,371,Islas Canarias,Gomera
+Hierro,451,409,Islas Canarias,Gomera
+Gomera,477,393,Islas Canarias,Palma,Hierro,Tenerife
+Tenerife,502,382,Islas Canarias,Gomera,Gran Canaria,Fuerteventura,Cadiz
+Gran Canaria,525,401,Islas Canarias,Tenerife,Fuerteventura
+Fuerteventura,565,382,Islas Canarias,Tenerife,Gran Canaria,Lanzarote
+Lanzarote,584,361,Islas Canarias,Fuerteventura
+
+Caceres,142,223,Extremadura,Salamanca,Avila,Toledo,Badajoz
+Badajoz,135,277,Extremadura,Caceres,Toledo,Ciudad Real,Sevilla,Huelva,Cordoba
+
+Leon,165,73,Castilla Leon,Ourense,Lugo,Oviedo,Santander,Palencia,Valladolid,Zamora
+Palencia,214,84,Castilla Leon,Leon,Santander,Burgos,Valladolid
+Burgos,251,99,Castilla Leon,Palencia,Santander,Vizcaya,Alava,Logroño,Soria,Segovia,Valladolid
+Soria,292,125,Castilla Leon,Burgos,Logroño,Zaragoza,Guadalajara,Segovia
+Segovia,228,152,Castilla Leon,Avila,Valladolid,Burgos,Soria,Madrid,Guadalajara
+Avila,197,179,Castilla Leon,Salamanca,Valladolid,Segovia,Madrid,Toledo,Caceres
+Salamanca,146,168,Castilla Leon,Zamora,Valladolid,Avila,Caceres
+Zamora,157,120,Castilla Leon,Ourense,Leon,Valladolid,Salamanca
+Valladolid,197,124,Castilla Leon,Zamora,Leon,Palencia,Burgos,Segovia,Avila,Salamanca
+
+Madrid,247,183,Comunidad de Madrid,Avila,Segovia,Guadalajara,Cuenca,Toledo
+
+Guadalajara,286,167,Castilla la Mancha,Madrid,Segovia,Soria,Zaragoza,Teruel,Cuenca
+Cuenca,308,219,Castilla la Mancha,Madrid,Guadalajara,Teruel,Valencia,Albacete,Ciudad Real,Toledo
+Albacete,316,271,Castilla la Mancha,Ciudad Real,Cuenca,Valencia,Alicante,Murcia,Jaen
+Ciudad Real,240,269,Castilla la Mancha,Badajoz,Toledo,Cuenca,Albacete,Jaen,Cordoba
+Toledo,221,218,Castilla la Mancha,Caceres,Avila,Madrid,Cuenca,Badajoz,Ciudad Real
+
+Logroño,296,89,La Rioja,Soria,Burgos,Alava,Pamplona,Zaragoza

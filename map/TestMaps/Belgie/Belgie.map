@@ -1,0 +1,57 @@
+[Map]
+author=Animol
+image=Belgie.bmp
+wrap=yes
+scroll=no
+warn=yes
+
+[Continents]
+West Vlaanderen=5
+Oost Vlaanderen=5
+Antwerpen=4
+Limburg=4
+Namen=3
+Luik=5
+Brabant=4
+Luxemburg=4
+Henegouwen=4
+
+[Territories]
+Veurne,31,123,West Vlaanderen,Brugge,Poperinge
+Brugge,100,85,West Vlaanderen,Veurne,Poperinge,Roeselare,Eeklo
+Poperinge,38,177,West Vlaanderen,Veurne,Brugge,Roeselare
+Roeselare,120,140,West Vlaanderen,Poperinge,Brugge,Eeklo,Aalter,Kortrijk
+Kortrijk,140,191,West Vlaanderen,Roeselare,Aalter,Oudenaarde,Tournai
+Eeklo,177,92,Oost Vlaanderen,Brugge,Roeselare,Aalter,Gent,St.Niklaas
+Aalter,178,151,Oost Vlaanderen,Eeklo,Gent,Oudenaarde,Kortrijk,Roeselare
+St.Niklaas,270,100,Oost Vlaanderen,Hoogstraten,Antwerpen,Gent,Eeklo
+Gent,260,160,Oost Vlaanderen,Eeklo,St.Niklaas,Antwerpen,Grimbergen,Brussel,Oudenaarde,Aalter
+Oudenaarde,205,200,Oost Vlaanderen,Kortrijk,Aalter,Gent,Brussel,Mons,Ath,Tournai
+Tournai,150,250,Henegouwen,Kortrijk,Oudenaarde,Ath
+Ath,212,293,Henegouwen,Tournai,Oudenaarde,Mons
+Mons,280,295,Henegouwen,Ath,Oudenaarde,Brussel,Namur,Philippeville,Chimay
+Chimay,310,390,Henegouwen,Mons,Philippeville
+Brussel,320,240,Brabant,Mons,Oudenaarde,Gent,Grimbergen,Leuven,Wavre,Namur
+Grimbergen,310,170,Brabant,Gent,Antwerpen,Mechelen,Leuven,Brussel
+Leuven,380,180,Brabant,Mechelen,Hasselt,Wavre,Brussel,Grimbergen
+Wavre,409,220,Brabant,Hasselt,St.Truiden,Hannut,Namur,Brussel,Leuven
+Antwerpen,350,90,Antwerpen,Hoogstraten,Turnhout,Mechelen,Gent,St.Niklaas,Grimbergen
+Hoogstraten,365,35,Antwerpen,Turnhout,Antwerpen,St.Niklaas
+Turnhout,430,50,Antwerpen,Hoogstraten,Antwerpen,Mechelen,Genk
+Mechelen,420,110,Antwerpen,Turnhout,Antwerpen,Grimbergen,Leuven,Hasselt,Genk
+Genk,530,100,Limburg,Turnhout,Mechelen,Hasselt,St.Truiden,Tongeren
+Hasselt,490,140,Limburg,Genk,Mechelen,Leuven,Wavre,St.Truiden
+St.Truiden,495,200,Limburg,Tongeren,Genk,Hasselt,Wavre,Liège,Hannut
+Tongeren,563,166,Limburg,Genk,St.Truiden,Liège
+Philippeville,360,388,Namen,Chimay,Mons,Namur,Ciney
+Namur,420,300,Namen,Wavre,Hannut,Huy,La Roche,Ciney,Philippeville,Mons,Brussel
+Ciney,435,410,Namen,Philippeville,Namur,La Roche,Bouillon
+Hannut,475,260,Luik,Wavre,St.Truiden,Liège,Huy,Namur
+Liège,545,245,Luik,Tongeren,St.Truiden,Hannut,Huy,Malmedy
+Huy,513,291,Luik,Hannut,Liège,Malmedy,La Roche,Namur
+Malmedy,600,290,Luik,Malmedy,St.Vith,Bastogne,La Roche,Huy,Liège
+St.Vith,655,335,Luik,Malmedy,Bastogne
+La Roche,525,370,Luxemburg,Huy,Malmedy,Bastogne,Bouillon,Ciney,Namur
+Bouillon,505,450,Luxemburg,Ciney,La Roche,Bastogne,Virton
+Virton,545,520,Luxemburg,Bouillon,Bastogne
+Bastogne,570,400,Luxemburg,Virton,Bouillon,La Roche,Malmedy,St.Vith

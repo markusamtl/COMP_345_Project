@@ -1,0 +1,58 @@
+[Map]
+author=Sid6.7
+image=washington.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Eastern Washington=3
+S.W. Washington=2
+Olympia=2
+Okanogan=3
+Evergreen=5
+Peninsula=4
+Cascades=3
+San Juan Islands=2
+Point Roberts=1
+
+[Territories]
+Aostin,865,439,Eastern Washington,Garfield,Whitman,Columbia
+Garfield,829,390,Eastern Washington,Aostin,Columbia,Whitman
+Columbia,796,424,Eastern Washington,Aostin,Garfield,Whitman,Walla Walla
+Walla Walla,731,437,Eastern Washington,Columbia,Franklin,Benton
+Franklin,684,390,Eastern Washington,Walla Walla,Whitman,Adams,Grant,Benton
+Benton,620,439,Eastern Washington,Walla Walla,Franklin,Yakima,Grant,Klickitat
+Adams,719,323,Eastern Washington,Franklin,Whitman,Lincoln,Grant
+Whitman,823,327,Eastern Washington,Aostin,Columbia,Garfield,Franklin,Adams,Lincoln,Spokane
+Spokane,831,239,Eastern Washington,Whitman,Lincoln,Stevens,Pend Oreille
+Lincoln,732,240,Eastern Washington,Whitman,Spokane,Adams,Grant,Okanogan,Ferry,Stevens
+Grant,629,301,Eastern Washington,Franklin,Benton,Yakima,Adams,Lincoln,Okanogan,Kittitas,Douglas
+Douglas,602,225,Eastern Washington,Okanogan,Kittitas,Chelan,Grant
+Pend Oreille,846,100,Okanogan,Spokane,Stevens
+Stevens,785,115,Okanogan,Spokane,Lincoln,Pend Oreille,Ferry
+Ferry,716,107,Okanogan,Lincoln,Stevens,Okanogan
+Okanogan,596,101,Okanogan,Lincoln,Ferry,Grant,Douglas,Chelan,Skagit,Whatcom
+Chelan,511,203,Cascades,Okanogan,Skagit,Snohomish,King,Kittitas,Douglas
+Kittitas,503,309,Cascades,Yakima,Chelan,Douglas,King,Peirce,Grant
+Yakima,503,416,Eastern Washington,Benton,Peirce,Kittitas,Grant,Lewis,Skamania,Klickitat
+Klickitat,500,491,Eastern Washington,Benton,Yakima,Skamania
+Skamania,381,473,S.W. Washington,Klickitat,Yakima,Cowlitz,Clarck,Lewis
+Clarck,324,506,S.W. Washington,Cowlitz,Skamania
+Cowlitz,303,443,S.W. Washington,Wahkiakum,Lewis,Skamania,Clarck
+Wahkiakum,229,425,S.W. Washington,Pacific,Lewis,Cowlitz
+Lewis,323,391,S.W. Washington,Yakima,Peirce,Olympia,Pacific,Wahkiakum,Cowlitz,Skamania
+Olympia,290,350,Olympia,Peirce,Mason,Grays Harbor,Pacific,Lewis
+Peirce,359,321,Evergreen,Yakima,Kittitas,King,Lewis,Olympia,Kitsap,Mason
+King,390,259,Evergreen,Chelan,Kittitas,Snohomish,Peirce,Kitsap
+Snohomish,399,173,Evergreen,Chelan,Skagit,King
+Skagit,405,105,Evergreen,Okanogan,Chelan,Whatcom,San Juan,Snohomish
+Whatcom,404,57,Evergreen,Okanogan,Point Roberts,San Juan,Skagit
+Point Roberts,279,32,Point Roberts,Whatcom,San Juan
+San Juan,291,95,San Juan Islands,Whatcom,Skagit,Point Roberts,Clallam
+Clallam,195,171,Peninsula,San Juan,Jefferson
+Jefferson,214,218,Peninsula,Clallam,Grays Harbor,Mason,Kitsap
+Mason,259,273,Peninsula,Peirce,Olympia,Jefferson,Grays Harbor,Kitsap
+Grays Harbor,199,297,Peninsula,Olympia,Jefferson,Mason,Pacific
+Kitsap,311,239,Peninsula,King,Peirce,Jefferson,Mason
+Pacific,206,384,Peninsula,Olympia,Grays Harbor,Lewis,Wahkiakum

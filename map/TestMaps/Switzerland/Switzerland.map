@@ -1,0 +1,47 @@
+[Map]
+author=sid6.7
+image=switzerland.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Liechtenstien=1
+Geneva=3
+Jura-Fribourg=4
+Highlands=5
+Zurich=4
+Confederation=6
+Eastlands=6
+Ticino-Graub=2
+Lowlands=1
+Basel=1
+
+[Territories]
+Graubunden,646,328,Ticino-Graub,Ticino Canton,Uri Canton,Glarus Canton,Sankt Gallen,Varduz
+Ticino Canton,515,420,Ticino-Graub,Valais Canton,Graubunden,Uri Canton
+Valais Canton,296,459,Lowlands,Lusanne Canton,Bern Canton,Uri Canton,Ticino Canton
+Geneva,42,451,Geneva,Lusanne Canton
+Lusanne Canton,110,355,Geneva,Geneva,Neuchtel,Fribourg,Valais Canton,Bern Canton
+Fribourg,213,311,Jura-Fribourg,Lusanne Canton,Bern Canton,Neuchtel
+Neuchtel,160,253,Jura-Fribourg,Lusanne Canton,Bern Canton,Jura Canton,Fribourg
+Jura Canton,206,132,Jura-Fribourg,Solothum,Bern Canton,Neuchtel
+Bern Canton,312,286,Highlands,Lusanne Canton,Valais Canton,Aargau,Solothum,Luzern Canton,Sarnen,Uri Canton,Fribourg,Neuchtel,Jura Canton
+Solothum,286,159,Highlands,Aargau,Leistal Canton,Jura Canton,Bern Canton
+Leistal Canton,337,131,Highlands,Aargau,Basel Canton,Solothum
+Aargau,401,133,Highlands,Zurich Canton,Zug ZUg,Leistal Canton,Basel Canton,Luzern Canton,Bern Canton,Solothum
+Shafthausen,475,55,Zurich,Thurago,Zurich Canton
+Zurich Canton,472,129,Zurich,Sankt Gallen,Thurago,Shafthausen,Zug ZUg,Aargau
+Zug ZUg,453,185,Zurich,Sankt Gallen,Zurich Canton,Aargau,Shwytz Canton
+Luzern Canton,373,217,Confederation,Aargau,Bern Canton,Sarnen,Shwytz Canton
+Sarnen,410,255,Confederation,Bern Canton,Luzern Canton,Stans,Shwytz Canton,Uri Canton
+Stans,449,272,Confederation,Sarnen,Shwytz Canton,Uri Canton
+Shwytz Canton,480,228,Confederation,Sankt Gallen,Zug ZUg,Luzern Canton,Sarnen,Stans,Uri Canton,Glarus Canton
+Uri Canton,456,314,Confederation,Valais Canton,Ticino Canton,Graubunden,Bern Canton,Shwytz Canton,Stans,Sarnen,Glarus Canton
+Glarus Canton,542,269,Eastlands,Graubunden,Sankt Gallen,Shwytz Canton,Uri Canton
+Sankt Gallen,555,199,Eastlands,Graubunden,Varduz,Appenziel Canton,Herisan Canton,Thurago,Zurich Canton,Zug ZUg,Shwytz Canton,Glarus Canton
+Appenziel Canton,621,159,Eastlands,Sankt Gallen,Herisan Canton
+Herisan Canton,585,148,Eastlands,Sankt Gallen,Appenziel Canton
+Thurago,527,96,Eastlands,Sankt Gallen,Shafthausen,Zurich Canton
+Basel Canton,300,102,Basel,Aargau,Leistal Canton
+Varduz,656,207,Liechtenstien,Graubunden,Sankt Gallen

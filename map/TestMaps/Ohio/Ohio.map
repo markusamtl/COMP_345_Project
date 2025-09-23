@@ -1,0 +1,119 @@
+[Map]
+author=Bill Stillions
+warn=yes
+image=ohio.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Congress Lands NE=5
+Congress Lands NW=10
+Congress Lands SC=5
+Congress Lands SW=5
+Conn. Western Reserve=6
+Fire Lands=2
+Ohio Company=3
+Symmes Purchase=2
+Old Seven Ranges=4
+US Military Lands=6
+Virginia Military Lands=9
+
+[Territories]
+Ashland,193,108,Congress Lands NE,Richland,Huron,Lorain,Medina,Wayne,Holmes,Knox
+Columbiana,298,119,Congress Lands NE,Jefferson,Carroll,Stark,Mahoning
+Crawford,146,111,Congress Lands NE,Marion,Wyandot,Seneca,Huron,Richland,Morrow
+Mahoning,300,96,Congress Lands NE,Columbiana,Stark,Portage,Trumbull
+Richland,173,115,Congress Lands NE,Ashland,Knox,Morrow,Crawford,Huron
+Stark,256,116,Congress Lands NE,Summit,Portage,Mahoning,Columbiana,Carroll,Tuscarawas,Holmes,Wayne
+Wayne,220,114,Congress Lands NE,Holmes,Ashland,Medina,Summit,Stark
+
+Allen,65,116,Congress Lands NW,Auglaize,Van Wert,Putnam,Hancock,Hardin
+Auglaize,52,132,Congress Lands NW,Allen,Hardin,Logan,Shelby,Mercer,Van Wert
+Defiance,35,61,Congress Lands NW,Williams,Henry,Putnam,Paulding
+Fulton,66,38,Congress Lands NW,Lucas,Henry,Williams
+Hancock,96,95,Congress Lands NW,Wood,Seneca,Wyandot,Hardin,Allen,Putnam
+Hardin,93,126,Congress Lands NW,Marion,Union,Logan,Auglaize,Allen,Hancock,Wyandot
+Henry,68,63,Congress Lands NW,Fulton,Lucas,Wood,Putnam,Defiance,Williams
+Lucas,94,35,Congress Lands NW,Ottawa,Wood,Henry,Fulton
+Mercer,25,135,Congress Lands NW,Van Wert,Auglaize,Darke
+Ottawa,125,45,Congress Lands NW,Sandusky,Wood,Lucas
+Paulding,30,81,Congress Lands NW,Defiance,Putnam,Van Wert
+Putnam,63,93,Congress Lands NW,Henry,Hancock,Allen,Van Wert,Paulding,Defiance
+Sandusky,132,63,Congress Lands NW,Erie,Huron,Seneca,Wood,Ottawa
+Seneca,132,85,Congress Lands NW,Sandusky,Huron,Crawford,Wyandot,Hancock,Wood
+Van Wert,29,106,Congress Lands NW,Paulding,Putnam,Allen,Auglaize,Mercer
+Williams,32,41,Congress Lands NW,Fulton,Henry,Defiance
+Wood,97,64,Congress Lands NW,Lucas,Ottawa,Sandusky,Seneca,Hancock,Henry
+Wyandot,118,109,Congress Lands NW,Marion,Hardin,Hancock,Seneca,Crawford
+
+Fairfield,166,213,Congress Lands SC,Franklin,Licking,Perry,Hocking,Pickaway
+Hocking,177,237,Congress Lands SC,Fairfield,Perry,Athens,Vinton,Ross,Pickaway
+Jackson,165,280,Congress Lands SC,Vinton,Gallia,Lawrence,Scioto,Pike,Ross
+Lawrence,168,321,Congress Lands SC,Scioto,Jackson,Gallia
+Morgan,221,225,Congress Lands SC,Noble,Washington,Athens,Perry,Muskingum
+Noble,248,216,Congress Lands SC,Washington,Morgan,Muskingum,Guernsey,Belmont,Monroe
+Perry,194,217,Congress Lands SC,Morgan,Athens,Hocking,Fairfield,Licking,Muskingum
+Vinton,173,259,Congress Lands SC,Jackson,Ross,Hocking,Athens,Meigs,Gallia
+
+Champaign,83,176,Congress Lands SW,Logan,Union,Madison,Clark,Miami,Shelby
+Clark,81,196,Congress Lands SW,Champaign,Madison,Greene,Montgomery,Miami
+Darke,24,174,Congress Lands SW,Mercer,Shelby,Miami,Montgomery,Preble
+Logan,85,152,Congress Lands SW,Union,Champaign,Shelby,Auglaize,Hardin
+Miami,51,182,Congress Lands SW,Darke,Shelby,Champaign,Clark,Montgomery
+Montgomery,46,211,Congress Lands SW,Preble,Darke,Miami,Clark,Greene,Warren,Butler
+Preble,20,210,Congress Lands SW,Darke,Montgomery,Butler
+Shelby,55,159,Congress Lands SW,Auglaize,Logan,Champaign,Miami,Darke
+
+Ashtabula,299,33,Conn. Western Reserve,Trumbull,Geauga,Lake
+Cuyahoga,234,58,Conn. Western Reserve,Lake,Geauga,Summit,Medina,Lorain
+Geauga,268,53,Conn. Western Reserve,Lake,Ashtabula,Trumbull,Portage,Cuyahoga
+Lake,265,34,Conn. Western Reserve,Ashtabula,Geauga,Cuyahoga
+Lorain,202,68,Conn. Western Reserve,Cuyahoga,Medina,Ashland,Huron,Erie
+Medina,220,87,Conn. Western Reserve,Lorain,Cuyahoga,Summit,Wayne,Ashland
+Portage,268,82,Conn. Western Reserve,Geauga,Trumbull,Mahoning,Stark,Summit
+Summit,245,85,Conn. Western Reserve,Cuyahoga,Portage,Stark,Wayne,Medina
+Trumbull,298,69,Conn. Western Reserve,Mahoning,Portage,Geauga,Ashtabula
+
+Erie,166,64,Fire Lands,Lorain,Huron,Sandusky
+Huron,170,84,Fire Lands,Erie,Lorain,Ashland,Richland,Crawford,Seneca,Sandusky
+
+Athens,207,254,Ohio Company,Meigs,Vinton,Hocking,Perry,Morgan,Washington
+Gallia,186,299,Ohio Company,Lawrence,Jackson,Vinton,Meigs
+Meigs,207,274,Ohio Company,Gallia,Vinton,Athens
+Washington,241,241,Ohio Company,Athens,Morgan,Noble,Monroe
+
+Belmont,282,191,Old Seven Ranges,Monroe,Noble,Guernsey,Harrison,Jefferson
+Carroll,275,137,Old Seven Ranges,Columbiana,Jefferson,Harrison,Tuscarawas,Stark
+Harrison,276,163,Old Seven Ranges,Belmont,Guernsey,Tuscarawas,Carroll,Jefferson
+Jefferson,299,158,Old Seven Ranges,Belmont,Harrison,Carroll,Columbiana
+Monroe,276,217,Old Seven Ranges,Washington,Noble,Belmont
+
+Butler,23,238,Symmes Purchase,Preble,Montgomery,Warren,Hamilton
+Hamilton,23,262,Symmes Purchase,Butler,Warren,Clermont
+
+Coshocton,216,163,US Military Lands,Holmes,Tuscarawas,Guernsey,Muskingum,Licking,Knox
+Delaware,138,163,US Military Lands,Marion,Morrow,Knox,Licking,Franklin,Union
+Guernsey,246,187,US Military Lands,Muskingum,Coshocton,Tuscarawas,Harrison,Belmont,Noble
+Holmes,216,139,US Military Lands,Wayne,Stark,Tuscarawas,Coshocton,Knox,Ashland
+Knox,182,153,US Military Lands,Licking,Delaware,Morrow,Richland,Ashland,Holmes,Coshocton
+Licking,176,182,US Military Lands,Delaware,Knox,Coshocton,Muskingum,Perry,Fairfield,Franklin
+Marion,128,134,US Military Lands,Wyandot,Crawford,Morrow,Delaware,Union,Hardin
+Morrow,154,141,US Military Lands,Marion,Crawford,Richland,Knox,Delaware
+Muskingum,215,193,US Military Lands,Perry,Licking,Coshocton,Guernsey,Noble,Morgan
+Tuscarawas,248,151,US Military Lands,Guernsey,Coshocton,Holmes,Stark,Carroll,Harrison
+
+Adams,101,298,Virginia Military Lands,Brown,Highland,Pike,Scioto
+Brown,72,291,Virginia Military Lands,Clermont,Clinton,Highland,Adams
+Clermont,52,273,Virginia Military Lands,Hamilton,Warren,Clinton,Brown
+Clinton,79,242,Virginia Military Lands,Clermont,Warren,Greene,Fayette,Highland,Brown
+Fayette,107,230,Virginia Military Lands,Greene,Madison,Pickaway,Ross,Highland,Clinton
+Franklin,138,193,Virginia Military Lands,Delaware,Licking,Fairfield,Pickaway,Madison,Union
+Greene,74,218,Virginia Military Lands,Clark,Madison,Fayette,Clinton,Warren,Montgomery
+Highland,95,265,Virginia Military Lands,Adams,Brown,Clinton,Fayette,Ross,Pike
+Madison,110,198,Virginia Military Lands,Union,Franklin,Pickaway,Fayette,Greene,Clark,Champaign
+Pickaway,136,222,Virginia Military Lands,Franklin,Fairfield,Hocking,Ross,Fayette,Madison
+Pike,133,276,Virginia Military Lands,Ross,Jackson,Scioto,Adams,Highland
+Ross,134,252,Virginia Military Lands,Pike,Highland,Fayette,Pickaway,Hocking,Vinton,Jackson
+Scioto,137,297,Virginia Military Lands,Adams,Pike,Jackson,Lawrence
+Union,112,160,Virginia Military Lands,Marion,Delaware,Franklin,Madison,Champaign,Logan,Hardin
+Warren,54,242,Virginia Military Lands,Clermont,Hamilton,Butler,Montgomery,Greene,Clinton

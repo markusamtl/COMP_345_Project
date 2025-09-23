@@ -1,0 +1,55 @@
+[Map]
+image=Terceira.bmp
+wrap=yes
+scroll=Horizontal
+author=Pedro Freitas
+warn=yes
+
+[Continents]
+Angra do Heroísmo Oeste=4
+Angra do Heroísmo Leste=7
+Angra do Heroísmo Centro=3
+Ilhéus=1
+Praia da Vitória Oeste=5
+Praia da Vitória Leste=6
+
+
+[Territories]
+Serreta,69,144,Angra do Heroísmo Oeste,Raminho,Sta Bárbara,Doze Ribeiras
+Doze Ribeiras,49,230,Angra do Heroísmo Oeste,Serreta,Sta Bárbara,Praia da Vitória
+Raminho,138,96,Angra do Heroísmo Oeste,Serreta,Altares,Sta Bárbara
+Altares,306,102,Angra do Heroísmo Oeste,Sta Bárbara,Cinco Ribeiras,São Bartolomeu, Biscoitos,Raminho
+Sta Bárbara,114,269,Angra do Heroísmo Oeste,Doze Ribeiras,Serreta,Raminho,Altares,Cinco Ribeiras
+Cinco Ribeiras,183,295,Angra do Heroísmo Oeste,Sta Bárbara,Altares,São Bartolomeu
+São Bartolomeu,301,265,Angra do Heroísmo Oeste,Cinco Ribeiras,Altares,São Mateus,Terra-Chã,Biscoitos,Posto Santo
+São Mateus,322,376,Angra do Heroísmo Oeste,São Bartolomeu,Terra-Chã,São Pedro
+
+Terra-Chã,432,309,Angra do Heroísmo Leste,São Mateus,São Bartolomeu,Posto Santo,Sta Luzia,São Pedro
+Posto Santo,499,273,Angra do Heroísmo Leste,Terra-Chã,São Bartolomeu,Biscoitos,Porto Judeu,São Bento,Nossa Sra Conceição,Sta Luzia
+Porto Judeu,685,349,Angra do Heroísmo Leste,Posto Santo,Biscoitos,Quatro Ribeiras,Agualva,São Sebastião,Ilhéu das Cabras Leste,Feteira,Ribeirinha,São Bento
+São Bento,602,374,Angra do Heroísmo Leste,Nossa Sra Conceição,Posto Santo,Porto Judeu,Ribeirinha
+Ribeirinha,629,420,Angra do Heroísmo Leste,São Bento,Porto Judeu,Feteira
+Feteira,684,438,Angra do Heroísmo Leste,Ilhéu das Cabras Oeste,Ribeirinha,Porto Judeu
+São Sebastião,823,398,Angra do Heroísmo Leste,Porto Judeu,Agualva,São Brás,Fontinhas,Praia da Vitória,Fonte Bastardo,Cabo da Praia
+
+Ilhéu das Cabras Oeste,669,509,Ilhéus,Ilhéu das Cabras Leste,Feteira
+Ilhéu das Cabras Leste,688,506,Ilhéus,Ilhéu das Cabras Oeste, Ilhéu dos Fradinhos,Porto Judeu
+Ilhéu dos Fradinhos,787,565,Ilhéus,Ilhéu das Cabras Leste
+
+São Pedro,413,396,Angra do Heroísmo Centro,São Mateus,Terra-Chã,Sta Luzia,Sé
+Sta Luzia,512,364,Angra do Heroísmo Centro,Sé,São Pedro,Terra-Chã,Posto Santo,Nossa Sra Conceição
+Sé,456,458,Angra do Heroísmo Centro,São Pedro,Sta Luzia,Nossa Sra Conceição
+Nossa Sra Conceição,546,377,Angra do Heroísmo Centro,Sé,Sta Luzia,Posto Santo,São Bento
+
+Biscoitos,509,120,Praia da Vitória Oeste,São Bartolomeu,Altares,Quatro Ribeiras,Porto Judeu,Posto Santo
+Quatro Ribeiras,585,129,Praia da Vitória Oeste,Porto Judeu,Biscoitos,Agualva
+Agualva,674,161,Praia da Vitória Oeste,São Sebastião,Porto Judeu,Quatro Ribeiras,Vila Nova,São Brás
+São Brás,769,193,Praia da Vitória Oeste,Lajes,Fontinhas,São Sebastião,Agualva,Vila Nova
+Vila Nova,817,100,Praia da Vitória Oeste,Lajes,São Brás,Agualva
+
+Ilhéu do Norte,897,76,Praia da Vitória Leste,Lajes
+Lajes,902,143,Praia da Vitória Leste,Vila Nova,São Brás,Fontinhas,Praia da Vitória,Ilhéu do Norte
+Fontinhas,825,224,Praia da Vitória Leste,Lajes,Praia da Vitória,São Sebastião,São Brás
+Praia da Vitória,875,271,Praia da Vitória Leste,Cabo da Praia,Fonte Bastardo,São Sebastião,Fontinhas,Lajes,Doze Ribeiras
+Fonte Bastardo,846,327,Praia da Vitória Leste,Cabo da Praia,São Sebastião,Praia da Vitória
+Cabo da Praia,923,337,Praia da Vitória Leste,São Sebastião,Fonte Bastardo,Praia da Vitória

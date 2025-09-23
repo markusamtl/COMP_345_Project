@@ -1,0 +1,67 @@
+[Map]
+image=_30_ Splasharoo.bmp
+wrap=no
+scroll=none
+warn=no
+author=_MIKE CRUSH_
+
+[Continents]
+
+NORTH COLUMN=3
+SOUTH COLUMN=3
+EAST COLUMN=3
+WEST COLUMN=3
+
+CENTER and CLOUDS=5
+
+[Territories]
+
+nc1,297,33,NORTH COLUMN,nc2
+nc2,297,63,NORTH COLUMN,nc1,nc3
+nc3,297,93,NORTH COLUMN,nc2,nc4,cloud1
+nc4,297,123,NORTH COLUMN,nc3,nc5,cloud2
+nc5,297,153,NORTH COLUMN,nc4,nc6
+nc6,297,183,NORTH COLUMN,nc5,nc7
+nc7,297,213,NORTH COLUMN,nc6,nc8,cloud1
+nc8,297,243,NORTH COLUMN,nc7,center,cloud2
+
+wc1,49,273,WEST COLUMN,wc2
+wc2,80,273,WEST COLUMN,wc1,wc3,cloud3
+wc3,111,273,WEST COLUMN,wc2,wc4,cloud1
+wc4,142,273,WEST COLUMN,wc3,wc5
+wc5,173,273,WEST COLUMN,wc4,wc6
+wc6,204,273,WEST COLUMN,wc5,wc7,cloud1
+wc7,235,273,WEST COLUMN,wc6,wc8,cloud3
+wc8,266,273,WEST COLUMN,wc7,center
+
+sc1,297,513,SOUTH COLUMN,sc2
+sc2,297,483,SOUTH COLUMN,sc1,sc3,cloud3
+sc3,297,453,SOUTH COLUMN,sc2,sc4,cloud4
+sc4,297,423,SOUTH COLUMN,sc3,sc5
+sc5,297,393,SOUTH COLUMN,sc4,sc6
+sc6,297,363,SOUTH COLUMN,sc5,sc7,cloud3
+sc7,297,333,SOUTH COLUMN,sc6,sc8,cloud4
+sc8,297,303,SOUTH COLUMN,sc7,center
+
+ec1,544,273,EAST COLUMN,ec2
+ec2,513,273,EAST COLUMN,ec1,ec3,cloud2
+ec3,482,273,EAST COLUMN,ec2,ec4,cloud4
+ec4,451,273,EAST COLUMN,ec3,ec5
+ec5,421,273,EAST COLUMN,ec4,ec6,cloud2
+ec6,390,273,EAST COLUMN,ec5,ec7
+ec7,359,273,EAST COLUMN,ec6,ec8,cloud4
+ec8,328,273,EAST COLUMN,ec7,center
+
+cloud1,188,151,CENTER and CLOUDS,nc3,nc7,wc3,wc6
+cloud2,437,164,CENTER and CLOUDS,nc4,nc8,ec2,ec5
+cloud3,194,393,CENTER and CLOUDS,wc2,wc7,sc2,sc6
+cloud4,425,390,CENTER and CLOUDS,sc3,sc7,ec3,ec7
+
+center,297,273,CENTER and CLOUDS,nc8,sc8,wc8,ec8
+
+
+
+
+
+
+

@@ -30,25 +30,25 @@ Territory::Territory(const string &ID) {
 
 }
 
-Territory::Territory(const string &ID, int xCoord, int yCoord, const Continent& continent) {
+Territory::Territory(const string &ID, int xCoord, int yCoord, Continent* continent) {
 
     this -> ID = ID;
     this -> xCoord = xCoord;
     this -> yCoord = yCoord;
     this -> neighbors = {};
-    this -> continent = new Continent(continent); // Deep copy of continent
+    this -> continent = continent; 
     this -> owner = "";
     this -> numArmies = 0;
 
 }
 
-Territory::Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, const Continent& continent, const string &owner, int numArmies) {
+Territory::Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, const string &owner, int numArmies) {
 
     this -> ID = ID;
     this -> xCoord = xCoord;
     this -> yCoord = yCoord;
     this -> neighbors = neighbors;
-    this -> continent = new Continent(continent); // Deep copy of continent
+    this -> continent = continent; 
     this -> owner = owner;
     this -> numArmies = numArmies;
 
@@ -67,7 +67,7 @@ Territory::Territory(const Territory& other) {
     this -> xCoord = other.xCoord;
     this -> yCoord = other.yCoord;
     this -> neighbors = other.neighbors;
-    this -> continent = new Continent(*other.continent); // Deep copy of continent
+    this -> continent = other.continent; 
     this -> owner = other.owner;
     this -> numArmies = other.numArmies;
 
@@ -81,8 +81,7 @@ Territory& Territory::operator=(const Territory& other) {
         this -> xCoord = other.xCoord;
         this -> yCoord = other.yCoord;
         this -> neighbors = other.neighbors;
-        delete this -> continent; // Free existing memory
-        this -> continent = new Continent(*other.continent); // Deep copy of continent
+        this -> continent = other.continent; 
         this -> owner = other.owner;
         this -> numArmies = other.numArmies;
 
@@ -129,12 +128,7 @@ const vector<Territory*>& Territory::getNeighbors() const { return this -> neigh
 void Territory::setNeighbors(const vector<Territory*>& neighbors) { this -> neighbors = neighbors; }
 
 Continent* Territory::getContinent() const {return this -> continent;}
-void Territory::setContinent(Continent* continent) { 
-
-    delete this -> continent; // Free existing memory
-    this -> continent = new Continent(*continent); // Deep copy of continent
-
-}   
+void Territory::setContinent(Continent* continent) { this -> continent = continent; }   
 
 const string& Territory::getOwner() const { return this -> owner; }
 void Territory::setOwner(const string &owner) { this -> owner = owner; }
@@ -146,10 +140,14 @@ void Territory::setNumArmies(int numArmies) { this -> numArmies = numArmies; }
 
 void Territory::addNeighbor(Territory* neighbor) { 
 
-    if (neighbor == nullptr) return; // Ignore null pointers
+    if(neighbor == nullptr) return; // Ignore null pointers
 
     //For all territories n in the neighbors vector, if n's ID is the same as neighbor's ID, return
-    for (Territory* n : this -> neighbors){ if (n -> ID == neighbor -> ID) return;}
+    for(Territory* n : this -> neighbors){ 
+        
+        if(n -> getID() == neighbor -> getID()) { return; }
+
+    }
 
     this -> neighbors.push_back(neighbor);
     

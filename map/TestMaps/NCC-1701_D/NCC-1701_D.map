@@ -1,0 +1,153 @@
+[Map]
+author=Matt R
+image=NCC-1701_D.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+10 Forward=5
+Holodecks=5
+Main Bridge=10
+Medical Section=5
+Rear Saucer=5
+Battle Bridge=10
+Secondary Shuttle Bay=5
+Main Impulse Engine=10
+Warp Field Coil=10
+Photon Torp=10
+Deuterium Sotrage Tank (Fuel)=10
+Linear Phaser Array=10
+Main Shuttle Bay=10
+Main Deflector=5
+
+[Territories]
+Territory00,898,120,10 Forward,Territory17,Territory16
+Territory01,908,130,10 Forward,Territory16
+Territory02,909,139,10 Forward,Territory15
+Territory03,903,147,10 Forward,Territory14
+Territory04,896,155,10 Forward,Territory13
+Territory05,885,162,10 Forward,Territory12
+Territory06,871,170,10 Forward,Territory11
+Territory07,852,177,10 Forward,Territory10
+Territory08,812,186,10 Forward,Territory09
+Territory09,781,186,Holodecks,Territory08,Territory18,Territory24,Territory23
+Territory10,782,177,Holodecks,Territory07,Territory18
+Territory11,784,170,Holodecks,Territory06,Territory18
+Territory12,786,163,Holodecks,Territory05,Territory18
+Territory13,789,155,Holodecks,Territory04,Territory18
+Territory14,791,147,Holodecks,Territory03,Territory19
+Territory15,793,138,Holodecks,Territory02,Territory19
+Territory16,800,126,Holodecks,Territory00,Territory01,Territory19
+Territory17,833,114,Holodecks,Territory00,Territory19
+Territory18,763,162,Holodecks,Territory09,Territory10,Territory11,Territory12,Territory19,Territory13,Territory23
+Territory19,763,131,Holodecks,Territory18,Territory14,Territory15,Territory16,Territory17,Territory20,Territory22
+Territory20,785,106,Holodecks,Territory19,Territory27
+Territory21,762,100,Holodecks,Territory27
+Territory22,752,136,Holodecks,Territory19,Territory26
+Territory23,754,167,Holodecks,Territory24,Territory25,Territory18,Territory09
+Territory24,743,183,Main Bridge,Territory42,Territory41,Territory09,Territory25,Territory23
+Territory25,743,162,Main Bridge,Territory24,Territory23,Territory40,Territory39,Territory38,Territory26
+Territory26,743,135,Main Bridge,Territory25,Territory22,Territory37,Territory36,Territory30,Territory27
+Territory27,743,105,Main Bridge,Territory26,Territory29,Territory28,Territory21,Territory20
+Territory28,730,100,Main Bridge,Territory27
+Territory29,730,116,Main Bridge,Territory27,Territory31
+Territory30,731,128,Main Bridge,Territory26,Territory31
+Territory31,718,121,Main Bridge,Territory35,Territory34,Territory32,Territory29,Territory30
+Territory32,705,115,Main Bridge,Territory31,Territory33
+Territory33,638,114,Main Bridge,Territory32
+Territory34,647,125,Main Bridge,Territory31,Territory57
+Territory35,677,131,Medical Section,Territory31,Territory57
+Territory36,687,138,Medical Section,Territory26,Territory56
+Territory37,699,147,Medical Section,Territory26,Territory55
+Territory38,708,154,Medical Section,Territory25,Territory54
+Territory39,716,161,Medical Section,Territory25,Territory46
+Territory40,720,169,Medical Section,Territory25,Territory45
+Territory41,724,176,Medical Section,Territory24,Territory44
+Territory42,725,184,Medical Section,Territory24,Territory43
+Territory43,689,186,Rear Saucer,Territory42
+Territory44,675,177,Rear Saucer,Territory41,Territory47
+Territory45,656,169,Rear Saucer,Territory40,Territory47
+Territory46,646,161,Rear Saucer,Territory39,Territory59
+Territory47,572,175,Rear Saucer,Territory44,Territory45,Territory59,Territory60
+Territory48,565,190,Rear Saucer,Territory61
+Territory49,559,196,Rear Saucer,Territory61
+Territory50,556,204,Rear Saucer,Territory61
+Territory51,549,215,Rear Saucer,Territory62
+Territory52,544,229,Rear Saucer,Territory62
+Territory53,531,242,Rear Saucer,Territory62,Territory70
+Territory54,607,156,Battle Bridge,Territory38,Territory59
+Territory55,599,147,Battle Bridge,Territory37,Territory59
+Territory56,589,139,Battle Bridge,Territory36,Territory57,Territory59
+Territory57,572,130,Battle Bridge,Territory56,Territory58,Territory34,Territory59,Territory35
+Territory58,529,142,Battle Bridge,Territory57,Territory59,Territory72,Territory60
+Territory59,530,167,Battle Bridge,Territory46,Territory54,Territory55,Territory47,Territory58,Territory57,Territory56,Territory60
+Territory60,515,174,Battle Bridge,Territory47,Territory63,Territory73,Territory61,Territory59,Territory58
+Territory61,516,195,Battle Bridge,Territory48,Territory49,Territory50,Territory64,Territory62,Territory60
+Territory62,515,226,Battle Bridge,Territory61,Territory53,Territory52,Territory51,Territory65,Territory66,Territory67,Territory98
+Territory63,499,174,Battle Bridge,Territory60,Territory72
+Territory64,499,198,Battle Bridge,Territory61,Territory72,Territory71
+Territory65,499,216,Battle Bridge,Territory62,Territory71
+Territory66,499,232,Battle Bridge,Territory62,Territory71,Territory70
+Territory67,492,250,Battle Bridge,Territory62,Territory70,Territory69,Territory98
+Territory68,494,266,Battle Bridge,Territory69,Territory98
+Territory69,483,266,Battle Bridge,Territory120,Territory121,Territory122,Territory99,Territory68,Territory67,Territory101,Territory70
+Territory70,483,242,Battle Bridge,Territory71,Territory81,Territory66,Territory53,Territory67,Territory69
+Territory71,483,215,Battle Bridge,Territory72,Territory65,Territory64,Territory66,Territory79,Territory78,Territory77,Territory70
+Territory72,483,182,Battle Bridge,Territory75,Territory74,Territory64,Territory63,Territory73,Territory71,Territory58,Territory76
+Territory73,496,166,Battle Bridge,Territory60,Territory72
+Territory74,462,166,Battle Bridge,Territory72
+Territory75,471,178,Secondary Shuttle Bay,Territory72
+Territory76,461,194,Secondary Shuttle Bay,Territory72
+Territory77,458,202,Secondary Shuttle Bay,Territory71,Territory82
+Territory78,453,209,Secondary Shuttle Bay,Territory71,Territory82
+Territory79,449,222,Secondary Shuttle Bay,Territory71,Territory82
+Territory80,412,246,Main Impulse Engine,Territory81,Territory84
+Territory81,459,241,Main Impulse Engine,Territory70,Territory80
+Territory82,389,209,Warp Field Coil,Territory83,Territory77,Territory78,Territory79
+Territory83,372,214,Warp Field Coil,Territory82,Territory84
+Territory84,362,219,Warp Field Coil,Territory80,Territory83,Territory85
+Territory85,340,225,Warp Field Coil,Territory84,Territory86,Territory88
+Territory86,291,209,Warp Field Coil,Territory85,Territory87
+Territory87,52,224,Warp Field Coil,Territory86,Territory88
+Territory88,173,268,Warp Field Coil,Territory85,Territory89,Territory87,Territory109,Territory116,Territory117,Territory118
+Territory89,243,265,Warp Field Coil,Territory122,Territory121,Territory120,Territory119,Territory118,Territory88
+Territory90,517,324,Main Deflector,Territory91
+Territory91,492,333,Main Deflector,Territory90,Territory95,Territory94,Territory96,Territory97,Territory105,Territory103
+Territory92,416,368,Main Deflector,Territory112,Territory93
+Territory93,434,361,Main Deflector,Territory92,Territory95
+Territory94,411,351,Main Deflector,Territory128,Territory91
+Territory95,463,357,Main Deflector,Territory93,Territory91
+Territory96,439,337,Main Deflector,Territory128,Territory91
+Territory97,438,326,Main Deflector,Territory91
+Territory98,544,258,Photon Torp,Territory62,Territory67,Territory68
+Territory99,532,273,Photon Torp,Territory69
+Territory100,539,281,Photon Torp,Territory101
+Territory101,499,290,Photon Torp,Territory69,Territory102,Territory100
+Territory102,415,275,Deuterium Sotrage Tank (Fuel),Territory101,Territory113
+Territory103,492,305,Deuterium Sotrage Tank (Fuel),Territory104,Territory91
+Territory104,438,306,Deuterium Sotrage Tank (Fuel),Territory103,Territory105,Territory125,Territory106,Territory123,Territory124
+Territory105,436,318,Deuterium Sotrage Tank (Fuel),Territory104,Territory91,Territory128
+Territory106,375,331,Deuterium Sotrage Tank (Fuel),Territory112,Territory113,Territory128,Territory104
+Territory107,126,338,Linear Phaser Array,Territory108,Territory111,Territory110,Territory112
+Territory108,278,326,Linear Phaser Array,Territory109,Territory116,Territory115,Territory114,Territory107
+Territory109,119,313,Main Shuttle Bay,Territory88,Territory115,Territory114,Territory108
+Territory110,316,351,Linear Phaser Array,Territory107
+Territory111,331,365,Linear Phaser Array,Territory107
+Territory112,362,370,Linear Phaser Array,Territory107,Territory92,Territory127,Territory126,Territory106
+Territory113,358,315,Linear Phaser Array,Territory106,Territory125,Territory124,Territory123,Territory102
+Territory114,236,317,Main Shuttle Bay,Territory109,Territory108
+Territory115,241,310,Main Shuttle Bay,Territory109,Territory108
+Territory116,247,303,Main Shuttle Bay,Territory88,Territory108
+Territory117,256,295,Main Shuttle Bay,Territory88
+Territory118,260,287,Main Shuttle Bay,Territory89,Territory88
+Territory119,288,281,Main Shuttle Bay,Territory89
+Territory120,305,273,Main Shuttle Bay,Territory69,Territory89
+Territory121,321,266,Main Shuttle Bay,Territory69,Territory89
+Territory122,331,255,Main Shuttle Bay,Territory69,Territory89
+Territory123,373,318,Deuterium Sotrage Tank (Fuel),Territory113,Territory104
+Territory124,374,312,Deuterium Sotrage Tank (Fuel),Territory113,Territory104
+Territory125,373,303,Deuterium Sotrage Tank (Fuel),Territory113,Territory104
+Territory126,375,346,Deuterium Sotrage Tank (Fuel),Territory112,Territory128
+Territory127,375,354,Deuterium Sotrage Tank (Fuel),Territory112,Territory128
+Territory128,388,344,Deuterium Sotrage Tank (Fuel),Territory127,Territory126,Territory106,Territory94,Territory96,Territory105

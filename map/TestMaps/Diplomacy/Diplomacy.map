@@ -1,0 +1,107 @@
+[Map]
+author=Sean O'Connor
+warn=yes
+image=diplomacy.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+England=3
+Low Countries=1
+France=3
+Spain=2
+Italy=3
+Germany=4
+Austria-Hungary=4
+Scandinavia=2
+Russia=4
+Balkans=3
+Turkey=3
+
+[Territories]
+Clyde,258,275,England,Edinburgh,Liverpool
+Edinburgh,275,272,England,Norway,Yorkshire,Liverpool,Clyde
+Yorkshire,284,340,England,Edinburgh,Liverpool,London,Wales
+Wales,248,372,England,Liverpool,Yorkshire,London,Brest
+Liverpool,269,328,England,Clyde,Edinburgh,Yorkshire,Wales
+London,284,383,England,Belgium,Picardy,Yorkshire,Wales
+
+Norway,439,197,Scandinavia,St Petersburg,Finland,Sweden,Denmark,Edinburgh
+Sweden,494,180,Scandinavia,Finland,Norway,Denmark
+Denmark,413,327,Scandinavia,Norway,Sweden,Kiel
+
+Holland,358,396,Low Countries,Kiel,Ruhr,Belgium
+Belgium,330,424,Low Countries,Holland,Ruhr,Burgundy,Picardy,London
+
+Picardy,297,435,France,Belgium,Burgundy,Paris,Brest,London
+Brest,246,460,France,Wales,Picardy,Paris,Gascony
+Paris,283,469,France,Picardy,Brest,Gascony,Burgundy
+Gascony,254,531,France,Brest,Paris,Burgundy,Marseilles,Spain
+Burgundy,324,490,France,Belgium,Ruhr,Munich,Marseilles,Gascony,Paris,Picardy
+Marseilles,314,551,France,Piedmont,Burgundy,Gascony,Spain
+
+Spain,176,596,Spain,Gascony,Marseilles,Portugal,North Africa
+Portugal,102,584,Spain,Spain
+North Africa,202,736,Spain,Spain,Tunis
+Tunis,358,741,Spain,North Africa,Naples
+
+Piedmont,370,544,Italy,Marseilles,Venice,Tuscany,Tyrolia
+Venice,418,571,Italy,Tyrolia,Trieste,Apulia,Rome,Tuscany,Piedmont
+Tuscany,401,586,Italy,Piedmont,Venice,Rome
+Rome,426,620,Italy,Tuscany,Venice,Apulia,Naples
+Apulia,469,632,Italy,Albania,Venice,Rome,Naples
+Naples,464,652,Italy,Apulia,Rome,Tunis
+
+Ruhr,367,440,Germany,Kiel,Munich,Holland,Belgium,Burgundy
+Kiel,399,398,Germany,Denmark,Berlin,Munich,Ruhr,Holland
+Berlin,445,391,Germany,Prussia,Silesia,Munich,Kiel
+Prussia,511,377,Germany,Livonia,Warsaw,Silesia,Berlin
+Silesia,480,425,Germany,Prussia,Warsaw,Galicia,Bohemia,Munich,Berlin
+Munich,405,464,Germany,Ruhr,Kiel,Berlin,Silesia,Bohemia,Tyrolia,Burgundy
+
+Bohemia,463,457,Austria-Hungary,Munich,Silesia,Galicia,Vienna,Tyrolia
+Tyrolia,429,511,Austria-Hungary,Munich,Bohemia,Vienna,Trieste,Venice,Piedmont
+Trieste,484,559,Austria-Hungary,Tyrolia,Vienna,Budapest,Serbia,Albania,Venice
+Vienna,492,490,Austria-Hungary,Bohemia,Galicia,Budapest,Trieste,Tyrolia
+Budapest,548,520,Austria-Hungary,Vienna,Galicia,Rumania,Serbia,Trieste
+Galicia,577,463,Austria-Hungary,Warsaw,Ukraine,Rumania,Budapest,Vienna,Bohemia,Silesia
+
+Finland,594,197,Russia,Norway,Sweden,St Petersburg
+St Petersburg,746,173,Russia,Finland,Livonia,Moscow,Norway
+Livonia,591,331,Russia,St Petersburg,Moscow,Warsaw,Prussia
+Warsaw,550,414,Russia,Prussia,Silesia,Galicia,Ukraine,Moscow,Livonia
+Moscow,772,314,Russia,St Petersburg,Livonia,Warsaw,Ukraine,Sevastopol
+Ukraine,654,446,Russia,Moscow,Warsaw,Galicia,Rumania,Sevastopol
+Sevastopol,814,481,Russia,Moscow,Ukraine,Rumania,Armenia
+
+Serbia,550,598,Balkans,Budapest,Trieste,Albania,Greece,Bulgaria,Rumania
+Albania,535,640,Balkans,Serbia,Trieste,Apulia,Greece
+Greece,565,672,Balkans,Bulgaria,Serbia,Albania
+Rumania,627,555,Balkans,Sevastopol,Ukraine,Galicia,Budapest,Serbia,Bulgaria
+Bulgaria,612,608,Balkans,Rumania,Serbia,Greece,Constantinople
+
+Constantinople,673,651,Turkey,Bulgaria,Smyrna,Ankara
+Ankara,762,632,Turkey,Constantinople,Smyrna,Armenia
+Smyrna,739,690,Turkey,Ankara,Constantinople,Armenia,Syria
+Armenia,872,633,Turkey,Sevastopol,Ankara,Smyrna,Syria
+Syria,857,717,Turkey,Armenia,Smyrna
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

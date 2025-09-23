@@ -1,0 +1,109 @@
+[Map]
+image=Memt1.bmp
+wrap=yes
+scroll=none
+warn=yes
+author=Mahdi Esmaily
+
+[Continents]
+
+Territories A=3
+Territories B=2
+Territories C=4
+Territories D=5
+Territories E=2
+Territories F=8
+
+[Territories]
+
+a1,680,30,Territories A,a2,a5,a6
+a2,800,20,Territories A,a1,a3,a4,a5
+a3,960,40,Territories A,a2,a4,b4
+a4,910,105,Territories A,a2,a3,a5,a11,b4
+a5,760,90,Territories A,a1,a2,a4,a6,a7,a9,a11
+a6,525,115,Territories A,a1,a5,a7,a8,e6,f2,f3
+a7,615,125,Territories A,a5,a6,a8,a9
+a8,525,200,Territories A,a6,a7,a9,f3
+a9,685,170,Territories A,a5,a7,a8,a10,a11
+a10,730,145,Territories A,a9,b2,c10,d10,e2,f10
+a11,860,145,Territories A,a4,a5,a9,b4
+
+b1,740,290,Territories B,b2,b3,c1,c2,c3,c4,c5
+b2,775,290,Territories B,b1,a10,c10,d10,e2,f10
+b3,877,228,Territories B,b1,b4
+b4,958,222,Territories B,b3,a3,a4,a11
+
+c1,647,433,Territories C,c2,c11,b1
+c2,735,468,Territories C,c1,c3,c8,c9,c11,b1
+c3,810,420,Territories C,c2,c4,c8,b1
+c4,905,430,Territories C,c3,c5,c6,c7,c8,b1
+c5,990,335,Territories C,c4,c6,b1
+c6,980,530,Territories C,c4,c5,c7,c16
+c7,870,570,Territories C,c4,c6,c8,c9,c16
+c8,800,480,Territories C,c2,c3,c4,c7,c9
+c9,750,560,Territories C,c2,c7,c8,c10,c11,c14,c15,c16
+c10,805,620,Territories C,c9,a10,b2,d10,e2,f10
+c11,653,618,Territories C,c1,c2,c9,c12,c13,c14,f15,f21
+c12,605,740,Territories C,c11,c13,d8,f21
+c13,695,730,Territories C,c11,c12,c14,c15
+c14,750,680,Territories C,c9,c11,c13,c15
+c15,820,750,Territories C,c9,c13,c14,c16
+c16,970,720,Territories C,c6,c7,c9,c15
+
+d1,30,580,Territories D,d2,d9,f8,f9
+d2,30,740,Territories D,d1,d3,d4,d9
+d3,90,715,Territories D,d2,d4,d9,d14
+d4,195,750,Territories D,d2,d3,d14,d5
+d5,280,740,Territories D,d4,d6,d12,d13,d14
+d6,350,720,Territories D,d5,d7,d8,d12,f18,f19,f20
+d7,405,705,Territories D,d6,d8,f20
+d8,510,750,Territories D,d6,d7,c12,f20,f21
+d9,95,630,Territories D,d1,d2,d3,d10,d11,d12,d14,f7,f8,f11
+d10,150,580,Territories D,d9,a10,b2,c10,e2,f10
+d11,240,560,Territories D,d9,d12,f11,f18
+d12,235,630,Territories D,d5,d6,d9,d11,d13,d14,f18
+d13,200,660,Territories D,d5,d12,d14
+d14,160,700,Territories D,d3,d4,d5,d9,d12,d13
+
+e1,130,10,Territories E,e2,e3,e4,e5,e6
+e2,166,7,Territories E,e1,a10,b2,c10,d10,f10
+e3,65,35,Territories E,e1
+e4,110,115,Territories E,e1,f1
+e5,240,70,Territories E,e1
+e6,430,40,Territories E,e1,a6
+
+f1,170,230,Territories F,f2,f3,f4,f7,f9,e4
+f2,410,165,Territories F,f1,f3,a6
+f3,395,195,Territories F,f1,f2,a6,a8
+f4,280,310,Territories F,f1,f5,f6,f7
+f5,350,410,Territories F,f4,f6,f12
+f6,260,435,Territories F,f4,f5,f7,f11,f12
+f7,160,430,Territories F,f1,f4,f6,f8,f9,f11,d9
+f8,80,470,Territories F,f7,f9,d1,d9
+f9,25,400,Territories F,f1,f7,f8,f10,d1
+f10,65,335,Territories F,f9,a10,b2,c10,d10,e2
+f11,300,540,Territories F,f6,f7,f12,f14,f17,f18,d9,d11
+f12,380,460,Territories F,f5,f6,f11,f13,f14
+f13,465,460,Territories F,f12,f14
+f14,440,520,Territories F,f11,f12,f13,f15,f16,f17,f19
+f15,560,590,Territories F,f14,f16,f20,f21,c11
+f16,480,600,Territories F,f14,f15,f19,f20
+f17,375,580,Territories F,f11,f14,f18,f19
+f18,330,625,Territories F,f11,f17,f19,d6,d11,d12
+f19,410,635,Territories F,f14,f16,f17,f18,f20,d6
+f20,480,670,Territories F,f15,f16,f19,f21,d6,d7,d8
+f21,530,710,Territories F,f15,f20,c11,c12,d8
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

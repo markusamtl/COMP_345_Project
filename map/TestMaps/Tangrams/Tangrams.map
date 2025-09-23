@@ -1,0 +1,50 @@
+[Map]
+author=Rob Werhand
+image=Tangrams.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Sleeping Man=4
+Sailboat=3
+Box=6
+Bird=3
+Deer=4
+
+[Territories]
+Territory01,131,333,Sleeping Man,Territory02,Territory11
+Territory02,103,361,Sleeping Man,Territory01,Territory03
+Territory03,99,439,Sleeping Man,Territory02,Territory04
+Territory04,119,491,Sleeping Man,Territory03,Territory06,Territory05
+Territory05,176,508,Sleeping Man,Territory04,Territory06
+Territory06,231,457,Sleeping Man,Territory04,Territory05,Territory07,Territory20
+Territory07,305,503,Sleeping Man,Territory06,Territory33
+Territory08,276,219,Sailboat,Territory09
+Territory09,328,183,Sailboat,Territory10,Territory08,Territory22
+Territory10,376,231,Sailboat,Territory12,Territory13,Territory14,Territory09
+Territory11,275,273,Sailboat,Territory01,Territory12
+Territory12,318,287,Sailboat,Territory11,Territory10,Territory13
+Territory13,364,274,Sailboat,Territory12,Territory14,Territory10
+Territory14,396,288,Sailboat,Territory13,Territory10,Territory16
+Territory15,520,358,Box,Territory25,Territory16,Territory17,Territory18
+Territory16,464,386,Box,Territory14,Territory20,Territory17,Territory15
+Territory17,499,401,Box,Territory16,Territory19,Territory15
+Territory18,567,400,Box,Territory30,Territory15,Territory19,Territory21
+Territory19,521,440,Box,Territory20,Territory17,Territory18,Territory21
+Territory20,466,456,Box,Territory06,Territory16,Territory19
+Territory21,559,464,Box,Territory18,Territory19
+Territory22,800,75,Bird,Territory09,Territory23
+Territory23,816,113,Bird,Territory22,Territory24
+Territory24,781,157,Bird,Territory23,Territory25,Territory28
+Territory25,752,203,Bird,Territory24,Territory26,Territory27,Territory15
+Territory26,762,243,Bird,Territory25,Territory27
+Territory27,808,243,Bird,Territory25,Territory28,Territory26,Territory29
+Territory28,855,201,Bird,Territory24,Territory27
+Territory29,756,348,Deer,Territory27,Territory30
+Territory30,720,398,Deer,Territory29,Territory31,Territory18
+Territory31,754,432,Deer,Territory30,Territory32
+Territory32,808,458,Deer,Territory31,Territory33,Territory34
+Territory33,779,506,Deer,Territory07,Territory32
+Territory34,916,475,Deer,Territory32,Territory35
+Territory35,960,441,Deer,Territory34

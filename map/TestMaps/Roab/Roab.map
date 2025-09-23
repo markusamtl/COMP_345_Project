@@ -1,0 +1,63 @@
+[Map]
+author=Sid6.7
+image=roab.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Saiducee=2
+Southern Kefs=4
+Alternhimn=1
+Zhjen=8
+Carnham=3
+The Jeweled Cities=3
+Kefs=7
+The Wastes=2
+Masterota=5
+The Pil Isles=2
+Muke=3
+Elo=3
+
+[Territories]
+Said,90,59,Saiducee,Alternhimn,Ucee,Kaska
+Ucee,173,69,Saiducee,Said
+Alternhimn,191,179,Alternhimn,Said,Paree,Chien,Caan
+Kefs Proper,694,412,Southern Kefs,Humtrian,Central
+Central,755,390,Southern Kefs,W. Turfs,Kefs Proper
+W. Turfs,750,345,Southern Kefs,Dai Muke,E. Turfs,Central
+E. Turfs,813,341,Southern Kefs,Dai Muke,Mai Muke,W. Turfs
+Dai Muke,725,288,Muke,Elo,Pils,W. Turfs,E. Turfs,Mai Muke
+Mai Muke,798,286,Muke,Nils,Dai Muke,E. Turfs
+Nils,820,215,The Pil Isles,Egon,Mai Muke,Pils
+Pils,737,222,The Pil Isles,Dai Muke,Reeda,Nils
+Germane,701,109,Masterota,Vener
+Vener,748,128,Masterota,Elo,Germane,Reeda,Egon
+Reeda,748,173,Masterota,Vener,Pils
+Egon,820,136,Masterota,Vener,Kaska,Nils
+Kaska,825,103,Masterota,Said,Egon
+Chien,139,277,Zhjen,Alternhimn,Caan
+Caan,153,300,Zhjen,Chien,Zhool,Alternhimn
+Zhool,197,336,Zhjen,Ipoon,Nigh,Caan
+Nigh,244,376,Zhjen,S. Ipoon,Zhool
+Ipoon,172,370,Zhjen,S. Ipoon,Makatu,Zhool
+Makatu,125,344,Zhjen,Ipoon
+S. Ipoon,145,413,Zhjen,Pert,Ipoon,Nigh
+Pert,83,448,Zhjen,S. Ipoon
+Paree,373,193,The Jeweled Cities,Alternhimn,Menako,Yerk
+Menako,402,197,The Jeweled Cities,Paree,Yerk,Felait
+Yerk,418,217,The Jeweled Cities,Paree,Menako,Felait,Krong
+Krong,434,250,The Jeweled Cities,Yerk,Felait
+Coluds,472,329,Kefs,N. Velt,Humtrian
+Humtrian,524,294,Kefs,Kefs Proper,Coluds,E. Kefs,Felait
+E. Kefs,524,232,Kefs,Humtrian,Brindle,Kefs,Elo,Felait
+Kefs,509,199,Kefs,E. Kefs,Felait,Bourlesain,Brindle
+Felait,457,207,Kefs,Menako,Yerk,Krong,Humtrian,Kefs,Bourlesain,E. Kefs
+Bourlesain,462,168,Kefs,Kefs,Brindle,Felait
+Brindle,509,138,Kefs,E. Kefs,Kefs,Bourlesain,S. Carnham
+S. Carnham,519,72,Carnham,Brindle,Beters,N. Carnham
+Beters,458,76,Carnham,S. Carnham,N. Carnham
+N. Carnham,491,41,Carnham,S. Carnham,Beters
+N. Velt,473,419,The Wastes,E. Velt,Coluds
+E. Velt,463,459,The Wastes,N. Velt
+Elo,635,228,Elo,E. Kefs,Vener,Dai Muke

@@ -1,0 +1,46 @@
+[Map]
+author=Rustin Terry
+warn=yes
+image=caribbean.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Northwest=4
+Central=3
+East=5
+South=4
+Southwest=2
+
+
+[Territories]
+Florida,143,45,Northwest,Cuba,Bahamas
+Cuba,211,170,Northwest,Nicaragua,Florida,Bahamas,Cayman Island,Jamaica,Haiti
+Bahamas,232,88,Northwest,Florida,Cuba
+Cayman Island,158,243,Northwest,Cuba,Nicaragua
+Jamaica,209,250,Northwest,Cuba,Haiti
+
+Nicaragua,28,373,Southwest,Cuba,Cayman Island,Costa Rica
+Costa Rica,32,446,Southwest,Nicaragua
+
+Caicos Island,377,164,Central,Haiti,Dominican Republic
+Haiti,355,234,Central,Caicos Island,Cuba,Jamaica,Dominican Republic
+Dominican Republic,398,234,Central,Caicos Island,Haiti,Puerto Rico
+Puerto Rico,499,252,Central,Dominican Republic,Anguilla
+
+Anguilla,578,252,East,Puerto Rico,Saint Martin,Saint Kitts & Nevis
+Saint Martin,605,229,East,Anguilla,Saint Kitts & Nevis
+Saint Kitts & Nevis,620,286,East,Anguilla,Saint Martin,Antigua,Guadeloupe
+Antigua,588,312,East,Saint Kitts & Nevis,Guadeloupe
+Guadeloupe,638,319,East,Antigua,Saint Kitts & Nevis,Dominica
+Dominica,646,357,East,Guadeloupe,Saint Lucia,Barbados
+Saint Lucia,639,389,East,Dominica,Barbados,Grenada
+Barbados,686,393,East,Dominica,Saint Lucia
+Grenada,625,413,East,Trinidad,Margarita,Saint Lucia
+Trinidad,640,448,East,Venezuela,Grenada
+
+Margarita,569,431,South,Grenada,Venezuela,Antilles
+Antilles,522,427,South,Margarita,Venezuela,Aruba
+Aruba,443,403,South,Venezuela,Antilles
+Venezuela,425,454,South,Aruba,Antilles,Margarita,Trinidad,Columbia
+Columbia,318,452,South,Venezuela

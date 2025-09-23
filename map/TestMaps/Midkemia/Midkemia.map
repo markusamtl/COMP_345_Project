@@ -1,0 +1,63 @@
+[Map]
+author=Jim
+image=Midkemia.bmp
+wrap=no
+scroll=no
+warn=yes
+
+[Continents]
+Northlands=4
+The Eastern Realm=7
+The Far Coast=5
+Queg=1
+Kesh=6
+The Western Realm=6
+
+[Territories]
+Ironpass,533,42,Northlands,Northwarden,Romney,Tiburn
+Northwarden,500,100,Northlands,Ironpass,Highcastle,Romney
+Highcastle,436,110,Northlands,Northwarden,TyrSog,Sethanon,Romney
+TyrSog,330,150,Northlands,Yabon,Highcastle,Sethanon
+Yabon,258,155,Northlands,TyrSog,LaMut,Sethanon
+
+Ran,843,156,The Eastern Realm,Rodez
+Rodez,776,136,The Eastern Realm,Ran,Dolth
+Dolth,663,199,The Eastern Realm,Rodez,Tiburn,BasTyra
+Tiburn,600,200,The Eastern Realm,Dolth,BasTyra,Romney,Ironpass
+Romney,500,200,The Eastern Realm,Highcastle,Northwarden,Ironpass,Tiburn,BasTyra,Cheam,Silden,Malacs Cross,Sethanon
+BasTyra,600,250,The Eastern Realm,Rillanon,Dolth,Tiburn,Romney,Cheam
+Rillanon,636,332,The Eastern Realm,BasTyra,Cheam
+Cheam,526,314,The Eastern Realm,Silden,Romney,BasTyra,Rillanon
+Silden,480,326,The Eastern Realm,Malacs Cross,Romney,Cheam
+
+Elvander,60,110,The Far Coast,Crydee,Jonril
+Crydee,44,164,The Far Coast,Elvander,Jonril,Carse
+Carse,66,237,The Far Coast,Crydee,Jonril,Tulan,LiMeth
+Jonril,107,212,The Far Coast,Elvander,Crydee,Carse,Tulan,Zun,LaMut
+Tulan,114,255,The Far Coast,Carse,Jonril,Hush,Margraves Port,LiMeth
+Hush,167,236,The Far Coast,Tulan,Margraves Port,Zun,Port Natal,Natal
+Zun,200,223,The Far Coast,Jonril,Hush,Natal,LaMut
+Margraves Port,154,273,The Far Coast,Tulan,Queg,Port Natal,Hush
+Port Natal,189,261,The Far Coast,Queg,Natal,Hush,Margraves Port
+
+Queg,202,308,Queg,Margraves Port,Port Natal,Sarth,Durbin,LiMeth,Krondor
+
+Carlyan,42,449,Kesh,Elarial,Ranom
+Elarial,69,368,Kesh,LiMeth,Ranom,Carlyan
+LiMeth,100,326,Kesh,Queg,Ranom,Elarial,Tulan,Carse
+Ranom,112,419,Kesh,Durbin,LiMeth,Elarial,Carlyan
+Durbin,222,470,Kesh,Queg,Ranom,Shamata
+Shamata,329,424,Kesh,Krondor,Landreth,Timons,Durbin
+Timons,400,415,Kesh,Deep Taunton,Salador,Landreth,Shamata
+Deep Taunton,503,461,Kesh,Mallow Haven,Timons
+Mallow Haven,600,471,Kesh,Deep Taunton,Pointers Head
+Pointers Head,658,471,Kesh,Mallow Haven
+
+LaMut,223,196,The Western Realm,Yabon,Sethanon,Sarth,Natal,Zun,Jonril
+Natal,222,243,The Western Realm,Sarth,LaMut,Zun,Hush,Port Natal
+Sarth,284,261,The Western Realm,Natal,LaMut,Sethanon,Krondor,Queg
+Sethanon,377,212,The Western Realm,LaMut,Yabon,TyrSog,Highcastle,Romney,Malacs Cross,Krondor,Sarth
+Malacs Cross,414,294,The Western Realm,Sethanon,Romney,Silden,Salador,Landreth,Krondor
+Krondor,333,333,The Western Realm,Queg,Shamata,Landreth,Malacs Cross,Sethanon,Sarth
+Landreth,352,368,The Western Realm,Krondor,Shamata,Timons,Salador,Malacs Cross
+Salador,400,390,The Western Realm,Malacs Cross,Landreth,Timons

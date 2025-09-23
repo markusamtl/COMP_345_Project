@@ -1,0 +1,85 @@
+[Map]
+author=Stewart Ainsworth
+image=earthsea.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Kargad=2
+The North Reach=3
+The West Reach=8
+The South Reach=4
+The East Reach=5
+The Archipelago=10
+
+[Territories]
+Hur-at-Hur,746,180,Kargad,Atnin,Karego-At,Atuan,Atnin
+Karego-At,640,262,Kargad,Atuan,Hur-at-Hur,The Hands,Torheven
+Atuan,703,263,Kargad,Hur-at-Hur,Karego-At,Atnin
+Atnin,737,237,Kargad,Hur-at-Hur,Atuan
+
+Hogen Land,340,15,The North Reach,Borth
+Borth,357,77,The North Reach,Hogen Land,Rogmy,Bereswek
+Rogmy,375,110,The North Reach,Borth,Osskil,Bereswek
+Bereswek,424,84,The North Reach,Borth,North and South Enwas,Rogmy
+North and South Enwas,476,52,The North Reach,Bereswek,Komokome
+Komokome,574,45,The North Reach,North and South Enwas
+
+Hille,90,210,The West Reach,Derhemen,Selídor
+Derhemen,164,255,The West Reach,Hille,Narveduen,Onon
+Narveduen,200,243,The West Reach,Derhemen
+Onon,152,285,The West Reach,Derhemen,Selídor,Ingat
+Selídor,28,297,The West Reach,Onon,Hille
+Ingat,174,373,The West Reach,Onon,Ontuego,Kaltuel
+Ontuego,210,373,The West Reach,Ingat,Paln
+Kaltuel,163,438,The West Reach,Ingat,Near Kaltuel,Simly
+Arrins,207,452,The West Reach,Faltuel,Near Kaltuel
+Faltuel,221,467,The West Reach,Arrins,Ensmer
+Near Kaltuel,178,452,The West Reach,Kaltuel,Simly,Arrins
+Simly,143,468,The West Reach,Kaltuel,Near Kaltuel,Jessage
+Obb,51,511,The West Reach,Jessage
+Jessage,88,526,The West Reach,Obb,Obehol,Simly
+
+The Long Dune,82,626,The South Reach,Wellogy
+Wellogy,115,615,The South Reach,The Long Dune,Obehol
+Obehol,166,590,The South Reach,Jessage,Far Sorr,Wellogy
+Far Sorr,252,639,The South Reach,Lorbanery,Obehol,Rood
+Lorbanery,316,573,The South Reach,Far Sorr,Rood,Ensmer,Wathort
+Rood,371,598,The South Reach,Lorbanery,Wasny,Toom,Far Sorr
+Toom,398,626,The South Reach,Rood,Isle of the Ear
+Wasny,444,571,The South Reach,Rood,Isle of the Ear,Uny and Nam¡en
+Isle of the Ear,444,643,The South Reach,Toom,Wasny
+
+Venway,615,381,The East Reach,The Hands,Korp and Kopp,Sattins,Iffish and Tok
+The Hands,640,329,The East Reach,Venway,Karego-At,Way,Sattins
+Sattins,690,361,The East Reach,The Hands,Venway,Yor
+Yor,706,368,The East Reach,Sattins,Sneg,Koppish
+Sneg,737,407,The East Reach,Yor,Koppish
+Koppish,699,434,The East Reach,Sneg,Yor,Iffish and Tok
+Iffish and Tok,651,430,The East Reach,Koppish,Soders,Venway,Holp,Soders
+Holp,621,458,The East Reach,Iffish and Tok,Soders,Korp and Kopp
+Korp and Kopp,560,449,The East Reach,Holp,Venway,Rolameny,Way
+Rolameny,592,501,The East Reach,Korp and Kopp,Soders
+Soders,656,483,The East Reach,Rolameny,Holp,Iffish and Tok
+
+Osskil,383,165,The Archipelago,Rogmy,Ebosskil,Enlad,Sorresk
+Sorresk,317,186,The Archipelago,Osskil,Ebosskil
+Enlad,407,196,The Archipelago,Osskil,Éa
+Andrad,535,179,The Archipelago,Oranéa,Gont
+Gont,559,213,The Archipelago,Andrad,Torheven
+Oranéa,474,228,The Archipelago,Andrad,Torheven,Ehéa,Havnor - Great Port
+Ehéa,427,242,The Archipelago,Havnor - Great Port,Oranéa,Éa
+Éa,412,231,The Archipelago,Ehéa,Enlad,Havnor - South Port
+Ebosskil,334,220,The Archipelago,Sorresk,Osskil,Semet
+Semet,336,269,The Archipelago,Ebosskil,Paln,Havnor - South Port
+Paln,298,315,The Archipelago,Semet,Havnor - South Port,Ontuego
+Hosk,359,391,The Archipelago,Havnor - South Port,Ebavnor,Ensmer
+Ensmer,300,460,The Archipelago,Faltuel,Lorbanery,Wathort,Hosk
+Wathort,375,502,The Archipelago,Lorbanery,Uny and Nam¡en,Ebavnor,Ensmer
+Uny and Nam¡en,448,490,The Archipelago,Wasny,Wathort,Ebavnor
+Ebavnor,428,410,The Archipelago,Hosk,Wathort,Uny and Nam¡en,Felkway,Havnor - Great Port
+Felkway,475,373,The Archipelago,Ebavnor,Way,Havnor - Great Port
+Way,517,354,The Archipelago,Korp and Kopp,The Hands,Torheven,Havnor - Great Port,Felkway
+Torheven,535,273,The Archipelago,Way,Karego-At,Gont,Oranéa
+Havnor - South Port,387,320,The Archipelago,Havnor - Great Port,Hosk,Paln,Semet,Éa
+Havnor - Great Port,434,326,The Archipelago,Havnor - South Port,Ebavnor,Felkway,Way,Oranéa,Ehéa

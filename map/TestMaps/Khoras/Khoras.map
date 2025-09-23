@@ -1,0 +1,137 @@
+[Map]
+author=Sid6.7
+warn=yes
+image=Khoras.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+West Ithria=19
+East Ithria=14
+Qeshir=10
+Aggradar=20
+Grallun=8
+Midland=2
+Fireisles=9
+Pirate Isles=5
+Balsiger Isles=5
+Maiden=2
+Whidbee=7
+Yam Wawn Isles=4
+Eastern Jades=3
+
+
+[Territories]
+
+Wastes,124,795,West Ithria,Ethira,Ulkran,Normidia,Urmordria,Divad,Lerobar
+Ultran,202,935,West Ithria,Avar,Ulkran,Normidia,Cyrell,Kalinnura,Bathynia
+Ulkran,147,865,West Ithria,Wastes,Ethira,Avar,Ultran
+Ethira,88,883,West Ithria,Wastes,Ulkran,Avar,Cendril
+Cendril,29,903,West Ithria,Ethira
+Abalen,50,1055,West Ithria,Talis,Vasar
+Avar,124,938,West Ithria,Ethira,Ultran,Ulkran
+Bathynia,149,1019,West Ithria,Talis,Ultran,Kalinnura
+Talis,126,1118,West Ithria,Abalen,Kalinnura,Myria,Karth,Bathynia,Stewart
+Normidia,217,847,West Ithria,Wastes,Arkila,Ultran,Cyrell
+Arkila,246,905,West Ithria,Normidia,Cyrell,Corvenia
+Cyrell,270,980,West Ithria,Drakkelian,Kalinnura,Ultran,Normidia,Arkila,Corvenia,Janerus,Khenshire
+Drakkelian,248,1060,West Ithria,Kalinnura,Cyrell,Baen,Coalition,Stewart
+Myria,160,1183,West Ithria,Talis,Karth,Storm
+Karth,79,1193,West Ithria,Myria,Talis,Wayward
+Kalinnura,171,1052,West Ithria,Talis,Cyrell,Ultran,Drakkelian,Bathynia,Stewart
+Wayward,25,1139,West Ithria,Karth
+
+
+Coalition,273,1116,East Ithria,Drakkelian,Mercia,Haven
+Mercia,347,1120,East Ithria,Coalition,Baen,Rukmien,Gorethir,Ormek,Cook
+Baen,324,1054,East Ithria,Drakkelian,Mercia,Rukmien,Falkir
+Corvenia,323,933,East Ithria,Arkila,Cyrell,Khenshire,Urmordria
+Khenshire,423,945,East Ithria,Urmordria,Corvenia,Cyrell,Janerus,Falkir,Rukmien,Kitar,Duthelm,Carrikos
+Carrikos,486,873,East Ithria,Borell,Khenshire,Duthelm
+Borell,548,782,East Ithria,Carrikos,Sybren,Ookarat
+Duthelm,504,914,East Ithria,Carrikos,Khenshire,Kitar
+Kitar,490,965,East Ithria,Duthelm,Khenshire,Rukmien
+Janerus,358,1005,East Ithria,Cyrell,Khenshire,Falkir
+Falkir,380,1025,East Ithria,Janerus,Khenshire,Rukmien,Baen
+Rukmien,434,1034,East Ithria,Baen,Falkir,Khenshire,Ormek,Mercia,Kitar,Temolok
+Ormek,412,1076,East Ithria,Rukmien,Mercia,Haskov
+Urmordria,396,858,East Ithria,Wastes,Khenshire,Corvenia
+
+
+Hadkir,779,435,Aggradar,Iron States,Yeth,Nullarg
+Ookarat,808,667,Aggradar,Borell,Iron States
+Tembrul,1220,553,Aggradar,Aukarian
+Lerobar,1565,730,Aggradar,Chaddmar,Wastes
+Iron States,979,665,Aggradar,Hadkir,Trossli,Ookarat,Omatad
+Trossli,1091,787,Aggradar,Iron States,Sybren,Aukarian,Magrakor,Eshtar
+Sybren,964,889,Aggradar,Trossli,3 Sisters,Borell
+Magrakor,1197,924,Aggradar,Trossli,Eshtar
+Eshtar,1290,876,Aggradar,Magrakor,Trossli,Aukarian,Vaul,Mael Ix Drabin,Daemyr,Gytara
+Aukarian,1257,736,Aggradar,Trossli,Eshtar,Vaul,Chaddmar,Tembrul,Gytara
+Chaddmar,1400,742,Aggradar,Aukarian,Sarid,Lerobar,Gytara,Garrons Wall
+Shidar,1431,583,Aggradar,Garrons Wall,West Jade
+Vaul,1387,907,Aggradar,Eshtar,Mael Ix Drabin,Aukarian,Sarid,Gytara
+Mael Ix Drabin,1353,968,Aggradar,Vaul,Eshtar,Jaebu
+Sarid,1493,903,Aggradar,Vaul,Chaddmar,Scholerum,Vasar,Gytara
+Scholerum,1440,1020,Aggradar,Sarid
+Vasar,1550,1033,Aggradar,Sarid,Abalen
+Daemyr,1290,840,Aggradar,Eshtar
+Gytara,1380,850,Aggradar,Eshtar,Vaul,Sarid,Chaddmar,Aukarian
+Omatad,940,503,Aggradar,Iron States
+Garrons Wall,1422,645,Aggradar,Chaddmar,Shidar
+
+
+Borakar,423,1309,Qeshir,Gorethir
+Anquar,574,1378,Qeshir,Sollok,Clans,The Moors,Padashan
+Clans,592,1296,Qeshir,Padashan,Anquar,Gorethir,The Moors
+Padashan,744,1278,Qeshir,Clans,Anquar,The Moors,Ahtabi,Secambru
+Secambru,939,1381,Qeshir,Ahtabi,Aswanar,Padashan,Kasadem,Cape Farrun
+Ahtabi,897,1259,Qeshir,Padashan,Secambru
+Aswanar,1070,1240,Qeshir,Secambru,Akaliwai
+The Moors,723,1436,Qeshir,Anquar,Padashan,Clans
+Sollok,617,1466,Qeshir,Anquar
+Kasadem,798,1463,Qeshir,Secambru
+Cape Farrun,963,1458,Qeshir,Secambru
+
+Akaliwai,1183,1223,Fireisles,Aswanar,Soqwai,Tathai,Waneki
+Jaebu,1266,1124,Fireisles,Mael Ix Drabin,Waneki
+Soqwai,1146,1252,Fireisles,Akaliwai
+Tathai,1143,1207,Fireisles,Akaliwai
+Waneki,1239,1176,Fireisles,Akaliwai,Jaebu,Halakii,Mejah
+Halakii,1239,1201,Fireisles,Waneki
+Mejah,1271,1207,Fireisles,Waneki
+
+Avisarr,270,365,Whidbee,Nullarg,Nhoj,Zepol
+Nhoj,280,450,Whidbee,Avisarr,La Verne
+La Verne,244,540,Whidbee,Nhoj,Roomes
+Roomes,293,642,Whidbee,Camano,La Verne,Divad
+Divad,345,710,Whidbee,Roomes,Wastes
+Camano,345,570,Whidbee,Roomes
+
+Zepol,106,341,Yam Wawn Isles,Avisarr,Sacro,Yadirf
+Sacro,114,218,Yam Wawn Isles,Zepol,Yadirf
+Yadirf,34,305,Yam Wawn Isles,Sacro,Zepol
+
+West Jade,1480,485,Eastern Jades,Shidar,Jade
+Jade,1515,467,Eastern Jades,West Jade,East Jade
+East Jade,1558,479,Eastern Jades,Jade
+
+3 Sisters,869,1070,Maiden,Sybren
+
+Gorethir,449,1209,Midland,Mercia,Borakar,Clans
+
+Temolok,495,1039,Balsiger Isles,Rukmien
+Bals,526,1105,Balsiger Isles,Haskov,Siger
+Siger,538,1082,Balsiger Isles,Bals
+Haskov,495,1100,Balsiger Isles,Ormek,Bals
+
+Stewart,200,1150,Pirate Isles,Talis,Kalinnura,Drakkelian,Storm
+Storm,230,1180,Pirate Isles,Myria,Stewart,Haven
+Haven,270,1188,Pirate Isles,Coalition,Storm,Cook
+Cook,300,1162,Pirate Isles,Mercia,Haven
+
+Ooslin,474,17,Grallun,Ooslin,Yeth
+Yeth,640,262,Grallun,Yeth,Hadkir,Ooslin
+Nullarg,400,213,Grallun,Hadkir,Avisarr
+
+

@@ -1,0 +1,96 @@
+[Map]
+image=Aldawin.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Vista=3
+Razdinn=4
+Inar=2
+Waylands=2
+Ithran=4
+Dralkun Heights=3
+Gaza=3
+Bani=3
+Desert=2
+Canthell=1
+Teka Raul=1
+Highlands=7
+
+[Territories]
+Seat of Vista,74,179,Vista,First Keep,Third Keep,Western Bani,Battle Plains
+First Keep,47,160,Vista,Seat of Canthell,Trindale's Keep,Battle Plains,Seat of Vista,Kevington's Keep,Second Keep,Third Keep
+Second Keep,41,180,Vista,Kevington's Keep,First Keep,Third Keep,Eastern Bani
+Third Keep,54,180,Vista,Second Keep,First Keep,Seat of Vista,Eastern Bani,Western Bani
+
+Seat of Razdinn,112,167,Razdinn,Battle Plains,Lower Frenton,Rauth's Keep,Man'Kel's Keep,Hedge's Keep
+Battle Plains,82,157,Razdinn,Trindale's Keep,Lower Plains,Frenton Plains,Lower Frenton,Seat of Razdinn,Hedge's Keep,Seat of Vista,First Keep
+Lower Frenton,132,150,Razdinn,Battle Plains,Frenton Plains,Morgan's Keep,Rauth's Keep,Seat of Razdinn
+Rauth's Keep,146,170,Razdinn,Seat of Razdinn,Lower Frenton,Morgan's Keep,Man'Kel's Keep,The Western Keep
+Hedge's Keep,100,180,Razdinn,Battle Plains,Seat of Razdinn,Man'Kel's Keep,Upper Ithran,Seat of Ithran
+Man'Kel's Keep,147,203,Razdinn,Hedge's Keep,Seat of Razdinn,Rauth's Keep,The Western Keep,Donsan's Keep,Seat of Ithran
+
+Seat of Inar,64,255,Inar,Lucon's keep,Upper Inar,Lower Inar
+Upper Inar,80,251,Inar,Lucon's Keep,Lower Ithran,Seat of Inar,Lower Inar
+Lower Inar,82,266,Inar,Seat of Inar,Upper Inar,Lower Ithran,Honsan's Keep
+
+Waylands Foothills,217,292,Waylands,Upper Waylands,Eastern Waylands,South Desert
+Upper Waylands,189,316,Waylands,Waylands Foothills,Eastern Waylands,Lower Waylands
+Eastern Waylands,215,313,Waylands,Waylands Foothills,Upper Waylands
+Lower Waylands,187,359,Waylands,Upper Waylands
+
+Seat of Ithran,123,220,Ithran,Upper Ithran,Hedge's Keep,Man'Kel's Keep,Istari's Keep,Vess's Keep
+Upper Ithran,101,208,Ithran,Western Bani,Hedge's Keep,Central Ithran,Istari's Keep,Seat of Ithran
+Central Ithran,87,221,Ithran,Lucon's Keep,Central Plains,Western Bani,Lower Ithran,Upper Ithran,Istari's Keep
+Lower Ithran,91,243,Ithran,Lucon's Keep,Central Ithran,Istari's Keep,Honsan's Keep,Lower Inar, Upper Inar
+Istari's Keep,109,248,Ithran,Lower Ithran,Upper Ithran,Central Ithran,Seat of Ithran,Vess's Keep,Honsan's Keep
+Vess's Keep,134,238,Ithran,Istari's Keep,Seat of Ithran
+Honsan's Keep,105,269,Ithran,Lower Inar,Lower Ithran,Istari's Keep,Seat of Teka Raul
+
+Aldabar,161,39,Dralkun Heights,Lower Aldabar,Dralkun Foothills,Upper Dralkun,Upper Aldabar,Dralkun's Peak
+Lower Aldabar,138,59,Dralkun Heights,Morgan's Keep,Dralkun Foothills,Aldabar
+Dralkun Foothills,138,39,Dralkun Heights,Upper Dralkun,Aldabar,Lower Aldabar
+Upper Dralkun,152,20,Dralkun Heights,Dralkun Foothills,Aldabar,Upper Aldabar
+Upper Aldabar,179,23,Dralkun Heights,Upper Dralkun,Aldabar,Dralkun's Peak
+Dralkun's Peak,194,41,Dralkun Heights,Aldabar,Upper Aldabar,The Halfway
+The Halfway,240,52,Dralkun Heights,Dralkun's Peak,The Northern Keep
+
+Seat of Gaza,128,113,Gaza,Upper Plains,Lower Plains,Frenton Plains,Morgan's Keep
+Nors Freelands,53,108,Gaza,Trindale's Keep,Upper Plains,Lower Plains
+Upper Plains,94,111,Gaza,Nors Freelands,Lower Plains,Seat of Gaza
+Morgan's Keep,157,125,Gaza,Seat of Gaza,Lower Aldabar,The Western Keep,Frenton Plains,Rauth's Keep,Lower Frenton
+Trindale's Keep,50,134,Gaza,Seat of Canthell,Nors Freelands,Lower Plains,Battle Plains,First Keep
+Lower Plains,90,132,Gaza,Trindale's Keep,Nors Freelands,Upper Plains,Seat of Gaza,Frenton Plains,Battle Plains
+Frenton Plains,129,130,Gaza,Lower Plains,Seat of Gaza,Morgan's Keep,Battle Plains,Lower Frenton
+
+West Haven,49,212,Bani,Polest's Keep,Eastern Bani,Western Bani,Central Plains,Lucon's Keep
+Polest's Keep,29,218,Bani,Eastern Bani,West Haven
+Eastern Bani,34,196,Bani,Polest's Keep,Western Bani,West Haven,Kevington's Keep,Second Keep,Third Keep
+Western Bani,78,200,Bani,Eastern Bani,Third Keep,Seat of Vista,Upper Ithran,Central Ithran,Central Plains,West Haven
+Central Plains,67,215,Bani,West Haven,Western Bani,Central Ithran,Lucon's Keep
+Lucon's Keep,62,235,Bani,West Haven,Central Plains,Central Ithran,Lower Ithran,Upper Inar,Seat of Inar
+
+North Desert,206,230,Desert,Donsan's Keep,The Western Keep,The Highland's Seat,The Jagged Edge,The Desert Mountains,East Desert,South Desert
+East Desert,258,231,Desert,North Desert,The Desert Mountains,Krag Mountains,South Desert
+Krag Mountains,284,243,Desert,South Desert,East Desert,The Desert Mountains,North Krag Mountains
+South Desert,237,261,Desert,North Desert,East Desert,Krag Mountains,Waylands Foothills
+
+Seat of Canthell,32,146,Canthell,Weston's Keep,Kevington's Keep,First Keep,Trindale's Keep
+Weston's Keep,12,143,Canthell,Seat of Canthell,Kevington's Keep
+Kevington's Keep,25,173,Canthell,Weston's Keep,Seat of Canthell,First Keep,Second Keep,Eastern Bani
+
+Seat of Teka Raul,95,295,Teka Raul,Keep of Raul,South Isle,Honsan's Keep
+Keep of Raul,75,294,Teka Raul,Seat of Teka Raul,South Isle
+South Isle,83,305,Teka Raul,Keep of Raul,Seat of Teka Raul
+
+The Capitol of Aldawin,261,125,Highlands,the Northern Keep,The Highland's Seat,Sentien's Keep,The Eastern Keep
+The Western Keep,187,155,Highlands,Morgan's Keep,Rauth's Keep,Man'Kel's Keep,Donsan's Keep,Bent's Keep,The Northern Keep,The Highland's Seat,North Desert
+The Northern Keep,234,97,Highlands,The Western Keep,The Halfway,The Highland's Seat,The Capitol of Aldawin,The Eastern Keep
+Donsan's Keep,178,209,Highlands,Man'Kel's Keep,the Western Keep,North Desert
+Bent's Keep,209,173,Highlands,The Western Keep,The Highland's Seat
+The Highland's Seat,228,146,Highlands,The Western Keep,The Northern Keep,Bent's Keep,The Capitol of Aldawin,Sentien's keep,North Desert,The Jagged Edge
+Sentien's Keep,257,167,Highlands,The Highland's Seat,The Capitol of Aldawin,The Eastern Keep,The Jagged Edge
+The Eastern Keep,288,145,Highlands,The Northern Keep,The Capitol of Aldawin,Sentien's Keep,The Jagged Edge
+The Jagged Edge,305,175,Highlands,The Highland's Seat,Sentien's Keep,The Eastern Keep,North Desert,The Desert Mountains,North Krag Mountains
+The Desert Mountains,285,209,Highlands,North Desert,The Jagged Edge,North Krag Mountains,East Desert,Krag Mountains
+North Krag Mountains,320,209,Highlands,The Desert Mountains,The Jagged Edge,Krag Mountains

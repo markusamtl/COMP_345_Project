@@ -1,0 +1,53 @@
+[Map]
+image=Winnipeg.bmp
+wrap=no
+scroll=horizontal
+author=Yonatan Cohen
+warn=yes
+
+[Continents]
+North Centre=4
+South Centre=3
+Centre=7
+Transcona=3
+CJA=6
+St. Boniface=3
+
+
+[Territories]
+The Maples,220,55,North Centre,Inkster,Kildonan,Burrows
+Inkster,162,77,North Centre,The Maples,Burrows,Wellington
+Kildonan,258,67,North Centre,St. Johns,The Maples,Burrows,River East
+St. Johns,263,114,North Centre,Kildonan,Burrows,Elmwood,Rossmere,Point Douglas
+Burrows,206,118,North Centre,Kildonan,The Maples,Inkster,St. Johns,Point Douglas,Wellington
+
+Elmwood,283,131,Transcona,St. Johns,Rossmere,Concordia,Boniface,Point Douglas
+River East,340,84,Transcona,Kildonan,Rossmere,Radison
+Rossmere,323,116,Transcona,Elmwood,River East,Concordia,Radison,St. Johns
+Tcona,416,174,Transcona,Radison
+Concordia,308,148,Transcona,Boniface,Elmwood,Rossmere,Radison
+Radison,342,177,Transcona,River East,Rossmere,Concordia,Boniface,Southdale,Tcona
+
+Point Douglas,244,155,Centre,St. Johns,Burrows,Wellington,Minto,Wolsley,Fort Douglas,Boniface,Elmwood
+Wellington,179,145,Centre,Inkster,Burrows,Point Douglas,Minto,St. James
+Minto,186,181,Centre,St. James,Wellington,Point Douglas,Wolsley
+Wolsley,218,201,Centre,St. James,Minto,Point Douglas,Fort Douglas,River Heights
+Fort Douglas,244,192,Centre,Wolsley,Point Douglas,Boniface,Lord Roberts,River Heights
+
+Boniface,286,193,St. Boniface,Elmwood,Concordia,Radison,Southdale,St. Vital,Lord Roberts,Fort Douglas,Point Douglas
+Southdale,341,284,St. Boniface,Radison,Boniface,St. Vital,Seine River,Riel
+Seine River,292,364,St. Boniface,Southdale,Riel,St. Norbert
+Riel,267,295,St. Boniface,St. Vital,Seine River,Southdale,St. Norbert,Fort Garry
+St. Vital,279,245,St. Boniface,Boniface,Southdale,Riel,Fort Garry,Lord Roberts
+
+St. James,130,179,CJA,Assiniboia,Kirkfield Park,Tuxedo,Wolsley,Minto,Wellington
+Assiniboia,60,155,CJA,Kirkfield Park,St. James
+Kirkfield Park,64,218,CJA,Assiniboia,St. James,Tuxedo,Charleswood
+Charleswood,75,286,CJA,Kirkfield Park,Tuxedo,Fort Whyte
+
+Tuxedo,135,243,South Centre,Kirkfield Park,St. James,River Heights,Fort Whyte,Charleswood
+River Heights,193,231,South Centre,Wolsley,Tuxedo,Fort Whyte,Lord Roberts,Fort Douglas,Fort Garry
+Lord Roberts,236,236,South Centre,Fort Garry,St. Vital,Boniface,Fort Douglas,River Heights
+Fort Whyte,183,358,South Centre,Charleswood,Tuxedo,River Heights,Fort Garry,St. Norbert
+Fort Garry,224,305,South Centre,Fort Whyte,River Heights,Lord Roberts,St. Vital,Riel,St. Norbert
+St. Norbert,177,462,South Centre,Seine River,Riel,Fort Garry,Fort Whyte

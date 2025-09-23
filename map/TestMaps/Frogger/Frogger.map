@@ -1,0 +1,162 @@
+[Map]
+author=Rob Werhand
+image=Frogger.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Start=8
+First Lane=9
+Dozer Lane=7
+Green Car Lane=6
+Purple Car Lane=7
+Truck Lane=6
+Middle=7
+Large Lily Pads=3
+Small Logs=2
+Large Log=2
+Small Lily Pads=1
+Medium Logs=4
+End=1
+
+[Territories]
+Territory01,58,583,Start,Territory17,Territory02
+Territory02,120,582,Start,Territory01,Territory18,Territory03
+Territory03,178,581,Start,Territory02,Territory19,Territory04
+Territory04,237,581,Start,Territory03,Territory20,Territory05
+Territory05,302,582,Start,Territory04,Territory21,Territory06
+Territory06,362,582,Start,Territory05,Territory22,Territory07
+Territory07,415,582,Start,Territory06,Territory23,Territory08
+Territory08,475,582,Start,Territory07,Territory24,Territory09
+Territory09,532,583,Start,Territory08,Territory25,Territory10
+Territory10,591,583,Start,Territory09,Territory26,Territory11
+Territory11,649,583,Start,Territory10,Territory27,Territory12
+Territory12,704,584,Start,Territory11,Territory28,Territory13
+Territory13,763,581,Start,Territory12,Territory29,Territory14
+Territory14,821,579,Start,Territory13,Territory30,Territory15
+Territory15,878,580,Start,Territory14,Territory16,Territory31
+Territory16,937,582,Start,Territory15,Territory32
+Territory17,58,542,First Lane,Territory01,Territory18,Territory33
+Territory18,119,542,First Lane,Territory02,Territory19,Territory17
+Territory19,177,542,First Lane,Territory03,Territory20,Territory34,Territory18
+Territory20,235,542,First Lane,Territory04,Territory21,Territory35,Territory19
+Territory21,303,542,First Lane,Territory05,Territory22,Territory36,Territory20
+Territory22,361,543,First Lane,Territory06,Territory23,Territory37,Territory21
+Territory23,418,544,First Lane,Territory07,Territory24,Territory38,Territory22
+Territory24,476,544,First Lane,Territory08,Territory25,Territory39,Territory23
+Territory25,534,542,First Lane,Territory09,Territory26,Territory40,Territory24
+Territory26,594,543,First Lane,Territory10,Territory27,Territory41,Territory25
+Territory27,648,544,First Lane,Territory11,Territory28,Territory26
+Territory28,704,541,First Lane,Territory12,Territory29,Territory42,Territory27
+Territory29,764,542,First Lane,Territory13,Territory30,Territory43,Territory28
+Territory30,820,543,First Lane,Territory14,Territory31,Territory29,Territory44
+Territory31,879,542,First Lane,Territory15,Territory32,Territory30,Territory45
+Territory32,938,543,First Lane,Territory16,Territory31,Territory46
+Territory33,59,504,Dozer Lane,Territory17
+Territory34,177,505,Dozer Lane,Territory19,Territory48,Territory35
+Territory35,233,505,Dozer Lane,Territory20,Territory34,Territory36
+Territory36,301,505,Dozer Lane,Territory21,Territory35,Territory49,Territory37
+Territory37,358,505,Dozer Lane,Territory22,Territory36,Territory50,Territory38
+Territory38,418,503,Dozer Lane,Territory23,Territory37,Territory51,Territory39
+Territory39,476,502,Dozer Lane,Territory24,Territory38,Territory52,Territory40
+Territory40,533,503,Dozer Lane,Territory25,Territory39,Territory41
+Territory41,591,504,Dozer Lane,Territory26,Territory40,Territory53
+Territory42,704,501,Dozer Lane,Territory28,Territory55,Territory43
+Territory43,762,503,Dozer Lane,Territory29,Territory42,Territory44
+Territory44,819,502,Dozer Lane,Territory30,Territory43,Territory56,Territory45
+Territory45,876,503,Dozer Lane,Territory31,Territory44,Territory57,Territory46
+Territory46,937,502,Dozer Lane,Territory32,Territory45,Territory58
+Territory47,117,462,Green Car Lane,Territory48,Territory60
+Territory48,176,462,Green Car Lane,Territory34,Territory61,Territory47
+Territory49,300,460,Green Car Lane,Territory36,Territory50,Territory63
+Territory50,359,462,Green Car Lane,Territory37,Territory51,Territory49
+Territory51,417,462,Green Car Lane,Territory38,Territory52,Territory64,Territory50
+Territory52,473,460,Green Car Lane,Territory39,Territory65,Territory51
+Territory53,589,463,Green Car Lane,Territory41,Territory54,Territory67
+Territory54,647,460,Green Car Lane,Territory55,Territory68,Territory53
+Territory55,704,460,Green Car Lane,Territory42,Territory69,Territory54
+Territory56,820,462,Green Car Lane,Territory44,Territory57,Territory71
+Territory57,878,461,Green Car Lane,Territory45,Territory58,Territory56
+Territory58,937,461,Green Car Lane,Territory46,Territory72,Territory57
+Territory59,59,422,Purple Car Lane,Territory73,Territory60
+Territory60,118,422,Purple Car Lane,Territory47,Territory59,Territory61
+Territory61,176,422,Purple Car Lane,Territory48,Territory60,Territory62
+Territory62,235,421,Purple Car Lane,Territory61,Territory74,Territory63
+Territory63,301,423,Purple Car Lane,Territory49,Territory62,Territory75
+Territory64,420,423,Purple Car Lane,Territory51,Territory77,Territory65
+Territory65,477,423,Purple Car Lane,Territory52,Territory64,Territory66,Territory78
+Territory66,533,422,Purple Car Lane,Territory65,Territory79,Territory67
+Territory67,591,421,Purple Car Lane,Territory53,Territory80,Territory66,Territory68
+Territory68,648,422,Purple Car Lane,Territory54,Territory67,Territory69
+Territory69,707,420,Purple Car Lane,Territory55,Territory68,Territory70
+Territory70,762,421,Purple Car Lane,Territory69,Territory81,Territory71
+Territory71,819,423,Purple Car Lane,Territory56,Territory70,Territory82
+Territory72,936,423,Purple Car Lane,Territory58,Territory84
+Territory73,57,377,Truck Lane,Territory59,Territory85
+Territory74,236,378,Truck Lane,Territory62,Territory75,Territory88
+Territory75,298,379,Truck Lane,Territory63,Territory76,Territory89,Territory74
+Territory76,359,379,Truck Lane,Territory77,Territory90,Territory75
+Territory77,419,379,Truck Lane,Territory64,Territory78,Territory91,Territory76
+Territory78,475,379,Truck Lane,Territory65,Territory79,Territory92,Territory77
+Territory79,533,378,Truck Lane,Territory66,Territory80,Territory78
+Territory80,589,378,Truck Lane,Territory67,Territory93,Territory79
+Territory81,763,378,Truck Lane,Territory70,Territory82,Territory96
+Territory82,822,378,Truck Lane,Territory71,Territory83,Territory97,Territory81
+Territory83,879,379,Truck Lane,Territory84,Territory98,Territory82
+Territory84,937,377,Truck Lane,Territory72,Territory99,Territory83
+Territory85,60,324,Middle,Territory73,Territory100,Territory86
+Territory86,119,324,Middle,Territory85,Territory87
+Territory87,175,324,Middle,Territory86,Territory101,Territory88
+Territory88,235,322,Middle,Territory74,Territory87,Territory89
+Territory89,302,326,Middle,Territory75,Territory88,Territory102,Territory90
+Territory90,359,324,Middle,Territory76,Territory89,Territory91
+Territory91,416,323,Middle,Territory77,Territory90,Territory92
+Territory92,472,324,Middle,Territory78,Territory91,Territory103
+Territory93,591,323,Middle,Territory80,Territory104,Territory94
+Territory94,647,324,Middle,Territory93,Territory95
+Territory95,707,324,Middle,Territory94,Territory105,Territory96
+Territory96,762,323,Middle,Territory81,Territory95,Territory97
+Territory97,820,323,Middle,Territory82,Territory96,Territory98
+Territory98,879,324,Middle,Territory83,Territory97,Territory99
+Territory99,935,324,Middle,Territory84,Territory98
+Territory100,80,285,Large Lily Pads,Territory85,Territory101
+Territory101,183,286,Large Lily Pads,Territory87,Territory100,Territory102
+Territory102,286,285,Large Lily Pads,Territory89,Territory101,Territory106
+Territory103,491,285,Large Lily Pads,Territory92,Territory104,Territory108
+Territory104,595,287,Large Lily Pads,Territory93,Territory103,Territory105,Territory109
+Territory105,697,288,Large Lily Pads,Territory95,Territory104,Territory110
+Territory106,292,241,Small Logs,Territory102,Territory107
+Territory107,352,243,Small Logs,Territory106,Territory112
+Territory108,503,242,Small Logs,Territory103,Territory109,Territory114,Territory115
+Territory109,562,242,Small Logs,Territory104,Territory108,Territory116,Territory115
+Territory110,712,241,Small Logs,Territory105,Territory111,Territory118
+Territory111,771,241,Small Logs,Territory110
+Territory112,360,204,Large Log,Territory107,Territory113
+Territory113,420,204,Large Log,Territory112,Territory114,Territory120
+Territory114,476,203,Large Log,Territory108,Territory113,Territory115
+Territory115,532,203,Large Log,Territory109,Territory108,Territory114,Territory116
+Territory116,593,203,Large Log,Territory109,Territory115,Territory117
+Territory117,647,203,Large Log,Territory116,Territory118
+Territory118,707,203,Large Log,Territory110,Territory117,Territory121
+Territory119,303,156,Small Lily Pads,Territory120,Territory123
+Territory120,405,156,Small Lily Pads,Territory113,Territory124,Territory119
+Territory121,704,155,Small Lily Pads,Territory118,Territory122
+Territory122,808,156,Small Lily Pads,Territory121,Territory125
+Territory123,271,111,Medium Logs,Territory119,Territory129,Territory136
+Territory124,417,112,Medium Logs,Territory120,Territory130
+Territory125,800,112,Medium Logs,Territory122,Territory126,Territory133
+Territory126,746,113,Medium Logs,Territory125,Territory138
+Territory133,853,112,Medium Logs,Territory134,Territory125
+Territory134,905,112,Medium Logs,Territory139,Territory133
+Territory130,480,111,Medium Logs,Territory137,Territory131,Territory124
+Territory131,530,111,Medium Logs,Territory130,Territory137,Territory132
+Territory132,588,113,Medium Logs,Territory131
+Territory129,212,112,Medium Logs,Territory128,Territory123
+Territory128,159,110,Medium Logs,Territory127,Territory129
+Territory127,100,110,Medium Logs,Territory135,Territory128
+Territory135,73,65,End,Territory127
+Territory136,291,66,End,Territory123
+Territory137,505,66,End,Territory130,Territory131
+Territory138,719,68,End,Territory126
+Territory139,930,64,End,Territory134

@@ -1,0 +1,51 @@
+[Map]
+author=Matthew Hornbostel
+image=Media.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+AOL Time Warner=5
+Disney/ABC=2
+Bertlesmann=2
+Viacom=4
+Vivendi/Universal=2
+Sony=1
+NewsCorp=2
+GE/NBC=1
+
+[Territories]
+New Line Cinema,49,127,AOL Time Warner,Warner Bros. Pictures
+Warner Bros. Pictures,148,120,AOL Time Warner,New Line Cinema,Warner Bros. Television,Disney
+Warner Bros. Television,149,214,AOL Time Warner,Warner Bros. Pictures,CNN,HBO,ABC
+CNN,43,266,AOL Time Warner,Warner Bros. Television,HBO
+HBO,148,285,AOL Time Warner,Warner Bros. Television,CNN,Time Magazine
+Time Magazine,149,371,AOL Time Warner,HBO,Doubleday Books,Sports Illustrated
+Sports Illustrated,149,437,AOL Time Warner,Time Magazine,Random House Books,Time Warner Cable
+Time Warner Cable,140,533,AOL Time Warner,Sports Illustrated,America Online,Warner Records
+Warner Records,40,553,AOL Time Warner,Time Warner Cable,America Online
+America Online,142,576,AOL Time Warner,Time Warner Cable,Warner Records
+Bertlesmann Music Group,282,515,Bertlesmann,Random House Books
+Random House Books,283,426,Bertlesmann,Doubleday Books,Sports Illustrated,Bertlesmann Music Group,Simon & Schuster
+Doubleday Books,279,364,Bertlesmann,Time Magazine,Random House Books
+ABC,269,207,Disney/ABC,Warner Bros. Television,Touchstone Pictures
+Touchstone Pictures,276,148,Disney/ABC,ABC,Disney
+Disney,275,80,Disney/ABC,Warner Bros. Pictures,Touchstone Pictures
+Paramount Pictures,429,76,Viacom,CBS
+CBS,430,210,Viacom,United Paramount Network,NBC,Paramount Pictures
+United Paramount Network,427,284,Viacom,Simon & Schuster,MTV,CBS
+MTV,346,289,Viacom,United Paramount Network
+Simon & Schuster,431,419,Viacom,Random House Books,Paramount Records,United Paramount Network
+Paramount Records,437,513,Viacom,Simon & Schuster,Blockbuster Video,Universal Music
+Blockbuster Video,445,583,Viacom,Paramount Records
+Universal Music,596,569,Vivendi/Universal,Paramount Records,Vivendi Universal Games,Columbia/RCA/Sony Records
+Vivendi Universal Games,594,509,Vivendi/Universal,Universal Music,Universal Pictures
+NBC,570,243,GE/NBC,CBS
+Universal Pictures,555,90,Vivendi/Universal,Vivendi Universal Games,20th Century Fox
+Sony Pictures,660,34,Sony,Columbia/RCA/Sony Records,20th Century Fox
+20th Century Fox,707,116,NewsCorp,Universal Pictures,Sony Pictures,FOX Network
+FOX Network,711,228,NewsCorp,20th Century Fox,Harper-Collins books
+Harper-Collins books,713,386,NewsCorp,FOX Network
+Columbia/RCA/Sony Records,723,538,Sony,Universal Music,Sony Pictures
+

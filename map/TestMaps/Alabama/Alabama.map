@@ -1,0 +1,83 @@
+[Map]
+author=Lazarus
+image=alabama.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+A Troop=4
+B Troop=3
+C Troop=6
+D Troop=5
+E Troop=9
+G Troop=5
+
+[Territories]
+Autauga,215,341,E Troop,Chilton,Dallas,Elmore,Lowndes,Montgomery
+Baldwin,85,611,G Troop,Clarke,Escambia,Mobile,Monroe,Washington
+Barbour,367,433,E Troop,Bullock,Dale,Henry,Pike,Russell
+Bibb,156,280,D Troop,Chilton,Hale,Jefferson,Perry,Shelby,Tuscaloosa
+Blount,222,143,C Troop,Cullman,Etowah,Jefferson,Marshall,St.Clair,Walker
+Bullock,326,403,E Troop,Barbour,Macon,Montgomery,Pike,Russell
+Butler,212,451,G Troop,Conecuh,Covington,Crenshaw,Lowndes,Monroe,Wilcox
+Calhoun,304,170,C Troop,Cherokee,Cleburne,Etowah,St.Clair,Talladega
+Chambers,361,289,E Troop,Lee,Randolph,Tallapoosa
+Cherokee,332,117,C Troop,Calhoun,Cleburne,Dekalb,Etowah
+Chilton,212,293,E Troop,Autauga,Bibb,Coosa,Dallas,Elmore,Perry,Shelby
+Choctaw,20,414,G Troop,Clarke,Marengo,Sumter,Washington
+Clarke,74,460,G Troop,Baldwin,Choctaw,Marengo,Monroe,Washington,Wilcox
+Clay,309,239,C Troop,Cleburne,Coosa,Randolph,Talladega,Tallapoosa
+Cleburne,344,181,C Troop,Calhoun,Cherokee,Clay,Randolph,Talladega
+Coffee,296,499,E Troop,Covington,Crenshaw,Dale,Geneva,Pike
+Colbert,74,49,A Troop,Franklin,Lauderdale,Lawrence
+Conecuh,175,499,G Troop,Butler,Covington,Escambia,Monroe
+Coosa,262,287,E Troop,Chilton,Clay,Elmore,Talladega,Tallapoosa,Shelby
+Covington,243,521,G Troop,Butler,Coffee,Conecuh,Crenshaw,Escambia,Geneva
+Crenshaw,253,454,G Troop,Butler,Coffee,Covington,Lowndes,Montgomery,Pike
+Cullman,183,118,B Troop,Blount,Lawrence,Marshall,Morgan,Walker,Winston
+Dale,337,495,E Troop,Barbour,Coffee,Geneva,Henry,Houston,Pike
+Dallas,159,374,D Troop,Autauga,Chilton,Lowndes,Marengo,Perry,Wilcox
+Dekalb,309,74,C Troop,Cherokee,Etowah,Jackson,Marshall
+Elmore,275,334,E Troop,Autauga,Chilton,Coosa,Macon,Montgomery,Tallapoosa
+Escambia,156,541,G Troop,Baldwin,Conecuh,Covington,Monroe
+Etowah,284,131,C Troop,Blount,Calhoun,Cherokee,Dekalb,Marshall,St.Clair
+Fayette,82,178,A Troop,Lamar,Marion,Pickens,Tuscaloosa,Walker
+Franklin,72,80,A Troop,Colbert,Lawrence,Marion,Winston
+Geneva,314,545,E Troop,Coffee,Covington,Dale,Houston
+Greene,61,292,D Troop,Hale,Marengo,Pickens,Sumter,Tuscaloosa
+Hale,98,308,D Troop,Bibb,Greene,Marengo,Perry,Tuscaloosa
+Henry,378,488,E Troop,Barbour,Dale,Houston
+Houston,378,537,E Troop,Dale,Geneva,Henry
+Jackson,284,30,B Troop,Dekalb,Madison,Marshall
+Jefferson,183,204,C Troop,Bibb,Blount,Shelby,St.Clair,Tuscaloosa,Walker
+Lamar,42,173,A Troop,Fayette,Marion,Pickens
+Lauderdale,96,18,A Troop,Colbert,Lawrence,Limestone
+Lawrence,134,71,A Troop,Colbert,Cullman,Franklin,Lauderdale,Limestone,Morgan,Winston
+Lee,370,331,E Troop,Chambers,Macon,Russell,Tallapoosa
+Limestone,168,25,B Troop,Lauderdale,Lawrence,Madison,Morgan
+Lowndes,213,395,E Troop,Autauga,Butler,Crenshaw,Dallas,Montgomery,Wilcox
+Macon,328,361,E Troop,Bullock,Elmore,Lee,Montgomery,Russell,Tallapoosa
+Madison,220,32,B Troop,Jackson,Limestone,Marshall,Morgan
+Marengo,86,380,D Troop,Choctaw,Clarke,Dallas,Greene,Hale,Perry,Sumter,Wilcox
+Marion,70,120,A Troop,Fayette,Franklin,Lamar,Walker,Winston
+Marshall,250,90,B Troop,Blount,Cullman,Dekalb,Etowah,Jackson,Madison,Morgan
+Mobile,25,587,G Troop,Baldwin,Washington
+Monroe,127,478,G Troop,Baldwin,Butler,Clarke,Conecuh,Escambia,Wilcox
+Montgomery,266,386,E Troop,Autauga,Bullock,Crenshaw,Elmore,Lowndes,Macon,Pike
+Morgan,184,79,B Troop,Cullman,Lawrence,Limestone,Madison,Marshall
+Perry,139,327,D Troop,Bibb,Chilton,Dallas,Hale,Marengo
+Pickens,47,240,D Troop,Fayette,Greene,Lamar,Sumter,Tuscaloosa
+Pike,300,447,E Troop,Barbour,Bullock,Coffee,Crenshaw,Dale,Montgomery
+Randolph,352,236,C Troop,Chambers,Clay,Cleburne,Tallapoosa
+Russell,386,376,E Troop,Barbour,Bullock,Lee,Macon
+St.Clair,247,177,C Troop,Blount,Calhoun,Etowah,Jefferson,Shelby,Talladega
+Shelby,212,242,C Troop,Bibb,Chilton,Coosa,Jefferson,St.Clair,Talladega
+Sumter,27,340,D Troop,Choctaw,Greene,Marengo,Pickens
+Talladega,269,224,C Troop,Calhoun,Clay,Cleburne,Coosa,Shelby,St.Clair
+Tallapoosa,312,290,E Troop,Clay,Chambers,Coosa,Elmore,Lee,Macon,Randolph
+Tuscaloosa,111,242,D Troop,Bibb,Fayette,Greene,Hale,Jefferson,Pickens,Walker
+Walker,138,166,C Troop,Blount,Cullman,Fayette,Jefferson,Marion,Tuscaloosa,Winston
+Washington,27,500,G Troop,Baldwin,Choctaw,Clarke,Mobile
+Wilcox,133,421,D Troop,Butler,Clarke,Dallas,Lowndes,Marengo,Monroe
+Winston,126,117,A Troop,Cullman,Franklin,Lawrence,Marion,Walker

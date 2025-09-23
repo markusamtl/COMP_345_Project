@@ -1,0 +1,107 @@
+[Map]
+image=indiana.bmp
+wrap=no
+scroll=horizontal
+author=J.Newman
+warn=yes
+
+[Continents]
+North East=5
+North West=5
+Central=8
+South East=3
+South West=5
+
+[Territories]
+Allen,518,144,North East,Dekalb,Noble,Whitley,Huntington,Wells,Adams
+DeKalb,529,80,North East,Allen,Noble,Steuben
+Steuben,528,38,North East,DeKalb,LaGrange
+LaGrange,461,36,North East,Steuben,Noble,Elkhart
+Elkhart,395,44,North East,Lagrange,Noble,Kosciusko,Marshall,St.Joseph
+Noble,460,81,North East,Allen,Dekalb,LaGrange,Elkhart,Kosciusko,Whitley
+St.Joseph,328,42,North West,Elkhart,Marshall,Starke,LaPorte
+LaPorte,257,53,North West,St.Joseph,Starke,Porter,Marshall
+Porter,196,75,North West,LaPorte,Jasper,Lake,Starke
+Lake,152,84,North West,Porter,Newton,Jasper
+Newton,147,173,North West,Lake,Jasper,Benton
+Jasper,192,160,North West,Porter,Lake,Newton,Benton,White,Pulaski,Starke
+Starke,262,114,North West,St.Joseph,LaPorte,Jasper,Pulaski,Marshall,Porter
+Pulaski,256,157,North West,Fulton,Starke,Jasper,White,Cass,Marshall
+Fulton,331,153,North West,Wabash,Kosciusko,Marshall,Pulaski,Cass,Miami
+Marshall,327,99,North West,Kosciusko,Elkhart,St.Joseph,Starke,Fulton,LaPorte,Pulaski
+Kosciusko,396,114,North East,Noble,Elkhart,Marshall,Fulton,Wabash,Whitley
+Whitley,447,140,North East,Allen,Noble,Kosciusko,Wabash,Huntington
+Benton,157,240,North West,Newton,Jasper,White,Tippecanoe,Warren
+White,225,222,North West,Cass,Pulaski,Jasper,Benton,Tippecanoe,Carroll
+Carroll,281,246,North West,Howard,Cass,White,Tippecanoe,Clinton
+Cass,322,203,North West,Miami,Fulton,Pulaski,White,Carroll,Howard
+Miami,363,199,North West,Grant,Wabash,Fulton,Cass,Howard
+Wabash,400,195,North East,Huntington,Whitley,Kosciusko,Fulton,Miami,Grant
+Huntington,450,199,North East,Wells,Allen,Whitley,Wabash,Grant
+Wells,498,215,North East,Adams,Allen,Huntington,Grant,Blackford,Jay
+Adams,537,209,North East,Allen,Wells,Jay
+Jay,526,274,North East,Adams,Wells,Blackford,Delaware,Randolph
+Blackford,478,264,North East,Jay,Wells,Grant,Delaware,Randolph
+Grant,417,257,North East,Blackford,Wells,Huntington,Wabash,Miami,Howard,Tipton,Madison,Delaware
+Howard,355,265,North West,Grant,MIami,Cass,carroll,Clinton,Tipton
+Warren,147,289,North West,Benton,Vermillion,Fountain,Tippecanoe
+Tippecanoe,221,283,North West,Clinton,Carroll,White,Benton,Warren,Fountain,MOntgomery
+Clinton,290,297,Central,Tipton,Howard,Carroll,Tippecanoe,Montgomery,Boone,Hamilton
+Tipton,361,299,Central,Madison,Grant,Howard,Clinton,Hamilton
+Fountain,168,337,Central,Montgomery,Tippecanoe,Warren,Vermillion,Parke
+Montgomery,221,352,Central,Boone,Clinton,Tippecanoe,Fountain,Parke,Putnam,Hendricks
+Boone,294,348,Central,Hamilton,Clinton,Montgomery,Hendricks,Marion
+Hamilton,362,342,Central,Madison,Tipton,Clinton,Boone,Marion,Hancock
+Madison,413,331,Central,Delaware,Grant,Tipton,Hamilton,Hancock,Henry
+Delaware,464,313,Central,Randolph,Jay,Blackford,Grant,Madison,Henry
+Randolph,528,327,Central,Jay,Blackford,Delaware,Henry,Wayne
+Wayne,527,390,Central,Randolph,Henry,Fayette,Union
+Henry,465,374,Central,Wayne,Randolph,Delaware,Madison,Hancock,Rush,Fayette
+Vermillion,133,400,Central,Vigo,Parke,Fountain,Warren
+Parke,169,399,Central,Putnam,Montgomery,Fountain,Vermillion,Vigo,Clay
+Putnam,231,425,Central,Hendricks,Montgomery,Parke,Clay,Owen,Morgan
+Hendricks,299,399,Central,Marion,Boone,Montgomery,Putnam,Morgan
+Marion,352,409,Central,Hancock,Hamilton,Boone,Hendricks,Morgan,Johnson,Shelby
+Hancock,406,395,Central,Henry,Madison,Hamilton,Marion,Shelby,Rush
+Morgan,300,469,Central,Johnson,Marion,Hendricks,Putnam,Owen,Monroe,Brown
+Johnson,355,470,Central,Shelby,Marion,Morgan,Brown,Bartholomew
+Shelby,401,460,Central,Rush,Hancock,Marion,Johnson,Bartholomew,Decatur
+Rush,452,440,Central,Fayette,Henry,Hancock,Shelby,Decatur,Franklin
+Fayette,503,439,Central,Union,Wayne,Henry,Rush,Franklin
+Union,542,439,Central,Wayne,Fayette,Franklin
+Franklin,521,482,South East,Union,Fayette,Rush,Decatur,Ripley,Dearborn
+Decatur,449,503,South East,Franklin,Rush,Shelby,Bartholomew,Jennings,Ripley
+Bartholomew,385,521,South East,Decatur,Shelby,Johnson,Brown,Jackson,Jennings
+Brown,332,524,South East,Bartholomew,Johnson,Morgan,Monroe,Jackson
+Monroe,281,527,South West,Brown,Morgan,Owen,Greene,Lawrence,Jackson
+Owen,228,505,Central,Morgan,Putnam,Clay,Greene,Monroe
+Clay,185,480,Central,Owen,Putnam,Parke,Vigo,Sullivan,Greene
+Vigo,140,471,Central,Sullivan,Clay,Parke,Vermillion
+Sullivan,137,545,South West,Knox,Greene,Clay,Vigo
+Greene,205,554,South West,Monroe,Owen,Clay,Sullivan,Knox,Daviess,Martin,Lawrence
+Dearborn,537,534,South East,Franklin,Ripley,Ohio,Switzerland
+Ohio,544,571,South East,Dearborn,Ripley,Switzerland
+Switzerland,524,594,South East,Ohio,Ripley,Jefferson,Dearborn
+Ripley,485,548,South East,Dearborn,Franklin,Decatur,Jennings,Jefferson,Switzerland,Ohio
+Jefferson,463,603,South East,Switzerland,Ripley,Jennings,Scott,Clark
+Jennings,433,555,South East,Ripley,Decatur,Bartholomew,Jackson,Scott,Jefferson
+Jackson,365,578,South East,Jennings,Bartholomew,Brown,Monroe,Lawrence,Washington,Scott
+Lawrence,287,594,South West,Jackson,Monroe,Greene,Martin,Orange,Washington
+Washington,351,641,South East,Scott,Jackson,Lawrence,Orange,Harrison,Floyd,Clark,Crawford
+Scott,410,623,South East,Jefferson,Jennings,Jackson,Scott,Clark,Washington
+Clark,415,664,South East,Jefferson,Scott,Washington,Floyd
+Floyd,385,695,South East,Clark,Washington,Harrison
+Harrison,350,715,South East,Floyd,Washington,Orange,Crawford
+Crawford,297,697,South West,Harrison,Orange,Dubois,Perry,Washington
+Orange,286,650,South West,Washington,Lawrence,Martin,Dubois,Crawford,Harrison
+Martin,231,616,South West,Orange,Lawrence,Greene,Daviess,Dubois
+Daviess,190,616,South West,Martin,Greene,Knox,Pike,Dubois
+Knox,136,617,South West,Sullivan,Greene,Daviess,Pike,Gibson
+Gibson,106,694,South West,Posey,Vanderburgh,Warrick,Pike,Knox
+Pike,165,681,South West,Dubois,Daviess,Knox,Gibson,Warrick
+Dubois,216,680,South West,Orange,Martin,Daviess,Pike,Warrick,Spencer,Perry,Crawford
+Perry,260,748,South West,Spencer,Dubois,Crawford
+Spencer,207,748,South West,Warrick,Dubois,Perry
+Warrick,151,740,South West,Spencer,Dubois,Pike,Gibson,Vanderburgh
+Vanderburgh,100,745,South West,Warrick,Gibson,Posey
+Posey,66,744,South West,Vanderburgh,Gibson

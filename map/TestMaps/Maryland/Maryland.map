@@ -1,0 +1,38 @@
+[Map]
+author=David Emery Johnston
+image=Maryland.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+North West=1
+North Central=5
+South Central=4
+North East=5
+South East=2
+
+[Territories]
+Garrett County,45,72,North West,Allegany County
+Allegany County,189,49,North West,Garrett County,Washington County
+Washington County,368,59,North West,Allegany County,Frederick County
+Frederick County,445,95,North Central,Washington County,Carroll County,Howard County,Montgomery County
+Carroll County,526,74,North Central,Frederick County,Baltimore County and City,Howard County
+Baltimore County and City,599,96,North Central,Carroll County,Howard County,Kent County,Harford County,Anne Arundel County
+Harford County,669,62,North Central,Baltimore County and City,Kent County,Cecil County
+Cecil County,756,48,North East,Harford County,Kent County
+Kent County,715,147,North East,Baltimore County and City,Anne Arundel County,Harford County,Cecil County,Queen Anne's County
+Queen Anne's County,743,196,North East,Anne Arundel County,Kent County,Talbot County,Caroline County
+Caroline County,776,248,North East,Queen Anne's County,Talbot County,Dorchester County
+Talbot County,719,280,North East,Anne Arundel County,Calvert County,Queen Anne's County,Caroline County,Dorchester County
+Dorchester County,739,364,South East,Calvert County,St.Mary's County,Talbot County,Caroline County,Wicomico County,Somerset County
+Wicomico County,823,387,South East,Dorchester County,Somerset County,Worchester County
+Worchester County,866,437,South East,Somerset County,Wicomico County
+Somerset County,803,450,South East,Wicomico County,Dorchester County,Worchester County
+St.Mary's County,622,411,South Central,Charles County,Calvert County,Dorchester County
+Charles County,531,346,South Central,Prince George's County,Calvert County,St.Mary's County
+Prince George's County,561,265,South Central,Montgomery County,Howard County,Anne Arundel County,Charles County,Calvert County
+Anne Arundel County,606,222,South Central,Howard County,Prince George's County,Baltimore County and City,Kent County,Queen Anne's County,Talbot County,Calvert County
+Calvert County,616,340,South Central,Prince George's County,Charles County,Anne Arundel County,Dorchester County,Talbot County,St.Mary's County
+Howard County,542,156,North Central,Frederick County,Montgomery County,Carroll County,Prince George's County,Anne Arundel County,Baltimore County and City
+Montgomery County,481,187,North Central,Frederick County,Prince George's County,Howard County

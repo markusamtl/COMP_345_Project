@@ -1,0 +1,58 @@
+[Map]
+author=_MIKE CRUSH_
+image=_50_ Kentucky.bmp
+wrap=yes
+scroll=none
+warn=no
+
+[Continents]
+West=1
+North West=1
+South Central=1
+North East=1
+South East=2
+
+[Territories]
+Territory00,30,474,West,Territory01
+Territory01,108,463,West,Territory00,Territory02,Territory03
+Territory02,114,411,West,Territory01,Territory03,Territory04
+Territory03,178,447,West,Territory01,Territory02,Territory08,Territory04
+Territory04,192,381,West,Territory02,Territory03,Territory05,Territory07,Territory08
+Territory05,232,319,West,Territory04,Territory06,Territory07
+Territory06,297,321,West,Territory05,Territory07,Territory10,Territory11
+Territory07,267,381,West,Territory04,Territory08,Territory05,Territory06,Territory09,Territory11
+Territory08,262,435,West,Territory03,Territory04,Territory09,Territory07
+Territory09,342,433,West,Territory08,Territory07,Territory11,Territory15,Territory16
+Territory10,357,304,North West,Territory06,Territory12,Territory11
+Territory11,360,360,North West,Territory06,Territory07,Territory09,Territory10,Territory12,Territory15
+Territory12,427,294,North West,Territory10,Territory11,Territory15,Territory13,Territory14
+Territory13,484,273,North West,Territory12,Territory14,Territory24,Territory25
+Territory14,502,324,North West,Territory15,Territory12,Territory17,Territory19,Territory25,Territory13
+Territory15,430,364,North West,Territory09,Territory11,Territory16,Territory17,Territory14,Territory12
+Territory16,417,433,South Central,Territory09,Territory18,Territory17,Territory15
+Territory17,496,396,South Central,Territory16,Territory15,Territory18,Territory21,Territory19,Territory14
+Territory18,504,442,South Central,Territory16,Territory17,Territory21
+Territory19,568,339,South Central,Territory17,Territory14,Territory21,Territory22,Territory32,Territory31,Territory25
+Territory20,586,429,South Central,Territory21
+Territory21,559,400,South Central,Territory18,Territory17,Territory20,Territory19,Territory22,Territory23
+Territory22,639,390,South Central,Territory21,Territory19,Territory32,Territory23,Territory33
+Territory23,687,441,South Central,Territory21,Territory22,Territory34
+Territory24,529,208,North East,Territory13,Territory25,Territory27,Territory26
+Territory25,556,262,North East,Territory14,Territory13,Territory19,Territory31,Territory26,Territory24
+Territory26,604,226,North East,Territory25,Territory24,Territory27,Territory29,Territory31
+Territory27,610,160,North East,Territory24,Territory28,Territory29,Territory26
+Territory28,672,168,North East,Territory27,Territory29,Territory42
+Territory29,667,211,North East,Territory27,Territory26,Territory31,Territory28,Territory42,Territory30
+Territory30,717,238,North East,Territory31,Territory35,Territory29,Territory41,Territory42
+Territory31,657,280,North East,Territory19,Territory25,Territory26,Territory29,Territory30,Territory35,Territory32,Territory33
+Territory32,643,325,North East,Territory19,Territory31,Territory33,Territory22
+Territory33,702,357,South East,Territory32,Territory22,Territory34,Territory36,Territory35,Territory31
+Territory34,745,412,South East,Territory23,Territory33,Territory37,Territory36
+Territory35,732,298,South East,Territory31,Territory33,Territory36,Territory41,Territory30
+Territory36,771,352,South East,Territory34,Territory33,Territory35,Territory38,Territory40,Territory41,Territory37,Territory39
+Territory37,811,396,South East,Territory34,Territory36,Territory39
+Territory38,813,309,South East,Territory36
+Territory39,877,343,South East,Territory37,Territory36,Territory40
+Territory40,826,240,South East,Territory42,Territory36,Territory41,Territory39
+Territory41,766,238,South East,Territory35,Territory30,Territory42,Territory36,Territory40
+Territory42,778,196,South East,Territory28,Territory29,Territory30,Territory40,Territory41

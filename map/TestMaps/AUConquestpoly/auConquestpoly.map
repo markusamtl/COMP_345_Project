@@ -1,0 +1,79 @@
+[Map]
+author=Andrea Usai (n-drx@libero.it)
+website=http://andreausai.siteburg.com/conquest
+image=auConquestpoly.bmp
+wrap=no
+scroll=none
+warn=no
+created=08.2005
+legal=Copyright ©2005 Andrea Usai (n-drx@libero.it)
+serial=AU-007
+
+[Continents]
+Light Purple=1
+Light Blue=2
+Dark Purple=3
+Orange=4
+Red=5
+Yellow=6
+Green=7
+Dark Blue=8
+Railroads=16
+Utilities=8
+Jail=-2
+Go To Jail=-2
+Start=2
+Free Parking=0
+Chance 1=2
+Chance 2=1
+Chance 3=-1
+Chance 4=2
+Chance 5=2
+Chance 6=1
+Chance 7=-1
+Chance 8=-2
+
+[Territories]
+Start,592,625,Start,Light Purple 1
+Light Purple 1,530,633,Light Purple,Chance 1
+Chance 1,480,613,Chance 1,Light Purple 2
+Light Purple 2,430,633,Light Purple,Southern Railroad
+Southern Railroad,380,633,Railroads,Chance 2
+Chance 2,330,613,Chance 2,Light Blue 1
+Light Blue 1,280,633,Light Blue,Chance 3
+Chance 3,230,613,Chance 3,Light Blue 2
+Light Blue 2,180,633,Light Blue,Light Blue 3
+Light Blue 3,130,633,Light Blue,Jail
+
+Jail,47,645,Jail,Dark Purple 1
+Dark Purple 1,59,563,Dark Purple,Electric Company
+Electric Company,59,513,Utilities,Dark Purple 2
+Dark Purple 2,59,463,Dark Purple,Dark Purple 3
+Dark Purple 3,59,413,Dark Purple,Western Railroad
+Western Railroad,59,363,Railroads,Orange 1
+Orange 1,59,313,Orange,Chance 4
+Chance 4,79,263,Chance 4,Orange 2
+Orange 2,59,213,Orange,Orange 3
+Orange 3,59,163,Orange,Free Parking
+
+Free Parking,47,80,Free Parking,Red 1
+Red 1,129,92,Red,Chance 5
+Chance 5,179,112,Chance 5,Red 2
+Red 2,229,92,Red,Red 3
+Red 3,279,92,Red,Northern Railroad
+Northern Railroad,329,92,Railroads,Yellow 1
+Yellow 1,379,92,Yellow,Yellow 2
+Yellow 2,429,92,Yellow,Water Works
+Water Works,479,92,Utilities,Yellow 3
+Yellow 3,529,92,Yellow,Go To Jail
+
+Go To Jail,612,80,Go To Jail,Green 1,Jail
+Green 1,600,162,Green,Green 2
+Green 2,600,212,Green,Chance 6
+Chance 6,580,262,Chance 6,Green 3
+Green 3,600,312,Green,Eastern Railroad
+Eastern Railroad,600,362,Railroads,Chance 7
+Chance 7,580,412,Chance 7,Dark Blue 1
+Dark Blue 1,600,462,Dark Blue,Chance 8
+Chance 8,580,512,Chance 8,Dark Blue 2
+Dark Blue 2,600,562,Dark Blue,Start

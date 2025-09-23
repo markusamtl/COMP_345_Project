@@ -1,0 +1,78 @@
+[Map]
+author=Rob Werhand
+image=AdvantageComputer.bmp
+wrap=yes
+scroll=vertical
+warn=yes
+
+[Continents]
+Upper Left=4
+Upper Right=4
+Lower Left=4
+Lower Right=4
+
+[Territories]
+Territory00,102,105,Upper Left,Territory05,Territory04,Territory63
+Territory01,194,105,Upper Left,Territory05,Territory02,Territory45
+Territory02,285,107,Upper Left,Territory01,Territory03,Territory46
+Territory03,376,107,Upper Left,Territory02,Territory06,Territory60
+Territory04,102,198,Upper Left,Territory00,Territory08,Territory27
+Territory05,194,199,Upper Left,Territory01,Territory08,Territory00
+Territory06,285,200,Upper Left,Territory03,Territory07,Territory09
+Territory07,376,201,Upper Left,Territory06,Territory11,Territory20
+Territory08,106,290,Upper Left,Territory05,Territory04,Territory23
+Territory09,195,292,Upper Left,Territory06,Territory14,Territory12
+Territory10,288,291,Upper Left,Territory11,Territory15,Territory13
+Territory11,377,290,Upper Left,Territory10,Territory07,Territory24
+Territory12,103,381,Upper Left,Territory09,Territory13,Territory51
+Territory13,193,381,Upper Left,Territory10,Territory12,Territory34
+Territory14,288,382,Upper Left,Territory09,Territory15,Territory33
+Territory15,377,381,Upper Left,Territory10,Territory14,Territory48
+Territory16,513,107,Upper Right,Territory17,Territory21,Territory47
+Territory17,605,109,Upper Right,Territory16,Territory20,Territory61
+Territory18,694,108,Upper Right,Territory19,Territory21,Territory62
+Territory19,786,110,Upper Right,Territory18,Territory22,Territory44
+Territory20,515,199,Upper Right,Territory17,Territory24,Territory07
+Territory21,605,199,Upper Right,Territory16,Territory25,Territory18
+Territory22,699,201,Upper Right,Territory19,Territory23,Territory27
+Territory23,789,202,Upper Right,Territory22,Territory26,Territory08
+Territory24,515,292,Upper Right,Territory20,Territory25,Territory11
+Territory25,605,293,Upper Right,Territory28,Territory24,Territory21
+Territory26,694,293,Upper Right,Territory31,Territory23,Territory27
+Territory27,788,292,Upper Right,Territory22,Territory26,Territory04
+Territory28,514,382,Upper Right,Territory25,Territory29,Territory35
+Territory29,603,383,Upper Right,Territory28,Territory30,Territory50
+Territory30,697,383,Upper Right,Territory31,Territory29,Territory49
+Territory31,787,381,Upper Right,Territory30,Territory26,Territory32
+Territory32,105,517,Lower Left,Territory33,Territory36,Territory31
+Territory33,194,516,Lower Left,Territory32,Territory37,Territory14
+Territory34,288,519,Lower Left,Territory35,Territory37,Territory13
+Territory35,378,519,Lower Left,Territory34,Territory38,Territory28
+Territory36,103,608,Lower Left,Territory32,Territory40,Territory59
+Territory37,196,609,Lower Left,Territory33,Territory34,Territory40
+Territory38,287,610,Lower Left,Territory35,Territory41,Territory42
+Territory39,377,609,Lower Left,Territory43,Territory42,Territory52
+Territory40,105,700,Lower Left,Territory37,Territory36,Territory55
+Territory41,195,701,Lower Left,Territory44,Territory38,Territory46
+Territory42,289,702,Lower Left,Territory47,Territory38,Territory39
+Territory43,379,701,Lower Left,Territory47,Territory39,Territory56
+Territory44,103,792,Lower Left,Territory45,Territory41,Territory19
+Territory45,196,793,Lower Left,Territory44,Territory46,Territory01
+Territory46,288,795,Lower Left,Territory41,Territory45,Territory02
+Territory47,379,792,Lower Left,Territory43,Territory42,Territory16
+Territory48,515,518,Lower Right,Territory52,Territory49,Territory15
+Territory49,603,516,Lower Right,Territory48,Territory54,Territory30
+Territory50,696,520,Lower Right,Territory51,Territory54,Territory29
+Territory51,785,519,Lower Right,Territory50,Territory55,Territory12
+Territory52,513,611,Lower Right,Territory48,Territory53,Territory39
+Territory53,604,609,Lower Right,Territory52,Territory56,Territory58
+Territory55,788,612,Lower Right,Territory51,Territory58,Territory40
+Territory56,516,703,Lower Right,Territory60,Territory53,Territory43
+Territory57,605,703,Lower Right,Territory61,Territory62,Territory54
+Territory58,695,703,Lower Right,Territory59,Territory55,Territory53
+Territory59,788,701,Lower Right,Territory63,Territory58,Territory36
+Territory60,514,792,Lower Right,Territory56,Territory61,Territory03
+Territory61,605,792,Lower Right,Territory60,Territory57,Territory17
+Territory62,696,793,Lower Right,Territory63,Territory57,Territory18
+Territory63,787,792,Lower Right,Territory62,Territory59,Territory00
+Territory54,697,611,Lower Right,Territory50,Territory49,Territory57

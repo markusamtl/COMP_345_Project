@@ -40,7 +40,7 @@ Continent::Continent(const Continent& other) {
 
     this -> ID = other.ID;
     this -> bonusValue = other.bonusValue;
-    this -> territories = other.territories;
+    this -> territories.clear(); //Map fills in the territories
 
 }
 
@@ -50,7 +50,7 @@ Continent& Continent::operator=(const Continent& other) {
         
         this -> ID = other.ID;
         this -> bonusValue = other.bonusValue;
-        this -> territories = other.territories;
+        this -> territories.clear();
 
     }
 
@@ -64,7 +64,7 @@ ostream& operator<<(ostream& os, const Continent& continent) {
        << ", Bonus Value: " << continent.bonusValue 
        << ", Territories: [";
 
-    for (size_t i = 0; i < continent.territories.size(); ++i) {
+    for(size_t i = 0; i < continent.territories.size(); ++i) {
         os << continent.territories[i]->getID();
         if (i < continent.territories.size() - 1) os << ", ";
     }
@@ -90,7 +90,7 @@ void Continent::setTerritories(const vector<Territory*>& territories) { this -> 
 
 void Continent::addTerritory(Territory* territory) {
 
-    if (territory == nullptr){ return; } // Ignore null pointers
+    if(territory == nullptr){ return; } // Ignore null pointers
     this->territories.push_back(territory);
 
 }

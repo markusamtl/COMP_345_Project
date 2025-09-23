@@ -1,0 +1,87 @@
+[Map]
+author=danielcjtodd.com
+image=Skyland.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+Metis=2
+Io Magmus=6
+Thebe=3
+Themisto=2
+Leda=3
+Himalia=2
+Ganymede=3
+Callisto=5
+Europa=4
+
+[Territories]
+Metis01,73,83,Metis,Metis02,Metis03,Themisto03
+Metis02,118,72,Metis,Metis01,Metis03
+Metis03,135,86,Metis,Metis02,Metis01,Io01,Io03
+Io02,135,154,Io Magmus,Io01,Io03,Leda03,Leda01
+Io01,123,129,Io Magmus,Io03,Io02,Metis03
+Io03,181,128,Io Magmus,Io02,Io01,Io05,Io04,Metis03
+Io04,246,91,Io Magmus,Io03,Io05,Io06
+Io05,238,137,Io Magmus,Io03,Io04,Io06,Io07
+Io06,285,109,Io Magmus,Io04,Io05,Io07
+Io07,343,136,Io Magmus,Io06,Io08,Io09,Io10,Io05
+Io08,341,175,Io Magmus,Io07,Io09
+Io09,388,168,Io Magmus,Io07,Io08,Io10,Io11
+Io10,414,142,Io Magmus,Io07,Io09,Io11
+Io11,474,138,Io Magmus,Io10,Io09,Io12
+Io12,510,119,Io Magmus,Io11,Thebe01
+Thebe01,549,87,Thebe,Thebe02,Thebe04,Thebe05,Io12
+Thebe05,631,116,Thebe,Thebe01,Thebe04,Thebe07
+Thebe07,690,112,Thebe,Thebe05,Thebe06,Thebe09,Thebe08
+Thebe02,563,132,Thebe,Thebe01,Thebe03,Thebe04
+Thebe03,542,168,Thebe,Thebe02,Thebe04,Himalia03,Himalia01
+Thebe04,618,162,Thebe,Thebe01,Thebe02,Thebe03,Thebe05,Thebe06
+Thebe06,699,180,Thebe,Thebe04,Thebe07,Thebe09,Ganymede02
+Thebe08,768,137,Thebe,Thebe07,Thebe09,Themisto04
+Thebe09,769,161,Thebe,Thebe07,Thebe06,Thebe08,Themisto04
+Themisto01,763,63,Themisto,Themisto02
+Themisto02,838,81,Themisto,Themisto04,Themisto03,Themisto01
+Themisto03,862,60,Themisto,Themisto04,Themisto02,Metis01
+Themisto04,850,125,Themisto,Themisto02,Themisto03,Thebe09,Thebe08
+Leda01,77,186,Leda,Leda03,Leda02,Io02
+Leda02,85,214,Leda,Leda03,Leda01
+Leda03,165,211,Leda,Leda05,Leda08,Leda02,Leda01,Leda04,Io02
+Leda04,194,184,Leda,Leda03
+Leda06,104,265,Leda,Leda05,Leda07,Ganymede05
+Leda05,175,246,Leda,Leda10,Leda07,Leda08,Leda03,Leda06
+Leda08,227,225,Leda,Leda10,Leda05,Leda03
+Leda07,189,280,Leda,Leda10,Leda09,Leda05,Leda06,Callisto01
+Leda10,262,257,Leda,Leda11,Leda08,Leda05,Leda07,Leda09
+Leda11,329,239,Leda,Leda12,Leda10
+Leda09,228,291,Leda,Leda10,Leda07
+Leda12,415,239,Leda,Leda11,Himalia02
+Himalia02,476,220,Himalia,Himalia01,Himalia03,Leda12
+Himalia01,489,193,Himalia,Himalia02,Himalia03,Thebe03
+Himalia03,530,203,Himalia,Himalia01,Himalia02,Thebe03
+Ganymede01,675,262,Ganymede,Ganymede02,Ganymede03
+Ganymede02,749,234,Ganymede,Ganymede04,Ganymede06,Ganymede03,Ganymede01,Thebe06,Ganymede05
+Ganymede04,801,226,Ganymede,Ganymede05,Ganymede06,Ganymede02
+Ganymede05,849,256,Ganymede,Ganymede04,Ganymede06,Leda06,Ganymede02
+Ganymede06,805,292,Ganymede,Ganymede04,Ganymede02,Ganymede03,Ganymede05
+Ganymede03,744,275,Ganymede,Ganymede02,Ganymede01,Ganymede06,Europa08
+Callisto01,142,323,Callisto,Callisto02,Leda07
+Callisto02,154,368,Callisto,Callisto06,Callisto04,Callisto03,Callisto05,Callisto01
+Callisto03,98,404,Callisto,Callisto04,Callisto02
+Callisto04,162,410,Callisto,Callisto05,Callisto02,Callisto03
+Callisto05,242,427,Callisto,Callisto06,Callisto08,Callisto04,Callisto02
+Callisto06,273,395,Callisto,Callisto07,Callisto08,Callisto05,Callisto02
+Callisto08,349,421,Callisto,Callisto06,Callisto05,Callisto11
+Callisto07,335,370,Callisto,Callisto09,Callisto06
+Callisto09,433,352,Callisto,Callisto10,Callisto07,Europa01,Europa02
+Callisto10,405,335,Callisto,Callisto09
+Callisto11,467,430,Callisto,Callisto08,Europa03
+Europa01,506,340,Europa,Europa02,Europa04,Callisto09
+Europa04,575,345,Europa,Europa05,Europa02,Europa01
+Europa05,626,360,Europa,Europa08,Europa06,Europa07,Europa04,Europa02
+Europa08,690,328,Europa,Europa05,Ganymede03
+Europa02,544,373,Europa,Europa05,Europa03,Europa04,Europa01,Callisto09,Europa06
+Europa06,630,397,Europa,Europa05,Europa07,Europa03,Europa02
+Europa07,722,375,Europa,Europa05,Europa06
+Europa03,536,400,Europa,Europa06,Europa02,Callisto11

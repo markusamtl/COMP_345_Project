@@ -3,11 +3,9 @@
 #include <string>
 #include <map>
 #include <vector>
+#include "Continent.h"
 
 using namespace std;
-
-// Forward declaration to avoid circular dependency
-class Continent;
 
 /**
  * @brief The Territory class represents a territory in the map.
@@ -36,37 +34,36 @@ class Territory {
         //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator  --//
 
         /**
-        * @brief Default constructor 
+        * @brief Default constructor
         */
         Territory();
 
         /**
         * @brief Parameterized constructor
-        * @param name
+        * @param ID Unique identifier of the territory
         */
         Territory(const string &ID);
 
         /**
-        * @brief Parameterized constructor
-        * @param ID
-        * @param xCoord
-        * @param yCoord
-        * @param continent 
+        * @brief Parameterized constructor with coordinates and continent
+        * @param ID Unique identifier of the territory
+        * @param xCoord X coordinate
+        * @param yCoord Y coordinate
+        * @param continent Pointer to the continent this territory belongs to
         */
-        Territory(const string &ID, int xCoord, int yCoord, const Continent& continent);
-
+        Territory(const string &ID, int xCoord, int yCoord, Continent* continent);
 
         /**
         * @brief Parameterized constructor with all properties
-        * @param ID
-        * @param xCoord
-        * @param yCoord
-        * @param neighbors
-        * @param continent
-        * @param owner
-        * @param numArmies
+        * @param ID Unique identifier of the territory
+        * @param xCoord X coordinate
+        * @param yCoord Y coordinate
+        * @param neighbors Vector of pointers to neighboring territories
+        * @param continent Pointer to the continent this territory belongs to
+        * @param owner Name of the player who owns the territory
+        * @param numArmies Number of armies stationed in the territory
         */
-        Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, const Continent& continent, const string &owner, int numArmies);
+        Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, const string &owner, int numArmies);
 
         /**
         * @brief Destructor
@@ -75,107 +72,108 @@ class Territory {
 
         /**
         * @brief Copy constructor
-        * @param other
+        * @param other Territory object to copy from
         */
         Territory(const Territory& other);
 
         /**
         * @brief Assignment operator
-        * @param other
+        * @param other Territory object to assign from
+        * @return Reference to this Territory
         */
         Territory& operator=(const Territory& other);
 
         /**
         * @brief Stream insertion operator
-        * @param os output stream
-        * @param territory territory to output
-        * @return reference to output stream
+        * @param os Output stream
+        * @param territory Territory to output
+        * @return Reference to output stream
         */
         friend ostream& operator<<(ostream& os, const Territory& territory);
 
         //-- Accessors and Mutators --//
         
         /**
-        * @brief Accessor for ID 
-        * @return ID string 
+        * @brief Accessor for ID
+        * @return Unique identifier of the territory
         */
         const string& getID() const;
 
         /**
         * @brief Mutator for ID
-        * @param ID string to set
+        * @param ID Unique identifier to set
         */
         void setID(const string &ID);
 
-        /** 
-        * @brief Accessor for xCoord
-        * @return x coordinate of the territory
+        /**
+        * @brief Accessor for X coordinate
+        * @return X coordinate of the territory
         */
         int getXCoord() const;
 
         /**
-        * @brief Mutator for xCoord
-        * @param xCoord x coordinate to set 
+        * @brief Mutator for X coordinate
+        * @param xCoord X coordinate to set
         */
         void setXCoord(int xCoord);
 
         /**
-        * @brief Accessor for yCoord
-        * @return y coordinate of the territory 
+        * @brief Accessor for Y coordinate
+        * @return Y coordinate of the territory
         */
         int getYCoord() const;
 
         /**
-        * @brief Mutator for yCoord
-        * @param yCoord y coordinate to set 
+        * @brief Mutator for Y coordinate
+        * @param yCoord Y coordinate to set
         */
         void setYCoord(int yCoord);
 
         /**
         * @brief Accessor for neighbors
-        * @return vector of pointers to neighboring territories 
+        * @return Vector of pointers to neighboring territories
         */
         const vector<Territory*>& getNeighbors() const;
 
         /**
         * @brief Mutator for neighbors
-        * @param neighbors vector of pointers to set as neighbors
+        * @param neighbors Vector of pointers to set as neighbors
         */
         void setNeighbors(const vector<Territory*>& neighbors);
-        
+
         /**
-        * @brief Accesor for continent
-        * @return Continent pointer of the territory
+        * @brief Accessor for continent
+        * @return Pointer to the continent this territory belongs to
         */
         Continent* getContinent() const;
 
         /**
         * @brief Mutator for continent
-        * @param continent pointer to set as continent
+        * @param continent Pointer to set as this territory's continent
         */
         void setContinent(Continent* continent);
 
         /**
         * @brief Accessor for owner
-        * @return owner string
+        * @return Name of the player who owns the territory
         */
         const string& getOwner() const;
 
         /**
         * @brief Mutator for owner
-        * @param owner string to set
+        * @param owner Name of the player to set as owner
         */
         void setOwner(const string &owner);
 
         /**
-        * @brief Accessor for numArmies
-        * @return number of armies on the territory
+        * @brief Accessor for number of armies
+        * @return Number of armies stationed in the territory
         */
         int getNumArmies() const;
 
         /**
-        * @brief Mutator for numArmies
-        * @param numArmies number of armies to set 
+        * @brief Mutator for number of armies
+        * @param numArmies Number of armies to set
         */
         void setNumArmies(int numArmies);
 
@@ -183,7 +181,7 @@ class Territory {
 
         /**
         * @brief Adds a neighbor to the territory's neighbor list
-        * @param neighbor pointer to the neighboring territory to add 
+        * @param neighbor Pointer to the neighboring territory to add
         */
         void addNeighbor(Territory* neighbor);
         

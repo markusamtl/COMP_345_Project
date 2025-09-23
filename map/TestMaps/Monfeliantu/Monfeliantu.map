@@ -1,0 +1,66 @@
+[Map]
+author=Sid6.7
+image=Monfeliantu.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Eastern Mekia=5
+Sent=2
+Empire of the Star=4
+Burl=3
+Fantia=3
+The Barren Empire=11
+Eastern Ilets=2
+Western Mekia=4
+Ilas=1
+Sod=3
+
+[Territories]
+Sage,99,235,Fantia,Skid,She,Tres
+Tres,144,253,Fantia,Barrens,Sage,Fantia
+Fantia,197,233,Fantia,Tres,Far Fantia
+Far Fantia,328,213,Fantia,Fantia,Milefont,Near Burl
+North Wilderness,666,25,Eastern Mekia,Ilas,East Mekia,Sunders,Nept
+East Mekia,746,49,Eastern Mekia,North Wilderness,Sunders
+Sunders,718,121,Eastern Mekia,North Wilderness,East Mekia,Tooth,Gume
+Tooth,665,155,Eastern Mekia,Sunders,Gume,Cressdy
+Gume,666,186,Eastern Mekia,Markz,Sunders,Tooth,Cressdy
+Cressdy,617,171,Eastern Mekia,Tooth,Gume,Sod
+Serd,390,12,Sent,Shewts,Fels
+Fels,452,18,Sent,Serd,Cherts
+Cherts,520,25,Sent,Fels
+Shewts,429,48,Sent,Serd,Nix
+Nix,437,70,Sent,Shewts,Peilgrins
+Ilas,601,72,Ilas,North Wilderness,Eca
+Nept,655,105,Ilas,Eca,North Wilderness
+Eca,625,110,Ilas,Ilas,Nept,Sod
+Sod,597,140,Sod,Eca,Cressdy,Peilgrins
+Bo Su,410,343,Empire of the Star,Eltite,Bo shino,Bo Lu
+Bo Lu,445,298,Empire of the Star,Mont,Bo shino,Bo Su
+Bo shino,473,323,Empire of the Star,Far Eltite,Southern Ully,Bo Su,Bo Lu
+Southern Ully,487,359,Empire of the Star,Far Eltite,Ully,Bo shino
+Far Eltite,557,480,The Barren Empire,Eltite,Ully,Southern Ully,Bo shino,S. Markz
+Eltite,274,470,The Barren Empire,Spot,Bo Su,Far Eltite
+Spot,180,472,The Barren Empire,Sand,Eltite
+Sand,104,432,The Barren Empire,Barrens,Mitch,Spot,Narf,Tenz
+Mitch,152,441,The Barren Empire,Sand
+Barrens,134,364,The Barren Empire,Skid,Tres,Sand
+Skid,101,349,The Barren Empire,Sage,Barrens
+Tenz,55,401,The Barren Empire,Sand,Narf,Reed
+Reed,26,444,The Barren Empire,Tenz
+Narf,69,458,The Barren Empire,Sand,Tenz
+Burl,358,108,Burl,Peilgrins,Near Burl,Milefont,Chosen
+Chosen,417,175,Burl,Peilgrins,Monfelaintu,Milefont,Burl
+Milefont,357,171,Burl,Far Fantia,Burl,Chosen
+Near Burl,299,104,Burl,Far Fantia,Burl
+Monfelaintu,501,216,Western Mekia,Peilgrins,Chosen,Mont
+Mont,441,234,Western Mekia,Bo Lu,Monfelaintu
+Peilgrins,509,133,Western Mekia,Nix,Sod,Monfelaintu,Burl,Chosen
+She,864,268,Eastern Ilets,Markz,Sage,Wel,Punt,S. Markz
+Wel,829,256,Eastern Ilets,She,Markz, Punt,S. Markz
+Punt,807,248,Eastern Ilets,S. Markz,Markz,She,Wel
+Markz,765,229,Eastern Ilets,S. Markz,Punt,Wel,She,Gume
+S. Markz,765,262,Eastern Ilets,Far Eltite,Punt,Markz,Wel,She
+Ully,514,447,The Barren Empire,Far Eltite,Southern Ully

@@ -1,0 +1,24 @@
+[Map]
+author=Zenji Yamada & 1C
+image=Vernon.bmp
+wrap=yes
+scroll=none
+warn=yes
+
+[Continents]
+Farm 1=2
+Farm 2=2
+Vernon=4
+
+[Territories]
+Buildings 1,206,299,Vernon,German HQ,Buildings 2,Road,Forest,Field 1
+Buildings 2,329,286,Vernon,Buildings 1,Road,German HQ,Buildings 3,Church,Farm building,Hill 128
+Church,443,358,Vernon,Buildings 2,Hill 128,Buildings 3
+Buildings 3,342,400,Vernon,German HQ,Buildings 2,Church
+German HQ,238,362,Vernon,Buildings 1,Buildings 3,Buildings 2
+Farm building,335,99,Farm 2,Road,Buildings 2,Field 2
+Field 2,491,168,Farm 2,Farm building,Hill 128
+Hill 128,517,335,Farm 2,Buildings 2,Church,Field 2
+Field 1,67,321,Farm 1,Buildings 1,Forest
+Forest,139,117,Farm 1,Buildings 1,Field 1,Road
+Road,252,105,Farm 1,Buildings 1,Forest,Farm building,Buildings 2

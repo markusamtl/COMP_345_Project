@@ -1,0 +1,159 @@
+[Map]
+author=Mike Crush
+warn=yes
+image=_01_Greatland.bmp
+wrap=yes
+scroll=horizontal,vertical
+
+
+
+[Continents]
+Sahandra Plains North=5
+Sahandra Plains South=4
+Wolfs Coast=3
+Oceans Way=2
+Cover Island West=5
+Cover Island East=4
+Panover=3
+Battle Rock=8
+Tundale=3
+
+
+
+[Territories]
+
+a1,111,59,Sahandra Plains North,a2,a5,e5
+a2,235,73,Sahandra Plains North,a1,a3,a5,a6,a9
+a3,336,56,Sahandra Plains North,a2,a4,a6,a7,h6
+a4,387,54,Sahandra Plains North,a3,a7,c1
+a5,146,116,Sahandra Plains North,a1,a2,a8,a9
+a6,287,124,Sahandra Plains North,a2,a3,a7,a9,a10
+a7,361,118,Sahandra Plains North,a3,a4,a6,a10,b3,c2
+a8,125,178,Sahandra Plains North,a5,a9,b1
+a9,205,173,Sahandra Plains North,a2,a5,a6,a8,a10,b1,b2
+a10,296,196,Sahandra Plains North,a6,a7,a9,b2,b3
+
+b1,147,223,Sahandra Plains South,b2,b4,b5,a8,a9
+b2,275,238,Sahandra Plains South,b1,b3,b5,b6,a9,a10
+b3,369,208,Sahandra Plains South,b2,b6,b11,a7,a10
+b4,105,286,Sahandra Plains South,b1,b5,b7
+b5,249,282,Sahandra Plains South,b1,b2,b4,b6,b7,b8,b9
+b6,366,275,Sahandra Plains South,b2,b3,b5,b9,b10,b11
+b7,168,310,Sahandra Plains South,b4,b5,b8
+b8,221,330,Sahandra Plains South,b5,b7,h1
+b9,315,314,Sahandra Plains South,b5,b6,b10
+b10,400,336,Sahandra Plains South,b6,b9,b11,g4
+b11,420,292,Sahandra Plains South,b3,b6,b10,g1
+
+c1,455,93,Oceans Way,c2,c3,c4,a4
+c2,443,108,Oceans Way,c1,c4,a7
+c3,474,104,Oceans Way,c1,c4,d1
+c4,461,112,Oceans Way,c1,c2,c3
+
+d1,546,84,Cover Island West,d2,d5,c3
+d2,635,76,Cover Island West,d1,d3,d4,d5,d6
+d3,725,70,Cover Island West,d2,d4,e1
+d4,723,99,Cover Island West,d2,d3,d6,d7,e1,e4
+d5,610,123,Cover Island West,d1,d2,d6,d9
+d6,696,156,Cover Island West,d2,d4,d5,d7,d9,d10,d11
+d7,758,149,Cover Island West,d4,d6,d8,d11,d12,e4
+d8,791,148,Cover Island West,d7,d12,e4,e6
+d9,600,173,Cover Island West,d5,d6,d10,f1
+d10,682,218,Cover Island West,d6,d9,d11
+d11,735,216,Cover Island West,d6,d7,d10,d12,e6
+d12,781,173,Cover Island West,d7,d8,d11,e6
+
+e1,779,78,Cover Island East,e2,e4,d3,d4
+e2,828,96,Cover Island East,e1,e4,e3,e5,e7,e8
+e3,874,63,Cover Island East,e2,e5
+e4,802,119,Cover Island East,e1,e2,e6,e7,d4,d7,d8
+e5,887,105,Cover Island East,e2,e3,e8,a1
+e6,799,198,Cover Island East,e4,e7,d8,d11,d12
+e7,833,210,Cover Island East,e2,e4,e6,e8,e9,e10
+e8,893,159,Cover Island East,e2,e5,e7,e9
+e9,890,216,Cover Island East,e7,e8,e10,e12
+e10,866,279,Cover Island East,e7,e9,e11,e12
+e11,854,356,Cover Island East,e10,i7
+e12,910,345,Cover Island East,e9,e10
+
+f1,609,244,Panover,f2,f3,f5,d9
+f2,576,256,Panover,f1,f4,f5
+f3,647,268,Panover,f1,f5
+f4,583,290,Panover,f2,f5,g2
+f5,633,294,Panover,f1,f2,f3,f4,g3
+
+g1,529,337,Battle Rock,g2,g4,g5,b11
+g2,547,339,Battle Rock,g1,g3,g5,f4
+g3,569,346,Battle Rock,g2,g5,g8,f5
+g4,516,353,Battle Rock,g1,g5,g6,b10
+g5,543,352,Battle Rock,g1,g2,g3,g4,g6,g7,g8
+g6,527,366,Battle Rock,g4,g5,g7,h9
+g7,543,367,Battle Rock,g5,g6,g8,i1 
+g8,566,364,Battle Rock,g3,g5,g7,i3
+
+h1,314,419,Wolfs Coast,h3,h5,h7,b8
+h2,122,444,Wolfs Coast,h3,h4
+h3,223,468,Wolfs Coast,h1,h2,h4,h5
+h4,167,524,Wolfs Coast,h2,h3,h5
+h5,249,519,Wolfs Coast,h1,h3,h4,h6,h7
+h6,323,522,Wolfs Coast,h5,h7,a3
+h7,341,474,Wolfs Coast,h1,h5,h6,h8,h10
+h8,392,453,Wolfs Coast,h7,h9,h10
+h9,444,439,Wolfs Coast,h8,h10,g6
+h10,413,479,Wolfs Coast,h7,h8,h9
+
+i1,582,452,Tundale,i2,g7
+i2,598,467,Tundale,i1,i3,i5
+i3,638,432,Tundale,i2,i4,i5,g8
+i4,672,427,Tundale,i3,i5,i6
+i5,652,460,Tundale,i2,i3,i4,i6
+i6,703,445,Tundale,i4,i5,i7,i8
+i7,736,448,Tundale,i6,i8,e11
+i8,720,469,Tundale,i6,i7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

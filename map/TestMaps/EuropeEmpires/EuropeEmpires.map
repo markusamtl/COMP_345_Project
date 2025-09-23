@@ -1,0 +1,91 @@
+[Map]
+author=Lawrence Watkiss
+warn=yes
+image=EuropeEmpires.bmp
+wrap=no
+scroll=horizontal
+
+[Continents]
+Eastern Europe B=10
+Germany And Some Neighbours=7
+Mainland Britain=5
+France=4
+Spain And Nearby Island=2
+Portugal Nation=2
+Switzerland Nation=2
+Ireland Nation=2
+Iceland Nation=2
+Berlin City=2
+Norway And Sweden And Finland=2
+Italy And Nearby Islands=2
+Greece And Some Neighbours=1
+Crete Island=1
+Eastern Europe A=1
+Black Sea=1
+Africa=1
+
+[Territories]
+Scotland,271,400,Mainland Britain,Northern Ireland,East England,Iceland
+East England,304,520,Mainland Britain,Scotland,East France,Netherlands And Belgum,Wales And The South West
+Wales And The South West,244,533,Mainland Britain,Southern Ireland,East England,East Spain
+
+Northern Ireland,207,437,Ireland Nation,Scotland,Southern Ireland
+Southern Ireland,179,483,Ireland Nation,Northern Ireland,Wales And The South West
+
+Iceland,171,119,Iceland Nation,Scotland,Norway
+
+East France,342,641,France,East England,Netherlands And Belgum,Germany,Switzerland,Italy,West France,Corsica
+West France,290,720,France,East France,East Spain
+
+East Spain,187,788,Spain And Nearby Island,West Spain,West France,Portugal,Palma,Wales And The South West
+West Spain,136,878,Spain And Nearby Island,Portugal,East Spain,Morocco
+Palma,298,877,Spain And Nearby Island,East Spain,Algeria
+
+Portugal,78,810,Portugal Nation,East Spain,West Spain
+
+Morocco,84,993,Africa,West Spain,Algeria
+Algeria,286,995,Africa,Tunisia,Morocco,Palma
+Tunisia,439,991,Africa,Algeria,Sardinia,Sicly
+
+Sicly,538,954,Italy And Nearby Islands,Italy,Sardinia,Tunisia
+Sardinia,425,882,Italy And Nearby Islands,Corsica,Sicly,Tunisia
+Corsica,429,811,Italy And Nearby Islands,Italy,Sardinia,East France
+Italy,512,819,Italy And Nearby Islands,Corsica,Sicly,East France,Switzerland,Austria,Bosnia And Croatia And Slovenia
+
+Switzerland,422,693,Switzerland Nation,East France,Germany,Austria,Italy
+
+Germany,459,625,Germany And Some Neighbours,East France,Netherlands And Belgum,Denmark,Poland,Czech Republic,Austria,Switzerland,Sweden,East Berlin,West Berlin
+Netherlands And Belgum,383,563,Germany And Some Neighbours,Germany,East England,East France
+Austria,543,681,Germany And Some Neighbours,Germany,Czech Republic,Slovakia,Hungary,Bosnia And Croatia And Slovenia,Italy,Switzerland
+Denmark,472,453,Germany And Some Neighbours,Germany,Sweden
+
+West Berlin,463,569,Berlin City,Germany,East Berlin
+East Berlin,499,534,Berlin City,Germany,West Berlin
+
+Norway,532,173,Norway And Sweden And Finland,Sweden,Finland,Iceland,North Russia
+Sweden,568,267,Norway And Sweden And Finland,Norway,Finland,Denmark,Germany,Poland
+Finland,692,245,Norway And Sweden And Finland,Norway,Sweden,North Russia,Estonia & Latvia & Lithuania
+
+Poland,612,550,Eastern Europe A,Czech Republic,Slovakia,Germany,Sweden,Estonia & Latvia & Lithuania,Belarus,Ukraine,Slovakia
+Czech Republic,550,620,Eastern Europe A,Poland,Germany,Austria,Slovakia
+Slovakia,625,651,Eastern Europe A,Poland,Czech Republic,Austria,Hungary,Ukraine
+Hungary,637,698,Eastern Europe A,Slovakia,Austria,Bosnia And Croatia And Slovenia,Ukraine,Romania,Serbia
+
+Bosnia And Croatia And Slovenia,580,753,Greece And Some Neighbours,Serbia,Hungary,Austria,Italy
+Serbia,667,771,Greece And Some Neighbours,Bosnia And Croatia And Slovenia,Hungary,Romania,Bulgaria,Albania
+Albania,665,846,Greece And Some Neighbours,Serbia,Bulgaria,Greece
+Greece,713,914,Greece And Some Neighbours,Albania,Bulgaria,Istanbul City,Crete
+
+Crete,796,985,Crete Island,Greece,Turkey
+
+Turkey,921,867,Black Sea,Istanbul City,Crete,Rhodes
+Istanbul City,806,840,Black Sea,Turkey,Greece,Bulgaria
+Rhodes,969,970,Black Sea,Turkey
+Bulgaria,756,798,Black Sea,Romania,Serbia,Albania,Greece,Istanbul City
+Romania,750,707,Black Sea,Ukraine,Hungary,Serbia,Bulgaria
+
+Ukraine,848,608,Eastern Europe B,Romania,Hungary,Slovakia,Poland,Belarus,South Russia
+Belarus,759,501,Eastern Europe B,Ukraine,Poland,Estonia & Latvia & Lithuania,South Russia
+Estonia & Latvia & Lithuania,691,440,Eastern Europe B,Finland,South Russia,Belarus,Poland
+South Russia,845,411,Eastern Europe B,Estonia & Latvia & Lithuania,Belarus,Ukraine,North Russia
+North Russia,863,193,Eastern Europe B,Finland,Norway,South Russia

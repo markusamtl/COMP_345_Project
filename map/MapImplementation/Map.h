@@ -1,13 +1,27 @@
 #pragma once
 
-#include <string>
 #include <map>
+#include <stack>
+#include <string>
+#include <unordered_map>
 #include <vector>
 #include "../MapStorage/Territory.h"
 #include "../MapStorage/Continent.h"
 
 using namespace std;
 
+
+/**
+ * @class Map
+ * @brief Represents a complete game map consisting of Territories and Continents.
+ *
+ * Ownership Model:
+ * - Map owns all dynamically allocated Continent* and Territory* objects.
+ * - Map is responsible for cleaning them up in its destructor.
+ * - Continent and Territory do NOT own each other (non-owning raw pointers only).
+ * - Continent and Territory can NOT exist by themselves.
+ *
+ */
 class Map{
 
     private:
@@ -83,7 +97,7 @@ class Map{
         * @brief Mutator for author
         * @param author string to set
         */
-        void setAuthor(string& author);
+        void setAuthor(const string& author);
         
 
         /**
@@ -96,7 +110,7 @@ class Map{
         * @brief Mutator for image
         * @param image string to set 
         */
-        void setImage(string& image);
+        void setImage(const string& image);
         
         /**
         * @brief Accessor for wrap
@@ -108,7 +122,7 @@ class Map{
         * @brief Mutator for wrap
         * @param wrap string to set 
         */
-        void setWrap(string& wrap);
+        void setWrap(const string& wrap);
 
         /**
         * @brief Accessor for scrollType
@@ -120,7 +134,7 @@ class Map{
         * @brief Mutator for scrollType
         * @param scrollType string to set 
         */
-        void setScrollType(string& scrollType);
+        void setScrollType(const string& scrollType);
 
         /**
         * @brief Accessor for warn
@@ -132,7 +146,7 @@ class Map{
         * @brief Mutator for warn 
         * @param warn string to set
         */
-        void setWarn(string& warn);
+        void setWarn(const string& warn);
 
         /**
          * @brief Accessor for continents
@@ -185,5 +199,24 @@ class Map{
          * @return pointer to the Continent if found, nullptr otherwise
          */
         Continent* getContinentByID(const string& ID);
+
+        /**
+        * @brief Runs DFS on a set of territories and checks if they form a connected graph.
+        * @param terrList List of territories to check
+        * @param restrictCont Optional continent to restrict traversal (nullptr = no restriction)
+        * @return true if all territories in terrList are connected, false otherwise
+        */
+        bool isMapConnectedDFS(const vector<Territory*>& terrList, Continent* restrictCont) const;
+
+        /**
+        * @brief Validate the integrity of the map.
+        * Ensures:
+        * 1. The map is non-empty (has at least one territory and one continent).
+        * 2. Each territory belongs to exactly one continent.
+        * 3. The entire map is a connected graph (any territory can reach any other territory). Done with Depth First Search.
+        * 4. Each continent is a connected subgraph (any territory in the continent can reach any other territory in the same continent). Done with Depth First Search.
+        * @return true if the map is valid, false otherwise.
+        */
+        bool validate() const;
 
 };

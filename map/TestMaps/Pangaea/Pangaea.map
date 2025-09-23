@@ -1,0 +1,135 @@
+[Map]
+author=Lubie
+image=Pangaea.bmp
+wrap=no
+scroll=none
+warn=yes
+
+[Continents]
+Europe=8
+Western Asia=6
+Northern America=6
+Southern America=6
+Northern Africa=6
+Southern Africa=6
+Australia=2
+Antarctica=4
+Atlantis=7
+Eastern Asia=7
+
+[Territories]
+Norway,170,102,Europe,Greenland,Iceland,European Russia,Finland,Sweden
+Sweden,163,120,Europe,Norway,Finland,Poland
+Iceland,258,85,Europe,Norway,Greenland,European Russia
+Finland,255,114,Europe,Norway,Sweden,European Russia,Poland,Baltic States
+Poland,253,144,Europe,Sweden,Finland,Baltic States,Germany,Ukraine
+Germany,260,189,Europe,Poland,Ukraine,Italy,Czechoslovakia,Romania
+Italy,231,218,Europe,Germany,Czechoslovakia,France,Yugoslavia,Corvo,Nunavut
+France,191,197,Europe,Italy,Nunavut,Spain
+Spain,145,209,Europe,France,United Kingdom,Nunavut,Canadian Northwest Territories,Yukon
+United Kingdom,129,191,Europe,Spain,Alaska,Yukon
+Yugoslavia,242,256,Europe,Czechoslovakia,Italy,Corvo,Terceira,Flores
+Czechoslovakia,261,224,Europe,Germany,Romania,Italy,Yugoslavia,Terceira,Greece
+Romania,295,215,Europe,Germany,Caucasus,Greece,Czechoslovakia,Persia
+Ukraine,297,178,Europe,Germany,Poland,Baltic States,Caucasus
+Baltic States,287,152,Europe,Poland,European Russia,Caucasus,Ukraine,Finland
+European Russia,295,98,Europe,Norway,Greenland,Finland,Baltic States,Russia,Caucasus,Iceland
+Caucasus,335,163,Europe,Baltic States,Russia,Kazakhstan,Central Asia,European Russia,Ukraine,Romania
+Greece,303,245,Europe,Romania,Czechoslovakia,Persia,Terceira
+Russia,414,128,Western Asia,Greenland,European Russia,Caucasus,Kazakhstan,Mongolia,Siberia
+Kazakhstan,396,191,Western Asia,Russia,China,Central Asia,Caucasus,Mongolia
+Central Asia,373,247,Western Asia,China,Kazakhstan,Burma,Persia,Caucasus
+Persia,352,276,Western Asia,Burma,Central Asia,Greece,Terceira,Romania
+Turkey,337,403,Western Asia,Libya,Sao Miguel,Egypt,Israel,Syria,Algeria
+Syria,398,412,Western Asia,Turkey,Israel,Jordan,Iraq
+Israel,394,424,Western Asia,Turkey,Syria,Egypt,Jordan
+Jordan,406,433,Western Asia,Syria,Israel,Saudi Arabia,Iraq,Egypt
+Iraq,428,428,Western Asia,Syria,Jordan,Saudi Arabia
+Saudi Arabia,409,480,Western Asia,Jordan,Egypt,Oman,Yemen,Ethiopia,Iraq,Somalia
+Oman,464,503,Western Asia,Saudi Arabia,Yemen
+Yemen,430,525,Western Asia,Oman,Saudi Arabia,Somalia,New Guinea
+Greenland,230,70,Northern America,Norway,Iceland,European Russia,Russia,Siberia
+Alaska,72,198,Northern America,Yukon,United Kingdom
+Yukon,97,237,Northern America,Spain,Alaska,British Columbia,Canadian Northwest Territories,United Kingdom
+Canadian Northwest Territories,149,271,Northern America,Spain,Yukon,British Columbia,Quebec,Corvo,Nunavut
+Nunavut,172,239,Northern America,France,Spain,Canadian Northwest Territories,Corvo,Italy
+British Columbia,97,308,Northern America,Yukon,Canadian Northwest Territories,Quebec,Louisiana,Paiuie
+Quebec,185,350,Northern America,British Columbia,Louisiana,Canadian Northwest Territories,Corvo,Flores,Faial
+Paiuie,74,357,Northern America,British Columbia,Mexico,Louisiana
+Louisiana,133,384,Northern America,British Columbia,Paiuie,Mexico,Texas,Florida,Faial,Quebec,Sao Jorge
+Florida,162,428,Northern America,Louisiana,Cuba,Faial,Sao Jorge
+Mexico,73,401,Northern America,Paiuie,Louisiana,Texas,Colombia
+Texas,98,432,Northern America,Louisiana,Mexico,Colombia,Sao Jorge
+Cuba,181,464,Northern America,Florida,Sao Jorge,Faial
+Colombia,103,487,Southern America,Texas,Mexico,Sao Jorge,Ecuador,Venezuela,Amazon Basin,Peru
+Venezuela,156,495,Southern America,Sao Jorge,Colombia,Amazon Basin,Guyana
+Guyana,189,507,Southern America,Sao Jorge,Amazon Basin,Venezuela
+Amazon Basin,162,540,Southern America,Graciosa,Colombia,Bolivia,Venezuela,Guyana,Brazil,Peru
+Brazil,203,572,Southern America,Bolivia,Amazon Basin,Pico,Uruguay,Argentina,Graciosa,Paraguay
+Ecuador,81,512,Southern America,Colombia,Peru
+Peru,92,550,Southern America,Ecuador,Colombia,Bolivia,Chile,Amazon Basin
+Chile,163,671,Southern America,Argentina,Bolivia,Peru
+Bolivia,160,590,Southern America,Peru,Amazon Basin,Brazil,Paraguay,Argentina,Chile
+Paraguay,199,616,Southern America,Bolivia,Argentina,Brazil
+Uruguay,201,659,Southern America,Argentina,Pico,Brazil
+Argentina,182,641,Southern America,Bolivia,Paraguay,Uruguay,Chile,Pico,Brazil
+Morocco,222,401,Northern Africa,Faial,Algeria,Mauritania,Flores
+Algeria,270,404,Northern Africa,Morocco,Mauritania,Mali,Niger,Libya,Sao Miguel,Turkey
+Mauritania,223,426,Northern Africa,Morocco,Faial,Mali,Algeria,Guinea
+Mali,252,440,Northern Africa,Mauritania,Guinea,Algeria,Niger
+Guinea,221,470,Northern Africa,Sao Jorge,Mali,Nigeria,Niger,Mauritania,Faial
+Nigeria,266,490,Northern Africa,Guinea,Niger,Chad,Central Africa,Graciosa
+Niger,290,461,Northern Africa,Mali,Nigeria,Algeria,Libya,Chad,Guinea
+Libya,322,431,Northern Africa,Niger,Turkey,Algeria,Chad,Sudan,Egypt
+Egypt,369,448,Northern Africa,Libya,Turkey,Israel,Saudi Arabia,Jordan,Sudan,Ethiopia
+Chad,316,484,Northern Africa,Nigeria,Niger,Libya,Central Africa,Sudan
+Sudan,357,496,Northern Africa,Libya,Egypt,Central Africa,Kenya,Chad,Ethiopia
+Ethiopia,387,510,Northern Africa,Egypt,Somalia,Saudi Arabia,Sudan,Kenya
+Somalia,403,562,Southern Africa,Yemen,Kenya,Malay Archipelago,Madagascar,Ethiopia,New Guinea,Saudi Arabia
+Central Africa,294,534,Southern Africa,Graciosa,Nigeria,Chad,Sudan,Congo
+Congo,313,569,Southern Africa,Angola,Central Africa,Graciosa,Kenya,Tanzania,Zambia
+Kenya,371,565,Southern Africa,Congo,Sudan,Ethiopia,Somalia,Madagascar,Tanzania
+Tanzania,352,593,Southern Africa,Congo,Kenya,Madagascar,Zambia,Mozambique
+Zambia,311,617,Southern Africa,Angola,Congo,Botswana,Mozambique,Tanzania,South Africa
+Botswana,278,628,Southern Africa,Angola,Namibia,Zambia,South Africa
+Angola,266,590,Southern Africa,Graciosa,Congo,Zambia,Botswana,Namibia
+Namibia,253,621,Southern Africa,Angola,Botswana,South Africa,Pico
+South Africa,263,659,Southern Africa,Botswana,Namibia,Zambia,Mozambique,Pico
+Mozambique,338,630,Southern Africa,Malay Archipelago,Zambia,German (Third Reich) Antarctica,South Africa,Norway Antarctica,Tanzania,Madagascar,Pico
+Madagascar,384,592,Southern Africa,Kenya,Malay Archipelago,Tanzania,Somalia,Mozambique
+Queensland - New South Wales,515,690,Australia,Philippines,Java,Australia (West) Antarctica,Western Australia,New Zealand
+Western Australia,451,765,Australia,Queensland - New South Wales,New Zealand,Santa Maria,Australia (East) Antarctica,France Antarctica,Australia (West) Antarctica
+New Zealand,543,729,Australia,Queensland - New South Wales,Western Australia
+German (Third Reich) Antarctica,369,649,Antarctica,Mozambique,Malay Archipelago,Norway Antarctica
+Norway Antarctica,382,687,Antarctica,Ilhéus das Formigas,Sri Lanka,German (Third Reich) Antarctica,UK-Chile-Argentina Antarctica,Australia (West) Antarctica,Mozambique,Pico,India
+Australia (West) Antarctica,439,703,Antarctica,Queensland - New South Wales,Western Australia,Java,Norway Antarctica,France Antarctica,Ilhéus das Formigas
+Australia (East) Antarctica,408,747,Antarctica,Western Australia,New Zealand Antarctica,France Antarctica
+France Antarctica,421,740,Antarctica,Western Australia,Australia (East) Antarctica,Australia (West) Antarctica
+UK-Chile-Argentina Antarctica,323,702,Antarctica,Norway Antarctica,Unclaimed Antarctica,Pico
+New Zealand Antarctica,381,738,Antarctica,Unclaimed Antarctica,Santa Maria,Australia (East) Antarctica
+Unclaimed Antarctica,320,740,Antarctica,New Zealand Antarctica,UK-Chile-Argentina Antarctica
+Siberia,503,157,Eastern Asia,Greenland,Russia,Mongolia,Korea,Kamchatka
+Mongolia,491,196,Eastern Asia,Russia,Siberia,Korea,China,Kazakhstan
+Kamchatka,583,251,Eastern Asia,Siberia,Japan,Korea
+Korea,537,215,Eastern Asia,Siberia,Kamchatka,Mongolia,China,Thailand
+China,450,225,Eastern Asia,Korea,Thailand,Mongolia,Burma,Central Asia,Kazakhstan
+Burma,398,277,Eastern Asia,Thailand,China,Central Asia,Persia
+Thailand,450,283,Eastern Asia,Korea,China,Burma
+Japan,652,307,Eastern Asia,Kamchatka
+Sri Lanka,441,625,Eastern Asia,Ilhéus das Formigas,India,Norway Antarctica
+India,454,598,Eastern Asia,Malay Archipelago,Sri Lanka,New Guinea,Taiwan,Ilhéus das Formigas,Norway Antarctica
+Taiwan,488,637,Eastern Asia,India,Philippines,Java,Ilhéus das Formigas
+Philippines,504,641,Eastern Asia,Taiwan,Java,Queensland - New South Wales
+Java,485,655,Eastern Asia,Taiwan,Philippines,Queensland - New South Wales,Australia (West) Antarctica
+Malay Archipelago,391,609,Australia,Madagascar,Somalia,New Guinea,India,Mozambique,German (Third Reich) Antarctica
+New Guinea,453,548,Australia,Yemen,Malay Archipelago,India,Somalia
+Ilhéus das Formigas,453,637,Atlantis,Sri Lanka,India,Norway Antarctica,Australia (West) Antarctica,Taiwan
+Santa Maria,381,779,Atlantis,Western Australia,New Zealand Antarctica
+Faial,221,380,Atlantis,Louisiana,Flores,Quebec,Florida,Mauritania,Morocco,Cuba,Guinea,Sao Jorge
+Sao Jorge,143,449,Atlantis,Texas,Florida,Guinea,Cuba,Graciosa,Guyana,Louisiana,Venezuela,Colombia,Faial
+Pico,220,683,Atlantis,UK-Chile-Argentina Antarctica,South Africa,Uruguay,Brazil,Graciosa,Argentina,Namibia,Mozambique,Norway Antarctica
+Sao Miguel,296,364,Atlantis,Terceira,Flores,Turkey,Algeria
+Terceira,297,309,Atlantis,Czechoslovakia,Greece,Yugoslavia,Flores,Sao Miguel,Persia
+Corvo,199,289,Atlantis,Italy,Canadian Northwest Territories,Nunavut,Quebec,Yugoslavia,Flores
+Flores,267,330,Atlantis,Corvo,Yugoslavia,Faial,Quebec,Sao Miguel,Terceira,Morocco
+Graciosa,255,552,Atlantis,Brazil,Amazon Basin,Sao Jorge,Nigeria,Central Africa,Congo,Angola,Pico

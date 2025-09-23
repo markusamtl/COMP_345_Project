@@ -1,0 +1,204 @@
+[Map]
+author=Noel Palmer
+image=Palmerica.bmp
+wrap=yes
+scroll=horizontal
+warn=yes
+
+[Continents]
+Gambier=6
+Castlegar=7
+Cottonwood=4
+Willow=2
+Nelson=14
+Oasis=1
+Paradise=8
+Sheffield=9
+Cloverfield=3
+West Haven=3
+Northumbria=5
+Isle of Man=4
+Emerald Isle=5
+Hamptons=6
+Hibernia=6
+Osilinka=1
+
+[Territories]
+Territory01,185,276,Gambier,Territory02,Territory89,Territory90
+Territory02,156,318,Gambier,Territory01,Territory03
+Territory03,200,349,Gambier,Territory02,Territory04,Territory06,Territory05
+Territory04,243,340,Gambier,Territory03,Territory05,Territory68
+Territory05,242,396,Gambier,Territory03,Territory04,Territory06,Territory07
+Territory06,183,390,Gambier,Territory03,Territory05
+Territory07,241,454,Gambier,Territory05,Territory51,Territory46,Territory54
+Territory08,421,210,Castlegar,Territory10,Territory11,Territory12,Territory09
+Territory09,548,189,Castlegar,Territory12,Territory15,Territory08,Territory16,Territory125
+Territory10,336,225,Castlegar,Territory89,Territory55,Territory08,Territory11,Territory13,Territory65
+Territory11,412,263,Castlegar,Territory10,Territory08,Territory13,Territory12
+Territory12,472,255,Castlegar,Territory11,Territory08,Territory13,Territory15,Territory14,Territory09
+Territory13,449,309,Castlegar,Territory10,Territory11,Territory12,Territory56,Territory14
+Territory14,534,295,Castlegar,Territory12,Territory15,Territory16,Territory13
+Territory15,546,244,Castlegar,Territory12,Territory09,Territory14,Territory16
+Territory16,620,236,Castlegar,Territory15,Territory14,Territory09,Territory17,Territory18
+Territory17,683,222,Castlegar,Territory16,Territory18,Territory19
+Territory18,693,256,Castlegar,Territory16,Territory17,Territory19,Territory20
+Territory19,771,240,Castlegar,Territory18,Territory17,Territory20,Territory178
+Territory20,782,282,Castlegar,Territory18,Territory19,Territory21
+Territory21,825,338,Cottonwood,Territory20,Territory27,Territory26,Territory22,Territory25
+Territory22,856,319,Cottonwood,Territory21,Territory23,Territory25
+Territory23,896,314,Cottonwood,Territory22,Territory25,Territory24
+Territory24,940,294,Cottonwood,Territory25,Territory23,Territory88
+Territory25,894,364,Cottonwood,Territory21,Territory22,Territory23,Territory24
+Territory26,792,329,Cottonwood,Territory21
+Territory27,762,368,Cottonwood,Territory28,Territory21
+Territory28,732,389,Cottonwood,Territory37,Territory27
+Territory29,579,468,Willow,Territory32
+Territory30,590,413,Willow,Territory31,Territory33
+Territory31,553,435,Willow,Territory61,Territory30
+Territory32,596,460,Willow,Territory33,Territory29
+Territory33,616,436,Willow,Territory30,Territory32,Territory35
+Territory34,661,531,Nelson,Territory39,Territory38,Territory40,Territory35,Territory36,Territory177
+Territory35,661,468,Nelson,Territory34,Territory37,Territory40,Territory33,Territory36
+Territory36,741,503,Nelson,Territory34,Territory37,Territory38,Territory35
+Territory37,751,462,Nelson,Territory36,Territory35,Territory28
+Territory38,734,576,Nelson,Territory34,Territory36,Territory155
+Territory39,549,574,Nelson,Territory42,Territory41,Territory40,Territory34,Territory174,Territory175
+Territory40,592,525,Nelson,Territory39,Territory34,Territory35,Territory41
+Territory41,503,542,Nelson,Territory44,Territory42,Territory39,Territory40,Territory43
+Territory42,491,580,Nelson,Territory43,Territory39,Territory41
+Territory43,413,592,Nelson,Territory45,Territory44,Territory47,Territory42,Territory41,Territory173,Territory174
+Territory44,410,552,Nelson,Territory45,Territory43,Territory41,Territory59
+Territory45,351,544,Nelson,Territory46,Territory47,Territory43,Territory44,Territory53
+Territory46,289,524,Nelson,Territory07,Territory52,Territory45,Territory47,Territory53
+Territory47,292,585,Nelson,Territory46,Territory48,Territory45,Territory43
+Territory48,227,584,Nelson,Territory47,Territory170
+Territory49,1040,554,Oasis,Territory50,Territory147
+Territory50,1008,525,Oasis,Territory49,Territory73
+Territory51,200,493,Gambier,Territory07
+Territory52,325,468,Gambier,Territory54,Territory46,Territory53
+Territory53,348,482,Gambier,Territory52,Territory46,Territory45
+Territory54,307,451,Gambier,Territory07,Territory52,Territory71
+Territory55,300,265,Castlegar,Territory10
+Territory56,488,412,Paradise,Territory13,Territory57,Territory60,Territory69
+Territory57,447,385,Paradise,Territory56,Territory62,Territory63,Territory69
+Territory58,443,437,Paradise,Territory59,Territory60,Territory63,Territory64,Territory69,Territory70
+Territory59,452,472,Paradise,Territory58,Territory60,Territory64,Territory70,Territory72,Territory44
+Territory60,494,443,Paradise,Territory56,Territory58,Territory59,Territory61,Territory69
+Territory61,515,445,Paradise,Territory60,Territory31
+Territory62,394,353,Paradise,Territory57,Territory63,Territory65,Territory66
+Territory63,392,402,Paradise,Territory57,Territory58,Territory62,Territory64,Territory66
+Territory64,404,458,Paradise,Territory58,Territory59,Territory63,Territory70
+Territory65,340,343,Paradise,Territory62,Territory66,Territory67,Territory10
+Territory66,354,390,Paradise,Territory62,Territory63,Territory65,Territory71
+Territory67,305,348,Paradise,Territory65,Territory68
+Territory68,287,344,Gambier,Territory67,Territory04
+Territory69,454,412,Paradise,Territory56,Territory57,Territory58,Territory60
+Territory70,428,457,Paradise,Territory58,Territory59,Territory64
+Territory71,328,431,Paradise,Territory66,Territory54
+Territory72,476,495,Paradise,Territory59
+Territory73,983,513,Oasis,Territory50,Territory74
+Territory74,962,504,Oasis,Territory73,Territory75
+Territory75,957,487,Oasis,Territory74,Territory76
+Territory76,996,445,Oasis,Territory75,Territory77,Territory78
+Territory77,963,398,Oasis,Territory76
+Territory78,1024,350,Sheffield,Territory76,Territory79,Territory80
+Territory79,1053,342,Sheffield,Territory78,Territory80,Territory81,Territory143
+Territory80,1035,308,Sheffield,Territory78,Territory79,Territory81,Territory82,Territory83
+Territory81,1064,288,Sheffield,Territory79,Territory80,Territory82,Territory95
+Territory82,1036,264,Sheffield,Territory80,Territory81,Territory84
+Territory83,1006,298,Sheffield,Territory80,Territory88
+Territory84,1059,231,Sheffield,Territory82,Territory85,Territory86,Territory87
+Territory85,1026,219,Sheffield,Territory84,Territory86
+Territory86,1019,235,Sheffield,Territory85,Territory84
+Territory87,1044,202,Sheffield,Territory84,Territory141
+Territory88,983,320,Sheffield,Territory83,Territory24
+Territory89,203,231,Gambier,Territory10,Territory01,Territory108
+Territory90,140,279,Gambier,Territory01,Territory91
+Territory91,96,287,Gambier,Territory90,Territory92
+Territory92,27,272,Isle of Man,Territory91,Territory93
+Territory93,1175,288,Isle of Man,Territory92,Territory94,Territory96,Territory97
+Territory94,1150,256,Isle of Man,Territory93,Territory95,Territory96,Territory97,Territory98
+Territory95,1121,272,Isle of Man,Territory81,Territory94,Territory96
+Territory96,1135,299,Isle of Man,Territory93,Territory94,Territory95,Territory142
+Territory97,1178,251,Isle of Man,Territory93,Territory94,Territory98,Territory99
+Territory98,1169,220,Isle of Man,Territory94,Territory97,Territory99,Territory100
+Territory99,1172,194,Isle of Man,Territory97,Territory98,Territory100,Territory101
+Territory100,1133,207,Isle of Man,Territory98,Territory99
+Territory101,1185,124,Isle of Man,Territory99,Territory102
+Territory102,37,122,Cloverfield,Territory101,Territory103,Territory109,Territory111
+Territory103,42,154,Cloverfield,Territory102,Territory104,Territory109
+Territory104,69,162,Cloverfield,Territory103,Territory105,Territory109
+Territory105,102,163,Cloverfield,Territory104,Territory106,Territory109
+Territory106,124,190,Cloverfield,Territory105,Territory107
+Territory107,138,213,Gambier,Territory106,Territory108
+Territory108,155,222,Gambier,Territory89,Territory107
+Territory109,102,138,Cloverfield,Territory102,Territory103,Territory104,Territory105,Territory110,Territory111
+Territory110,82,122,Cloverfield,Territory109
+Territory111,61,105,Cloverfield,Territory102,Territory109,Territory112
+Territory112,103,74,West Haven,Territory111,Territory113,Territory114,Territory115
+Territory113,85,47,West Haven,Territory112
+Territory114,132,36,West Haven,Territory112,Territory115
+Territory115,181,37,West Haven,Territory112,Territory114,Territory116,Territory117,Territory118,Territory119
+Territory116,162,4,West Haven,Territory115
+Territory117,188,77,West Haven,Territory115,Territory118
+Territory118,223,70,West Haven,Territory115,Territory117
+Territory119,324,20,West Haven,Territory115,Territory120,Territory121
+Territory120,459,10,West Haven,Territory119,Territory121,Territory122,Territory123
+Territory121,419,86,West Haven,Territory119,Territory120,Territory122,Territory125
+Territory122,478,51,West Haven,Territory120,Territory121,Territory123
+Territory123,578,7,Northumbria,Territory120,Territory122,Territory124,Territory126,Territory127
+Territory124,565,59,Northumbria,Territory123,Territory125,Territory126
+Territory125,559,122,Northumbria,Territory09,Territory121,Territory124
+Territory126,632,31,Northumbria,Territory123,Territory124,Territory127,Territory128
+Territory127,687,20,Northumbria,Territory123,Territory126,Territory128,Territory129,Territory130
+Territory128,687,74,Northumbria,Territory126,Territory127,Territory130,Territory131,Territory133
+Territory129,743,7,Northumbria,Territory127,Territory130
+Territory130,768,35,Northumbria,Territory127,Territory128,Territory129,Territory132,Territory133
+Territory131,761,64,Northumbria,Territory128
+Territory132,869,12,Northumbria,Territory130,Territory133,Territory134,Territory135
+Territory133,835,68,Northumbria,Territory128,Territory130,Territory132,Territory134,Territory178
+Territory134,938,47,Northumbria,Territory132,Territory133,Territory135,Territory138
+Territory135,1041,17,Northumbria,Territory132,Territory134,Territory136,Territory137,Territory138
+Territory136,1150,9,Northumbria,Territory135,Territory137
+Territory137,1096,42,Northumbria,Territory135,Territory136,Territory138
+Territory138,1040,66,Northumbria,Territory134,Territory135,Territory137,Territory139
+Territory139,1022,144,Sheffield,Territory138,Territory140
+Territory140,1019,162,Sheffield,Territory139,Territory141
+Territory141,1024,184,Sheffield,Territory87,Territory140
+Territory142,1148,345,Emerald Isle,Territory96,Territory144
+Territory143,1118,363,Emerald Isle,Territory79,Territory144
+Territory144,1173,417,Emerald Isle,Territory142,Territory143,Territory145,Territory146
+Territory145,1107,488,Emerald Isle,Territory144,Territory146,Territory147
+Territory146,1157,512,Emerald Isle,Territory144,Territory145,Territory147,Territory148
+Territory147,1097,593,Emerald Isle,Territory49,Territory145,Territory146,Territory150
+Territory148,1154,600,Emerald Isle,Territory146,Territory149
+Territory149,1171,630,Emerald Isle,Territory148,Territory169
+Territory150,1017,632,Osilinka,Territory147,Territory151
+Territory151,1002,652,Osilinka,Territory150,Territory152
+Territory152,888,690,Hamptons,Territory151,Territory153,Territory154
+Territory153,842,681,Hamptons,Territory152,Territory154,Territory155
+Territory154,816,807,Hamptons,Territory152,Territory153,Territory155,Territory156
+Territory155,763,711,Hamptons,Territory38,Territory153,Territory154,Territory156,Territory157
+Territory156,697,798,Hamptons,Territory154,Territory155,Territory157,Territory159
+Territory157,653,716,Hamptons,Territory155,Territory156,Territory158
+Territory158,648,659,Hamptons,Territory157,Territory177
+Territory159,593,843,Hamptons,Territory156,Territory160
+Territory160,467,818,Hibernia,Territory159,Territory161,Territory162,Territory163
+Territory161,513,788,Hibernia,Territory160,Territory162
+Territory162,404,766,Hibernia,Territory160,Territory161,Territory163,Territory176
+Territory163,353,809,Hibernia,Territory160,Territory162,Territory164,Territory171,Territory176
+Territory164,288,834,Hibernia,Territory163,Territory165,Territory171
+Territory165,189,815,Hibernia,Territory164,Territory166,Territory167,Territory171
+Territory166,95,838,Hibernia,Territory165,Territory167
+Territory167,129,760,Hibernia,Territory165,Territory166,Territory168,Territory170,Territory171
+Territory168,64,695,Hibernia,Territory167,Territory169
+Territory169,21,636,Hibernia,Territory149,Territory168
+Territory170,178,618,Nelson,Territory48,Territory167
+Territory171,259,756,Hibernia,Territory163,Territory164,Territory165,Territory167,Territory176
+Territory172,389,653,Hibernia,Territory173,Territory176
+Territory173,394,638,Nelson,Territory43,Territory172
+Territory174,482,630,Nelson,Territory39,Territory43
+Territory175,571,623,Nelson,Territory39
+Territory176,343,704,Hibernia,Territory162,Territory163,Territory171,Territory172
+Territory177,649,617,Nelson,Territory34,Territory158
+Territory178,821,204,Castlegar,Territory19,Territory133

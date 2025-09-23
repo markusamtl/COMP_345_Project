@@ -13,6 +13,7 @@
 #define INVALID_WARN 6
 #define INVALID_CONTINENT 7
 #define INVALID_TERRITORY 8
+#define INVALID_MAP_STRUCTURE 9
 
 using namespace std;
 //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
@@ -87,7 +88,7 @@ ostream& operator<<(ostream& os, const MapLoader& mapLoader) {
 
     os << "Continents:\n";
 
-    for (const auto& [name, value] : mapLoader.continents) {
+    for(const auto& [name, value] : mapLoader.continents) {
 
         os << "  " << name << ": " << value << "\n";
     
@@ -95,11 +96,11 @@ ostream& operator<<(ostream& os, const MapLoader& mapLoader) {
 
     os << "Territories:\n";
 
-    for (const auto& territory : mapLoader.territories) {
+    for(const auto& territory : mapLoader.territories) {
 
         os << "  ";
 
-        for (const auto& field : territory) {
+        for(const auto& field : territory) {
 
             os << field << " ";
 
@@ -116,25 +117,25 @@ ostream& operator<<(ostream& os, const MapLoader& mapLoader) {
 //-- Accessors and Mutators --//
 
 const string& MapLoader::getAuthor() const { return author; }
-void MapLoader::setAuthor(string& author) { this -> author = author; }
+void MapLoader::setAuthor(const string& author) { this -> author = author; }
 
 const string& MapLoader::getImage() const { return image; }
-void MapLoader::setImage(string& image) { this -> image = image; }
+void MapLoader::setImage(const string& image) { this -> image = image; }
 
 const string& MapLoader::getWrap() const { return wrap; }
-void MapLoader::setWrap(string& wrap) { this -> wrap = wrap; }
+void MapLoader::setWrap(const string& wrap) { this -> wrap = wrap; }
 
 const string& MapLoader::getScrollType() const { return scrollType; }
-void MapLoader::setScrollType(string& scrollType) { this -> scrollType = scrollType; }
+void MapLoader::setScrollType(const string& scrollType) { this -> scrollType = scrollType; }
 
 const string& MapLoader::getWarn() const { return warn; }
-void MapLoader::setWarn(string& warn) { this -> warn = warn; }
+void MapLoader::setWarn(const string& warn) { this -> warn = warn; }
 
 const map<string, int>& MapLoader::getContinents() const { return continents; }
-void MapLoader::setContinents(map<string, int> continents) { this -> continents = continents; }
+void MapLoader::setContinents(const map<string, int> continents) { this -> continents = continents; }
 
 const vector<vector<string>>& MapLoader::getTerritories() const {return territories;}
-void MapLoader::setTerritories(vector<vector<string>> territories) { this -> territories = territories; }
+void MapLoader::setTerritories(const vector<vector<string>> territories) { this -> territories = territories; }
 
 
 //-- Class Methods --//
@@ -159,7 +160,7 @@ int MapLoader::importMapInfo(const string& filePath) {
         if(line.empty()) continue; // Skip empty lines
 
         // Detect section headers
-        if (line[0] == '[') {
+        if(line[0] == '[') {
             section = line; // Store section name, e.g., "[Map]"
             continue;
         }
@@ -182,7 +183,8 @@ int MapLoader::importMapInfo(const string& filePath) {
 
             size_t pos = line.find('='); // Find position of '=' to split continent name and bonus value
 
-            if (pos == string::npos) { // If there is no '=' character, the line is invalid
+            if(pos == string::npos) { // If there is no '=' character, the line is invalid
+
                 cerr << "Invalid continent line: " << line << endl;
                 return MAP_PARSE_ERROR;
             }
@@ -191,33 +193,26 @@ int MapLoader::importMapInfo(const string& filePath) {
             string continentBonusStr = StringHandling::trim(line.substr(pos + 1)); // Extract continent name
             int bonusValue = 0;
             
-            pair<bool, int> bonusValueStatus = StringHandling::isStrInt(continentBonusStr);
+            pair<bool, int> bonusValueStatus = StringHandling::isStrInt(continentBonusStr); //Get bonus valus
 
-            if(bonusValueStatus.first == true) {
-
-                continents[continentName] = bonusValueStatus.second; 
-
-            } else {
-
-                return MAP_PARSE_ERROR;
-
-            }
+            if(bonusValueStatus.first == true) { continents[continentName] = bonusValueStatus.second; } 
+            else { return MAP_PARSE_ERROR; }
 
 
         } else if (section == "[Territories]") { // Parse [Territories] section
 
-            vector<string> fields; // To hold the fields of the territory line
-            string token;          // Holds each field temporarily for a territory line
-            stringstream ss(line); // Use stringstream for easy CSV parsing
+            vector<string> fields; //To hold the fields of the territory line
+            string token; //Holds each field temporarily for a territory line
+            stringstream ss(line); //Use stringstream for easy CSV parsing
             
-            while (getline(ss, token, ',')) { // Split line by commas
+            while(getline(ss, token, ',')) { //Split line by commas
 
-                string trimmed = StringHandling::trim(token); // Trim leading/trailing spaces
-                if (!trimmed.empty()) fields.push_back(trimmed);
+                string trimmed = StringHandling::trim(token); //Trim leading/trailing spaces
+                if(!trimmed.empty()){ fields.push_back(trimmed); } //Make sure the territory info isn't empty 
 
             }
 
-            if (fields.size() < 4) { // Must have at least ID, X, Y, Continent
+            if(fields.size() < 4) { // Must have at least ID, XCoord, YCoord, Continent
 
                 cerr << "Invalid territory line: " << line << endl;
                 return MAP_PARSE_ERROR;
@@ -225,26 +220,24 @@ int MapLoader::importMapInfo(const string& filePath) {
             }
 
             territories.push_back(fields); // Add the parsed territory to the territories vector
-        }
 
-        // If section is invalid
-        else {
+        } else { // If section is invalid
+
             cerr << "Unknown section: " << section << endl;
             return MAP_INVALID_SECTION;
+
         }
+
     }
 
     file.close();
 
-    //Print out summary of loaded map
-    cout << "Map loaded successfully!" << endl;
-    cout << "  Continents loaded: " << continents.size() << endl;
-    cout << "  Territories loaded: " << territories.size() << endl;
+    cout << "Map loaded successfully!" << endl << "  Continents loaded: " << continents.size() << endl << "  Territories loaded: " << territories.size() << endl;
 
     return MAP_OK;
 }
 
-pair<int, Map*>MapLoader::loadMap() {
+pair<int, Map*> MapLoader::loadMap() {
 
     if(this == nullptr) { //Check for null pointer
 
@@ -254,7 +247,7 @@ pair<int, Map*>MapLoader::loadMap() {
     }
     
 
-    // Create a temporary copy of the input map to avoid modifying the original in case of failure
+    //Create return map pointer, to be returned IF loading is successful
     Map* tempMapPtr = new Map();
 
     //-- Check if all metadata is valid --
@@ -299,7 +292,7 @@ pair<int, Map*>MapLoader::loadMap() {
 
     } else { tempMapPtr -> setWarn(warn); }
 
-    // Load continents into map object
+    //Load continents into map object
     if(continents.empty()) {
 
         cerr << "Error: Continent data is missing or invalid." << endl;
@@ -308,27 +301,27 @@ pair<int, Map*>MapLoader::loadMap() {
 
     } else {
 
-        vector<Continent*> continentPtrs; // To hold pointers to created continents
+        vector<Continent*> continentPtrs; //To hold pointers for created continents
 
-        for (const auto& [name, value] : continents) {
-
-            if (name.empty() || value <= 0) { // Continent name must be non-empty and bonus value positive
+        for (const auto& [name, value] : continents) { //Auto was really convenient here compared to pair as an iterator
+            
+            //Validate BEFORE allocating
+            if (name.empty() || value <= 0) {
 
                 cerr << "Error: Invalid continent data for continent '" << name << "' with bonus value " << value << "." << endl;
-                
-                for (Continent* c : continentPtrs){ delete c; } // Free previously allocated continent objects
+                for (Continent* c : continentPtrs) {delete c;}
                 delete tempMapPtr;
-
                 return {INVALID_CONTINENT, nullptr};
 
             }
 
-            Continent* newContinent = new Continent(name, value); // Create new continent
-            continentPtrs.push_back(newContinent);  // Store pointer to new continent
+            //Only allocate if validation passed
+            Continent* newContinent = new Continent(name, value);
+            continentPtrs.push_back(newContinent);
 
         }
 
-        tempMapPtr -> setContinents(continentPtrs); // Set continents in the map
+        tempMapPtr -> setContinents(continentPtrs); //Set continents in the map
 
         //-- Load territories into map object (PASS 1: Instantiating the Map) --
 
@@ -338,150 +331,124 @@ pair<int, Map*>MapLoader::loadMap() {
         if(territories.empty()) {
 
             cerr << "Error: Territory data is missing or invalid." << endl;
-
-            for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
             delete tempMapPtr;
             return {INVALID_TERRITORY, nullptr};
 
         } else {
 
-            for(int i = 0; i < territories.size(); i++) {
-
-                Territory* tempTerritory = new Territory(); //Intialize new territory
+            for(int i = 0; i < territories.size(); i++) { //For ALL territories
 
                 //Extract mandatory fields from territory entry
-                string territoryID = territories[i][0];
-                string xCoordStr = territories[i][1];
-                string yCoordStr = territories[i][2];
+                string territoryID   = territories[i][0];
+                string xCoordStr     = territories[i][1];
+                string yCoordStr     = territories[i][2];
                 string continentName = territories[i][3];
 
                 //-- Validate that all mandatory fields are valid --
 
                 //Check Territory ID
-                if(territoryID.empty()){
+                if(territoryID.empty()) {
 
                     cerr << "Error: Territory ID is missing or invalid in territory entry " << i+1 << "." << endl;
-                    
-                    for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
                     delete tempMapPtr;
                     return {INVALID_TERRITORY, nullptr};
 
-                } else { tempTerritory -> setID(territoryID); }
-
-                //Check X Coordinate
-                if(xCoordStr.empty()){
-
-                    cerr << "Error: X coordinate is missing or invalid in territory entry " << i+1 << "." << endl;
-                    
-                    for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
-                    delete tempMapPtr;
-                    return {INVALID_TERRITORY, nullptr};
-
-                } else {
-
-                    pair <bool, int> xCoordStatus = StringHandling::isStrInt(xCoordStr);
-
-                    if(xCoordStatus.first) {
-
-                        tempTerritory -> setXCoord(xCoordStatus.second);
-
-                    } else {
-
-                        cerr << "Error: X coordinate is not a valid number in territory entry " << i+1 << "." << endl;
-                        
-                        for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
-                        delete tempMapPtr;
-                        return {INVALID_TERRITORY, nullptr};
-
-                    }
-                
                 }
 
-                //Check y Coordinate
-                if(yCoordStr.empty()){
+                //Check X Coordinate
+                if(xCoordStr.empty()) {
 
-                    cerr << "Error: Y coordinate is missing or invalid in territory entry " << i+1 << "." << endl;
-                    
-                    for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
+                    cerr << "Error: X coordinate is missing or invalid in territory entry " << i+1 << "." << endl;
                     delete tempMapPtr;
                     return {INVALID_TERRITORY, nullptr};
 
-                } else {
-
-                    pair <bool, int> yCoordStatus = StringHandling::isStrInt(yCoordStr);
-
-                    if(yCoordStatus.first) {
-
-                        tempTerritory -> setYCoord(yCoordStatus.second);
-
-                    } else {
-
-                        cerr << "Error: Y coordinate is not a valid number in territory entry " << i+1 << "." << endl;
-                        
-                        for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
-                        delete tempMapPtr;
-                        return {INVALID_TERRITORY, nullptr};
-
-                    }
+                }
                 
+                pair<bool,int> xCoordStatus = StringHandling::isStrInt(xCoordStr);
+                if(!xCoordStatus.first) {
+
+                    cerr << "Error: X coordinate is not a valid number in territory entry " << i+1 << "." << endl;
+                    delete tempMapPtr;
+                    return {INVALID_TERRITORY, nullptr};
+
+                }
+
+                //Check Y Coordinate
+                if(yCoordStr.empty()) {
+
+                    cerr << "Error: Y coordinate is missing or invalid in territory entry " << i+1 << "." << endl;
+                    delete tempMapPtr;
+                    return {INVALID_TERRITORY, nullptr};
+
+                }
+
+                pair<bool,int> yCoordStatus = StringHandling::isStrInt(yCoordStr);
+                if(!yCoordStatus.first) {
+
+                    cerr << "Error: Y coordinate is not a valid number in territory entry " << i+1 << "." << endl;
+                    delete tempMapPtr;
+                    return {INVALID_TERRITORY, nullptr};
+
                 }
 
                 //Check Continent Name
                 if(continentName.empty()) {
 
                     cerr << "Error: Continent ID is missing or invalid in territory entry " << i+1 << "." << endl;
-                    
-                    for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
                     delete tempMapPtr;
                     return {INVALID_TERRITORY, nullptr};
 
-                } else {
+                }
 
-                    Continent* tempContinentPtr = tempMapPtr -> getContinentByID(continentName); //Find continent pointer by name
+                Continent* tempContinentPtr = tempMapPtr -> getContinentByID(continentName); //O(n) time
+                if(tempContinentPtr == nullptr) {
 
-                    if(tempContinentPtr == nullptr) {
-
-                        cerr << "Error: Continent ID is missing or invalid in territory entry " << i+1 << "." << endl;
-                    
-                        for (Continent* c : continentPtrs){ delete c; }  // Free previously allocated continent objects
-                        delete tempMapPtr;
-                        return {INVALID_TERRITORY, nullptr};
-
-                    } else {
-
-                        tempContinentPtr -> addTerritory(tempTerritory); //Add territory to continent's list of territories
-                        tempTerritory -> setContinent(tempContinentPtr); //Set territory's continent pointer
-
-                    }
+                    cerr << "Error: Continent ID is missing or invalid in territory entry " << i+1 << "." << endl;
+                    delete tempMapPtr;
+                    return {INVALID_TERRITORY, nullptr};
 
                 }
 
-                //Add territory (WITHOUT NEIGHBOURS) to map + lookup
-                tempMapPtr -> addTerritory(tempTerritory);
+                //All validations passed, now allocate territory
+                Territory* tempTerritory = new Territory();
+                tempTerritory->setID(territoryID);
+                tempTerritory->setXCoord(xCoordStatus.second);
+                tempTerritory->setYCoord(yCoordStatus.second);
+                tempTerritory->setContinent(tempContinentPtr);
+
+                //Attach to continent + map
+                tempContinentPtr->addTerritory(tempTerritory);
+                tempMapPtr->addTerritory(tempTerritory);
                 territoryPtrs.push_back(tempTerritory);
                 lookup[territoryID] = tempTerritory;
 
             }
 
             //-- Load neighbouring territories into map object (PASS 2: Populating Neighbours) --
-            for (size_t i = 0; i < territories.size(); i++) {
+            for(size_t i = 0; i < territories.size(); i++) { //For ALL territories
 
                 string territoryID = territories[i][0]; //Get territory ID
                 Territory* current = lookup[territoryID]; //Get pointer to current territory
 
-                for (size_t j = 4; j < territories[i].size(); j++) {
-                    
+                for(size_t j = 4; j < territories[i].size(); j++) { //Cover the neighbouring territories IDs
+
                     string neighborID = territories[i][j]; //Get neighbor ID
 
-                    if (lookup.count(neighborID)) { 
+                    if(lookup.count(neighborID)) { //MUST be bidirectional, since graph is undirected
+                        
+                        Territory* neighbor = lookup[neighborID];
 
-                        current -> addNeighbor(lookup[neighborID]);  // bidirectional handled in addNeighbor
+                        current -> addNeighbor(neighbor);
+                        neighbor -> addNeighbor(current);
 
                     } else {
-
-                        cerr << "Warning: Neighbor '" << neighborID << "' not found for territory '" << territoryID << "'." << endl;
+                        
+                        cerr << "Error: Neighbor '" << neighborID << "' not found for territory '" << territoryID << "'." << endl;
+                        delete tempMapPtr;
+                        return {INVALID_TERRITORY, nullptr};
 
                     }
+
                 }
 
             }
@@ -490,7 +457,15 @@ pair<int, Map*>MapLoader::loadMap() {
         
     }
 
+    // Validate map structure
+    if(!(tempMapPtr -> validate())) {
+
+        cerr << "Error: The map structure is invalid." << endl;
+        delete tempMapPtr;
+        return {INVALID_MAP_STRUCTURE, nullptr};
+
+    }
+
     return {MAP_OK, tempMapPtr};
 
-} 
-
+}

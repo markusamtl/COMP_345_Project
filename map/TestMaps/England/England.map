@@ -1,0 +1,76 @@
+[Map]
+author=Franswa Tournier
+image=england.bmp
+wrap=yes
+scroll=vertical
+warn=yes
+
+[Continents]
+
+North West=3
+Heart of England=3
+South West=4
+South East=5
+Greater London=1
+East Anglia=3
+East Midlands=3
+Yorkshire=2
+North East=2
+
+[Territories]
+Cumbria,216,150,North West,Northumberland,Durham,North Yorkshire,Lancashire
+Lancashire,237,233,North West,Cumbria,North Yorkshire,West Yorkshire,Greater Manchester,Merseyside
+Merseyside,221,280,North West,Lancashire,Greater Manchester,Cheshire
+Greater Manchester,260,272,North West,Lancashire,West Yorkshire,Derbyshire,Cheshire,Merseyside
+Cheshire,243,305,North West,Merseyside,Greater Manchester,Derbyshire,Staffordshire,Shropshire
+
+Shropshire,231,372,Heart of England,Cheshire,Staffordshire,West Midlands,Worcestershire,Herefordshire
+Staffordshire,276,347,Heart of England,Shropshire,Cheshire,Derbyshire,Northamptonshire,West Midlands
+West Midlands,281,387,Heart of England,Shropshire,Staffordshire,Northamptonshire,Worcestershire
+Herefordshire,227,434,Heart of England,Shropshire,Worcestershire,Gloucestershire
+Worcestershire,267,418,Heart of England,Shropshire,West Midlands,Northamptonshire,Gloucestershire,Herefordshire
+Northamptonshire,308,418,Heart of England,Worcestershire,West Midlands,Staffordshire,Derbyshire,Leicestershire,Warwickshire,Oxfordshire,Gloucestershire
+
+Gloucestershire,269,464,South West,Herefordshire,Worcestershire,Northamptonshire,Oxfordshire,Wiltshire,Avon
+Avon,240,505,South West,Gloucestershire,Wiltshire,Somerset
+Wiltshire,282,520,South West,Gloucestershire,Oxfordshire,Hampshire,Dorset,Somerset,Avon
+Somerset,216,549,South West,Avon,Wiltshire,Dorset,Devon
+Cornwall,79,614,South West,Devon
+Devon,146,582,South West,Somerset,Dorset,Cornwall
+Dorset,257,579,South West,Devon,Somerset,Wiltshire,Hampshire
+
+Oxfordshire,329,484,South East,Northamptonshire,Warwickshire,Buckinghamshire,Hertfordshire,Westminster,Surrey,Hampshire,Wiltshire,Gloucestershire
+Buckinghamshire,353,460,South East,Warwickshire,Bedfordshire,Hertfordshire,Oxfordshire
+Hertfordshire,364,486,South East,Buckinghamshire,Bedfordshire,Westminster,Oxfordshire
+Hampshire,329,548,South East,Dorset,Wiltshire,Oxfordshire,Surrey,West Sussex,Isle of Wright
+Isle of Wright,329,598,South East,Hampshire
+Surrey,382,532,South East,Oxfordshire,Westminster,Eastend,Kent,West Sussex,Hampshire
+West Sussex,383,564,South East,Hampshire,Surrey,East Sussex
+East Sussex,439,565,South East,West Sussex,Kent
+Kent,470,533,South East,East Sussex,Surrey,Eastend,Essex
+
+Westminster,399,501,Greater London,Bedfordshire,Eastend,Surrey,Oxfordshire,Hertfordshire
+Eastend,423,501,Greater London,Bedfordshire,Essex,Kent,Surrey,Westminster
+
+Norfolk,484,361,East Anglia,Suffolk,Cambridgeshire,Lincolnshire
+Cambridgeshire,420,402,East Anglia,Warwickshire,Leicestershire,Lincolnshire,Norfolk,Suffolk,Essex,Bedfordshire
+Suffolk,494,418,East Anglia,Essex,Cambridgeshire,Norfolk
+Bedfordshire,398,458,East Anglia,Cambridgeshire,Essex,Eastend,Westminster,Hertfordshire,Buckinghamshire,Warwickshire
+Essex,455,464,East Anglia,Cambridgeshire,Suffolk,Kent,Eastend,Bedfordshire
+
+Derbyshire,310,320,East Midlands,South Yorkshire,Nottinghamshire,Leicestershire,Northamptonshire,Staffordshire,Cheshire,Greater Manchester
+Nottinghamshire,345,316,East Midlands,South Yorkshire,Lincolnshire,Leicestershire,Derbyshire
+Lincolnshire,397,306,East Midlands,Humberside,Norfolk,Cambridgeshire,Leicestershire,Nottinghamshire,South Yorkshire
+Leicestershire,347,372,East Midlands,Derbyshire,Nottinghamshire,Lincolnshire,Cambridgeshire,Warwickshire,Northamptonshire
+Warwickshire,355,411,East Midlands,Leicestershire,Cambridgeshire,Bedfordshire,Buckinghamshire,Oxfordshire,Northamptonshire
+
+North Yorkshire,324,193,Yorkshire,Durham,Cleveland,Humberside,South Yorkshire,West Yorkshire,Lancashire,Cumbria
+West Yorkshire,301,244,Yorkshire,North Yorkshire,South Yorkshire,Greater Manchester,Lancashire
+Humberside,377,227,Yorkshire,North Yorkshire,Lincolnshire,South Yorkshire
+South Yorkshire,320,276,Yorkshire,West Yorkshire,North Yorkshire,Humberside,Lincolnshire,Nottinghamshire,Derbyshire
+
+Northumberland,275,82,North East,Tyne and Wear,Durham,Cumbria
+Tyne and Wear,306,107,North East,Northumberland,Durham
+Durham,292,138,North East,Northumberland,Tyne and Wear,Cleveland,North Yorkshire,Cumbria
+Cleveland,328,149,North East,Durham,North Yorkshire
+

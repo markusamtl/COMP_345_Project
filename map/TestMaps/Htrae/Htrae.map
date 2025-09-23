@@ -1,0 +1,95 @@
+[Map]
+author=Sid6.7
+warn=yes
+image=Htrae.bmp
+wrap=yes
+scroll=horizontal
+
+[Continents]
+Eganprual=7
+Caisenor=1
+Ekal=2
+Tiuni=2
+Dnalneerg=3
+New Acirema=6
+Sitnalta=2
+Gascar=1
+Ecnarfia=2
+Natirbia=3
+Razpian=5
+Lapen=2
+Nolyec=3
+Anichi=6
+Lappines=1
+Desolation=1
+
+
+
+
+[Territories]
+
+Uni,156,85,Tiuni,Rince,far Prual
+
+Neerg,230,60,Dnalneerg,Nyvok,Far Prual,Baflin
+Baflin,274,92,Dnalneerg,Neerg,Rince,Dnaleci,Aska
+Rince,218,120,Dnalneerg,Uni,Baflin
+
+Oi,205,159,Ekal,Aska,Parz
+
+Nyvok,501,21,Desolation,Neerg,Far Prual,Dnaleci,New Dnalgne,Khanz,W. Prual
+
+Nodol,425,132,Natirbia,Khanz,Dnaleci,Drocnoc
+
+Sirap,461,197,Ecnarfia,Drocnoc,Lam,Khanz
+
+Khanz,538,170,Razpian,Nodol,Sirap,Nyvok,Lam,Gnohgnok
+
+Lam,571,262,Lapen,Khanz,Tam,Otiuq,Timer,Sirap
+Tam,624,267,Lapen,Lam,Dognus,Mantiev
+
+Timer,520,322,Gascar,Otiuq,Lam,Kalfland
+
+Maneela,751,313,Lappines,Mantiev,Dognus,Doneea,Ebrise
+
+Ornria,278,252,New Acirema,Auspris,Aska,Saxet
+Aska,262,202,New Acirema,Dnaleci,Baflin,Ornria,Oi
+Dnaleci,377,86,New Acirema,Nyvok,New Dnalgne,Nodol,Baflin,Aska,Drocnoc
+New Dnalgne,443,72,New Acirema,Dnaleci,Nyvok
+Drocnoc,371,208,New Acirema,Saxet,Sirap,Nodol,Dnaleci
+Saxet,361,268,New Acirema,Drocnoc,Ornria,Zazilia,Upu
+
+Zazilia,339,371,Sitnalta,Saxet,Upu,Kalfland,Omez,E. Dognus
+Upu,411,310,Sitnalta,Saxet,Zazilia,Kalfland
+Kalfland,454,410,Sitnalta,Timer,Zazilia,Upu,S. Dognus
+
+Otiuq,566,305,Nolyec,Timer,Lam,Dognus
+Dognus,625,321,Nolyec,Otiuq,Tam,Maneela,S. Dognus,E. Dognus
+S. Dognus,581,384,Nolyec,Dognus,E. Dognus,Kalfland
+E. Dognus,701,397,Nolyec,S. Dognus,Doneea,Dognus,Zazilia
+
+Mantiev,673,286,Anichi,Tam,Maneela,Gnohgnok
+Gnohgnok,724,246,Anichi,Mantiev,Khanz,Uaccam,Churiman
+Uaccam,795,257,Anichi,Gnohgnok,Churiman,Ebrise
+Churiman,789,182,Anichi,Gnohgnok,Uaccam,W. Prual
+
+Doneea,848,403,Eganprual,E. Dognus,Maneela,Ebrise,Decerk
+Ebrise,877,287,Eganprual,Maneela,Uaccam,Doneea,E. Ebrise,W. Prual
+E. Ebrise,13,270,EganPrual,Ebrise,Decerk,Equesas,Prual,Lachee
+Decerk,34,393,Eganprual,E. Ebrise,Rtica,Doneea
+Equesas,71,310,Eganprual,E. Ebrise,Auspris,Lachee,Rtica
+Auspris,182,318,Eganprual,Equesas,Lachee,Ornria,Rtica,Omez
+Lachee,84,235,Eganprual,E. Ebrise,Parz,Auspris,Prual,Equesas
+Parz,69,145,Eganprual,Oi,Prual,Lachee
+Prual,1,107,Eganprual,N. Prual,Far Prual,E. Ebrise,Lachee,Parz,W. Prual
+N. Prual,66,58,Eganprual,Prual
+Far Prual,113,19,Eganprual,Prual,Uni,Nyvok,Neerg
+W. Prual,890,80,EganPrual,Prual,Nyvok,Churiman,Ebrise
+
+Rtica,130,396,Caisenor,Decerk,Equesas,Auspris,Omez
+Omez,200,407,Caisenor,Rtica,Zazilia,Auspris
+
+
+
+
+
+

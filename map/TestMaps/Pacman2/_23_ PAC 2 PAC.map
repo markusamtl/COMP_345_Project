@@ -1,0 +1,69 @@
+[Map]
+image=_23_ PAC 2 PAC.bmp
+wrap=no
+scroll=none
+warn=no
+author=_MIKE CRUSH_
+
+[Continents]
+
+PAC-MAN=3
+GHOSTS=3
+
+MS PAC-MAN=3
+MS GHOSTS=3
+
+
+[Territories]
+
+pac1,105,93,PAC-MAN,pac2,pac3,pac4,pac5,pac6,pac7,pac8,pac9
+pac2,276,93,PAC-MAN,pac1,pac3,pac4,pac5,pac6,pac7,pac8,pac9
+pac3,358,147,PAC-MAN,pac1,pac2,pac4,pac5,pac6,pac7,pac8,pac9
+pac4,107,263,PAC-MAN,pac1,pac2,pac3,pac5,pac6,pac7,pac8,pac9
+pac5,271,264,PAC-MAN,pac1,pac2,pac3,pac4,pac6,pac7,pac8,pac9,gh4,msp5
+pac6,343,342,PAC-MAN,pac1,pac2,pac3,pac4,pac5,pac7,pac8,pac9
+pac7,230,382,PAC-MAN,pac1,pac2,pac3,pac4,pac5,pac6,pac8,pac9
+pac8,121,461,PAC-MAN,pac1,pac2,pac3,pac4,pac5,pac6,pac7,pac9
+pac9,370,461,PAC-MAN,pac1,pac2,pac3,pac4,pac5,pac6,pac7,pac8
+
+gh1,178,102,GHOSTS,gh2,gh3,gh4,gh5,gh6,gh7,gh8,gh9
+gh2,158,168,GHOSTS,gh1,gh3,gh4,gh5,gh6,gh7,gh8,gh9
+gh3,420,181,GHOSTS,gh1,gh2,gh4,gh5,gh6,gh7,gh8,gh9
+gh4,239,272,GHOSTS,gh1,gh2,gh3,gh5,gh6,gh7,gh8,gh9,pac5,msgh5
+gh5,392,273,GHOSTS,gh1,gh2,gh3,gh4,gh6,gh7,gh8,gh9
+gh6,302,313,GHOSTS,gh1,gh2,gh3,gh4,gh5,gh7,gh8,gh9
+gh7,92,371,GHOSTS,gh1,gh2,gh3,gh4,gh5,gh6,gh8,gh9
+gh8,192,391,GHOSTS,gh1,gh2,gh3,gh4,gh5,gh6,gh7,gh9
+gh9,276,451,GHOSTS,gh1,gh2,gh3,gh4,gh5,gh6,gh7,gh8
+
+
+msp1,662,91,MS PAC-MAN,msp2,msp3,msp4,msp5,msp6,msp7,msp8,msp9
+msp2,481,184,MS PAC-MAN,msp1,msp3,msp4,msp5,msp6,msp7,msp8,msp9
+msp3,576,184,MS PAC-MAN,msp1,msp2,msp4,msp5,msp6,msp7,msp8,msp9
+msp4,700,184,MS PAC-MAN,msp1,msp2,msp3,msp5,msp6,msp7,msp8,msp9
+msp5,655,264,MS PAC-MAN,msp1,msp2,msp3,msp4,msp6,msp7,msp8,msp9,msgh5,pac5
+msp6,804,303,MS PAC-MAN,msp1,msp2,msp3,msp4,msp5,msp7,msp8,msp9
+msp7,579,343,MS PAC-MAN,msp1,msp2,msp3,msp4,msp5,msp6,msp8,msp9
+msp8,719,387,MS PAC-MAN,msp1,msp2,msp3,msp4,msp5,msp6,msp7,msp9
+msp9,519,466,MS PAC-MAN,msp1,msp2,msp3,msp4,msp5,msp6,msp7,msp8
+
+
+msgh1,591,99,MS GHOSTS,msgh2,msgh3,msgh4,msgh5,msgh6,msgh7,msgh8,msgh9
+msgh2,769,100,MS GHOSTS,msgh1,msgh3,msgh4,msgh5,msgh6,msgh7,msgh8,msgh9
+msgh3,534,167,MS GHOSTS,msgh1,msgh2,msgh4,msgh5,msgh6,msgh7,msgh8,msgh9
+msgh4,728,232,MS GHOSTS,msgh1,msgh2,msgh3,msgh5,msgh6,msgh7,msgh8,msgh9
+msgh5,619,272,MS GHOSTS,msgh1,msgh2,msgh3,msgh4,msgh6,msgh7,msgh8,msgh9,msp5,gh4
+msgh6,662,312,MS GHOSTS,msgh1,msgh2,msgh3,msgh4,msgh5,msgh7,msgh8,msgh9
+msgh7,527,351,MS GHOSTS,msgh1,msgh2,msgh3,msgh4,msgh5,msgh6,msgh8,msgh9
+msgh8,594,435,MS GHOSTS,msgh1,msgh2,msgh3,msgh4,msgh5,msgh6,msgh7,msgh9
+msgh9,753,473,MS GHOSTS,msgh1,msgh2,msgh3,msgh4,msgh5,msgh6,msgh7,msgh8
+
+
+
+
+ 
+
+
+
+
+

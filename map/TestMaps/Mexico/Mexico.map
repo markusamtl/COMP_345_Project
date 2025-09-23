@@ -1,0 +1,50 @@
+[Map]
+image=Mexico.bmp
+wrap=no
+scroll=none
+author=Terry Lobert
+
+[Continents]
+North West=4
+South East=4
+East=4
+South West=5
+West=6
+
+[Territories]
+Baja California Sur,150,240,North West,Baja California,Nayarit
+Baja California,70,85,North West,Baja California Sur,Sonora
+Sonora,185,130,North West,Baja California,Chihuahua,Sinaloa
+Sinaloa,245,245,North West,Sonora,Chihuahua,Durango,Nayarit
+Durango,315,255,North West,Sinaloa,Chihuahua,Coahuila De Zaragoza,Zacatecas,Nayarit
+Coahuila De Zaragoza,375,195,North West,Chihuahua,Durango,Zacatecas,Nuevo Leon
+Chihuahua,280,155,North West,Sonora,Coahuila De Zaragoza,Durango,Sinaloa
+
+Yucatan,715,355,South East,Quintana Roo,Campeche,Tamaulipas
+Quintana Roo,730,395,South East,Yucatan,Campeche
+Campeche,690,415,South East,Yucatan,Quintana Roo,Tabasco
+Tabasco,625,435,South East,Campeche,Veracruz-Llave,Chiapas
+Chiapas,635,475,South East,Tabasco,Oaxaca,Veracruz-Llave
+Oaxaca,525,475,South East,Chiapas,Veracruz-Llave,Puebla,Guerrero
+
+Tamaulipas,465,300,East,Yucatan,Nuevo Leon,San Luis Potosi,Veracruz-Llave
+Nuevo Leon,435,225,East,Coahuila De Zaragoza,Zacatecas,San Luis Potosi,Tamaulipas
+San Luis Potosi,425,330,East,Nuevo Leon,Tamaulipas,Veracruz-Llave,Hidalgo,Queretaro,Guanajuato,Zacatecas
+Veracruz-Llave,525,415,East,Tabasco,Chiapas,Oaxaca,Puebla,Hidalgo,San luis Potosi,Tamaulipas
+
+Michoacan De Ocampo,395,410,South West,Colima,Jalisco,Guanajuato,Queretaro,Estado De Mexico,Guerrero
+Guerrero,445,460,South West,Michoacan De Ocampo,Estado De Mexico,Morelos,Puebla,Oaxaca
+Estado De Mexico,440,410,South West,Michoacan De Ocampo,Queretaro,Hidalgo,Tlaxcala,Puebla,Morelos,Distrito Federal,Guerrero
+Queretaro,440,370,South West,San Luis Potosi,Hidalgo,Estado De Mexico,Michoacan De Ocampo,Guanajuato
+Hidalgo,460,380,South West,San Luis Potosi,Veracruz-Llave,Puebla,Tlaxcala,Estado De Mexico,Queretaro
+Distrito Federal,458,410,South West,Estado De Mexico,Morelos
+Morelos,460,425,South West,Estado De Mexico,Distrito Federal,Puebla,Guerrero
+Tlaxcala,485,405,South West,Hidalgo,Puebla,Estado De Mexico
+Puebla,490,425,South West,Tlaxcala,Hidalgo,Veracruz-Llave,Oaxaca,Guerrero,Morelos,Estado De Mexico
+
+Colima,340,415,West,Jalisco,Michoacan De Ocampo
+Jalisco,345,385,West,Nayarit,Zacatecas,Aguascalientes,Guanajuato,Michoacan De Ocampo,Colima
+Nayarit,315,345,West,Sinaloa,Durango,Zacatecas,Jalisco,Baja California Sur
+Aguascalientes,375,338,West,Zacatecas,Jalisco
+Zacatecas,365,300,West,Coahuila De Zaragoza,Nuevo Leon,San Luis Potosi,Jalisco,Aguascalientes,Nayarit,Durango,Guanajuato
+Guanajuato,405,370,West,San Luis Potosi,Queretaro,Michoacan De Ocampo,Jalisco,Zacatecas

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../MapStorage/Territory.h"
-#include "../MapStorage/Continent.h"
+#include "../map_storage/Territory.h"
+#include "../map_storage/Continent.h"
 #include "Map.h"
 
 using namespace std;

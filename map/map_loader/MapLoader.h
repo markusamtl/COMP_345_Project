@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "../../miscellaneous/StringHandling.h"
-#include "../MapImplementation/Map.h"
+#include "../map_implementation/Map.h"
 
 using namespace std;
 

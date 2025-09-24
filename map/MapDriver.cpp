@@ -3,8 +3,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include "MapLoader/MapLoader.h"
-#include "MapImplementation/Map.h"
+#include "map_loader/MapLoader.h"
+#include "map_implementation/Map.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -105,7 +105,7 @@ void testLoadMaps(const string& directory, int numOfMapsToLoad) {
 
 int main() {
 
-    string directory = "map/testMaps";
+    string directory = "map/test_maps";
 
     // Count how many .map files exist
     vector<string> mapFiles;

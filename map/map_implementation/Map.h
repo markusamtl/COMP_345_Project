@@ -5,8 +5,8 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "../MapStorage/Territory.h"
-#include "../MapStorage/Continent.h"
+#include "../map_storage/Territory.h"
+#include "../map_storage/Continent.h"
 
 using namespace std;
 

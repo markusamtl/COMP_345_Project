@@ -2,6 +2,7 @@
 
 #include "../map/map_storage/Territory.h"
 #include "../card/Hand.h"
+#include "../order/order_implementation/OrderList.h"
 #include <iostream>
 #include <string>
 #include <map>
@@ -15,9 +16,16 @@ class player {
 
         string playerName;
         vector<Territory*> ownedTerritories;
-        Hand* ownedCards; 
+        Hand* playerHand;
+        OrderList* playerHand;
 
     public:
+
+        //-- Class Methods -- 
+
+        vector<Territory*> toAttack();
+        vector<Territory*> toDefend();
+        void issueOrders();
 
 
 };

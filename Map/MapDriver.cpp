@@ -101,7 +101,7 @@ void testLoadMaps(const string& directory, int numOfMapsToLoad) {
 
 int main() {
 
-    string directory = "map/test_maps";
+    string directory = "Map/test_maps";
 
     // Count how many .map files exist
     vector<string> mapFiles;

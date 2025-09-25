@@ -3,17 +3,13 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include "map_loader/MapLoader.h"
-#include "map_implementation/Map.h"
+#include "Map.h"
+#include "MapDriver.h"
 
 using namespace std;
+using namespace WarzoneMap;   // pull in Map, MapLoader, etc.
 namespace fs = std::filesystem;
 
-/**
- * @brief Free function to test loading of random map files
- * @param directory Path to the folder containing map subfolders
- * @param numOfMapsToLoad Number of random maps to select and test
- */
 void testLoadMaps(const string& directory, int numOfMapsToLoad) {
     
     vector<string> mapFiles;

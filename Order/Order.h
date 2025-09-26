@@ -1,0 +1,7 @@
+namespace WarzoneOrder {
+
+    class Order {
+
+    };
+
+}

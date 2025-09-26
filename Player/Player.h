@@ -125,151 +125,194 @@ namespace WarzonePlayer {
      */
     class Player {
     
-      private:
+        private:
 
-          //-- Player Attributes --//
-          string playerName;
-          PlayerTerrContainer ownedTerritories;
-          Hand* playerHand;
-          Order* playerOrders;
+            //-- Player Attributes --//
+            string playerName;
+            vector<string> neutralEnemies;
+            PlayerTerrContainer ownedTerritories;
+            Hand* playerHand;
+            Order* playerOrders;
       
-      public:
+        public:
 
-         //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
+            //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
-          /**
-           * @brief Default constructor. Creates an empty player.
-           */
-          Player();
+            /**
+             * @brief Default constructor. Creates an empty player.
+             */
+            Player();
 
-          /**
-           * @brief Constructs a player with a given name.
-           * @param name The name of the player.
-           */
-          Player(const string& name);
+            /**
+             * @brief Constructs a player with a given name.
+             * @param name The name of the player.
+             */
+            Player(const string& name);
 
-          /**
-           * @brief Constructs a player with a given name, hand, and order list. Useful for game engine
-           * @param name The name of the player.
-           * @param hand Pointer to the player's hand of cards.
-           * @param orders Pointer to the player's order list.
-           */
-          Player(const string& name, Hand* hand, Order* orders);
+            /**
+             * @brief Constructs a player with a given name, hand, and order list. Useful for game engine
+             * @param name The name of the player.
+             * @param hand Pointer to the player's hand of cards.
+             * @param orders Pointer to the player's order list.
+             */
+            Player(const string& name, Hand* hand, Order* orders);
 
-          /**
-           * @brief Constructs a player with a given name, list of territories, hand, and order list.
-           * @param name The name of the player.
-           * @param hand Pointer to the player's hand of cards.
-           * @param orders Pointer to the player's order list.
-           */
-          Player(const string& name, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders);
+            /**
+             * @brief Constructs a player with a given name, list of territories, hand, and order list.
+             * @param name The name of the player.
+             * @param neutralEnemies The names of enemies that the player may not attack
+             * @param ownedTerritories The list of owned territories
+             * @param hand Pointer to the player's hand of cards.
+             * @param orders Pointer to the player's order list.
+             */
+            Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders);
 
-          /**
-           * @brief Destructor. Cleans up player's hand and orders if allocated.
-           */
-          ~Player();
+            /**
+             * @brief Destructor. Cleans up player's hand and orders if allocated.
+             */
+            ~Player();
 
-          /**
-           * @brief Copy constructor.
-           * @param other Another Player object to copy from.
-           */
-          Player(const Player& other);
+            /**
+             * @brief Copy constructor.
+             * @param other Another Player object to copy from.
+             */
+            Player(const Player& other);
 
-          /**
-           * @brief Assignment operator.
-           * @param other Another Player object to assign from.
-           * @return Reference to this Player.
-           */
-          Player& operator=(const Player& other);
+            /**
+             * @brief Assignment operator.
+             * @param other Another Player object to assign from.
+             * @return Reference to this Player.
+             */
+            Player& operator=(const Player& other);
 
-          /**
-           * @brief Stream insertion operator for Player.
-           * @param os Output stream.
-           * @param p Player to output.
-           * @return Reference to the output stream.
-           */
-          friend ostream& operator<<(ostream& os, const Player& p);
+            /**
+             * @brief Stream insertion operator for Player.
+             * @param os Output stream.
+             * @param p Player to output.
+             * @return Reference to the output stream.
+             */
+            friend ostream& operator<<(ostream& os, const Player& p);
 
-          //-- Accessors and Mutators --//
+            //-- Accessors and Mutators --//
 
-          /**
-           * @brief Accessor for playerName.
-           * @return Player's name as a const reference.
-           */
-          const string& getPlayerName() const;
+            /**
+             * @brief Accessor for playerName.
+             * @return Player's name as a const reference.
+             */
+            const string& getPlayerName() const;
 
-          /**
-           * @brief Mutator for player's name.
-           * @param playerName The new name for the player.
-           */
-          void setPlayerName(const string& playerName);
+            /**
+             * @brief Mutator for player's name.
+             * @param playerName The new name for the player.
+             */
+            void setPlayerName(const string& playerName);
 
-          /**
-           * @brief Accessor for owned territories container.
-           * @return Const reference to PlayerTerrContainer.
-           */
-          const PlayerTerrContainer& getOwnedTerritories() const;
+            /**
+             * @brief Accessor for neutralEnemies.
+             * @return All neutral enemies as a const reference.
+             */
+            const vector<string>& getNeutralEnemies() const;
 
-          /**
-           * @brief Mutator for owned territories container.
-           * @param newTerritories PlayerTerrContainer to set.
-           */
-          void setOwnedTerritories(const PlayerTerrContainer& newTerritories);
+            /**
+             * @brief Mutator for neutralEnemies.
+             * @param playerName The new name for the player.
+             */
+            void setNeutralEnemies(const vector<string>& neutralEnemies);
 
-          /**
-           * @brief Accessor for player's hand.
-           * @return Pointer to Hand.
-           */
-          Hand* getHand() const;
+            /**
+             * @brief Accessor for owned territories container.
+             * @return Const reference to PlayerTerrContainer.
+             */
+            const PlayerTerrContainer& getOwnedTerritories() const;
 
-          /**
-           * @brief Mutator for player's hand.
-           * @param newHand Pointer to a Hand.
-           */
-          void setHand(Hand* newHand);
+            /**
+             * @brief Mutator for owned territories container.
+             * @param newTerritories PlayerTerrContainer to set.
+             */
+            void setOwnedTerritories(const PlayerTerrContainer& newTerritories);
 
-          /**
-           * @brief Accessor for player's order list.
-           * @return Pointer to OrderList.
-           */
-          Order* getOrders() const;
+            /**
+             * @brief Accessor for player's hand.
+             * @return Pointer to Hand.
+             */
+            Hand* getHand() const;
 
-          /**
-           * @brief Mutator for player's order list.
-           * @param newOrders Pointer to an OrderList.
-           */
-          void setOrders(Order* newOrders);
+            /**
+             * @brief Mutator for player's hand.
+             * @param newHand Pointer to a Hand.
+             */
+            void setHand(Hand* newHand);
 
-          //-- Class Methods --//
+            /**
+             * @brief Accessor for player's order list.
+             * @return Pointer to OrderList.
+             */
+            Order* getOrders() const;
 
-          /**
-           * @brief Returns a list of territories that the player may choose to attack.
-           * @return Vector of Territory pointers.
-           */
-          vector<WarzoneMap::Territory*> toAttack();
+            /**
+             * @brief Mutator for player's order list.
+             * @param newOrders Pointer to an OrderList.
+             */
+            void setOrders(Order* newOrders);
 
-          /**
-           * @brief Returns a list of territories that the player may choose to defend.
-           * @return Vector of Territory pointers.
-           */
-          vector<WarzoneMap::Territory*> toDefend();
+            //-- Class Methods --//
 
-          /**
-           * @brief Creates an order and adds it to the player’s order list.
-           */
-          void issueOrders();
+            /**
+             * @brief Returns a list of territories that the player may choose to attack.
+             * @return Vector of Territory pointers.
+             */
+            vector<WarzoneMap::Territory*> toAttack();
 
-          /**
-           * @brief Adds a territory to the player’s owned territories.
-           * @param territory Pointer to the territory to add.
-           */
-          void addOwnedTerritories(WarzoneMap::Territory* territory);
+            /**
+             * @brief Prints out the attack possibilites for a player
+             */
+            void toAttackPrint();
 
-          /**
-           * @brief Removes a territory from the player’s owned territories.
-           * @param territory Pointer to the territory to remove.
-           */
-          void removeOwnedTerritories(WarzoneMap::Territory* territory);
+
+            /**
+             * @brief Returns a list of territories that the player may choose to defend.
+             * @return Vector of Territory pointers.
+             */
+            vector<WarzoneMap::Territory*> toDefend();
+
+             /**
+             * @brief Prints out the defence possibilites for a player
+             */
+            void toDefendPrint();
+
+            /**
+             * @brief Creates an order and adds it to the player’s order list.
+             */
+            void issueOrders();
+
+            /**
+             * @brief Adds a territory to the player’s owned territories.
+             * @param territory Pointer to the territory to add.
+             */
+            void addOwnedTerritories(WarzoneMap::Territory* territory);
+
+            /**
+             * @brief Removes a territory from the player’s owned territories.
+             * @param territory Pointer to the territory to remove.
+             */
+            void removeOwnedTerritories(WarzoneMap::Territory* territory);
+
+            /**
+             * @brief Add a single neutral enemy (negotiated player).
+             * @param enemyName The name of the neutral enemy player.
+             */
+            void addNeutralEnemy(const string& enemyName);
+
+            /**
+             * @brief Remove a neutral enemy if present.
+             * @param enemyName The name of the enemy to remove.
+             */
+            void removeNeutralEnemy(const string& enemyName);
+
+            /**
+             * @brief Clear all neutral enemies (e.g., at the start of a new turn).
+             */
+            void clearNeutralEnemies();
 
     };
 

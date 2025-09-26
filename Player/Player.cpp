@@ -134,8 +134,6 @@ namespace WarzonePlayer {
 
     }
 
-
-
     bool PlayerTerrContainer::owns(Territory* t) const {
 
         if(t == nullptr) { return false; }
@@ -163,6 +161,7 @@ namespace WarzonePlayer {
     Player::Player() {
 
         this -> playerName = "";
+        this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
@@ -172,6 +171,7 @@ namespace WarzonePlayer {
     Player::Player(const string& name) {
 
         this -> playerName = name;
+        this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
@@ -181,7 +181,18 @@ namespace WarzonePlayer {
     Player::Player(const string& name, Hand* hand, Order* orders) {
 
         this -> playerName = name;
+        this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
+        this -> playerHand = hand;
+        this -> playerOrders = orders;
+
+    }
+
+    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders){
+    
+        this -> playerName = name;
+        this -> neutralEnemies = neutralEnemies;
+        this -> ownedTerritories = ownedTerritories;
         this -> playerHand = hand;
         this -> playerOrders = orders;
 
@@ -194,121 +205,159 @@ namespace WarzonePlayer {
 
     }
 
-  Player::Player(const Player& other) {
+    Player::Player(const Player& other) {
 
-      this -> playerName = other.playerName;
-      this -> ownedTerritories = other.ownedTerritories;
-      this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr); //Check if other.playerHand is a nullptr or not
-      this -> playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
-
-  }
-
-  Player& Player::operator=(const Player& other) {
-
-      if (this != &other) {
-
-          this->playerName = other.playerName;
-          this->ownedTerritories = other.ownedTerritories;
-
-          //Remove, since this method performs a reassignment.
-          delete this->playerHand;
-          delete this->playerOrders;
-
-          this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);  //Check if other.playerHand is a nullptr or not
-          this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
+        this->playerName = other.playerName;
+        this->neutralEnemies = other.neutralEnemies;
+        this->ownedTerritories = other.ownedTerritories;
+        this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
+        this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+    
+    }
 
 
-      }
+    Player& Player::operator=(const Player& other) {
 
-      return *this;
+        if (this != &other) {
 
-  }
+            this->playerName = other.playerName;
+            this->neutralEnemies = other.neutralEnemies; // copy negotiated players
+            this->ownedTerritories = other.ownedTerritories;
+
+            // Clean up old pointers before reassigning
+            delete this->playerHand;
+            delete this->playerOrders;
+
+            this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
+            this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+
+        }
+
+        return *this;
+
+    }
 
 
-  ostream& operator<<(ostream& os, const Player& p) {
 
-      os << "Player(Name: " << p.playerName 
-         << ", Territories Owned: " << p.ownedTerritories.size() 
-         << ", Hand: " << (p.playerHand ? "Present" : "None")
-         << ", Orders: " << (p.playerOrders ? "Present" : "None") 
-         << ")";
+    ostream& operator<<(ostream& os, const Player& p) {
 
-      return os;
+        os << "Player(Name: " << p.playerName 
+        << ", Territories Owned: " << p.ownedTerritories.size() 
+        << ", Hand: " << (p.playerHand ? "Present" : "None")
+        << ", Orders: " << (p.playerOrders ? "Present" : "None")
+        << ", Neutral Enemies: [";
 
-  }
+        for(size_t i = 0; i < p.neutralEnemies.size(); i++) {
 
-  //-- Accessors and Mutators --//
+            os << p.neutralEnemies[i];
+            if(i < p.neutralEnemies.size() - 1){ os << ", "; }//Make sure no excess commas
 
-  const string& Player::getPlayerName() const { return playerName; }
+        }
 
-  void Player::setPlayerName(const string& name) { playerName = name; }
+        os << "])";
 
-  const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
+        return os;
 
-  void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) { ownedTerritories = newTerritories; }
+    }
 
-  Hand* Player::getHand() const { return playerHand; }
 
-  void Player::setHand(Hand* newHand) {
+    //-- Accessors and Mutators --//
 
-      if(!(playerHand == nullptr)){ delete playerHand; } //Clear memory. Change later maybe?
-      playerHand = newHand;
+    const string& Player::getPlayerName() const { return playerName; }
 
-  }
+    void Player::setPlayerName(const string& name) { playerName = name; }
 
-  Order* Player::getOrders() const { return playerOrders; }
+    const vector<string>& Player::getNeutralEnemies() const { return neutralEnemies; }
 
-  void Player::setOrders(Order* newOrders) {
+    void Player::setNeutralEnemies(const vector<string>& enemies) { neutralEnemies = enemies; }
 
-      if(playerOrders != nullptr){ delete playerOrders; } //Clear memory. Change later maybe?
-      playerOrders = newOrders;
+    const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
 
-  }
+    void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) { ownedTerritories = newTerritories; }
 
-  //-- Class Methods --//
+    Hand* Player::getHand() const { return playerHand; }
+
+    void Player::setHand(Hand* newHand) {
+
+        if(!(playerHand == nullptr)){ delete playerHand; } //Clear memory. Change later maybe?
+        playerHand = newHand;
+
+    }
+
+    Order* Player::getOrders() const { return playerOrders; }
+
+    void Player::setOrders(Order* newOrders) {
+
+        if(playerOrders != nullptr){ delete playerOrders; } //Clear memory. Change later maybe?
+        playerOrders = newOrders;
+
+    }
+
+    //-- Class Methods --//
 
     vector<Territory*> Player::toAttack() {
-
-        unordered_set<Territory*> uniqueTargets; //Unordered set to avoid duplicate attack targets
+        
+        unordered_set<Territory*> uniqueTargets; //Avoid duplicates
 
         for(Territory* currTerr : ownedTerritories.getTerritories()) {
 
-            cout << "From: " << currTerr -> getID()  << ", " << playerName << " can attack: ";
+            for(Territory* neighTerr : currTerr->getNeighbors()) {
 
-            bool foundEnemy = false; //Helpful if a player's territory is surrounded by friendly territory
+                string neighOwner = neighTerr -> getOwner();
 
-            for(Territory* neighTerr : currTerr -> getNeighbors()) {
+                // Skip if owned by self or neutral enemy
+                if(neighOwner == playerName || 
+                    find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner) 
+                    != neutralEnemies.end()) { continue; }
 
-                if(neighTerr -> getOwner() != playerName) {
-
-                    // Print all valid neighbors, even if duplicate
-                    cout << neighTerr -> getID() << " (" << neighTerr ->getNumArmies() << " armies), ";
-                    foundEnemy = true;
-
-                    // Insert into set (since it's unordered, discard duplicate territories)
-                    uniqueTargets.insert(neighTerr);
-                }
+                uniqueTargets.insert(neighTerr);
 
             }
 
-            if(foundEnemy == false) { //Indicates that from this territory, there are no enemy neighbours
+        }
 
-                cout << "no enemies";
+        return vector<Territory*>(uniqueTargets.begin(), uniqueTargets.end()); //Copy set into return vector
+
+    }
+
+    void Player::toAttackPrint() {
+
+        for(Territory* currTerr : ownedTerritories.getTerritories()) {
+
+            cout << "From: " << currTerr->getID() << ", " << playerName << " can attack: ";
+
+            bool foundEnemy = false;
+
+            for(Territory* neighTerr : currTerr->getNeighbors()) {
+
+                string neighOwner = neighTerr -> getOwner();
+
+                //Skip if owned by self or neutral enemy
+                if (neighOwner == playerName ||
+                    std::find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner)
+                    != neutralEnemies.end()) { continue; }
+
+                cout << neighTerr->getID() << " (" << neighTerr->getNumArmies() << " armies), ";
+                
+                foundEnemy = true;
 
             }
+
+            if (!foundEnemy) { cout << "no enemies"; }
 
             cout << "\n";
 
         }
 
-        // Convert the set into a vector for the return type
-        vector<Territory*> validNeighbourArray(uniqueTargets.begin(), uniqueTargets.end());
-        return validNeighbourArray;
+    }
+
+    vector<Territory*> Player::toDefend() {
+
+        return ownedTerritories.getTerritories();
 
     }
 
-
-    vector<Territory*> Player::toDefend() {
+    void Player::toDefendPrint() {
 
         vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
 
@@ -323,27 +372,56 @@ namespace WarzonePlayer {
             for(size_t i = 0; i < ownedTerrs.size(); i++) {
 
                 cout << ownedTerrs[i] -> getID() << " (" << ownedTerrs[i]->getNumArmies() << " armies)";
-                
+                    
                 if(i < ownedTerrs.size() - 1){ cout << ", "; } //Make sure no extra commas are added 
+                
             }
 
             cout << "\n";
 
         }
 
-        return ownedTerrs;
-        
     }
 
+    void Player::issueOrders() {
+        
+        //TO BE DONE
 
-  void Player::issueOrders() {
-      
-    //TO BE DONE
+    }
 
-  }
+    void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory); }
 
-  void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory); }
+    void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
 
-  void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
+    void Player::addNeutralEnemy(const string& enemyName) {
 
+        //Iterate over the vector to check for the enemyName, and see if the result of the iteration isn't in the vector
+        if(find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) == neutralEnemies.end()) {
+            
+            neutralEnemies.push_back(enemyName); //Add the enemy name to the vector
+        
+        }
+    
+    }
+
+    void Player::removeNeutralEnemy(const string& enemyName) {
+
+        //Iterate over the vector to check for the enemyName
+        auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName);
+
+        //See if the result of the iteration isn't in the vector
+        if (find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) != neutralEnemies.end()) {
+            
+            neutralEnemies.erase(enemyNameIndex); //Remove the enemy name to the vector
+        
+        } 
+
+    }
+
+    void Player::clearNeutralEnemies() {
+
+        neutralEnemies.clear();
+
+    }
+    
 }

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../Order/Order.h"
 
 using namespace std;
 
@@ -211,7 +212,7 @@ namespace WarzonePlayer {
         this->neutralEnemies = other.neutralEnemies;
         this->ownedTerritories = other.ownedTerritories;
         this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-        this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+        this->playerOrders = (other.playerOrders ?  other.playerOrders->clone() : nullptr);
     
     }
 
@@ -229,7 +230,7 @@ namespace WarzonePlayer {
             delete this->playerOrders;
 
             this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-            this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+            this->playerOrders = (other.playerOrders ? other.playerOrders->clone() : nullptr);
 
         }
 

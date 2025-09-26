@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace WarzoneMap;   // pull in Map, MapLoader, etc.
-namespace fs = std::filesystem;
+namespace fs = filesystem;
 
 void testLoadMaps(const string& directory, int numOfMapsToLoad) {
     
@@ -101,7 +101,7 @@ void testLoadMaps(const string& directory, int numOfMapsToLoad) {
 
 int main() {
 
-    string directory = "Map/test_maps";
+    string directory = "test_maps";
 
     // Count how many .map files exist
     vector<string> mapFiles;

@@ -119,8 +119,9 @@ void testLoadMaps() {
 
 }
 
-// Standalone driver for Part 1
 int main() {
+
     testLoadMaps();
     return 0;
+    
 }

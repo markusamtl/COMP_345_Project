@@ -859,7 +859,7 @@ namespace WarzoneMap {
                     return MAP_PARSE_ERROR;
                 }
 
-            } else if (section == "[Continents]") { // Parse [Continents] section
+            } else if(section == "[Continents]") { // Parse [Continents] section
 
                 size_t pos = line.find('='); // Find position of '=' to split continent name and bonus value
 
@@ -879,7 +879,7 @@ namespace WarzoneMap {
                 else { return MAP_PARSE_ERROR; }
 
 
-            } else if (section == "[Territories]") { // Parse [Territories] section
+            } else if(section == "[Territories]") { // Parse [Territories] section
 
                 vector<string> fields; //To hold the fields of the territory line
                 string token; //Holds each field temporarily for a territory line
@@ -983,10 +983,10 @@ namespace WarzoneMap {
 
             vector<Continent*> continentPtrs; //To hold pointers for created continents
 
-            for (const auto& [name, value] : continents) { //Auto was really convenient here compared to pair as an iterator
+            for(const auto& [name, value] : continents) { //Auto was really convenient here compared to pair as an iterator
                 
                 //Validate BEFORE allocating
-                if (name.empty() || value <= 0) {
+                if(name.empty() || value <= 0) {
 
                     cerr << "Error: Invalid continent data for continent '" << name << "' with bonus value " << value << "." << endl;
                     for (Continent* c : continentPtrs) {delete c;}

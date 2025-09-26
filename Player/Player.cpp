@@ -1,5 +1,3 @@
-#include "Player.h"
-
 using namespace std;
 
 namespace WarzonePlayer {
@@ -104,128 +102,140 @@ namespace WarzonePlayer {
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
     Player::Player() {
-        this->playerName = "";
-        this->ownedTerritories = PlayerTerrContainer();
-        this->playerHand = nullptr;
-        this->playerOrders = nullptr;
+
+        this -> playerName = "";
+        this -> ownedTerritories = PlayerTerrContainer();
+        this -> playerHand = nullptr;
+        this -> playerOrders = nullptr;
+
     }
 
     Player::Player(const string& name) {
-        this->playerName = name;
-        this->ownedTerritories = PlayerTerrContainer();
-        this->playerHand = nullptr;
-        this->playerOrders = nullptr;
-    }
 
-    Player::Player(const string& name, Hand* hand, Order* orders) {
-
-        this->playerName = name;
-        this->ownedTerritories = PlayerTerrContainer();
-        this->playerHand = hand;
-        this->playerOrders = orders;
+        this -> playerName = name;
+        this -> ownedTerritories = PlayerTerrContainer();
+        this -> playerHand = nullptr;
+        this -> playerOrders = nullptr;
 
     }
 
-    Player::Player(const string& name, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders) {
+    Player::Player(const string& name, Hand* hand, OrderList* orders) {
 
-        this->playerName = name;
-        this->ownedTerritories = ownedTerritories;
-        this->playerHand = hand;
-        this->playerOrders = orders;
+        this -> playerName = name;
+        this -> ownedTerritories = PlayerTerrContainer();
+        this -> playerHand = hand;
+        this -> playerOrders = orders;
 
     }
 
     Player::~Player() {
 
-        delete playerHand; //Delete since the player owns the hand
-        delete playerOrders; //Delte since the player owns the orders
+        delete playerHand;
+        delete playerOrders;
 
     }
 
-    Player::Player(const Player& other) {
+  Player::Player(const Player& other) {
 
-        this->playerName = other.playerName;
-        this->ownedTerritories = other.ownedTerritories;
-        this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-        this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+      this -> playerName = other.playerName;
+      this -> ownedTerritories = other.ownedTerritories;
+      this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr); //Check if other.playerHand is a nullptr or not
+      this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
 
-    }
+  }
 
-    Player& Player::operator=(const Player& other) {
+  Player& Player::operator=(const Player& other) {
 
-        if (this != &other) {
+      if (this != &other) {
 
-            this->playerName = other.playerName;
-            this->ownedTerritories = other.ownedTerritories;
-            delete this->playerHand;
-            delete this->playerOrders;
-            this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-            this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr);
+          this->playerName = other.playerName;
+          this->ownedTerritories = other.ownedTerritories;
 
-        }
+          //Remove, since this is a reassignment.
+          delete this->playerHand;
+          delete this->playerOrders;
 
-        return *this;
+          this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);  //Check if other.playerHand is a nullptr or not
+          this->playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
 
-    }
 
-    ostream& operator<<(ostream& os, const Player& p) {
+      }
 
-        os << "Player(Name: " << p.playerName 
-        << ", Territories Owned: " << p.ownedTerritories.size() 
-        << ", Hand: " << (p.playerHand ? "Present" : "None")
-        << ", Orders: " << (p.playerOrders ? "Present" : "None") 
-        << ")";
+      return *this;
 
-        return os;
-    }
+  }
 
-    //-- Accessors and Mutators --//
 
-    const string& Player::getPlayerName() const { return playerName; }
-    void Player::setPlayerName(const string& name) { playerName = name; }
+  ostream& operator<<(ostream& os, const Player& p) {
 
-    const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
-    void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) { ownedTerritories = newTerritories; }
+      os << "Player(Name: " << p.playerName 
+         << ", Territories Owned: " << p.ownedTerritories.size() 
+         << ", Hand: " << (p.playerHand ? "Present" : "None")
+         << ", Orders: " << (p.playerOrders ? "Present" : "None") 
+         << ")";
+      return os;
 
-    Hand* Player::getHand() const { return playerHand; }
-    void Player::setHand(Hand* newHand) {
+  }
 
-        if (playerHand) delete playerHand;
-        playerHand = newHand;
-        
-    }
+  //-- Accessors and Mutators --//
 
-    Order* Player::getOrders() const { return playerOrders; }
-    void Player::setOrders(Order* newOrders) {
+  const string& Player::getPlayerName() const { return playerName; }
 
-        if (playerOrders) delete playerOrders;
-        playerOrders = newOrders;
+  void Player::setPlayerName(const string& name) { playerName = name; }
 
-    }
+  const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
 
-    //-- Class Methods --//
+  void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) { ownedTerritories = newTerritories; }
 
-    vector<Territory*> Player::toAttack() {
-        vector<Territory*> retArr;
-        for (Territory* currTerr : this->ownedTerritories.getTerritories()) {
-            cout << "From: " << currTerr->getID() << ", " << this->getPlayerName() << " can attack: ";
-        }
-        return retArr;
-    }
+  Hand* Player::getHand() const { return playerHand; }
 
-    vector<Territory*> Player::toDefend() {
-        // Placeholder: just return all owned territories
-        return ownedTerritories.getTerritories();
-    }
+  void Player::setHand(Hand* newHand) {
 
-    void Player::issueOrders() {
-        // Placeholder: order creation logic goes here
-        if (playerOrders) {
-            // Example: playerOrders->addOrder(new DeployOrder(...));
-        }
-    }
+      if(!(playerHand == nullptr)){ delete playerHand; }
+      playerHand = newHand;
 
-    void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory); }
-    void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
+  }
+
+  OrderList* Player::getOrders() const { return playerOrders; }
+
+  void Player::setOrders(OrderList* newOrders) {
+
+      if(playerOrders){ delete playerOrders; }
+      playerOrders = newOrders;
+
+  }
+
+  //-- Class Methods --//
+
+  vector<WarzoneMap::Territory*> Player::toAttack() {
+
+      vector<WarzoneMap::Territory*> retArr;
+
+      for(WarzoneMap::Territory* currTerr : this -> ownedTerritories.getTerritories()){
+
+          cout << "From: " << currTerr -> getID() << ", " << this -> getPlayerName() << " can attack: ";
+
+
+
+      }
+
+      return retArr;
+  }
+
+  vector<WarzoneMap::Territory*> Player::toDefend() {
+      // Placeholder: just return all owned territories
+      return ownedTerritories.getTerritories();
+  }
+
+  void Player::issueOrders() {
+      // Placeholder: order creation logic goes here
+      if (playerOrders) {
+          // Example: playerOrders->addOrder(new DeployOrder(...));
+      }
+  }
+
+  void Player::addOwnedTerritories(WarzoneMap::Territory* territory) { ownedTerritories.addTerritory(territory); }
+
+  void Player::removeOwnedTerritories(WarzoneMap::Territory* territory) { ownedTerritories.removeTerritory(territory); }
 
 }

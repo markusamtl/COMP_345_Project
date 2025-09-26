@@ -44,7 +44,11 @@ namespace WarzoneOrder {
 
     //DEPLOY: put number of army units on target territory
     class Deploy : public Order {
-       
+
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        Territory* target;
+        int numArmies;
+
         public:
 
         //function overrides
@@ -52,9 +56,14 @@ namespace WarzoneOrder {
         void execute() override;
     };
 
-    //ADVANCE
+    //ADVANCE: move number of army units from source territory to target territory
     class Advance : public Order {
 
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        Territory* source;
+        Territory* target;
+        int numArmies;
+
         public:
 
         //function overrides
@@ -62,9 +71,13 @@ namespace WarzoneOrder {
         void execute() override;
     };
 
-    //BOMN
+    //BOMB: destroy half the army units on target territory, needs card 
     class Bomb : public Order {
 
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        Territory* target;
+        //how to check the player's hand for a card?
+
         public:
 
         //function overrides
@@ -72,9 +85,14 @@ namespace WarzoneOrder {
         void execute() override;
     };
 
-    //BLOCKADE
+    //BLOCKADE: triple number of army units on target territory and make it neutral, needs card
     class Blockade : public Order {
 
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        Territory* target;
+        //how to check the player's hand for a card?
+        //do we need an attribute to make it neutral?
+
         public:
 
         //function overrides
@@ -82,9 +100,15 @@ namespace WarzoneOrder {
         void execute() override;
     };
 
-    //AIRLIFT
+    //AIRLIFT: advance number of army units from source territory to target territory, needs card
     class Airlift : public Order {
 
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        Territory* target;
+        Territory* source;
+        int numArmies;
+        //how to check the player's hand for a card?
+
         public:
 
         //function overrides
@@ -92,8 +116,12 @@ namespace WarzoneOrder {
         void execute() override;
     };
 
-    //NEGOTIATE
+    //NEGOTIATE: prevent attacks between player and target player until the end of the turn, needs card
     class Negotiate : public Order {
+
+        //do we need a player attribute or a player container attribute for the player issuing the order?
+        //do we need a player attribute or a player container attribute for the target player?
+        //how to check the player's hand for a card?
 
         public:
 
@@ -106,9 +134,5 @@ namespace WarzoneOrder {
     class OrderList {
 
     };
-
-    /*-------------------------------------------TEST-DRIVER FUNCTION---------------------------------------------*/
-
-    void testOrdersList();
 
 }

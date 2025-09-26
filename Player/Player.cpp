@@ -1,3 +1,5 @@
+#include "Player.h"
+
 using namespace std;
 
 namespace WarzonePlayer {
@@ -7,94 +9,151 @@ namespace WarzonePlayer {
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
     PlayerTerrContainer::PlayerTerrContainer() {
+
         this->territories = {};
         this->territoryIndex = {};
+        
     }
 
     PlayerTerrContainer::PlayerTerrContainer(vector<Territory*> territories, unordered_map<string, Territory*> territoryIndex) {
+        
         this->territories = territories;
         this->territoryIndex = territoryIndex;
+    
     }
 
     PlayerTerrContainer::~PlayerTerrContainer() {
-        territories.clear();
-        territoryIndex.clear();
+
+        this -> clear(); //Since territory deletion is handled by the map object
+
     }
 
     PlayerTerrContainer::PlayerTerrContainer(const PlayerTerrContainer& other) {
+        
         territories = other.territories;
         territoryIndex = other.territoryIndex;
+    
     }
 
     PlayerTerrContainer& PlayerTerrContainer::operator=(const PlayerTerrContainer& other) {
+
         if (this != &other) {
+
             territories = other.territories;
             territoryIndex = other.territoryIndex;
+
         }
+
         return *this;
+
     }
 
     ostream& operator<<(ostream& os, const PlayerTerrContainer& pc) {
+
         os << "Owned Territories (" << pc.territories.size() << "): [";
-        for (size_t i = 0; i < pc.territories.size(); i++) {
+
+        for(size_t i = 0; i < pc.territories.size(); i++) {
+
             os << pc.territories[i]->getID();
-            if (i < pc.territories.size() - 1) os << ", ";
+            if(i < pc.territories.size() - 1){ os << ", "; }
+
         }
+
         return os << "]\n";
+
     }
 
     //-- Accessor and Mutators --//
 
     const vector<Territory*>& PlayerTerrContainer::getTerritories() const {
+
         return territories;
+
     }
 
     void PlayerTerrContainer::setTerritories(const vector<Territory*>& newTerritories) {
+
         territories = newTerritories; //Overwrite old territory vector 
         territoryIndex.clear();       //Clear old hashmap
-        for (Territory* t : territories) {
-            if (t != nullptr) territoryIndex[t->getID()] = t;
+
+        for(Territory* t : territories) {
+        
+            if(t != nullptr){ territoryIndex[t->getID()] = t; }
+        
         }
+
     }
 
     const unordered_map<string, Territory*>& PlayerTerrContainer::getTerritoryIndex() const {
+
         return territoryIndex;
+    
     }
 
     void PlayerTerrContainer::setTerritoryIndex(const unordered_map<string, Territory*>& newIndex) {
+        
         territoryIndex = newIndex; //Overwrite old hashmap
         territories.clear();
-        for (const pair<const string, Territory*>& kv : territoryIndex) {
-            territories.push_back(kv.second);
+
+        for (const pair<const string, Territory*>& currTerr : territoryIndex) {
+
+            territories.push_back(currTerr.second);
+
         }
+
     }
 
     //-- Class Methods --//
-
     void PlayerTerrContainer::addTerritory(Territory* t) {
-        if (this->owns(t)) return; //Check if null or already exists
+
+        if(this -> owns(t)){ return; } //Check if null or already exists
+        
         territories.push_back(t);
-        territoryIndex[t->getID()] = t;
+        territoryIndex[t -> getID()] = t;
+
     }
 
     void PlayerTerrContainer::removeTerritory(Territory* t) {
-        if (!(this->owns(t))) return; //Check if null or doesn’t exist
-        territoryIndex.erase(territoryIndex.find(t->getID()));
-        territories.erase(remove(territories.begin(), territories.end(), t), territories.end());
+        
+        if(t == nullptr){ return; } //Safety check
+
+        //Lookup in the hashmap
+        auto hashMapTerrIndex = territoryIndex.find( t -> getID()); //If it doesn't exist, get the end iterator
+        if(hashMapTerrIndex == territoryIndex.end()) return;
+
+        territoryIndex.erase(hashMapTerrIndex); //Remove territory from hashmap
+
+        //Remove from the vector
+        auto vectorTerrIndex = find(territories.begin(), territories.end(), t);
+
+        if(vectorTerrIndex != territories.end()) { //Ensure that the territory to be removed exists in the vector
+
+            territories.erase(vectorTerrIndex);
+        
+        }
+
     }
 
+
+
     bool PlayerTerrContainer::owns(Territory* t) const {
-        if (t == nullptr) return false;
+
+        if(t == nullptr) { return false; }
         return territoryIndex.count(t->getID()) > 0;
+
     }
 
     void PlayerTerrContainer::clear() {
+
         territories.clear();
         territoryIndex.clear();
+
     }
 
     size_t PlayerTerrContainer::size() const {
+
         return territories.size();
+
     }
 
     // ================= Player ================= //
@@ -119,7 +178,7 @@ namespace WarzonePlayer {
 
     }
 
-    Player::Player(const string& name, Hand* hand, OrderList* orders) {
+    Player::Player(const string& name, Hand* hand, Order* orders) {
 
         this -> playerName = name;
         this -> ownedTerritories = PlayerTerrContainer();
@@ -140,7 +199,7 @@ namespace WarzonePlayer {
       this -> playerName = other.playerName;
       this -> ownedTerritories = other.ownedTerritories;
       this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr); //Check if other.playerHand is a nullptr or not
-      this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
+      this -> playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
 
   }
 
@@ -151,12 +210,12 @@ namespace WarzonePlayer {
           this->playerName = other.playerName;
           this->ownedTerritories = other.ownedTerritories;
 
-          //Remove, since this is a reassignment.
+          //Remove, since this method performs a reassignment.
           delete this->playerHand;
           delete this->playerOrders;
 
           this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);  //Check if other.playerHand is a nullptr or not
-          this->playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
+          this->playerOrders = (other.playerOrders ? new Order(*other.playerOrders) : nullptr); //Check if other.playerOrders is a nullptr or not
 
 
       }
@@ -173,6 +232,7 @@ namespace WarzonePlayer {
          << ", Hand: " << (p.playerHand ? "Present" : "None")
          << ", Orders: " << (p.playerOrders ? "Present" : "None") 
          << ")";
+
       return os;
 
   }
@@ -191,51 +251,99 @@ namespace WarzonePlayer {
 
   void Player::setHand(Hand* newHand) {
 
-      if(!(playerHand == nullptr)){ delete playerHand; }
+      if(!(playerHand == nullptr)){ delete playerHand; } //Clear memory. Change later maybe?
       playerHand = newHand;
 
   }
 
-  OrderList* Player::getOrders() const { return playerOrders; }
+  Order* Player::getOrders() const { return playerOrders; }
 
-  void Player::setOrders(OrderList* newOrders) {
+  void Player::setOrders(Order* newOrders) {
 
-      if(playerOrders){ delete playerOrders; }
+      if(playerOrders != nullptr){ delete playerOrders; } //Clear memory. Change later maybe?
       playerOrders = newOrders;
 
   }
 
   //-- Class Methods --//
 
-  vector<WarzoneMap::Territory*> Player::toAttack() {
+    vector<Territory*> Player::toAttack() {
 
-      vector<WarzoneMap::Territory*> retArr;
+        unordered_set<Territory*> uniqueTargets; //Unordered set to avoid duplicate attack targets
 
-      for(WarzoneMap::Territory* currTerr : this -> ownedTerritories.getTerritories()){
+        for(Territory* currTerr : ownedTerritories.getTerritories()) {
 
-          cout << "From: " << currTerr -> getID() << ", " << this -> getPlayerName() << " can attack: ";
+            cout << "From: " << currTerr -> getID()  << ", " << playerName << " can attack: ";
+
+            bool foundEnemy = false; //Helpful if a player's territory is surrounded by friendly territory
+
+            for(Territory* neighTerr : currTerr -> getNeighbors()) {
+
+                if(neighTerr -> getOwner() != playerName) {
+
+                    // Print all valid neighbors, even if duplicate
+                    cout << neighTerr -> getID() << " (" << neighTerr ->getNumArmies() << " armies), ";
+                    foundEnemy = true;
+
+                    // Insert into set (since it's unordered, discard duplicate territories)
+                    uniqueTargets.insert(neighTerr);
+                }
+
+            }
+
+            if(foundEnemy == false) { //Indicates that from this territory, there are no enemy neighbours
+
+                cout << "no enemies";
+
+            }
+
+            cout << "\n";
+
+        }
+
+        // Convert the set into a vector for the return type
+        vector<Territory*> validNeighbourArray(uniqueTargets.begin(), uniqueTargets.end());
+        return validNeighbourArray;
+
+    }
 
 
+    vector<Territory*> Player::toDefend() {
 
-      }
+        vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
 
-      return retArr;
-  }
+        cout << "Player " << playerName << " can defend: ";
 
-  vector<WarzoneMap::Territory*> Player::toDefend() {
-      // Placeholder: just return all owned territories
-      return ownedTerritories.getTerritories();
-  }
+        if(ownedTerrs.empty()) {
+
+            cout << "no territories\n";
+
+        } else {
+
+            for(size_t i = 0; i < ownedTerrs.size(); i++) {
+
+                cout << ownedTerrs[i] -> getID() << " (" << ownedTerrs[i]->getNumArmies() << " armies)";
+                
+                if(i < ownedTerrs.size() - 1){ cout << ", "; } //Make sure no extra commas are added 
+            }
+
+            cout << "\n";
+
+        }
+
+        return ownedTerrs;
+        
+    }
+
 
   void Player::issueOrders() {
-      // Placeholder: order creation logic goes here
-      if (playerOrders) {
-          // Example: playerOrders->addOrder(new DeployOrder(...));
-      }
+      
+    //TO BE DONE
+
   }
 
-  void Player::addOwnedTerritories(WarzoneMap::Territory* territory) { ownedTerritories.addTerritory(territory); }
+  void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory); }
 
-  void Player::removeOwnedTerritories(WarzoneMap::Territory* territory) { ownedTerritories.removeTerritory(territory); }
+  void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
 
 }

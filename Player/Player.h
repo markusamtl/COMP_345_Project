@@ -1,8 +1,12 @@
 #pragma once
+#include "Map/Map.h"
+#include "Card/Card.h"
+#include "Order/Order.h"
+
+#include <algorithm>
 
 namespace WarzonePlayer {
 
-    using namespace std;
     using WarzoneMap::Territory;
     using WarzoneCard::Hand;
     using WarzoneOrder::Order;
@@ -114,7 +118,7 @@ namespace WarzonePlayer {
              */
             size_t size() const;
             
-     };
+    };
 
     /**
      * @brief The Player class represents a Warzone player.
@@ -122,6 +126,7 @@ namespace WarzonePlayer {
     class Player {
     
       private:
+
           //-- Player Attributes --//
           string playerName;
           PlayerTerrContainer ownedTerritories;
@@ -149,7 +154,7 @@ namespace WarzonePlayer {
            * @param hand Pointer to the player's hand of cards.
            * @param orders Pointer to the player's order list.
            */
-          Player(const string& name, Hand* hand, OrderList* orders);
+          Player(const string& name, Hand* hand, Order* orders);
 
           /**
            * @brief Constructs a player with a given name, list of territories, hand, and order list.
@@ -157,7 +162,7 @@ namespace WarzonePlayer {
            * @param hand Pointer to the player's hand of cards.
            * @param orders Pointer to the player's order list.
            */
-          Player(const string& name, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders);
+          Player(const string& name, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders);
 
           /**
            * @brief Destructor. Cleans up player's hand and orders if allocated.
@@ -227,13 +232,13 @@ namespace WarzonePlayer {
            * @brief Accessor for player's order list.
            * @return Pointer to OrderList.
            */
-          OrderList* getOrders() const;
+          Order* getOrders() const;
 
           /**
            * @brief Mutator for player's order list.
            * @param newOrders Pointer to an OrderList.
            */
-          void setOrders(OrderList* newOrders);
+          void setOrders(Order* newOrders);
 
           //-- Class Methods --//
 

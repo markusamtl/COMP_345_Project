@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 
+#pragma once
+
 /**
- * @brief Free function to test loading of random map files
- * @param directory Path to the folder containing map subfolders
- * @param numOfMapsToLoad Number of random maps to select and test
+ * @brief Free function to test loading and validating ALL .map files from the "test_maps" directory and its subfolders.
  */
-void testLoadMaps(const std::string& directory, int numOfMapsToLoad);
+void testLoadMaps();

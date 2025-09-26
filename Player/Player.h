@@ -2,7 +2,6 @@
 #include "Map/Map.h"
 #include "Card/Card.h"
 #include "Order/Order.h"
-
 #include <algorithm>
 
 namespace WarzonePlayer {

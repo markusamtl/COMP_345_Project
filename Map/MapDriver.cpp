@@ -1,152 +1,126 @@
 #include <iostream>
 #include <filesystem>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
+#include <string>
 #include "Map.h"
 #include "MapDriver.h"
 
 using namespace std;
-using namespace WarzoneMap;   // pull in Map, MapLoader, etc.
-namespace fs = filesystem;
+using namespace WarzoneMap;
+namespace fs = std::filesystem;
 
-void testLoadMaps(const string& directory, int numOfMapsToLoad) {
-    
+void testLoadMaps() {
+
+    const string directory = "Map/test_maps"; //Fixed root directory
     vector<string> mapFiles;
 
-    //Collect all map folders and find any .map file inside
-    for(const auto& entry : fs::directory_iterator(directory)) {
+    // Collect ALL .map files recursively
+    try {
 
-        if(entry.is_directory()) { //Validate that the folder name is valid
+        for(const auto& entry : fs::recursive_directory_iterator(directory)) { //Iterate over all folders in the test_map folder
 
-            string folderName = entry.path().filename().string();
-            bool foundMap = false;
+            if (entry.is_regular_file() && entry.path().extension() == ".map") { //Check if a file in a folder is a .map file AND is a plain file
 
-            //Look inside this folder for a .map file
-            for(const auto& inner : fs::directory_iterator(entry.path())) { //Look at all files in the folder
-
-                if(inner.is_regular_file() && inner.path().extension() == ".map") { //If the checked file ends with .map
-
-                    mapFiles.push_back(inner.path().string());
-                    foundMap = true;
-                    break; //Use the first .map found
-
-                }
+                mapFiles.push_back(entry.path().string());
 
             }
 
-            //Should hopefully not be the case, every map has been tested
-            if(!foundMap) { cerr << "Skipping folder (no .map file found): " << folderName << endl; }
-
         }
 
-    }
+    } catch (const fs::filesystem_error& e) {
 
-    if(mapFiles.empty()) { //If NO .map files were found
-
-        cerr << "No valid .map files found in subfolders of: " << directory << endl;
+        cerr << "Filesystem error while scanning '" << directory << "': " << e.what() << endl;
         return;
 
     }
 
-    // Seed RNG
-    srand(static_cast<unsigned>(time(nullptr)));
+    if (mapFiles.empty()) {
 
-    //Associate numOfMapsToLoad to available maps
-    numOfMapsToLoad = min(numOfMapsToLoad, static_cast<int>(mapFiles.size()));
+        cerr << "No .map files found under: " << directory << endl;
+        return;
+        
+    }
 
-    cout << "=== testLoadMaps() ===" << endl << "Attempting to load " << numOfMapsToLoad << " random maps from subfolders of: " << directory << endl;
+    cout << "=== testLoadMaps() ===" << endl;
+    cout << "Found " << mapFiles.size() << " .map files under: " << directory << endl;
 
-    for(int i = 0; i < numOfMapsToLoad; i++) { //For all maps
+    int total = 0, passed = 0, failed = 0;
+    vector<pair<string,int>> failures; //String for file path, int for type of failure
 
-        // Pick random index
-        int index = rand() % mapFiles.size();
-        string filePath = mapFiles[index];
+    for(const string& filePath : mapFiles) { //Iterate over all valid file directories
 
-        // Remove it from list so it’s not chosen again
-        mapFiles.erase(mapFiles.begin() + index);
+        total++;
+        cout << "\n--- [" << total << "/" << mapFiles.size() << "] Loading: " << filePath << " ---" << endl;
 
-        cout << "\n--- Loading Map " << (i+1) << " ---" << "File Name: " << filePath << endl;
+        MapLoader loader; //Intialize MapLoader object
 
-        MapLoader loader; //Intialize the MapLoader to help import / load maps
-        int importResult = loader.importMapInfo(filePath); //Import file info to temporary data structure
+        // Stage 1: parse file
+        int importResult = loader.importMapInfo(filePath);
 
-        if(importResult != 0) { //Debugging
+        if(importResult != 0) {
 
-            cerr << "Import failed for: " << filePath << " (Error " << importResult << ")" << endl;
+            cerr << "  Import failed (code=" << importResult << ")" << endl;
+            failures.emplace_back(filePath, importResult); //emplace for faster performance, instead of push_back
+            failed++;
             continue;
 
         }
 
-        //Extract info from MapLoader object and insert into a map object
-        pair<int, Map*> loadResult = loader.loadMap();
-        int status = loadResult.first;
-        Map* mapPtr = loadResult.second;
+        // Stage 2: build Map object
+        pair<int, Map*> loadMapResults = loader.loadMap();
 
+        int loadMapStatus = loadMapResults.first;
+        Map* tempMapPtr = loadMapResults.second;
 
-        //Ensure that everything went smoothly
-        if(mapPtr == nullptr || status != 0) { 
-           
-            cerr << "MapLoader::loadMap failed for: " << filePath << " (error " << status << ")" << endl;
-        } else {
+        if(loadMapStatus != 0 || tempMapPtr == nullptr) {
 
-            cout << "Validation successful: " << filePath << endl;
-            delete mapPtr; // cleanup
+            cerr << "  Build failed (code=" << loadMapStatus << ")" << endl;
+            failures.emplace_back(filePath, loadMapStatus);
+            failed++;
+            continue;
 
         }
 
+        // Stage 3: validate structure
+        bool validMap = tempMapPtr -> validate();
+        if (!validMap) {
+
+            cerr << "  Validation failed" << endl;
+            failures.emplace_back(filePath, -1);
+            failed++;
+            delete tempMapPtr;
+            continue;
+
+        }
+
+        cout << "  OK" << endl;
+        passed++;
+        delete tempMapPtr;
+
+    }
+
+    // Summary
+    cout << "\n=== Testing Summary ===" << endl;
+    cout << "Total maps: " << total << endl;
+    cout << "Passed:     " << passed << endl;
+    cout << "Failed:     " << failed << endl;
+
+    if(!failures.empty()) {
+
+        cout << "\nFailed files (" << failures.size() << "):" << endl;
+        
+        for(const auto& f : failures) { //Iterate over ALL failed filepaths 
+
+            cout << "  - " << f.first << " (code=" << f.second << ")" << endl;
+
+        }
+        
     }
 
 }
 
+// Standalone driver for Part 1
 int main() {
-
-    string directory = "test_maps";
-
-    // Count how many .map files exist
-    vector<string> mapFiles;
-
-    for(const auto& entry : fs::directory_iterator(directory)) { //For all folders within the given directory
-
-        if(entry.is_directory()) { //If a folder contains files 
-
-            for(const auto& inner : fs::directory_iterator(entry.path())) { //For all files within the folder
-
-                if(inner.is_regular_file() && inner.path().extension() == ".map") { //If a file ends with .map
-
-                    mapFiles.push_back(inner.path().string());
-                    break; // take the first .map found per folder
-
-                }
-
-            }
-
-        }
-
-    }
-
-    int availableMaps = static_cast<int>(mapFiles.size());
-
-    if(availableMaps == 0) { //Duh
-
-        cerr << "No valid .map files found in subfolders of: " << directory << endl;
-        return 1;
-
-    }
-
-    int numOfMaps = 0;
-    cout << "Enter how many maps you want to test (1–" << availableMaps << "): ";
-
-    // Keep looping until valid input is given
-    while(!(cin >> numOfMaps) || numOfMaps <= 0 || numOfMaps > availableMaps) {
-
-        cout << "Invalid input. Please enter a number between 1 and " << availableMaps << ": ";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Clear input buffer
-
-    }
-
-    testLoadMaps(directory, numOfMaps);
-
+    testLoadMaps();
     return 0;
 }

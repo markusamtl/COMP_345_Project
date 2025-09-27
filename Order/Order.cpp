@@ -691,7 +691,6 @@ namespace WarzoneOrder {
             //Reinsert at new position
             this -> orders -> insert(this -> orders -> begin() + newPos, tempOrder);
 
-
         }
 
     }

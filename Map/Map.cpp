@@ -314,89 +314,27 @@ namespace WarzoneMap {
 
     Map::~Map() {
 
-        //Free dynamically allocated territories. ONLY object that should delete territories
-        for(Territory* t : territories) { delete t; }
+        //Free dynamically allocated territories
+        for (Territory* t : territories) { delete t; }
+
         territories.clear();
 
-        //Free dynamically allocated continents. ONLY object that should delete continents
-        for(Continent* c : continents) { delete c; }
+        //Free dynamically allocated continents
+        for (Continent* c : continents) { delete c; }
+
         continents.clear();
 
     }
 
-    Map::Map(const Map& other) {
-
-        if(this != &other) { return; }// self-assignment guard
-
-        // --- 1. Copy metadata ---
-        this->author = other.author;
-        this->image = other.image;
-        this->wrap = other.wrap;
-        this->scrollType = other.scrollType;
-        this->warn = other.warn;
-
-        // --- 2. Deep copy continents ---
-        unordered_map<Continent*, Continent*> continentMap;
-
-        for(Continent* currCont : other.continents) {
-
-            Continent* newCont = new Continent(*currCont); // shallow copy (ID, bonus)
-            this->continents.push_back(newCont);
-            continentMap[currCont] = newCont;
-
-        }
-
-        // --- 3. Deep copy territories ---
-        unordered_map<Territory*, Territory*> terrMap;
-
-        for(Territory* t : other.territories) {
-
-            Territory* newTerr = new Territory(*t); //Shallow copy, fixed later
-            this->territories.push_back(newTerr);
-            terrMap[t] = newTerr;
-
-        }
-
-        // --- 4. Fix neighbors and continent pointers ---
-        for(Territory* oldTerr : other.territories) {
-            
-            Territory* newTerr = terrMap[oldTerr];
-
-            // Fix neighbors
-            vector<Territory*> newNeighbors;
-            for(Territory* oldNeigh : oldTerr->getNeighbors()) {
-
-                newNeighbors.push_back(terrMap[oldNeigh]);
-            
-            }
-            
-            newTerr->setNeighbors(newNeighbors);
-
-            // Fix continent pointer
-            Continent* oldCon = oldTerr->getContinent();
-            
-            if(oldCon && continentMap.count(oldCon)) {
-
-                Continent* newCon = continentMap[oldCon];
-                newTerr->setContinent(newCon);
-                newCon->addTerritory(newTerr);
-
-            }
-
-        }
-
-    }
-
-
     Map& Map::operator=(const Map& other) {
 
-        if(this != &other) { // self-assignment guard
+        if (this != &other) { // self-assignment guard
 
             // --- 1. Clean up current memory ---
-            for(Territory* t : territories){ delete t; }
+            for (Territory* t : territories) delete t;
             territories.clear();
 
-            for(Continent* c : continents){ delete c; }
+            for (Continent* c : continents) delete c;
             continents.clear();
 
             // --- 2. Copy metadata ---
@@ -409,9 +347,9 @@ namespace WarzoneMap {
             // --- 3. Deep copy continents ---
             unordered_map<Continent*, Continent*> continentMap;
 
-            for(Continent* currCont : other.continents) {
+            for (Continent* currCont : other.continents) {
 
-                Continent* newCont = new Continent(*currCont); // shallow copy of ID/bonus, fixed later
+                Continent* newCont = new Continent(*currCont); // shallow copy of ID/bonus
                 continents.push_back(newCont);
                 continentMap[currCont] = newCont;
 
@@ -420,34 +358,34 @@ namespace WarzoneMap {
             // --- 4. Deep copy territories ---
             unordered_map<Territory*, Territory*> terrMap;
 
-            for(Territory* t : other.territories) {
+            for (Territory* t : other.territories) {
 
-                Territory* newTerr = new Territory(*t); // shallow copy, fixed later
+                Territory* newTerr = new Territory(*t); // shallow copy (neighbors/continent fixed later)
                 territories.push_back(newTerr);
                 terrMap[t] = newTerr;
 
             }
 
             // --- 5. Fix neighbors and continent pointers ---
-            for(Territory* oldTerr : other.territories) {
+            for (Territory* oldTerr : other.territories) {
 
                 Territory* newTerr = terrMap[oldTerr];
 
                 // Fix neighbors
                 vector<Territory*> newNeighbors;
 
-                for(Territory* oldNeigh : oldTerr->getNeighbors()) {
+                for (Territory* oldNeigh : oldTerr->getNeighbors()) {
 
                     newNeighbors.push_back(terrMap[oldNeigh]);
 
                 }
 
-                newTerr -> setNeighbors(newNeighbors);
+                newTerr->setNeighbors(newNeighbors);
 
                 // Fix continent pointer
                 Continent* oldCon = oldTerr->getContinent();
 
-                if(oldCon && continentMap.count(oldCon)) {
+                if (oldCon && continentMap.count(oldCon)) {
 
                     Continent* newCon = continentMap[oldCon];
                     newTerr->setContinent(newCon);
@@ -532,7 +470,7 @@ namespace WarzoneMap {
 
     void Map::addTerritory(Territory* territory) { 
 
-        if(territory == nullptr){ return; }// Ignore null pointers
+        if(territory == nullptr) return; // Ignore null pointers
 
         for(Territory* t : this -> territories) { 
 
@@ -561,7 +499,7 @@ namespace WarzoneMap {
 
         for(Continent* c : this -> continents){
 
-            if(c -> getID() == ID){ return c;}
+            if (c -> getID() == ID){ return c;}
 
         }
 
@@ -859,7 +797,7 @@ namespace WarzoneMap {
                     return MAP_PARSE_ERROR;
                 }
 
-            } else if(section == "[Continents]") { // Parse [Continents] section
+            } else if (section == "[Continents]") { // Parse [Continents] section
 
                 size_t pos = line.find('='); // Find position of '=' to split continent name and bonus value
 
@@ -879,7 +817,7 @@ namespace WarzoneMap {
                 else { return MAP_PARSE_ERROR; }
 
 
-            } else if(section == "[Territories]") { // Parse [Territories] section
+            } else if (section == "[Territories]") { // Parse [Territories] section
 
                 vector<string> fields; //To hold the fields of the territory line
                 string token; //Holds each field temporarily for a territory line
@@ -983,10 +921,10 @@ namespace WarzoneMap {
 
             vector<Continent*> continentPtrs; //To hold pointers for created continents
 
-            for(const auto& [name, value] : continents) { //Auto was really convenient here compared to pair as an iterator
+            for (const auto& [name, value] : continents) { //Auto was really convenient here compared to pair as an iterator
                 
                 //Validate BEFORE allocating
-                if(name.empty() || value <= 0) {
+                if (name.empty() || value <= 0) {
 
                     cerr << "Error: Invalid continent data for continent '" << name << "' with bonus value " << value << "." << endl;
                     for (Continent* c : continentPtrs) {delete c;}

@@ -166,6 +166,7 @@ namespace WarzonePlayer {
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
+        this -> generateCardThisTurn = false; // default
 
     }
 
@@ -176,61 +177,64 @@ namespace WarzonePlayer {
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
+        this -> generateCardThisTurn = false; // default
 
     }
 
-    Player::Player(const string& name, Hand* hand, Order* orders) {
+    Player::Player(const string& name, Hand* hand, OrderList* orders) {
 
         this -> playerName = name;
         this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = hand;
         this -> playerOrders = orders;
+        this -> generateCardThisTurn = false; // default
 
     }
 
-    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders){
-    
+    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, bool generateCard) {
+
         this -> playerName = name;
         this -> neutralEnemies = neutralEnemies;
         this -> ownedTerritories = ownedTerritories;
         this -> playerHand = hand;
         this -> playerOrders = orders;
+        this -> generateCardThisTurn = generateCard; // passed in explicitly
 
     }
 
-    Player::~Player() {
+    Player::~Player() { 
 
-        delete playerHand;
-        delete playerOrders;
+        //Since the hand and orders are no longer needed
+        delete this -> playerHand; 
+        delete this -> playerOrders;
 
     }
 
     Player::Player(const Player& other) {
 
-        this->playerName = other.playerName;
-        this->neutralEnemies = other.neutralEnemies;
-        this->ownedTerritories = other.ownedTerritories;
-        this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-        this->playerOrders = (other.playerOrders ?  other.playerOrders->clone() : nullptr);
-    
-    }
+        this -> playerName = other.playerName;
+        this -> neutralEnemies = other.neutralEnemies;
+        this -> ownedTerritories = other.ownedTerritories;
+        this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
+        this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
+        this -> generateCardThisTurn = other.generateCardThisTurn; // copy flag
 
+    }
 
     Player& Player::operator=(const Player& other) {
 
         if (this != &other) {
 
-            this->playerName = other.playerName;
-            this->neutralEnemies = other.neutralEnemies; // copy negotiated players
-            this->ownedTerritories = other.ownedTerritories;
+            delete this -> playerHand;
+            delete this -> playerOrders;
 
-            // Clean up old pointers before reassigning
-            delete this->playerHand;
-            delete this->playerOrders;
-
-            this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-            this->playerOrders = (other.playerOrders ? other.playerOrders->clone() : nullptr);
+            this -> playerName = other.playerName;
+            this -> neutralEnemies = other.neutralEnemies;
+            this -> ownedTerritories = other.ownedTerritories;
+            this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
+            this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
+            this -> generateCardThisTurn = other.generateCardThisTurn; // copy flag
 
         }
 
@@ -238,29 +242,17 @@ namespace WarzonePlayer {
 
     }
 
-
-
     ostream& operator<<(ostream& os, const Player& p) {
 
-        os << "Player(Name: " << p.playerName 
-        << ", Territories Owned: " << p.ownedTerritories.size() 
-        << ", Hand: " << (p.playerHand ? "Present" : "None")
-        << ", Orders: " << (p.playerOrders ? "Present" : "None")
-        << ", Neutral Enemies: [";
-
-        for(size_t i = 0; i < p.neutralEnemies.size(); i++) {
-
-            os << p.neutralEnemies[i];
-            if(i < p.neutralEnemies.size() - 1){ os << ", "; }//Make sure no excess commas
-
-        }
-
-        os << "])";
-
+        os << "Player(Name: " << p.playerName
+           << ", Territories: " << p.ownedTerritories.size()
+           << ", Hand: " << (p.playerHand ? "Yes" : "No")
+           << ", Orders: " << (p.playerOrders ? "Yes" : "No")
+           << ", GenerateCardThisTurn: " << (p.generateCardThisTurn ? "True" : "False")
+           << ")";
         return os;
 
     }
-
 
     //-- Accessors and Mutators --//
 
@@ -280,25 +272,29 @@ namespace WarzonePlayer {
 
     void Player::setHand(Hand* newHand) {
 
-        if(!(playerHand == nullptr)){ delete playerHand; } //Clear memory. Change later maybe?
+        if(playerHand != nullptr){ delete playerHand; }
         playerHand = newHand;
 
     }
 
-    Order* Player::getOrders() const { return playerOrders; }
+    OrderList* Player::getOrders() const { return playerOrders; }
 
-    void Player::setOrders(Order* newOrders) {
+    void Player::setOrders(OrderList* newOrders) {
 
-        if(playerOrders != nullptr){ delete playerOrders; } //Clear memory. Change later maybe?
+        if(playerOrders != nullptr){ delete playerOrders; }
         playerOrders = newOrders;
 
     }
+
+    bool Player::getGenerateCardThisTurn() const { return this -> generateCardThisTurn; }
+
+    void Player::setGenerateCardThisTurn(bool flag) { this -> generateCardThisTurn = flag; }
 
     //-- Class Methods --//
 
     vector<Territory*> Player::toAttack() {
         
-        unordered_set<Territory*> uniqueTargets; //Avoid duplicates
+        unordered_set<Territory*> uniqueTargets; 
 
         for(Territory* currTerr : ownedTerritories.getTerritories()) {
 
@@ -317,7 +313,7 @@ namespace WarzonePlayer {
 
         }
 
-        return vector<Territory*>(uniqueTargets.begin(), uniqueTargets.end()); //Copy set into return vector
+        return vector<Territory*>(uniqueTargets.begin(), uniqueTargets.end()); 
 
     }
 
@@ -333,7 +329,6 @@ namespace WarzonePlayer {
 
                 string neighOwner = neighTerr -> getOwner();
 
-                //Skip if owned by self or neutral enemy
                 if (neighOwner == playerName ||
                     std::find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner)
                     != neutralEnemies.end()) { continue; }
@@ -374,7 +369,7 @@ namespace WarzonePlayer {
 
                 cout << ownedTerrs[i] -> getID() << " (" << ownedTerrs[i]->getNumArmies() << " armies)";
                     
-                if(i < ownedTerrs.size() - 1){ cout << ", "; } //Make sure no extra commas are added 
+                if(i < ownedTerrs.size() - 1){ cout << ", "; } 
                 
             }
 
@@ -396,25 +391,18 @@ namespace WarzonePlayer {
 
     void Player::addNeutralEnemy(const string& enemyName) {
 
-        //Iterate over the vector to check for the enemyName, and see if the result of the iteration isn't in the vector
         if(find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) == neutralEnemies.end()) {
-            
-            neutralEnemies.push_back(enemyName); //Add the enemy name to the vector
-        
+            neutralEnemies.push_back(enemyName); 
         }
     
     }
 
     void Player::removeNeutralEnemy(const string& enemyName) {
 
-        //Iterate over the vector to check for the enemyName
         auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName);
 
-        //See if the result of the iteration isn't in the vector
-        if (find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) != neutralEnemies.end()) {
-            
-            neutralEnemies.erase(enemyNameIndex); //Remove the enemy name to the vector
-        
+        if (enemyNameIndex != neutralEnemies.end()) {
+            neutralEnemies.erase(enemyNameIndex); 
         } 
 
     }

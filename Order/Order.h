@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <chrono>
 
 #include "../Map/Map.h"
 #include "../Player/Player.h"
@@ -15,6 +16,45 @@ namespace WarzoneOrder {
     using WarzoneMap::Territory;
     using WarzoneMap::Map;
     using WarzonePlayer::Player;
+
+    /*------------------------------------------TIME UTILITY CLASS--------------------------------------------------*/
+
+    /**
+     * @class TimeUtil
+     * @brief Provides utility methods for retrieving system time with high resolution.
+     * 
+     * This class offers methods to fetch the current system time in seconds,
+     * milliseconds, or nanoseconds since epoch.
+     * 
+     * USE THIS CLASS INSTEAD OF rand(), AS IT ENSURES THERE IS NO NEED TO SEED.
+     * 
+     * At millisecond and nanosecond timeframes, system processes, CPU scheduling,
+     * and hardware noise make it functionally impossible to predict the exact
+     * values returned. This provides time-based entropy that generates 
+     * effectively unpredictable numbers, which is sufficient for gameplay randomness.
+     */
+    class TimeUtil {
+
+        public:
+
+            /**
+             * @brief Get the current system time in seconds (with fractional precision).
+             * @return Current system time in seconds as a double.
+             */
+            static double getSystemTimeSeconds();
+
+            /**
+             * @brief Get the current system time in milliseconds since epoch.
+             * @return Current system time in milliseconds as a long long.
+             */
+            static long long getSystemTimeMillis();
+
+            /**
+             * @brief Get the current system time in nanoseconds since epoch.
+             * @return Current system time in nanoseconds as a long long.
+             */
+            static long long getSystemTimeNano();
+    };
 
     /**
      * @brief List of enums that helps to differentiate order types.

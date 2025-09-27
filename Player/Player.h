@@ -11,13 +11,13 @@
 #include "../Card/Card.h"
 #include "../Order/Order.h"
 
-namespace WarzoneOrder { class Order; }  //Forward declaration for order, avoids issues in Order class
+namespace WarzoneOrder { class OrderList; }  //Forward declaration for order list
 
 namespace WarzonePlayer {
 
     using WarzoneMap::Territory;
     using WarzoneCard::Hand;
-    using WarzoneOrder::Order;
+    using WarzoneOrder::OrderList;
 
     /**
      * @brief Manages a Player's owned territories using both a vector (for iteration), and an unordered_map (for fast lookups).
@@ -140,7 +140,8 @@ namespace WarzonePlayer {
             vector<string> neutralEnemies;
             PlayerTerrContainer ownedTerritories;
             Hand* playerHand;
-            Order* playerOrders;
+            OrderList* playerOrders;
+            bool generateCardThisTurn;
       
         public:
 
@@ -163,7 +164,7 @@ namespace WarzonePlayer {
              * @param hand Pointer to the player's hand of cards.
              * @param orders Pointer to the player's order list.
              */
-            Player(const string& name, Hand* hand, Order* orders);
+            Player(const string& name, Hand* hand, OrderList* orders);
 
             /**
              * @brief Constructs a player with a given name, list of territories, hand, and order list.
@@ -172,8 +173,9 @@ namespace WarzonePlayer {
              * @param ownedTerritories The list of owned territories
              * @param hand Pointer to the player's hand of cards.
              * @param orders Pointer to the player's order list.
+             * @param generateCardThisTurn Boolean flag to determine whether a card should be added to the player's hand
              */
-            Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, Order* orders);
+            Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, bool generateCard);
 
             /**
              * @brief Destructor. Cleans up player's hand and orders if allocated.
@@ -255,13 +257,25 @@ namespace WarzonePlayer {
              * @brief Accessor for player's order list.
              * @return Pointer to OrderList.
              */
-            Order* getOrders() const;
+            OrderList* getOrders() const;
 
             /**
              * @brief Mutator for player's order list.
              * @param newOrders Pointer to an OrderList.
              */
-            void setOrders(Order* newOrders);
+            void setOrders(OrderList* newOrders);
+
+            /**
+             * @brief Accessor for generateCardThisTurn flag.
+             * @return True if the player should generate a card this turn, false otherwise.
+             */
+            bool getGenerateCardThisTurn() const;
+
+            /**
+             * @brief Mutator for generateCardThisTurn flag.
+             * @param flag Boolean value to set.
+             */
+            void setGenerateCardThisTurn(bool flag);
 
             //-- Class Methods --//
 

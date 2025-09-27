@@ -1,10 +1,16 @@
 #pragma once
+
 #include "Map/Map.h"
 #include "Card/Card.h"
-#include "Order/Order.h"
 #include <algorithm>
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <iostream>
 
 namespace WarzonePlayer {
+
+    namespace WarzoneOrder { class Order; }  //Forward declaration for order, avoids issues in Order class
 
     using WarzoneMap::Territory;
     using WarzoneCard::Hand;

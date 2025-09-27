@@ -283,7 +283,7 @@ namespace WarzonePlayer {
              * @brief Returns a list of territories that the player may choose to attack.
              * @return Vector of Territory pointers.
              */
-            vector<WarzoneMap::Territory*> toAttack();
+            vector<Territory*> toAttack();
 
             /**
              * @brief Prints out the attack possibilites for a player
@@ -295,7 +295,7 @@ namespace WarzonePlayer {
              * @brief Returns a list of territories that the player may choose to defend.
              * @return Vector of Territory pointers.
              */
-            vector<WarzoneMap::Territory*> toDefend();
+            vector<Territory*> toDefend();
 
              /**
              * @brief Prints out the defence possibilites for a player

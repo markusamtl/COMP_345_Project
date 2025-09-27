@@ -432,6 +432,8 @@ namespace WarzoneOrder {
                 
                 issuer -> setGenerateCardThisTurn(true); //Make SURE that the attacker who won will get a card when turn ends
 
+                //TODO: REFACTOR MAP. Have to make sure the player being attacked loses their territory from the vector.
+
                 this -> setEffect("Advance battle successful: " + issuer->getPlayerName() +
                                 " conquered " + target->getID() + " with " +
                                 to_string(attackersRemaining) + " surviving armies.");
@@ -529,11 +531,10 @@ namespace WarzoneOrder {
         if(issuer == nullptr || target == nullptr) { return false; }
 
         //Target must NOT belong to the issuing player
-        if(target -> getOwner() == issuer -> getPlayerName()) {
+        if(target -> getOwner() == issuer -> getPlayerName()) { return false; }
 
-            return false;
-
-        }
+        //Can't bomb a territory with only 1 army.
+        if(target -> getNumArmies() == 1) { return false; }
 
         //Target must be adjacent to at least one of issuer's territories
         const auto& ownedTerritories = issuer -> getOwnedTerritories().getTerritories(); //Get player's territories
@@ -669,7 +670,9 @@ namespace WarzoneOrder {
         target -> setNumArmies((target -> getNumArmies()) * 3);
 
         //Step 2: Transfer ownership to Neutral player
-        target -> setOwner(neutralPlayer -> getPlayerName());
+
+        //TODO: ONLY DO THIS WHEN I REFACTOR MAP TO INCLUDE Player*
+        //target -> setOwner(neutralPlayer -> getPlayerName());
 
         issuer->removeOwnedTerritories(target); //Remove territory from issuer
         neutralPlayer->addOwnedTerritories(target); //Add territory to neutral player
@@ -759,11 +762,56 @@ namespace WarzoneOrder {
     Order* Airlift::clone() const { return new Airlift(*this); }
 
     bool Airlift::validate() const {
-        return false; // TODO: implement
+
+        //Make sure that the player, and the source / target territories, exist.
+        if(source != nullptr || target != nullptr || issuer != nullptr) { return false; }
+
+        //Make sure the player owns both the source and the target territory
+        if(source -> getOwner() != issuer -> getPlayerName() || target -> getOwner() != issuer -> getPlayerName()) {
+
+            return false;
+        }
+
+        // Check if enough armies to move (must leave at least 1 behind)
+        if(numArmies <= 0 || source -> getNumArmies() <= 1) {
+
+            return false;
+        
+        }
+
+        //Check if the number of armys proposed to be moved is small enough to be valid 
+        if(numArmies > source -> getNumArmies() - 1) { return false; }
+
+        return true;
+
     }
 
+
     void Airlift::execute() {
-        // TODO: implement
+
+        if(!this->validate()) {
+
+            this -> setEffect("Airlift order invalid.");
+            cout << this -> getEffect() << endl;
+            return;
+        
+        }
+
+        // --- Perform the move ---
+        int armiesToMove = min(numArmies, source -> getNumArmies() - 1);
+
+
+        source -> setNumArmies(source -> getNumArmies() - armiesToMove);
+        target -> setNumArmies(target -> getNumArmies() + armiesToMove);
+
+        // --- Update effect ---
+        this -> setEffect("Airlift successful: " + issuer -> getPlayerName() + 
+                          " moved " + to_string(armiesToMove) +
+                          " armies from " + source -> getID() +
+                          " to " + target -> getID() + ".");
+        
+        cout << this -> getEffect() << endl;
+
     }
 
 
@@ -828,12 +876,39 @@ namespace WarzoneOrder {
     Order* Negotiate::clone() const { return new Negotiate(*this); }
 
     bool Negotiate::validate() const {
-        return false; // TODO: implement
+
+        //Make sure both the source and target players exist
+        if(issuer != nullptr || targetPlayer != nullptr) { return false; }
+
+        //Player can't negotiate with themselves
+        if(issuer == targetPlayer) { return false; }
+
+        return true;
+
     }
 
     void Negotiate::execute() {
-        // TODO: implement
+
+        // Validate order
+        if (!this->validate()) {
+            this->setEffect("Negotiate order invalid.");
+            std::cout << this->getEffect() << std::endl;
+            return;
+        }
+
+        //Apply neutrality
+        issuer -> addNeutralEnemy(targetPlayer -> getPlayerName());
+        targetPlayer -> addNeutralEnemy(issuer -> getPlayerName());
+
+        //Update effect
+        this -> setEffect("Negotiate successful: " + issuer -> getPlayerName() +
+                        " and " + targetPlayer -> getPlayerName() +
+                        " cannot attack each other this turn.");
+                        
+        std::cout << this->getEffect() << std::endl;
+
     }
+
 
     // ================= OrderList ================= //
 

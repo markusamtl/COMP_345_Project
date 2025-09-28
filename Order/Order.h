@@ -947,8 +947,8 @@ namespace WarzoneOrder {
         
         private:
 
-            //Normal container for orders
-            std::vector<Order*>* orders;
+            //Container for orders
+            std::vector<Order*> orders;
 
         public:
 
@@ -1003,13 +1003,13 @@ namespace WarzoneOrder {
              * @brief Get the vector of Orders.
              * @return A pointer to the vector of Order pointers.
              */
-            std::vector<Order*>* getOrders() const;
+            vector<Order*> getOrders() const;
 
             /**
              * @brief Set the vector of Orders.
              * @param newOrders A pointer to a new vector of Order pointers.
              */
-            void setOrders(const vector<Order*>* newOrders);
+            void setOrders(const vector<Order*> newOrders);
 
 
             //-- Class Methods --//
@@ -1028,7 +1028,15 @@ namespace WarzoneOrder {
              * Deletes and removes the Order at the specified index.
              * @param index The position of the Order to remove.
              */
-            void remove(int index);
+            void removeOrder(int index);
+
+            /**
+             * @brief Remove an Order from the list.
+             * 
+             * Deletes and removes the Order, based on a specific order pointer
+             * @param o The order pointer to be removed
+             */
+            void removeOrder(Order* o);
 
             /**
              * @brief Move an Order within the list.
@@ -1037,7 +1045,13 @@ namespace WarzoneOrder {
              * @param from The index of the Order to move.
              * @param to The new index where the Order will be placed.
              */
-            void move(int from, int to);
+            void moveOrder(int from, int to);
+
+            /**
+             * @brief Get the number of Orders in the list.
+             * @return The number of orders in the list as a size_t.
+             */
+            size_t size() const;
             
     };
 

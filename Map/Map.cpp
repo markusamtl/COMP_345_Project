@@ -284,6 +284,44 @@ namespace WarzoneMap {
         
     }
 
+    bool Territory::territoryIDCompare(Territory* a, Territory* b) {
+
+        string idA = a -> getID();
+        string idB = b -> getID();
+
+        //This method thinks ahead for cases like AA10 vs A10 (A10 should come first)
+
+        size_t i = 0, j = 0; //Keep track of indexes in ID string
+        
+        while(i < idA.size() && j < idB.size()) {
+
+            if(std::isdigit(idA[i]) && std::isdigit(idB[j])) { //Extract full number substrings
+
+                size_t iStart = i, jStart = j;
+
+                while(i < idA.size() && isdigit(idA[i])){ i++; } //Iterate over the numerical values of the first ID 
+                while(j < idB.size() && isdigit(idB[j])){ j++; } //Iterate over the numerical values of the first ID 
+
+                int numA = stoi(idA.substr(iStart, i - iStart)); //Cast the number
+                int numB = stoi(idB.substr(jStart, j - jStart)); //Cast the number
+
+                if(numA != numB) { return numA < numB; }
+
+            } else { //Compare as characters
+
+                if(idA[i] != idB[j]){ return idA[i] < idB[j]; }
+                i++; 
+                j++;
+
+            }
+
+        }
+
+        //If one string is a prefix of the other, shorter comes first
+        return idA.size() < idB.size();
+        
+    }
+
     // ================= Map =================
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//

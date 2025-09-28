@@ -16,6 +16,7 @@ namespace WarzoneOrder { class OrderList; }  //Forward declaration for order lis
 namespace WarzonePlayer {
 
     using WarzoneMap::Territory;
+    using WarzoneMap::StringHandling;
     using WarzoneCard::Hand;
     using WarzoneOrder::OrderList;
 
@@ -263,13 +264,13 @@ namespace WarzonePlayer {
              * @brief Accessor for player's order list.
              * @return Pointer to OrderList.
              */
-            OrderList* getOrders() const;
+            OrderList* getPlayerOrders() const;
 
             /**
              * @brief Mutator for player's order list.
              * @param newOrders Pointer to an OrderList.
              */
-            void setOrders(OrderList* newOrders);
+            void setPlayerOrders(OrderList* newOrders);
 
             /**
              * @brief Accessor for generateCardThisTurn flag.
@@ -294,7 +295,7 @@ namespace WarzonePlayer {
             /**
              * @brief Prints out the attack possibilites for a player
              */
-            void toAttackPrint();
+            void toAttackPrint() const;
 
 
             /**
@@ -306,7 +307,7 @@ namespace WarzonePlayer {
              /**
              * @brief Prints out the defence possibilites for a player
              */
-            void toDefendPrint();
+            void toDefendPrint() const;
 
             /**
              * @brief Creates an order and adds it to the player’s order list.

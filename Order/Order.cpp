@@ -939,26 +939,23 @@ namespace WarzoneOrder {
 
     OrderList::OrderList() {
 
-        this -> orders = new std::vector<Order*>(); //Initialize empty container
+        this -> orders = vector<Order*>(); //Initialize empty container
 
     }
 
     OrderList::~OrderList() {
 
-        for(Order* o : *orders) { delete o; } //Delete all orders in the list
-
-        delete orders;
+        for(Order* o : orders) { delete o; } //Delete all orders in the list
 
     }
 
     OrderList::OrderList(const OrderList& other) {
 
-        this -> orders = new std::vector<Order*>();
+        this -> orders = vector<Order*>();
 
-        //Deep copy using clone()
-        for(Order* o : *other.orders) {
+        for(Order* o : other.orders) { //Deep copy using clone()
 
-            this -> orders -> push_back(o -> clone());
+            orders.push_back(o -> clone());
 
         }
 
@@ -968,15 +965,15 @@ namespace WarzoneOrder {
 
         if(this != &other) {
 
-            for(Order* o : *this -> orders) { delete o; } //Delete existing orders in the list
-            delete this -> orders;
+            for(Order* o : this -> orders) { delete o; } //Delete existing orders in the list
+            orders.clear();
 
             //Rebuild container with deep copy
-            this -> orders = new std::vector<Order*>();
+            this -> orders = vector<Order*>();
 
-            for(Order* o : *other.orders) {
+            for(Order* o : other.orders) {
 
-                this -> orders -> push_back(o -> clone());
+                orders.push_back(o -> clone());
 
             }
 
@@ -988,34 +985,32 @@ namespace WarzoneOrder {
 
     std::ostream& operator<<(std::ostream& os, const OrderList& ol) {
 
-        os << "OrderList: " << std::endl;
+        os << "OrderList:" << std::endl;
 
-        for(size_t i = 0; i < ol.orders -> size(); i++) { //Iterate over all orders
+        for (size_t i = 0; i < ol.orders.size(); i++) {//Iterate over all orders
 
-            os << "  [" << i << "] " << *ol.orders -> at(i) << std::endl; //This WILL print the correct order output based on class
+            os << "  [" << i << "] " << *ol.orders[i] << std::endl;
 
         }
 
         return os;
-
     }
 
     //-- Accessors and Mutators --//
 
-    std::vector<Order*>* OrderList::getOrders() const { return orders; }
+    vector<Order*> OrderList::getOrders() const { return orders; }
 
-    void OrderList::setOrders(const std::vector<Order*>* newOrders) { 
+    void OrderList::setOrders(const vector<Order*> newOrders) { 
     
         // Clean up existing orders
-        for(Order* o : *orders) { delete o; }
-        delete orders;
+        for(Order* o : orders) { delete o; }
 
         // Allocate a new vector and clone each order
-        this -> orders = new std::vector<Order*>();
+        this -> orders = vector<Order*>();
 
-        for(Order* o : *newOrders) {
+        for(Order* o : newOrders) {
 
-            this -> orders -> push_back(o -> clone()); 
+            orders.push_back(o -> clone()); 
 
         }
 
@@ -1026,65 +1021,59 @@ namespace WarzoneOrder {
 
     void OrderList::addOrder(Order* o) {
 
-        this -> orders -> push_back(o);
-
+        if(o != nullptr) { orders.push_back(o); }
+    
     }
 
-    void OrderList::remove(int index) {
+    void OrderList::removeOrder(int index) {
 
-        /**
-         * This method is a bit tricky to understand, so a visual demo will be provided:
-         * Let ordVec = [A, B, C, D, E]
-         * ordVec executes as follows, for method call move(1)
-         * Step 1: delete B (free its memory, since OrderList owns its Orders).
-         * Step 2: vector becomes [A, C, D, E] (erase shifts all remaining elements left).
-         * 
-         * Note: the vector only removes the pointer slot;
-         * explicit delete is required to release the object itself.
-         */
+        if(index >= 0 && index < static_cast<int>(orders.size())) { //Check if the inputed index is valid
 
-        //Check if the index is greater than 0, or less than the size of the orders vector
-        if(index >= 0 && index < static_cast<int>(this -> orders -> size())) {
-
-            delete this -> orders -> at(index); //Free memory of removed order (prevent memory leak)
-
-            //Shift all elements after the deleted element to the left by 1 index
-            this -> orders -> erase(this -> orders -> begin() + index);
+            delete orders[index]; //Free memory of the removed order
+            orders.erase(orders.begin() + index);  //Shift all elements in the OrderList to the left by 1 index
 
         }
 
     }
 
-    void OrderList::move(int oldPos, int newPos) {
+    void OrderList::removeOrder(Order* orderPtr) {
 
-        /**
-         * This method is a bit tricky to understand, so a visual demo will be provided:
-         * Let ordVec = [A, B, C, D, E]
-         * ordVec executes as follows, for method call move(0, 1)
-         * Step 1: Order = A
-         * Step 2: ordVec = [B, C, D, E]
-         * Step 3: ordVec = [B, A, C, D, E]
-         * inserted here        ^ 
-        */
+        if(orderPtr == nullptr){ return; }
 
-        //Make sure inputs are IN BOUNDS of the list
+        for(size_t i = 0; i < orders.size(); i++){
+
+            if(orders[i] == orderPtr) {
+                delete orders[i];                      // free memory
+                orders.erase(orders.begin() + i);      // erase slot
+                return;
+            
+            }
+        
+        }
+    
+    }
+
+    void OrderList::moveOrder(int oldPos, int newPos){
+
+        //Check if the positions are valid
         bool geqZeroOldPos = oldPos >= 0;
-        bool leqListSizeOldPos = oldPos < static_cast<int>(this -> orders -> size());
+        bool leqListSizeOldPos = oldPos < static_cast<int>(orders.size());
         bool geqZeroNewPos = newPos >= 0;
-        bool leqListSizeNewPos = newPos < static_cast<int>(this -> orders -> size());
+        bool leqListSizeNewPos = newPos < static_cast<int>(orders.size());
 
-        if(geqZeroOldPos && leqListSizeOldPos && geqZeroNewPos && leqListSizeNewPos){
+        if(geqZeroOldPos && leqListSizeOldPos && geqZeroNewPos && leqListSizeNewPos) { //Perform check
 
-            //Take out the order
-            Order* tempOrder = this -> orders -> at(oldPos); //Get order pointer
-
-            //Shift all elements after the deleted element to the left by 1 index
-            this -> orders -> erase(this -> orders -> begin() + oldPos); 
-
-            //Reinsert at new position
-            this -> orders -> insert(this -> orders -> begin() + newPos, tempOrder);
+            Order* tempOrder = orders[oldPos]; //Take out the order
+            orders.erase(orders.begin() + oldPos); //Remove from old position
+            orders.insert(orders.begin() + newPos, tempOrder); //Insert at new position
 
         }
+
+    }
+
+    size_t OrderList::size() const {
+
+        return orders.size();
 
     }
 

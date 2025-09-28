@@ -336,6 +336,13 @@ namespace WarzoneMap {
             * @param neighbor Pointer to the neighboring territory to add
             */
             void addNeighbor(Territory* neighbor);
+
+            /**
+             * @brief Comperator operation between two territories, helps to sort alphabetically
+             * @param a First territory
+             * @param b Second territory
+             */
+            static bool territoryIDCompare(Territory* a, Territory* b);
             
         };
 

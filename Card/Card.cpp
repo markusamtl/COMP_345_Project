@@ -90,7 +90,7 @@ namespace WarzoneCard {
         }
 
         //Check if the order is valid, and if the player has a valid orderList, add the order to the list
-        if(order != nullptr && player->getOrders() != nullptr) { player -> getOrders() -> addOrder(order); }
+        if(order != nullptr && player -> getPlayerOrders() != nullptr) { player -> getPlayerOrders() -> addOrder(order); }
 
     }
 

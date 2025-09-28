@@ -186,8 +186,8 @@ namespace WarzonePlayer {
         this -> playerName = "";
         this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
-        this -> playerHand = nullptr;
-        this -> playerOrders = nullptr;
+        this -> playerHand = new Hand();
+        this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
 
     }
@@ -197,8 +197,8 @@ namespace WarzonePlayer {
         this -> playerName = name;
         this -> neutralEnemies = {};
         this -> ownedTerritories = PlayerTerrContainer();
-        this -> playerHand = nullptr;
-        this -> playerOrders = nullptr;
+        this -> playerHand = new Hand();
+        this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
 
     }
@@ -218,7 +218,7 @@ namespace WarzonePlayer {
 
         this->playerName = name;
         this->neutralEnemies = neutralEnemies;
-        this->ownedTerritories = ownedTerritories;  // copy the container
+        this->ownedTerritories = ownedTerritories;
         this->playerHand = hand;
         this->playerOrders = orders;
         this->generateCardThisTurn = generateCard;
@@ -374,9 +374,9 @@ namespace WarzonePlayer {
 
     }
 
-    OrderList* Player::getOrders() const { return playerOrders; }
+    OrderList* Player::getPlayerOrders() const { return playerOrders; }
 
-    void Player::setOrders(OrderList* newOrders) {
+    void Player::setPlayerOrders(OrderList* newOrders) {
 
         if(playerOrders != nullptr){ delete playerOrders; }
         playerOrders = newOrders;
@@ -420,38 +420,41 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::toAttackPrint() {
+    void Player::toAttackPrint() const{
 
-        for(Territory* currTerr : ownedTerritories.getTerritories()) {
+        // Make a copy of owned territories
+        vector<Territory*> owned = ownedTerritories.getTerritories();
 
-            cout << "From: " << currTerr->getID() << ", " << playerName << " can attack: ";
+        //Sort by territory ID. Use comperator function to compare each ID.
+        sort(owned.begin(), owned.end(), *(Territory::territoryIDCompare));
+
+        // Iterate sorted territories
+        for(Territory* terr : owned) {
+
+            cout << "From: " << terr->getID() << ", " << playerName << " can attack: ";
+
+            // Copy neighbors, so they can be sorted as well 
+            vector<Territory*> neighbors = terr -> getNeighbors();
+
+            // Sort neighbors by ID
+            std::sort(neighbors.begin(), neighbors.end(), *(Territory::territoryIDCompare));
 
             bool foundEnemy = false;
 
-            for(Territory* neighTerr : currTerr->getNeighbors()) {
+            for(Territory* neighbor : neighbors) {
 
-                Player* neighOwner = neighTerr -> getOwner();
+                if (neighbor->getOwner() != this) {
 
-                //Check if a neighbouring territory is owned by a neutral enemy
-                bool neutralEnemyCheck = false;
+                    cout << neighbor->getID() << " (" << neighbor->getNumArmies() << " armies), ";
+                    foundEnemy = true;
 
-                if(neighOwner != nullptr) {
-
-                    neutralEnemyCheck = find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner -> getPlayerName()) != neutralEnemies.end();
-                
                 }
-
-                if(neighOwner == this || neutralEnemyCheck) { continue; } //Skip if owned by self or neutral enemy
-
-                cout << neighTerr->getID() << " (" << neighTerr->getNumArmies() << " armies), ";
                 
-                foundEnemy = true;
-
             }
 
             if (!foundEnemy) { cout << "no enemies"; }
 
-            cout << "\n";
+            cout << endl;
 
         }
 
@@ -463,31 +466,39 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::toDefendPrint() {
+    void Player::toDefendPrint() const {
 
-        vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
+        // Make a copy of owned territories
+        vector<Territory*> owned = ownedTerritories.getTerritories();
 
+        // Sort by territory ID. Use comparator function to compare each ID.
+        std::sort(owned.begin(), owned.end(), *(Territory::territoryIDCompare));
+
+        // Print player info
         cout << "Player " << playerName << " can defend: ";
 
-        if(ownedTerrs.empty()) {
+        if (owned.empty()) {
 
-            cout << "no territories\n";
+            cout << "no territories" << endl;
 
         } else {
 
-            for(size_t i = 0; i < ownedTerrs.size(); i++) {
+            // Iterate sorted territories
+            for (size_t i = 0; i < owned.size(); i++) {
 
-                cout << ownedTerrs[i] -> getID() << " (" << ownedTerrs[i]->getNumArmies() << " armies)";
-                    
-                if(i < ownedTerrs.size() - 1){ cout << ", "; } 
-                
+                cout << owned[i]->getID() 
+                    << " (" << owned[i]->getNumArmies() << " armies)";
+
+                if (i < owned.size() - 1) { cout << ", "; }
+
             }
 
-            cout << "\n";
+            cout << endl;
 
         }
 
     }
+
 
     void Player::issueOrders() {
         

@@ -22,6 +22,6 @@ RUN ORDER NORMALLY: ./order_driver
 
 CARD:
 
-COMPILE ORDER WITH: g++ -std=c++17 -Wall -I.
+COMPILE ORDER WITH: g++ -std=c++17 -Wall -I.g++ Card/Card.cpp Order/Order.cpp Player/Player.cpp Map/Map.cpp Card/CardDriver.cpp -o card_driver
 RUN ORDER WITH VALGRIND WITH: valgrind --leak-check=full -s --track-origins=yes ./card_driver
 RUN ORDER NORMALLY: ./card_driver

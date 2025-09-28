@@ -14,6 +14,8 @@ void testCards() {
     OrderList* orders = new OrderList();
     Player* alice = new Player("Alice", hand, orders);
 
+    cout << "Alice's Orders: " << *orders << endl;
+
     // --- Draw cards into Alice's hand ---
     cout << "\nDrawing 5 cards into Alice's hand..." << endl;
     for(int i = 0; i < 5; i++) {
@@ -37,7 +39,7 @@ void testCards() {
     
     
     vector<Card*> cardsToPlay = hand -> getHandCards(); // Need a copy of the hand vector, since it is mutated while iterating
-    while (!hand->getHandCards().empty()) {
+    while(!hand -> getHandCards().empty()) { //Play her hand, until it's not empty.
     
         Card* c = hand -> getHandCards().front(); //Get first card from hand.
 
@@ -50,9 +52,11 @@ void testCards() {
     cout << "Alice's " << *hand << endl;
     cout << deck << endl;
     cout << "Alice's Orders: " << *orders << endl;
+    cout << "Size of Deck " << deck.getCards().size() << endl;
 
-    // --- Cleanup ---
+    //Cleanup 
     delete alice;
+
 }
 
 int main() {

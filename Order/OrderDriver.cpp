@@ -184,7 +184,7 @@ void testOrderList() {
     //Print Alice's OrderList
     cout << endl << "Viewing Alice's orders list: "<< *(alice -> getPlayerOrders()) << endl;
 
-    // --- Cleanup ---
+    // Cleanup
     delete alice;
     delete bob;
     delete neutral;

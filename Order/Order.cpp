@@ -190,13 +190,13 @@ namespace WarzoneOrder {
     bool Deploy::validate() const {
 
         //Check if either the territory or the player are null pointers
-        if(issuer == nullptr || target == nullptr) { return false; } 
+        if(issuer == nullptr || target == nullptr){ return false; } 
 
         // Territory must belong to the issuing player
-        if(target -> getOwner() != issuer -> getPlayerName()) { return false; }
+        if(target -> getOwner() != issuer){ return false; }
 
         // Army count must be positive
-        if(numArmies <= 0) { return false; }
+        if(numArmies <= 0){ return false; }
 
         return true; //Return true if all conditions are met
 
@@ -298,7 +298,7 @@ namespace WarzoneOrder {
         if(issuer == nullptr || source == nullptr || target == nullptr) { return false; }
 
         //Player must own the source territory
-        if(source -> getOwner() != issuer -> getPlayerName()) { return false; }
+        if(source -> getOwner() != issuer){ return false; }
 
         //Player must have enough armies, or the number of armies they use must be geq 0
         if(numArmies <= 0 || source -> getNumArmies() < numArmies) { return false; }
@@ -327,7 +327,7 @@ namespace WarzoneOrder {
         }
 
         // --- 2. Check if source belongs to issuer ---
-        if(source -> getOwner() != issuer -> getPlayerName()) {
+        if(source -> getOwner() != issuer) {
 
             this -> setEffect("Advance failed: source territory not owned by issuer.");
             cout << this -> getEffect() << endl;
@@ -348,7 +348,7 @@ namespace WarzoneOrder {
         }
 
         // --- 4. If target is also owned by issuer, reinforce ---
-        if (target -> getOwner() == issuer -> getPlayerName()) {
+        if (target -> getOwner() == issuer) {
 
             if(source -> getNumArmies() <= 1) { //1 Army MUST remain on the source 
 
@@ -423,43 +423,52 @@ namespace WarzoneOrder {
         }
 
         //--- 6. Resolve outcome ---
-        if(defendersRemaining <= 0) {
 
-            if(attackersRemaining > 1) { //Successful conquest
+        Player* oldOwner = target->getOwner(); //Get old conquered territory owner
+        string oldOwnerName = (oldOwner ? oldOwner->getPlayerName() : "Unknown Player");
 
-                target -> setOwner(issuer->getPlayerName());
+        if (defendersRemaining <= 0) {
+
+            if (attackersRemaining > 1) { // Successful conquest
+
+                // --- Remove from old owner’s list (if any and not issuer) ---
+                if (oldOwner != nullptr && oldOwner != issuer) { oldOwner->removeOwnedTerritories(target); }
+
+                // --- Transfer ownership ---
+                target -> setOwner(issuer);
+                issuer -> addOwnedTerritories(target);  //Ensures new owner container syncs
                 target -> setNumArmies(attackersRemaining);
-                
-                issuer -> setGenerateCardThisTurn(true); //Make SURE that the attacker who won will get a card when turn ends
 
-                //TODO: REFACTOR MAP. Have to make sure the player being attacked loses their territory from the vector.
+                issuer->setGenerateCardThisTurn(true); // Attacker earns a card at turn end
 
-                this -> setEffect("Advance battle successful: " + issuer->getPlayerName() +
-                                " conquered " + target->getID() + " with " +
+                this->setEffect("Advance battle successful: " + issuer -> getPlayerName() +
+                                " destroyed " + oldOwnerName +
+                                ", and conquered " + target -> getID() + " with " +
                                 to_string(attackersRemaining) + " surviving armies.");
 
-            } else { //Attacker "wins", but doesn't have enough armies to advance to conquered territory
+            } else { //Edge case: Attacker “wins” but can’t move in, since they only have 1 remaining army
 
-                // Edge case: defenders eliminated but attacker only has 1 left
-                // Defender holds with 1 army
                 defendersRemaining = 1;
                 target -> setNumArmies(defendersRemaining);
 
-                this -> setEffect("Advance battle inconclusive: " + target->getOwner() +
-                                " clings on to " + target->getID() +
-                                " with 1 army after a desperate defense.");
+                this->setEffect("Advance battle inconclusive: " +
+                                issuer -> getPlayerName() + " tried to beat " + oldOwnerName +
+                                ", but didn't have enough armies to move in. The defender clings onto " + target -> getID() +
+                                " with 1 army, after a desperate defense.");
+
             }
 
-        } else { //Defender Wins
+        } else { // Defender Wins
 
-            // Defenders held normally
             target -> setNumArmies(defendersRemaining);
 
-            this -> setEffect("Advance battle failed: defender " + target->getOwner() +
-                            " held " + target->getID() + " with " +
+            this->setEffect("Advance battle failed: defender " +
+                            oldOwnerName + " beat " + issuer -> getPlayerName() + ", and holds onto"
+                            + target->getID() + " with " +
                             to_string(defendersRemaining) + " armies remaining.");
 
         }
+
 
         cout << this -> getEffect() << endl;
 
@@ -531,7 +540,7 @@ namespace WarzoneOrder {
         if(issuer == nullptr || target == nullptr) { return false; }
 
         //Target must NOT belong to the issuing player
-        if(target -> getOwner() == issuer -> getPlayerName()) { return false; }
+        if(target -> getOwner() == issuer) { return false; }
 
         //Can't bomb a territory with only 1 army.
         if(target -> getNumArmies() == 1) { return false; }
@@ -568,7 +577,7 @@ namespace WarzoneOrder {
         
         target -> setNumArmies(currentArmies - armiesToRemove);
 
-        this->setEffect("Bomb order executed. Player " + target -> getOwner() + ", at territory " 
+        this->setEffect("Bomb order executed. Player " + target -> getOwner() -> getPlayerName() + ", at territory " 
                         + target -> getID() + " lost " + to_string(armiesToRemove) + " armies.");
 
         cout << this->getEffect() << std::endl;
@@ -649,7 +658,7 @@ namespace WarzoneOrder {
         if(issuer == nullptr || target == nullptr || neutralPlayer == nullptr) { return false; }
 
         //Target must belong to the issuing player
-        if(target -> getOwner() != issuer -> getPlayerName()) { return false; }
+        if(target -> getOwner() != issuer) { return false; }
 
         return true;
 
@@ -767,7 +776,7 @@ namespace WarzoneOrder {
         if(source != nullptr || target != nullptr || issuer != nullptr) { return false; }
 
         //Make sure the player owns both the source and the target territory
-        if(source -> getOwner() != issuer -> getPlayerName() || target -> getOwner() != issuer -> getPlayerName()) {
+        if(source -> getOwner() != issuer || target -> getOwner() != issuer) {
 
             return false;
         }
@@ -904,7 +913,7 @@ namespace WarzoneOrder {
         this -> setEffect("Negotiate successful: " + issuer -> getPlayerName() +
                         " and " + targetPlayer -> getPlayerName() +
                         " cannot attack each other this turn.");
-                        
+
         std::cout << this->getEffect() << std::endl;
 
     }

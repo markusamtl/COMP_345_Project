@@ -82,8 +82,9 @@ namespace WarzonePlayer {
             /**
              * @brief Mutator for territories vector
              * @param newTerritories vector of Territory* to set
+             * @param newOwner Player owner for the new territories
              */
-            void setTerritories(const vector<Territory*>& newTerritories);
+            void setTerritories(const vector<Territory*>& newTerritories, Player* newOwner);
 
             /**
              * @brief Accessor for territoryIndex map
@@ -94,19 +95,24 @@ namespace WarzonePlayer {
             /**
              * @brief Mutator for territoryIndex map
              * @param newIndex unordered_map of Territory ID -> Territory* to set
+             * @param newOwner Player owner for the new territories
              */
-            void setTerritoryIndex(const unordered_map<string, Territory*>& newIndex);
+            void setTerritoryIndex(const unordered_map<string, Territory*>& newIndex, Player* newOwner);
 
 
             //-- Class Methods --//
 
             /**
              * @brief Adds a territory if not already owned.
+             * @param t Territory to be add
+             * @param newOwner Owner who will be assigned this territory
              */
-            void addTerritory(Territory* t);
+            void addTerritory(Territory* t, Player* newOwner);
 
             /**
              * @brief Removes a territory if owned.
+             * @param t Territory to be removed
+             * @param oldOwner Owner who will lose this territory
              */
             void removeTerritory(Territory* t);
 

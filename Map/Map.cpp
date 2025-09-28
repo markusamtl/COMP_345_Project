@@ -144,7 +144,7 @@ namespace WarzoneMap {
         this -> yCoord = 0;
         this -> neighbors = {};
         this -> continent = nullptr; 
-        this -> owner = "";
+        this -> owner = nullptr;
         this -> numArmies = 0;
 
     }
@@ -156,7 +156,7 @@ namespace WarzoneMap {
         this -> yCoord = 0;
         this -> neighbors = {};
         this -> continent = nullptr; 
-        this -> owner = "";
+        this -> owner = nullptr;
         this -> numArmies = 0;
 
     }
@@ -168,12 +168,12 @@ namespace WarzoneMap {
         this -> yCoord = yCoord;
         this -> neighbors = {};
         this -> continent = continent; 
-        this -> owner = "";
+        this -> owner = nullptr;
         this -> numArmies = 0;
 
     }
 
-    Territory::Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, const string &owner, int numArmies) {
+    Territory::Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, Player* owner, int numArmies) {
 
         this -> ID = ID;
         this -> xCoord = xCoord;
@@ -261,8 +261,8 @@ namespace WarzoneMap {
     Continent* Territory::getContinent() const {return this -> continent;}
     void Territory::setContinent(Continent* continent) { this -> continent = continent; }   
 
-    const string& Territory::getOwner() const { return this -> owner; }
-    void Territory::setOwner(const string &owner) { this -> owner = owner; }
+    Player* Territory::getOwner() const { return this -> owner; }
+    void Territory::setOwner(Player* owner) { this -> owner = owner; }
 
     int Territory::getNumArmies() const { return this -> numArmies; }
     void Territory::setNumArmies(int numArmies) { this -> numArmies = numArmies; }

@@ -9,9 +9,13 @@
 #include <sstream>
 #include <string>
 
+namespace WarzonePlayer { class Player; } //Forward declaration
+using namespace std;
+
+
 namespace WarzoneMap {
 
-using namespace std;
+    using WarzonePlayer::Player;
 
     // ================= StringHandling =================
     /**
@@ -174,7 +178,7 @@ using namespace std;
 
             //-- Ownership & armies --// 
 
-            string owner;
+            Player* owner;
             int numArmies;
 
         public:
@@ -208,10 +212,10 @@ using namespace std;
             * @param yCoord Y coordinate
             * @param neighbors Vector of pointers to neighboring territories
             * @param continent Pointer to the continent this territory belongs to
-            * @param owner Name of the player who owns the territory
+            * @param owner Pointer to the player who owns the territory
             * @param numArmies Number of armies stationed in the territory
             */
-            Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, const string &owner, int numArmies);
+            Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, Player* owner, int numArmies);
 
             /**
             * @brief Destructor
@@ -303,15 +307,15 @@ using namespace std;
 
             /**
             * @brief Accessor for owner
-            * @return Name of the player who owns the territory
+            * @return Player pointer for who owns the territory
             */
-            const string& getOwner() const;
+            Player* getOwner() const;
 
             /**
             * @brief Mutator for owner
-            * @param owner Name of the player to set as owner
+            * @param owner Player pointer for who to set as owner
             */
-            void setOwner(const string &owner);
+            void setOwner(Player* owner);
 
             /**
             * @brief Accessor for number of armies

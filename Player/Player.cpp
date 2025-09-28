@@ -18,8 +18,8 @@ namespace WarzonePlayer {
 
     PlayerTerrContainer::PlayerTerrContainer(vector<Territory*> territories, unordered_map<string, Territory*> territoryIndex) {
         
-        this->territories = territories;
-        this->territoryIndex = territoryIndex;
+        this -> territories = territories;
+        this -> territoryIndex = territoryIndex;
     
     }
 
@@ -72,14 +72,19 @@ namespace WarzonePlayer {
 
     }
 
-    void PlayerTerrContainer::setTerritories(const vector<Territory*>& newTerritories) {
+    void PlayerTerrContainer::setTerritories(const vector<Territory*>& newTerritories, Player* newOwner) {
 
         territories = newTerritories; //Overwrite old territory vector 
         territoryIndex.clear();       //Clear old hashmap
 
         for(Territory* t : territories) {
         
-            if(t != nullptr){ territoryIndex[t->getID()] = t; }
+            if(t != nullptr){ 
+
+                territoryIndex[t->getID()] = t; 
+                t->setOwner(newOwner);  //Update owner
+
+            }
         
         }
 
@@ -91,26 +96,36 @@ namespace WarzonePlayer {
     
     }
 
-    void PlayerTerrContainer::setTerritoryIndex(const unordered_map<string, Territory*>& newIndex) {
+    void PlayerTerrContainer::setTerritoryIndex(const unordered_map<string, Territory*>& newIndex, Player* newOwner) {
         
         territoryIndex = newIndex; //Overwrite old hashmap
         territories.clear();
 
         for (const pair<const string, Territory*>& currTerr : territoryIndex) {
 
-            territories.push_back(currTerr.second);
+            Territory* t = currTerr.second;
+            if (t != nullptr) { //update owner
+                
+                territories.push_back(t);
+                t -> setOwner(newOwner); 
+            
+            } 
 
         }
 
     }
 
     //-- Class Methods --//
-    void PlayerTerrContainer::addTerritory(Territory* t) {
+
+    void PlayerTerrContainer::addTerritory(Territory* t, Player* newOwner) {
 
         if(this -> owns(t)){ return; } //Check if null or already exists
         
         territories.push_back(t);
         territoryIndex[t -> getID()] = t;
+
+        //Update territory ownership
+        t->setOwner(newOwner);
 
     }
 
@@ -131,6 +146,13 @@ namespace WarzonePlayer {
 
             territories.erase(vectorTerrIndex);
         
+        }
+
+        //Remove the player who currently owns the territory
+        if(t -> getOwner() != nullptr) {
+
+            t -> setOwner(nullptr);
+
         }
 
     }
@@ -166,7 +188,7 @@ namespace WarzonePlayer {
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
-        this -> generateCardThisTurn = false; // default
+        this -> generateCardThisTurn = false;
 
     }
 
@@ -177,7 +199,7 @@ namespace WarzonePlayer {
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = nullptr;
         this -> playerOrders = nullptr;
-        this -> generateCardThisTurn = false; // default
+        this -> generateCardThisTurn = false;
 
     }
 
@@ -188,26 +210,42 @@ namespace WarzonePlayer {
         this -> ownedTerritories = PlayerTerrContainer();
         this -> playerHand = hand;
         this -> playerOrders = orders;
-        this -> generateCardThisTurn = false; // default
+        this -> generateCardThisTurn = false;
 
     }
 
     Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, bool generateCard) {
 
-        this -> playerName = name;
-        this -> neutralEnemies = neutralEnemies;
-        this -> ownedTerritories = ownedTerritories;
-        this -> playerHand = hand;
-        this -> playerOrders = orders;
-        this -> generateCardThisTurn = generateCard; // passed in explicitly
+        this->playerName = name;
+        this->neutralEnemies = neutralEnemies;
+        this->ownedTerritories = ownedTerritories;  // copy the container
+        this->playerHand = hand;
+        this->playerOrders = orders;
+        this->generateCardThisTurn = generateCard;
+
+        //Assign ownership of each territory to this player
+        for (Territory* terr : this->ownedTerritories.getTerritories()) {
+
+            //Make sure each territory exists
+            if(terr != nullptr) { terr -> setOwner(this); }
+
+        }
 
     }
 
-    Player::~Player() { 
+    Player::~Player() {
 
-        //Since the hand and orders are no longer needed
-        delete this -> playerHand; 
-        delete this -> playerOrders;
+        // Release hand and orders
+        delete this->playerHand; 
+        delete this->playerOrders;
+
+        // Reset ownership for territories
+        for(Territory* terr : this -> ownedTerritories.getTerritories()) {
+
+            //Check if the current owner of the territory is the refered player, and the territory isn't null
+            if(terr != nullptr && terr -> getOwner() == this) { terr -> setOwner(nullptr); }
+
+        }
 
     }
 
@@ -218,7 +256,14 @@ namespace WarzonePlayer {
         this -> ownedTerritories = other.ownedTerritories;
         this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
         this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
-        this -> generateCardThisTurn = other.generateCardThisTurn; // copy flag
+        this -> generateCardThisTurn = other.generateCardThisTurn;
+
+        //Update ownership of copied territories
+        for (Territory* terr : this->ownedTerritories.getTerritories()) {
+
+            if (terr != nullptr) { terr->setOwner(this); } //Overwrite old owner with the new Player
+
+        }
 
     }
 
@@ -226,15 +271,24 @@ namespace WarzonePlayer {
 
         if (this != &other) {
 
+            // Clean up existing dynamic allocations
             delete this -> playerHand;
             delete this -> playerOrders;
 
-            this -> playerName = other.playerName;
-            this -> neutralEnemies = other.neutralEnemies;
-            this -> ownedTerritories = other.ownedTerritories;
-            this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
-            this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
-            this -> generateCardThisTurn = other.generateCardThisTurn; // copy flag
+            // Copy basic fields
+            this->playerName = other.playerName;
+            this->neutralEnemies = other.neutralEnemies;
+            this->ownedTerritories = other.ownedTerritories;
+            this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
+            this->playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
+            this->generateCardThisTurn = other.generateCardThisTurn;
+
+            // --- Fix: update ownership of copied territories ---
+            for (Territory* terr : this->ownedTerritories.getTerritories()) {
+                
+                if (terr != nullptr) { terr->setOwner(this); }// overwrite previous owner with current Player
+
+            }
 
         }
 
@@ -245,14 +299,46 @@ namespace WarzonePlayer {
     ostream& operator<<(ostream& os, const Player& p) {
 
         os << "Player(Name: " << p.playerName
-           << ", Territories: " << p.ownedTerritories.size()
-           << ", Hand: " << (p.playerHand ? "Yes" : "No")
-           << ", Orders: " << (p.playerOrders ? "Yes" : "No")
-           << ", GenerateCardThisTurn: " << (p.generateCardThisTurn ? "True" : "False")
-           << ")";
+        << ", Territories: " << p.ownedTerritories.size();
+
+        if (p.ownedTerritories.size() > 0) {
+
+            os << " [";
+
+            const auto& terrs = p.ownedTerritories.getTerritories();
+
+            for (size_t i = 0; i < terrs.size(); i++) {
+
+                if (terrs[i] != nullptr) {
+
+                    os << terrs[i]->getID(); //Add territory to stream
+                    if (i < terrs.size() - 1) os << ", "; //Manage commas
+
+                }
+
+            }
+
+            os << "]";
+
+        }
+
+        // Print hand directly if available
+        os << ", Hand details: ";
+
+        if(p.playerHand) { os << *p.playerHand; } else { os << "None"; }
+
+        // Print order list directly if available
+        os << ", Orders: ";
+
+        if(p.playerOrders) { os << *p.playerOrders; } else { os << "None"; }
+        
+        os << ", Should a player be issued a card? " << (p.generateCardThisTurn ? "Yes!" : "No!")
+        << ")";
+
         return os;
 
     }
+
 
     //-- Accessors and Mutators --//
 
@@ -266,7 +352,18 @@ namespace WarzonePlayer {
 
     const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
 
-    void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) { ownedTerritories = newTerritories; }
+    void Player::setOwnedTerritories(const PlayerTerrContainer& newTerritories) {
+
+        ownedTerritories = newTerritories;
+
+        // Ensure all territories now belong to this player
+        for (Territory* terr : ownedTerritories.getTerritories()) {
+
+            if(terr != nullptr) { terr->setOwner(this); }
+
+        }
+
+    }
 
     Hand* Player::getHand() const { return playerHand; }
 
@@ -300,12 +397,18 @@ namespace WarzonePlayer {
 
             for(Territory* neighTerr : currTerr->getNeighbors()) {
 
-                string neighOwner = neighTerr -> getOwner();
+                Player* neighOwner = neighTerr -> getOwner();
 
-                // Skip if owned by self or neutral enemy
-                if(neighOwner == playerName || 
-                    find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner) 
-                    != neutralEnemies.end()) { continue; }
+                //Check if a neighbouring territory is owned by a neutral enemy
+                bool neutralEnemyCheck = false;
+
+                if(neighOwner != nullptr) {
+
+                    neutralEnemyCheck = find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner -> getPlayerName()) != neutralEnemies.end();
+                
+                }
+                
+                if(neighOwner == this || neutralEnemyCheck) { continue; } //Skip if owned by self or neutral enemy
 
                 uniqueTargets.insert(neighTerr);
 
@@ -327,11 +430,18 @@ namespace WarzonePlayer {
 
             for(Territory* neighTerr : currTerr->getNeighbors()) {
 
-                string neighOwner = neighTerr -> getOwner();
+                Player* neighOwner = neighTerr -> getOwner();
 
-                if (neighOwner == playerName ||
-                    std::find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner)
-                    != neutralEnemies.end()) { continue; }
+                //Check if a neighbouring territory is owned by a neutral enemy
+                bool neutralEnemyCheck = false;
+
+                if(neighOwner != nullptr) {
+
+                    neutralEnemyCheck = find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner -> getPlayerName()) != neutralEnemies.end();
+                
+                }
+
+                if(neighOwner == this || neutralEnemyCheck) { continue; } //Skip if owned by self or neutral enemy
 
                 cout << neighTerr->getID() << " (" << neighTerr->getNumArmies() << " armies), ";
                 
@@ -385,7 +495,7 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory); }
+    void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory, this); }
 
     void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
 

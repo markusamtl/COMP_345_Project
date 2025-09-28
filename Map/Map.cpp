@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "../Player/Player.h"
+
 using namespace std;
 
 
@@ -235,8 +237,8 @@ namespace WarzoneMap {
             }
         }
 
-        os << "], Continent: " << (territory.continent ? territory.continent->getID() : "None")
-        << ", Owner: " << territory.owner
+        os << "], Continent: " << (territory.continent ? territory.continent->getID() : "None") << 
+        ", Owner: "  << (territory.getOwner() ? territory.getOwner()->getPlayerName() : "None")
         << ", Num Armies: " << territory.numArmies
         << ")";
 
@@ -698,11 +700,7 @@ namespace WarzoneMap {
 
     }
 
-    MapLoader::~MapLoader() {
-
-        // No dynamic memory to free
-
-    }
+    MapLoader::~MapLoader(){} // No dynamic memory to free
 
     MapLoader::MapLoader(const MapLoader& other) {
 

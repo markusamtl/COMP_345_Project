@@ -16,9 +16,10 @@ namespace WarzoneOrder { class OrderList; }  //Forward declaration for order lis
 namespace WarzonePlayer {
 
     using WarzoneMap::Territory;
-    using WarzoneMap::StringHandling;
     using WarzoneCard::Hand;
+    using WarzoneOrder::TimeUtil;
     using WarzoneOrder::OrderList;
+    using WarzoneOrder::Order;
 
     /**
      * @brief Manages a Player's owned territories using both a vector (for iteration), and an unordered_map (for fast lookups).
@@ -312,7 +313,7 @@ namespace WarzonePlayer {
             /**
              * @brief Creates an order and adds it to the player’s order list.
              */
-            void issueOrders();
+            void issueOrder();
 
             /**
              * @brief Adds a territory to the player’s owned territories.
@@ -337,11 +338,6 @@ namespace WarzonePlayer {
              * @param enemyName The name of the enemy to remove.
              */
             void removeNeutralEnemy(const string& enemyName);
-
-            /**
-             * @brief Clear all neutral enemies (e.g., at the start of a new turn).
-             */
-            void clearNeutralEnemies();
 
     };
 

@@ -298,12 +298,12 @@ namespace WarzonePlayer {
 
     ostream& operator<<(ostream& os, const Player& p) {
 
-        os << "Player(Name: " << p.playerName
-        << ", Territories: " << p.ownedTerritories.size();
+        os << "Player Info:" << endl << "Name: " << p.playerName << endl
+        << "Number of Territories: " << p.ownedTerritories.size() << "(";
 
         if (p.ownedTerritories.size() > 0) {
 
-            os << " [";
+            os << "[";
 
             const auto& terrs = p.ownedTerritories.getTerritories();
 
@@ -318,22 +318,21 @@ namespace WarzonePlayer {
 
             }
 
-            os << "]";
+            os << "])";
 
         }
 
         // Print hand directly if available
-        os << ", Hand details: ";
+        os << endl << "Hand details: ";
 
-        if(p.playerHand) { os << *p.playerHand; } else { os << "None"; }
+        if(p.playerHand){ os << *p.playerHand; } else { os << "None"; }
 
         // Print order list directly if available
-        os << ", Orders: ";
+        os << endl << "Orders: ";
 
         if(p.playerOrders) { os << *p.playerOrders; } else { os << "None"; }
         
-        os << ", Should a player be issued a card? " << (p.generateCardThisTurn ? "Yes!" : "No!")
-        << ")";
+        os << endl << "Should a player be issued a card on this turn? " << (p.generateCardThisTurn ? "Yes!" : "No!");
 
         return os;
 
@@ -500,9 +499,30 @@ namespace WarzonePlayer {
     }
 
 
-    void Player::issueOrders() {
+    void Player::issueOrder() {
         
-        //TO BE DONE
+        if(this -> playerOrders == nullptr){ return; }//Make sure the OrderList for the player exists
+
+        int randomOrderNumber = static_cast<int>(TimeUtil::getSystemTimeNano() % 6); //Get a random order number
+        Order* tempOrder = nullptr; //Instantiate a order pointer
+
+        switch(randomOrderNumber) {
+
+            case 0: tempOrder = new WarzoneOrder::Deploy(this, nullptr, 0); break; //Deploy
+            case 1: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break; //Advance
+            case 2: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break; //Bomb
+            case 3: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break; //Blockade
+            case 4: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break; //Airlift
+            case 5: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break; //Negotiate
+
+        }
+
+        if(tempOrder != nullptr) {
+        
+            cout << this -> getPlayerName() << " has had an order added to their OrderList. Order Info:\n" << *tempOrder << endl;
+            this -> getPlayerOrders() -> addOrder(tempOrder);
+
+        }
 
     }
 
@@ -513,24 +533,22 @@ namespace WarzonePlayer {
     void Player::addNeutralEnemy(const string& enemyName) {
 
         if(find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) == neutralEnemies.end()) {
+
             neutralEnemies.push_back(enemyName); 
+
         }
     
     }
 
     void Player::removeNeutralEnemy(const string& enemyName) {
 
-        auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName);
+        auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName); //Create iterator, easiest way to compare
 
         if (enemyNameIndex != neutralEnemies.end()) {
-            neutralEnemies.erase(enemyNameIndex); 
+
+            neutralEnemies.erase(enemyNameIndex);
+
         } 
-
-    }
-
-    void Player::clearNeutralEnemies() {
-
-        neutralEnemies.clear();
 
     }
     

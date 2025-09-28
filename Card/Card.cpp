@@ -36,7 +36,7 @@ namespace WarzoneCard {
         
         switch (card.type) {
 
-            case (CardType::Bomb): os << "Card: Bomb"; break;
+            case (CardType::Bomb): os << "Card(Bomb)"; break;
             case (CardType::Blockade): os << "Card(Blockade)"; break;
             case CardType::Airlift: os << "Card(Airlift)"; break;
             case CardType::Diplomacy: os << "Card(Diplomacy)"; break;

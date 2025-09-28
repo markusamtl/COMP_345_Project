@@ -5,7 +5,6 @@
 #include <iostream>
 #include <chrono>
 
-#include "../Map/Map.h"
 #include "../Player/Player.h"
 
 namespace WarzonePlayer { class Player; } //Forward declaration

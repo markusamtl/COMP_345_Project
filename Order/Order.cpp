@@ -204,21 +204,27 @@ namespace WarzoneOrder {
 
     void Deploy::execute() {
 
-        if(!validate()) {
+        if (!this->validate()) {
 
-            effect = "Invalid Deploy Order.";
+            this->setEffect("Deploy order invalid.");
+            cout << this->getEffect() << endl;
             return;
 
         }
 
-        // Add armies to the target territory
-        target -> setNumArmies(target -> getNumArmies() + numArmies);
+        // Add armies to target
+        target->setNumArmies(target->getNumArmies() + numArmies);
 
-        // Update effect string
-        effect = issuer -> getPlayerName() + " deployed " + to_string(numArmies)
-        + " armies to " + target->getID() + ".";
+        // --- Safeguard: ensure target is tracked by issuer ---
+        if (!issuer->getOwnedTerritories().owns(target)) { issuer->addOwnedTerritories(target); }
+
+        this->setEffect("Deploy successful: placed " + to_string(numArmies) +
+                        " armies on " + target->getID() + ".");
+
+        cout << this->getEffect() << endl;
 
     }
+
 
     // ================= Advance ================= //
 
@@ -348,27 +354,35 @@ namespace WarzoneOrder {
         }
 
         // --- 4. If target is also owned by issuer, reinforce ---
-        if (target -> getOwner() == issuer) {
+        if (target->getOwner() == issuer) {
 
-            if(source -> getNumArmies() <= 1) { //1 Army MUST remain on the source 
+            if (source->getNumArmies() <= 1) { //1 Army MUST remain on the source 
 
-                this -> setEffect("Advance failed: Not enough armies to advance with.");
-                cout << this -> getEffect() << endl;
+                this->setEffect("Advance failed: Not enough armies to advance with.");
+                cout << this->getEffect() << endl;
                 return;
-
+                
             }
 
-            int numArmiesMovable = min(numArmies, source -> getNumArmies() - 1); //Ensure 1 army stays on source
+            int numArmiesMovable = min(numArmies, source->getNumArmies() - 1); //Ensure 1 army stays on source
 
-            source -> setNumArmies(source->getNumArmies() - numArmiesMovable); //Remove Armies from source territory
-            target -> setNumArmies(target->getNumArmies() + numArmiesMovable); //Add armies to target territory
+            source->setNumArmies(source->getNumArmies() - numArmiesMovable); // Remove Armies from source
+            target->setNumArmies(target->getNumArmies() + numArmiesMovable); // Add armies to target
 
-            this -> setEffect("Advance successful: moved " + to_string(numArmiesMovable) +
+            //Ensure both territories are tracked by issuer ---
+            if (!issuer -> getOwnedTerritories().owns(source)) { issuer -> addOwnedTerritories(source); }
+            if (!issuer->getOwnedTerritories().owns(target)) { issuer->addOwnedTerritories(target); }
+
+            this->setEffect("Advance successful: moved " + to_string(numArmiesMovable) +
                             " armies from " + source->getID() +
                             " to " + target->getID() + ".");
+
             cout << this->getEffect() << endl;
+
             return;
+        
         }
+
 
         // --- 5. Perform battle logic
         if(source -> getNumArmies() <= 1) { //1 Army MUST remain on the source 
@@ -442,7 +456,7 @@ namespace WarzoneOrder {
                 issuer->setGenerateCardThisTurn(true); // Attacker earns a card at turn end
 
                 this->setEffect("Advance battle successful: " + issuer -> getPlayerName() +
-                                " destroyed " + oldOwnerName +
+                                " defeated " + oldOwnerName +
                                 ", and conquered " + target -> getID() + " with " +
                                 to_string(attackersRemaining) + " surviving armies.");
 
@@ -773,7 +787,7 @@ namespace WarzoneOrder {
     bool Airlift::validate() const {
 
         //Make sure that the player, and the source / target territories, exist.
-        if(source != nullptr || target != nullptr || issuer != nullptr) { return false; }
+        if(source == nullptr || target == nullptr || issuer == nullptr) { return false; }
 
         //Make sure the player owns both the source and the target territory
         if(source -> getOwner() != issuer || target -> getOwner() != issuer) {
@@ -887,7 +901,7 @@ namespace WarzoneOrder {
     bool Negotiate::validate() const {
 
         //Make sure both the source and target players exist
-        if(issuer != nullptr || targetPlayer != nullptr) { return false; }
+        if(issuer == nullptr || targetPlayer == nullptr) { return false; }
 
         //Player can't negotiate with themselves
         if(issuer == targetPlayer) { return false; }

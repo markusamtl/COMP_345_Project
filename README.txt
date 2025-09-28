@@ -1,27 +1,50 @@
-ENSURE THAT YOU ARE IN THE COMP_345_PROJECT LEVEL
+# COMP_345_Project
+
+This project is developed and tested in an **Ubuntu environment**.  
+It uses **CMake** to manage builds and supports running under **Valgrind** for memory debugging.  
+
+---
+
+## Requirements
+
+Make sure the following are installed on your Ubuntu system:
+
+- **g++** (C++17 compiler)
+- **cmake** (>= 3.10)
+- **make**
+- **valgrind**
+
+Install them (if needed) with:
+
+sudo apt update
+sudo apt install g++ cmake make valgrind
+
+**BUILD INTRUCTIONS FOR CMKAE**
+
+1) Navigate to root directory: cd COMP_345_PROJECT
+2) Create and enter build directory: mkdir build && cd build
+3) Run cmake, and build the drivers: cmake .. && make
+
+This **SHOULD** be successful.
+
+To run the drivers, run the following commands:
 
 MAP:
 
-COMPILE MAP WITH: g++ -std=c++17 -Wall -I. Map/Map.cpp Player/Player.cpp Order/Order.cpp Card/Card.cpp Map/MapDriver.cpp -o map_driver
-RUN MAP WITH VALGRIND WITH: valgrind --leak-check=full -s --track-origins=yes ./map_driver
-RUN MAP NORMALLY: ./map_driver
+Without Valgrind: ./map_driver
+With Valgrind: make run_map_valgrind
 
 PLAYER:
 
-COMPILE PLAYER WITH: g++ -std=c++17 -Wall -I. Player/Player.cpp Order/Order.cpp Map/Map.cpp Card/Card.cpp Player/PlayerDriver.cpp -o player_driver
-RUN PLAYER WITH VALGRIND WITH: valgrind --leak-check=full -s --track-origins=yes ./player_driver
-RUN PLAYER NORMALLY: ./player_driver
-
+Without Valgrind: ./player_driver
+With Valgrind: make run_player_valgrind
 
 ORDER:
 
-COMPILE ORDER WITH: g++ -std=c++17 -Wall -I. Order/Order.cpp Player/Player.cpp Card/Card.cpp Map/Map.cpp Order/OrderDriver.cpp -o order_driver
-RUN ORDER WITH VALGRIND WITH: valgrind --leak-check=full -s --track-origins=yes ./order_driver
-RUN ORDER NORMALLY: ./order_driver
-
+Without Valgrind: ./order_driver
+With Valgrind: make run_order_valgrind  
 
 CARD:
 
-COMPILE ORDER WITH: g++ -std=c++17 -Wall -I.g++ Card/Card.cpp Order/Order.cpp Player/Player.cpp Map/Map.cpp Card/CardDriver.cpp -o card_driver
-RUN ORDER WITH VALGRIND WITH: valgrind --leak-check=full -s --track-origins=yes ./card_driver
-RUN ORDER NORMALLY: ./card_driver
+Without Valgrind: ./card_driver
+With Valgrind: make run_card_valgrind

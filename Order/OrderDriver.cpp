@@ -7,7 +7,7 @@ void testOrderList() {
     cout << "=== Testing OrderList and Orders with Brazil.map ===" << std::endl;
 
     // --- Load Map ---
-    std::string mapPath = "Map/test_maps/Brazil/Brazil.map";
+    std::string mapPath = "../Map/test_maps/Brazil/Brazil.map";
     MapLoader loader;
 
     if (loader.importMapInfo(mapPath) != 0) {

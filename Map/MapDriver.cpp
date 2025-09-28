@@ -6,7 +6,7 @@ namespace fs = std::filesystem;
 
 void testLoadMaps() {
 
-    const string directory = "Map/test_maps"; //Fixed root directory
+    const string directory = "../Map/test_maps"; //Fixed root directory
     vector<string> mapFiles;
 
     // Collect ALL .map files recursively
@@ -113,7 +113,7 @@ void testLoadMaps() {
     }
 
     // --- Load Map ---
-    string mapPath = "Map/test_maps/Brazil/Brazil.map";
+    string mapPath = "../Map/test_maps/Brazil/Brazil.map";
     MapLoader loader;
 
     if (loader.importMapInfo(mapPath) != 0) {

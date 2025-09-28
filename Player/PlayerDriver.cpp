@@ -4,7 +4,7 @@ void testPlayer() {
     cout << "=== Testing Player with Brazil.map ===" << endl;
 
     // --- Load Map ---
-    string mapPath = "Map/test_maps/Brazil/Brazil.map";
+    string mapPath = "../Map/test_maps/Brazil/Brazil.map";
     MapLoader loader;
 
     if (loader.importMapInfo(mapPath) != 0) {

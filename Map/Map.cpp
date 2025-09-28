@@ -809,7 +809,6 @@ namespace WarzoneMap {
 
                 string continentName = StringHandling::trim(line.substr(0, pos)); // Extract continent name
                 string continentBonusStr = StringHandling::trim(line.substr(pos + 1)); // Extract continent name
-                int bonusValue = 0;
                 
                 pair<bool, int> bonusValueStatus = StringHandling::isStrInt(continentBonusStr); //Get bonus valus
 
@@ -855,15 +854,7 @@ namespace WarzoneMap {
         return MAP_OK;
     }
 
-    pair<int, Map*> MapLoader::loadMap() {
-
-        if(this == nullptr) { //Check for null pointer
-
-            cerr << "Error: Input map pointer is null." << endl;
-            return {INVALID_MAP_PTR, nullptr};
-
-        }
-        
+    pair<int, Map*> MapLoader::loadMap() {    
 
         //Create return map pointer, to be returned IF loading is successful
         Map* tempMapPtr = new Map();
@@ -954,7 +945,7 @@ namespace WarzoneMap {
 
             } else {
 
-                for(int i = 0; i < territories.size(); i++) { //For ALL territories
+                for(size_t i = 0; i < territories.size(); i++) { //For ALL territories
 
                     //Extract mandatory fields from territory entry
                     string territoryID   = territories[i][0];

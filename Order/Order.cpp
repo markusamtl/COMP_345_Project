@@ -314,8 +314,22 @@ namespace WarzoneOrder {
 
         //Check if the target territory is a neighbour of the source territory
         bool isAdjacent = (find(neighbors.begin(), neighbors.end(), target) != neighbors.end());
-
         if(!isAdjacent) { return false; }
+
+        //Check if the attacker has a truce with the defender
+        Player* defender = target -> getOwner();
+        
+        if (defender != nullptr) {
+
+            const vector<string>& neutrals = issuer->getNeutralEnemies();
+
+            if(find(neutrals.begin(), neutrals.end(), defender->getPlayerName()) != neutrals.end()) { //Search through list of neutral enemies
+
+                return false;
+            
+            }
+        
+        }
 
         return true;
         
@@ -374,8 +388,8 @@ namespace WarzoneOrder {
             if (!issuer->getOwnedTerritories().owns(target)) { issuer->addOwnedTerritories(target); }
 
             this->setEffect("Advance successful: moved " + to_string(numArmiesMovable) +
-                            " armies from " + source->getID() +
-                            " to " + target->getID() + ".");
+                            " armies from " + source -> getID() +
+                            " to " + target -> getID() + ".");
 
             cout << this->getEffect() << endl;
 
@@ -439,35 +453,31 @@ namespace WarzoneOrder {
         //--- 6. Resolve outcome ---
 
         Player* oldOwner = target->getOwner(); //Get old conquered territory owner
-        string oldOwnerName = (oldOwner ? oldOwner->getPlayerName() : "Unknown Player");
+        string oldOwnerName = (oldOwner ? oldOwner -> getPlayerName() : "Unknown Player");
 
         if (defendersRemaining <= 0) {
 
             if (attackersRemaining > 1) { // Successful conquest
 
-                // --- Remove from old owner’s list (if any and not issuer) ---
-                if (oldOwner != nullptr && oldOwner != issuer) { oldOwner->removeOwnedTerritories(target); }
-
-                // --- Transfer ownership ---
-                target -> setOwner(issuer);
-                issuer -> addOwnedTerritories(target);  //Ensures new owner container syncs
-                target -> setNumArmies(attackersRemaining);
+                //Transfer ownership
+                issuer->addOwnedTerritories(target);
+                target->setNumArmies(attackersRemaining);
 
                 issuer->setGenerateCardThisTurn(true); // Attacker earns a card at turn end
 
-                this->setEffect("Advance battle successful: " + issuer -> getPlayerName() +
+                this->setEffect("Advance battle successful: " + issuer->getPlayerName() +
                                 " defeated " + oldOwnerName +
-                                ", and conquered " + target -> getID() + " with " +
+                                ", and conquered " + target->getID() + " with " +
                                 to_string(attackersRemaining) + " surviving armies.");
 
-            } else { //Edge case: Attacker “wins” but can’t move in, since they only have 1 remaining army
+            } else { // Edge case: attacker “wins” but can’t move in
 
                 defendersRemaining = 1;
-                target -> setNumArmies(defendersRemaining);
+                target->setNumArmies(defendersRemaining);
 
                 this->setEffect("Advance battle inconclusive: " +
-                                issuer -> getPlayerName() + " tried to beat " + oldOwnerName +
-                                ", but didn't have enough armies to move in. The defender clings onto " + target -> getID() +
+                                issuer->getPlayerName() + " tried to beat " + oldOwnerName +
+                                ", but didn't have enough armies to move in. The defender clings onto " + target->getID() +
                                 " with 1 army, after a desperate defense.");
 
             }
@@ -478,11 +488,10 @@ namespace WarzoneOrder {
 
             this->setEffect("Advance battle failed: defender " +
                             oldOwnerName + " beat " + issuer -> getPlayerName() + ", and holds onto"
-                            + target->getID() + " with " +
+                            + target -> getID() + " with " +
                             to_string(defendersRemaining) + " armies remaining.");
 
         }
-
 
         cout << this -> getEffect() << endl;
 
@@ -693,12 +702,7 @@ namespace WarzoneOrder {
         target -> setNumArmies((target -> getNumArmies()) * 3);
 
         //Step 2: Transfer ownership to Neutral player
-
-        //TODO: ONLY DO THIS WHEN I REFACTOR MAP TO INCLUDE Player*
-        //target -> setOwner(neutralPlayer -> getPlayerName());
-
-        issuer->removeOwnedTerritories(target); //Remove territory from issuer
-        neutralPlayer->addOwnedTerritories(target); //Add territory to neutral player
+        neutralPlayer -> addOwnedTerritories(target); //Add territory to neutral player
 
         //Step 3: Update effect string
         this -> setEffect("Blockade executed: " + target -> getID() + " now has " 

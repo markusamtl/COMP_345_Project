@@ -34,9 +34,12 @@ void testPlayer() {
 
     cout << "Map loaded successfully: " << mapPath << endl;
 
+    //Get empty hashmap for player
+    unordered_map<Continent*, long long> playerContHashmap = gameMap -> buildEmptyContinentHashmap();
+
     // --- Setup Players ---
-    Player* alice   = new Player("Alice");
-    Player* bob     = new Player("Bob");
+    Player* alice = new Player("Alice", playerContHashmap);
+    Player* bob = new Player("Bob", playerContHashmap);
 
     // Get Brazil territories
     vector<Territory*> allTerritories = gameMap->getTerritories();
@@ -92,8 +95,8 @@ void testPlayer() {
 
     // --- Show final state ---
     cout << endl << "=== Player's Final State: ===" << endl;
-    cout << "For Alice\n "<< *alice << endl;
-    cout << "For Bob\n" << *bob << endl;
+    cout << "For Alice\n "<< *alice << endl << endl;
+    cout << "For Bob\n" << *bob << endl << endl;
 
     // --- Show attack/defend options ---
 

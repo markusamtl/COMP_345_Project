@@ -38,10 +38,13 @@ void testOrderList() {
 
     cout << "Map loaded successfully: " << mapPath << std::endl;
 
-    //--- Setup Players ---
-    Player* alice = new Player("Alice");
-    Player* bob   = new Player("Bob");
-    Player* neutral = new Player("Neutral");
+    //Get empty hashmap for player
+    unordered_map<Continent*, long long> playerContHashmap = gameMap -> buildEmptyContinentHashmap();
+
+    // --- Setup Players ---
+    Player* alice = new Player("Alice", playerContHashmap);
+    Player* bob = new Player("Bob", playerContHashmap);
+    Player* neutral = new Player("Neutral", playerContHashmap);
 
     // Get Brazil territories
     vector<Territory*> allTerritories = gameMap -> getTerritories();
@@ -99,6 +102,12 @@ void testOrderList() {
     bob -> toAttackPrint();
     cout << endl;
     
+    //See Bob and Alice's information
+    cout << endl << "=== Viewing Player info for Alice and Bob, prior to execution ===" << endl;
+    cout << *alice << endl << endl;
+    cout << *bob << endl << endl;
+
+    cout << endl << "=== Add orders for Alice ===" << endl;
 
     //Add Deploy order for Alice
     alice -> getPlayerOrders() -> addOrder(new Deploy(alice, terrA, 5));
@@ -126,7 +135,7 @@ void testOrderList() {
     cout << *(alice -> getPlayerOrders() -> getOrders()[5]) << endl;
 
     // Add Negotiate order (Alice negotiates with Bob)
-    alice -> getPlayerOrders() ->addOrder(new Negotiate(alice, bob));
+    alice -> getPlayerOrders() -> addOrder(new Negotiate(alice, bob));
     cout << *(alice -> getPlayerOrders() -> getOrders()[6]) << endl << endl;
 
     cout << "=== Adding intentionally invalid orders ===" << endl;
@@ -159,6 +168,7 @@ void testOrderList() {
     cout << endl << "Viewing Alice's orders list: "<< *(alice -> getPlayerOrders()) << endl;
 
     //Execute Orders
+    cout << endl << "=== Execute Orders: ===" << endl << endl;
     while(alice -> getPlayerOrders()-> getOrders().empty() == false) {
 
         Order* tempOrder = alice -> getPlayerOrders() -> getOrders()[0]; //Get order
@@ -166,6 +176,11 @@ void testOrderList() {
         alice -> getPlayerOrders() -> removeOrder(0); //Remove order after execution
 
     }
+
+    //See Bob and Alice's information
+    cout << endl << "=== Viewing Player info for Alice and Bob, after execution ===" << endl;
+    cout << *alice << endl << endl;
+    cout << *bob << endl << endl;
 
     //Check Alice's, Bob's, and Neutral's territories
     cout << endl << "=== Viewing owned territories after execution ===" << endl;
@@ -182,7 +197,8 @@ void testOrderList() {
     bob -> toAttackPrint();
 
     //Print Alice's OrderList
-    cout << endl << "Viewing Alice's orders list: "<< *(alice -> getPlayerOrders()) << endl;
+    cout << endl  << endl << "=== View Alice's OrderList (To be empty): ===" << endl << endl 
+         << *(alice -> getPlayerOrders()) << endl;
 
     // Cleanup
     delete alice;

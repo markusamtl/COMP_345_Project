@@ -177,9 +177,9 @@ namespace WarzoneMap {
             Continent* continent;
 
             //-- Ownership & armies --// 
-
             Player* owner;
             int numArmies;
+            long long numericTerrID;
 
         public:
 
@@ -215,8 +215,7 @@ namespace WarzoneMap {
             * @param owner Pointer to the player who owns the territory
             * @param numArmies Number of armies stationed in the territory
             */
-            Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors, Continent* continent, Player* owner, int numArmies);
-
+            Territory(const string& ID, int xCoord, int yCoord, const vector<Territory*>& neighbors,Continent* continent, WarzonePlayer::Player* owner, int numArmies);
             /**
             * @brief Destructor
             */
@@ -329,6 +328,14 @@ namespace WarzoneMap {
             */
             void setNumArmies(int numArmies);
 
+            /**
+            * @brief Accessor for integer value of Territory ID
+            * @return integer value of Territory ID
+            */
+            long long getNumericTerrID();
+
+            //Note: NO mutator should exist. This is ONLY based on the string ID.
+
             //-- Class Methods --//
 
             /**
@@ -343,6 +350,11 @@ namespace WarzoneMap {
              * @param b Second territory
              */
             static bool territoryIDCompare(Territory* a, Territory* b);
+
+            /**
+             * @brief Compute numericTerrID from ID (Standard polynomial rolling hash).
+             */
+            void computeNumericTerrID();
             
         };
 
@@ -356,7 +368,10 @@ namespace WarzoneMap {
      * - Map is responsible for cleaning them up in its destructor.
      * - Continent and Territory do NOT own each other (non-owning raw pointers only).
      * - Continent and Territory can NOT exist by themselves.
-     *
+     * 
+     * Game Logic:
+     * - Maintains a lookup table of continent sizes (number of territories).
+     *   This supports O(1) checking of continent control by players.
      */
     class Map{
 
@@ -372,6 +387,9 @@ namespace WarzoneMap {
             //-- Map Storage Properties --//
             vector<Continent*> continents;
             vector<Territory*> territories;
+
+            //-- Game Logic Info --/
+            unordered_map<Continent*, long long> continentLookupTable;
 
 
         public:
@@ -392,8 +410,9 @@ namespace WarzoneMap {
              * @param warn
              * @param territories
              * @param continents
+             * @param continentLookupTable;
              */
-            Map(string author, string image, string wrap, string scrollType, string warn, vector<Territory*> territories, vector<Continent*> continents);
+            Map(string author, string image, string wrap, string scrollType, string warn, vector<Territory*> territories, vector<Continent*> continents, unordered_map<Continent*, long long> continentLookupTable);
 
             /**
              * @brief Destructor
@@ -508,6 +527,18 @@ namespace WarzoneMap {
              */
             void setTerritories(const vector<Territory*>& territories);
 
+            /**
+             * @brief Accessor for territories
+             * @return Lookup table
+             */
+            const unordered_map<Continent*, long long>& getContinentLookupTable() const;
+
+            /**
+             * @brief Mutator for continentLookupTable
+             * @param continentLookupTable Replacement hashmap
+             */
+            void setContinentLookupTable(const unordered_map<Continent*, long long> continentLookupTable);
+
             //-- Class Methods --//
 
             /**
@@ -528,6 +559,13 @@ namespace WarzoneMap {
              * @return pointer to the Territory if found, nullptr otherwise
              */
             Territory* getTerritoryByID(const string& ID);
+
+            /**
+             * @brief Retrieves a territory by its ID
+             * @param ID numeric ID of the territory to find
+             * @return pointer to the Territory if found, nullptr otherwise
+             */
+            Territory* getTerritoryByNumID(long long ID);
 
             /**
              * @brief Retrieves a continent by its ID
@@ -555,6 +593,18 @@ namespace WarzoneMap {
             */
             bool validate() const;
 
+            /**
+             * @brief Build the continent lookup table.
+             * Call this once after the map is fully loaded.
+             */
+            void buildContinentHashmap();
+
+            /**
+             * @brief Build an empty continent hashmap (all continents mapped to 0).
+             * @return A hashmap with every continent in the map as a key, and 0 as the value.
+             */
+            unordered_map<Continent*, long long> buildEmptyContinentHashmap() const;
+
     };
 
     // ================= MapLoader =================
@@ -579,7 +629,6 @@ namespace WarzoneMap {
             
             //-- Territory Info --//
             vector<vector<string>> territories;
-            
 
         public:
             

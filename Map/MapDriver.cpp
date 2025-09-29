@@ -143,9 +143,12 @@ void testLoadMaps() {
 
     cout << "Map loaded successfully: " << mapPath << endl;
 
+    //Get empty hashmap for player
+    unordered_map<Continent*, long long> playerContHashmap = gameMap -> buildEmptyContinentHashmap();
+
     // --- Setup Players ---
-    Player* alice   = new Player("Alice");
-    Player* bob     = new Player("Bob");
+    Player* alice = new Player("Alice", playerContHashmap);
+    Player* bob = new Player("Bob", playerContHashmap);
 
     // Get Brazil territories
     vector<Territory*> allTerritories = gameMap -> getTerritories();
@@ -181,7 +184,47 @@ void testLoadMaps() {
     terrG->setNumArmies(3000);
     terrH->setNumArmies(100);
 
+    //Print out map data
     cout << *gameMap;
+
+    //Print out win cons
+    cout << "\n--- Continent Hashmap (Brazil) ---" << endl;
+
+    for(pair<Continent*, int>entry : gameMap -> getContinentLookupTable()) { //Iterate over hashmap
+
+        Continent* c = entry.first;
+        int sum = entry.second;
+
+        cout << "Continent: " << (c ? c->getID() : "NULL") << " | Sum of Territory IDs (ASCII): " << sum << endl;
+        
+    }
+
+    //Let Alice own ALL territories:
+    for(Territory* t : allTerritories){
+
+        alice -> addOwnedTerritories(t);
+
+    }
+
+    //Look at Alice's and Bob's territories, Bob should have NONE.
+    cout << endl << endl << *alice << endl << endl;
+    cout << *bob << endl << endl;
+
+
+    //See if she owns Amazonas (she should)
+    if(alice -> controlsContinent(gameMap -> getContinentLookupTable(), gameMap -> getContinentByID("Amazonas"))){
+
+        cout << "Alice controls the entirety of Amazonas!\n"; 
+
+    }
+
+    //See if Alice should win the game (she should)
+
+    if(alice -> hasWon(gameMap -> getContinentLookupTable())) {
+
+        cout << "Alice has won the game!\n"; 
+
+    } 
 
     //ALWAYS delete players first.
     delete alice;

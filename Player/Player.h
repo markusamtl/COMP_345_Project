@@ -16,6 +16,7 @@ namespace WarzoneOrder { class OrderList; }  //Forward declaration for order lis
 namespace WarzonePlayer {
 
     using WarzoneMap::Territory;
+    using WarzoneMap::Continent;
     using WarzoneCard::Hand;
     using WarzoneOrder::TimeUtil;
     using WarzoneOrder::OrderList;
@@ -150,6 +151,9 @@ namespace WarzonePlayer {
             Hand* playerHand;
             OrderList* playerOrders;
             bool generateCardThisTurn;
+
+            //-- Game Logic Info --/
+            unordered_map<Continent*, long long> continentLookupTablePlayer;
       
         public:
 
@@ -164,15 +168,7 @@ namespace WarzonePlayer {
              * @brief Constructs a player with a given name.
              * @param name The name of the player.
              */
-            Player(const string& name);
-
-            /**
-             * @brief Constructs a player with a given name, hand, and order list. Useful for game engine
-             * @param name The name of the player.
-             * @param hand Pointer to the player's hand of cards.
-             * @param orders Pointer to the player's order list.
-             */
-            Player(const string& name, Hand* hand, OrderList* orders);
+            Player(const string& name, const unordered_map<Continent*, long long>& emptyHashMap);
 
             /**
              * @brief Constructs a player with a given name, list of territories, hand, and order list.
@@ -182,8 +178,10 @@ namespace WarzonePlayer {
              * @param hand Pointer to the player's hand of cards.
              * @param orders Pointer to the player's order list.
              * @param generateCardThisTurn Boolean flag to determine whether a card should be added to the player's hand
+             * @param emptyHashMap Hashmap used to keep track of player progress towards continent capture
              */
-            Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, bool generateCard);
+            Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
+                   bool generateCard, const unordered_map<Continent*, long long>& emptyHashMap);
 
             /**
              * @brief Destructor. Cleans up player's hand and orders if allocated.
@@ -285,6 +283,18 @@ namespace WarzonePlayer {
              */
             void setGenerateCardThisTurn(bool flag);
 
+            /**
+             * @brief Accessor for continentLookupTablePlayer.
+             * @return Const reference to the player's continent lookup table.
+             */
+            const unordered_map<WarzoneMap::Continent*, long long>& getContinentLookupTablePlayer() const;
+
+            /**
+             * @brief Mutator for continentLookupTablePlayer.
+             * @param newTable The new continent lookup table to assign.
+             */
+            void setContinentLookupTablePlayer(const unordered_map<WarzoneMap::Continent*, long long>& newTable);
+
             //-- Class Methods --//
 
             /**
@@ -338,6 +348,21 @@ namespace WarzonePlayer {
              * @param enemyName The name of the enemy to remove.
              */
             void removeNeutralEnemy(const string& enemyName);
+
+            /**
+             * @brief Check if this player controls a given continent.
+             * @param continentSums Reference to the ground-truth continent lookup table, from the game Map.
+             * @param cont Pointer to the continent to check.
+             * @return True if the player's sum for the continent matches the reference sum.
+             */
+            bool controlsContinent(const unordered_map<Continent*, long long>& continentSums, Continent* cont) const;
+
+            /**
+             * @brief Check if this player controls all continents.
+             * @param continentSums Reference to the ground-truth continent lookup table, from the game Map.
+             * @return True if the player owns all continents, false otherwise.
+             */
+            bool hasWon(const unordered_map<Continent*, long long>& continentSums) const;
 
     };
 

@@ -55,7 +55,7 @@ namespace WarzonePlayer {
 
         for(size_t i = 0; i < pc.territories.size(); i++) {
 
-            os << pc.territories[i]->getID();
+            os << pc.territories[i] -> getID();
             if(i < pc.territories.size() - 1){ os << ", "; }
 
         }
@@ -81,7 +81,7 @@ namespace WarzonePlayer {
         
             if(t != nullptr){ 
 
-                territoryIndex[t->getID()] = t; 
+                territoryIndex[t -> getID()] = t; 
                 t->setOwner(newOwner);  //Update owner
 
             }
@@ -125,7 +125,7 @@ namespace WarzonePlayer {
         territoryIndex[t -> getID()] = t;
 
         //Update territory ownership
-        t->setOwner(newOwner);
+        t -> setOwner(newOwner);
 
     }
 
@@ -189,10 +189,11 @@ namespace WarzonePlayer {
         this -> playerHand = new Hand();
         this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
+        this -> continentLookupTablePlayer = {};
 
     }
 
-    Player::Player(const string& name) {
+    Player::Player(const string& name, const unordered_map<Continent*, long long>& emptyHashMap) {
 
         this -> playerName = name;
         this -> neutralEnemies = {};
@@ -200,21 +201,12 @@ namespace WarzonePlayer {
         this -> playerHand = new Hand();
         this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
+        this -> continentLookupTablePlayer = emptyHashMap;
 
     }
 
-    Player::Player(const string& name, Hand* hand, OrderList* orders) {
-
-        this -> playerName = name;
-        this -> neutralEnemies = {};
-        this -> ownedTerritories = PlayerTerrContainer();
-        this -> playerHand = hand;
-        this -> playerOrders = orders;
-        this -> generateCardThisTurn = false;
-
-    }
-
-    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, bool generateCard) {
+    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
+                   bool generateCard, const unordered_map<Continent*, long long>& emptyHashMap) {
 
         this->playerName = name;
         this->neutralEnemies = neutralEnemies;
@@ -222,6 +214,8 @@ namespace WarzonePlayer {
         this->playerHand = hand;
         this->playerOrders = orders;
         this->generateCardThisTurn = generateCard;
+        this -> continentLookupTablePlayer = emptyHashMap;
+
 
         //Assign ownership of each territory to this player
         for (Territory* terr : this->ownedTerritories.getTerritories()) {
@@ -236,8 +230,8 @@ namespace WarzonePlayer {
     Player::~Player() {
 
         // Release hand and orders
-        delete this->playerHand; 
-        delete this->playerOrders;
+        delete this -> playerHand; 
+        delete this -> playerOrders;
 
         // Reset ownership for territories
         for(Territory* terr : this -> ownedTerritories.getTerritories()) {
@@ -246,6 +240,8 @@ namespace WarzonePlayer {
             if(terr != nullptr && terr -> getOwner() == this) { terr -> setOwner(nullptr); }
 
         }
+
+        continentLookupTablePlayer.clear();
 
     }
 
@@ -257,6 +253,7 @@ namespace WarzonePlayer {
         this -> playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
         this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
         this -> generateCardThisTurn = other.generateCardThisTurn;
+        this -> continentLookupTablePlayer = other.continentLookupTablePlayer;
 
         //Update ownership of copied territories
         for (Territory* terr : this->ownedTerritories.getTerritories()) {
@@ -282,6 +279,7 @@ namespace WarzonePlayer {
             this->playerHand = (other.playerHand ? new Hand(*other.playerHand) : nullptr);
             this->playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
             this->generateCardThisTurn = other.generateCardThisTurn;
+            this -> continentLookupTablePlayer = other.continentLookupTablePlayer;
 
             // --- Fix: update ownership of copied territories ---
             for (Territory* terr : this->ownedTerritories.getTerritories()) {
@@ -299,11 +297,11 @@ namespace WarzonePlayer {
     ostream& operator<<(ostream& os, const Player& p) {
 
         os << "Player Info:" << endl << "Name: " << p.playerName << endl
-        << "Number of Territories: " << p.ownedTerritories.size() << "(";
+        << "Number of Territories: " << p.ownedTerritories.size();
 
         if (p.ownedTerritories.size() > 0) {
 
-            os << "[";
+            os << "([";
 
             const auto& terrs = p.ownedTerritories.getTerritories();
 
@@ -311,7 +309,7 @@ namespace WarzonePlayer {
 
                 if (terrs[i] != nullptr) {
 
-                    os << terrs[i]->getID(); //Add territory to stream
+                    os << terrs[i] -> getID(); //Add territory to stream
                     if (i < terrs.size() - 1) os << ", "; //Manage commas
 
                 }
@@ -333,6 +331,24 @@ namespace WarzonePlayer {
         if(p.playerOrders) { os << *p.playerOrders; } else { os << "None"; }
         
         os << endl << "Should a player be issued a card on this turn? " << (p.generateCardThisTurn ? "Yes!" : "No!");
+
+        // Print neutral enemies
+        os << endl << "At peace with: ";
+        
+        if(p.neutralEnemies.empty()) {
+            
+            os << "No players";
+        
+        } else {
+            
+            for(size_t i = 0; i < p.neutralEnemies.size(); i++) {
+                
+                os << p.neutralEnemies[i];
+                if(i < p.neutralEnemies.size() - 1) os << ", "; //Manage commas
+            
+            }
+        
+        }
 
         return os;
 
@@ -386,6 +402,14 @@ namespace WarzonePlayer {
 
     void Player::setGenerateCardThisTurn(bool flag) { this -> generateCardThisTurn = flag; }
 
+    const unordered_map<WarzoneMap::Continent*, long long>& Player::getContinentLookupTablePlayer() const { return continentLookupTablePlayer; }
+
+    void Player::setContinentLookupTablePlayer(const unordered_map<WarzoneMap::Continent*, long long>& newTable) {
+        
+        continentLookupTablePlayer = newTable;
+    
+    }
+
     //-- Class Methods --//
 
     vector<Territory*> Player::toAttack() {
@@ -394,7 +418,11 @@ namespace WarzonePlayer {
 
         for(Territory* currTerr : ownedTerritories.getTerritories()) {
 
+            if(currTerr == nullptr){ continue; } //Skip null territories
+
             for(Territory* neighTerr : currTerr->getNeighbors()) {
+
+                if(neighTerr == nullptr){ continue; } //Skip null neighbours
 
                 Player* neighOwner = neighTerr -> getOwner();
 
@@ -404,10 +432,10 @@ namespace WarzonePlayer {
                 if(neighOwner != nullptr) {
 
                     neutralEnemyCheck = find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner -> getPlayerName()) != neutralEnemies.end();
-                
+
                 }
                 
-                if(neighOwner == this || neutralEnemyCheck) { continue; } //Skip if owned by self or neutral enemy
+                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr) { continue; } //Skip if owned by self, neutral enemy, or no one
 
                 uniqueTargets.insert(neighTerr);
 
@@ -419,45 +447,62 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::toAttackPrint() const{
+    void Player::toAttackPrint() const {
 
-        // Make a copy of owned territories
         vector<Territory*> owned = ownedTerritories.getTerritories();
 
-        //Sort by territory ID. Use comperator function to compare each ID.
+        // Sort owned territories by ID
         sort(owned.begin(), owned.end(), *(Territory::territoryIDCompare));
 
-        // Iterate sorted territories
         for(Territory* terr : owned) {
 
-            cout << "From: " << terr->getID() << ", " << playerName << " can attack: ";
+            if(terr == nullptr){ continue; }
 
-            // Copy neighbors, so they can be sorted as well 
-            vector<Territory*> neighbors = terr -> getNeighbors();
+            cout << "From: " << terr -> getID() << ", " << playerName << " can attack: ";
 
-            // Sort neighbors by ID
-            std::sort(neighbors.begin(), neighbors.end(), *(Territory::territoryIDCompare));
+            vector<Territory*> neighbors = terr->getNeighbors();
+
+            // Sort neighbors
+            sort(neighbors.begin(), neighbors.end(), *(Territory::territoryIDCompare));
 
             bool foundEnemy = false;
+            for (Territory* neighbor : neighbors) {
 
-            for(Territory* neighbor : neighbors) {
+                if(neighbor == nullptr){ continue; }
 
-                if (neighbor->getOwner() != this) {
+                Player* neighOwner = neighbor->getOwner();
 
-                    cout << neighbor->getID() << " (" << neighbor->getNumArmies() << " armies), ";
-                    foundEnemy = true;
+                // Check neutrality
+                bool neutralEnemyCheck = false;
+                if(neighOwner != nullptr) {
+                    
+                    neutralEnemyCheck = find(
+                        neutralEnemies.begin(),
+                        neutralEnemies.end(),
+                        neighOwner->getPlayerName()
+                    ) != neutralEnemies.end();
 
                 }
-                
+
+                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr) { continue; } //Skip if owned by self, neutral enemy, or no one
+
+                cout << neighbor->getID() << " (" << neighbor->getNumArmies() << " armies), ";
+                foundEnemy = true;
+
             }
 
-            if (!foundEnemy) { cout << "no enemies"; }
+            if (!foundEnemy) {
+
+                cout << "no enemies";
+
+            }
 
             cout << endl;
 
         }
 
     }
+
 
     vector<Territory*> Player::toDefend() {
 
@@ -526,9 +571,40 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::addOwnedTerritories(Territory* territory) { ownedTerritories.addTerritory(territory, this); }
+    void Player::addOwnedTerritories(WarzoneMap::Territory* territory) {
 
-    void Player::removeOwnedTerritories(Territory* territory) { ownedTerritories.removeTerritory(territory); }
+        //Prevent duplicate / null ownership
+        if(territory == nullptr || territory -> getOwner() == this) { return; }
+
+        //If another player owns it, remove it from their list first
+        Player* prevOwner = territory -> getOwner();
+        if (prevOwner != nullptr) {
+
+            prevOwner -> removeOwnedTerritories(territory);
+            
+        }
+
+        // Assign to player via ownedTerritories
+        ownedTerritories.addTerritory(territory, this);
+
+        WarzoneMap::Continent* cont = territory -> getContinent();
+        if(cont != nullptr) { continentLookupTablePlayer[cont] += territory -> getNumericTerrID(); } //Increment continent score by territory ID
+
+    }
+
+    void Player::removeOwnedTerritories(WarzoneMap::Territory* territory) {
+        
+        //Prevent duplicate / null ownership
+        if (territory == nullptr || territory -> getOwner() != this) { return; }
+
+        // Remove from player
+        ownedTerritories.removeTerritory(territory);
+
+        // Update continent sums
+        WarzoneMap::Continent* cont = territory -> getContinent();
+        if(cont != nullptr) { continentLookupTablePlayer[cont] -= territory -> getNumericTerrID(); }  //Decrement continent score by territory ID
+
+    }
 
     void Player::addNeutralEnemy(const string& enemyName) {
 
@@ -544,12 +620,38 @@ namespace WarzonePlayer {
 
         auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName); //Create iterator, easiest way to compare
 
-        if (enemyNameIndex != neutralEnemies.end()) {
+        if(enemyNameIndex != neutralEnemies.end()) {
 
             neutralEnemies.erase(enemyNameIndex);
 
         } 
 
     }
-    
+
+    bool Player::controlsContinent(const unordered_map<Continent*, long long>& continentSums, Continent* cont) const {
+        
+        if(cont == nullptr){ return false; } //Check if continent exists
+
+        //Check if both hashmaps contain the key (if either don't, don't bother continuing)
+        if(continentLookupTablePlayer.count(cont) == 0 || continentSums.count(cont) == 0) { return false; }
+
+        //Compare values directly
+        return continentLookupTablePlayer.at(cont) == continentSums.at(cont);
+
+    }
+
+    bool Player::hasWon(const unordered_map<Continent*, long long>& continentSums) const {
+        
+        for (const pair<Continent* const, long long>& kv : continentSums) { //Check every continent
+
+            Continent* cont = kv.first;
+
+            if (!controlsContinent(continentSums, cont)) { return false; }
+
+        }
+
+        return true;
+
+    }
+
 }

@@ -105,7 +105,7 @@ namespace WarzoneMap {
         << ", Territories: [";
 
         for(size_t i = 0; i < continent.territories.size(); ++i) {
-            os << continent.territories[i]->getID();
+            os << continent.territories[i] -> getID();
             if (i < continent.territories.size() - 1) os << ", ";
         }
 
@@ -148,6 +148,7 @@ namespace WarzoneMap {
         this -> continent = nullptr; 
         this -> owner = nullptr;
         this -> numArmies = 0;
+        this -> numericTerrID = 0;
 
     }
 
@@ -160,6 +161,7 @@ namespace WarzoneMap {
         this -> continent = nullptr; 
         this -> owner = nullptr;
         this -> numArmies = 0;
+        computeNumericTerrID();
 
     }
 
@@ -172,6 +174,7 @@ namespace WarzoneMap {
         this -> continent = continent; 
         this -> owner = nullptr;
         this -> numArmies = 0;
+        computeNumericTerrID();
 
     }
 
@@ -184,6 +187,7 @@ namespace WarzoneMap {
         this -> continent = continent; 
         this -> owner = owner;
         this -> numArmies = numArmies;
+        computeNumericTerrID();
 
     }
 
@@ -203,6 +207,7 @@ namespace WarzoneMap {
         this -> continent = other.continent; 
         this -> owner = other.owner;
         this -> numArmies = other.numArmies;
+        this -> numericTerrID = other.numericTerrID;
 
     }
 
@@ -217,6 +222,7 @@ namespace WarzoneMap {
             this -> continent = other.continent; 
             this -> owner = other.owner;
             this -> numArmies = other.numArmies;
+            this -> numericTerrID = other.numericTerrID;
 
         }
 
@@ -237,9 +243,10 @@ namespace WarzoneMap {
             }
         }
 
-        os << "], Continent: " << (territory.continent ? territory.continent->getID() : "None") << 
-        ", Owner: "  << (territory.getOwner() ? territory.getOwner()->getPlayerName() : "None")
+        os << "], Continent: " << (territory.continent ? territory.continent -> getID() : "None") 
+        << ", Owner: "  << (territory.getOwner() ? territory.getOwner() -> getPlayerName() : "None")
         << ", Num Armies: " << territory.numArmies
+        << ", NumericID: " << territory.numericTerrID
         << ")";
 
         return os;
@@ -249,7 +256,12 @@ namespace WarzoneMap {
     //-- Accessors and Mutators --//
 
     const string& Territory::getID() const { return this -> ID;}
-    void Territory::setID(const string &ID) { this -> ID = ID; }
+    void Territory::setID(const string &ID){ 
+        
+        this -> ID = ID; 
+        computeNumericTerrID();
+
+    }
 
     int Territory::getXCoord() const { return this -> xCoord; }
     void Territory::setXCoord(int xCoord) { this -> xCoord = xCoord; }
@@ -269,6 +281,8 @@ namespace WarzoneMap {
     int Territory::getNumArmies() const { return this -> numArmies; }
     void Territory::setNumArmies(int numArmies) { this -> numArmies = numArmies; }
 
+    long long WarzoneMap::Territory::getNumericTerrID() { return this -> numericTerrID; }
+
     //-- Class Methods --//
 
     void Territory::addNeighbor(Territory* neighbor) { 
@@ -278,7 +292,7 @@ namespace WarzoneMap {
         //For all territories n in the neighbors vector, if n's ID is the same as neighbor's ID, return
         for(Territory* n : this -> neighbors){ 
             
-            if(n -> getID() == neighbor -> getID()) { return; }
+            if(n -> getNumericTerrID() == neighbor -> getNumericTerrID()) { return; }
 
         }
 
@@ -324,116 +338,190 @@ namespace WarzoneMap {
         
     }
 
+    void Territory::computeNumericTerrID() {
+
+        this->numericTerrID = 0ll;
+
+        const long long base = 131; //First prime number larger than the maximum standard ASCII value
+        const long long mod = 22801763489 ; //1 billionth prime
+
+        long long hash = 0;
+      
+        for(char c : ID) { hash = (hash * base + c) % mod; }
+
+        this -> numericTerrID = hash;
+
+    }
+
+        
+
     // ================= Map =================
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
-    Map::Map() {
+     Map::Map() {
 
-        this -> author = "";
-        this -> image = "";
-        this -> wrap = "";
-        this -> scrollType = "";
-        this -> warn = "";
-        this -> territories = {};
-        this -> continents = {};
-    
+        this->author = "";
+        this->image = "";
+        this->wrap = "";
+        this->scrollType = "";
+        this->warn = "";
+        this->territories = {};
+        this->continents = {};
+        this->continentLookupTable = {};
+
     }
 
-    Map::Map(string author, string image, string wrap, string scrollType, string warn, vector<Territory*> territories, vector<Continent*> continents){
-        
-        this -> author = author;
-        this -> image = image;
-        this -> wrap = wrap;
-        this -> scrollType = scrollType;
-        this -> warn = warn;
-        this -> territories = territories;
-        this -> continents = continents;
+    Map::Map(string author, string image, string wrap, string scrollType, string warn,
+             vector<Territory*> territories, vector<Continent*> continents,
+             unordered_map<Continent*, long long> continentLookupTable) {
+
+        this->author = author;
+        this->image = image;
+        this->wrap = wrap;
+        this->scrollType = scrollType;
+        this->warn = warn;
+        this->territories = territories;
+        this->continents = continents;
+        this->continentLookupTable = continentLookupTable;
 
     }
 
     Map::~Map() {
 
-        //Free dynamically allocated territories
-        for (Territory* t : territories) { delete t; }
-
+        // Free dynamically allocated territories
+        for(Territory* t : territories){ delete t; }
         territories.clear();
 
-        //Free dynamically allocated continents
-        for (Continent* c : continents) { delete c; }
-
+        // Free dynamically allocated continents
+        for(Continent* c : continents){ delete c; }
         continents.clear();
+
+        //Clear continent hashmap
+        continentLookupTable.clear();
+
+    }
+
+    Map::Map(const Map& other) {
+
+        // Copy metadata
+        this->author = other.author;
+        this->image = other.image;
+        this->wrap = other.wrap;
+        this->scrollType = other.scrollType;
+        this->warn = other.warn;
+
+        // Deep copy continents
+        unordered_map<Continent*, Continent*> contMap;
+
+        for(Continent* c : other.continents) {
+
+            Continent* newCont = new Continent(*c);
+            this->continents.push_back(newCont);
+            contMap[c] = newCont;
+
+        }
+
+        // Deep copy territories
+        unordered_map<Territory*, Territory*> terrMap;
+        for (Territory* t : other.territories) {
+
+            Territory* newTerr = new Territory(*t);
+            this->territories.push_back(newTerr);
+            terrMap[t] = newTerr;
+
+        }
+
+        // Fix neighbors + continent pointers
+        for(Territory* oldTerr : other.territories) {
+
+            Territory* newTerr = terrMap[oldTerr];
+
+            // Neighbors
+            vector<Territory*> newNeighbors;
+            for(Territory* oldNeigh : oldTerr -> getNeighbors()) { newNeighbors.push_back(terrMap[oldNeigh]); }
+
+            newTerr->setNeighbors(newNeighbors);
+
+            // Continent
+            Continent* oldCont = oldTerr -> getContinent();
+            if(oldCont && contMap.count(oldCont)) {
+
+                Continent* newCont = contMap[oldCont];
+                newTerr->setContinent(newCont);
+                newCont->addTerritory(newTerr);
+
+            }
+
+        }
+
+        // Rebuild continent lookup
+        buildContinentHashmap();
 
     }
 
     Map& Map::operator=(const Map& other) {
 
-        if (this != &other) { // self-assignment guard
+        if (this != &other) {
 
-            // --- 1. Clean up current memory ---
-            for (Territory* t : territories) delete t;
+            // Clean up
+            for(Territory* t : territories){ delete t; }
             territories.clear();
-
-            for (Continent* c : continents) delete c;
+            
+            for(Continent* c : continents){ delete c; }
             continents.clear();
+            
+            continentLookupTable.clear();
 
-            // --- 2. Copy metadata ---
+            // Copy metadata
             author = other.author;
             image = other.image;
             wrap = other.wrap;
             scrollType = other.scrollType;
             warn = other.warn;
 
-            // --- 3. Deep copy continents ---
-            unordered_map<Continent*, Continent*> continentMap;
+            // Deep copy continents
+            unordered_map<Continent*, Continent*> contMap;
+            for(Continent* c : other.continents) {
 
-            for (Continent* currCont : other.continents) {
-
-                Continent* newCont = new Continent(*currCont); // shallow copy of ID/bonus
+                Continent* newCont = new Continent(*c);
                 continents.push_back(newCont);
-                continentMap[currCont] = newCont;
+                contMap[c] = newCont;
 
             }
 
-            // --- 4. Deep copy territories ---
+            // Deep copy territories
             unordered_map<Territory*, Territory*> terrMap;
+            for(Territory* t : other.territories) {
 
-            for (Territory* t : other.territories) {
-
-                Territory* newTerr = new Territory(*t); // shallow copy (neighbors/continent fixed later)
+                Territory* newTerr = new Territory(*t);
                 territories.push_back(newTerr);
                 terrMap[t] = newTerr;
 
             }
 
-            // --- 5. Fix neighbors and continent pointers ---
-            for (Territory* oldTerr : other.territories) {
+            // Fix neighbors + continent pointers
+            for(Territory* oldTerr : other.territories) {
 
                 Territory* newTerr = terrMap[oldTerr];
 
-                // Fix neighbors
                 vector<Territory*> newNeighbors;
-
-                for (Territory* oldNeigh : oldTerr->getNeighbors()) {
-
-                    newNeighbors.push_back(terrMap[oldNeigh]);
-
-                }
-
+                for (Territory* oldNeigh : oldTerr -> getNeighbors()){ newNeighbors.push_back(terrMap[oldNeigh]); }
                 newTerr->setNeighbors(newNeighbors);
 
-                // Fix continent pointer
-                Continent* oldCon = oldTerr->getContinent();
+                Continent* oldCont = oldTerr -> getContinent();
+                if (oldCont && contMap.count(oldCont)) {
 
-                if (oldCon && continentMap.count(oldCon)) {
-
-                    Continent* newCon = continentMap[oldCon];
-                    newTerr->setContinent(newCon);
-                    newCon->addTerritory(newTerr);
+                    Continent* newCont = contMap[oldCont];
+                    newTerr->setContinent(newCont);
+                    newCont->addTerritory(newTerr);
 
                 }
 
             }
+
+            // Rebuild continent lookup
+            buildContinentHashmap();
 
         }
 
@@ -442,7 +530,7 @@ namespace WarzoneMap {
     }
 
     ostream& operator<<(ostream& os, const Map& map) {
-
+        
         os << "Author: " << map.author << "\n";
         os << "Image: " << map.image << "\n";
         os << "Wrap: " << map.wrap << "\n";
@@ -450,20 +538,12 @@ namespace WarzoneMap {
         os << "Warn: " << map.warn << "\n";
 
         os << "Continents:\n";
-
-        for(const auto& continent : map.continents) {
-
-            os << "  " << *continent << "\n";
-        
-        }
+        for(const auto& continent : map.continents) { os << "  " << *continent << "\n"; }
 
         os << "Territories:\n";
+        for (const auto& territory : map.territories) { os << "  " << *territory << "\n"; }
 
-        for(const auto& territory : map.territories) {
-
-            os << "  " << *territory << "\n";
-        
-        }
+        //NOT necessary to see the hashmap here
 
         return os;
 
@@ -491,6 +571,10 @@ namespace WarzoneMap {
 
     const vector<Territory*>& Map::getTerritories() const { return territories; }
     void Map::setTerritories(const vector<Territory*>& territories) { this -> territories = territories; }
+
+    const unordered_map<Continent*, long long>& Map::getContinentLookupTable() const{ return continentLookupTable; }
+    void Map::setContinentLookupTable(const unordered_map<Continent*, long long> continentLookupTable){this -> continentLookupTable = continentLookupTable; }
+
 
     //-- Class Methods -- //
 
@@ -532,6 +616,17 @@ namespace WarzoneMap {
 
         return nullptr; // Not found
 
+    }
+
+    Territory* Map::getTerritoryByNumID(long long ID) {
+
+        for(Territory* t : this -> territories){
+
+            if(t -> getNumericTerrID() == ID){ return t; }
+
+        }
+
+        return nullptr; // Not found
 
     }
 
@@ -618,7 +713,7 @@ namespace WarzoneMap {
 
             if(t -> getContinent() == nullptr) { //If the territory does not belong to any continent
                 
-                cerr << "Validation failed: Territory '" << t->getID() << "' does not belong to any continent." << endl;
+                cerr << "Validation failed: Territory '" << t -> getID() << "' does not belong to any continent." << endl;
                 return false;
 
             }
@@ -640,14 +735,14 @@ namespace WarzoneMap {
 
             if(terrList.empty()) { //If no territories are associated with the continent
                 
-                cerr << "Validation failed: Continent '" << cont->getID() << "' has no territories." << endl;
+                cerr << "Validation failed: Continent '" << cont -> getID() << "' has no territories." << endl;
                 return false;
             
             }
 
             if(!isMapConnectedDFS(terrList, cont)) { //Perform DFS for the continent's territories only
                 
-                cerr << "Validation failed: Continent '" << cont->getID() << "' is not a connected subgraph." << endl;
+                cerr << "Validation failed: Continent '" << cont -> getID() << "' is not a connected subgraph." << endl;
                 return false;
 
             }
@@ -658,6 +753,46 @@ namespace WarzoneMap {
         return true;
 
     }
+
+    void Map::buildContinentHashmap() {
+
+        continentLookupTable.clear(); //Remove old table
+
+        for(Continent* c : continents) { //Iterate over all continents
+
+            if(c != nullptr) {
+                
+                long long sum = 0ll;
+
+                for (Territory* t : c -> getTerritories()) { //Iterate over all territories in a continent
+
+                    if(t != nullptr){ sum += t -> getNumericTerrID(); }
+
+                }
+
+                continentLookupTable[c] = sum; //Set up KVP
+
+            }
+
+        }
+
+    }
+
+    unordered_map<Continent*, long long> Map::buildEmptyContinentHashmap() const {
+
+        unordered_map<Continent*, long long> emptyRetMap;
+
+        for (Continent* c : continents) {
+            
+            if(c != nullptr) { emptyRetMap[c] = 0ll; }
+        
+        }
+
+        return emptyRetMap;
+
+    }
+
+
 
     // ================= MapLoader =================
 
@@ -1110,6 +1245,8 @@ namespace WarzoneMap {
             return {INVALID_MAP_STRUCTURE, nullptr};
 
         }
+
+        tempMapPtr -> buildContinentHashmap(); //Set up lookup table
 
         return {MAP_OK, tempMapPtr};
 

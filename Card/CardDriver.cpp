@@ -37,7 +37,7 @@ void testCards() {
     }
 
     cout << "\nAlice's " << *hand << endl;
-    cout << deck << endl;
+    cout << *deck << endl;
 
     // --- Play all cards from Alice's hand ---
     cout << "\nPlaying all cards in Alice's hand..." << endl;

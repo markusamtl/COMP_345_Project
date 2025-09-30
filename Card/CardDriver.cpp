@@ -37,7 +37,7 @@ void testCards() {
     }
 
     cout << "\nAlice's " << *hand << endl;
-    cout << deck << endl;
+    cout << *deck << endl;
 
     // --- Play all cards from Alice's hand ---
     cout << "\nPlaying all cards in Alice's hand..." << endl;
@@ -55,7 +55,7 @@ void testCards() {
 
     cout << "\nAfter playing cards:" << endl;
     cout << "Alice's: " << *hand << endl;
-    cout << "Alice's: " << *deck << endl;
+    cout << "Deck: " << *deck << endl;
     cout << endl << endl << "View Alice's order:\n\n" << *orders << endl;
     cout << "Size of Deck: " << deck -> getCards().size() << endl;
 

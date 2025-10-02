@@ -1,0 +1,1 @@
+/usr/local/bin/c++  -Wall -Wextra -g -Wl,--dependency-file=CMakeFiles/order_driver.dir/link.d CMakeFiles/order_driver.dir/Order/Order.cpp.o CMakeFiles/order_driver.dir/Player/Player.cpp.o CMakeFiles/order_driver.dir/Card/Card.cpp.o CMakeFiles/order_driver.dir/Map/Map.cpp.o CMakeFiles/order_driver.dir/Order/OrderDriver.cpp.o -o order_driver

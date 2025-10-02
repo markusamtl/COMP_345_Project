@@ -1004,7 +1004,8 @@ namespace WarzoneOrder {
              * @brief Get the vector of Orders.
              * @return A pointer to the vector of Order pointers.
              */
-            vector<Order*> getOrders() const;
+            const std::vector<Order*>& getOrders() const { return orders; }
+            std::vector<Order*>& getOrders() { return orders; }
 
             /**
              * @brief Set the vector of Orders.

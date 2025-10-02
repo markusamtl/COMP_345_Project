@@ -44,6 +44,15 @@ add_executable(card_driver
     Map/Map.cpp 
     Card/CardDriver.cpp
 )
+# ================== GAME ENGINE DRIVER ==================
+add_executable(game_engine_driver
+    GameEngine/GameEngine.cpp
+    GameEngine/GameEngineDriver.cpp
+    Map/Map.cpp
+    Player/Player.cpp
+    Order/Order.cpp
+    Card/Card.cpp
+)
 
 # ================== CUSTOM TARGETS FOR VALGRIND ==================
 find_program(VALGRIND_EXECUTABLE valgrind)
@@ -70,6 +79,12 @@ if (VALGRIND_EXECUTABLE)
     add_custom_target(run_card_valgrind
         COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./card_driver
         DEPENDS card_driver
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
+
+    add_custom_target(run_engine_valgrind
+        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./game_engine_driver
+        DEPENDS game_engine_driver
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
 endif()

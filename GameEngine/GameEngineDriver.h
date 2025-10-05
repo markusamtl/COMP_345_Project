@@ -4,10 +4,12 @@
 #include <iostream>
 
 using namespace std;
-using namespace WarzoneEngine; 
+using namespace WarzoneEngine;
+
 /**
  * @brief Test function for the GameEngine state machine.
- * Allows the user to type commands (loadmap, validatemap, addplayer, assigncountries, 
- * assignreinforcement, issueorder, execorder, win, end) and transitions states accordingly.
+ * Allows the user to type commands (loadmap, validatemap, addplayer, gamestart,
+ * assignreinforcement, issueorder, endissueorders, executeorder, endexecuteorder, win, end)
+ * and transitions states accordingly.
  */
 void testGameStates();

@@ -11,11 +11,11 @@ namespace WarzoneCard {
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
-    Card::Card() { this -> type = CardType::Unknown; }
+    Card::Card(){ this -> type = CardType::Unknown; }
 
-    Card::Card(CardType t) { this->type = t; }
+    Card::Card(CardType t){ this->type = t; }
 
-    Card::~Card() {} // No dynamic memory to free
+    Card::~Card(){} // No dynamic memory to free
     
 
     Card::Card(const Card& other) { this->type = other.type; }

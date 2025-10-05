@@ -3,8 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <memory>
 #include <unordered_map>
+#include <queue>
+
 #include "../Map/Map.h"
 #include "../Player/Player.h"
 #include "../Order/Order.h"
@@ -15,6 +16,7 @@ namespace WarzoneEngine {
     using std::string;
     using std::vector;
     using std::unordered_map;
+    using std::queue;
 
     using WarzoneMap::Map;
     using WarzoneMap::MapLoader;
@@ -46,7 +48,6 @@ namespace WarzoneEngine {
         End
     };
 
-    // Convenience to print state names
     std::ostream& operator<<(std::ostream& os, const EngineState& s);
 
     // ----------------------- Game Engine -------------------------
@@ -58,43 +59,47 @@ namespace WarzoneEngine {
         Deck* deck;                   // owned
         vector<Player*> players;      // owned
 
-        // Reinforcements for current turn
-        unordered_map<Player*, int> reinforcementPool;
+        // === Queue-based turn system ===
+        std::queue<Player*> playerQueue;
+        Player* currentPlayer = nullptr;
 
-        // helpers
-        bool requireState(EngineState expected, const string& cmdName);
+        // === Helpers ===
+        bool isCurrentStateCorrect(EngineState expected, const string& cmdName);
+        void clearGame();
 
-        void clearGame(); // deletes map, deck, players
-
-        // internal phases
-        void assignCountries();  // distribute territories to players
-        int  computeReinforcementFor(Player* p) const; // base+continents
-        void autoSeedOrdersFromReinforcements();       // simple demo issuing
+        // === Internal phases ===
+        void assignCountries();
+        int  computeReinforcementFor(Player* p) const;
+        void executeOrders(vector<WarzonePlayer::Player*>& players);
 
     public:
         GameEngine();
         ~GameEngine();
 
-        // core API called by driver/console
         const EngineState& getState() const { return state; }
 
-        // commands (return a short status string as per your previous style)
+        // === Commands ===
         string loadmap(const string& path);
         string validatemap();
         string addplayer(const string& name);
         string gamestart();
 
-        string assignreinforcement(); // extended integration
+        string assignreinforcement();
         string issueorder();
         string endissueorders();
-        string execorder();
-        string endexecorders();
+        string executeOrder();
+        string endExecuteOrder();
         string win();
         string end();
 
-        // console dispatcher (used by driver)
-        // accepts raw command (first token) and an optional argument
         string processCommand(const string& cmd, const string& arg = "");
+
+        // === Queue methods ===
+        void addPlayer(const std::string& playerName);
+        void addPlayers(int count = 3);
+        WarzonePlayer::Player* getNextPlayer();
+        void nextTurn();
+        bool hasPlayers() const;
     };
 
 } // namespace WarzoneEngine

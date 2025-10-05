@@ -79,20 +79,27 @@ string GameEngine::validatemap() {
 }
 
 string GameEngine::addplayer(const string& name) {
-    if (!requireState(EngineState::MapValidated, "addplayer")) return "invalid";
-    if (name.empty()) return "addplayer: name required";
+    // allow both MapValidated and PlayersAdded
+    if (state != EngineState::MapValidated && state != EngineState::PlayersAdded) {
+        std::cerr << "[Error] Command 'addplayer' is invalid in state '" << state << "'.\n";
+        return "invalid";
+    }
 
-    if (!deck) deck = new Deck(); // lazy-create deck when first player is added
+    if (name.empty()) {
+        std::cerr << "[Error] Player name cannot be empty.\n";
+        return "invalid";
+    }
 
-    // every player needs a zeroed continent table to track control
-    unordered_map<Continent*, long long> emptyTable =
-        (gameMap ? gameMap->buildEmptyContinentHashmap() : unordered_map<Continent*, long long>{});
+    // create player
+    unordered_map<WarzoneMap::Continent*, long long> playerHash = gameMap->buildEmptyContinentHashmap();
+    players.push_back(new WarzonePlayer::Player(name, playerHash));
+    std::cout << "Player added: " << name << "\n";
 
-    players.push_back(new Player(name, emptyTable));
-
-    state = EngineState::PlayersAdded; // stays here while more players are added
+    // transition only on the first player
+    state = EngineState::PlayersAdded;
     return "players added";
 }
+
 
 string GameEngine::gamestart() {
     // can be called from PlayersAdded after adding at least 2 players

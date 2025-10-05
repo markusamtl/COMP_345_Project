@@ -1002,7 +1002,7 @@ namespace WarzoneOrder {
 
     //-- Accessors and Mutators --//
 
-    vector<Order*> OrderList::getOrders() const { return orders; }
+    //vector<Order*> OrderList::getOrders() const { return orders; }
 
     void OrderList::setOrders(const vector<Order*> newOrders) { 
     

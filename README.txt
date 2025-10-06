@@ -48,3 +48,6 @@ CARD:
 
 Without Valgrind: ./card_driver
 With Valgrind: make run_card_valgrind
+
+GAMEENGINE:
+Without Valgrind: ./game_engine_driver

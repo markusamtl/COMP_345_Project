@@ -373,31 +373,33 @@ namespace WarzoneEngine {
      * @brief Assigns reinforcement armies to all players based on territories and continents owned.
      */
     string GameEngine::assignreinforcement() {
-        if (!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) return "invalid";
-        if (!gameMap) return "no map";
+       if (!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) return "invalid";
+       if (!gameMap) return "no map";
 
-        vector<Player*> ordered;
-        auto copyQueue = playerQueue;
-        while (!copyQueue.empty()) {
-            ordered.push_back(copyQueue.front());
-            copyQueue.pop();
-        }
-
-        // Directly compute and apply reinforcements
-        for (Player* p : ordered) {
-            int r = computeReinforcementFor(p);
-            std::cout << "[Reinforcement] " << p->getPlayerName()
-                      << " receives " << r << " armies.\n";
-
-            vector<Territory*> defend = p->toDefend();
-            if (!defend.empty() && defend[0]) {
-                p->getPlayerOrders()->addOrder(new Deploy(p, defend[0], r));
-            }
-        }
-
-        state = EngineState::IssueOrders;
-        return "issue orders";
+      vector<Player*> ordered;
+      auto copyQueue = playerQueue;
+      while (!copyQueue.empty()) {
+          ordered.push_back(copyQueue.front());
+          copyQueue.pop();
     }
+
+    // Compute and assign reinforcements to each player's pool
+      for (Player* p : ordered) {
+          if (!p) continue;
+        
+          int r = computeReinforcementFor(p);
+        
+        // Add to player's reinforcement pool (don't create Deploy orders yet)
+          p->setReinforcementPool(p->getReinforcementPool() + r);
+        
+          std::cout << "[Reinforcement] " << p->getPlayerName()
+                  << " receives " << r << " armies. "
+                  << "Total pool: " << p->getReinforcementPool() << "\n";
+    }
+
+      state = EngineState::IssueOrders;
+      return "issue orders";
+}
 
     /**
      * @brief Invokes the issueOrder() method for each player.

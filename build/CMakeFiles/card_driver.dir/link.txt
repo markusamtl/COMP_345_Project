@@ -1,1 +1,0 @@
-/usr/local/bin/c++  -Wall -Wextra -g -Wl,--dependency-file=CMakeFiles/card_driver.dir/link.d CMakeFiles/card_driver.dir/Card/Card.cpp.o CMakeFiles/card_driver.dir/Order/Order.cpp.o CMakeFiles/card_driver.dir/Player/Player.cpp.o CMakeFiles/card_driver.dir/Map/Map.cpp.o CMakeFiles/card_driver.dir/Card/CardDriver.cpp.o -o card_driver

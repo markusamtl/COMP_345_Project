@@ -1,1 +1,0 @@
-/usr/local/bin/c++  -Wall -Wextra -g -Wl,--dependency-file=CMakeFiles/map_driver.dir/link.d CMakeFiles/map_driver.dir/Map/Map.cpp.o CMakeFiles/map_driver.dir/Player/Player.cpp.o CMakeFiles/map_driver.dir/Order/Order.cpp.o CMakeFiles/map_driver.dir/Card/Card.cpp.o CMakeFiles/map_driver.dir/Map/MapDriver.cpp.o -o map_driver

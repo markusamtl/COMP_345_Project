@@ -19,8 +19,86 @@ namespace WarzoneEngine {
 
     GameEngine::~GameEngine() { clearGame(); }
 
-    //TODO: Implement copy constructor 
+    //TODO: Implement copy constructor
+    // Copy Constructor
+    GameEngine::GameEngine(const GameEngine& other) {
+        // Copy primitive/state members
+        state = other.state;
+
+        // Deep copy map
+        gameMap = other.gameMap ? new Map(*other.gameMap) : nullptr;
+
+        // Deep copy deck
+        deck = other.deck ? new Deck(*other.deck) : nullptr;
+
+        // Deep copy players
+        for (Player* p : other.players) {
+            players.push_back(new Player(*p));
+        }
+
+        // Copy player queue (by matching player names to newly copied players)
+        std::queue<Player*> tempQueue = other.playerQueue;
+        while (!tempQueue.empty()) {
+            std::string name = tempQueue.front()->getPlayerName();
+            auto it = std::find_if(players.begin(), players.end(),
+                                   [&](Player* pp) { return pp->getPlayerName() == name; });
+            if (it != players.end())
+                playerQueue.push(*it);
+            tempQueue.pop();
+        }
+
+        // Copy current player pointer
+        currentPlayer = nullptr;
+        if (other.currentPlayer) {
+            auto it = std::find_if(players.begin(), players.end(),
+                                   [&](Player* p) { return p->getPlayerName() == other.currentPlayer->getPlayerName(); });
+            if (it != players.end())
+                currentPlayer = *it;
+        }
+    } 
+
     //TODO: Implement assignment operator
+    // Assignment Operator
+    GameEngine& GameEngine::operator=(const GameEngine& other) {
+        if (this != &other) {
+            clearGame(); // Free existing resources
+
+            state = other.state;
+
+            // Deep copy map
+            gameMap = other.gameMap ? new Map(*other.gameMap) : nullptr;
+
+            // Deep copy deck
+            deck = other.deck ? new Deck(*other.deck) : nullptr;
+
+            // Deep copy players
+            for (Player* p : other.players) {
+                players.push_back(new Player(*p));
+            }
+
+            // Copy player queue
+            std::queue<Player*> tempQueue = other.playerQueue;
+            while (!tempQueue.empty()) {
+                std::string name = tempQueue.front()->getPlayerName();
+                auto it = std::find_if(players.begin(), players.end(),
+                                       [&](Player* pp) { return pp->getPlayerName() == name; });
+                if (it != players.end())
+                    playerQueue.push(*it);
+                tempQueue.pop();
+            }
+
+            // Copy current player pointer
+            currentPlayer = nullptr;
+            if (other.currentPlayer) {
+                auto it = std::find_if(players.begin(), players.end(),
+                                       [&](Player* p) { return p->getPlayerName() == other.currentPlayer->getPlayerName(); });
+                if (it != players.end())
+                    currentPlayer = *it;
+            }
+        }
+        return *this;
+    }
+    
 
     std::ostream& operator<<(std::ostream& os, const EngineState& s) {
         
@@ -43,7 +121,21 @@ namespace WarzoneEngine {
 
     //-- Accessors and Mutators --//
 
-    //TODO: Implement accessors and mutators for gameMap, deck, players, playerQueue, currentPlayer
+    Map* GameEngine::getGameMap() const { return gameMap; }
+    void GameEngine::setGameMap(Map* map) { gameMap = map; }
+
+    Deck* GameEngine::getDeck() const { return deck; }
+    void GameEngine::setDeck(Deck* d) { deck = d; }
+
+    const std::vector<Player*>& GameEngine::getPlayers() const { return players; }
+    void GameEngine::setPlayers(const std::vector<Player*>& newPlayers) { players = newPlayers; }
+
+    std::queue<Player*> GameEngine::getPlayerQueue() const { return playerQueue; }
+    void GameEngine::setPlayerQueue(const std::queue<Player*>& q) { playerQueue = q; }
+
+    Player* GameEngine::getCurrentPlayer() const { return currentPlayer; }
+    void GameEngine::setCurrentPlayer(Player* player) { currentPlayer = player; }
+
 
     //-- Class Methods --//
 
@@ -62,6 +154,11 @@ namespace WarzoneEngine {
     
     }
 
+    /**
+     * @brief Loads and initializes the game map from a given file path.
+     * @param path The path to the .map file.
+     * @return A message indicating success or failure.
+     */
     string GameEngine::loadmap(const string& path) {
 
         if(!isCurrentStateCorrect(EngineState::Start, "loadmap")) return "loadmap is not a valid state!";
@@ -94,6 +191,10 @@ namespace WarzoneEngine {
 
     }
 
+    /**
+     * @brief Validates the map for connectivity and correct continent structure.
+     * @return Status message indicating whether the map is valid.
+     */
     string GameEngine::validatemap() {
 
         if(!isCurrentStateCorrect(EngineState::MapLoaded, "validatemap")){ return "validatemap is not a valid state!"; }
@@ -108,6 +209,10 @@ namespace WarzoneEngine {
 
     // ------------------ Player queue management ------------------
 
+    /**
+     * @brief Creates and registers a new player in the game.
+     * @param playerName The name of the player to add.
+     */
     void GameEngine::addPlayer(const std::string& playerName) {
         Player* newPlayer = new Player(playerName,
             std::unordered_map<WarzoneMap::Continent*, long long>{});
@@ -118,6 +223,10 @@ namespace WarzoneEngine {
         std::cout << "Player added: " << playerName << std::endl;
     }
 
+    /**
+     * @brief Quickly adds a specified number of players for testing.
+     * @param count Number of players to add (default: 3).
+     */
     void GameEngine::addPlayers(int count) {
         for (int i = 1; i <= count; ++i) {
             std::string name = "Player" + std::to_string(i);
@@ -126,12 +235,19 @@ namespace WarzoneEngine {
         std::cout << count << " players added successfully.\n";
     }
 
+    /**
+     * @brief Retrieves the next player in the queue.
+     * @return Pointer to the next player or nullptr if queue is empty.
+     */
     Player* GameEngine::getNextPlayer() {
         if (!playerQueue.empty())
             return playerQueue.front();
         return nullptr;
     }
 
+    /**
+     * @brief Advances the player queue to the next player's turn.
+     */
     void GameEngine::nextTurn() {
         if (playerQueue.empty()) {
             currentPlayer = nullptr;
@@ -144,12 +260,21 @@ namespace WarzoneEngine {
         currentPlayer = playerQueue.front();
     }
 
+    /**
+     * @brief Checks if there are active players in the game.
+     * @return True if the player queue is not empty.
+     */
     bool GameEngine::hasPlayers() const {
         return !playerQueue.empty();
     }
 
     // ------------------ core game flow ------------------
 
+    /**
+     * @brief Adds a player during setup phase.
+     * @param name Player name.
+     * @return Status message.
+     */
     string GameEngine::addplayer(const string& name) {
         if (state != EngineState::MapValidated && state != EngineState::PlayersAdded) {
             std::cerr << "[Error] 'addplayer' invalid in state '" << state << "'.\n";
@@ -161,6 +286,10 @@ namespace WarzoneEngine {
         return "players added";
     }
 
+    /**
+     * @brief Initializes the main game loop after setup.
+     * @return Status message indicating the next phase.
+     */
     string GameEngine::gamestart() {
         if (!isCurrentStateCorrect(EngineState::PlayersAdded, "gamestart")) return "invalid";
         if (playerQueue.size() < 2) return "need at least 2 players";
@@ -193,10 +322,14 @@ namespace WarzoneEngine {
 
     // ------------------ Phases ------------------
 
+    /**
+     * @brief Randomly assigns map territories to players.
+     */
     void GameEngine::assignCountries() {
         vector<Territory*> terrs = gameMap->getTerritories();
         if (terrs.empty()) return;
 
+        // Copy queue order to vector for assignment
         vector<Player*> ordered;
         queue<Player*> copyQueue = playerQueue;
 
@@ -205,18 +338,23 @@ namespace WarzoneEngine {
             copyQueue.pop();
         }
 
+        // Round-robin territory assignment
         size_t pi = 0;
         for (Territory* t : terrs) {
             ordered[pi]->addOwnedTerritories(t);
             pi = (pi + 1) % ordered.size();
         }
 
+        // Ensure all territories have at least 1 army
         for (Player* p : ordered) {
             for (Territory* t : p->getOwnedTerritories().getTerritories())
                 if (t) t->setNumArmies(std::max(1, t->getNumArmies()));
         }
     }
 
+    /**
+     * @brief Computes the total reinforcement armies for a player.
+     */
     int GameEngine::computeReinforcementFor(Player* p) const {
         int owned = static_cast<int>(p->getOwnedTerritories().size());
         int base = std::max(3, owned / 3);
@@ -231,6 +369,9 @@ namespace WarzoneEngine {
         return base + bonus;
     }
 
+    /**
+     * @brief Assigns reinforcement armies to all players based on territories and continents owned.
+     */
     string GameEngine::assignreinforcement() {
         if (!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) return "invalid";
         if (!gameMap) return "no map";
@@ -258,12 +399,18 @@ namespace WarzoneEngine {
         return "issue orders";
     }
 
+    /**
+     * @brief Invokes the issueOrder() method for each player.
+     */
     string GameEngine::issueorder() {
         if (!isCurrentStateCorrect(EngineState::IssueOrders, "issueorder")) return "invalid";
         for (auto& p : players) p->issueOrder();
         return "issuing orders";
     }
 
+    /**
+     * @brief Ends the IssueOrders phase and transitions to ExecuteOrders.
+     */
     string GameEngine::endissueorders() {
         if (!isCurrentStateCorrect(EngineState::IssueOrders, "endissueorders")) return "invalid";
         state = EngineState::ExecuteOrders;
@@ -272,6 +419,9 @@ namespace WarzoneEngine {
 
     // ------------------ interleaved executeOrder ------------------
 
+    /**
+     * @brief Executes player orders in an interleaved manner.
+     */
     string GameEngine::executeOrder() {
         if (!isCurrentStateCorrect(EngineState::ExecuteOrders, "executeorder")) return "invalid";
 
@@ -300,6 +450,9 @@ namespace WarzoneEngine {
         return "assign reinforcement";
     }
 
+    /**
+     * @brief Helper function that executes orders interleaved between players.
+     */
     void GameEngine::executeOrders(vector<WarzonePlayer::Player*>& players) {
         bool anyOrderLeft = true;
         while (anyOrderLeft) {
@@ -325,12 +478,18 @@ namespace WarzoneEngine {
         }
     }
 
+    /**
+     * @brief Ends ExecuteOrders phase and transitions back to reinforcement.
+     */
     string GameEngine::endExecuteOrder() {
         if (!isCurrentStateCorrect(EngineState::ExecuteOrders, "endexecuteorder")) return "invalid";
         state = EngineState::AssignReinforcement;
         return "assign reinforcement";
     }
 
+    /**
+     * @brief Outputs a win state message.
+     */
     string GameEngine::win() {
         if (!isCurrentStateCorrect(EngineState::Win, "win")) return "invalid";
         return "win";
@@ -344,6 +503,12 @@ namespace WarzoneEngine {
 
     // ------------------ command dispatcher ------------------
 
+    /**
+     * @brief Processes text-based commands and dispatches them to corresponding methods.
+     * @param raw The command string (case-insensitive).
+     * @param arg Optional argument (e.g., map path or player name).
+     * @return Response message from the executed command.
+     */
     string GameEngine::processCommand(const string& raw, const string& arg) {
         string cmd = raw;
         for (char& c : cmd) c = static_cast<char>(std::tolower(c));

@@ -105,6 +105,7 @@ namespace WarzoneEngine {
         std::queue<Player*> playerQueue;  ///< Queue managing player turn order
         Player* currentPlayer = nullptr;  ///< Pointer to the currently active player
 
+
         //-- Helper and Internal Methods --//
 
         /**

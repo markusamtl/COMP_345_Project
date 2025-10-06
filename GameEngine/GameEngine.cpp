@@ -373,32 +373,33 @@ namespace WarzoneEngine {
      * @brief Assigns reinforcement armies to all players based on territories and continents owned.
      */
     string GameEngine::assignreinforcement() {
-       if (!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) return "invalid";
-       if (!gameMap) return "no map";
+         if (!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) 
+            return "invalid";
+         if (!gameMap) return "no map";
 
-      vector<Player*> ordered;
-      auto copyQueue = playerQueue;
-      while (!copyQueue.empty()) {
-          ordered.push_back(copyQueue.front());
-          copyQueue.pop();
+         vector<Player*> ordered;
+         auto copyQueue = playerQueue;
+         while (!copyQueue.empty()) {
+             ordered.push_back(copyQueue.front());
+             copyQueue.pop();
     }
 
-    // Compute and assign reinforcements to each player's pool
-      for (Player* p : ordered) {
-          if (!p) continue;
+    // Compute and store reinforcements in GameEngine's map
+    for (Player* p : ordered) {
+        if (!p) continue;
         
-          int r = computeReinforcementFor(p);
+        int r = computeReinforcementFor(p);
         
-        // Add to player's reinforcement pool (don't create Deploy orders yet)
-          p->setReinforcementPool(p->getReinforcementPool() + r);
+        // Store in GameEngine's reinforcement tracking map
+        reinforcementPools[p] = reinforcementPools[p] + r;
         
-          std::cout << "[Reinforcement] " << p->getPlayerName()
+        std::cout << "[Reinforcement] " << p->getPlayerName()
                   << " receives " << r << " armies. "
-                  << "Total pool: " << p->getReinforcementPool() << "\n";
+                  << "Total pool: " << reinforcementPools[p] << "\n";
     }
 
-      state = EngineState::IssueOrders;
-      return "issue orders";
+    state = EngineState::IssueOrders;
+    return "issue orders";
 }
 
     /**

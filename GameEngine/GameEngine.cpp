@@ -14,6 +14,7 @@ namespace WarzoneEngine {
         gameMap = nullptr;
         deck = nullptr;
         currentPlayer = nullptr;
+        reinforcementPools.clear();
     
     }
 
@@ -547,6 +548,8 @@ namespace WarzoneEngine {
 
         while (!playerQueue.empty()){playerQueue.pop();}
         currentPlayer = nullptr;
+
+        reinforcementPools.clear();
     }
 
 } // namespace WarzoneEngine

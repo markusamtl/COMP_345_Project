@@ -57,6 +57,10 @@
         "streambuf": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "ranges": "cpp",
+        "text_encoding": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }

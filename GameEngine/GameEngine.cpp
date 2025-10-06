@@ -19,8 +19,46 @@ namespace WarzoneEngine {
 
     GameEngine::~GameEngine() { clearGame(); }
 
-    //TODO: Implement copy constructor 
+    //TODO: Implement copy constructor
+    // Copy Constructor
+    GameEngine::GameEngine(const GameEngine& other) {
+        // Copy primitive/state members
+        state = other.state;
+
+        // Deep copy map
+        gameMap = other.gameMap ? new Map(*other.gameMap) : nullptr;
+
+        // Deep copy deck
+        deck = other.deck ? new Deck(*other.deck) : nullptr;
+
+        // Deep copy players
+        for (Player* p : other.players) {
+            players.push_back(new Player(*p));
+        }
+
+        // Copy player queue (by matching player names to newly copied players)
+        std::queue<Player*> tempQueue = other.playerQueue;
+        while (!tempQueue.empty()) {
+            std::string name = tempQueue.front()->getPlayerName();
+            auto it = std::find_if(players.begin(), players.end(),
+                                   [&](Player* pp) { return pp->getPlayerName() == name; });
+            if (it != players.end())
+                playerQueue.push(*it);
+            tempQueue.pop();
+        }
+
+        // Copy current player pointer
+        currentPlayer = nullptr;
+        if (other.currentPlayer) {
+            auto it = std::find_if(players.begin(), players.end(),
+                                   [&](Player* p) { return p->getPlayerName() == other.currentPlayer->getPlayerName(); });
+            if (it != players.end())
+                currentPlayer = *it;
+        }
+    } 
+
     //TODO: Implement assignment operator
+    
 
     std::ostream& operator<<(std::ostream& os, const EngineState& s) {
         

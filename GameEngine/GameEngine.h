@@ -105,7 +105,6 @@ namespace WarzoneEngine {
         std::queue<Player*> playerQueue;  ///< Queue managing player turn order
         Player* currentPlayer = nullptr;  ///< Pointer to the currently active player
 
-        std::unordered_map<Player*, int> reinforcementPools; // Track each player's pool
 
         //-- Helper and Internal Methods --//
 

@@ -73,8 +73,27 @@ namespace WarzoneEngine {
         void executeOrders(vector<WarzonePlayer::Player*>& players);
 
     public:
+        //-- Constructors, Destructor, Copy Constructor, Assignment Operator --//
         GameEngine();
         ~GameEngine();
+        GameEngine(const GameEngine& other);              
+        GameEngine& operator=(const GameEngine& other);   
+
+        //-- Accessors and Mutators --//
+        Map* getGameMap() const;                           
+        void setGameMap(Map* map);                         
+
+        Deck* getDeck() const;                             
+        void setDeck(Deck* d);                             
+
+        const vector<Player*>& getPlayers() const;         
+        void setPlayers(const vector<Player*>& newPlayers); 
+
+        queue<Player*> getPlayerQueue() const;             
+        void setPlayerQueue(const queue<Player*>& q);      
+
+        Player* getCurrentPlayer() const;                  
+        void setCurrentPlayer(Player* player);             
 
         const EngineState& getState() const { return state; }
 
@@ -100,6 +119,9 @@ namespace WarzoneEngine {
         WarzonePlayer::Player* getNextPlayer();
         void nextTurn();
         bool hasPlayers() const;
+
+        //-- Stream Insertion Operator --//
+        friend std::ostream& operator<<(std::ostream& os, const GameEngine& engine);  
     };
 
 } // namespace WarzoneEngine

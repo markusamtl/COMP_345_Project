@@ -121,7 +121,21 @@ namespace WarzoneEngine {
 
     //-- Accessors and Mutators --//
 
-    //TODO: Implement accessors and mutators for gameMap, deck, players, playerQueue, currentPlayer
+    Map* GameEngine::getGameMap() const { return gameMap; }
+    void GameEngine::setGameMap(Map* map) { gameMap = map; }
+
+    Deck* GameEngine::getDeck() const { return deck; }
+    void GameEngine::setDeck(Deck* d) { deck = d; }
+
+    const std::vector<Player*>& GameEngine::getPlayers() const { return players; }
+    void GameEngine::setPlayers(const std::vector<Player*>& newPlayers) { players = newPlayers; }
+
+    std::queue<Player*> GameEngine::getPlayerQueue() const { return playerQueue; }
+    void GameEngine::setPlayerQueue(const std::queue<Player*>& q) { playerQueue = q; }
+
+    Player* GameEngine::getCurrentPlayer() const { return currentPlayer; }
+    void GameEngine::setCurrentPlayer(Player* player) { currentPlayer = player; }
+
 
     //-- Class Methods --//
 

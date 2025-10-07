@@ -1,0 +1,370 @@
+\doxysection{Warzone\+Order\+::Order\+List Class Reference}
+\hypertarget{class_warzone_order_1_1_order_list}{}\label{class_warzone_order_1_1_order_list}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+
+
+Manages a collection of \doxylink{class_warzone_order_1_1_order}{Order} objects for a player.  
+
+
+
+
+{\ttfamily \#include $<$Order.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_list_a06cff53dd42feb21884e14aa772279f2}{Order\+List}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_list_af1eb86941f6a7ebc4bd72589f9e363a9}{\texorpdfstring{$\sim$}{\string~}\+Order\+List}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_list_a14f1000b18f489292c0d0357e828a044}{Order\+List}} (const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \& \mbox{\hyperlink{class_warzone_order_1_1_order_list_ae9263027a4956e62231904363a76bd14}{operator=}} (const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+const vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_warzone_order_1_1_order_list_a35c900b93d58901dc90eceaeb72941ac}{get\+Orders}} () const
+\begin{DoxyCompactList}\small\item\em Get the vector of Orders. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_warzone_order_1_1_order_list_ada9a2b8acefd7941c2f735f1bf61822a}{get\+Orders}} ()
+\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_a1be89167158b6c948f183f02d9784012}{set\+Orders}} (const vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ new\+Orders)
+\begin{DoxyCompactList}\small\item\em Set the vector of Orders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_ae6e5ae330a965d6780dad064324ff0fd}{add\+Order}} (\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}o)
+\begin{DoxyCompactList}\small\item\em Add a new \doxylink{class_warzone_order_1_1_order}{Order} to the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_a69ccd4cf1ad3d87011439b7a0196e112}{remove\+Order}} (int index)
+\begin{DoxyCompactList}\small\item\em Remove an \doxylink{class_warzone_order_1_1_order}{Order} from the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_a8281c3f991273d70891344a230eb0696}{remove\+Order}} (\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}o)
+\begin{DoxyCompactList}\small\item\em Remove an \doxylink{class_warzone_order_1_1_order}{Order} from the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_ac9227619b068b4aedfb0b37b6e938501}{move\+Order}} (int from, int to)
+\begin{DoxyCompactList}\small\item\em Move an \doxylink{class_warzone_order_1_1_order}{Order} within the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_a017f79e3df3fe123b7c27baf2a3218da}{replace\+Order}} (int index, \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}new\+Order)
+\begin{DoxyCompactList}\small\item\em Replace an \doxylink{class_warzone_order_1_1_order}{Order} at a specific index with a new \doxylink{class_warzone_order_1_1_order}{Order}. Deletes the old \doxylink{class_warzone_order_1_1_order}{Order} and inserts the new one at the same position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_list_a47b224abe962eab5cb333b85ce1ecbe7}{replace\+Order}} (\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}old\+Order, \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}new\+Order)
+\begin{DoxyCompactList}\small\item\em Replace an existing \doxylink{class_warzone_order_1_1_order}{Order} with a new \doxylink{class_warzone_order_1_1_order}{Order}. Deletes the old \doxylink{class_warzone_order_1_1_order}{Order} and inserts the new one at the same position. If the old \doxylink{class_warzone_order_1_1_order}{Order} is not found, no action is taken. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_order_1_1_order_list_afefc2c9585cc2363d27744db02d7524b}{peek}} () const
+\begin{DoxyCompactList}\small\item\em Get first order. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_warzone_order_1_1_order_list_a0b7d7f498b9446ebeb3b3b4a8c3a7e87}{size}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of Orders in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_warzone_order_1_1_order_list_a8fe9de786d7820459136220cb409f2a9}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&ol)
+\begin{DoxyCompactList}\small\item\em Stream insertion operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a collection of \doxylink{class_warzone_order_1_1_order}{Order} objects for a player. 
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00947}{947}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_warzone_order_1_1_order_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_warzone_order_1_1_order_list_a06cff53dd42feb21884e14aa772279f2}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!OrderList@{OrderList}}
+\index{OrderList@{OrderList}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{OrderList()}{OrderList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a06cff53dd42feb21884e14aa772279f2} 
+Warzone\+Order\+::\+Order\+List\+::\+Order\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Initializes an empty list of orders. 
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00944}{944}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_af1eb86941f6a7ebc4bd72589f9e363a9}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!````~OrderList@{\texorpdfstring{$\sim$}{\string~}OrderList}}
+\index{````~OrderList@{\texorpdfstring{$\sim$}{\string~}OrderList}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OrderList()}{\string~OrderList()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_af1eb86941f6a7ebc4bd72589f9e363a9} 
+Warzone\+Order\+::\+Order\+List\+::\texorpdfstring{$\sim$}{\string~}\+Order\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Cleans up all dynamically allocated Orders in the list. 
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00950}{950}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a14f1000b18f489292c0d0357e828a044}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!OrderList@{OrderList}}
+\index{OrderList@{OrderList}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{OrderList()}{OrderList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a14f1000b18f489292c0d0357e828a044} 
+Warzone\+Order\+::\+Order\+List\+::\+Order\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Creates a deep copy of another \doxylink{class_warzone_order_1_1_order_list}{Order\+List}, duplicating all Orders. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_order_1_1_order_list}{Order\+List} to copy from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00956}{956}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_warzone_order_1_1_order_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warzone_order_1_1_order_list_ae6e5ae330a965d6780dad064324ff0fd}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!addOrder@{addOrder}}
+\index{addOrder@{addOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{addOrder()}{addOrder()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_ae6e5ae330a965d6780dad064324ff0fd} 
+void Warzone\+Order\+::\+Order\+List\+::add\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}}]{o}{}\end{DoxyParamCaption})}
+
+
+
+Add a new \doxylink{class_warzone_order_1_1_order}{Order} to the list. 
+
+The order is appended to the end of the list. 
+\begin{DoxyParams}{Parameters}
+{\em o} & Pointer to the \doxylink{class_warzone_order_1_1_order}{Order} to add. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01026}{1026}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_ada9a2b8acefd7941c2f735f1bf61822a}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_ada9a2b8acefd7941c2f735f1bf61822a} 
+vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ \& Warzone\+Order\+::\+Order\+List\+::get\+Orders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l01008}{1008}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a35c900b93d58901dc90eceaeb72941ac}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a35c900b93d58901dc90eceaeb72941ac} 
+const vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ \& Warzone\+Order\+::\+Order\+List\+::get\+Orders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the vector of Orders. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the vector of \doxylink{class_warzone_order_1_1_order}{Order} pointers. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l01007}{1007}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_ac9227619b068b4aedfb0b37b6e938501}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!moveOrder@{moveOrder}}
+\index{moveOrder@{moveOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{moveOrder()}{moveOrder()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_ac9227619b068b4aedfb0b37b6e938501} 
+void Warzone\+Order\+::\+Order\+List\+::move\+Order (\begin{DoxyParamCaption}\item[{int}]{from}{, }\item[{int}]{to}{}\end{DoxyParamCaption})}
+
+
+
+Move an \doxylink{class_warzone_order_1_1_order}{Order} within the list. 
+
+Relocates an \doxylink{class_warzone_order_1_1_order}{Order} from one position to another. 
+\begin{DoxyParams}{Parameters}
+{\em from} & The index of the \doxylink{class_warzone_order_1_1_order}{Order} to move. \\
+\hline
+{\em to} & The new index where the \doxylink{class_warzone_order_1_1_order}{Order} will be placed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01060}{1060}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_ae9263027a4956e62231904363a76bd14}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!operator=@{operator=}}
+\index{operator=@{operator=}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_ae9263027a4956e62231904363a76bd14} 
+\mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \& Warzone\+Order\+::\+Order\+List\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+Assigns another \doxylink{class_warzone_order_1_1_order_list}{Order\+List} to this one by performing a deep copy of all \doxylink{class_warzone_order_1_1_order}{Order} objects. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_order_1_1_order_list}{Order\+List} to assign from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this \doxylink{class_warzone_order_1_1_order_list}{Order\+List}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00968}{968}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_afefc2c9585cc2363d27744db02d7524b}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!peek@{peek}}
+\index{peek@{peek}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{peek()}{peek()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_afefc2c9585cc2363d27744db02d7524b} 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Order\+List\+::peek (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get first order. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the first order in the list 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01078}{1078}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a69ccd4cf1ad3d87011439b7a0196e112}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!removeOrder@{removeOrder}}
+\index{removeOrder@{removeOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{removeOrder()}{removeOrder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a69ccd4cf1ad3d87011439b7a0196e112} 
+void Warzone\+Order\+::\+Order\+List\+::remove\+Order (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Remove an \doxylink{class_warzone_order_1_1_order}{Order} from the list. 
+
+Deletes and removes the \doxylink{class_warzone_order_1_1_order}{Order} at the specified index. 
+\begin{DoxyParams}{Parameters}
+{\em index} & The position of the \doxylink{class_warzone_order_1_1_order}{Order} to remove. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01032}{1032}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a8281c3f991273d70891344a230eb0696}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!removeOrder@{removeOrder}}
+\index{removeOrder@{removeOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{removeOrder()}{removeOrder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a8281c3f991273d70891344a230eb0696} 
+void Warzone\+Order\+::\+Order\+List\+::remove\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}}]{o}{}\end{DoxyParamCaption})}
+
+
+
+Remove an \doxylink{class_warzone_order_1_1_order}{Order} from the list. 
+
+Deletes and removes the \doxylink{class_warzone_order_1_1_order}{Order}, based on a specific order pointer 
+\begin{DoxyParams}{Parameters}
+{\em o} & The order pointer to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01043}{1043}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a017f79e3df3fe123b7c27baf2a3218da}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!replaceOrder@{replaceOrder}}
+\index{replaceOrder@{replaceOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{replaceOrder()}{replaceOrder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a017f79e3df3fe123b7c27baf2a3218da} 
+void Warzone\+Order\+::\+Order\+List\+::replace\+Order (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}}]{new\+Order}{}\end{DoxyParamCaption})}
+
+
+
+Replace an \doxylink{class_warzone_order_1_1_order}{Order} at a specific index with a new \doxylink{class_warzone_order_1_1_order}{Order}. Deletes the old \doxylink{class_warzone_order_1_1_order}{Order} and inserts the new one at the same position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the \doxylink{class_warzone_order_1_1_order}{Order} to replace. \\
+\hline
+{\em new\+Order} & Pointer to the new \doxylink{class_warzone_order_1_1_order}{Order} to insert. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01085}{1085}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a47b224abe962eab5cb333b85ce1ecbe7}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!replaceOrder@{replaceOrder}}
+\index{replaceOrder@{replaceOrder}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{replaceOrder()}{replaceOrder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a47b224abe962eab5cb333b85ce1ecbe7} 
+void Warzone\+Order\+::\+Order\+List\+::replace\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}}]{old\+Order}{, }\item[{\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*}}]{new\+Order}{}\end{DoxyParamCaption})}
+
+
+
+Replace an existing \doxylink{class_warzone_order_1_1_order}{Order} with a new \doxylink{class_warzone_order_1_1_order}{Order}. Deletes the old \doxylink{class_warzone_order_1_1_order}{Order} and inserts the new one at the same position. If the old \doxylink{class_warzone_order_1_1_order}{Order} is not found, no action is taken. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Order} & Pointer to the existing \doxylink{class_warzone_order_1_1_order}{Order} to be replaced. \\
+\hline
+{\em new\+Order} & Pointer to the new \doxylink{class_warzone_order_1_1_order}{Order} to insert. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01110}{1110}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a1be89167158b6c948f183f02d9784012}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!setOrders@{setOrders}}
+\index{setOrders@{setOrders}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{setOrders()}{setOrders()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a1be89167158b6c948f183f02d9784012} 
+void Warzone\+Order\+::\+Order\+List\+::set\+Orders (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} $>$}]{new\+Orders}{}\end{DoxyParamCaption})}
+
+
+
+Set the vector of Orders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Orders} & A pointer to a new vector of \doxylink{class_warzone_order_1_1_order}{Order} pointers. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01007}{1007}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_order_list_a0b7d7f498b9446ebeb3b3b4a8c3a7e87}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!size@{size}}
+\index{size@{size}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a0b7d7f498b9446ebeb3b3b4a8c3a7e87} 
+size\+\_\+t Warzone\+Order\+::\+Order\+List\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the number of Orders in the list. 
+
+\begin{DoxyReturn}{Returns}
+The number of orders in the list as a size\+\_\+t. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l01132}{1132}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_warzone_order_1_1_order_list_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_warzone_order_1_1_order_list_a8fe9de786d7820459136220cb409f2a9}\index{WarzoneOrder::OrderList@{WarzoneOrder::OrderList}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzoneOrder::OrderList@{WarzoneOrder::OrderList}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_order_list_a8fe9de786d7820459136220cb409f2a9} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Order\+List}} \&}]{ol}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Stream insertion operator. 
+
+Outputs all Orders in the list to the given stream, showing their type and effect strings. 
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em ol} & The \doxylink{class_warzone_order_1_1_order_list}{Order\+List} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the output stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00990}{990}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order/\mbox{\hyperlink{_order_8h}{Order.\+h}}\item 
+Order/\mbox{\hyperlink{_order_8cpp}{Order.\+cpp}}\end{DoxyCompactItemize}

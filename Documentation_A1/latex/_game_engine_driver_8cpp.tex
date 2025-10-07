@@ -1,0 +1,47 @@
+\doxysection{Game\+Engine/\+Game\+Engine\+Driver.cpp File Reference}
+\hypertarget{_game_engine_driver_8cpp}{}\label{_game_engine_driver_8cpp}\index{GameEngine/GameEngineDriver.cpp@{GameEngine/GameEngineDriver.cpp}}
+{\ttfamily \#include "{}Game\+Engine\+Driver.\+h"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_game_engine_driver_8cpp_adff8d995b3daa2752aa93fc082cf304c}{test\+Game\+States}} ()
+\begin{DoxyCompactList}\small\item\em Test function for the \doxylink{class_warzone_engine_1_1_game_engine}{Game\+Engine} state machine. Allows the user to type commands (loadmap, validatemap, addplayer, gamestart, assignreinforcement, issueorder, endissueorders, executeorder, endexecuteorder, win, end) and transitions states accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_game_engine_driver_8cpp_af0d3bf0f73cde2c30afd69b4faea5bb7}{simulate\+Real\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Simulates a full automatic game sequence with multiple players on a predefined map. The user can specify the maximum number of turns to simulate and whether to print detailed outputs. After the simulation ends, the user is prompted to play again or exit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_game_engine_driver_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_game_engine_driver_8cpp_af0d3bf0f73cde2c30afd69b4faea5bb7}\index{GameEngineDriver.cpp@{GameEngineDriver.cpp}!simulateRealGame@{simulateRealGame}}
+\index{simulateRealGame@{simulateRealGame}!GameEngineDriver.cpp@{GameEngineDriver.cpp}}
+\doxysubsubsection{\texorpdfstring{simulateRealGame()}{simulateRealGame()}}
+{\footnotesize\ttfamily \label{_game_engine_driver_8cpp_af0d3bf0f73cde2c30afd69b4faea5bb7} 
+void simulate\+Real\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates a full automatic game sequence with multiple players on a predefined map. The user can specify the maximum number of turns to simulate and whether to print detailed outputs. After the simulation ends, the user is prompted to play again or exit. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_engine_driver_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_game_engine_driver_8cpp_source}{Game\+Engine\+Driver.\+cpp}}.
+
+\Hypertarget{_game_engine_driver_8cpp_adff8d995b3daa2752aa93fc082cf304c}\index{GameEngineDriver.cpp@{GameEngineDriver.cpp}!testGameStates@{testGameStates}}
+\index{testGameStates@{testGameStates}!GameEngineDriver.cpp@{GameEngineDriver.cpp}}
+\doxysubsubsection{\texorpdfstring{testGameStates()}{testGameStates()}}
+{\footnotesize\ttfamily \label{_game_engine_driver_8cpp_adff8d995b3daa2752aa93fc082cf304c} 
+void test\+Game\+States (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test function for the \doxylink{class_warzone_engine_1_1_game_engine}{Game\+Engine} state machine. Allows the user to type commands (loadmap, validatemap, addplayer, gamestart, assignreinforcement, issueorder, endissueorders, executeorder, endexecuteorder, win, end) and transitions states accordingly. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_engine_driver_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_game_engine_driver_8cpp_source}{Game\+Engine\+Driver.\+cpp}}.
+

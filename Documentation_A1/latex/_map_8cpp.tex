@@ -1,0 +1,184 @@
+\doxysection{Map/\+Map.cpp File Reference}
+\hypertarget{_map_8cpp}{}\label{_map_8cpp}\index{Map/Map.cpp@{Map/Map.cpp}}
+{\ttfamily \#include "{}Map.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Player/\+Player.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_warzone_map}{Warzone\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a3c36fe02bdc6a868db8020ad2adebd6a}{MAP\+\_\+\+OK}}~0
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_ade535b8a10127f68bb48984859d654ae}{MAP\+\_\+\+FILE\+\_\+\+NOT\+\_\+\+FOUND}}~1
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_ad659863044b41c7fc7177fc6f758aa7a}{MAP\+\_\+\+INVALID\+\_\+\+SECTION}}~2
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a7f5df2f507cee06804f3152569e30923}{MAP\+\_\+\+PARSE\+\_\+\+ERROR}}~3
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a482cde15a186a0871fa0e4d13c70db5d}{INVALID\+\_\+\+MAP\+\_\+\+PTR}}~1
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a335c9e8f9da3da308c3d677ed558ea33}{INVALID\+\_\+\+AUTHOR}}~2
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a15c4e1bc7efa151b7ff96862c0d7e26b}{INVALID\+\_\+\+IMAGE}}~3
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a2568db2c3a2d764f1e1469eab2bccc0d}{INVALID\+\_\+\+WRAP}}~4
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_abde8a455c6a6e49b1ad96df46a81cdae}{INVALID\+\_\+\+SCROLL}}~5
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a2c2dcbc7a63106f7f247ccc7d376b6f7}{INVALID\+\_\+\+WARN}}~6
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_aeb385454d545e20f9756d0eeee703c96}{INVALID\+\_\+\+CONTINENT}}~7
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_acaddd1dac6cf51de3fe7e7fbaad78f83}{INVALID\+\_\+\+TERRITORY}}~8
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a65886053791cb495c87b9e44c6c33a79}{INVALID\+\_\+\+MAP\+\_\+\+STRUCTURE}}~9
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_map_afea102d6970f00cd54e7a0701a1ccf43}{Warzone\+Map\+::operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_map_1_1_continent}{Continent}} \&continent)
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_map_ad3275515804e9f213119b24d1156c6be}{Warzone\+Map\+::operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \&territory)
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_map_af0845ef53fef924dbc2e5ac68246db5f}{Warzone\+Map\+::operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_map_1_1_map}{Map}} \&map)
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_map_a4ea8b96fbb91173fcb353e064a70add2}{Warzone\+Map\+::operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_map_1_1_map_loader}{Map\+Loader}} \&map\+Loader)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_map_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_map_8cpp_a335c9e8f9da3da308c3d677ed558ea33}\index{Map.cpp@{Map.cpp}!INVALID\_AUTHOR@{INVALID\_AUTHOR}}
+\index{INVALID\_AUTHOR@{INVALID\_AUTHOR}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_AUTHOR}{INVALID\_AUTHOR}}
+{\footnotesize\ttfamily \label{_map_8cpp_a335c9e8f9da3da308c3d677ed558ea33} 
+\#define INVALID\+\_\+\+AUTHOR~2}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00805}{805}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_aeb385454d545e20f9756d0eeee703c96}\index{Map.cpp@{Map.cpp}!INVALID\_CONTINENT@{INVALID\_CONTINENT}}
+\index{INVALID\_CONTINENT@{INVALID\_CONTINENT}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_CONTINENT}{INVALID\_CONTINENT}}
+{\footnotesize\ttfamily \label{_map_8cpp_aeb385454d545e20f9756d0eeee703c96} 
+\#define INVALID\+\_\+\+CONTINENT~7}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00810}{810}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a15c4e1bc7efa151b7ff96862c0d7e26b}\index{Map.cpp@{Map.cpp}!INVALID\_IMAGE@{INVALID\_IMAGE}}
+\index{INVALID\_IMAGE@{INVALID\_IMAGE}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_IMAGE}{INVALID\_IMAGE}}
+{\footnotesize\ttfamily \label{_map_8cpp_a15c4e1bc7efa151b7ff96862c0d7e26b} 
+\#define INVALID\+\_\+\+IMAGE~3}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00806}{806}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a482cde15a186a0871fa0e4d13c70db5d}\index{Map.cpp@{Map.cpp}!INVALID\_MAP\_PTR@{INVALID\_MAP\_PTR}}
+\index{INVALID\_MAP\_PTR@{INVALID\_MAP\_PTR}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_MAP\_PTR}{INVALID\_MAP\_PTR}}
+{\footnotesize\ttfamily \label{_map_8cpp_a482cde15a186a0871fa0e4d13c70db5d} 
+\#define INVALID\+\_\+\+MAP\+\_\+\+PTR~1}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00804}{804}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a65886053791cb495c87b9e44c6c33a79}\index{Map.cpp@{Map.cpp}!INVALID\_MAP\_STRUCTURE@{INVALID\_MAP\_STRUCTURE}}
+\index{INVALID\_MAP\_STRUCTURE@{INVALID\_MAP\_STRUCTURE}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_MAP\_STRUCTURE}{INVALID\_MAP\_STRUCTURE}}
+{\footnotesize\ttfamily \label{_map_8cpp_a65886053791cb495c87b9e44c6c33a79} 
+\#define INVALID\+\_\+\+MAP\+\_\+\+STRUCTURE~9}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00812}{812}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_abde8a455c6a6e49b1ad96df46a81cdae}\index{Map.cpp@{Map.cpp}!INVALID\_SCROLL@{INVALID\_SCROLL}}
+\index{INVALID\_SCROLL@{INVALID\_SCROLL}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_SCROLL}{INVALID\_SCROLL}}
+{\footnotesize\ttfamily \label{_map_8cpp_abde8a455c6a6e49b1ad96df46a81cdae} 
+\#define INVALID\+\_\+\+SCROLL~5}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00808}{808}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_acaddd1dac6cf51de3fe7e7fbaad78f83}\index{Map.cpp@{Map.cpp}!INVALID\_TERRITORY@{INVALID\_TERRITORY}}
+\index{INVALID\_TERRITORY@{INVALID\_TERRITORY}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_TERRITORY}{INVALID\_TERRITORY}}
+{\footnotesize\ttfamily \label{_map_8cpp_acaddd1dac6cf51de3fe7e7fbaad78f83} 
+\#define INVALID\+\_\+\+TERRITORY~8}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00811}{811}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a2c2dcbc7a63106f7f247ccc7d376b6f7}\index{Map.cpp@{Map.cpp}!INVALID\_WARN@{INVALID\_WARN}}
+\index{INVALID\_WARN@{INVALID\_WARN}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_WARN}{INVALID\_WARN}}
+{\footnotesize\ttfamily \label{_map_8cpp_a2c2dcbc7a63106f7f247ccc7d376b6f7} 
+\#define INVALID\+\_\+\+WARN~6}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00809}{809}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a2568db2c3a2d764f1e1469eab2bccc0d}\index{Map.cpp@{Map.cpp}!INVALID\_WRAP@{INVALID\_WRAP}}
+\index{INVALID\_WRAP@{INVALID\_WRAP}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{INVALID\_WRAP}{INVALID\_WRAP}}
+{\footnotesize\ttfamily \label{_map_8cpp_a2568db2c3a2d764f1e1469eab2bccc0d} 
+\#define INVALID\+\_\+\+WRAP~4}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00807}{807}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_ade535b8a10127f68bb48984859d654ae}\index{Map.cpp@{Map.cpp}!MAP\_FILE\_NOT\_FOUND@{MAP\_FILE\_NOT\_FOUND}}
+\index{MAP\_FILE\_NOT\_FOUND@{MAP\_FILE\_NOT\_FOUND}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{MAP\_FILE\_NOT\_FOUND}{MAP\_FILE\_NOT\_FOUND}}
+{\footnotesize\ttfamily \label{_map_8cpp_ade535b8a10127f68bb48984859d654ae} 
+\#define MAP\+\_\+\+FILE\+\_\+\+NOT\+\_\+\+FOUND~1}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00800}{800}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_ad659863044b41c7fc7177fc6f758aa7a}\index{Map.cpp@{Map.cpp}!MAP\_INVALID\_SECTION@{MAP\_INVALID\_SECTION}}
+\index{MAP\_INVALID\_SECTION@{MAP\_INVALID\_SECTION}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{MAP\_INVALID\_SECTION}{MAP\_INVALID\_SECTION}}
+{\footnotesize\ttfamily \label{_map_8cpp_ad659863044b41c7fc7177fc6f758aa7a} 
+\#define MAP\+\_\+\+INVALID\+\_\+\+SECTION~2}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00801}{801}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a3c36fe02bdc6a868db8020ad2adebd6a}\index{Map.cpp@{Map.cpp}!MAP\_OK@{MAP\_OK}}
+\index{MAP\_OK@{MAP\_OK}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{MAP\_OK}{MAP\_OK}}
+{\footnotesize\ttfamily \label{_map_8cpp_a3c36fe02bdc6a868db8020ad2adebd6a} 
+\#define MAP\+\_\+\+OK~0}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00799}{799}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+
+\Hypertarget{_map_8cpp_a7f5df2f507cee06804f3152569e30923}\index{Map.cpp@{Map.cpp}!MAP\_PARSE\_ERROR@{MAP\_PARSE\_ERROR}}
+\index{MAP\_PARSE\_ERROR@{MAP\_PARSE\_ERROR}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{MAP\_PARSE\_ERROR}{MAP\_PARSE\_ERROR}}
+{\footnotesize\ttfamily \label{_map_8cpp_a7f5df2f507cee06804f3152569e30923} 
+\#define MAP\+\_\+\+PARSE\+\_\+\+ERROR~3}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cpp_source_l00802}{802}} of file \mbox{\hyperlink{_map_8cpp_source}{Map.\+cpp}}.
+

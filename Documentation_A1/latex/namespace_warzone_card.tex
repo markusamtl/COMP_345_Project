@@ -1,0 +1,110 @@
+\doxysection{Warzone\+Card Namespace Reference}
+\hypertarget{namespace_warzone_card}{}\label{namespace_warzone_card}\index{WarzoneCard@{WarzoneCard}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_card}{Card}}
+\begin{DoxyCompactList}\small\item\em Represents a single Warzone card of a specific type. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_deck}{Deck}}
+\begin{DoxyCompactList}\small\item\em Represents the global collection of Warzone cards available for players to draw. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}}
+\begin{DoxyCompactList}\small\item\em Represents the collection of cards currently held by a \doxylink{class_warzone_card_1_1_player}{Player}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_order}{Order}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for all Warzone orders. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_player}{Player}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_card_1_1_player}{Player} class represents a Warzone player. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_card_1_1_time_util}{Time\+Util}}
+\begin{DoxyCompactList}\small\item\em Provides utility methods for retrieving system time with high resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851}{Card\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851a88183b946cc5f0e8c96b2e66e1c74a7e}{Unknown}}
+, \mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851acd3abfc2f377a4c3fd9181f919d9de82}{Bomb}}
+, \mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851adefd317666a81fa7bddcb7e72d18e6cb}{Blockade}}
+, \mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851a9a7b0de022fc9d6581109ecaef72c956}{Airlift}}
+, \newline
+\mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851ad38f4afc007ddb255c04f2d810fafaf5}{Diplomacy}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_card_af9b46ac02d7ca02c72b15c1614c04684}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_card_1_1_card}{Card}} \&card)
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_card_a92bc0424874f57a3195e850aa91e3eb6}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_card_1_1_deck}{Deck}} \&deck)
+\item 
+ostream \& \mbox{\hyperlink{namespace_warzone_card_a80c628a08990ba3db444e6b3e29162bf}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}} \&hand)
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespace_warzone_card_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851}\index{WarzoneCard@{WarzoneCard}!CardType@{CardType}}
+\index{CardType@{CardType}!WarzoneCard@{WarzoneCard}}
+\doxysubsubsection{\texorpdfstring{CardType}{CardType}}
+{\footnotesize\ttfamily \label{namespace_warzone_card_aab25376c0659189da418b78dc220a851} 
+enum class \mbox{\hyperlink{namespace_warzone_card_aab25376c0659189da418b78dc220a851}{Warzone\+Card\+::\+Card\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unknown@{Unknown}!WarzoneCard@{WarzoneCard}}\index{WarzoneCard@{WarzoneCard}!Unknown@{Unknown}}}\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851a88183b946cc5f0e8c96b2e66e1c74a7e}\label{namespace_warzone_card_aab25376c0659189da418b78dc220a851a88183b946cc5f0e8c96b2e66e1c74a7e} 
+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bomb@{Bomb}!WarzoneCard@{WarzoneCard}}\index{WarzoneCard@{WarzoneCard}!Bomb@{Bomb}}}\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851acd3abfc2f377a4c3fd9181f919d9de82}\label{namespace_warzone_card_aab25376c0659189da418b78dc220a851acd3abfc2f377a4c3fd9181f919d9de82} 
+Bomb&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Blockade@{Blockade}!WarzoneCard@{WarzoneCard}}\index{WarzoneCard@{WarzoneCard}!Blockade@{Blockade}}}\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851adefd317666a81fa7bddcb7e72d18e6cb}\label{namespace_warzone_card_aab25376c0659189da418b78dc220a851adefd317666a81fa7bddcb7e72d18e6cb} 
+Blockade&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Airlift@{Airlift}!WarzoneCard@{WarzoneCard}}\index{WarzoneCard@{WarzoneCard}!Airlift@{Airlift}}}\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851a9a7b0de022fc9d6581109ecaef72c956}\label{namespace_warzone_card_aab25376c0659189da418b78dc220a851a9a7b0de022fc9d6581109ecaef72c956} 
+Airlift&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Diplomacy@{Diplomacy}!WarzoneCard@{WarzoneCard}}\index{WarzoneCard@{WarzoneCard}!Diplomacy@{Diplomacy}}}\Hypertarget{namespace_warzone_card_aab25376c0659189da418b78dc220a851ad38f4afc007ddb255c04f2d810fafaf5}\label{namespace_warzone_card_aab25376c0659189da418b78dc220a851ad38f4afc007ddb255c04f2d810fafaf5} 
+Diplomacy&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_card_8h_source_l00019}{19}} of file \mbox{\hyperlink{_card_8h_source}{Card.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_warzone_card_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_warzone_card_af9b46ac02d7ca02c72b15c1614c04684}\index{WarzoneCard@{WarzoneCard}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzoneCard@{WarzoneCard}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{namespace_warzone_card_af9b46ac02d7ca02c72b15c1614c04684} 
+ostream \& Warzone\+Card\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_card_1_1_card}{Card}} \&}]{card}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_card_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_card_8cpp_source}{Card.\+cpp}}.
+
+\Hypertarget{namespace_warzone_card_a92bc0424874f57a3195e850aa91e3eb6}\index{WarzoneCard@{WarzoneCard}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzoneCard@{WarzoneCard}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{namespace_warzone_card_a92bc0424874f57a3195e850aa91e3eb6} 
+ostream \& Warzone\+Card\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_card_1_1_deck}{Deck}} \&}]{deck}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_card_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_card_8cpp_source}{Card.\+cpp}}.
+
+\Hypertarget{namespace_warzone_card_a80c628a08990ba3db444e6b3e29162bf}\index{WarzoneCard@{WarzoneCard}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzoneCard@{WarzoneCard}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{namespace_warzone_card_a80c628a08990ba3db444e6b3e29162bf} 
+ostream \& Warzone\+Card\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}} \&}]{hand}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_card_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{_card_8cpp_source}{Card.\+cpp}}.
+

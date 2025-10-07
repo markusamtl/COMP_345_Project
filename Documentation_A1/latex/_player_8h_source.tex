@@ -1,0 +1,175 @@
+\doxysection{Player.\+h}
+\hypertarget{_player_8h_source}{}\label{_player_8h_source}\index{Player/Player.h@{Player/Player.h}}
+\mbox{\hyperlink{_player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{../Map/Map.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_card_8h}{../Card/Card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_8h}{../Order/Order.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_warzone_order}{WarzoneOrder}}\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_warzone_order_1_1_order_list}{OrderList}};\ \}\ \ \textcolor{comment}{//Forward\ declaration\ for\ order\ list}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_warzone_player}{WarzonePlayer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneMap::Territory;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneMap::Continent;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneCard::Hand;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneOrder::TimeUtil;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneOrder::OrderList;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneOrder::Order;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneCard::Deck;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneCard::Hand;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{using\ }WarzoneCard::Card;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00031}\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{00031}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Territory*>\ territories;\ \textcolor{comment}{//Iteration}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ unordered\_map<string,\ Territory*>\ territoryIndex;\ \textcolor{comment}{//For\ O(1)\ lookup\ by\ ID}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Constructors,\ Destructor,\ Copy\ Constructor,\ Assignment\ Operator,\ Stream\ Insertion\ Operator\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}(vector<Territory*>\ territories,\ unordered\_map<string,\ Territory*>\ territoryIndex);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_ae17a77760bb929c5148f5fc4ed97d2ff}{\string~PlayerTerrContainer}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2c30d4c6eae95c242f164ffb3bfc582c}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a9d365d1899d5e751fe43ff5f06df763d}{operator<<}}(ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{PlayerTerrContainer}}\&\ pc);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Accesors\ and\ Mutators\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<Territory*>\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_adfdd0d95a8434f21ddb0ebbd56f1ebd7}{getTerritories}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a44deb4e875b36b188ef3cff6d54c8573}{setTerritories}}(\textcolor{keyword}{const}\ vector<Territory*>\&\ newTerritories,\ \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}}*\ newOwner);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<string,\ Territory*>\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a5d418d305b4332ca3700a7170bc5f1c8}{getTerritoryIndex}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2e5f39c8679a2aed0eb8a26a78985fca}{setTerritoryIndex}}(\textcolor{keyword}{const}\ unordered\_map<string,\ Territory*>\&\ newIndex,\ \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}}*\ newOwner);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Class\ Methods\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a461ada3bca0085b3ab2472e2db7d1719}{addTerritory}}(\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}}*\ t,\ \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}}*\ newOwner);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_aca4de6dcdbd37313b20142ef3f1be6c0}{removeTerritory}}(\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}}*\ t);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2b709881f5b96690a5dd6682592bd4b7}{owns}}(\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}}*\ t)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a87018911c35293735d19f928a56bc928}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2826f410872dc8baf601dbd571a61d3a}{size}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00141}00141\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00146}\mbox{\hyperlink{class_warzone_card_1_1_player}{00146}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_warzone_card_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00147}00147\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Player\ Attributes\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ playerName;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ neutralEnemies;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ PlayerTerrContainer\ ownedTerritories;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}}*\ playerHand;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_order_list}{OrderList}}*\ playerOrders;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ generateCardThisTurn;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Game\ Logic\ Info\ -\/-\//}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ unordered\_map<Continent*,\ long\ long>\ continentLookupTablePlayer;}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00160}00160\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Constructors,\ Destructor,\ Copy\ Constructor,\ Assignment\ Operator,\ Stream\ Insertion\ Operator\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keyword}{const}\ unordered\_map<Continent*,\ long\ long>\&\ emptyHashMap);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ vector<string>\ neutralEnemies,\ PlayerTerrContainer\ ownedTerritories,\ \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}}*\ hand,\ \mbox{\hyperlink{class_warzone_player_1_1_order_list}{OrderList}}*\ orders,\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ generateCard,\ \textcolor{keyword}{const}\ unordered\_map<Continent*,\ long\ long>\&\ emptyHashMap);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_acdcb5ee192fad6693c1272610ac8e2e5}{\string~Player}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_card_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_card_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_ad9e5096ac1aeefaca39734f6e1253134}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_card_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_a9722ad1412e52eeb1036bf206c7b840e}{operator<<}}(ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_warzone_card_1_1_player_a394af12ab786fca8b4bc534bdc87a3c7}{Player}}\&\ p);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Accessors\ and\ Mutators\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_ad7f6a62fe5b159826e39060448ab49e1}{getPlayerName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a8e158694c260c5142c85ecfae8b224f3}{setPlayerName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ playerName);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<string>\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_a6a80779044a5b18113c1e6f1ff70d7bf}{getNeutralEnemies}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a9dd2ac6d4b5fa5a19e36304f09c9b7fa}{setNeutralEnemies}}(\textcolor{keyword}{const}\ vector<string>\&\ neutralEnemies);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PlayerTerrContainer\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_a7ec77cdd1007d3ab2f80832a34a2c896}{getOwnedTerritories}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_ad6f1b23bbcd295e34fb8163f86983585}{setOwnedTerritories}}(\textcolor{keyword}{const}\ PlayerTerrContainer\&\ newTerritories);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}}*\ \mbox{\hyperlink{class_warzone_player_1_1_player_afa3c3d2640566e7c769e95dc01f2aa7c}{getHand}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_ae4b3149e29bf17402ca0c48f8aaa1dd7}{setHand}}(\mbox{\hyperlink{class_warzone_card_1_1_hand}{Hand}}*\ newHand);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_warzone_player_1_1_order_list}{OrderList}}*\ \mbox{\hyperlink{class_warzone_player_1_1_player_ae29fd6f5c5835d3e61da32bf0d998090}{getPlayerOrders}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_ae3ced476993958cf1eb4192438d125de}{setPlayerOrders}}(\mbox{\hyperlink{class_warzone_player_1_1_order_list}{OrderList}}*\ newOrders);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a5086b8ad8f012641c580db73ec3bce5c}{getGenerateCardThisTurn}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a8323a058ca356b162d7e5d4e4cf0221f}{setGenerateCardThisTurn}}(\textcolor{keywordtype}{bool}\ flag);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<WarzoneMap::Continent*,\ long\ long>\&\ \mbox{\hyperlink{class_warzone_player_1_1_player_a5d98f966736abfeeae379ae0ca8389a1}{getContinentLookupTablePlayer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a3d9ec585a8b56a4fea39f80ec5015dd3}{setContinentLookupTablePlayer}}(\textcolor{keyword}{const}\ unordered\_map<WarzoneMap::Continent*,\ long\ long>\&\ newTable);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/\ Class\ Methods\ -\/-\///}}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Territory*>\ \mbox{\hyperlink{class_warzone_player_1_1_player_a08a074f2a9f32587ab43be67f0e82925}{toAttack}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a11a5e424c3ad145490b428d8e555cda3}{toAttackPrint}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Territory*>\ \mbox{\hyperlink{class_warzone_player_1_1_player_ab6674746862a3f6bc5a26628858b07d8}{toDefend}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a76dac36c39dd9db07b2687f6484ccb98}{toDefendPrint}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a0fccec4ca802caee10427af41061d146}{issueOrder}}();}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a98a7f2239f9a4d1f78ba567ddca10121}{addOwnedTerritories}}(\mbox{\hyperlink{class_warzone_map_1_1_territory}{WarzoneMap::Territory}}*\ territory);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a38fdb40d961017420148cee262c897f2}{removeOwnedTerritories}}(\mbox{\hyperlink{class_warzone_map_1_1_territory}{WarzoneMap::Territory}}*\ territory);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_afbf4419013fc5beed1d916dda0dd21cd}{addNeutralEnemy}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ enemyName);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a2d288a4298f72fb9a931cb8c249be1a1}{removeNeutralEnemy}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ enemyName);}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Territory*>\ \mbox{\hyperlink{class_warzone_player_1_1_player_abccac5ca0999569bc4b9d08ebc3e1582}{getBombCandidates}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_warzone_player_1_1_player_acfb252ff5ccd958052458ae1fd8b6698}{controlsContinent}}(\textcolor{keyword}{const}\ unordered\_map<Continent*,\ long\ long>\&\ continentSums,\ \mbox{\hyperlink{class_warzone_player_1_1_continent}{Continent}}*\ cont)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_warzone_player_1_1_player_a0aa3a94eff445e48db7c9d3bb24c37d5}{hasWon}}(\textcolor{keyword}{const}\ unordered\_map<Continent*,\ long\ long>\&\ continentSums)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00377}00377\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{_player_8h_source_l00379}00379\ \}}
+
+\end{DoxyCode}

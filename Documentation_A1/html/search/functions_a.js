@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['negotiate_0',['Negotiate',['../class_warzone_order_1_1_negotiate.html#acaef4c16f99cdbdada8b1a5e6a6b1dd3',1,'WarzoneOrder::Negotiate::Negotiate(Player *p, Player *other)'],['../class_warzone_order_1_1_negotiate.html#ac31c994c7f8a60eae736d23749a59678',1,'WarzoneOrder::Negotiate::Negotiate(const Negotiate &amp;other)'],['../class_warzone_engine_1_1_negotiate.html#acaef4c16f99cdbdada8b1a5e6a6b1dd3',1,'WarzoneEngine::Negotiate::Negotiate(Player *p, Player *other)'],['../class_warzone_engine_1_1_negotiate.html#ac31c994c7f8a60eae736d23749a59678',1,'WarzoneEngine::Negotiate::Negotiate(const Negotiate &amp;other)']]],
+  ['nextturn_1',['nextTurn',['../class_warzone_engine_1_1_game_engine.html#a5e1f30f2bcb06bd0abee06b9b353cffd',1,'WarzoneEngine::GameEngine']]]
+];

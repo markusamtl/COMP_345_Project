@@ -1,0 +1,33 @@
+\doxysection{Map/\+Map.h File Reference}
+\hypertarget{_map_8h}{}\label{_map_8h}\index{Map/Map.h@{Map/Map.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stack$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_string_handling}{Warzone\+Map\+::\+String\+Handling}}
+\begin{DoxyCompactList}\small\item\em A few methods to help reduce the amount of lines used in the \doxylink{namespace_warzone_map}{Warzone\+Map}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_continent}{Warzone\+Map\+::\+Continent}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_map_1_1_continent}{Continent} class represents a continent in the map. It contains properties such as ID, bonus value, and the territories that belong to it. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_territory}{Warzone\+Map\+::\+Territory}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_map_1_1_territory}{Territory} class represents a territory in the map. It contains properties such as ID, neighboring territories, the continent it belongs to, ownership information, and the number of armies stationed there. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_map}{Warzone\+Map\+::\+Map}}
+\begin{DoxyCompactList}\small\item\em Represents a complete game map consisting of Territories and Continents. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_map_loader}{Warzone\+Map\+::\+Map\+Loader}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_map_1_1_map_loader}{Map\+Loader} class is responsible for loading and parsing map files. It reads map metadata, continents, and territories from a specified file. The class provides a method to access the loaded data and validate the map structure. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_map_1_1_player}{Warzone\+Map\+::\+Player}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_map_1_1_player}{Player} class represents a Warzone player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_warzone_player}{Warzone\+Player}}
+\item 
+namespace \mbox{\hyperlink{namespace_warzone_map}{Warzone\+Map}}
+\end{DoxyCompactItemize}

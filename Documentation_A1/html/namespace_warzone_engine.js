@@ -1,0 +1,36 @@
+var namespace_warzone_engine =
+[
+    [ "Advance", "class_warzone_engine_1_1_advance.html", "class_warzone_engine_1_1_advance" ],
+    [ "Airlift", "class_warzone_engine_1_1_airlift.html", "class_warzone_engine_1_1_airlift" ],
+    [ "Blockade", "class_warzone_engine_1_1_blockade.html", "class_warzone_engine_1_1_blockade" ],
+    [ "Bomb", "class_warzone_engine_1_1_bomb.html", "class_warzone_engine_1_1_bomb" ],
+    [ "Card", "class_warzone_engine_1_1_card.html", "class_warzone_engine_1_1_card" ],
+    [ "Continent", "class_warzone_engine_1_1_continent.html", "class_warzone_engine_1_1_continent" ],
+    [ "Deck", "class_warzone_engine_1_1_deck.html", "class_warzone_engine_1_1_deck" ],
+    [ "Deploy", "class_warzone_engine_1_1_deploy.html", "class_warzone_engine_1_1_deploy" ],
+    [ "GameEngine", "class_warzone_engine_1_1_game_engine.html", "class_warzone_engine_1_1_game_engine" ],
+    [ "Hand", "class_warzone_engine_1_1_hand.html", "class_warzone_engine_1_1_hand" ],
+    [ "Map", "class_warzone_engine_1_1_map.html", "class_warzone_engine_1_1_map" ],
+    [ "MapLoader", "class_warzone_engine_1_1_map_loader.html", "class_warzone_engine_1_1_map_loader" ],
+    [ "Negotiate", "class_warzone_engine_1_1_negotiate.html", "class_warzone_engine_1_1_negotiate" ],
+    [ "Order", "class_warzone_engine_1_1_order.html", "class_warzone_engine_1_1_order" ],
+    [ "OrderList", "class_warzone_engine_1_1_order_list.html", "class_warzone_engine_1_1_order_list" ],
+    [ "Player", "class_warzone_engine_1_1_player.html", "class_warzone_engine_1_1_player" ],
+    [ "Territory", "class_warzone_engine_1_1_territory.html", "class_warzone_engine_1_1_territory" ],
+    [ "TimeUtil", "class_warzone_engine_1_1_time_util.html", null ],
+    [ "CardType", "namespace_warzone_engine.html#aab25376c0659189da418b78dc220a851", null ],
+    [ "EngineState", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3", [
+      [ "Start", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3aa6122a65eaa676f700ae68d393054a37", null ],
+      [ "MapLoaded", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3a95b64961f5adc3058a1698d73dcc66e0", null ],
+      [ "MapValidated", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3afd9efb2064e69d36cad6f82b6df75e01", null ],
+      [ "PlayersAdded", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3ad8f0d771534cb1e2e8b6d90cf1c2042e", null ],
+      [ "AssignReinforcement", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3aac3583f18a7421aaffa7bf994e4d98eb", null ],
+      [ "IssueOrders", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3a83a612bad77e514cc566406e5b17069c", null ],
+      [ "ExecuteOrders", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3a231377ef916c36ef0b41033fa2fd3187", null ],
+      [ "Win", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3a119eac47719cc9be7b99124712e229da", null ],
+      [ "End", "namespace_warzone_engine.html#a5d285d45ace840f288f953f277b21fd3a87557f11575c0ad78e4e28abedc13b6e", null ]
+    ] ],
+    [ "OrderType", "namespace_warzone_engine.html#a5ffce4f192c940e5f3c1f9d36993a0c9", null ],
+    [ "operator<<", "namespace_warzone_engine.html#acc081dd6521562615179334fd109ee85", null ],
+    [ "operator<<", "namespace_warzone_engine.html#a58d1c16b69bd1a56e3e4e519f7d0005e", null ]
+];

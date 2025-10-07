@@ -1,0 +1,47 @@
+\doxysection{Main\+Driver.\+cpp}
+\hypertarget{_main_driver_8cpp_source}{}\label{_main_driver_8cpp_source}\mbox{\hyperlink{_main_driver_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_driver_8h}{Map/MapDriver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_driver_8h}{Player/PlayerDriver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_driver_8h}{Order/OrderDriver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_card_driver_8h}{Card/CardDriver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_engine_driver_8h}{GameEngine/GameEngineDriver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00023}00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00025}\mbox{\hyperlink{_main_driver_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00025}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_main_driver_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00027}00027\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}=============================================\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00028}00028\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ COMP\ 345\ -\/\ WARZONE\ MAIN\ DRIVER\ \ \ \ \ \ \ \(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00029}00029\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}=============================================\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00031}00031\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[1]\ Testing\ Map\ Module...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{_map_driver_8cpp_ab796b2ee8b39351c33461f3463be9179}{testLoadMaps}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00034}00034\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[2]\ Testing\ Player\ Module...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{_player_driver_8cpp_aacf75be847bdd3bda19d835b8692dfcb}{testPlayer}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00037}00037\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[3]\ Testing\ Orders\ List\ Module...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{_order_driver_8cpp_a6a05bad4113d6df72f040ce219ff6b48}{testOrderList}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00040}00040\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[4]\ Testing\ Cards\ Module...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{_card_driver_8cpp_a649e370bebfbe51b7f22ca5752984bde}{testCards}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00043}00043\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[5]\ Testing\ Game\ Engine\ Module...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{_game_engine_driver_8cpp_adff8d995b3daa2752aa93fc082cf304c}{testGameStates}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00046}00046\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n[6]\ Testing\ Game\ Simulation...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{_game_engine_driver_8cpp_af0d3bf0f73cde2c30afd69b4faea5bb7}{simulateRealGame}}();}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00049}00049\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n=============================================\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00050}00050\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\ All\ modules\ tested\ successfully.\ Exiting...\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00051}00051\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}=============================================\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_main_driver_8cpp_source_l00055}00055\ \}}
+
+\end{DoxyCode}

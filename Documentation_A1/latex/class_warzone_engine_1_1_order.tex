@@ -1,0 +1,427 @@
+\doxysection{Warzone\+Engine\+::Order Class Reference}
+\hypertarget{class_warzone_engine_1_1_order}{}\label{class_warzone_engine_1_1_order}\index{WarzoneEngine::Order@{WarzoneEngine::Order}}
+
+
+Abstract base class for all Warzone orders.  
+
+
+
+
+{\ttfamily \#include $<$Order.\+h$>$}
+
+Inheritance diagram for Warzone\+Engine\+::Order\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.145194cm]{class_warzone_engine_1_1_order}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warzone_engine_1_1_order_a56cffcb2046e243b7f0de90991e9ba21}{Order}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initializes an \doxylink{class_warzone_engine_1_1_order}{Order} with no specific type or effect. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_engine_1_1_order_a1114ab71fc2bdf97adbc2837b4f518e8}{Order}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_engine_1_1_order_ae9b77944266186cd3bea3625ae8c73d5}{Order}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t, string \mbox{\hyperlink{class_warzone_order_1_1_order_a9229e7326e168bbc8a704c59133ee3fd}{effect}})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_engine_1_1_order_a2f028b8fd46362986b0950d796cb37d7}{Order}} (const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_warzone_engine_1_1_order_a99df982fad7db8bb856ca9aa2e0ff286}{\texorpdfstring{$\sim$}{\string~}\+Order}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \& \mbox{\hyperlink{class_warzone_engine_1_1_order_a194c73777009e453156e6a50439beeb3}{operator=}} (const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_warzone_engine_1_1_order_a16b895dbc6b81a884a91f287e07f54a4}{print}} (ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Outputs a textual representation of the order to a stream. This method is intended to be overridden by each concrete subclass (e.\+g., \doxylink{class_warzone_engine_1_1_deploy}{Deploy}, \doxylink{class_warzone_engine_1_1_advance}{Advance}, \doxylink{class_warzone_engine_1_1_bomb}{Bomb}, etc.) to provide customized output that reflects the specific order\textquotesingle{}s details. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} \mbox{\hyperlink{class_warzone_engine_1_1_order_abc83c3c159840e495ccda510249c5f6c}{get\+Order\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the type of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_engine_1_1_order_a3713b934e0a308addced0307adce4884}{set\+Order\+Type}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t)
+\begin{DoxyCompactList}\small\item\em Set the type of this order. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_warzone_engine_1_1_order_a019efd32dc83dbcf91839b6999a8fe79}{get\+Effect}} () const
+\begin{DoxyCompactList}\small\item\em Get the effect string of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_engine_1_1_order_aeea53307974a7f56d5d3066050370c37}{set\+Effect}} (const string \&e)
+\begin{DoxyCompactList}\small\item\em Set the effect string of this order. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_engine_1_1_order_ae7f1afb30f4cab40c173013cb94bd46c}{clone}} () const=0
+\begin{DoxyCompactList}\small\item\em Clone method (pure virtual). Polymorphic copy function that creates a new \doxylink{class_warzone_engine_1_1_order}{Order} of the same dynamic type. Must be implemented in each subclass. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_warzone_engine_1_1_order_a956ae0919485cd3e2e21e6650a584c9a}{validate}} () const=0
+\begin{DoxyCompactList}\small\item\em Validate method (pure virtual). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_warzone_engine_1_1_order_a9bdcdd1cd0929f3d06bf32818dde502e}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em Execute method (pure virtual). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} \mbox{\hyperlink{class_warzone_engine_1_1_order_ae7ad019cb82ec053ae9f2adb09848ef0}{order\+Type}}
+\item 
+string \mbox{\hyperlink{class_warzone_engine_1_1_order_a9229e7326e168bbc8a704c59133ee3fd}{effect}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{class_warzone_engine_1_1_order_affc504761f909e3151279e6ede10b0e5}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&order)
+\begin{DoxyCompactList}\small\item\em Stream insertion operator. Outputs a textual representation of the \doxylink{class_warzone_engine_1_1_order}{Order} to a given output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for all Warzone orders. 
+
+The \doxylink{class_warzone_engine_1_1_order}{Order} class defines the interface that all specific Warzone orders must follow. Each subclass of \doxylink{class_warzone_engine_1_1_order}{Order} (\doxylink{class_warzone_engine_1_1_deploy}{Deploy}, \doxylink{class_warzone_engine_1_1_advance}{Advance}, \doxylink{class_warzone_engine_1_1_bomb}{Bomb}, \doxylink{class_warzone_engine_1_1_blockade}{Blockade}, \doxylink{class_warzone_engine_1_1_airlift}{Airlift}, \doxylink{class_warzone_engine_1_1_negotiate}{Negotiate}) implements its own behavior for validation and execution according to the game rules.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_warzone_engine_1_1_deploy}{Deploy} 
+
+\doxylink{class_warzone_engine_1_1_advance}{Advance} 
+
+\doxylink{class_warzone_engine_1_1_bomb}{Bomb} 
+
+\doxylink{class_warzone_engine_1_1_blockade}{Blockade} 
+
+\doxylink{class_warzone_engine_1_1_airlift}{Airlift} 
+
+\doxylink{class_warzone_engine_1_1_negotiate}{Negotiate} 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00092}{92}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_warzone_engine_1_1_order_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_warzone_engine_1_1_order_a56cffcb2046e243b7f0de90991e9ba21}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!Order@{Order}}
+\index{Order@{Order}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a56cffcb2046e243b7f0de90991e9ba21} 
+Warzone\+Order\+::\+Order\+::\+Order (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. Initializes an \doxylink{class_warzone_engine_1_1_order}{Order} with no specific type or effect. 
+
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a1114ab71fc2bdf97adbc2837b4f518e8}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!Order@{Order}}
+\index{Order@{Order}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a1114ab71fc2bdf97adbc2837b4f518e8} 
+Warzone\+Order\+::\+Order\+::\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}}}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+Initializes an \doxylink{class_warzone_engine_1_1_order}{Order} with a given \doxylink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}. 
+\begin{DoxyParams}{Parameters}
+{\em t} & The type of the order (\doxylink{class_warzone_engine_1_1_deploy}{Deploy}, \doxylink{class_warzone_engine_1_1_advance}{Advance}, \doxylink{class_warzone_engine_1_1_bomb}{Bomb}, etc). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_ae9b77944266186cd3bea3625ae8c73d5}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!Order@{Order}}
+\index{Order@{Order}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_ae9b77944266186cd3bea3625ae8c73d5} 
+Warzone\+Order\+::\+Order\+::\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}}}]{t}{, }\item[{string}]{effect}{}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+Initializes an \doxylink{class_warzone_engine_1_1_order}{Order} with a given \doxylink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}. 
+\begin{DoxyParams}{Parameters}
+{\em t} & The type of the order (\doxylink{class_warzone_engine_1_1_deploy}{Deploy}, \doxylink{class_warzone_engine_1_1_advance}{Advance}, \doxylink{class_warzone_engine_1_1_bomb}{Bomb}, etc). \\
+\hline
+{\em effect} & Output for what the order does. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a2f028b8fd46362986b0950d796cb37d7}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!Order@{Order}}
+\index{Order@{Order}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a2f028b8fd46362986b0950d796cb37d7} 
+Warzone\+Order\+::\+Order\+::\+Order (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Creates a deep copy of another \doxylink{class_warzone_engine_1_1_order}{Order}, including its type and effect. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_engine_1_1_order}{Order} to copy from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a99df982fad7db8bb856ca9aa2e0ff286}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!````~Order@{\texorpdfstring{$\sim$}{\string~}Order}}
+\index{````~Order@{\texorpdfstring{$\sim$}{\string~}Order}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Order()}{\string~Order()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a99df982fad7db8bb856ca9aa2e0ff286} 
+Warzone\+Order\+::\+Order\+::\texorpdfstring{$\sim$}{\string~}\+Order (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual destructor. 
+
+Declared virtual to ensure proper cleanup of derived classes when deleting through an Order\texorpdfstring{$\ast$}{*} pointer. 
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_warzone_engine_1_1_order_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warzone_engine_1_1_order_ae7f1afb30f4cab40c173013cb94bd46c}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!clone@{clone}}
+\index{clone@{clone}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_ae7f1afb30f4cab40c173013cb94bd46c} 
+virtual \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Order\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clone method (pure virtual). Polymorphic copy function that creates a new \doxylink{class_warzone_engine_1_1_order}{Order} of the same dynamic type. Must be implemented in each subclass. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a newly allocated copy of the \doxylink{class_warzone_engine_1_1_order}{Order}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_warzone_order_1_1_deploy_a1788a0b6001d6fc44c6af4a6b13b4e81}{Deploy\+::clone()} 
+
+\doxylink{class_warzone_order_1_1_advance_a628d2cf1556e0a3916fbd1e7c485a1aa}{Advance\+::clone()} 
+
+\doxylink{class_warzone_order_1_1_bomb_ad3777864c8d613f95ea64f0c51ff2164}{Bomb\+::clone()} 
+
+\doxylink{class_warzone_order_1_1_blockade_a2b6f36e48167ae3fda55e6385c27a85d}{Blockade\+::clone()} 
+
+\doxylink{class_warzone_order_1_1_airlift_aeb12705121b061af69a98caccbf2166d}{Airlift\+::clone()} 
+
+\doxylink{class_warzone_order_1_1_negotiate_a50ccd733b3114a93a2a6ccb3afdc462c}{Negotiate\+::clone()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_warzone_engine_1_1_order_a9bdcdd1cd0929f3d06bf32818dde502e}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!execute@{execute}}
+\index{execute@{execute}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a9bdcdd1cd0929f3d06bf32818dde502e} 
+virtual void Warzone\+Order\+::\+Order\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execute method (pure virtual). 
+
+Executes the Order’s action if it is valid, updating the game state. Must be implemented in each subclass.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_warzone_order_1_1_deploy_a2c5ec281746da9b38807c08a39e44795}{Deploy\+::execute()} 
+
+\doxylink{class_warzone_order_1_1_advance_a9e0671572db06ecbb598dbdf58173b34}{Advance\+::execute()} 
+
+\doxylink{class_warzone_order_1_1_bomb_a757fb6c67df3ef08ef65196c5e3bc1da}{Bomb\+::execute()} 
+
+\doxylink{class_warzone_order_1_1_blockade_aad09a1df9ef54537d2f0d84b1e329211}{Blockade\+::execute()} 
+
+\doxylink{class_warzone_order_1_1_airlift_ab3b08916916a8b37c2f66e925ca31527}{Airlift\+::execute()} 
+
+\doxylink{class_warzone_order_1_1_negotiate_a449013de447496ad3cb336ec3b2d5dfe}{Negotiate\+::execute()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_warzone_engine_1_1_order_a019efd32dc83dbcf91839b6999a8fe79}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!getEffect@{getEffect}}
+\index{getEffect@{getEffect}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{getEffect()}{getEffect()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a019efd32dc83dbcf91839b6999a8fe79} 
+const string \& Warzone\+Order\+::\+Order\+::get\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the effect string of this order. 
+
+\begin{DoxyReturn}{Returns}
+The textual effect produced after execution. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_abc83c3c159840e495ccda510249c5f6c}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!getOrderType@{getOrderType}}
+\index{getOrderType@{getOrderType}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{getOrderType()}{getOrderType()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_abc83c3c159840e495ccda510249c5f6c} 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} Warzone\+Order\+::\+Order\+::get\+Order\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the type of this order. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type} enum value. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a194c73777009e453156e6a50439beeb3}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!operator=@{operator=}}
+\index{operator=@{operator=}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a194c73777009e453156e6a50439beeb3} 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \& Warzone\+Order\+::\+Order\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+Assigns the values of one \doxylink{class_warzone_engine_1_1_order}{Order} to another, handling type and effect. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_engine_1_1_order}{Order} to copy from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this \doxylink{class_warzone_engine_1_1_order}{Order} after assignment. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a16b895dbc6b81a884a91f287e07f54a4}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!print@{print}}
+\index{print@{print}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a16b895dbc6b81a884a91f287e07f54a4} 
+void Warzone\+Order\+::\+Order\+::print (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Outputs a textual representation of the order to a stream. This method is intended to be overridden by each concrete subclass (e.\+g., \doxylink{class_warzone_engine_1_1_deploy}{Deploy}, \doxylink{class_warzone_engine_1_1_advance}{Advance}, \doxylink{class_warzone_engine_1_1_bomb}{Bomb}, etc.) to provide customized output that reflects the specific order\textquotesingle{}s details. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream where the order information will be written. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_aeea53307974a7f56d5d3066050370c37}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!setEffect@{setEffect}}
+\index{setEffect@{setEffect}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{setEffect()}{setEffect()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_aeea53307974a7f56d5d3066050370c37} 
+void Warzone\+Order\+::\+Order\+::set\+Effect (\begin{DoxyParamCaption}\item[{const string \&}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Set the effect string of this order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The new effect string to assign. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a3713b934e0a308addced0307adce4884}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!setOrderType@{setOrderType}}
+\index{setOrderType@{setOrderType}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{setOrderType()}{setOrderType()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a3713b934e0a308addced0307adce4884} 
+void Warzone\+Order\+::\+Order\+::set\+Order\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}}}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Set the type of this order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The new \doxylink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type} value to assign. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_a956ae0919485cd3e2e21e6650a584c9a}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!validate@{validate}}
+\index{validate@{validate}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a956ae0919485cd3e2e21e6650a584c9a} 
+virtual bool Warzone\+Order\+::\+Order\+::validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Validate method (pure virtual). 
+
+Determines whether the \doxylink{class_warzone_engine_1_1_order}{Order} is valid according to the game rules. Must be implemented in each subclass. \begin{DoxyReturn}{Returns}
+True if the \doxylink{class_warzone_engine_1_1_order}{Order} is valid, false otherwise.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_warzone_order_1_1_deploy_a8f321c9a319ac648e039c09e6d912826}{Deploy\+::validate()} 
+
+\doxylink{class_warzone_order_1_1_advance_ae1be1fa3eac76bea073457622fddf41c}{Advance\+::validate()} 
+
+\doxylink{class_warzone_order_1_1_bomb_a3505d28bb0bb32822126b36746349ddb}{Bomb\+::validate()} 
+
+\doxylink{class_warzone_order_1_1_blockade_a331ad01237ff32201b6d3c2545194b48}{Blockade\+::validate()} 
+
+\doxylink{class_warzone_order_1_1_airlift_aaebec5827e8cbed31f01cc7eb4b7dcac}{Airlift\+::validate()} 
+
+\doxylink{class_warzone_order_1_1_negotiate_adb15e220bf88c643d2ff3811071dccff}{Negotiate\+::validate()} 
+\end{DoxySeeAlso}
+
+
+\label{doc-related-members}
+\Hypertarget{class_warzone_engine_1_1_order_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_warzone_engine_1_1_order_affc504761f909e3151279e6ede10b0e5}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_affc504761f909e3151279e6ede10b0e5} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&}]{order}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Stream insertion operator. Outputs a textual representation of the \doxylink{class_warzone_engine_1_1_order}{Order} to a given output stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em order} & The \doxylink{class_warzone_engine_1_1_order}{Order} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the output stream. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_warzone_engine_1_1_order_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_warzone_engine_1_1_order_a9229e7326e168bbc8a704c59133ee3fd}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!effect@{effect}}
+\index{effect@{effect}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{effect}{effect}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_a9229e7326e168bbc8a704c59133ee3fd} 
+string Warzone\+Order\+::\+Order\+::effect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00099}{99}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+\Hypertarget{class_warzone_engine_1_1_order_ae7ad019cb82ec053ae9f2adb09848ef0}\index{WarzoneEngine::Order@{WarzoneEngine::Order}!orderType@{orderType}}
+\index{orderType@{orderType}!WarzoneEngine::Order@{WarzoneEngine::Order}}
+\doxysubsubsection{\texorpdfstring{orderType}{orderType}}
+{\footnotesize\ttfamily \label{class_warzone_engine_1_1_order_ae7ad019cb82ec053ae9f2adb09848ef0} 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} Warzone\+Order\+::\+Order\+::order\+Type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00098}{98}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order/\mbox{\hyperlink{_order_8h}{Order.\+h}}\item 
+Order/\mbox{\hyperlink{_order_8cpp}{Order.\+cpp}}\end{DoxyCompactItemize}

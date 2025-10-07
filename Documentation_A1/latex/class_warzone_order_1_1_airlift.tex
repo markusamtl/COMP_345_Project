@@ -1,0 +1,415 @@
+\doxysection{Warzone\+Order\+::Airlift Class Reference}
+\hypertarget{class_warzone_order_1_1_airlift}{}\label{class_warzone_order_1_1_airlift}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+
+
+Represents an \doxylink{class_warzone_order_1_1_airlift}{Airlift} order.  
+
+
+
+
+{\ttfamily \#include $<$Order.\+h$>$}
+
+Inheritance diagram for Warzone\+Order\+::Airlift\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_warzone_order_1_1_airlift}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warzone_order_1_1_airlift_ac1b4ff0c24b9514b806aeca15eda0e68}{Airlift}} (\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}p, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}s, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}t, int armies)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_airlift_a18d84295f5a0f731a54fbf44154675ae}{\texorpdfstring{$\sim$}{\string~}\+Airlift}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_airlift_a0d787ae450f38a66f7e430a80c488670}{Airlift}} (const \mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \& \mbox{\hyperlink{class_warzone_order_1_1_airlift_a0f33faa863e19e0dfac1bd3fbe7558be}{operator=}} (const \mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_a53d1c81b546650918e3a9794ea015d30}{print}} (ostream \&os) const override
+\begin{DoxyCompactList}\small\item\em Print details specific to an \doxylink{class_warzone_order_1_1_airlift}{Airlift} order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_order_1_1_airlift_a093b617bffd5e332763c31f20a3bb039}{get\+Issuer}} () const
+\begin{DoxyCompactList}\small\item\em Get the issuing player of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_a562197af7e820c65487444e4c9dcc42f}{set\+Issuer}} (\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Set the issuing player of this order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_order_1_1_airlift_ae7cda152996fdd8112d7419ec3077ec3}{get\+Source}} () const
+\begin{DoxyCompactList}\small\item\em Get the source territory of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_a6285454e59c40c8738ea15ffec544f6c}{set\+Source}} (\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}s)
+\begin{DoxyCompactList}\small\item\em Set the source territory of this order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_order_1_1_airlift_ae5bdfb28c5d109a1e9f275e2bf083171}{get\+Target}} () const
+\begin{DoxyCompactList}\small\item\em Get the target territory of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_a765e4b170b8338f18d01643d0f22c6ec}{set\+Target}} (\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}t)
+\begin{DoxyCompactList}\small\item\em Set the target territory of this order. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_warzone_order_1_1_airlift_a3f1c3b698eb68db7e030d53bd0c6069e}{get\+Num\+Armies}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of armies to airlift. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_aaf9090823796de15d1679f3db57abf90}{set\+Num\+Armies}} (int armies)
+\begin{DoxyCompactList}\small\item\em Set the number of armies to airlift. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_warzone_order_1_1_airlift_aeb12705121b061af69a98caccbf2166d}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Polymorphic copy constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_warzone_order_1_1_airlift_aaebec5827e8cbed31f01cc7eb4b7dcac}{validate}} () const override
+\begin{DoxyCompactList}\small\item\em Validate the order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_airlift_ab3b08916916a8b37c2f66e925ca31527}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Execute the order. If valid, moves the specified number of armies from the source territory to the target territory, regardless of adjacency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_warzone_order_1_1_order}{Warzone\+Order\+::\+Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_a56cffcb2046e243b7f0de90991e9ba21}{Order}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initializes an \doxylink{class_warzone_order_1_1_order}{Order} with no specific type or effect. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_a1114ab71fc2bdf97adbc2837b4f518e8}{Order}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_ae9b77944266186cd3bea3625ae8c73d5}{Order}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t, string \mbox{\hyperlink{class_warzone_order_1_1_order_a9229e7326e168bbc8a704c59133ee3fd}{effect}})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_warzone_order_1_1_order_a99df982fad7db8bb856ca9aa2e0ff286}{\texorpdfstring{$\sim$}{\string~}\+Order}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order_a2f028b8fd46362986b0950d796cb37d7}{Order}} (const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \& \mbox{\hyperlink{class_warzone_order_1_1_order_a194c73777009e453156e6a50439beeb3}{operator=}} (const \mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} \mbox{\hyperlink{class_warzone_order_1_1_order_abc83c3c159840e495ccda510249c5f6c}{get\+Order\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the type of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_a3713b934e0a308addced0307adce4884}{set\+Order\+Type}} (\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} t)
+\begin{DoxyCompactList}\small\item\em Set the type of this order. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_warzone_order_1_1_order_a019efd32dc83dbcf91839b6999a8fe79}{get\+Effect}} () const
+\begin{DoxyCompactList}\small\item\em Get the effect string of this order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_order_1_1_order_aeea53307974a7f56d5d3066050370c37}{set\+Effect}} (const string \&e)
+\begin{DoxyCompactList}\small\item\em Set the effect string of this order. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_warzone_order_1_1_order}{Warzone\+Order\+::\+Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Order\+Type}} \mbox{\hyperlink{class_warzone_order_1_1_order_ae7ad019cb82ec053ae9f2adb09848ef0}{order\+Type}}
+\item 
+string \mbox{\hyperlink{class_warzone_order_1_1_order_a9229e7326e168bbc8a704c59133ee3fd}{effect}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an \doxylink{class_warzone_order_1_1_airlift}{Airlift} order. 
+
+An \doxylink{class_warzone_order_1_1_airlift}{Airlift} order moves armies between two owned territories, regardless of adjacency. 
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00711}{711}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_warzone_order_1_1_airlift_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_warzone_order_1_1_airlift_ac1b4ff0c24b9514b806aeca15eda0e68}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!Airlift@{Airlift}}
+\index{Airlift@{Airlift}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{Airlift()}{Airlift()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_ac1b4ff0c24b9514b806aeca15eda0e68} 
+Warzone\+Order\+::\+Airlift\+::\+Airlift (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{t}{, }\item[{int}]{armies}{}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The player issuing the order. \\
+\hline
+{\em s} & The source territory. \\
+\hline
+{\em t} & The target territory. \\
+\hline
+{\em armies} & The number of armies to airlift. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00723}{723}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a18d84295f5a0f731a54fbf44154675ae}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!````~Airlift@{\texorpdfstring{$\sim$}{\string~}Airlift}}
+\index{````~Airlift@{\texorpdfstring{$\sim$}{\string~}Airlift}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Airlift()}{\string~Airlift()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a18d84295f5a0f731a54fbf44154675ae} 
+Warzone\+Order\+::\+Airlift\+::\texorpdfstring{$\sim$}{\string~}\+Airlift (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destructor. 
+
+\Hypertarget{class_warzone_order_1_1_airlift_a0d787ae450f38a66f7e430a80c488670}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!Airlift@{Airlift}}
+\index{Airlift@{Airlift}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{Airlift()}{Airlift()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a0d787ae450f38a66f7e430a80c488670} 
+Warzone\+Order\+::\+Airlift\+::\+Airlift (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_order_1_1_airlift}{Airlift} order to copy from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00737}{737}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_warzone_order_1_1_airlift_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warzone_order_1_1_airlift_aeb12705121b061af69a98caccbf2166d}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!clone@{clone}}
+\index{clone@{clone}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_aeb12705121b061af69a98caccbf2166d} 
+\mbox{\hyperlink{class_warzone_order_1_1_order}{Order}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Airlift\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Polymorphic copy constructor. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \doxylink{class_warzone_order_1_1_airlift}{Airlift} object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_warzone_order_1_1_order_aeab6dff982fb4a04cb10ec3195771758}{Warzone\+Order\+::\+Order}}.
+
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00789}{789}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_ab3b08916916a8b37c2f66e925ca31527}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!execute@{execute}}
+\index{execute@{execute}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_ab3b08916916a8b37c2f66e925ca31527} 
+void Warzone\+Order\+::\+Airlift\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execute the order. If valid, moves the specified number of armies from the source territory to the target territory, regardless of adjacency. 
+
+
+
+Implements \mbox{\hyperlink{class_warzone_order_1_1_order_a9bdcdd1cd0929f3d06bf32818dde502e}{Warzone\+Order\+::\+Order}}.
+
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00817}{817}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a093b617bffd5e332763c31f20a3bb039}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!getIssuer@{getIssuer}}
+\index{getIssuer@{getIssuer}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{getIssuer()}{getIssuer()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a093b617bffd5e332763c31f20a3bb039} 
+\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Airlift\+::get\+Issuer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the issuing player of this order. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{class_warzone_order_1_1_player}{Player} who issued the order. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00775}{775}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a3f1c3b698eb68db7e030d53bd0c6069e}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!getNumArmies@{getNumArmies}}
+\index{getNumArmies@{getNumArmies}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{getNumArmies()}{getNumArmies()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a3f1c3b698eb68db7e030d53bd0c6069e} 
+int Warzone\+Order\+::\+Airlift\+::get\+Num\+Armies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the number of armies to airlift. 
+
+\begin{DoxyReturn}{Returns}
+The number of armies as an integer. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00784}{784}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_ae7cda152996fdd8112d7419ec3077ec3}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!getSource@{getSource}}
+\index{getSource@{getSource}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_ae7cda152996fdd8112d7419ec3077ec3} 
+\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Airlift\+::get\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the source territory of this order. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the source \doxylink{class_warzone_order_1_1_territory}{Territory}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00778}{778}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_ae5bdfb28c5d109a1e9f275e2bf083171}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_ae5bdfb28c5d109a1e9f275e2bf083171} 
+\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} Warzone\+Order\+::\+Airlift\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the target territory of this order. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the target \doxylink{class_warzone_order_1_1_territory}{Territory}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00781}{781}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a0f33faa863e19e0dfac1bd3fbe7558be}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!operator=@{operator=}}
+\index{operator=@{operator=}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a0f33faa863e19e0dfac1bd3fbe7558be} 
+\mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \& Warzone\+Order\+::\+Airlift\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_order_1_1_airlift}{Airlift}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{class_warzone_order_1_1_airlift}{Airlift} order to assign from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this \doxylink{class_warzone_order_1_1_airlift}{Airlift} order. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00746}{746}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a53d1c81b546650918e3a9794ea015d30}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!print@{print}}
+\index{print@{print}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a53d1c81b546650918e3a9794ea015d30} 
+void Warzone\+Order\+::\+Airlift\+::print (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Print details specific to an \doxylink{class_warzone_order_1_1_airlift}{Airlift} order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_warzone_order_1_1_order_a16b895dbc6b81a884a91f287e07f54a4}{Warzone\+Order\+::\+Order}}.
+
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00762}{762}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a562197af7e820c65487444e4c9dcc42f}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!setIssuer@{setIssuer}}
+\index{setIssuer@{setIssuer}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{setIssuer()}{setIssuer()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a562197af7e820c65487444e4c9dcc42f} 
+void Warzone\+Order\+::\+Airlift\+::set\+Issuer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the issuing player of this order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the \doxylink{class_warzone_order_1_1_player}{Player} issuing the order. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00776}{776}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_aaf9090823796de15d1679f3db57abf90}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!setNumArmies@{setNumArmies}}
+\index{setNumArmies@{setNumArmies}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{setNumArmies()}{setNumArmies()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_aaf9090823796de15d1679f3db57abf90} 
+void Warzone\+Order\+::\+Airlift\+::set\+Num\+Armies (\begin{DoxyParamCaption}\item[{int}]{armies}{}\end{DoxyParamCaption})}
+
+
+
+Set the number of armies to airlift. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em armies} & The new number of armies. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00785}{785}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a6285454e59c40c8738ea15ffec544f6c}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!setSource@{setSource}}
+\index{setSource@{setSource}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{setSource()}{setSource()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a6285454e59c40c8738ea15ffec544f6c} 
+void Warzone\+Order\+::\+Airlift\+::set\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Set the source territory of this order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Pointer to the new source \doxylink{class_warzone_order_1_1_territory}{Territory}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00779}{779}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_a765e4b170b8338f18d01643d0f22c6ec}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_a765e4b170b8338f18d01643d0f22c6ec} 
+void Warzone\+Order\+::\+Airlift\+::set\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Set the target territory of this order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Pointer to the new target \doxylink{class_warzone_order_1_1_territory}{Territory}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00782}{782}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_order_1_1_airlift_aaebec5827e8cbed31f01cc7eb4b7dcac}\index{WarzoneOrder::Airlift@{WarzoneOrder::Airlift}!validate@{validate}}
+\index{validate@{validate}!WarzoneOrder::Airlift@{WarzoneOrder::Airlift}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily \label{class_warzone_order_1_1_airlift_aaebec5827e8cbed31f01cc7eb4b7dcac} 
+bool Warzone\+Order\+::\+Airlift\+::validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Validate the order. 
+
+\begin{DoxyReturn}{Returns}
+True if the order follows game rules\+:
+\begin{DoxyItemize}
+\item Both source and target territories belong to the player.
+\item The source has enough armies to allow for redployment of armies. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_warzone_order_1_1_order_a34e4c38fda397f17db8713b650edb42d}{Warzone\+Order\+::\+Order}}.
+
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00791}{791}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order/\mbox{\hyperlink{_order_8h}{Order.\+h}}\item 
+Order/\mbox{\hyperlink{_order_8cpp}{Order.\+cpp}}\end{DoxyCompactItemize}

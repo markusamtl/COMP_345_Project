@@ -1,0 +1,54 @@
+\doxysection{Order/\+Order.h File Reference}
+\hypertarget{_order_8h}{}\label{_order_8h}\index{Order/Order.h@{Order/Order.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include "{}../\+Player/\+Player.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_time_util}{Warzone\+Order\+::\+Time\+Util}}
+\begin{DoxyCompactList}\small\item\em Provides utility methods for retrieving system time with high resolution. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_order}{Warzone\+Order\+::\+Order}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for all Warzone orders. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_deploy}{Warzone\+Order\+::\+Deploy}}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{class_warzone_order_1_1_deploy}{Deploy} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_advance}{Warzone\+Order\+::\+Advance}}
+\begin{DoxyCompactList}\small\item\em Represents an \doxylink{class_warzone_order_1_1_advance}{Advance} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_bomb}{Warzone\+Order\+::\+Bomb}}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{class_warzone_order_1_1_bomb}{Bomb} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_blockade}{Warzone\+Order\+::\+Blockade}}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{class_warzone_order_1_1_blockade}{Blockade} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_airlift}{Warzone\+Order\+::\+Airlift}}
+\begin{DoxyCompactList}\small\item\em Represents an \doxylink{class_warzone_order_1_1_airlift}{Airlift} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_negotiate}{Warzone\+Order\+::\+Negotiate}}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{class_warzone_order_1_1_negotiate}{Negotiate} order. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_order_list}{Warzone\+Order\+::\+Order\+List}}
+\begin{DoxyCompactList}\small\item\em Manages a collection of \doxylink{class_warzone_order_1_1_order}{Order} objects for a player. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_territory}{Warzone\+Order\+::\+Territory}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_order_1_1_territory}{Territory} class represents a territory in the map. It contains properties such as ID, neighboring territories, the continent it belongs to, ownership information, and the number of armies stationed there. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_map}{Warzone\+Order\+::\+Map}}
+\begin{DoxyCompactList}\small\item\em Represents a complete game map consisting of Territories and Continents. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_warzone_order_1_1_player}{Warzone\+Order\+::\+Player}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{class_warzone_order_1_1_player}{Player} class represents a Warzone player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_warzone_player}{Warzone\+Player}}
+\item 
+namespace \mbox{\hyperlink{namespace_warzone_order}{Warzone\+Order}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9}{Warzone\+Order\+::\+Order\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9a507a3a88cebc46603ce2be8eaa924eee}{Warzone\+Order\+::\+Deploy}}
+, \mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9a0a86dddc699c7e6fe7f1e43153a5cbee}{Warzone\+Order\+::\+Advance}}
+, \mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9acd3abfc2f377a4c3fd9181f919d9de82}{Warzone\+Order\+::\+Bomb}}
+, \mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9adefd317666a81fa7bddcb7e72d18e6cb}{Warzone\+Order\+::\+Blockade}}
+, \newline
+\mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9a9a7b0de022fc9d6581109ecaef72c956}{Warzone\+Order\+::\+Airlift}}
+, \mbox{\hyperlink{namespace_warzone_order_a5ffce4f192c940e5f3c1f9d36993a0c9ae481ddec4f99e1a01fa3c80225a2197c}{Warzone\+Order\+::\+Negotiate}}
+ \}
+\begin{DoxyCompactList}\small\item\em List of enums that helps to differentiate order types. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\doxysection{Warzone\+Player\+::Time\+Util Class Reference}
+\hypertarget{class_warzone_player_1_1_time_util}{}\label{class_warzone_player_1_1_time_util}\index{WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}}
+
+
+Provides utility methods for retrieving system time with high resolution.  
+
+
+
+
+{\ttfamily \#include $<$Order.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{class_warzone_player_1_1_time_util_a1372cb2918753b625bc5d3e06f98f087}{get\+System\+Time\+Seconds}} ()
+\begin{DoxyCompactList}\small\item\em Get the current system time in seconds (with fractional precision). \end{DoxyCompactList}\item 
+static long long \mbox{\hyperlink{class_warzone_player_1_1_time_util_aa9ecc1a1562b0967e82b8b28ba43f083}{get\+System\+Time\+Millis}} ()
+\begin{DoxyCompactList}\small\item\em Get the current system time in milliseconds since epoch. \end{DoxyCompactList}\item 
+static long long \mbox{\hyperlink{class_warzone_player_1_1_time_util_acd50dff1925129766fc543d8e23640c9}{get\+System\+Time\+Nano}} ()
+\begin{DoxyCompactList}\small\item\em Get the current system time in nanoseconds since epoch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides utility methods for retrieving system time with high resolution. 
+
+This class offers methods to fetch the current system time in seconds, milliseconds, or nanoseconds since epoch.
+
+USE THIS CLASS INSTEAD OF rand(), AS IT ENSURES THERE IS NO NEED TO SEED.
+
+At millisecond and nanosecond timeframes, system processes, CPU scheduling, and hardware noise make it functionally impossible to predict the exact values returned. This provides time-\/based entropy that generates effectively unpredictable numbers, which is sufficient for gameplay randomness. 
+
+Definition at line \mbox{\hyperlink{_order_8h_source_l00036}{36}} of file \mbox{\hyperlink{_order_8h_source}{Order.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_warzone_player_1_1_time_util_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warzone_player_1_1_time_util_aa9ecc1a1562b0967e82b8b28ba43f083}\index{WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}!getSystemTimeMillis@{getSystemTimeMillis}}
+\index{getSystemTimeMillis@{getSystemTimeMillis}!WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}}
+\doxysubsubsection{\texorpdfstring{getSystemTimeMillis()}{getSystemTimeMillis()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_time_util_aa9ecc1a1562b0967e82b8b28ba43f083} 
+long long Warzone\+Order\+::\+Time\+Util\+::get\+System\+Time\+Millis (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the current system time in milliseconds since epoch. 
+
+\begin{DoxyReturn}{Returns}
+Current system time in milliseconds as a long long. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_time_util_acd50dff1925129766fc543d8e23640c9}\index{WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}!getSystemTimeNano@{getSystemTimeNano}}
+\index{getSystemTimeNano@{getSystemTimeNano}!WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}}
+\doxysubsubsection{\texorpdfstring{getSystemTimeNano()}{getSystemTimeNano()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_time_util_acd50dff1925129766fc543d8e23640c9} 
+long long Warzone\+Order\+::\+Time\+Util\+::get\+System\+Time\+Nano (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the current system time in nanoseconds since epoch. 
+
+\begin{DoxyReturn}{Returns}
+Current system time in nanoseconds as a long long. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_time_util_a1372cb2918753b625bc5d3e06f98f087}\index{WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}!getSystemTimeSeconds@{getSystemTimeSeconds}}
+\index{getSystemTimeSeconds@{getSystemTimeSeconds}!WarzonePlayer::TimeUtil@{WarzonePlayer::TimeUtil}}
+\doxysubsubsection{\texorpdfstring{getSystemTimeSeconds()}{getSystemTimeSeconds()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_time_util_a1372cb2918753b625bc5d3e06f98f087} 
+double Warzone\+Order\+::\+Time\+Util\+::get\+System\+Time\+Seconds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the current system time in seconds (with fractional precision). 
+
+\begin{DoxyReturn}{Returns}
+Current system time in seconds as a double. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_order_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_order_8cpp_source}{Order.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order/\mbox{\hyperlink{_order_8h}{Order.\+h}}\item 
+Order/\mbox{\hyperlink{_order_8cpp}{Order.\+cpp}}\end{DoxyCompactItemize}

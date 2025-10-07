@@ -1,0 +1,352 @@
+\doxysection{Warzone\+Player\+::Player\+Terr\+Container Class Reference}
+\hypertarget{class_warzone_player_1_1_player_terr_container}{}\label{class_warzone_player_1_1_player_terr_container}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+
+
+Manages a \doxylink{class_warzone_player_1_1_player}{Player}\textquotesingle{}s owned territories using both a vector (for iteration), and an unordered\+\_\+map (for fast lookups).  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}{Player\+Terr\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a8facc7f26ada2820b9c2432c77f332df}{Player\+Terr\+Container}} (vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ territories, unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ territory\+Index)
+\begin{DoxyCompactList}\small\item\em Pramaterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_ae17a77760bb929c5148f5fc4ed97d2ff}{\texorpdfstring{$\sim$}{\string~}\+Player\+Terr\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_afc4a110643e33c43d276843e1b066e7d}{Player\+Terr\+Container}} (const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \& \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2c30d4c6eae95c242f164ffb3bfc582c}{operator=}} (const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+const vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_adfdd0d95a8434f21ddb0ebbd56f1ebd7}{get\+Territories}} () const
+\begin{DoxyCompactList}\small\item\em Accessor for territories vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a44deb4e875b36b188ef3cff6d54c8573}{set\+Territories}} (const vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \&new\+Territories, \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}new\+Owner)
+\begin{DoxyCompactList}\small\item\em Mutator for territories vector. \end{DoxyCompactList}\item 
+const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a5d418d305b4332ca3700a7170bc5f1c8}{get\+Territory\+Index}} () const
+\begin{DoxyCompactList}\small\item\em Accessor for territory\+Index map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2e5f39c8679a2aed0eb8a26a78985fca}{set\+Territory\+Index}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \&new\+Index, \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}new\+Owner)
+\begin{DoxyCompactList}\small\item\em Mutator for territory\+Index map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a461ada3bca0085b3ab2472e2db7d1719}{add\+Territory}} (\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}t, \mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}new\+Owner)
+\begin{DoxyCompactList}\small\item\em Adds a territory if not already owned. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_aca4de6dcdbd37313b20142ef3f1be6c0}{remove\+Territory}} (\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}t)
+\begin{DoxyCompactList}\small\item\em Removes a territory if owned. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2b709881f5b96690a5dd6682592bd4b7}{owns}} (\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}t) const
+\begin{DoxyCompactList}\small\item\em Check if a territory is owned by this player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a87018911c35293735d19f928a56bc928}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears all owned territories. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a2826f410872dc8baf601dbd571a61d3a}{size}} () const
+\begin{DoxyCompactList}\small\item\em Number of territories owned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container_a9d365d1899d5e751fe43ff5f06df763d}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&pc)
+\begin{DoxyCompactList}\small\item\em Stream insertion operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a \doxylink{class_warzone_player_1_1_player}{Player}\textquotesingle{}s owned territories using both a vector (for iteration), and an unordered\+\_\+map (for fast lookups). 
+
+Definition at line \mbox{\hyperlink{_player_8h_source_l00031}{31}} of file \mbox{\hyperlink{_player_8h_source}{Player.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!PlayerTerrContainer@{PlayerTerrContainer}}
+\index{PlayerTerrContainer@{PlayerTerrContainer}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{PlayerTerrContainer()}{PlayerTerrContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a33c2f471cfc1d47c347685371607224a} 
+Warzone\+Player\+::\+Player\+Terr\+Container\+::\+Player\+Terr\+Container (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a8facc7f26ada2820b9c2432c77f332df}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!PlayerTerrContainer@{PlayerTerrContainer}}
+\index{PlayerTerrContainer@{PlayerTerrContainer}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{PlayerTerrContainer()}{PlayerTerrContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a8facc7f26ada2820b9c2432c77f332df} 
+Warzone\+Player\+::\+Player\+Terr\+Container\+::\+Player\+Terr\+Container (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$}]{territories}{, }\item[{unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$}]{territory\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Pramaterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em territories} & Vector of territories, for iteration \\
+\hline
+{\em territory\+Index} & Hashmap of territories, for indexing \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_ae17a77760bb929c5148f5fc4ed97d2ff}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!````~PlayerTerrContainer@{\texorpdfstring{$\sim$}{\string~}PlayerTerrContainer}}
+\index{````~PlayerTerrContainer@{\texorpdfstring{$\sim$}{\string~}PlayerTerrContainer}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PlayerTerrContainer()}{\string~PlayerTerrContainer()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_ae17a77760bb929c5148f5fc4ed97d2ff} 
+Warzone\+Player\+::\+Player\+Terr\+Container\+::\texorpdfstring{$\sim$}{\string~}\+Player\+Terr\+Container (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_afc4a110643e33c43d276843e1b066e7d}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!PlayerTerrContainer@{PlayerTerrContainer}}
+\index{PlayerTerrContainer@{PlayerTerrContainer}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{PlayerTerrContainer()}{PlayerTerrContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_afc4a110643e33c43d276843e1b066e7d} 
+Warzone\+Player\+::\+Player\+Terr\+Container\+::\+Player\+Terr\+Container (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \doxylink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container} object to copy from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a461ada3bca0085b3ab2472e2db7d1719}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!addTerritory@{addTerritory}}
+\index{addTerritory@{addTerritory}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{addTerritory()}{addTerritory()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a461ada3bca0085b3ab2472e2db7d1719} 
+void Warzone\+Player\+::\+Player\+Terr\+Container\+::add\+Territory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{t}{, }\item[{\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}}]{new\+Owner}{}\end{DoxyParamCaption})}
+
+
+
+Adds a territory if not already owned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \doxylink{class_warzone_player_1_1_territory}{Territory} to be add \\
+\hline
+{\em new\+Owner} & Owner who will be assigned this territory \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a87018911c35293735d19f928a56bc928}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!clear@{clear}}
+\index{clear@{clear}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a87018911c35293735d19f928a56bc928} 
+void Warzone\+Player\+::\+Player\+Terr\+Container\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears all owned territories. 
+
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_adfdd0d95a8434f21ddb0ebbd56f1ebd7}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!getTerritories@{getTerritories}}
+\index{getTerritories@{getTerritories}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{getTerritories()}{getTerritories()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_adfdd0d95a8434f21ddb0ebbd56f1ebd7} 
+const vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \& Warzone\+Player\+::\+Player\+Terr\+Container\+::get\+Territories (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Accessor for territories vector. 
+
+\begin{DoxyReturn}{Returns}
+const reference to vector of Territory\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a5d418d305b4332ca3700a7170bc5f1c8}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!getTerritoryIndex@{getTerritoryIndex}}
+\index{getTerritoryIndex@{getTerritoryIndex}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{getTerritoryIndex()}{getTerritoryIndex()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a5d418d305b4332ca3700a7170bc5f1c8} 
+const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \& Warzone\+Player\+::\+Player\+Terr\+Container\+::get\+Territory\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Accessor for territory\+Index map. 
+
+\begin{DoxyReturn}{Returns}
+const reference to unordered\+\_\+map of \doxylink{class_warzone_player_1_1_territory}{Territory} ID -\/\texorpdfstring{$>$}{>} Territory\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a2c30d4c6eae95c242f164ffb3bfc582c}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!operator=@{operator=}}
+\index{operator=@{operator=}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a2c30d4c6eae95c242f164ffb3bfc582c} 
+\mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \& Warzone\+Player\+::\+Player\+Terr\+Container\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \doxylink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container} object to assign from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this \doxylink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a2b709881f5b96690a5dd6682592bd4b7}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!owns@{owns}}
+\index{owns@{owns}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{owns()}{owns()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a2b709881f5b96690a5dd6682592bd4b7} 
+bool Warzone\+Player\+::\+Player\+Terr\+Container\+::owns (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{t}{}\end{DoxyParamCaption}) const}
+
+
+
+Check if a territory is owned by this player. 
+
+\begin{DoxyReturn}{Returns}
+true if owned, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_aca4de6dcdbd37313b20142ef3f1be6c0}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!removeTerritory@{removeTerritory}}
+\index{removeTerritory@{removeTerritory}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{removeTerritory()}{removeTerritory()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_aca4de6dcdbd37313b20142ef3f1be6c0} 
+void Warzone\+Player\+::\+Player\+Terr\+Container\+::remove\+Territory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*}}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Removes a territory if owned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \doxylink{class_warzone_player_1_1_territory}{Territory} to be removed \\
+\hline
+{\em old\+Owner} & Owner who will lose this territory \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a44deb4e875b36b188ef3cff6d54c8573}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!setTerritories@{setTerritories}}
+\index{setTerritories@{setTerritories}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{setTerritories()}{setTerritories()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a44deb4e875b36b188ef3cff6d54c8573} 
+void Warzone\+Player\+::\+Player\+Terr\+Container\+::set\+Territories (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \&}]{new\+Territories}{, }\item[{\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}}]{new\+Owner}{}\end{DoxyParamCaption})}
+
+
+
+Mutator for territories vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Territories} & vector of Territory\texorpdfstring{$\ast$}{*} to set \\
+\hline
+{\em new\+Owner} & \doxylink{class_warzone_player_1_1_player}{Player} owner for the new territories \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a2e5f39c8679a2aed0eb8a26a78985fca}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!setTerritoryIndex@{setTerritoryIndex}}
+\index{setTerritoryIndex@{setTerritoryIndex}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{setTerritoryIndex()}{setTerritoryIndex()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a2e5f39c8679a2aed0eb8a26a78985fca} 
+void Warzone\+Player\+::\+Player\+Terr\+Container\+::set\+Territory\+Index (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_warzone_map_1_1_territory}{Territory}} \texorpdfstring{$\ast$}{*} $>$ \&}]{new\+Index}{, }\item[{\mbox{\hyperlink{class_warzone_player_1_1_player}{Player}} \texorpdfstring{$\ast$}{*}}]{new\+Owner}{}\end{DoxyParamCaption})}
+
+
+
+Mutator for territory\+Index map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Index} & unordered\+\_\+map of \doxylink{class_warzone_player_1_1_territory}{Territory} ID -\/\texorpdfstring{$>$}{>} Territory\texorpdfstring{$\ast$}{*} to set \\
+\hline
+{\em new\+Owner} & \doxylink{class_warzone_player_1_1_player}{Player} owner for the new territories \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a2826f410872dc8baf601dbd571a61d3a}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!size@{size}}
+\index{size@{size}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a2826f410872dc8baf601dbd571a61d3a} 
+size\+\_\+t Warzone\+Player\+::\+Player\+Terr\+Container\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Number of territories owned. 
+
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00174}{174}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_warzone_player_1_1_player_terr_container_a9d365d1899d5e751fe43ff5f06df763d}\index{WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WarzonePlayer::PlayerTerrContainer@{WarzonePlayer::PlayerTerrContainer}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_warzone_player_1_1_player_terr_container_a9d365d1899d5e751fe43ff5f06df763d} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} \&}]{pc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Stream insertion operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Output stream \\
+\hline
+{\em \doxylink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container}} & \doxylink{class_warzone_player_1_1_player_terr_container}{Player\+Terr\+Container} to output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to output stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Player/\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+Player/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

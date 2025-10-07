@@ -147,7 +147,7 @@ namespace WarzoneMap {
         this -> neighbors = {};
         this -> continent = nullptr; 
         this -> owner = nullptr;
-        this -> numArmies = 0;
+        this -> numArmies = 1;
         this -> numericTerrID = 0;
 
     }
@@ -160,7 +160,7 @@ namespace WarzoneMap {
         this -> neighbors = {};
         this -> continent = nullptr; 
         this -> owner = nullptr;
-        this -> numArmies = 0;
+        this -> numArmies = 1;
         computeNumericTerrID();
 
     }
@@ -173,7 +173,7 @@ namespace WarzoneMap {
         this -> neighbors = {};
         this -> continent = continent; 
         this -> owner = nullptr;
-        this -> numArmies = 0;
+        this -> numArmies = 1;
         computeNumericTerrID();
 
     }

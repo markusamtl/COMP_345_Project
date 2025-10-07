@@ -138,6 +138,7 @@ namespace WarzoneCard {
              * @brief Container of all cards in the deck.
              */
             vector<Card*> cards;
+            int numOfPlayers;
 
         public:
 
@@ -150,11 +151,11 @@ namespace WarzoneCard {
             Deck();
 
             /**
-             * @brief Default constructor.
-             * Initializes the Deck with a predefined set of Warzone cards.
-             * @param cards Vector of card pointers
+             * @brief Parameterized constructor.
+             * Initializes the Deck with a predefined set of Warzone cards, based on the number of players.
+             * @param numberOfPlayers Number of players in the game (used to scale deck size).
              */
-            Deck(vector<Card*> cards);
+            Deck(int numOfPlayers);
 
             /**
              * @brief Destructor.
@@ -194,11 +195,15 @@ namespace WarzoneCard {
              */
             const std::vector<Card*>& getCards() const;
 
+            //Do NOT have setter of cards, as cards should only be created at the start of the game. 
+
+            //Do NOT have getter for nuber of players, as only the game engine should provide that information.
+
             /**
-             * @brief Mutator for the cards in the deck.
-             * @param newCards The new vector of Card pointers to replace the current deck.
+             * @brief Sets the number of cards in the deck (used only internally or for testing).
+             * @param numberOfPlayers New player count.
              */
-            void setCards(const std::vector<Card*>& newCards);
+            void setNumOfPlayers(int numberOfPlayers);
 
             //-- Class Methods --//
 
@@ -331,6 +336,13 @@ namespace WarzoneCard {
              * @param card Pointer to the Card being removed.
              */
             void removeCardFromHand(Card* card);
+
+            /** 
+             * @brief Check if a card of a specific type is in the hand.
+             * @param cardType The CardType to check for.
+             * @return True if a card of the specified type is found, false otherwise.
+             */
+            bool hasCardOfType(WarzoneCard::CardType cardType) const;
 
     };
 

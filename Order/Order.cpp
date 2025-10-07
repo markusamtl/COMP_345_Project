@@ -1075,6 +1075,60 @@ namespace WarzoneOrder {
 
     }
 
+    Order* OrderList::peek() const {
+        
+        if(!orders.empty()){ return orders.front(); }
+        return nullptr;
+        
+    }
+
+    void OrderList::replaceOrder(int index, Order* newOrder) {
+        
+        //Verify both newOrder pointer is valid
+        if(newOrder == nullptr){ return; }
+
+        //Check if the list is empty
+        if(orders.empty()){ return; }
+
+        //Check if index is valid
+        if(index < 0 || index >= static_cast<int>(orders.size())) { return; }
+
+        //Delete the old order safely
+        Order* oldOrder = orders[index];
+        if(oldOrder != nullptr) {
+
+            delete oldOrder;
+            oldOrder = nullptr;
+        
+        }
+
+        //Replace in place (ordinality preserved)
+        orders[index] = newOrder;
+
+    }
+
+    void OrderList::replaceOrder(Order* oldOrder, Order* newOrder) {
+        
+        //Verify both Order pointers are valid
+        if(oldOrder == nullptr || newOrder == nullptr){ return; }
+
+        //Check if the list is empty
+        if(orders.empty()){ return; }
+
+        //Find position of old order
+        auto it = std::find(orders.begin(), orders.end(), oldOrder);
+        
+        //If not found, return
+        if(it == orders.end()){ return; }
+
+        // --- Delete the old order safely ---
+        delete *it;
+
+        // --- Replace in place (ordinality preserved) ---
+        *it = newOrder;
+    
+    }
+
     size_t OrderList::size() const {
 
         return orders.size();

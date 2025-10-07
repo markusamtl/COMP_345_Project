@@ -6,7 +6,7 @@ void testCards() {
     cout << "=== Testing Cards, Deck, and Hand ===" << endl;
 
     // --- Create Deck ---
-    Deck* deck = new Deck();
+    Deck* deck = new Deck(1); //Assume 2 players for testing, Alice
     cout << "Initial " << *deck << endl;
 
     // --- Create Player with empty hand and orders---
@@ -37,7 +37,7 @@ void testCards() {
     }
 
     cout << "\nAlice's " << *hand << endl;
-    cout << deck << endl;
+    cout << *deck << endl;
 
     // --- Play all cards from Alice's hand ---
     cout << "\nPlaying all cards in Alice's hand..." << endl;

@@ -156,7 +156,7 @@ namespace WarzoneOrder {
          * that reflects the specific order's details.
          * @param os The output stream where the order information will be written.
          */
-        virtual void print(std::ostream& os) const;
+        virtual void print(ostream& os) const;
 
         /**
          * @brief Stream insertion operator.
@@ -165,7 +165,7 @@ namespace WarzoneOrder {
          * @param order The Order to output.
          * @return Reference to the output stream.
          */
-        friend std::ostream& operator<<(std::ostream& os, const Order& order);
+        friend ostream& operator<<(ostream& os, const Order& order);
 
         //-- Accessors and Mutators --//
 
@@ -295,7 +295,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to a Deploy order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -410,7 +410,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to an Advance order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -536,7 +536,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to a Bomb order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -637,7 +637,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to a Blockade order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -753,7 +753,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to an Airlift order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -881,7 +881,7 @@ namespace WarzoneOrder {
              * @brief Print details specific to a Negotiate order.
              * @param os The output stream.
              */
-            void print(std::ostream& os) const override;
+            void print(ostream& os) const override;
 
             // ---- Accessors and Mutators ---- //
 
@@ -949,7 +949,7 @@ namespace WarzoneOrder {
         private:
 
             //Container for orders
-            std::vector<Order*> orders;
+            vector<Order*> orders;
 
         public:
 
@@ -1004,8 +1004,8 @@ namespace WarzoneOrder {
              * @brief Get the vector of Orders.
              * @return A pointer to the vector of Order pointers.
              */
-            const std::vector<Order*>& getOrders() const { return orders; }
-            std::vector<Order*>& getOrders() { return orders; }
+            const vector<Order*>& getOrders() const { return orders; }
+            vector<Order*>& getOrders() { return orders; }
 
             /**
              * @brief Set the vector of Orders.
@@ -1048,6 +1048,30 @@ namespace WarzoneOrder {
              * @param to The new index where the Order will be placed.
              */
             void moveOrder(int from, int to);
+
+            /**
+             * @brief Replace an Order at a specific index with a new Order.
+             * Deletes the old Order and inserts the new one at the same position.
+             * @param index The index of the Order to replace.
+             * @param newOrder Pointer to the new Order to insert.
+             */
+            void replaceOrder(int index, Order* newOrder);
+
+            /**
+             * @brief Replace an existing Order with a new Order.
+             * Deletes the old Order and inserts the new one at the same position.
+             * If the old Order is not found, no action is taken.
+             * @param oldOrder Pointer to the existing Order to be replaced.
+             * @param newOrder Pointer to the new Order to insert.
+             */
+            void replaceOrder(Order* oldOrder, Order* newOrder);
+
+            /**
+             * @brief Get first order
+             * 
+             * @return Pointer to the first order in the list
+             */
+            Order* peek() const;
 
             /**
              * @brief Get the number of Orders in the list.

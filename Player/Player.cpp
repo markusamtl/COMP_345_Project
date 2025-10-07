@@ -548,23 +548,61 @@ namespace WarzonePlayer {
         
         if(this -> playerOrders == nullptr){ return; }//Make sure the OrderList for the player exists
 
-        int randomOrderNumber = static_cast<int>(TimeUtil::getSystemTimeNano() % 6); //Get a random order number
+        //Track which order types are available to be issued by card. Advance is ALWAYS available.
+        vector<pair<bool, int>> orderTypesAvailableByCard = {{true, 0}, {false, 1}, {false, 2}, {false, 3}, {false, 4}};
+
+        if(playerHand != nullptr) {
+
+            // Check for each card type in the player's hand
+            orderTypesAvailableByCard[1].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Bomb);
+            orderTypesAvailableByCard[2].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Blockade);
+            orderTypesAvailableByCard[3].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Airlift);
+            orderTypesAvailableByCard[4].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Diplomacy);
+
+        }
+
+        int randomOrder = -1; //Initialize to invalid order
+
+        // Keep looping until we select a valid order
+        while (randomOrder == -1 && !orderTypesAvailableByCard.empty()) {
+
+            int randomOrderIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % orderTypesAvailableByCard.size());
+            auto orderTypeInfo = orderTypesAvailableByCard[randomOrderIndex];
+
+            if(orderTypeInfo.first) {
+            
+                // Valid order type
+                randomOrder = orderTypeInfo.second;
+            
+            } 
+            else if (orderTypeInfo.second != 0) {
+
+                // Remove invalid entries EXCEPT Advance (index 0 must stay)
+                orderTypesAvailableByCard.erase(orderTypesAvailableByCard.begin() + randomOrderIndex);
+            
+            }
+
+        }
+
+        if (randomOrder == -1) {
+            // Safety fallback (should never happen since Advance is always valid)
+            randomOrder = 0;
+        }
+
         Order* tempOrder = nullptr; //Instantiate a order pointer
 
-        switch(randomOrderNumber) {
+        switch(randomOrder) {
 
-            case 0: tempOrder = new WarzoneOrder::Deploy(this, nullptr, 0); break; //Deploy
-            case 1: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break; //Advance
-            case 2: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break; //Bomb
-            case 3: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break; //Blockade
-            case 4: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break; //Airlift
-            case 5: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break; //Negotiate
+            case 0: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break; //Advance
+            case 1: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break; //Bomb
+            case 2: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break; //Blockade
+            case 3: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break; //Airlift
+            case 4: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break; //Negotiate
 
         }
 
         if(tempOrder != nullptr) {
         
-            cout << this -> getPlayerName() << " has had an order added to their OrderList. Order Info:\n" << *tempOrder << endl;
             this -> getPlayerOrders() -> addOrder(tempOrder);
 
         }
@@ -625,6 +663,41 @@ namespace WarzonePlayer {
             neutralEnemies.erase(enemyNameIndex);
 
         } 
+
+    }
+
+    vector<Territory*> Player::getBombCandidates() const {
+        
+        //Collect candidate target territories (owned by another player)
+        unordered_map<int, Territory*> candidateMap; //Map to ensure unique territories
+        vector<Territory*> ownedTerrs = this -> getOwnedTerritories().getTerritories(); //Get all of the player's territories
+
+        //Get all neighboring territories owned by other players
+        for(size_t i = 0; i < ownedTerrs.size(); i++) {
+                            
+            if(ownedTerrs[i] == nullptr){ continue; } //Skip null territories
+            vector<Territory*> neighbors = ownedTerrs[i] -> getNeighbors(); //Get neighbors of that territory
+
+            string playerName = this -> getPlayerName();
+
+            for(Territory* t : neighbors) {
+                                    
+                //Skip null territories and territories owned by the player
+                if(t == nullptr || t -> getOwner() == nullptr || t -> getOwner() -> getPlayerName() == playerName){ continue; }
+                candidateMap[t -> getNumericTerrID()] = t; //Use numeric ID as key to ensure uniqueness
+
+            }
+
+        }
+
+        // Convert unordered_map values to vector for return
+        vector<Territory*> candidates;
+        candidates.reserve(candidateMap.size());
+
+        //Build return vector
+        for(pair<int, Territory*> entry : candidateMap){ candidates.push_back(entry.second); }
+
+        return candidates;
 
     }
 

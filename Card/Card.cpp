@@ -101,7 +101,7 @@ namespace WarzoneCard {
 
     Deck::Deck() {
         
-        //Create 20 cards (5 of each type). Not too sure how many cards they'll want from us
+        //Create 20 cards (5 of each type). Not too sure how many cards they'll want from us by default
         for(int i = 0; i < 5; i++) {
 
             cards.push_back(new Card(CardType::Bomb));
@@ -111,9 +111,26 @@ namespace WarzoneCard {
 
         }
 
+        this -> numOfPlayers = 0; // Default to 1 player if not set
+
     }
 
-    Deck::Deck(vector<Card*> cards) { this -> cards = cards; }
+    Deck::Deck(int numOfPlayers){ 
+
+        for(int i = 0; i < numOfPlayers; i++) {
+
+            for(int i = 0; i < 5; i++) {
+
+                cards.push_back(new Card(CardType::Bomb));
+                cards.push_back(new Card(CardType::Blockade));
+                cards.push_back(new Card(CardType::Airlift));
+                cards.push_back(new Card(CardType::Diplomacy));
+
+            }
+
+        }
+
+    }
 
     Deck::~Deck() {
 
@@ -125,6 +142,7 @@ namespace WarzoneCard {
     Deck::Deck(const Deck& other) {
         
         for(Card* c : other.cards) { cards.push_back(new Card(*c)); }
+        numOfPlayers = other.numOfPlayers;
     
     }
 
@@ -138,6 +156,8 @@ namespace WarzoneCard {
 
             //Add cards to the new object
             for (Card* c : other.cards) { cards.push_back(new Card(*c)); }
+
+            numOfPlayers = other.numOfPlayers;
 
         }
 
@@ -165,14 +185,29 @@ namespace WarzoneCard {
 
     const vector<Card*>& Deck::getCards() const { return cards; }
 
-    void Deck::setCards(const vector<Card*>& newCards) {
+    void Deck::setNumOfPlayers(int numberOfPlayers){
+     
+        if(numOfPlayers >= 2) { //Valid number of players
+        
+            this -> numOfPlayers = numberOfPlayers;
+        
+        } else { return; } //Do nothing if the number of players is invalid
 
-        //Clear old memory
-        for (Card* c : cards) { delete c; }
+        for(Card* c : cards) { delete c; } // Free old memory
         cards.clear();
 
-        //Add new cards in
-        for (Card* c : newCards) { cards.push_back(new Card(*c)); }
+        for(int i = 0; i < numberOfPlayers; i++) { //Regenerate deck based on new player count
+
+            for(int i = 0; i < 5; i++) {
+
+                cards.push_back(new Card(CardType::Bomb));
+                cards.push_back(new Card(CardType::Blockade));
+                cards.push_back(new Card(CardType::Airlift));
+                cards.push_back(new Card(CardType::Diplomacy));
+
+            }
+
+        }
 
     }
 
@@ -213,7 +248,8 @@ namespace WarzoneCard {
 
     Hand::~Hand() {
 
-        handCards.clear(); // Deck owns Card memory
+        for (Card* c : handCards) delete c;
+        handCards.clear();
 
     }
 
@@ -289,6 +325,18 @@ namespace WarzoneCard {
         //Check if the card exists in the Hand
         if(it != handCards.end()) { handCards.erase(it); }
     
+    }
+
+    bool Hand::hasCardOfType(WarzoneCard::CardType cardType) const { 
+        
+        for (Card* c : handCards) { 
+
+            if (c != nullptr && c -> getType() == cardType) { return true; } 
+
+        }
+
+        return false;
+
     }
 
 }

@@ -51,4 +51,4 @@ With Valgrind: make run_card_valgrind
 
 GAMEENGINE:
 Without Valgrind: ./game_engine_driver
-With Valgrind: mad run_engine_valgrind
+With Valgrind: make run_engine_valgrind

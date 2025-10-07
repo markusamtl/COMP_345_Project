@@ -26,8 +26,14 @@ namespace WarzoneEngine {
     using WarzonePlayer::Player;
 
     using WarzoneOrder::OrderList;
+    using WarzoneOrder::Order;
+    using WarzoneOrder::OrderType;
     using WarzoneOrder::Deploy;
     using WarzoneOrder::Advance;
+    using WarzoneOrder::Bomb;
+    using WarzoneOrder::Blockade;
+    using WarzoneOrder::Airlift;
+    using WarzoneOrder::Negotiate;
     using WarzoneOrder::TimeUtil;
 
     using WarzoneCard::Deck;
@@ -96,14 +102,14 @@ namespace WarzoneEngine {
 
         //-- Game Attributes --//
 
-        EngineState state;          ///< Current state of the game engine
-        Map* gameMap;               ///< Pointer to the current map 
-        Deck* deck;                 ///< Pointer to the game’s deck of cards 
-        vector<Player*> players;    ///< Vector of active players
+        EngineState state;
+        Map* gameMap; 
+        Deck* deck; 
+        vector<Player*> players;
 
         // === Queue-based turn system ===
-        std::queue<Player*> playerQueue;  ///< Queue managing player turn order
-        Player* currentPlayer = nullptr;  ///< Pointer to the currently active player
+        queue<Player*> playerQueue;
+        Player* currentPlayer = nullptr;
 
 
         //-- Helper and Internal Methods --//
@@ -142,9 +148,22 @@ namespace WarzoneEngine {
          */
         void executeOrders(vector<WarzonePlayer::Player*>& players);
 
+        /**
+         * @brief Finds a player in the current player list by name.
+         * @param name The name of the player to find.
+         * @return Pointer to the matching Player, or nullptr if not found.
+         */
+        Player* findPlayerByName(const std::string& name) const;
+
+        /**
+         * @brief Resets the game to the initial state, clearing all data.
+         * @return True if user decides to restart, false otherwise.
+         */
+        bool startAgain();
+
     public:
 
-        /*------------------------------------Constructors & Operators-------------------------------------------*/
+        //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
         /**
          * @brief Default constructor.
@@ -178,6 +197,19 @@ namespace WarzoneEngine {
          * @return Reference to this GameEngine instance.
          */
         GameEngine& operator=(const GameEngine& other);
+
+         /**
+         * @brief Stream insertion operator for GameEngine.
+         *
+         * Outputs a summary of the current game state, including
+         * number of players, whether the map and deck are initialized,
+         * and the active state.
+         *
+         * @param os The output stream.
+         * @param engine The GameEngine object to output.
+         * @return Reference to the output stream.
+         */
+        friend std::ostream& operator<<(std::ostream& os, const GameEngine& engine);
 
 
         /*------------------------------------Accessors and Mutators--------------------------------------------*/
@@ -359,21 +391,6 @@ namespace WarzoneEngine {
          */
         bool hasPlayers() const;
 
-
-        /*--------------------------------------Stream Insertion Operator----------------------------------------*/
-
-        /**
-         * @brief Stream insertion operator for GameEngine.
-         *
-         * Outputs a summary of the current game state, including
-         * number of players, whether the map and deck are initialized,
-         * and the active state.
-         *
-         * @param os The output stream.
-         * @param engine The GameEngine object to output.
-         * @return Reference to the output stream.
-         */
-        friend std::ostream& operator<<(std::ostream& os, const GameEngine& engine);
     };
 
-} // namespace WarzoneEngine
+}

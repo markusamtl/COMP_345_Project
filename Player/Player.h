@@ -21,6 +21,9 @@ namespace WarzonePlayer {
     using WarzoneOrder::TimeUtil;
     using WarzoneOrder::OrderList;
     using WarzoneOrder::Order;
+    using WarzoneCard::Deck;
+    using WarzoneCard::Hand;
+    using WarzoneCard::Card;
 
     /**
      * @brief Manages a Player's owned territories using both a vector (for iteration), and an unordered_map (for fast lookups).
@@ -348,6 +351,13 @@ namespace WarzonePlayer {
              * @param enemyName The name of the enemy to remove.
              */
             void removeNeutralEnemy(const string& enemyName);
+
+            /**
+             * @brief Get a list of territories that can be bombed or blockaded.
+             * These are territories owned by the player that have at least one non-owned neighbor.
+             * @return Vector of Territory pointers that are valid targets.
+             */
+            vector<Territory*> getBombCandidates() const;
 
             /**
              * @brief Check if this player controls a given continent.

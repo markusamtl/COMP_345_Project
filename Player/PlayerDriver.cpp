@@ -1,6 +1,7 @@
 #include "PlayerDriver.h"
 
 void testPlayer() {
+    
     cout << "=== Testing Player with Brazil.map ===" << endl;
 
     // --- Load Map ---
@@ -74,29 +75,50 @@ void testPlayer() {
     cout << "For Alice\n "<< *alice << endl;
     cout << "For Bob\n" << *bob << endl;
 
+    Deck* deck = new Deck(2); //Assume 2 players for testing, Alice and Bob
+
+    // --- Draw cards into Alice's and Bob's hands ---
+    cout << "\nDrawing 20 cards into Alice's and Bob's hand..." << endl;
+    for(size_t i = 0; i < deck -> getCards().size(); i++) {
+
+        Card* drawnAlice = deck -> draw();
+        Card* drawnBob = deck -> draw();
+
+        if(drawnAlice != nullptr){
+
+            alice -> getHand() -> addCardToHand(drawnAlice);
+            cout << "Alice Drew: " << *drawnAlice << endl;
+
+        }
+
+        if(drawnBob != nullptr){
+
+            bob -> getHand() -> addCardToHand(drawnBob);
+            cout << "Bob Drew: " << *drawnBob << endl;
+
+        }
+
+    }
+
     // --- Issue random orders ---
     cout << endl << "=== Alice issues 5 random orders ===" << endl;
     for(int i = 0; i < 5; i++){
 
-        cout << "Calling issueOrder" << endl;
         alice -> issueOrder();
-        cout << endl;
-
     }
+
+    cout << endl << "=== Alice's Final State: ===" << endl;
+    cout << *alice -> getPlayerOrders() << endl;
 
     cout << endl << "=== Bob issues 5 random orders ===" << endl;
     for(int i = 0; i < 5; i++){
         
-        cout << "Calling issueOrder" << endl;
         bob -> issueOrder();
-        cout << endl;
 
     }
 
-    // --- Show final state ---
-    cout << endl << "=== Player's Final State: ===" << endl;
-    cout << "For Alice\n "<< *alice << endl << endl;
-    cout << "For Bob\n" << *bob << endl << endl;
+    cout << endl << "=== Bob's Final State: ===" << endl;
+    cout << *bob -> getPlayerOrders() << endl;
 
     // --- Show attack/defend options ---
 

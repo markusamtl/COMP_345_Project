@@ -7,6 +7,15 @@ It uses **CMake** to manage builds and supports running under **Valgrind** for m
 
 Link to repository: https://github.com/markusamtl/COMP_345_Project
 
+AUTHORS:
+
+Markus A. Amalfi (Team Lead)
+Anh Thien Nguyen
+Samuel Dessureault
+Souméya Diop
+Rim Charafeddine
+
+
 ## Requirements
 
 Make sure the following are installed on your Ubuntu system:

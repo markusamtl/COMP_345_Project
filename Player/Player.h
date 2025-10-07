@@ -329,6 +329,18 @@ namespace WarzonePlayer {
             void issueOrder();
 
             /**
+             * @brief Check if the player can issue any orders.
+             * @return True if the player can issue orders, false otherwise.
+             * 
+            */
+            bool canIssueOrder(int orderType) const;
+
+            /**
+             * @brief Helper method to clear a player's truce list at the end of every turn.
+             */
+            void clearNeutralEnemies();
+
+            /**
              * @brief Adds a territory to the player’s owned territories.
              * @param territory Pointer to the territory to add.
              */
@@ -353,6 +365,13 @@ namespace WarzonePlayer {
             void removeNeutralEnemy(const string& enemyName);
 
             /**
+             * @brief Get a list of territories that have many armies and can be used as sources for advance orders.
+             * A territory is considered a valid source if it has more than one army.
+             * @return Vector of Territory pointers that can be used as sources.
+             */
+            vector<Territory*> getSourcesWithManyArmies() const;
+
+            /**
              * @brief Get a list of territories that can be bombed or blockaded.
              * These are territories owned by the player that have at least one non-owned neighbor.
              * @return Vector of Territory pointers that are valid targets.
@@ -372,7 +391,7 @@ namespace WarzonePlayer {
              * @param continentSums Reference to the ground-truth continent lookup table, from the game Map.
              * @return True if the player owns all continents, false otherwise.
              */
-            bool hasWon(const unordered_map<Continent*, long long>& continentSums) const;
+            bool controlsMap(const unordered_map<Continent*, long long>& continentSums) const;
 
     };
 

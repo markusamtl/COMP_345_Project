@@ -545,68 +545,128 @@ namespace WarzonePlayer {
 
 
     void Player::issueOrder() {
+
+        if (this->playerOrders == nullptr) { return; } // Make sure the OrderList for the player exists
+
+        // --------------------------------------------------------
+        // Track which order types are available to be issued by card.
+        // Index mapping:
+        // 0: Advance (always available)
+        // 1: Bomb
+        // 2: Blockade
+        // 3: Airlift
+        // 4: Negotiate
+        // --------------------------------------------------------
+        vector<pair<bool, int>> orderTypesAvailableByCard = {
+            {true, 0}, {false, 1}, {false, 2}, {false, 3}, {false, 4}
+        };
+
+        //Check if the player has corresponding cards for card-based orders
+        if (playerHand != nullptr) {
+
+            orderTypesAvailableByCard[1].first = playerHand->hasCardOfType(WarzoneCard::CardType::Bomb);
+            orderTypesAvailableByCard[2].first = playerHand->hasCardOfType(WarzoneCard::CardType::Blockade);
+            orderTypesAvailableByCard[3].first = playerHand->hasCardOfType(WarzoneCard::CardType::Airlift);
+            orderTypesAvailableByCard[4].first = playerHand->hasCardOfType(WarzoneCard::CardType::Diplomacy);
+        }
+
+        //Filter out order types the player cannot logically issue
+        for (int i = 0; i < 5; i++) {
+            
+            if(!canIssueOrder(i)) { orderTypesAvailableByCard[i].first = false; }
         
-        if(this -> playerOrders == nullptr){ return; }//Make sure the OrderList for the player exists
+        }
 
-        //Track which order types are available to be issued by card. Advance is ALWAYS available.
-        vector<pair<bool, int>> orderTypesAvailableByCard = {{true, 0}, {false, 1}, {false, 2}, {false, 3}, {false, 4}};
+        //Randomly pick a valid order type
+        int randomOrder = -1;
 
-        if(playerHand != nullptr) {
+        //Keep trying until a valid order type is found or no options remain
+        while(randomOrder == -1 && !orderTypesAvailableByCard.empty()) { 
 
-            // Check for each card type in the player's hand
-            orderTypesAvailableByCard[1].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Bomb);
-            orderTypesAvailableByCard[2].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Blockade);
-            orderTypesAvailableByCard[3].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Airlift);
-            orderTypesAvailableByCard[4].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Diplomacy);
+            int randomOrderIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % orderTypesAvailableByCard.size());
+            pair<bool, int> orderTypeInfo = orderTypesAvailableByCard[randomOrderIndex];
+
+            if (orderTypeInfo.first) { randomOrder = orderTypeInfo.second; } //Valid order found 
+            else { orderTypesAvailableByCard.erase(orderTypesAvailableByCard.begin() + randomOrderIndex); } //Remove invalid order type from options
 
         }
 
-        int randomOrder = -1; //Initialize to invalid order
+        // If no valid order was found, skip issuing
+        if (randomOrder == -1) { return; }
 
-        // Keep looping until we select a valid order
-        while (randomOrder == -1 && !orderTypesAvailableByCard.empty()) {
+        //Create the selected order type
+        Order* tempOrder = nullptr;
 
-            int randomOrderIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % orderTypesAvailableByCard.size());
-            auto orderTypeInfo = orderTypesAvailableByCard[randomOrderIndex];
+        switch(randomOrder) { //Switch on the selected order type
 
-            if(orderTypeInfo.first) {
-            
-                // Valid order type
-                randomOrder = orderTypeInfo.second;
-            
-            } 
-            else if (orderTypeInfo.second != 0) {
+            case 0: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break;
+            case 1: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break;
+            case 2: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break;
+            case 3: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break;
+            case 4: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break;
+            default: break;
+        
+        }
 
-                // Remove invalid entries EXCEPT Advance (index 0 must stay)
-                orderTypesAvailableByCard.erase(orderTypesAvailableByCard.begin() + randomOrderIndex);
+        //Add the order to the player's list
+        if(tempOrder != nullptr) { this->getPlayerOrders()->addOrder(tempOrder); }
+
+    }
+
+
+    bool Player::canIssueOrder(int orderType) const {
+
+        switch (orderType) {
+
+            case 0: { //Advance: Player must have at least one territory with more than 1 army (so they can move armies)
+                
+                vector<Territory*> movableSources = this->getSourcesWithManyArmies();
+                return !movableSources.empty();
             
             }
 
-        }
+       
+            case 1: { //Bomb: Must have at least one valid enemy target not under truce
+                vector<Territory*> bombTargets = this -> getBombCandidates();
+                return !bombTargets.empty();
+            }
 
-        if (randomOrder == -1) {
-            // Safety fallback (should never happen since Advance is always valid)
-            randomOrder = 0;
-        }
+            case 2: { //Blockade: Must own at least one territory
 
-        Order* tempOrder = nullptr; //Instantiate a order pointer
+                vector<Territory*> owned = this -> getOwnedTerritories().getTerritories();
+                return owned.size() > 1;
 
-        switch(randomOrder) {
+            }
 
-            case 0: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break; //Advance
-            case 1: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break; //Bomb
-            case 2: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break; //Blockade
-            case 3: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break; //Airlift
-            case 4: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break; //Negotiate
+            case 3: { //Airlift: Must have at least two territories, and at least one of them must have >1 army (
+                
+                //If only one territory is owned, no airlift is possible)
+                if(this ->getOwnedTerritories().getTerritories().size() < 2) { return false; }
 
-        }
+                vector<Territory*> validSourceTerrs = this -> getSourcesWithManyArmies();
 
-        if(tempOrder != nullptr) {
+                return !validSourceTerrs.empty();
+
+            }
+
+            case 4: { //This will be true REGARDLESS of truces, as long as there is at least one other player to negotiate with
+
+                return true;
+            
+            }
+
+            default: //Default: invalid order type
+                
+                return false;
         
-            this -> getPlayerOrders() -> addOrder(tempOrder);
-
         }
+        
+    }
 
+    void Player::clearNeutralEnemies() {
+
+        this -> neutralEnemies.clear();
+        
     }
 
     void Player::addOwnedTerritories(WarzoneMap::Territory* territory) {
@@ -666,40 +726,74 @@ namespace WarzonePlayer {
 
     }
 
-    vector<Territory*> Player::getBombCandidates() const {
+    
+    vector<Territory*> Player::getSourcesWithManyArmies() const {
+
+        vector<Territory*> validSources;
+        vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
+
+        for (Territory* t : ownedTerrs) { //Check each owned territory
+
+            //A valid source must have more than one army
+            if(t != nullptr && t->getNumArmies() > 1) { validSources.push_back(t); }
         
+        }
+
+        return validSources;
+    
+    }
+
+    vector<Territory*> Player::getBombCandidates() const {
+    
         //Collect candidate target territories (owned by another player)
         unordered_map<int, Territory*> candidateMap; //Map to ensure unique territories
-        vector<Territory*> ownedTerrs = this -> getOwnedTerritories().getTerritories(); //Get all of the player's territories
+        vector<Territory*> ownedTerrs = this->getOwnedTerritories().getTerritories(); //Get all of the player's territories
 
-        //Get all neighboring territories owned by other players
+        //Get the list of players this player has a truce with
+        const vector<string>& neutrals = this->getNeutralEnemies();
+
         for(size_t i = 0; i < ownedTerrs.size(); i++) {
-                            
-            if(ownedTerrs[i] == nullptr){ continue; } //Skip null territories
+
+            if(ownedTerrs[i] == nullptr) { continue; } //Skip null territories
             vector<Territory*> neighbors = ownedTerrs[i] -> getNeighbors(); //Get neighbors of that territory
 
-            string playerName = this -> getPlayerName();
+            string playerName = this -> getPlayerName(); //Cache player name for efficiency
 
             for(Territory* t : neighbors) {
-                                    
-                //Skip null territories and territories owned by the player
-                if(t == nullptr || t -> getOwner() == nullptr || t -> getOwner() -> getPlayerName() == playerName){ continue; }
-                candidateMap[t -> getNumericTerrID()] = t; //Use numeric ID as key to ensure uniqueness
+
+                //Skip invalid territories
+                if (t == nullptr || t->getOwner() == nullptr) { continue; }
+
+                 //Skip territories with only 1 army (bombing would have no effect)
+                if(t -> getNumArmies() <= 1) { continue; }
+
+                Player* territoryOwner = t -> getOwner(); //Get the owner of the neighboring territory
+                string ownerName = territoryOwner -> getPlayerName(); //Get the owner's name
+
+                //Skip territories owned by the player calling this method
+                if(ownerName == playerName) { continue; }
+
+                //Skip territories owned by any player under truce with this player
+                if(find(neutrals.begin(), neutrals.end(), ownerName) != neutrals.end()) { continue; }
+
+                //Otherwise, this is a valid bombing target
+                candidateMap[t->getNumericTerrID()] = t;
 
             }
 
         }
 
-        // Convert unordered_map values to vector for return
+        //Convert unordered_map values to vector for return
         vector<Territory*> candidates;
         candidates.reserve(candidateMap.size());
 
-        //Build return vector
-        for(pair<int, Territory*> entry : candidateMap){ candidates.push_back(entry.second); }
+        //Copy values from the hashmap to the return vector
+        for(const auto& entry : candidateMap) { candidates.push_back(entry.second); }
 
         return candidates;
 
     }
+
 
     bool Player::controlsContinent(const unordered_map<Continent*, long long>& continentSums, Continent* cont) const {
         
@@ -713,7 +807,7 @@ namespace WarzonePlayer {
 
     }
 
-    bool Player::hasWon(const unordered_map<Continent*, long long>& continentSums) const {
+    bool Player::controlsMap(const unordered_map<Continent*, long long>& continentSums) const {
         
         for (const pair<Continent* const, long long>& kv : continentSums) { //Check every continent
 

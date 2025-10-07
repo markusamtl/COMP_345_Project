@@ -220,7 +220,7 @@ void testLoadMaps() {
 
     //See if Alice should win the game (she should)
 
-    if(alice -> hasWon(gameMap -> getContinentLookupTable())) {
+    if(alice -> controlsMap(gameMap -> getContinentLookupTable())) {
 
         cout << "Alice has won the game!\n"; 
 

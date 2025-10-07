@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <chrono>
+#include <fstream>
 
 using namespace WarzoneEngine;
 
@@ -59,198 +60,272 @@ void testGameStates() {
 
 /*---------------------------------- Automated Simulation Driver ----------------------------------*/
 
+#include <chrono>
+#include <iomanip>
+#include <sstream>
+#include <ctime>
+
 void simulateRealGame() {
 
     bool play = true;
     bool playAgain = true;
     bool printOutputs = true;
 
-    std::string response;
-    std::cout << "\nWould you like to simulate a full automatic game sequence now? (yes/no): ";
-    std::getline(std::cin, response);
+    string playGame;
+    cout << "\nWould you like to simulate a full automatic game sequence now? (yes/no): ";
+    getline(cin, playGame);
 
     // Normalize input
-    response.erase(std::remove_if(response.begin(), response.end(), ::isspace), response.end());
-    std::transform(response.begin(), response.end(), response.begin(), ::tolower);
+    playGame.erase(std::remove_if(playGame.begin(), playGame.end(), ::isspace), playGame.end());
+    transform(playGame.begin(), playGame.end(), playGame.begin(), ::tolower);
 
-    if (response == "yes" || response == "y") {
+    if (playGame == "yes" || playGame == "y") {
 
         play = true;
-        std::cout << "\n[Driver] Starting full game simulation...\n";
+        cout << "\n[Driver] Starting full game simulation...\n";
+    } else if (playGame == "no" || playGame == "n") {
+        
+        cout << "\n[Driver] Simulation skipped. Exiting program.\n";
+        return;
 
-    } else if (response == "no" || response == "n") {
-        std::cout << "\n[Driver] Simulation skipped. Exiting program.\n";
-        return;
     } else {
-        std::cout << "\n[Driver] Invalid input. Please type 'yes' or 'no' next time. Exiting.\n";
+        
+        cout << "\n[Driver] Invalid input. Please type 'yes' or 'no' next time. Exiting.\n";
         return;
+    
     }
 
     if(play) {
-
+        
         while(playAgain) {
             
+            // Generate timestamped filename for each new game
+            auto now = chrono::system_clock::now(); //Get current time
+            time_t nowTime = chrono::system_clock::to_time_t(now); //Cast time
+            tm localTime = *localtime(&nowTime); //Format time to system timezone
+
+            ostringstream fileNameBuilder;
+            fileNameBuilder << "simulation_log_" << std::put_time(&localTime, "%Y_%m_%d_%H_%M_%S") << ".txt";
+            string logFileName = fileNameBuilder.str();
+
+            // Open log file
+            ofstream logFile(logFileName);
+            if (!logFile.is_open()) {
+
+                cerr << "[Error] Could not open " << logFileName << " for writing.\n";
+                return;
+            
+            }
+
+            // Backup original cout buffer and redirect output to file
+            streambuf* originalCoutBuffer = cout.rdbuf();
+            cout.rdbuf(logFile.rdbuf());
+            
             cout << "\n=== SIMULATING FULL GAME SEQUENCE ===\n";
+            GameEngine engine; //Instantiate engine
 
-            GameEngine engine;
-
-            // Load and validate map
+            //Load and validate map
             cout << engine.loadmap("../Map/test_maps/Brazil/Brazil.map") << '\n';
             cout << engine.validatemap() << '\n';
 
-            // Add players
+            //Add players
             cout << engine.addplayer("Alice") << '\n';
             cout << engine.addplayer("Bob") << '\n';
             cout << engine.addplayer("Carl") << '\n';
             cout << engine.addplayer("Dan") << '\n';
-            cout << engine.gamestart() << '\n';
+            cout << engine.gamestart() << '\n'; //Adds neutral player by default, automaticall assigns territories to all players 
 
-            // ------------------------------
-            // Ask user for turn cap
-            // ------------------------------
+            // Ask for turn cap
             int maxTurns = 0;
             while(true) {
 
-                std::cout << "\nEnter maximum number of turns to simulate: ";
-                std::string input;
-                std::getline(std::cin, input);
+                cout.rdbuf(originalCoutBuffer);
+                cout << "\nEnter maximum number of turns to simulate: ";
+                string maxTurnsInput;
+                getline(cin, maxTurnsInput);
+
+                std::cout.rdbuf(logFile.rdbuf()); //Log input
+                std::cout << "[User Input] " << maxTurnsInput << "\n";
 
                 try {
 
-                    maxTurns = std::stoi(input);
-                    if(maxTurns <= 0){ throw std::invalid_argument("non-positive"); }
+                    maxTurns = stoi(maxTurnsInput);
+                    if(maxTurns < 1){ throw invalid_argument("non-positive"); } //Make sure inputted number is < 1
                     break;
 
-                }catch(...){ cout << "Invalid input. Please enter a positive integer.\n"; }
+                } catch (...) {
+
+                    cout.rdbuf(originalCoutBuffer); //Return to console
+                    cout << "Invalid input. Please enter a positive integer.\n";
+                    cout.rdbuf(logFile.rdbuf()); //Return to log
+                    cout << "Invalid input detected.\n";
+                
+                }
             
             }
 
             string printOutput;
-            while (true) {
 
-                std::cout << "\nWould you like to surpress information printed every round? (yes/no): ";
-                std::getline(std::cin, printOutput);
-                std::transform(printOutput.begin(), printOutput.end(), printOutput.begin(), ::tolower);
-                printOutput.erase(std::remove_if(printOutput.begin(), printOutput.end(), ::isspace), printOutput.end());
+            while(true) {
+
+                cout.rdbuf(originalCoutBuffer); //Switch to console
+                cout << "\nWould you like to suppress information printed every round? (yes/no): ";
+                getline(cin, printOutput);
+
+                cout.rdbuf(logFile.rdbuf()); //Switch to log
+                cout << "[User Input] " << printOutput << "\n";
+
+                transform(printOutput.begin(), printOutput.end(), printOutput.begin(), ::tolower);
+                printOutput.erase(remove_if(printOutput.begin(), printOutput.end(), ::isspace), printOutput.end());
 
                 if (printOutput == "yes" || printOutput == "y") {
 
-                    printOutputs = true;
-                    break;
-                
-                } else if (printOutput == "no" || printOutput == "n") {
-                    
                     printOutputs = false;
                     break;
+
+                } else if (printOutput == "no" || printOutput == "n") {
+                    
+                    printOutputs = true;
+                    break;
+
+                } else {
+
+                    cout.rdbuf(originalCoutBuffer);
+                    cout << "Invalid input. Please type 'yes' or 'no'.\n";
+                    cout.rdbuf(logFile.rdbuf()); //Write to log
+                    cout << "Invalid input detected.\n";
                 
-                } else { cout << "Invalid input. Please type 'yes' or 'no'.\n"; }
+                }
 
             }
 
+            //NOTE: For the rest of the game, everything is written to the log file. Only winning / game termination shows up on console now
+
             int turn = 1;
+            auto simulationStart = std::chrono::high_resolution_clock::now(); //Start tracking time it takes to execute a game
 
-            // ------------------------------
-            // Main simulation loop
-            // ------------------------------
-
-            // Start timer
-            auto simulationStart = chrono::high_resolution_clock::now(); //Track total simulation time
-
+            //Main game loop: Looping between AssignReinforcment, IssueOrders, and ExecuteOrders.
+            //Terminates when someone wins / max turns are reached
             while(engine.getState() != EngineState::End && engine.getState() != EngineState::Win && turn <= maxTurns) {
+                
+                cout << "\n--- TURN " << turn << " ---\n";
 
-                std::cout << "\n--- TURN " << turn << " ---\n";
-
-                // Assign Reinforcement phase
-                if(engine.getState() == EngineState::AssignReinforcement) {
+                if(engine.getState() == EngineState::AssignReinforcement) { //AssignReinforcment state
                     
-                    if(printOutputs){ std::cout << engine.assignreinforcement() << '\n'; }
-                    else { engine.assignreinforcement(); }
+                    if(printOutputs){ cout << engine.assignreinforcement() << '\n';}
+                    else{engine.assignreinforcement(); }
 
                 }
 
-                // Issue Orders phase
-                if (engine.getState() == EngineState::IssueOrders) {
-
-                    if(printOutputs){ 
-
+                if(engine.getState() == EngineState::IssueOrders) { //IssueOrders state
+                    
+                    if(printOutputs) {
+                        
                         cout << engine.issueorder() << '\n';
                         cout << engine.endissueorders() << '\n';
-
-                    } else { 
-
+                    
+                    } else {
+                        
                         engine.issueorder();
                         engine.endissueorders();
-
-                    }
                     
+                    }
+
                 }
 
-                // Execute Orders phase
-                if (engine.getState() == EngineState::ExecuteOrders) {
+                if (engine.getState() == EngineState::ExecuteOrders) { //ExecuteOrders state
                     
-                    if(printOutputs){
+                    if (printOutputs) {
 
                         cout << engine.executeOrder() << '\n';
-                        if(engine.getState() == EngineState::ExecuteOrders) { cout << engine.endExecuteOrder() << '\n'; }
-
+                        //Move on to end of order execution if no one wins
+                        if(engine.getState() == EngineState::ExecuteOrders){ cout << engine.endExecuteOrder() << '\n'; }
+                    
                     } else {
 
                         engine.executeOrder();
-                        if(engine.getState() == EngineState::ExecuteOrders) { engine.endExecuteOrder(); }
-
+                        //Move on to end of order execution if no one wins
+                        if(engine.getState() == EngineState::ExecuteOrders){ engine.endExecuteOrder(); }
+                    
                     }
 
                 }
 
                 turn++;
-            
+
             }
 
-            // ------------------------------
             // End conditions
-            // ------------------------------
-            if(engine.getState() == EngineState::Win) { cout << "\n[Driver] Win state reached.\n"; }
-            else if(engine.getState() == EngineState::End) { cout << "\n[Driver] Engine ended.\n"; }
-            else if (turn > maxTurns) { cout << "\n[Driver] Max turn cap (" << maxTurns << ") reached. Stopping simulation.\n"; }
+            string result;
+            
+            //Someone won
+            if(engine.getState() == EngineState::Win){ result = "\n[Driver] Win state reached.\n"; }
+            
+            //For some reason, the engine stopped (should not occur)
+            else if (engine.getState() == EngineState::End){result = "\n[Driver] Engine ended.\n";}
+            
+            //Turn limit was reached
+            else{result = "\n[Driver] Max turn cap reached. Stopping simulation.\n";}
 
-            // Stop timer
-            auto simulationEnd = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<std::chrono::milliseconds>(simulationEnd - simulationStart).count();
+            cout << result;
 
-            // Display total time
-            std::cout << "\n=== SIMULATION COMPLETE ===\n";
-            std::cout << "Total simulation time: " << duration << " ms\n";
+            cout.rdbuf(originalCoutBuffer); //Return to console
+            cout << result;
+            cout.rdbuf(logFile.rdbuf()); //Switch to log
 
-            // ------------------------------
-            // Ask user if they want to play again
-            // ------------------------------
+            auto simulationEnd = chrono::high_resolution_clock::now(); //Get ending time
+
+            //Get execution time in ms
+            auto duration = chrono::duration_cast<chrono::milliseconds>(simulationEnd - simulationStart).count();
+
+            cout << "\n=== SIMULATION COMPLETE ===\n";
+            cout << "Total simulation time: " << duration << " ms\n";
+
+            cout.rdbuf(originalCoutBuffer); //Switch to console
+            cout << "\n=== SIMULATION COMPLETE ===\n";
+            cout << "Total simulation time: " << duration << " ms\n";
+
             string replay;
-            while (true) {
+            while(true) {
 
                 cout << "\nWould you like to simulate again? (yes/no): ";
-                getline(std::cin, replay);
+                getline(cin, replay);
+
+                //Normalize input
                 transform(replay.begin(), replay.end(), replay.begin(), ::tolower);
                 replay.erase(remove_if(replay.begin(), replay.end(), ::isspace), replay.end());
 
                 if (replay == "yes" || replay == "y") {
-                    
+
                     playAgain = true;
                     break;
 
                 } else if (replay == "no" || replay == "n") {
-                
+
                     playAgain = false;
                     break;
-                
-                } else { cout << "Invalid input. Please type 'yes' or 'no'.\n"; }
+
+                } else {
+
+                    cout.rdbuf(originalCoutBuffer);
+                    cout << "Invalid input. Please type 'yes' or 'no'.\n";
+                  
+                }
 
             }
 
-            if (playAgain) { cout << "\n\n=== RESTARTING SIMULATION ===\n"; }
-            else { cout << "\n=== END OF ALL SIMULATIONS ===\n"; }
-        
+            //Close log after each game
+            logFile.close();
+            cout << "\n[Driver] Simulation log has been saved to '" << logFileName << "'.\n";
+
+            if(playAgain){ cout << "\n\n=== RESTARTING SIMULATION ===\n"; }
+            else{ cout << "\n=== END OF ALL SIMULATIONS ===\n";}
         }
 
-    } else { std::cout << "\n[Driver] Simulation skipped. Exiting program.\n"; }
+    } else {
+
+        cout << "\n[Driver] Simulation skipped. Exiting program.\n";
+    
+    }
 
 }

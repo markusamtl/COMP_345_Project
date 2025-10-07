@@ -169,47 +169,66 @@ namespace WarzoneEngine {
 
     void GameEngine::assignCountries() {
 
-        //Get all territories from the map
+        // Get all territories from the map
         vector<Territory*> terrs = gameMap->getTerritories();
-        if(terrs.empty()){ return; }
+        if(terrs.empty()) { return; }
 
-        if(players.empty()){ return; } //Avoid division by zero
-        int terrPerPlayer = static_cast<int>(terrs.size() / (players.size() - 1)); //-1 to account for neutral player
+        if(players.empty()) { return; } // Avoid division by zero
+        int terrPerPlayer = static_cast<int>(terrs.size() / (players.size() - 1)); // -1 to account for neutral player
+
+        cout << "\n[Assignment] === Assigning Territories to Players ===\n";
 
         for(Player* p : players) {
-            
-            if(p == nullptr || p -> getPlayerName() == "Neutral"){ continue; } //Skip null players and neutral player
 
-            for(int i = 0; i < terrPerPlayer; i++) {
-                
-                //Get random territory
+            if (p == nullptr || p->getPlayerName() == "Neutral") { continue; } // Skip neutral player
+
+            cout << "[Assignment] " << p -> getPlayerName() << " receives: ";
+
+            for (int i = 0; i < terrPerPlayer && !terrs.empty(); i++) {
+
+                // Pick random available territory
                 size_t randomIndex = static_cast<size_t>(TimeUtil::getSystemTimeMillis() % terrs.size());
-                terrs[randomIndex] -> setNumArmies(1); //Set initial armies to 1
-                p -> addOwnedTerritories(terrs[randomIndex]); //Assign territory to player
-                terrs.erase(terrs.begin() + randomIndex); //Remove from available territories
+                Territory* selected = terrs[randomIndex];
 
+                if(selected == nullptr){ continue; } //Skip null territories
+
+                // Assign and deploy initial armies
+                p -> addOwnedTerritories(selected);
+
+                cout << selected -> getID(); //Print assigned territory
+                if(i < terrPerPlayer - 1 && terrs.size() > 1) cout << ", "; //Manage commas
+
+                terrs.erase(terrs.begin() + randomIndex); //Remove from available territories
+            
             }
 
-        }
-
-        //All extra territories that cannot be evenly assigned go to neutral player.
-
-        Player* neutralPlayer = findPlayerByName("Neutral"); //Get neutral player
-
-        // Handle leftover territories (if not divisible evenly)
-        while (!terrs.empty()) {
-
-            Territory* t = terrs.back(); //Get last territory
-            terrs.pop_back(); //Remove from available territories
-
-            //Get random player
-            t -> setNumArmies(1); //Set initial armies to 1
-            neutralPlayer -> addOwnedTerritories(t); //Assign territory to player
+            cout << "\n";
         
         }
 
-        return;
+        // Assign leftover territories to the Neutral player
+        Player* neutralPlayer = findPlayerByName("Neutral");
+        if(neutralPlayer && !terrs.empty()) { //If neutral player exists and there are leftover territories
 
+            cout << "[Assignment] Neutral player receives leftover territories: ";
+            
+            for(size_t i = 0; i < terrs.size(); i++) {
+                
+                Territory* t = terrs[i];
+                if(t == nullptr){ continue; }
+
+                neutralPlayer -> addOwnedTerritories(t);
+
+                cout << t -> getID(); //Print assigned territory
+                if (i < terrs.size() - 1) std::cout << ", "; //Manage commas
+            }
+            
+            cout << "\n";
+        
+        }
+
+        cout << "[Assignment] === Territory Assignment Complete ===\n";
+    
     }
 
     bool GameEngine::startAgain() {
@@ -403,49 +422,83 @@ namespace WarzoneEngine {
 
     string GameEngine::assignreinforcement() {
 
-        if(!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")){ return "Error: Current state is not assignreinforcement!"; }
-        if(!gameMap){ return "Error: No map object was provided"; }
+        if(!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) { 
+            
+            return "Error: Current state is not assignreinforcement!"; 
+        
+        }
+        
+        if(!gameMap) { return "Error: No map object was provided"; }
 
-        //For now, this method will just randomly assign armies to territories owned by players.
-        //In the future, this will be replaced by a proper reinforcement phase.
-        for(Player* p : players) {
+        cout << "\n[Reinforcement] === Assigning Reinforcements to Players ===\n";
 
-            if(p == nullptr || p -> getPlayerName() == "Neutral"){ //Skip null players and neutral player
-             
-                continue; 
+        for (Player* p : players) {
+
+            if (p == nullptr || p -> getPlayerName() == "Neutral") { continue; } // Skip null and neutral players
+
+            int numArmiesToDeploy = computeReinforcementFor(p); //Calculate reinforcements
+            if (numArmiesToDeploy <= 0) { continue; } //No reinforcements to deploy
+
+            cout << "[Reinforcement] " << p -> getPlayerName() << " has " << numArmiesToDeploy << " armies to deploy.\n";
+
+            int totNumTerrs = static_cast<int>(p -> getOwnedTerritories().size());
+            
+            if(totNumTerrs == 0) { //No territories owned, cannot deploy. This should never happen, but just in case.
+                
+                cout << "  (No owned territories — skipping)\n";
+                continue;
             
             }
 
-            //Get relevant player info, set up RNG
-
-            int numArmiesToDeploy = computeReinforcementFor(p);
-            //Note: A player in this loop will ALWAYS have at least 1 territory, as they will be removed upon loss in executeOrders().
-            int totNumTerrs = static_cast<int>(p -> getOwnedTerritories().size());
             int randomTerritoryIndex = 0;
             int randomArmiesDeployed = 0;
-            cout << "[" << p -> getPlayerName() << "] Reinforcements to deploy: " << numArmiesToDeploy << endl;
 
-            while(numArmiesToDeploy != 0) {
+            // Track deployed armies for summary output
+            unordered_map<string, int> deploymentSummary;
 
-                randomTerritoryIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % totNumTerrs); //Get random territory index
-                Territory* t = p -> getOwnedTerritories().getTerritories()[randomTerritoryIndex]; //Get that territory
-                if(t == nullptr){ continue; } //Skip null territories, should never happen
+            while(numArmiesToDeploy > 0) {
 
-                randomArmiesDeployed = static_cast<int>(TimeUtil::getSystemTimeNano() % numArmiesToDeploy); //Get preliminary random value
-                randomArmiesDeployed = max(1, randomArmiesDeployed); //At least 1 army must be deployed
+                randomTerritoryIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % totNumTerrs); //Pick random owned territory
+                Territory* t = p -> getOwnedTerritories().getTerritories()[randomTerritoryIndex]; 
+                if(t == nullptr){ continue; } //Skip null territories
 
-                t -> setNumArmies(t -> getNumArmies() + randomArmiesDeployed); //Add 1 army to that territory
-                numArmiesToDeploy -= randomArmiesDeployed; //Decrement armies left to deploy
-                randomArmiesDeployed = 0; //Reset for next iteration
+                // Random number between 1 and numArmiesToDeploy
+                randomArmiesDeployed = static_cast<int>(TimeUtil::getSystemTimeNano() % numArmiesToDeploy); //Get valid random number of armies 
+                randomArmiesDeployed = max(1, randomArmiesDeployed); //Ensure at least 1 army is deployed
+
+                t -> setNumArmies(t -> getNumArmies() + randomArmiesDeployed); //Deploy armies to territory
+                numArmiesToDeploy -= randomArmiesDeployed;
+
+                // Add to deployment summary
+                deploymentSummary[t -> getID()] += randomArmiesDeployed;
 
             }
 
+            // Print deployment breakdown for this player
+            cout << "  Deployment Summary:\n";
+            
+            for(const auto& [territoryID, deployed] : deploymentSummary) { //Best way to iterate over a hashmap in C++17
+
+                Territory* terr = gameMap -> getTerritoryByID(territoryID);
+                if(terr != nullptr) {
+                    
+                    cout << "    - " << territoryID  << ": +" << deployed << " (Total: " << terr->getNumArmies() << " armies)\n";
+                
+                }
+            
+            }
+
+            cout << "  => Reinforcements complete for " << p->getPlayerName() << ".\n\n";
+        
         }
+
+        cout << "[Reinforcement] === All Reinforcements Assigned ===\n";
 
         state = EngineState::IssueOrders;
         return "issue orders";
 
     }
+
 
     string GameEngine::issueorder() {
 
@@ -460,45 +513,58 @@ namespace WarzoneEngine {
             Order* issuedOrder = p -> getPlayerOrders() -> peek();
             
             //Get random numbers to help populate order info
-            int randomNumberOne = static_cast<int>(TimeUtil::getSystemTimeNano());
-            int randomNumberTwo = static_cast<int>(TimeUtil::getSystemTimeNano());
-            int randomNumberThree = static_cast<int>(TimeUtil::getSystemTimeNano());
+            long long randomNumberOne = TimeUtil::getSystemTimeNano();
+            long long randomNumberTwo = TimeUtil::getSystemTimeNano();
+            long long randomNumberThree = TimeUtil::getSystemTimeNano();
 
             switch(issuedOrder -> getOrderType()) {
                     
-                case(OrderType::Advance):{ //Player advances to a random territory
+                case (OrderType::Advance): { // Player advances to a random territory
+
+                    vector<Territory*> candidateSources = p -> getSourcesWithManyArmies(); // Only territories with >1 army
+                    if (candidateSources.empty()) {cout << "bp1"; break; } // No valid source territories
+
+                    Territory* sourceTerr = candidateSources[randomNumberOne % candidateSources.size()]; // Pick one randomly
+                    if(sourceTerr == nullptr) { cout << "bp2";break; }
+
+                    vector<Territory*> neighbors = sourceTerr->getNeighbors();
+                    if(neighbors.empty()) { cout << "bp3"; break; } // No neighbors, cannot advance
+
+                    Territory* targetTerr = neighbors[randomNumberTwo % neighbors.size()]; // Random neighbor
+                    if(targetTerr == nullptr) { cout << "bp4";break; }
+
+                    Player* targetPlayer = targetTerr -> getOwner();
+                    if(targetPlayer == nullptr) { cout << "bp5";break; } // Should not happen
+
+                    int armiesAvailable = sourceTerr -> getNumArmies();
+                    int numArmiesToMove = 0;
+
+                    if(armiesAvailable == 2) { numArmiesToMove = 1; }
+                    // Move at least 1, leave 1 behind
+                    else { numArmiesToMove = static_cast<int>(1 + (randomNumberThree % static_cast<long long>(armiesAvailable - 1))); }
                     
-                    vector<Territory*> ownedTerrs = p -> getOwnedTerritories().getTerritories(); //Get all of the player's territories
-                    if(ownedTerrs.empty()){ break; } //Should never happen, but just in case
-
-                    Territory* sourceTerr = ownedTerrs[randomNumberOne % ownedTerrs.size()]; //Random owned territory
-                    vector<Territory*> neighbors = sourceTerr -> getNeighbors(); //Get neighbors of that territory
-                    if(neighbors.empty()){ break; } //No neighbors, cannot advance. Should not happen, but just in case
-
-                    Territory* targetTerr = neighbors[randomNumberTwo % neighbors.size()]; //Random neighbor territory
-                    Player* targetPlayer = targetTerr -> getOwner(); //Get owner of that territory
-                    if(targetPlayer == nullptr){ break; } //Should never happen, but just in case
-
-                    int numArmiesToMove = (randomNumberThree % sourceTerr -> getNumArmies()); //At least 1 army, at most all armies
-                    if(numArmiesToMove <= 0){ break; } //Should never happen, but just in case
+                    if(numArmiesToMove <= 0 || numArmiesToMove >= armiesAvailable) { 
+                       cout << "bp6"; break; 
+                    }
 
                     Advance* advanceOrder = new Advance(p, sourceTerr, targetTerr, numArmiesToMove);
+                    if(advanceOrder != nullptr) {
 
-                    if(advanceOrder != nullptr){
+                        OrderList* playerOrders = p->getPlayerOrders();
+                        if(playerOrders == nullptr) { break; }
 
-                        OrderList* playerOrders = p -> getPlayerOrders();
-                        if(playerOrders == nullptr){ break; } //Should never happen, but just in case
-
-                        playerOrders -> replaceOrder(issuedOrder, advanceOrder); //Replace the empty order with a real one
-
+                        playerOrders->replaceOrder(issuedOrder, advanceOrder);
                     }
-                    
+
                 } break;
+
 
                 case(OrderType::Bomb): { //Player bombs a random enemy territory
 
                     // Collect candidate target territories (owned by another player)
                     vector<Territory*> candidateTargets = p -> getBombCandidates();
+
+                    if (candidateTargets.empty()) { break; } // No valid bombing targets — skip this order
                 
                     Territory* randomTarget = candidateTargets[randomNumberOne % candidateTargets.size()]; //Random target territory
                     if(randomTarget == nullptr){ break; } //Should never happen, but just in case
@@ -538,22 +604,22 @@ namespace WarzoneEngine {
                 
                 case(OrderType::Airlift): { //Player airlifts between two random owned territories
 
-                    vector<Territory*> ownedTerrs = p -> getOwnedTerritories().getTerritories(); //Get all of the player's territories
-                    if(ownedTerrs.size() < 2){ break; } //Need at least 2 territories to airlift
+                    PlayerTerrContainer PlayerContainer(p -> getOwnedTerritories()); //Get a copy of the player's territory container
+                    vector<Territory*> terrCopy = PlayerContainer.getTerritories(); //Extract the territories from the copied container
+                    if(terrCopy.size() < 2){ break; } //Need at least 2 territories to airlift
 
-                    Territory* sourceTerr = ownedTerrs[randomNumberOne % ownedTerrs.size()]; //Random owned territory
-                    Territory* targetTerr = sourceTerr; //Initialize target to source
+                    vector<Territory*> candidateSources = p -> getSourcesWithManyArmies(); // Only territories with >1 army
+                    if (candidateSources.empty()) { break; } // No valid source territories
 
-                    //Keep picking a random target until it's different from the source
-                    while(targetTerr -> getNumericTerrID() == sourceTerr -> getNumericTerrID()) {
-                        
-                        randomNumberTwo = static_cast<int>(TimeUtil::getSystemTimeNano()); //Get new random number every pass
-                        targetTerr = ownedTerrs[randomNumberTwo % ownedTerrs.size()]; //Random owned territory
+                    Territory* sourceTerr = candidateSources[randomNumberOne % candidateSources.size()]; //Random source territory
                     
-                    }
+                    terrCopy.erase(std::remove(terrCopy.begin(), terrCopy.end(), sourceTerr), terrCopy.end()); //Remove source from total territories
+
+                    Territory* targetTerr = (terrCopy)[randomNumberTwo % terrCopy.size()]; //Random target territory
 
                     //At least 1 army, at most all armies - 1 (need to leave at least 1 behind)
-                    int numArmiesToMove = max(1, (randomNumberThree % sourceTerr -> getNumArmies()) - 1);
+                    long long randNumArmiesToMove = randomNumberThree % (sourceTerr -> getNumArmies() - 1);
+                    int numArmiesToMove = max(1, static_cast<int>(randNumArmiesToMove));
                     if(numArmiesToMove <= 0){ break; } //Should never happen, but just in case
 
                     Airlift* airliftOrder = new Airlift(p, sourceTerr, targetTerr, numArmiesToMove);
@@ -650,18 +716,33 @@ namespace WarzoneEngine {
                 
                 Order* o = orders-> peek(); //Get the first order
                 
+                if(!(o -> validate())) { //Order is invalid
+                    
+                    cout << "[" << p -> getPlayerName() << "] Invalid order: " << *o << ". Skipping execution." << endl;
+                    orders -> removeOrder(0); //Remove invalid order
+                    continue; //Skip to next order
+                
+                }
+
                 if(o != nullptr) {
                     
                     cout << "[" << p -> getPlayerName() << "] Executes: " << *o << endl;
                     o -> execute();
+                    orders -> removeOrder(0); //Remove executed order
                 
                 }
 
-                orders -> removeOrder(0);
             }
 
             cout << "[" << p -> getPlayerName() << "] has finished executing orders." << endl;
         
+        }
+
+        // ---------------------------- Clearing Truces -----------------------------
+        for(Player* p: players){
+
+            p -> clearNeutralEnemies(); //Clear out neutral enemy list at the end of every turn
+
         }
 
         // ---------------------------- Eliminate Players ----------------------------
@@ -669,7 +750,7 @@ namespace WarzoneEngine {
 
             Player* p = *it; //Dereference iterator to get player
 
-            if(p == nullptr || p->getPlayerName() == "Neutral") {
+            if(p == nullptr || p -> getPlayerName() == "Neutral") { //Make SURE that neutral cant be eliminated
                 it++;
                 continue;
             }
@@ -703,6 +784,38 @@ namespace WarzoneEngine {
         }
 
         // ---------------------------- Win Condition Check ----------------------------
+
+        int activePlayers = 0;
+        Player* potentialWinner = nullptr;
+        bool hasWon = false;
+        bool controlsMap = false;
+
+        //First Check: If there's only 1 non-neutral player on the map
+        for(Player* p : players) { 
+
+            //Skip null and neutral players
+            if(p == nullptr){ continue; }
+            if(p -> getPlayerName() == "Neutral"){ continue; }
+
+            int terrCount = static_cast<int>(p -> getOwnedTerritories().size()); //Get size of territories that player owns
+            if (terrCount > 0) { //See if a player has more than 1 territories
+                
+                activePlayers++;
+                potentialWinner = p;
+
+            }
+
+        }
+
+        //Set hasWon flag true
+        if(activePlayers == 1 && potentialWinner != nullptr) { 
+            
+            hasWon = true;
+            currentPlayer = potentialWinner;
+
+        }
+
+        //Second Check: See if the player who won controls the entire map
         const unordered_map<Continent*, long long>& refTable = gameMap -> getContinentLookupTable(); //Get reference table from map
 
         for(Player* p : ordered) {
@@ -712,15 +825,11 @@ namespace WarzoneEngine {
             
             if(find(toDelete.begin(), toDelete.end(), p) != toDelete.end()){ continue; }//Skip players marked for deletion
 
-            if(p -> hasWon(refTable)) { //Only ONE Winner
+            if(p -> controlsMap(refTable)) {
 
                 currentPlayer = p;
-                state = EngineState::Win;
-
-                // Log the winner
-                cout << "\n=== WINNER DETECTED ===" << endl;
-                cout << "[" << p -> getPlayerName() << "] controls all continents!" << endl;
-                return "win";
+                controlsMap = true;
+                break;
 
             }
         
@@ -731,7 +840,7 @@ namespace WarzoneEngine {
             
             if(dead != nullptr) {
 
-                cout << "[Cleanup] Deleting player object for " << dead->getPlayerName() << endl;
+                cout << "[Cleanup] Deleting player object for " << dead -> getPlayerName() << endl;
                 delete dead;
 
             }
@@ -741,11 +850,32 @@ namespace WarzoneEngine {
         toDelete.clear();
 
         // ---------------------------- Phase Transition ----------------------------
+
+        if(hasWon && controlsMap) {
+
+            state = EngineState::Win;
+
+            // Log the winner
+            cout << "\n=== WINNER DETECTED ===" << endl;
+            cout << "[" << currentPlayer -> getPlayerName() << "] controls all continents!" << endl;
+            return "win";       
+
+        } else if(hasWon) {
+
+            state = EngineState::Win;
+
+            // Log the winner
+            cout << "\n=== WINNER DETECTED ===" << endl;
+            cout << "[" << currentPlayer -> getPlayerName() << "] has eliminated all enemy players!" << endl;
+            return "win";  
+
+        }
+
         state = EngineState::AssignReinforcement;
         cout << "Assignment Reinforcement phase has been completed, moving on to next phase" << endl;
         return "endexecuteorder";
-    }
 
+    }
 
     string GameEngine::endExecuteOrder() {
 

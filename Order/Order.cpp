@@ -275,7 +275,9 @@ namespace WarzoneOrder {
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
            << " moves " << numArmies << " armies " //Get number of armies
            << "from " << (source ? source -> getID() : "Unknown Source") //Get source territory
+           << ", owned by: " << (source ? source -> getOwner() -> getPlayerName() : "Unknown Player")
            << " to " << (target ? target -> getID() : "Unknown Target") //Get target territory
+           << ", owned by: " << (target ? target -> getOwner() -> getPlayerName() : "Unknown Player")
            << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
 
     }
@@ -309,7 +311,7 @@ namespace WarzoneOrder {
         //Player must have enough armies, or the number of armies they use must be geq 0
         if(numArmies <= 0 || source -> getNumArmies() < numArmies) { return false; }
 
-        // Any advance order requires the target to be adjacent to the source
+        //Any advance order requires the target to be adjacent to the source
         vector<Territory*> neighbors = source -> getNeighbors();
 
         //Check if the target territory is a neighbour of the source territory
@@ -319,7 +321,7 @@ namespace WarzoneOrder {
         //Check if the attacker has a truce with the defender
         Player* defender = target -> getOwner();
         
-        if (defender != nullptr) {
+        if(defender != nullptr) {
 
             const vector<string>& neutrals = issuer->getNeutralEnemies();
 
@@ -487,7 +489,7 @@ namespace WarzoneOrder {
             target -> setNumArmies(defendersRemaining);
 
             this->setEffect("Advance battle failed: defender " +
-                            oldOwnerName + " beat " + issuer -> getPlayerName() + ", and holds onto"
+                            oldOwnerName + " beat " + issuer -> getPlayerName() + ", and holds onto "
                             + target -> getID() + " with " +
                             to_string(defendersRemaining) + " armies remaining.");
 
@@ -541,6 +543,8 @@ namespace WarzoneOrder {
         os << "Bomb Order: "
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
            << " bombs " << (target ? target -> getID() : "Unknown Territory") //Get target territory name
+           << ", owned by " << (target && target -> getOwner() ? target -> getOwner() -> getPlayerName() : "Unknown Player") //Get target territory owner
+           << ". This territory has " << (target ? to_string(target -> getNumArmies()) : "Unknown") << " armies on it" //Get number of armies
            << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
 
     }
@@ -566,7 +570,22 @@ namespace WarzoneOrder {
         if(target -> getOwner() == issuer) { return false; }
 
         //Can't bomb a territory with only 1 army.
-        if(target -> getNumArmies() == 1) { return false; }
+        if(target -> getNumArmies() <= 1) { return false; }
+
+        //Check if the attacker has a truce with the defender
+        Player* defender = target -> getOwner();
+        
+        if(defender != nullptr) {
+
+            const vector<string>& neutrals = issuer->getNeutralEnemies();
+
+            if(find(neutrals.begin(), neutrals.end(), defender->getPlayerName()) != neutrals.end()) { //Search through list of neutral enemies
+
+                return false;
+            
+            }
+        
+        }
 
         //Target must be adjacent to at least one of issuer's territories
         const auto& ownedTerritories = issuer -> getOwnedTerritories().getTerritories(); //Get player's territories
@@ -653,8 +672,9 @@ namespace WarzoneOrder {
 
         os << "Blockade Order: "
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
-           << " blockades " << (target ? target -> getID() : "Unknown Territory") //Get target territory
-           << ". Territory is transferred to a neutral player, " 
+           << " tries to blockade " << (target ? target -> getID() : "Unknown Territory") //Get target territory
+           << ". They have " << issuer -> getOwnedTerritories().size() << " territory/territories"
+           << ". Territory is attempted to be transferred to a neutral player, " 
            << (neutralPlayer ? neutralPlayer -> getPlayerName() : "UNKNOWN NAME") //Get neutral player
            << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
 
@@ -682,6 +702,9 @@ namespace WarzoneOrder {
 
         //Target must belong to the issuing player
         if(target -> getOwner() != issuer) { return false; }
+
+        //Player must own more than 1 territory. They would make themselves lose otherwise
+        if(issuer -> getOwnedTerritories().getTerritories().size() <= 1) { return false; }
 
         return true;
 

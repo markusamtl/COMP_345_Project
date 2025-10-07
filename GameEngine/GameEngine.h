@@ -23,6 +23,7 @@ namespace WarzoneEngine {
     using WarzoneMap::Territory;
     using WarzoneMap::Continent;
 
+    using WarzonePlayer::PlayerTerrContainer;
     using WarzonePlayer::Player;
 
     using WarzoneOrder::OrderList;

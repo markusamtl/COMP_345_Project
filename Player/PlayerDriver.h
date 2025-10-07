@@ -9,4 +9,8 @@ using namespace WarzonePlayer;
 using namespace WarzoneOrder;
 using namespace WarzoneMap;
 
+/**
+ * @brief Test function for the Player module.
+ * Demonstrates player creation, territory assignment, and order issuing.
+ */
 void testPlayer();

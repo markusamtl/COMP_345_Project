@@ -27,28 +27,9 @@ sudo apt install g++ cmake make valgrind
 
 This **SHOULD** be successful.
 
-To run the drivers, run the following commands:
+To run the driver, run the following commands:
 
-MAP:
+MAIN DRIVER:
 
-Without Valgrind: ./map_driver
-With Valgrind: make run_map_valgrind
-
-PLAYER:
-
-Without Valgrind: ./player_driver
-With Valgrind: make run_player_valgrind
-
-ORDER:
-
-Without Valgrind: ./order_driver
-With Valgrind: make run_order_valgrind  
-
-CARD:
-
-Without Valgrind: ./card_driver
-With Valgrind: make run_card_valgrind
-
-GAMEENGINE:
-Without Valgrind: ./game_engine_driver
-With Valgrind: make run_engine_valgrind
+Without Valgrind: ./main_driver
+With Valgrind: make run_main_valgrind

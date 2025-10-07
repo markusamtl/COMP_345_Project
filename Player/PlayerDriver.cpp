@@ -150,12 +150,6 @@ void testPlayer() {
     delete alice;
     delete bob;
     delete gameMap;
-
-}
-
-int main() {
-
-    testPlayer();
-    return 0;
+    delete deck;
 
 }

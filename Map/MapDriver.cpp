@@ -232,10 +232,3 @@ void testLoadMaps() {
     delete gameMap;
 
 }
-
-int main() {
-
-    testLoadMaps();
-    return 0;
-
-}

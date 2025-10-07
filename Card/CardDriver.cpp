@@ -64,10 +64,3 @@ void testCards() {
     delete deck;
 
 }
-
-int main() {
-
-    testCards();
-    return 0;
-
-}

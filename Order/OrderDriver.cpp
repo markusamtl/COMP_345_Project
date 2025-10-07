@@ -207,10 +207,3 @@ void testOrderList() {
     delete gameMap;
 
 }
-
-int main() {
-
-    testOrderList();
-    return 0;
-
-}

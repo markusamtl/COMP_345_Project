@@ -1,90 +1,56 @@
 cmake_minimum_required(VERSION 3.10)
 project(COMP_345_Project LANGUAGES CXX)
 
-# Set C++ standard and warnings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -g")
 
-# Include root directory so #include "Map/Map.h" etc. works
+# Common warnings/symbols for both builds
+add_compile_options(-Wall -Wextra -g)
+
+# Allow includes like #include "Map/Map.h"
 include_directories(${CMAKE_SOURCE_DIR})
 
-# ================== MAP DRIVER ==================
-add_executable(map_driver
-    Map/Map.cpp 
-    Player/Player.cpp 
-    Order/Order.cpp 
-    Card/Card.cpp 
-    Map/MapDriver.cpp
-)
+# ---- Shared sources (NO files with their own main()) ----
+set(SOURCES_COMMON
+    MainDriver.cpp
 
-# ================== PLAYER DRIVER ==================
-add_executable(player_driver
-    Player/Player.cpp
-    Order/Order.cpp 
-    Map/Map.cpp 
-    Card/Card.cpp 
-    Player/PlayerDriver.cpp
-)
-
-# ================== ORDER DRIVER ==================
-add_executable(order_driver
-    Order/Order.cpp 
-    Player/Player.cpp 
-    Card/Card.cpp 
-    Map/Map.cpp 
-    Order/OrderDriver.cpp
-)
-
-# ================== CARD DRIVER ==================
-add_executable(card_driver
-    Card/Card.cpp 
-    Order/Order.cpp 
-    Player/Player.cpp 
-    Map/Map.cpp 
-    Card/CardDriver.cpp
-)
-# ================== GAME ENGINE DRIVER ==================
-add_executable(game_engine_driver
-    GameEngine/GameEngine.cpp
-    GameEngine/GameEngineDriver.cpp
+    # Module Implementations
     Map/Map.cpp
     Player/Player.cpp
     Order/Order.cpp
     Card/Card.cpp
+    GameEngine/GameEngine.cpp
+
+    # Test functions (ensure these files do NOT define main())
+    Map/MapDriver.cpp
+    Player/PlayerDriver.cpp
+    Order/OrderDriver.cpp
+    Card/CardDriver.cpp
+    GameEngine/GameEngineDriver.cpp
 )
 
-# ================== CUSTOM TARGETS FOR VALGRIND ==================
+# ---- Normal run target: -O2 ----
+add_executable(main_driver ${SOURCES_COMMON})
+target_compile_options(main_driver PRIVATE -O2)
+
+# ---- Valgrind target binary: -O3 ----
+add_executable(main_driver_vg ${SOURCES_COMMON})
+target_compile_options(main_driver_vg PRIVATE -O3)
+
+# ---- Convenience run targets ----
+add_custom_target(run
+    COMMAND ./main_driver
+    DEPENDS main_driver
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Running main_driver (built with -O2)..."
+)
+
 find_program(VALGRIND_EXECUTABLE valgrind)
-
 if (VALGRIND_EXECUTABLE)
-    add_custom_target(run_map_valgrind
-        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./map_driver
-        DEPENDS map_driver
+    add_custom_target(run_main_valgrind
+        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./main_driver_vg
+        DEPENDS main_driver_vg
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-
-    add_custom_target(run_player_valgrind
-        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./player_driver
-        DEPENDS player_driver
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-
-    add_custom_target(run_order_valgrind
-        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./order_driver
-        DEPENDS order_driver
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-
-    add_custom_target(run_card_valgrind
-        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./card_driver
-        DEPENDS card_driver
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-
-    add_custom_target(run_engine_valgrind
-        COMMAND ${VALGRIND_EXECUTABLE} --leak-check=full -s --track-origins=yes ./game_engine_driver
-        DEPENDS game_engine_driver
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        COMMENT "Running main_driver_vg (built with -O3) under Valgrind..."
     )
 endif()

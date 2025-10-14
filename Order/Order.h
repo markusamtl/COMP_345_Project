@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 #include <chrono>
+#include <utility>
 
 #include "../Player/Player.h"
-
 
 namespace WarzonePlayer { class Player; } //Forward declaration
 using namespace std;
@@ -176,6 +176,12 @@ namespace WarzoneOrder {
         OrderType getOrderType() const;
 
         /**
+         * @brief Returns the order type as a human-readable string.
+         * @return The name of the order type ("Deploy", "Advance", "Bomb", etc.).
+         */
+        string getOrderTypeString() const;
+
+        /**
          * @brief Set the type of this order.
          * @param t The new OrderType value to assign.
          */
@@ -225,7 +231,7 @@ namespace WarzoneOrder {
          * @see Airlift::validate()
          * @see Negotiate::validate()
          */
-        virtual bool validate() const = 0;
+        virtual pair<bool, string> validate() const = 0;
 
         /**
          * @brief Execute method (pure virtual).
@@ -345,9 +351,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the target belongs to the player, false otherwise.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -472,12 +478,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the order follows game rules:
-             * - The source belongs to the player
-             * - The player has enough armies
-             * - The source and target are adjacent.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -574,10 +577,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the order follows game rules:
-             * - The target does not belong to the issuing player.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -687,10 +689,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the order follows game rules:
-             *         - The target territory belongs to the issuing player.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -815,11 +816,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the order follows game rules:
-             * - Both source and target territories belong to the player.
-             * - The source has enough armies to allow for redployment of armies.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -919,9 +918,9 @@ namespace WarzoneOrder {
 
             /**
              * @brief Validate the order.
-             * @return True if the target player is valid and not the same as the issuer.
+             * @return True if the order is valid, string for method output as string
              */
-            bool validate() const override;
+            pair<bool, string> validate() const override;
 
             /**
              * @brief Execute the order.
@@ -1072,6 +1071,13 @@ namespace WarzoneOrder {
              * @return Pointer to the first order in the list
              */
             Order* peek() const;
+
+            /**
+             * @brief Get last order
+             * 
+             * @return Pointer to the last order in the list
+             */
+            Order* back() const;
 
             /**
              * @brief Get the number of Orders in the list.

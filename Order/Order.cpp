@@ -112,6 +112,23 @@ namespace WarzoneOrder {
 
     OrderType Order::getOrderType() const { return this -> orderType; }
 
+    string Order::getOrderTypeString() const {
+
+        switch (orderType) {
+
+            case(OrderType::Deploy): return "Deploy";
+            case(OrderType::Advance): return "Advance";
+            case(OrderType::Bomb): return "Bomb";
+            case(OrderType::Blockade): return "Blockade";
+            case(OrderType::Airlift): return "Airlift";
+            case(OrderType::Negotiate): return "Negotiate";
+            default: return "Unknown";
+
+        }
+
+    }
+
+
     void Order::setOrderType(OrderType t) { this -> orderType = t; }
 
     const string& Order::getEffect() const { return this -> effect; }
@@ -132,9 +149,32 @@ namespace WarzoneOrder {
         this -> issuer = p;
         this -> target = t;
         this -> numArmies = armies;
-        this -> effect = "";
+
+        //Safety checks to prevent invalid dereferencing
+        if(p == nullptr && t == nullptr){
+
+            this -> effect = "Invalid Deploy order: issuer and target are null.";
+            return;
+
+        } else if(p == nullptr){
+
+            this -> effect = "Invalid Deploy order: issuer is null.";
+            return;
+
+        } else if(t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to deploy to a null territory.";
+            return;
+
+        }
+
+        //Construct the descriptive effect string safely
+        this -> effect = "Player " + p -> getPlayerName() + " deploys " 
+                        + to_string(armies) + " army/armies to territory " 
+                        + t -> getID() + ".";
 
     }
+
 
     //When order is deleted, it should NOT remove any other pointers, since they still exist
     Deploy::~Deploy() = default;
@@ -167,8 +207,7 @@ namespace WarzoneOrder {
         os << "Deploy Order: "
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
            << " deploys to " << (target ? target -> getID() : "Unknown Territory") //Get target territory name
-           << " with " << numArmies
-           << " armies. Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << " with " << numArmies;
 
     }
 
@@ -187,27 +226,55 @@ namespace WarzoneOrder {
 
     Order* Deploy::clone() const { return new Deploy(*this); }
 
-    bool Deploy::validate() const {
+    pair<bool, string> Deploy::validate() const {
+
+        ostringstream output;
 
         //Check if either the territory or the player are null pointers
-        if(issuer == nullptr || target == nullptr){ return false; } 
+        if(issuer == nullptr || target == nullptr){ 
+        
+            return {false, "[IssueOrder] This deploy order is invalid, at least one inputted pointer (issuer/target) is null."}; 
+        
+        } 
 
         // Territory must belong to the issuing player
-        if(target -> getOwner() != issuer){ return false; }
+        if(target -> getOwner() != issuer){
+
+
+            output << "[IssueOrder] This deploy order is invalid, target territory "
+                   << target -> getID() << " is owned not owned by the issuer, "
+                   << issuer -> getPlayerName()
+                   << ". It is owned by "
+                   << (target -> getOwner() ? target -> getOwner() -> getPlayerName() : "an unknown player")
+                   << ".";
+
+            return {false, output.str()}; 
+
+        }
 
         // Army count must be positive
-        if(numArmies <= 0){ return false; }
+        if(numArmies <= 0){ 
 
-        return true; //Return true if all conditions are met
+            output << "[IssueOrder] This deploy order is invalid, target territory "
+                   << target -> getID() << " does not contain a sufficent number of armies ("
+                   << to_string(target -> getNumArmies())
+                   << ").";
+            
+            return {false, output.str()}; 
+
+        }
+
+        return {true, "[IssueOrder] This deploy order is valid"}; //Return true if all conditions are met
 
     }
 
     void Deploy::execute() {
 
-        if (!this->validate()) {
+        pair<bool, string> validateResults = validate();
 
-            this->setEffect("Deploy order invalid.");
-            cout << this->getEffect() << endl;
+        if(validateResults.first == false) {
+
+            this -> setEffect(validateResults.second);
             return;
 
         }
@@ -218,10 +285,8 @@ namespace WarzoneOrder {
         // --- Safeguard: ensure target is tracked by issuer ---
         if (!issuer->getOwnedTerritories().owns(target)) { issuer->addOwnedTerritories(target); }
 
-        this->setEffect("Deploy successful: placed " + to_string(numArmies) +
+        this -> setEffect("Deploy successful: placed " + to_string(numArmies) +
                         " armies on " + target->getID() + ".");
-
-        cout << this->getEffect() << endl;
 
     }
 
@@ -237,7 +302,29 @@ namespace WarzoneOrder {
         this -> source = s;
         this -> target = t;
         this -> numArmies = armies;
-        this -> effect = "";
+
+        //Safety checks to prevent invalid dereferencing
+        if(s == nullptr && t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to advance from and to null territories.";
+            return;
+
+        } else if(s == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to advance from a null source territory.";
+            return;
+
+        } else if(t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to advance to a null target territory.";
+            return;
+
+        }
+
+        //Construct effect string safely
+        this -> effect = "Player " + p -> getPlayerName() + " intends to move " 
+                        + to_string(armies) + " army/armies, from " 
+                        + s -> getID() + ", to " + t -> getID() + ".";
 
     }
 
@@ -250,6 +337,7 @@ namespace WarzoneOrder {
         this -> source = other.source;
         this -> target = other.target;
         this -> numArmies = other.numArmies;
+        this -> effect = other.effect;
 
     }
 
@@ -262,7 +350,8 @@ namespace WarzoneOrder {
             this -> source = other.source;
             this -> target = other.target;
             this -> numArmies = other.numArmies;
-
+            this -> effect = other.effect;
+        
         }
 
         return *this;
@@ -277,8 +366,7 @@ namespace WarzoneOrder {
            << "from " << (source ? source -> getID() : "Unknown Source") //Get source territory
            << ", owned by: " << (source ? source -> getOwner() -> getPlayerName() : "Unknown Player")
            << " to " << (target ? target -> getID() : "Unknown Target") //Get target territory
-           << ", owned by: " << (target ? target -> getOwner() -> getPlayerName() : "Unknown Player")
-           << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << ", owned by: " << (target ? target -> getOwner() -> getPlayerName() : "Unknown Player");
 
     }
 
@@ -300,50 +388,89 @@ namespace WarzoneOrder {
 
     Order* Advance::clone() const { return new Advance(*this); }
 
-    bool Advance::validate() const {
+    pair<bool, string> Advance::validate() const {
+
+        ostringstream output; // Collect validation details
 
         //Check if either of the territories, or the player, are null pointers
-        if(issuer == nullptr || source == nullptr || target == nullptr) { return false; }
+        if(issuer == nullptr || source == nullptr || target == nullptr) { 
+            
+            return { false, "[IssueOrder] This advance order is invalid: one or more inputted pointers (issuer/source/target) are null." }; 
+        
+        }
 
         //Player must own the source territory
-        if(source -> getOwner() != issuer){ return false; }
+        if(source -> getOwner() != issuer){ 
+
+            output << "[IssueOrder] This advance order is invalid: source territory "
+                   << source -> getID() << " is not owned by the issuing player "
+                   << issuer -> getPlayerName() << ". It is owned by "
+                   << (source -> getOwner() ? source -> getOwner() -> getPlayerName() : "an unknown player")
+                   << ".";
+
+            return { false, output.str() }; 
+
+        }
 
         //Player must have enough armies, or the number of armies they use must be geq 0
-        if(numArmies <= 0 || source -> getNumArmies() < numArmies) { return false; }
+        if(numArmies <= 0 || source -> getNumArmies() < numArmies) { 
+
+            output << "[IssueOrder] This advance order is invalid: attempted to move "
+                   << numArmies << " armies, but source territory "
+                   << source -> getID() << " only has "
+                   << source -> getNumArmies() << " armies available.";
+
+            return { false, output.str() }; 
+
+        }
 
         //Any advance order requires the target to be adjacent to the source
         vector<Territory*> neighbors = source -> getNeighbors();
 
         //Check if the target territory is a neighbour of the source territory
         bool isAdjacent = (find(neighbors.begin(), neighbors.end(), target) != neighbors.end());
-        if(!isAdjacent) { return false; }
+        if(!isAdjacent) { 
+
+            output << "[IssueOrder] This advance order is invalid: target territory "
+                   << target -> getID() << " is not adjacent to source territory "
+                   << source -> getID() << ".";
+
+            return { false, output.str() }; 
+
+        }
 
         //Check if the attacker has a truce with the defender
         Player* defender = target -> getOwner();
         
         if(defender != nullptr) {
 
-            const vector<string>& neutrals = issuer->getNeutralEnemies();
+            const vector<Player*>& neutrals = issuer -> getNeutralEnemies(); //List of players under truce
 
-            if(find(neutrals.begin(), neutrals.end(), defender->getPlayerName()) != neutrals.end()) { //Search through list of neutral enemies
+            //If the defender is in the neutral list, advancing is invalid
+            if(find(neutrals.begin(), neutrals.end(), defender) != neutrals.end()) { 
 
-                return false;
+                output << "[IssueOrder] This advance order is invalid: the issuer ("
+                       << issuer -> getPlayerName() << ") currently has a truce with "
+                       << defender -> getPlayerName() << ", and cannot attack them.";
+
+                return { false, output.str() }; 
             
             }
         
         }
 
-        return true;
-        
+        return { true, "[IssueOrder] This advance order is valid." };
+
     }
+
 
     void Advance::execute() {
 
         // --- 1. Validate ownership and adjacency ---
-        if(!this -> validate()) {
+        pair<bool, string> validateResults = validate();
+        if(!validateResults.first) {
 
-            this -> setEffect("Advance order invalid.");
-            cout << this -> getEffect() << endl;
+            this -> setEffect(validateResults.second);
             return;
 
         }
@@ -352,7 +479,6 @@ namespace WarzoneOrder {
         if(source -> getOwner() != issuer) {
 
             this -> setEffect("Advance failed: source territory not owned by issuer.");
-            cout << this -> getEffect() << endl;
             return;
 
         }
@@ -364,7 +490,6 @@ namespace WarzoneOrder {
         if(find(neighbors.begin(), neighbors.end(), target) == neighbors.end()){
 
             this -> setEffect("Advance failed: target territory is not adjacent.");
-            cout << this -> getEffect() << endl;
             return;
 
         }
@@ -374,8 +499,7 @@ namespace WarzoneOrder {
 
             if (source->getNumArmies() <= 1) { //1 Army MUST remain on the source 
 
-                this->setEffect("Advance failed: Not enough armies to advance with.");
-                cout << this->getEffect() << endl;
+                this -> setEffect("Advance failed: Not enough armies to advance with.");
                 return;
                 
             }
@@ -393,8 +517,6 @@ namespace WarzoneOrder {
                             " armies from " + source -> getID() +
                             " to " + target -> getID() + ".");
 
-            cout << this->getEffect() << endl;
-
             return;
         
         }
@@ -404,7 +526,6 @@ namespace WarzoneOrder {
         if(source -> getNumArmies() <= 1) { //1 Army MUST remain on the source 
 
             this -> setEffect("Advance failed: Not enough armies to attack with.");
-            cout << this -> getEffect() << endl;
             return;
 
         }
@@ -457,25 +578,25 @@ namespace WarzoneOrder {
         Player* oldOwner = target->getOwner(); //Get old conquered territory owner
         string oldOwnerName = (oldOwner ? oldOwner -> getPlayerName() : "Unknown Player");
 
-        if (defendersRemaining <= 0) {
+        if(defendersRemaining <= 0) {
 
-            if (attackersRemaining > 1) { // Successful conquest
+            if(attackersRemaining > 1) { // Successful conquest
 
                 //Transfer ownership
-                issuer->addOwnedTerritories(target);
-                target->setNumArmies(attackersRemaining);
+                issuer -> addOwnedTerritories(target);
+                target -> setNumArmies(attackersRemaining);
 
-                issuer->setGenerateCardThisTurn(true); // Attacker earns a card at turn end
+                issuer -> setGenerateCardThisTurn(true); //Attacker earns a card at turn end
 
-                this->setEffect("Advance battle successful: " + issuer->getPlayerName() +
-                                " defeated " + oldOwnerName +
-                                ", and conquered " + target->getID() + " with " +
-                                to_string(attackersRemaining) + " surviving armies.");
+                this -> setEffect("Advance battle successful: " + issuer->getPlayerName() +
+                                  " defeated " + oldOwnerName +
+                                  ", and conquered " + target->getID() + " with " +
+                                  to_string(attackersRemaining) + " surviving armies.");
 
-            } else { // Edge case: attacker “wins” but can’t move in
+            } else { //Edge case: attacker “wins” but can’t move in
 
                 defendersRemaining = 1;
-                target->setNumArmies(defendersRemaining);
+                target -> setNumArmies(defendersRemaining);
 
                 this->setEffect("Advance battle inconclusive: " +
                                 issuer->getPlayerName() + " tried to beat " + oldOwnerName +
@@ -495,11 +616,7 @@ namespace WarzoneOrder {
 
         }
 
-        cout << this -> getEffect() << endl;
-
     }
-
-
 
     // ================= Bomb ================= //
 
@@ -510,9 +627,33 @@ namespace WarzoneOrder {
         this -> orderType = OrderType::Bomb;
         this -> issuer = p;
         this -> target = t;
-        this -> effect = "";
+
+        //Safety checks to avoid invalid memory access
+        if(t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to bomb a null target.";
+            return;
+
+        }
+
+        Player* targetOwner = t -> getOwner();
+
+        if(targetOwner == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to bomb an unowned territory (ID: " 
+                        + t -> getID() + ").";
+            return;
+
+        }
+
+        //Build the descriptive effect string
+        this -> effect = "Player " + p -> getPlayerName() + " intends to bomb "
+            + targetOwner -> getPlayerName() + " on territory "
+            + t -> getID() + ". This territory contains "
+            + to_string(t -> getNumArmies()) + " armies.";
 
     }
+
 
     //When order is deleted, it should NOT remove any other pointers, since they still exist
     Bomb::~Bomb() = default; 
@@ -521,6 +662,7 @@ namespace WarzoneOrder {
 
         this -> issuer = other.issuer;
         this -> target = other.target;
+        this -> effect = other.effect;
 
     }
 
@@ -531,7 +673,8 @@ namespace WarzoneOrder {
             Order::operator=(other);
             this -> issuer = other.issuer;
             this -> target = other.target;
-
+            this -> effect = other.effect;
+            
         }
 
         return *this;
@@ -544,8 +687,7 @@ namespace WarzoneOrder {
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
            << " bombs " << (target ? target -> getID() : "Unknown Territory") //Get target territory name
            << ", owned by " << (target && target -> getOwner() ? target -> getOwner() -> getPlayerName() : "Unknown Player") //Get target territory owner
-           << ". This territory has " << (target ? to_string(target -> getNumArmies()) : "Unknown") << " armies on it" //Get number of armies
-           << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << ". This territory has " << (target ? to_string(target -> getNumArmies()) : "Unknown") << " armies on it"; //Get number of armies
 
     }
 
@@ -561,55 +703,76 @@ namespace WarzoneOrder {
 
     Order* Bomb::clone() const { return new Bomb(*this); }
 
-    bool Bomb::validate() const {
+    pair<bool, string> Bomb::validate() const {
+
+        ostringstream output; // Collect validation details
 
         //Make sure player and territory target aren't nullpointers 
-        if(issuer == nullptr || target == nullptr) { return false; }
+        if(issuer == nullptr || target == nullptr) { 
+            
+            return { false, "[IssueOrder] This bomb order is invalid: one or more inputted pointers (issuer/target) is a null pointer." }; 
+        
+        }
 
-        //Target must NOT belong to the issuing player
-        if(target -> getOwner() == issuer) { return false; }
+        //Check if the target territory has an owner
+        Player* defender = target -> getOwner();
+        if(defender == nullptr) {
 
-        //Can't bomb a territory with only 1 army.
-        if(target -> getNumArmies() <= 1) { return false; }
+            output << "[IssueOrder] This bomb order is invalid: target territory "
+                   << target -> getID() << " has no owner.";
+
+            return{ false, output.str() };
+
+        }
+
+        //Check if the target territory belongs to the issuing player
+        if(defender == issuer) {
+
+            output << "[IssueOrder] This bomb order is invalid: the issuer ("
+                   << issuer -> getPlayerName() << ") cannot bomb their own territory ("
+                   << target -> getID() << ").";
+            return { false, output.str() };
+
+        }
 
         //Check if the attacker has a truce with the defender
-        Player* defender = target -> getOwner();
-        
-        if(defender != nullptr) {
+        const vector<Player*>& neutrals = issuer -> getNeutralEnemies(); //List of players under truce
 
-            const vector<string>& neutrals = issuer->getNeutralEnemies();
+        if(find(neutrals.begin(), neutrals.end(), defender) != neutrals.end()) { 
 
-            if(find(neutrals.begin(), neutrals.end(), defender->getPlayerName()) != neutrals.end()) { //Search through list of neutral enemies
-
-                return false;
-            
-            }
-        
-        }
-
-        //Target must be adjacent to at least one of issuer's territories
-        const auto& ownedTerritories = issuer -> getOwnedTerritories().getTerritories(); //Get player's territories
-
-        for(Territory* terr : ownedTerritories) { //For all of the player's territories
-
-            for (Territory* neighbor : terr->getNeighbors()) { //For each territory's neighbour
-
-                if (neighbor == target) { return true; } //Check if the target territory is adjacent to player owned territory
-            
-            }
+            output << "[IssueOrder] This bomb order is invalid: the issuer ("
+                   << issuer -> getPlayerName() << ") currently has a truce with "
+                   << defender -> getPlayerName()
+                   << ", and cannot target their territories.";
+            return { false, output.str() }; 
 
         }
 
-        return false;
+        //Use the player's existing bomb candidate logic for validation
+        vector<Territory*> bombCandidates = issuer -> getBombCandidates();
+
+        //Target must exist in the list of valid bombable territories
+        bool isValidTarget = (find(bombCandidates.begin(), bombCandidates.end(), target) != bombCandidates.end());
+        if(!isValidTarget) {
+
+            output << "[IssueOrder] This bomb order is invalid: target territory "
+                   << target -> getID()
+                   << " is not a valid bombing target (not adjacent to owned territory).";
+            return { false, output.str() }; 
+
+        }
+
+        return { true, "[IssueOrder] This bomb order is valid." };
 
     }
 
+
     void Bomb::execute() {
 
-        if(!validate()) {
+        pair<bool, string> validateResults = validate();
+        if(!validateResults.first) {
 
-            this -> setEffect("Bomb order invalid: cannot target this territory.");
-            cout << this -> getEffect() << endl;
+            this -> setEffect(validateResults.second);
             return;
 
         }
@@ -620,13 +783,9 @@ namespace WarzoneOrder {
         target -> setNumArmies(currentArmies - armiesToRemove);
 
         this->setEffect("Bomb order executed. Player " + target -> getOwner() -> getPlayerName() + ", at territory " 
-                        + target -> getID() + " lost " + to_string(armiesToRemove) + " armies.");
-
-        cout << this->getEffect() << std::endl;
+                        + target -> getID() + ", lost " + to_string(armiesToRemove) + " armies.");
 
     }
-
-
 
     // ================= Blockade ================= //
 
@@ -638,9 +797,40 @@ namespace WarzoneOrder {
         this -> issuer = p;
         this -> target = t;
         this -> neutralPlayer = neutral;
-        this -> effect = "";
+
+        //Safety checks to prevent invalid dereferencing
+        if(p == nullptr && t == nullptr && neutral == nullptr){
+
+            this -> effect = "Invalid Blockade order: all parameters are null.";
+            return;
+
+        } else if(p == nullptr){
+
+            this -> effect = "Invalid Blockade order: issuer is null.";
+            return;
+
+        } else if(t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to blockade a null territory.";
+            return;
+
+        } else if(neutral == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to blockade territory "
+                            + t -> getID() + ", but the neutral player is null.";
+            return;
+
+        }
+
+        //Construct the descriptive effect string safely
+        this -> effect = "Player " + p -> getPlayerName() + " intends to blockade territory "
+                        + t -> getID() + ". Neutral player " + neutral -> getPlayerName()
+                        + " will receive the territory, and will have "
+                        + to_string(3 * (t -> getNumArmies()))
+                        + " armies to defend with.";
 
     }
+
 
     //When order is deleted, it should NOT remove any other pointers, since they still exist
     Blockade::~Blockade() = default;
@@ -650,6 +840,7 @@ namespace WarzoneOrder {
         this -> issuer = other.issuer;
         this -> target = other.target;
         this -> neutralPlayer = other.neutralPlayer;
+        this -> effect = other.effect;
 
     }
 
@@ -661,6 +852,7 @@ namespace WarzoneOrder {
             this -> issuer = other.issuer;
             this -> target = other.target;
             this -> neutralPlayer = other.neutralPlayer;
+            this -> effect = other.effect;
 
         }
 
@@ -675,8 +867,7 @@ namespace WarzoneOrder {
            << " tries to blockade " << (target ? target -> getID() : "Unknown Territory") //Get target territory
            << ". They have " << issuer -> getOwnedTerritories().size() << " territory/territories"
            << ". Territory is attempted to be transferred to a neutral player, " 
-           << (neutralPlayer ? neutralPlayer -> getPlayerName() : "UNKNOWN NAME") //Get neutral player
-           << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << (neutralPlayer ? neutralPlayer -> getPlayerName() : "UNKNOWN NAME"); //Get neutral player
 
     }
 
@@ -695,28 +886,56 @@ namespace WarzoneOrder {
 
     Order* Blockade::clone() const { return new Blockade(*this); }
 
-    bool Blockade::validate() const {
+    pair<bool, string> Blockade::validate() const {
+
+        ostringstream output; // Collect validation details
 
         //Check if the target territory, the issuing player, or the neutral player are null pointers
-        if(issuer == nullptr || target == nullptr || neutralPlayer == nullptr) { return false; }
+        if(issuer == nullptr || target == nullptr || neutralPlayer == nullptr) { 
+            
+            return { false, "[IssueOrder] This blockade order is invalid: one or more inputted pointers (issuer/target/neutral) is null." }; 
+        
+        }
 
         //Target must belong to the issuing player
-        if(target -> getOwner() != issuer) { return false; }
+        if(target -> getOwner() != issuer) { 
+
+            output << "[IssueOrder] This blockade order is invalid: target territory "
+                   << target -> getID() << " is not owned by the issuing player "
+                   << issuer -> getPlayerName() << ". It is currently owned by "
+                   << (target -> getOwner() ? target -> getOwner() -> getPlayerName() : "an unknown player")
+                   << ".";
+
+            return { false, output.str() }; 
+
+        }
 
         //Player must own more than 1 territory. They would make themselves lose otherwise
-        if(issuer -> getOwnedTerritories().getTerritories().size() <= 1) { return false; }
+        size_t numTerritories = issuer -> getOwnedTerritories().getTerritories().size();
+        if(numTerritories <= 1) { 
 
-        return true;
+            output << "[IssueOrder] This blockade order is invalid: the issuing player ("
+                   << issuer -> getPlayerName()
+                   << ") only owns " << numTerritories
+                   << " territory. Performing a blockade would result in having no owned territories left.";
+
+            return { false, output.str() }; 
+
+        }
+
+        //TODO: When adding player pattern, check if netral has neutral behaviour implemented
+
+        return { true, "[IssueOrder] This blockade order is valid." };
 
     }
 
 
     void Blockade::execute() {
 
-        if (!validate()) {
+        pair<bool, string> validateResults = validate();
+        if(!validateResults.first) {
 
-            this -> setEffect("Blockade order invalid: target territory does not belong to the issuer.");
-            cout << this -> getEffect() << endl;
+            this -> setEffect(validateResults.second);
             return;
 
         }
@@ -732,8 +951,6 @@ namespace WarzoneOrder {
                           + std::to_string(target->getNumArmies()) +
                           " armies and belongs to Neutral player (" +
                           neutralPlayer->getPlayerName() + ").");
-
-        cout << this->getEffect() << std::endl;
     
     }
 
@@ -750,7 +967,39 @@ namespace WarzoneOrder {
         this -> source = s;
         this -> target = t;
         this -> numArmies = armies;
-        this -> effect = "";
+
+        //Safety checks to prevent invalid dereferencing
+        if(p == nullptr && s == nullptr && t == nullptr){
+
+            this -> effect = "Invalid Airlift order: all parameters are null.";
+            return;
+
+        } else if(p == nullptr){
+
+            this -> effect = "Invalid Airlift order: issuer is null.";
+            return;
+
+        } else if(s == nullptr && t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to airlift between null territories.";
+            return;
+
+        } else if(s == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to airlift from a null source territory.";
+            return;
+
+        } else if(t == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to airlift to a null target territory.";
+            return;
+
+        }
+
+        //Construct the descriptive effect string safely
+        this -> effect = "Player " + p -> getPlayerName() + " intends to transfer "
+                        + to_string(armies) + " army/armies, from territory "
+                        + s -> getID() + ", to territory " + t -> getID() + ".";
 
     }
 
@@ -763,6 +1012,7 @@ namespace WarzoneOrder {
         this -> source = other.source;
         this -> target = other.target;
         this -> numArmies = other.numArmies;
+        this -> effect = other.effect;
 
     }
 
@@ -775,6 +1025,7 @@ namespace WarzoneOrder {
             this -> source = other.source;
             this -> target = other.target;
             this -> numArmies = other.numArmies;
+            this -> effect = other.effect;
 
         }
 
@@ -788,8 +1039,7 @@ namespace WarzoneOrder {
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get player name
            << " airlifts " << numArmies << " armies " //Get number of armies
            << "from " << (source ? source -> getID() : "Unknown Source") //Get source territory
-           << " to " << (target ? target -> getID() : "Unknown Target") //Get target territory
-           << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << " to " << (target ? target -> getID() : "Unknown Target"); //Get target territory
 
     }
 
@@ -811,40 +1061,86 @@ namespace WarzoneOrder {
 
     Order* Airlift::clone() const { return new Airlift(*this); }
 
-    bool Airlift::validate() const {
+    pair<bool, string> Airlift::validate() const {
+
+        ostringstream output; // Collect validation details
 
         //Make sure that the player, and the source / target territories, exist.
-        if(source == nullptr || target == nullptr || issuer == nullptr) { return false; }
+
+        if(issuer == nullptr) {
+
+            return { false, "This airlift order is invalid, as the Issuer territory pointer is null\n" }; 
+
+        }
+
+        if(source == nullptr) {
+
+            return { false, "This airlift order is invalid, as the Source territory pointer is null\n" }; 
+
+        }
+
+        if(target == nullptr) {
+
+            return { false, "This airlift order is invalid, as the Target territory pointer is null\n" }; 
+
+        }
+
+        if(source == nullptr && target == nullptr) {
+
+            return { false, "This airlift order is invalid, as both the Source and Target territory pointers are null\n" }; 
+
+        }
 
         //Make sure the player owns both the source and the target territory
         if(source -> getOwner() != issuer || target -> getOwner() != issuer) {
 
-            return false;
+            output << "[IssueOrder] This airlift order is invalid: both source and target territories must be owned by the issuing player "
+                   << issuer -> getPlayerName() << ". Source territory '"
+                   << source -> getID() << "' is owned by "
+                   << (source -> getOwner() ? source -> getOwner() -> getPlayerName() : "unknown")
+                   << ", and target territory '" << target -> getID() << "' is owned by "
+                   << (target -> getOwner() ? target -> getOwner() -> getPlayerName() : "unknown") << ".";
+
+            return { false, output.str() }; 
+
         }
 
         // Check if enough armies to move (must leave at least 1 behind)
         if(numArmies <= 0 || source -> getNumArmies() <= 1) {
 
-            return false;
+            output << "[IssueOrder] This airlift order is invalid: source territory "
+                   << source -> getID() << " does not have enough armies to perform an airlift. "
+                   << "Current armies: " << source -> getNumArmies() 
+                   << ", armies requested: " << numArmies << ".";
+
+            return { false, output.str() }; 
         
         }
 
-        //Check if the number of armys proposed to be moved is small enough to be valid 
-        if(numArmies > source -> getNumArmies() - 1) { return false; }
+        //Check if the number of armies proposed to be moved is small enough to be valid 
+        if(numArmies > source -> getNumArmies() - 1) { 
 
-        return true;
+            output << "[IssueOrder] This airlift order is invalid: attempted to move "
+                   << numArmies << " armies, but only "
+                   << (source -> getNumArmies() - 1)
+                   << " can be moved (must leave at least 1 behind).";
+
+            return { false, output.str() }; 
+
+        }
+
+        return { true, "[IssueOrder] This airlift order is valid." };
 
     }
 
-
     void Airlift::execute() {
 
-        if(!this->validate()) {
+        pair<bool, string> validateResults = validate();
+        if(!validateResults.first) {
 
-            this -> setEffect("Airlift order invalid.");
-            cout << this -> getEffect() << endl;
+            this -> setEffect(validateResults.second);
             return;
-        
+
         }
 
         // --- Perform the move ---
@@ -860,8 +1156,6 @@ namespace WarzoneOrder {
                           " armies from " + source -> getID() +
                           " to " + target -> getID() + ".");
         
-        cout << this -> getEffect() << endl;
-
     }
 
 
@@ -875,9 +1169,32 @@ namespace WarzoneOrder {
         this -> orderType = OrderType::Negotiate;
         this -> issuer = p;
         this -> targetPlayer = other;
-        this -> effect = "";
+
+        //Safety checks to prevent invalid dereferencing
+        if(p == nullptr && other == nullptr){
+
+            this -> effect = "Invalid Negotiate order: both players are null.";
+            return;
+
+        } else if(p == nullptr){
+
+            this -> effect = "Invalid Negotiate order: issuer is null.";
+            return;
+
+        } else if(other == nullptr){
+
+            this -> effect = "Player " + p -> getPlayerName() + " attempted to negotiate with a null player.";
+            return;
+
+        }
+
+        //Construct the descriptive effect string safely
+        this -> effect = "Player " + p -> getPlayerName() 
+                        + " intends to declare a truce with player "
+                        + other -> getPlayerName() + ".";
 
     }
+
 
     //When order is deleted, it should NOT remove any other pointers, since they still exist
     Negotiate::~Negotiate() = default;
@@ -886,6 +1203,7 @@ namespace WarzoneOrder {
 
         this -> issuer = other.issuer;
         this -> targetPlayer = other.targetPlayer;
+        this -> effect = other.effect;
 
     }
 
@@ -896,6 +1214,7 @@ namespace WarzoneOrder {
             Order::operator=(other);
             this -> issuer = other.issuer;
             this -> targetPlayer = other.targetPlayer;
+            this -> effect = other.effect;
 
         }
 
@@ -908,8 +1227,7 @@ namespace WarzoneOrder {
         os << "Negotiate Order: "
            << (issuer ? issuer -> getPlayerName() : "Unknown Player") //Get issuing player
            << " negotiates peace with " 
-           << (targetPlayer ? targetPlayer -> getPlayerName() : "Unknown Player") //Get target player
-           << ". Effect: " << (effect.empty() ? "None" : effect); //Get effect
+           << (targetPlayer ? targetPlayer -> getPlayerName() : "Unknown Player"); //Get target player
 
     }
 
@@ -925,37 +1243,65 @@ namespace WarzoneOrder {
 
     Order* Negotiate::clone() const { return new Negotiate(*this); }
 
-    bool Negotiate::validate() const {
+    pair<bool, string> Negotiate::validate() const {
+
+        ostringstream output; // Collect validation details
 
         //Make sure both the source and target players exist
-        if(issuer == nullptr || targetPlayer == nullptr) { return false; }
+        if(issuer == nullptr || targetPlayer == nullptr) { 
+            
+            return { false, "[IssueOrder] This negotiate order is invalid: one of the inputted pointers (issuer/targetPlayer) is null." }; 
+        
+        }
 
         //Player can't negotiate with themselves
-        if(issuer == targetPlayer) { return false; }
+        if(issuer == targetPlayer) { 
+            
+            output << "[IssueOrder] This negotiate order is invalid: the issuer ("
+                   << issuer -> getPlayerName()
+                   << ") cannot negotiate with themselves.";
 
-        return true;
+            return { false, output.str() }; 
+        
+        }
+
+        //Check if a truce has already been declared between the issuer and target
+        const vector<Player*>& neutrals = issuer -> getNeutralEnemies(); //List of players the issuer has a truce with
+
+        if(find(neutrals.begin(), neutrals.end(), targetPlayer) != neutrals.end()) { 
+            
+            output << "[IssueOrder] This negotiate order is invalid: a truce already exists between "
+                   << issuer -> getPlayerName()
+                   << " and " << targetPlayer -> getPlayerName()
+                   << ".";
+
+            return { false, output.str() }; 
+            
+        }
+
+        return { true, "[IssueOrder] This negotiate order is valid." };
 
     }
 
     void Negotiate::execute() {
 
         // Validate order
-        if (!this->validate()) {
-            this->setEffect("Negotiate order invalid.");
-            std::cout << this->getEffect() << std::endl;
+        pair<bool, string> validateResults = validate();
+        if(!validateResults.first) {
+
+            this -> setEffect(validateResults.second);
             return;
+
         }
 
         //Apply neutrality
-        issuer -> addNeutralEnemy(targetPlayer -> getPlayerName());
-        targetPlayer -> addNeutralEnemy(issuer -> getPlayerName());
+        issuer -> addNeutralEnemy(targetPlayer);
+        targetPlayer -> addNeutralEnemy(issuer);
 
         //Update effect
         this -> setEffect("Negotiate successful: " + issuer -> getPlayerName() +
                         " and " + targetPlayer -> getPlayerName() +
                         " cannot attack each other this turn.");
-
-        std::cout << this->getEffect() << std::endl;
 
     }
 
@@ -1102,6 +1448,13 @@ namespace WarzoneOrder {
         
         if(!orders.empty()){ return orders.front(); }
         return nullptr;
+        
+    }
+
+    Order* OrderList::back() const {
+        
+        if(!orders.empty()) { return orders.back(); }
+        return nullptr; 
         
     }
 

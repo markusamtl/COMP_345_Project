@@ -189,6 +189,7 @@ namespace WarzonePlayer {
         this -> playerHand = new Hand();
         this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
+        this -> reinforcementPool = 0;
         this -> continentLookupTablePlayer = {};
 
     }
@@ -201,19 +202,22 @@ namespace WarzonePlayer {
         this -> playerHand = new Hand();
         this -> playerOrders = new OrderList();
         this -> generateCardThisTurn = false;
+        this -> reinforcementPool = 0;
         this -> continentLookupTablePlayer = emptyHashMap;
 
     }
 
-    Player::Player(const string& name, vector<string> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
-                   bool generateCard, const unordered_map<Continent*, long long>& emptyHashMap) {
+    Player::Player(const string& name, vector<Player*> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
+                   bool generateCard, int reinforcmentPool, const unordered_map<Continent*, long long>& emptyHashMap){
 
-        this->playerName = name;
-        this->neutralEnemies = neutralEnemies;
-        this->ownedTerritories = ownedTerritories;
-        this->playerHand = hand;
-        this->playerOrders = orders;
-        this->generateCardThisTurn = generateCard;
+
+        this -> playerName = name;
+        this -> neutralEnemies = neutralEnemies;
+        this -> ownedTerritories = ownedTerritories;
+        this -> playerHand = hand;
+        this -> playerOrders = orders;
+        this -> generateCardThisTurn = generateCard;
+        this -> reinforcementPool = reinforcmentPool;
         this -> continentLookupTablePlayer = emptyHashMap;
 
 
@@ -299,13 +303,13 @@ namespace WarzonePlayer {
         os << "Player Info:" << endl << "Name: " << p.playerName << endl
         << "Number of Territories: " << p.ownedTerritories.size();
 
-        if (p.ownedTerritories.size() > 0) {
+        if(p.ownedTerritories.size() > 0) {
 
             os << "([";
 
             const auto& terrs = p.ownedTerritories.getTerritories();
 
-            for (size_t i = 0; i < terrs.size(); i++) {
+            for(size_t i = 0; i < terrs.size(); i++) {
 
                 if (terrs[i] != nullptr) {
 
@@ -343,7 +347,7 @@ namespace WarzonePlayer {
             
             for(size_t i = 0; i < p.neutralEnemies.size(); i++) {
                 
-                os << p.neutralEnemies[i];
+                os << p.neutralEnemies[i] -> getPlayerName();
                 if(i < p.neutralEnemies.size() - 1) os << ", "; //Manage commas
             
             }
@@ -361,9 +365,9 @@ namespace WarzonePlayer {
 
     void Player::setPlayerName(const string& name) { playerName = name; }
 
-    const vector<string>& Player::getNeutralEnemies() const { return neutralEnemies; }
+    const vector<Player*>& Player::getNeutralEnemies() const { return neutralEnemies; }
 
-    void Player::setNeutralEnemies(const vector<string>& enemies) { neutralEnemies = enemies; }
+    void Player::setNeutralEnemies(const vector<Player*>& enemies) { neutralEnemies = enemies; }
 
     const PlayerTerrContainer& Player::getOwnedTerritories() const { return ownedTerritories; }
 
@@ -402,6 +406,10 @@ namespace WarzonePlayer {
 
     void Player::setGenerateCardThisTurn(bool flag) { this -> generateCardThisTurn = flag; }
 
+    int Player::getReinforcementPool() const { return this -> reinforcementPool; }
+
+    void Player::setReinforcementPool(int pool) { this -> reinforcementPool = pool; }
+
     const unordered_map<WarzoneMap::Continent*, long long>& Player::getContinentLookupTablePlayer() const { return continentLookupTablePlayer; }
 
     void Player::setContinentLookupTablePlayer(const unordered_map<WarzoneMap::Continent*, long long>& newTable) {
@@ -410,258 +418,803 @@ namespace WarzonePlayer {
     
     }
 
-    //-- Class Methods --//
+    //----------------- Class Methods -------------------//
 
-    vector<Territory*> Player::toAttack() {
-        
-        unordered_set<Territory*> uniqueTargets; 
+    unordered_map<Territory*, Territory*> Player::toAttack() {
 
+        unordered_map<Territory*, Territory*> attackMap; //Mapping of owned territory, best enemy target
+
+        //Iterate through all owned territories
         for(Territory* currTerr : ownedTerritories.getTerritories()) {
 
-            if(currTerr == nullptr){ continue; } //Skip null territories
+            if(currTerr == nullptr) { continue; }
 
-            for(Territory* neighTerr : currTerr->getNeighbors()) {
+            vector<Territory*> enemyNeighbors;
 
-                if(neighTerr == nullptr){ continue; } //Skip null neighbours
+            //Collect all valid enemy neighbors
+            for(Territory* neighTerr : currTerr -> getNeighbors()) {
+
+                if(neighTerr == nullptr) { continue; }
 
                 Player* neighOwner = neighTerr -> getOwner();
 
-                //Check if a neighbouring territory is owned by a neutral enemy
-                bool neutralEnemyCheck = false;
+                //Skip if owned by this player, neutral, or unowned
+                bool isNeutral = false;
 
                 if(neighOwner != nullptr) {
 
-                    neutralEnemyCheck = find(neutralEnemies.begin(), neutralEnemies.end(), neighOwner -> getPlayerName()) != neutralEnemies.end();
-
-                }
-                
-                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr) { continue; } //Skip if owned by self, neutral enemy, or no one
-
-                uniqueTargets.insert(neighTerr);
-
-            }
-
-        }
-
-        return vector<Territory*>(uniqueTargets.begin(), uniqueTargets.end()); 
-
-    }
-
-    void Player::toAttackPrint() const {
-
-        vector<Territory*> owned = ownedTerritories.getTerritories();
-
-        // Sort owned territories by ID
-        sort(owned.begin(), owned.end(), *(Territory::territoryIDCompare));
-
-        for(Territory* terr : owned) {
-
-            if(terr == nullptr){ continue; }
-
-            cout << "From: " << terr -> getID() << ", " << playerName << " can attack: ";
-
-            vector<Territory*> neighbors = terr->getNeighbors();
-
-            // Sort neighbors
-            sort(neighbors.begin(), neighbors.end(), *(Territory::territoryIDCompare));
-
-            bool foundEnemy = false;
-            for (Territory* neighbor : neighbors) {
-
-                if(neighbor == nullptr){ continue; }
-
-                Player* neighOwner = neighbor->getOwner();
-
-                // Check neutrality
-                bool neutralEnemyCheck = false;
-                if(neighOwner != nullptr) {
-                    
-                    neutralEnemyCheck = find(
-                        neutralEnemies.begin(),
-                        neutralEnemies.end(),
-                        neighOwner->getPlayerName()
+                    isNeutral = find(
+                        neutralEnemies.begin(), 
+                        neutralEnemies.end(), 
+                        neighOwner
                     ) != neutralEnemies.end();
 
                 }
 
-                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr) { continue; } //Skip if owned by self, neutral enemy, or no one
+                if(neighOwner == this || isNeutral || neighOwner == nullptr) { continue; }
 
-                cout << neighbor->getID() << " (" << neighbor->getNumArmies() << " armies), ";
-                foundEnemy = true;
-
-            }
-
-            if (!foundEnemy) {
-
-                cout << "no enemies";
+                enemyNeighbors.push_back(neighTerr);
 
             }
 
-            cout << endl;
+            //Skip if this territory has no valid enemies nearby
+            if(enemyNeighbors.empty()) {
+
+                attackMap[currTerr] = nullptr;
+                continue;
+
+            }
+
+            //Sort using the improved comparator (includes continent bonus logic)
+            sort(enemyNeighbors.begin(), enemyNeighbors.end(), Territory::territoryAttackPriorityCompare);
+
+            //Select the top-ranked attack target
+            Territory* bestTarget = enemyNeighbors.front();
+            attackMap[currTerr] = bestTarget;
 
         }
 
-    }
-
-
-    vector<Territory*> Player::toDefend() {
-
-        return ownedTerritories.getTerritories();
+        return attackMap;
 
     }
 
-    void Player::toDefendPrint() const {
+    string Player::toAttackString() {
 
-        // Make a copy of owned territories
+        stringstream retStr;
+
+        //Get all owned territories
         vector<Territory*> owned = ownedTerritories.getTerritories();
 
-        // Sort by territory ID. Use comparator function to compare each ID.
-        std::sort(owned.begin(), owned.end(), *(Territory::territoryIDCompare));
+        //Sort owned territories by ID for consistent output
+        sort(owned.begin(), owned.end(), Territory::territoryIDCompare);
 
-        // Print player info
-        cout << "Player " << playerName << " can defend: ";
+        //Iterate through all owned territories
+        for(Territory* terr : owned) {
 
-        if (owned.empty()) {
+            if(terr == nullptr){ continue; }
 
-            cout << "no territories" << endl;
+            retStr << "From: " << terr -> getID() << ", " << playerName << " can attack: ";
 
-        } else {
+            vector<Territory*> neighbors = terr -> getNeighbors();
 
-            // Iterate sorted territories
-            for (size_t i = 0; i < owned.size(); i++) {
+            //Sort neighbors using the same attack priority logic
+            sort(neighbors.begin(), neighbors.end(), Territory::territoryAttackPriorityCompare);
 
-                cout << owned[i]->getID() 
-                    << " (" << owned[i]->getNumArmies() << " armies)";
+            bool foundEnemy = false;
 
-                if (i < owned.size() - 1) { cout << ", "; }
+            for(size_t i = 0; i < neighbors.size(); i++) {
+
+                Territory* neighbor = neighbors[i];
+                if(neighbor == nullptr){ continue; }
+
+                Player* neighOwner = neighbor -> getOwner();
+
+                //Check for neutral enemies
+                bool neutralEnemyCheck = false;
+                if(neighOwner != nullptr) {
+
+                    neutralEnemyCheck = find(
+                        neutralEnemies.begin(),
+                        neutralEnemies.end(),
+                        neighOwner
+                    ) != neutralEnemies.end();
+
+                }
+
+                //Skip if owned by self, neutral enemy, or no one
+                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr){ continue; }
+
+                //Append enemy info
+                retStr << neighbor -> getID() << " (" << neighbor -> getNumArmies() << " armies)";
+                foundEnemy = true;
+
+                //Comma separation if not last valid enemy
+                if(i < neighbors.size() - 1){ retStr << ", "; }
 
             }
 
-            cout << endl;
+            if(!foundEnemy) {
+
+                retStr << "no enemies";
+
+            }
+
+            retStr << endl;
+
+        }
+
+        return retStr.str();
+
+    }
+
+    unordered_map<Territory*, Territory*> Player::toDefend() {
+
+        //Get all territories owned by this player that border at least one enemy territory
+        vector<Territory*> borderTerritories = getTerritoriesAdjacentToEnemy();
+
+        unordered_map<Territory*, Territory*> defenseMap; //Territory, ptr to next territory 1 layer closer to enemy
+        unordered_set<Territory*> visited; //Visited territory
+        queue<Territory*> q;
+
+        //Initialize BFS with all border territories
+        for(Territory* border : borderTerritories) {
+
+            if(border == nullptr) { continue; } //Ignore null pointer
+
+            visited.insert(border);
+            q.push(border);
+            defenseMap[border] = nullptr; //Border territories have no forward target, since they're on the border
+
+        }
+
+        //Perform BFS traversal inward through owned territories
+        while(!q.empty()) {
+
+            Territory* current = q.front(); //Get current territory
+            q.pop();
+
+            for(Territory* neighbor : current -> getNeighbors()) {
+
+                if(neighbor == nullptr) { continue; } //Ignore null neighbours
+
+                Player* owner = neighbor -> getOwner();
+
+                //Only propagate through territories owned by this player
+                if(owner == this && visited.find(neighbor) == visited.end()) {
+
+                    visited.insert(neighbor);
+
+                    //Assign neighbor’s "defense target" to point toward current
+                    defenseMap[neighbor] = current;
+
+                    //Continue exploring inward
+                    q.push(neighbor);
+
+                }
+
+            }
+
+        }
+
+        return defenseMap;
+
+    }
+
+    string Player::toDefendString() {
+
+        //Get all territories owned by this player that border at least one enemy territory
+        vector<Territory*> borderTerritories = getTerritoriesAdjacentToEnemy();
+
+        if(borderTerritories.empty()) { //This should not happen
+            stringstream retStr;
+            retStr << "Player " << playerName << " has no territories adjacent to enemies." << endl;
+            return retStr.str();
+        }
+
+        //Convert border territories to an unordered_set for O(1) lookup
+        unordered_set<Territory*> visited(borderTerritories.begin(), borderTerritories.end());
+
+        //Queue for BFS-style propagation
+        queue<pair<Territory*, int>> q; //Each pair holds a territory, and a layer distance
+
+        //Add adjacent territories to queue
+        for(Territory* t : borderTerritories){ if(t != nullptr){ q.push({t, 0}); } }
+
+        //Map: layer number -> territories at that layer
+        unordered_map<int, vector<Territory*>> layerMap;
+
+        //Map: territory -> next defensive target toward the enemy
+        unordered_map<Territory*, Territory*> defenseRouting;
+
+        //Perform BFS to propagate inward through owned territories
+        while(!q.empty()) {
+
+            //Get current territory info
+            pair<Territory*, int> currTerrInfo = q.front();
+            q.pop();
+
+            Territory* current = currTerrInfo.first;
+            int layer = currTerrInfo.second;
+
+            if(current == nullptr) { continue; }
+
+            //Add this territory to its corresponding layer
+            layerMap[layer].push_back(current);
+
+            //Propagate to neighboring owned territories not yet visited
+            for(Territory* neighbor : current -> getNeighbors()) {
+
+                if(neighbor == nullptr) { continue; }
+
+                Player* owner = neighbor -> getOwner();
+
+                //Only expand to territories owned by this player and not yet visited
+                if(owner == this && visited.find(neighbor) == visited.end()) {
+
+                    visited.insert(neighbor);
+                    q.push({neighbor, layer + 1});
+
+                    //Mark that this territory should send reinforcements toward "current"
+                    defenseRouting[neighbor] = current;
+
+                }
+
+            }
+
+            //Frontline (enemy-adjacent) territories have no next defensive target
+            if(defenseRouting.find(current) == defenseRouting.end()) {
+                defenseRouting[current] = nullptr;
+            }
+
+        }
+
+        //Build the string output
+        stringstream retStr;
+        retStr << "Player " << playerName << " defensive propagation structure:" << endl;
+
+        //Sort layers numerically (0, 1, 2, ...)
+        vector<int> layers;
+        for(pair<int, vector<Territory*>> entry : layerMap) { layers.push_back(entry.first); }
+        sort(layers.begin(), layers.end());
+
+        for(int layer : layers) {
+
+            vector<Territory*>& terrs = layerMap[layer];
+            if(terrs.empty()) { continue; }
+
+            //Sort territories within this layer by army count (weakest first)
+            sort(terrs.begin(), terrs.end(), Territory::territoryNumArmiesCompareAscend);
+
+            if(layer == 0) { retStr << "  Layer " << layer << " (enemy-adjacent):" << endl; } 
+            else { retStr << "  Layer " << layer << " (" << layer << " territories away from enemy):" << endl; }
+
+            for(Territory* t : terrs) {
+
+                if(t == nullptr) { continue; }
+
+                Territory* next = defenseRouting[t];
+
+                retStr << "    " << t -> getID() 
+                    << " (" << t -> getNumArmies() << " armies)"
+                    << "  to  " 
+                    << (next ? next -> getID() : "None")
+                    << endl;
+
+            }
+
+        }
+
+        return retStr.str();
+
+    }
+
+    void Player::deployReinforcements(ostringstream& output, bool surpressOutput) {
+
+        //If no reinforcements are available, skip this phase
+        if(reinforcementPool <= 0) { return; }
+
+        //Build defensive routing map (Territory -> next toward enemy)
+        unordered_map<Territory*, Territory*> defenseMap = toDefend();
+
+        //Collect frontline territories (those with nextTerritories that are nullptr)
+        vector<Territory*> frontlines;
+        for(pair<Territory*, Territory*> currTerr : defenseMap) {
+
+            if(currTerr.second == nullptr) { frontlines.push_back(currTerr.first); }
+
+        }
+
+        if(frontlines.empty()) { //This should not happen
+
+            output << "[IssueOrder] " << playerName
+                << " has no frontline territories; skipping deployment of "
+                << reinforcementPool << " armies.\n";
+
+            reinforcementPool = 0;
+            return;
+
+        }
+
+        //Sort by ascending army count so weakest frontlines get reinforced first
+        sort(frontlines.begin(), frontlines.end(), Territory::territoryNumArmiesCompareAscend);
+
+        int remainingArmies = reinforcementPool;
+        output << "[IssueOrder] " << playerName
+            << " is distributing " << reinforcementPool
+            << " reinforcement armies.\n";
+
+        //Deploy armies across frontlines ONLY
+        for(size_t i = 0; i < frontlines.size() && remainingArmies > 0; i++) {
+
+            Territory* target = frontlines[i];
+            if(target == nullptr) { continue; }
+
+            //Ensure fair minimum distribution (rounded up)
+            int minArmies = static_cast<int>((remainingArmies + frontlines.size() - 1) / frontlines.size());
+
+            //Randomly vary between minArmies and remainingArmies / 2 (never exceed remaining)
+            int maxDeploy = max(minArmies, remainingArmies / 2);
+            int armiesToDeploy = static_cast<int>(TimeUtil::getSystemTimeNano() % maxDeploy) + 1;
+            armiesToDeploy = min(armiesToDeploy, remainingArmies);
+
+            //Create and add Deploy order
+            Order* deployOrder = new WarzoneOrder::Deploy(this, target, armiesToDeploy);
+            this -> playerOrders -> addOrder(deployOrder);
+
+            if(!surpressOutput) {
+
+                output << "[IssueOrder] " << playerName
+                    << " adds " << armiesToDeploy
+                    << " army/armies to " << target -> getID()
+                    << " (Remaining pool before deploy: " << remainingArmies << ")\n";
+
+            }
+
+            //Deduct from remaining pool
+            remainingArmies -= armiesToDeploy;
+
+        }
+
+        reinforcementPool = 0;
+
+        if(!surpressOutput) {
+
+            output << "[IssueOrder] " << playerName
+                << " has finished deploying all reinforcements.\n\n";
 
         }
 
     }
 
+    void Player::issueAttackOrders(ostringstream& output, bool surpressOutput, Player* neutralPlayer) {
 
-    void Player::issueOrder() {
+        //Get player’s border territories
+        vector<Territory*> borderTerrs = getTerritoriesAdjacentToEnemy(); //Get border territories
 
-        if (this->playerOrders == nullptr) { return; } // Make sure the OrderList for the player exists
+        //Get per-territory preferred attack targets (Territory -> best enemy neighbor)
+        unordered_map<Territory*, Territory*> attackMap = toAttack();
 
-        // --------------------------------------------------------
-        // Track which order types are available to be issued by card.
-        // Index mapping:
-        // 0: Advance (always available)
-        // 1: Bomb
-        // 2: Blockade
-        // 3: Airlift
-        // 4: Negotiate
-        // --------------------------------------------------------
-        vector<pair<bool, int>> orderTypesAvailableByCard = {
-            {true, 0}, {false, 1}, {false, 2}, {false, 3}, {false, 4}
-        };
+        //Determine if any NON-NEUTRAL attack is possible at all.
+        bool nonNeutralAttackPossible = false; //Default set to false
+        vector<Player*> neutrals = this -> getNeutralEnemies(); // players under truce / peaceful list
+        neutrals.push_back(neutralPlayer); //Add neutral player from game engine
+
+        for(Territory* source : borderTerrs) {
+
+            if(source == nullptr) { continue; } //Skip null pointers
+
+            int sourceArmies = source -> getNumArmies();
+
+            //Only attack if current territory has more than 1 army (cannot move last defender)
+            if(sourceArmies <= 1) { continue; }
+
+            //Check all neighbors to see if a non-neutral valid target exists for this source
+            for(Territory* neigh : source -> getNeighbors()) {
+
+                if(neigh == nullptr) { continue; }
+
+                Player* owner = neigh -> getOwner();
+                if(owner == nullptr || owner == this) { continue; }
+
+                // Skip if truce/neutral enemy
+                if(find(neutrals.begin(), neutrals.end(), owner) != neutrals.end()) { continue; }
+
+                int defenderArmies = neigh -> getNumArmies();
+
+                //Only attack if enemy is not overwhelmingly strong (roughly within 70% strength range)
+                if(defenderArmies <= static_cast<int>(sourceArmies * (6.0 / 7.0))) {
+                    
+                    nonNeutralAttackPossible = true;
+                    break;
+
+                }
+
+            }
+
+            if(nonNeutralAttackPossible) { break; }
+
+        }
+
+        //Iterate through all border territories and issue orders according to the above global rule
+        for(Territory* source : borderTerrs) {
+
+            if(source == nullptr) { continue; } //Skip null pointers
+
+            int sourceArmies = source -> getNumArmies();
+
+            //Only attack if current territory has more than 1 army (cannot move last defender)
+            if(sourceArmies <= 1) { continue; }
+
+            //Find this territory's preferred target from the attack map
+            //Find this territory's preferred target from the attack map
+            Territory* target = nullptr;
+
+            if(attackMap.count(source) > 0) { target = attackMap[source]; } //Check if source exists in the unordered_map
+            else { continue; } //No target computed for this source
+
+            //If no valid target, skip
+            if(target == nullptr) { continue; }
+
+            //Validate target is still an enemy neighbor (defensive safety check)
+            Player* targetOwner = target -> getOwner();
+            if(targetOwner == nullptr || targetOwner == this) { continue; } //Make sure player doesn't own the owned territory 
+
+            // If nonNeutral attacks are possible, avoid Neutral targets for this source.
+            if(nonNeutralAttackPossible) {
+
+                // If current preferred target is neutral or under truce, try to find an alternative non-neutral neighbor.
+                if(find(neutrals.begin(), neutrals.end(), targetOwner) != neutrals.end()) {
+
+                    Territory* altTarget = nullptr;
+
+                    for(Territory* neigh : source -> getNeighbors()) {
+
+                        if(neigh == nullptr) { continue; }
+
+                        Player* owner = neigh -> getOwner();
+                        if(owner == nullptr || owner == this) { continue; }
+
+                        if(find(neutrals.begin(), neutrals.end(), owner) != neutrals.end()) { continue; } // still skip neutrals here
+
+                        int defenderArmies = neigh -> getNumArmies();
+                        if(defenderArmies > static_cast<int>(sourceArmies * (6.0 / 7.0))) { continue; } // too strong
+
+                        // Prefer the neighbor with best attack priority (use existing comparator)
+                        if(altTarget == nullptr || Territory::territoryAttackPriorityCompare(neigh, altTarget)) {
+                            altTarget = neigh;
+                        }
+
+                    }
+
+                    // If we found an alternate non-neutral target, use it; otherwise skip issuing from this source.
+                    if(altTarget == nullptr) { continue; }
+                    target = altTarget;
+                    targetOwner = target -> getOwner();
+
+                }
+
+            } //If player behaviours are added in the futre, add else block here :)
+
+            //Final defender check (recompute defender armies for chosen/adjusted target)
+            int defenderArmies = target -> getNumArmies();
+
+            //Only attack if enemy is not overwhelmingly strong (roughly within 70% strength range)
+            if(defenderArmies > static_cast<int>(sourceArmies * (6.0 / 7.0))) { continue; } //Skip if defender too strong
+
+            //Decide number of armies to send (always leave 1 army behind)
+            int armiesToSend = max(1, sourceArmies - 1);
+
+            //Create and add Advance order
+            Order* advanceOrder = new WarzoneOrder::Advance(this, source, target, armiesToSend);
+            this -> playerOrders -> addOrder(advanceOrder);
+
+            if(!surpressOutput) {
+
+                output << "[IssueOrder] " << playerName << " orders an Advance from "
+                    << source -> getID() << " (" << sourceArmies << " armies)"
+                    << " to attack " << target -> getID() << " ("
+                    << target -> getNumArmies() << " defenders) with "
+                    << armiesToSend << " armies.\n";
+
+            }
+
+        }
+
+    }
+
+    void Player::issueDefendOrders(ostringstream& output, bool surpressOutput) {
+
+        //Obtain the defensive mapping (each territory points to the next closer to enemy)
+        unordered_map<Territory*, Territory*> defenseMap = toDefend();
+
+        if(defenseMap.empty()) {
+
+            if(!surpressOutput) {
+                output << "[IssueOrder] " << playerName
+                    << " has no territories to defend.\n";
+            }
+
+            return;
+
+        }
+
+        //Iterate through all owned territories in the defense map
+        for(const auto& entry : defenseMap) { //Compiler gets mad if I dont use auto here :( 
+
+            Territory* source = entry.first; //Territory that will send reinforcements
+            Territory* target = entry.second; //Territory closer to enemy (destination)
+
+            if(source == nullptr || target == nullptr) { continue; } //Skip null entries, as well as frontlines
+
+            int sourceArmies = source -> getNumArmies();
+            if(sourceArmies <= 1) { continue; } //Cannot move last defender
+
+            //Determine number of armies to send (keep at least one behind)
+            int armiesToSend = max(1, sourceArmies - 1); //Send ALL armies
+
+            //Create and add Advance order toward the border
+            Order* defendAdvance = new WarzoneOrder::Advance(this, source, target, armiesToSend);
+            this -> playerOrders -> addOrder(defendAdvance);
+
+            if(!surpressOutput) {
+
+                output << "[IssueOrder] " << playerName
+                    << " reinforces from " << source -> getID()
+                    << " (" << sourceArmies << " armies)"
+                    << " toward " << target -> getID()
+                    << " with " << armiesToSend << " armies.\n";
+
+            }
+
+        }
+
+        if(!surpressOutput) {
+
+            output << "[IssueOrder] " << playerName
+                << " has completed all defensive reinforcements.\n\n";
+
+        }
+
+    }
+
+    void Player::issueCardOrders(ostringstream& output, bool surpressOutput, Deck* gameDeck) {
+
+        //Index mapping:
+        //0: Bomb
+        //1: Blockade
+        //2: Airlift
+        //3: Negotiate
+        vector<pair<bool, int>> orderTypesAvailableByCard = { {false, 0}, {false, 1}, {false, 2}, {false, 3} };
 
         //Check if the player has corresponding cards for card-based orders
-        if (playerHand != nullptr) {
+        if(playerHand != nullptr) {
 
-            orderTypesAvailableByCard[1].first = playerHand->hasCardOfType(WarzoneCard::CardType::Bomb);
-            orderTypesAvailableByCard[2].first = playerHand->hasCardOfType(WarzoneCard::CardType::Blockade);
-            orderTypesAvailableByCard[3].first = playerHand->hasCardOfType(WarzoneCard::CardType::Airlift);
-            orderTypesAvailableByCard[4].first = playerHand->hasCardOfType(WarzoneCard::CardType::Diplomacy);
+            orderTypesAvailableByCard[0].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Bomb);
+            orderTypesAvailableByCard[1].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Blockade);
+            orderTypesAvailableByCard[2].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Airlift);
+            orderTypesAvailableByCard[3].first = playerHand -> hasCardOfType(WarzoneCard::CardType::Diplomacy);
+
         }
 
         //Filter out order types the player cannot logically issue
-        for (int i = 0; i < 5; i++) {
-            
-            if(!canIssueOrder(i)) { orderTypesAvailableByCard[i].first = false; }
-        
+        for(int i = 0; i < 4; i++) {
+
+            if(!canIssueCardOrder(i)) { orderTypesAvailableByCard[i].first = false; }
+
         }
 
         //Randomly pick a valid order type
         int randomOrder = -1;
 
-        //Keep trying until a valid order type is found or no options remain
         while(randomOrder == -1 && !orderTypesAvailableByCard.empty()) { 
 
+            //Get random card
             int randomOrderIndex = static_cast<int>(TimeUtil::getSystemTimeNano() % orderTypesAvailableByCard.size());
             pair<bool, int> orderTypeInfo = orderTypesAvailableByCard[randomOrderIndex];
 
-            if (orderTypeInfo.first) { randomOrder = orderTypeInfo.second; } //Valid order found 
-            else { orderTypesAvailableByCard.erase(orderTypesAvailableByCard.begin() + randomOrderIndex); } //Remove invalid order type from options
+            if(orderTypeInfo.first == true) { randomOrder = orderTypeInfo.second; } //If the order is valid 
+            else { orderTypesAvailableByCard.erase(orderTypesAvailableByCard.begin() + randomOrderIndex); }
 
         }
 
-        // If no valid order was found, skip issuing
-        if (randomOrder == -1) { return; }
+        if(randomOrder == -1) { //If there exist no valid card orders 
+
+            if(!surpressOutput){ output << "[IssueOrder] " << playerName << " had no valid card orders to issue.\n"; }
+            return;
+
+        }
 
         //Create the selected order type
         Order* tempOrder = nullptr;
 
-        switch(randomOrder) { //Switch on the selected order type
+        //Get relevant card
+        Card* usedCard = nullptr;
 
-            case 0: tempOrder = new WarzoneOrder::Advance(this, nullptr, nullptr, 0); break;
-            case 1: tempOrder = new WarzoneOrder::Bomb(this, nullptr); break;
-            case 2: tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr); break;
-            case 3: tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); break;
-            case 4: tempOrder = new WarzoneOrder::Negotiate(this, nullptr); break;
-            default: break;
-        
+        switch(randomOrder) {
+
+            case 0: 
+                
+                tempOrder = new WarzoneOrder::Bomb(this, nullptr); 
+                usedCard = playerHand -> getCardOfType(WarzoneCard::CardType::Bomb);
+
+            break;
+            case 1: 
+                
+                tempOrder = new WarzoneOrder::Blockade(this, nullptr, nullptr);
+                usedCard = playerHand -> getCardOfType(WarzoneCard::CardType::Blockade);
+
+            break;
+            case 2: 
+            
+                tempOrder = new WarzoneOrder::Airlift(this, nullptr, nullptr, 0); 
+                usedCard = playerHand -> getCardOfType(WarzoneCard::CardType::Airlift);
+
+            break;    
+            case 3: 
+            
+                tempOrder = new WarzoneOrder::Negotiate(this, nullptr); 
+                usedCard = playerHand -> getCardOfType(WarzoneCard::CardType::Diplomacy);
+
+            break;
+            default: break; //This should NEVER happen
+
+        }
+
+        //Remove used card from player's hand, return to game deck
+        playerHand -> removeCardFromHand(usedCard);
+        gameDeck -> returnToDeck(usedCard);
+
+        //Inform that a card has been used
+        if(!surpressOutput){
+                
+            output << "[IssueOrder] " << playerName 
+                << " has used a " 
+                << usedCard -> getTypeString()
+                << " card.\n";
+
         }
 
         //Add the order to the player's list
-        if(tempOrder != nullptr) { this->getPlayerOrders()->addOrder(tempOrder); }
+        if(tempOrder != nullptr) {
 
-    }
+            this -> playerOrders -> addOrder(tempOrder);
 
-
-    bool Player::canIssueOrder(int orderType) const {
-
-        switch (orderType) {
-
-            case 0: { //Advance: Player must have at least one territory with more than 1 army (so they can move armies)
+            if(!surpressOutput){
                 
-                vector<Territory*> movableSources = this->getSourcesWithManyArmies();
-                return !movableSources.empty();
-            
-            }
-
-       
-            case 1: { //Bomb: Must have at least one valid enemy target not under truce
-                vector<Territory*> bombTargets = this -> getBombCandidates();
-                return !bombTargets.empty();
-            }
-
-            case 2: { //Blockade: Must own at least one territory
-
-                vector<Territory*> owned = this -> getOwnedTerritories().getTerritories();
-                return owned.size() > 1;
+                output << "[IssueOrder] " << playerName 
+                    << " issued a "
+                    << tempOrder -> getOrderTypeString()
+                    << " order.\n";
 
             }
 
-            case 3: { //Airlift: Must have at least two territories, and at least one of them must have >1 army (
-                
-                //If only one territory is owned, no airlift is possible)
-                if(this ->getOwnedTerritories().getTerritories().size() < 2) { return false; }
+        } else {
 
-                vector<Territory*> validSourceTerrs = this -> getSourcesWithManyArmies();
+            if(!surpressOutput){ output << "[IssueOrder] " << playerName << " failed to issue an order from a card.\n"; }
 
-                return !validSourceTerrs.empty();
-
-            }
-
-            case 4: { //This will be true REGARDLESS of truces, as long as there is at least one other player to negotiate with
-
-                return true;
-            
-            }
-
-            default: //Default: invalid order type
-                
-                return false;
-        
         }
-        
+
     }
+
+    string Player::issueOrder(bool surpressOutput, Deck* gameDeck, Player* neutralPlayer) {
+
+        ostringstream output; //Collect all log outputs here
+
+        if(this -> playerOrders == nullptr) { return "[IssueOrder] Error: Player order list not initialized.\n"; }
+
+        //PART 1: DEPLOYING ARMIES ACROSS WEAKEST TERRITORIES
+        deployReinforcements(output, surpressOutput);
+
+        //PART 2: TRYING TO USE A CARD TO ORDER 
+        issueCardOrders(output, surpressOutput, gameDeck);
+
+        //PART 3: ADVANCE (ATTACK LOGIC) 
+        issueAttackOrders(output, surpressOutput, neutralPlayer);
+
+        //PART 4: ADVANCE (DEFENCE LOGIC)
+        issueDefendOrders(output, surpressOutput);
+
+        return output.str();
+
+    }
+
+    bool Player::canIssueCardOrder(int orderType) const {
+
+        // Safety: if the player owns nothing, no card makes sense
+        const vector<Territory*>& owned = this -> getOwnedTerritories().getTerritories();
+
+        switch(orderType) {
+
+            case 0: { // Bomb: must have at least one valid enemy target (not under truce)
+                
+                vector<Territory*> bombTargets = getBombCandidates();
+                return !bombTargets.empty();
+
+            }
+
+            case 1: { // Blockade: must own at least one territory (non-null) with >=1 army
+
+                if(owned.empty()){ return false; }
+                
+                for(Territory* t : owned) {
+
+                    if(t == nullptr) { continue; }
+
+                    //Player can only blockade their own territory, they have to have more than 1 army to do it
+                    if(t -> getOwner() == this && t -> getNumArmies() >= 1) { return true; }
+
+                }
+
+                return false;
+            
+            }
+
+            case 2: { // Airlift: need a valid source (owned, >1 army so 1 can remain) and a distinct owned target
+                
+                if(owned.size() < 2) { return false; }
+
+                // Find any source with enough armies
+                for(Territory* src : owned) {
+
+                    if(src == nullptr) { continue; }
+
+                    // Keep at least 1 behind
+                    if(src -> getOwner() == this && src -> getNumArmies() > 1) {
+
+                        // Need a different owned target (any)
+                        for(Territory* dst : owned) {
+
+                            if(dst == nullptr) { continue; }
+                            if(dst == src) { continue; }
+                            if(dst -> getOwner() != this) { continue; }
+
+                            return true; // found (src, dst)
+
+                        }
+
+                    }
+
+                }
+
+                return false;
+            
+            }
+
+            case 3: { // Negotiate (Diplomacy): must have at least one *other* active opponent not already neutral
+                // Heuristic: scan neighbors of our owned territories for an opponent we’re not at truce with.
+                if(owned.empty()) { return false; }
+
+                const vector<Player*>& neutrals = this -> getNeutralEnemies();
+
+                for(Territory* mine : owned) {
+
+                    if(mine == nullptr) { continue; }
+
+                    for(Territory* n : mine -> getNeighbors()) {
+
+                        if(n == nullptr) { continue; }
+
+                        Player* other = n -> getOwner();
+                        if(other == nullptr || other == this) { continue; }
+
+                        // If not already neutral, we can propose a negotiate
+                        if(find(neutrals.begin(), neutrals.end(), other) == neutrals.end()) { return true; }
+
+                    }
+                }
+
+                // No visible opponents → negotiating does nothing
+                return false;
+            }
+
+            default: {
+                return false;
+            }
+
+        }
+
+    }
+
 
     void Player::clearNeutralEnemies() {
 
@@ -669,7 +1222,7 @@ namespace WarzonePlayer {
         
     }
 
-    void Player::addOwnedTerritories(WarzoneMap::Territory* territory) {
+    void Player::addOwnedTerritories(Territory* territory) {
 
         //Prevent duplicate / null ownership
         if(territory == nullptr || territory -> getOwner() == this) { return; }
@@ -704,7 +1257,7 @@ namespace WarzonePlayer {
 
     }
 
-    void Player::addNeutralEnemy(const string& enemyName) {
+    void Player::addNeutralEnemy(Player* enemyName) {
 
         if(find(neutralEnemies.begin(), neutralEnemies.end(), enemyName) == neutralEnemies.end()) {
 
@@ -714,7 +1267,7 @@ namespace WarzonePlayer {
     
     }
 
-    void Player::removeNeutralEnemy(const string& enemyName) {
+    void Player::removeNeutralEnemy(Player* enemyName) {
 
         auto enemyNameIndex = find(neutralEnemies.begin(), neutralEnemies.end(), enemyName); //Create iterator, easiest way to compare
 
@@ -726,74 +1279,133 @@ namespace WarzonePlayer {
 
     }
 
-    
-    vector<Territory*> Player::getSourcesWithManyArmies() const {
+    vector<Territory*> Player::getTerritoriesAdjacentToEnemy() const {
 
-        vector<Territory*> validSources;
-        vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
+        unordered_set<Territory*> adjacentToEnemySet;
 
-        for (Territory* t : ownedTerrs) { //Check each owned territory
+        // Loop through each owned territory
+        for(Territory* owned : ownedTerritories.getTerritories()) {
 
-            //A valid source must have more than one army
-            if(t != nullptr && t->getNumArmies() > 1) { validSources.push_back(t); }
-        
-        }
+            //Should not happen, check just in case
+            if(owned == nullptr){ continue; }
 
-        return validSources;
-    
-    }
+            // Check all neighboring territories
+            for(Territory* neighbor : owned -> getNeighbors()) {
 
-    vector<Territory*> Player::getBombCandidates() const {
-    
-        //Collect candidate target territories (owned by another player)
-        unordered_map<int, Territory*> candidateMap; //Map to ensure unique territories
-        vector<Territory*> ownedTerrs = this->getOwnedTerritories().getTerritories(); //Get all of the player's territories
+                //Should not happen, check just in case
+                if(neighbor == nullptr) continue;
 
-        //Get the list of players this player has a truce with
-        const vector<string>& neutrals = this->getNeutralEnemies();
+                Player* neighborOwner = neighbor -> getOwner();
 
-        for(size_t i = 0; i < ownedTerrs.size(); i++) {
+                //If neighbor exists, and belongs to someone else (enemy), mark this territory
+                if(neighborOwner != nullptr && neighborOwner != this) {
 
-            if(ownedTerrs[i] == nullptr) { continue; } //Skip null territories
-            vector<Territory*> neighbors = ownedTerrs[i] -> getNeighbors(); //Get neighbors of that territory
+                    adjacentToEnemySet.insert(owned);
+                    break; //No need to check other neighbors for this territory, it is adjacent to at least 1 enemy
 
-            string playerName = this -> getPlayerName(); //Cache player name for efficiency
-
-            for(Territory* t : neighbors) {
-
-                //Skip invalid territories
-                if (t == nullptr || t->getOwner() == nullptr) { continue; }
-
-                 //Skip territories with only 1 army (bombing would have no effect)
-                if(t -> getNumArmies() <= 1) { continue; }
-
-                Player* territoryOwner = t -> getOwner(); //Get the owner of the neighboring territory
-                string ownerName = territoryOwner -> getPlayerName(); //Get the owner's name
-
-                //Skip territories owned by the player calling this method
-                if(ownerName == playerName) { continue; }
-
-                //Skip territories owned by any player under truce with this player
-                if(find(neutrals.begin(), neutrals.end(), ownerName) != neutrals.end()) { continue; }
-
-                //Otherwise, this is a valid bombing target
-                candidateMap[t->getNumericTerrID()] = t;
+                }
 
             }
 
         }
 
-        //Convert unordered_map values to vector for return
-        vector<Territory*> candidates;
-        candidates.reserve(candidateMap.size());
+        //Convert to a vector safely
+        vector<Territory*> territoriesAdjacentToEnemy;
+        territoriesAdjacentToEnemy.reserve(adjacentToEnemySet.size());
 
-        //Copy values from the hashmap to the return vector
-        for(const auto& entry : candidateMap) { candidates.push_back(entry.second); }
+        for(Territory* t : adjacentToEnemySet) {
+            
+            if(t != nullptr) { territoriesAdjacentToEnemy.push_back(t); }
+        
+        }
+
+        //Sort by ascending army count (weakest borders first)
+        sort(territoriesAdjacentToEnemy.begin(), territoriesAdjacentToEnemy.end(), Territory::territoryNumArmiesCompareAscend);
+
+        return territoriesAdjacentToEnemy;
+        
+    }
+
+    vector<Territory*> Player::getSourcesWithManyArmies() const {
+
+        vector<Territory*> validSources;
+        vector<Territory*> ownedTerrs = ownedTerritories.getTerritories();
+
+        //Iterate through each owned territory
+        for(Territory* t : ownedTerrs) {
+
+            //Skip invalid or inactive territories
+            if(t == nullptr) { continue; }
+
+            Player* owner = t -> getOwner();
+
+            //Safety: only include territories still owned by this player
+            if(owner == nullptr || owner != this) { continue; }
+
+            //A valid source must have more than one army to send (keep at least one behind)
+            if(t -> getNumArmies() > 1) { validSources.push_back(t); }
+
+        }
+
+        //Sort descending by army count so strongest come first
+        sort(validSources.begin(), validSources.end(), Territory::territoryNumArmiesCompareDescend);
+
+        return validSources;
+    }
+
+    vector<Territory*> Player::getBombCandidates() const {
+
+        unordered_set<Territory*> candidateSet; //Ensure uniqueness of bombing targets
+        const vector<Player*>& neutrals = this -> getNeutralEnemies(); //Truce list
+
+        //Get all territories owned by player that are adjacent to at least one enemy
+        vector<Territory*> frontlines = this -> getTerritoriesAdjacentToEnemy();
+
+        //Iterate through each frontline territory
+        for(Territory* owned : frontlines) {
+
+            //Skip null pointers
+            if(owned == nullptr) { continue; }
+
+            //Check all neighboring territories of this frontline territory
+            for(Territory* neighbor : owned -> getNeighbors()) {
+
+                if(neighbor == nullptr) { continue; }
+
+                Player* neighborOwner = neighbor -> getOwner();
+
+                //Skip invalid or friendly neighbors
+                if(neighborOwner == nullptr || neighborOwner == this) { continue; }
+
+                //Skip neighbors belonging to truce partners
+                if(find(neutrals.begin(), neutrals.end(), neighborOwner) != neutrals.end()) { continue; }
+
+                //Skip neighbors with <= 1 army (bombing would have no meaningful effect)
+                if(neighbor -> getNumArmies() <= 1) { continue; }
+
+                //Otherwise, this is a valid bombing target
+                candidateSet.insert(neighbor);
+
+            }
+
+        }
+
+        //Convert unordered_set to vector for return
+        vector<Territory*> candidates;
+        candidates.reserve(candidateSet.size());
+
+        for(Territory* t : candidateSet) {
+        
+            if(t != nullptr) { candidates.push_back(t); }
+        
+        }
+
+        //Prioritize largest army counts first (high-value bomb targets)
+        sort(candidates.begin(), candidates.end(), Territory::territoryNumArmiesCompareDescend);
 
         return candidates;
 
     }
-
 
     bool Player::controlsContinent(const unordered_map<Continent*, long long>& continentSums, Continent* cont) const {
         

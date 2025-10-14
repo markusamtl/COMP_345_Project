@@ -338,22 +338,146 @@ namespace WarzoneMap {
         
     }
 
-    void Territory::computeNumericTerrID() {
+    bool Territory::territoryNumArmiesCompareDescend(Territory* a, Territory* b) {
 
-        this->numericTerrID = 0ll;
-
-        const long long base = 131; //First prime number larger than the maximum standard ASCII value
-        const long long mod = 22801763489 ; //1 billionth prime
-
-        long long hash = 0;
-      
-        for(char c : ID) { hash = (hash * base + c) % mod; }
-
-        this -> numericTerrID = hash;
+        if(a == nullptr || b == nullptr){ return false; }
+        return a -> getNumArmies() > b -> getNumArmies(); //More armies = higher priority
 
     }
 
+    bool Territory::territoryNumArmiesCompareAscend(Territory* a, Territory* b) {
+
+        if(a == nullptr || b == nullptr){ return false; }
+        return a -> getNumArmies() < b -> getNumArmies(); //Lower armies = higher priority
+
+    }
+
+    bool Territory::territoryAttackPriorityCompare(Territory* a, Territory* b) {
+
+        if(a == nullptr || b == nullptr){ return false; } //Safety check
+
+        Player* ownerA = a -> getOwner();
+        Player* ownerB = b -> getOwner();
+
+        //Fallback to large value if owner is null (shouldn’t happen, just in case)
+        int territoriesA = (ownerA ? static_cast<int>(ownerA -> getOwnedTerritories().size()) : INT_MAX);
+        int territoriesB = (ownerB ? static_cast<int>(ownerB -> getOwnedTerritories().size()) : INT_MAX);
+
+        //1. Strategic priority — focus on knocking out the weaker opponent first
+        if(territoriesA != territoriesB) { return territoriesA < territoriesB; }
+
+        //2. Strategic reward — prefer attacking territories in high-bonus continents
+        Continent* contA = a -> getContinent();
+        Continent* contB = b -> getContinent();
+
+        if(contA != nullptr && contB != nullptr) {
+
+            int bonusA = contA -> getBonusValue();
+            int bonusB = contB -> getBonusValue();
+
+            if(bonusA != bonusB) { return bonusA > bonusB; } //Higher continent bonus = higher attack priority
+
+        }
+
+        //3. Tactical weakness — fewer defenders come last
+        return a -> getNumArmies() < b -> getNumArmies();
+
+    }
+
+    bool Territory::territoryThreatCompareDescend(Territory* a, Territory* b) {
+
+        if(a == nullptr || b == nullptr){ return false; }
+
+        //Compute threat ratio for a
+        double enemySumA = 0.0;
+        vector<Territory*> neighborsA = a -> getNeighbors();
+        Player* ownerA = a -> getOwner();
+
+        if(ownerA == nullptr){ return false; }
+
+        vector<Player*> trucesA = ownerA -> getNeutralEnemies();
+
+        for(Territory* neigh : neighborsA){
+
+            if(neigh == nullptr){ continue; }
+
+            Player* neighOwner = neigh -> getOwner();
+            if(neighOwner == nullptr){ continue; }
+
+            //Ignore self-owned, neutral, or truce neighbours
+            if(neighOwner == ownerA){ continue; }
+            if(find(trucesA.begin(), trucesA.end(), neighOwner) != trucesA.end()){ continue; }
+
+            enemySumA += neigh -> getNumArmies();
+
+        }
+
+        double threatA = (enemySumA + 1.0) / (static_cast<double>(a -> getNumArmies()) + 1.0);
+
+        //Compute threat ratio for Territory B
+        double enemySumB = 0.0;
+        vector<Territory*> neighborsB = b -> getNeighbors();
+        Player* ownerB = b -> getOwner();
+
+        if(ownerB == nullptr){ return false; }
+
+        vector<Player*> trucesB = ownerB -> getNeutralEnemies();
+
+        for(Territory* neigh : neighborsB){
+
+            if(neigh == nullptr){ continue; }
+
+            Player* neighOwner = neigh -> getOwner();
+            if(neighOwner == nullptr){ continue; }
+
+            //Ignore self-owned, neutral, or truce neighbours
+            if(neighOwner == ownerB){ continue; }
+            if(find(trucesB.begin(), trucesB.end(), neighOwner) != trucesB.end()){ continue; }
+
+            enemySumB += neigh -> getNumArmies();
+
+        }
+
+        double threatB = (enemySumB + 1.0) / (static_cast<double>(b -> getNumArmies()) + 1.0);
+
+        //Compare both Territories. Primary key: higher threat ratio first (more threatened)
+
+        if(abs(threatA - threatB) > 1e-6){ return threatA > threatB; }
+
+        //Secondary key: Whoever has fewer armies first
+        int armiesA = a -> getNumArmies();
+        int armiesB = b -> getNumArmies();
+
+        if(armiesA != armiesB){ return armiesA < armiesB; }
+
+        //Just return false, this should not change anything in the grand scheme of things
+        else{ return false; }
+
+    }
+
+    void Territory::computeNumericTerrID() {
+
+        const uint64_t FNV_OFFSET = 1469598103934665603ULL;
+        const uint64_t FNV_PRIME  = 1099511628211ULL;
+
+        uint64_t hash = FNV_OFFSET;
+
+        // Apply XOR and multiply for each character in the ID
+        for(unsigned char c : ID) {
+
+            hash ^= static_cast<uint64_t>(c);
+            hash *= FNV_PRIME;
         
+        }
+
+        //Reduce to a fixed 64-bit prime modulus to keep magnitudes reasonable
+        const uint64_t MOD_LIMIT = 29996224275833ULL; //1 trillionith prime
+        hash = hash % MOD_LIMIT;
+
+        // Store as signed long long
+        this -> numericTerrID = static_cast<long long>(hash);
+
+    }
 
     // ================= Map =================
 
@@ -361,26 +485,28 @@ namespace WarzoneMap {
 
      Map::Map() {
 
-        this->author = "";
-        this->image = "";
-        this->wrap = "";
-        this->scrollType = "";
-        this->warn = "";
-        this->territories = {};
-        this->continents = {};
-        this->continentLookupTable = {};
+        this -> author = "";
+        this -> image = "";
+        this -> wrap = "";
+        this -> scrollType = "";
+        this -> warn = "";
+        this -> mapName = "";
+        this -> territories = {};
+        this -> continents = {};
+        this -> continentLookupTable = {};
 
     }
 
-    Map::Map(string author, string image, string wrap, string scrollType, string warn,
+    Map::Map(string author, string image, string wrap, string scrollType, string warn, string mapName,
              vector<Territory*> territories, vector<Continent*> continents,
              unordered_map<Continent*, long long> continentLookupTable) {
 
-        this->author = author;
-        this->image = image;
-        this->wrap = wrap;
-        this->scrollType = scrollType;
-        this->warn = warn;
+        this -> author = author;
+        this -> image = image;
+        this -> wrap = wrap;
+        this -> scrollType = scrollType;
+        this -> warn = warn;
+        this -> mapName = mapName;
         this->territories = territories;
         this->continents = continents;
         this->continentLookupTable = continentLookupTable;
@@ -405,11 +531,12 @@ namespace WarzoneMap {
     Map::Map(const Map& other) {
 
         // Copy metadata
-        this->author = other.author;
-        this->image = other.image;
-        this->wrap = other.wrap;
-        this->scrollType = other.scrollType;
-        this->warn = other.warn;
+        this -> author = other.author;
+        this -> image = other.image;
+        this -> wrap = other.wrap;
+        this -> scrollType = other.scrollType;
+        this -> warn = other.warn;
+        this -> mapName = other.mapName;
 
         // Deep copy continents
         unordered_map<Continent*, Continent*> contMap;
@@ -479,6 +606,7 @@ namespace WarzoneMap {
             wrap = other.wrap;
             scrollType = other.scrollType;
             warn = other.warn;
+            mapName = other.mapName;
 
             // Deep copy continents
             unordered_map<Continent*, Continent*> contMap;
@@ -536,6 +664,7 @@ namespace WarzoneMap {
         os << "Wrap: " << map.wrap << "\n";
         os << "Scroll Type: " << map.scrollType << "\n";
         os << "Warn: " << map.warn << "\n";
+        os << "Map Name: " << map.mapName << "\n";
 
         os << "Continents:\n";
         for(const auto& continent : map.continents) { os << "  " << *continent << "\n"; }
@@ -565,6 +694,9 @@ namespace WarzoneMap {
 
     const string& Map::getWarn() const { return warn; }
     void Map::setWarn(const string& warn) { this -> warn = warn; }
+
+    const string& Map::getMapName() const { return mapName; }
+    void Map::setMapName(const string mapName){ this -> mapName = mapName; }
 
     const vector<Continent*>& Map::getContinents() const { return continents; }
     void Map::setContinents(const vector<Continent*>& continents) { this -> continents = continents; }
@@ -749,7 +881,6 @@ namespace WarzoneMap {
 
         }
 
-        cout << "Validation successful: Map is valid." << endl;
         return true;
 
     }
@@ -792,7 +923,110 @@ namespace WarzoneMap {
 
     }
 
+    vector<Territory*> Map::shortestPathBetweenTerritories(Territory* start, Territory* goal) {
 
+        //Safety Checks
+        if(start == nullptr || goal == nullptr) { return {}; }
+        if(start == goal) { return { start }; }
+
+        //Instantiate relevant structures
+        unordered_map<Territory*, int> distance; //Shortest known distance from start
+        unordered_map<Territory*, Territory*> previous; //Predecessor for path reconstruction
+        unordered_set<Territory*> visited; //Visited set to prevent reprocessing
+
+
+        // Comparator structure for priority queue
+        struct TerritoryDistanceCompare {
+
+            unordered_map<Territory*, int>* distancePtr;
+
+            //Constructor for struct
+            TerritoryDistanceCompare(unordered_map<Territory*, int>* dist) { distancePtr = dist; }
+
+            //Comparator definition
+            bool operator()(Territory* left, Territory* right) const { return (*distancePtr)[left] > (*distancePtr)[right]; }
+
+        };
+
+        //Define priority queue
+        TerritoryDistanceCompare comparator(&distance);
+
+        //Invert heap access since C++ priority_queues are max-heaps by default; use a custom comparator to make it act as a min-heap        
+        priority_queue<Territory*, vector<Territory*>, TerritoryDistanceCompare> frontier(comparator);
+
+        //Intialize default values
+        for(Territory* t : this -> getTerritories()) {
+
+            if(t == nullptr) { continue; } //Ignore null pointers
+
+            distance[t] = INT_MAX; //Initialize all distances to "infinity"
+            previous[t] = nullptr; //Set previous territory pointer to be null
+
+        }
+
+        //Intialize default values for starting territory
+        distance[start] = 0; 
+        frontier.push(start);
+
+        //Execute Djkistra's
+        while(!frontier.empty()) {
+
+            Territory* current = frontier.top(); //Get current neighbouring territory
+            frontier.pop();
+
+            //Skip already visited territories
+            if(visited.find(current) != visited.end()) { continue; }
+            
+            //Mark current territory as visited
+            visited.insert(current); 
+
+            //Goal found
+            if(current == goal) { break; }
+
+            //Iterate through all neighbors
+            for(Territory* neighbor : current -> getNeighbors()) {
+
+                if(neighbor == nullptr) { continue; }
+
+                //The distance to the neighbor from start is the distance from the current node++ (current holds the distance from start)
+                int altDistance = distance[current] + 1;
+
+                //If this new path to the neighbor is shorter than the previously known path,
+                //update the neighbor's shortest distance and record that it was reached through the current node.
+                //Then, add the neighbor to the priority queue for further exploration.
+                if(altDistance < distance[neighbor]) {
+
+                    distance[neighbor] = altDistance; //Record new shortest known distance to neighbor
+                    previous[neighbor] = current; //Store path predecessor for reconstruction later
+                    frontier.push(neighbor); //Schedule neighbor for expansion in the frontier
+
+                }
+
+
+            }
+
+        }
+
+        //Rebuild path
+        vector<Territory*> shortestPath;
+        Territory* step = goal;
+
+        //Backtrack from goal to start
+        while(step != nullptr) {
+
+            shortestPath.push_back(step);
+            step = previous[step];
+
+        }
+
+        //If start wasn't reached, there is no path
+        if(shortestPath.back() != start) { return {}; }
+
+        //Reverse shortestPath to be start to goal
+        reverse(shortestPath.begin(), shortestPath.end());
+        return shortestPath;
+
+    }
 
     // ================= MapLoader =================
 
@@ -818,18 +1052,21 @@ namespace WarzoneMap {
         this -> wrap = "";
         this -> scrollType = "";
         this -> warn = "";
+        this -> mapName = mapName;
         this -> continents = {};
         this -> territories = {};
     
     }
 
-    MapLoader::MapLoader(string author, string image, string wrap, string scrollType, string warn, map<string, int> continents, vector<vector<string>> territories){
+    MapLoader::MapLoader(string author, string image, string wrap, string scrollType, string warn, string mapName,
+                         map<string, int> continents, vector<vector<string>> territories){
         
         this -> author = author;
         this -> image = image;
         this -> wrap = wrap;
         this -> scrollType = scrollType;
         this -> warn = warn;
+        this -> mapName = mapName;
         this -> continents = continents;
         this -> territories = territories;
 
@@ -844,6 +1081,7 @@ namespace WarzoneMap {
         this -> wrap = other.wrap;
         this -> scrollType = other.scrollType;
         this -> warn = other.warn;
+        this -> mapName = other.mapName;
         this -> continents = other.continents;
         this -> territories = other.territories;
     
@@ -858,6 +1096,7 @@ namespace WarzoneMap {
             this -> wrap = other.wrap;
             this -> scrollType = other.scrollType;
             this -> warn = other.warn;
+            this -> mapName = other.mapName;
             this -> continents = other.continents;
             this -> territories = other.territories;
 
@@ -874,6 +1113,7 @@ namespace WarzoneMap {
         os << "Wrap: " << mapLoader.wrap << "\n";
         os << "Scroll Type: " << mapLoader.scrollType << "\n";
         os << "Warn: " << mapLoader.warn << "\n";
+        os << "Map Name:" << mapLoader.mapName << "n";
 
         os << "Continents:\n";
 
@@ -920,6 +1160,9 @@ namespace WarzoneMap {
     const string& MapLoader::getWarn() const { return warn; }
     void MapLoader::setWarn(const string& warn) { this -> warn = warn; }
 
+    const string& MapLoader::getMapName() const { return mapName; }
+    void MapLoader::setMapName(const string& mapName) { this -> mapName = mapName; }
+
     const map<string, int>& MapLoader::getContinents() const { return continents; }
     void MapLoader::setContinents(const map<string, int> continents) { this -> continents = continents; }
 
@@ -928,7 +1171,6 @@ namespace WarzoneMap {
 
 
     //-- Class Methods --//
-
     int MapLoader::importMapInfo(const string& filePath) {
         
         ifstream file(filePath); // Open file buffer on filePath
@@ -937,6 +1179,20 @@ namespace WarzoneMap {
 
             cerr << "Error: Could not open file " << filePath << endl;
             return MAP_FILE_NOT_FOUND;
+
+        }
+
+        //Extract map name from file path
+        size_t lastSlash = filePath.find_last_of("/\\"); //Find last slash (Windows or Unix)
+        size_t lastDot = filePath.find_last_of('.'); //Find last dot before extension
+
+        if(lastDot == string::npos || lastDot <= lastSlash) { //Default to full filename if no extension
+            
+            mapName = filePath.substr(lastSlash + 1);
+
+        } else {
+
+            mapName = filePath.substr(lastSlash + 1, lastDot - lastSlash - 1); //Extract name only
 
         }
 
@@ -1019,16 +1275,17 @@ namespace WarzoneMap {
         }
 
         file.close();
-
-        cout << "Map loaded successfully!" << endl << "  Continents loaded: " << continents.size() << endl << "  Territories loaded: " << territories.size() << endl;
-
         return MAP_OK;
+    
     }
 
     pair<int, Map*> MapLoader::loadMap() {    
 
         //Create return map pointer, to be returned IF loading is successful
         Map* tempMapPtr = new Map();
+
+        //Set map name
+        tempMapPtr -> setMapName(this -> getMapName());
 
         //-- Check if all metadata is valid --
 
@@ -1235,15 +1492,6 @@ namespace WarzoneMap {
 
             }
             
-        }
-
-        // Validate map structure
-        if(!(tempMapPtr -> validate())) {
-
-            cerr << "Error: The map structure is invalid." << endl;
-            delete tempMapPtr;
-            return {INVALID_MAP_STRUCTURE, nullptr};
-
         }
 
         tempMapPtr -> buildContinentHashmap(); //Set up lookup table

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -98,6 +100,12 @@ namespace WarzoneCard {
              * @return The CardType of this card.
              */
             CardType getType() const;
+
+            /**
+             * @brief Getter for the card type.
+             * @return The CardType of this card as a string.
+             */
+            string getTypeString() const;
 
             /**
              * @brief Setter for the card type.
@@ -215,6 +223,15 @@ namespace WarzoneCard {
              * @return Pointer to the drawn Card.
              */
             Card* draw();
+
+            /**
+             * @brief Draw a random card, of a certain type, from the deck.
+             * 
+             * Removes a randomly selected card from the Deck and returns it
+             * so that it can be placed into a Player's Hand.
+             * @return Pointer to the drawn Card.
+             */
+            Card* draw(CardType desiredType);
 
             /**
              * @brief Return a card back into the deck.
@@ -342,7 +359,14 @@ namespace WarzoneCard {
              * @param cardType The CardType to check for.
              * @return True if a card of the specified type is found, false otherwise.
              */
-            bool hasCardOfType(WarzoneCard::CardType cardType) const;
+            bool hasCardOfType(CardType cardType) const;
+
+            /**
+             * @brief Retrieves (without removing) the first card of a given type from the hand.
+             * @param type The type of card to search for (Bomb, Blockade, Airlift, Diplomacy).
+             * @return Pointer to the first Card of the specified type, or nullptr if none found.
+             */
+            Card* getCardOfType(CardType type) const;
 
     };
 

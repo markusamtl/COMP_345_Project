@@ -51,7 +51,22 @@ namespace WarzoneCard {
 
     //-- Accessors and Mutators --//
 
-    CardType Card::getType() const { return this->type; }
+    CardType Card::getType() const { return this -> type; }
+
+    string Card::getTypeString() const {
+
+        switch(this -> type) {
+
+            case CardType::Bomb:        return "Bomb";
+            case CardType::Blockade:    return "Blockade";
+            case CardType::Airlift:     return "Airlift";
+            case CardType::Diplomacy:   return "Diplomacy";
+            case CardType::Unknown:     return "Unknown";
+            default:                    return "Error";
+
+        }
+
+    }
 
     void Card::setType(CardType t) { this->type = t; }
 
@@ -111,7 +126,11 @@ namespace WarzoneCard {
 
         }
 
-        this -> numOfPlayers = 0; // Default to 1 player if not set
+        //Shuffle Deck
+        unsigned seed = static_cast<unsigned>(TimeUtil::getSystemTimeNano());
+        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(seed));
+
+        this -> numOfPlayers = 1; // Default to 1 player if not set
 
     }
 
@@ -129,6 +148,12 @@ namespace WarzoneCard {
             }
 
         }
+
+        //Shuffle Deck
+        unsigned seed = static_cast<unsigned>(TimeUtil::getSystemTimeNano());
+        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(seed));
+
+        this -> numOfPlayers = numOfPlayers;
 
     }
 
@@ -228,6 +253,29 @@ namespace WarzoneCard {
 
     }
 
+    Card* Deck::draw(CardType desiredType) {
+
+        if(cards.empty()) { return nullptr; }
+
+        //Look for the first matching card. Use iterator to handle removing mid for loop 
+        for(auto it = cards.begin(); it != cards.end(); it++) {
+
+            Card* c = *it;
+
+            if(c != nullptr && c->getType() == desiredType) {
+
+                cards.erase(it); // remove from deck
+                return c; // return pointer to caller
+            
+            }
+
+        }
+
+        //If not found, just return nullptr
+        return nullptr;
+    }
+
+
     void Deck::returnToDeck(Card* card) {
     
         if(card != nullptr){
@@ -319,6 +367,8 @@ namespace WarzoneCard {
 
     void Hand::removeCardFromHand(Card* card) {
 
+        if(card == nullptr || handCards.empty()) { return; } //Safety check
+
         //Get index for which the given card in the hand
         auto it = find(handCards.begin(), handCards.end(), card);
 
@@ -338,5 +388,24 @@ namespace WarzoneCard {
         return false;
 
     }
+
+    Card* Hand::getCardOfType(CardType type) const {
+
+        //Safety check: no cards in hand
+        if(handCards.empty()) { return nullptr; }
+
+        //Iterate over all cards to find the first match
+        for(Card* c : handCards) {
+
+            //Check if card exists, and if it's the same type as inputted in method
+            if(c != nullptr && c -> getType() == type) { return c; }
+
+        }
+
+        //Return nullptr if no matching card was found
+        return nullptr;
+
+    }
+
 
 }

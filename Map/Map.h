@@ -1,4 +1,5 @@
 #pragma once
+#include <climits>
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -10,12 +11,30 @@
 #include <string>
 
 namespace WarzonePlayer { class Player; } //Forward declaration
+namespace WarzoneOrder { class TimeUtil; } //Forward declaration
 using namespace std;
 
 
 namespace WarzoneMap {
 
+    // Map loader and validation status codes
+    const int MAP_OK = 0;
+    const int MAP_FILE_NOT_FOUND = 1;
+    const int MAP_INVALID_SECTION = 2;
+    const int MAP_PARSE_ERROR = 3;
+
+    const int INVALID_MAP_PTR = 1;
+    const int INVALID_AUTHOR = 2;
+    const int INVALID_IMAGE = 3;
+    const int INVALID_WRAP = 4;
+    const int INVALID_SCROLL = 5;
+    const int INVALID_WARN = 6;
+    const int INVALID_CONTINENT = 7;
+    const int INVALID_TERRITORY = 8;
+    const int INVALID_MAP_STRUCTURE = 9;
+
     using WarzonePlayer::Player;
+    using WarzoneOrder::TimeUtil;
 
     // ================= StringHandling =================
     /**
@@ -352,8 +371,56 @@ namespace WarzoneMap {
             static bool territoryIDCompare(Territory* a, Territory* b);
 
             /**
-             * @brief Compute numericTerrID from ID (Standard polynomial rolling hash).
+             * @brief Comperator operation between two territories, helps to sort based on number of armies in descending order
+             * @param a First territory
+             * @param b Second territory
              */
+            static bool territoryNumArmiesCompareDescend(Territory* a, Territory* b);
+
+            /**
+             * @brief Comperator operation between two territories, helps to sort based on number of armies in ascending order
+             * @param a First territory
+             * @param b Second territory
+             */
+            static bool territoryNumArmiesCompareAscend(Territory* a, Territory* b);
+
+            /**
+             * @brief Comparator operation between two enemy territories based on their owner's overall strength, then by defending armies.
+             * @param a First territory
+             * @param b Second territory
+             */
+            static bool territoryAttackPriorityCompare(Territory* a, Territory* b);
+
+             /**
+             * @brief Comparator operation between two territories bordering enemies to see who's most at threat, descending by risk level
+             * @param a First territory
+             * @param b Second territory
+             */
+            static bool territoryThreatCompareDescend(Territory* a, Territory* b);
+
+
+            /**
+             * @brief Computes a deterministic 64-bit numeric identifier for this Territory using the FNV-1a hash algorithm.
+             *
+             * This method converts the alphanumeric `ID` string of a Territory into a unique, uniform numeric value
+             * (`numericTerrID`) through the Fowler–Noll–Vo (FNV-1a) hashing process. The resulting value is independent of
+             * the string’s length or composition, ensuring consistent magnitude and distribution across all territory names.
+             *
+             * ### Algorithm Summary
+             * - Hash variant: **FNV-1a (64-bit)**
+             * - Offset basis: `1469598103934665603`
+             * - Prime multiplier: `1099511628211`
+             * - Final value is reduced modulo a large 64-bit prime (`22801763489`) for bounded magnitude.
+             *
+             * ### Benefits
+             * - Deterministic, Uniform, nearly 100% guarenteed to be Collision-proof, lightweight
+             *
+             * @note The resulting hash enables consistent continent and player hash-sum comparisons,
+             *       making it suitable for both map validation and AI threat assessment.
+             *
+             * @see https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+             */
+
             void computeNumericTerrID();
             
         };
@@ -383,6 +450,7 @@ namespace WarzoneMap {
             string wrap;
             string scrollType;
             string warn;
+            string mapName;
 
             //-- Map Storage Properties --//
             vector<Continent*> continents;
@@ -408,11 +476,13 @@ namespace WarzoneMap {
              * @param wrap
              * @param scrollType
              * @param warn
+             * @param mapName
              * @param territories
              * @param continents
              * @param continentLookupTable;
              */
-            Map(string author, string image, string wrap, string scrollType, string warn, vector<Territory*> territories, vector<Continent*> continents, unordered_map<Continent*, long long> continentLookupTable);
+            Map(string author, string image, string wrap, string scrollType, string warn, string mapName,
+                vector<Territory*> territories, vector<Continent*> continents, unordered_map<Continent*, long long> continentLookupTable);
 
             /**
              * @brief Destructor
@@ -502,6 +572,18 @@ namespace WarzoneMap {
             * @param warn string to set
             */
             void setWarn(const string& warn);
+
+            /**
+             * @brief Accessor for mapName
+             * @return mapName string
+             */
+            const string& getMapName() const;
+
+            /**
+             * @brief Mutator for mapName
+             * @param mapName String to set
+             */
+            void setMapName(const string mapName);
 
             /**
              * @brief Accessor for continents
@@ -605,6 +687,20 @@ namespace WarzoneMap {
              */
             unordered_map<Continent*, long long> buildEmptyContinentHashmap() const;
 
+            /**
+             * @brief Finds the shortest path between two territories using Dijkstra's algorithm.
+             * 
+             * This method computes the minimal path (fewest adjacency steps) between a start
+             * and goal territory by traversing the map graph. All edges have equivalent work.
+             * 
+             * @param start Pointer to the starting territory.
+             * @param goal Pointer to the target territory.
+             * @return A vector of Territory* representing the shortest path from start to goal (inclusive).
+             * Returns an empty vector if no path exists or either input is null.
+             */
+            vector<Territory*> shortestPathBetweenTerritories(Territory* start, Territory* goal);
+
+
     };
 
     // ================= MapLoader =================
@@ -623,6 +719,7 @@ namespace WarzoneMap {
             string wrap;
             string scrollType;
             string warn;
+            string mapName;
             
             //-- Continent Info --//
             map<string, int> continents; 
@@ -646,10 +743,12 @@ namespace WarzoneMap {
             * @param wrap
             * @param scrollType
             * @param warn
+            * @param mapName
             * @param continents
             * @param territories
             */
-            MapLoader(string author, string image, string wrap, string scrollType, string warn, map<string, int> continents, vector<vector<string>> territories);
+            MapLoader(string author, string image, string wrap, string scrollType, string warn, string mapName,
+                      map<string, int> continents, vector<vector<string>> territories);
 
             /**
             * @brief Destructor
@@ -739,6 +838,18 @@ namespace WarzoneMap {
             * @param warn string to set
             */
             void setWarn(const string& warn);
+
+            /**
+            * @brief Accessor for mapName
+            * @return mapName string 
+            */
+            const string& getMapName() const;
+
+            /**
+            * @brief Mutator for mapName 
+            * @param mapName string to set
+            */
+            void setMapName(const string& mapName);
 
             /**
             * @brief Accessor and Mutator for continents

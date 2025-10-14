@@ -41,6 +41,8 @@ void testPlayer() {
     // --- Setup Players ---
     Player* alice = new Player("Alice", playerContHashmap);
     Player* bob = new Player("Bob", playerContHashmap);
+    Player* neutral = new Player("Bob", playerContHashmap);
+
 
     // Get Brazil territories
     vector<Territory*> allTerritories = gameMap->getTerritories();
@@ -101,10 +103,10 @@ void testPlayer() {
     }
 
     // --- Issue random orders ---
-    cout << endl << "=== Alice issues 5 random orders ===" << endl;
+    cout << endl << "=== Alice issues 5 orders ===" << endl;
     for(int i = 0; i < 5; i++){
 
-        alice -> issueOrder();
+        cout << alice -> issueOrder(false, deck, neutral);
     }
 
     cout << endl << "=== Alice's Final State: ===" << endl;
@@ -113,7 +115,7 @@ void testPlayer() {
     cout << endl << "=== Bob issues 5 random orders ===" << endl;
     for(int i = 0; i < 5; i++){
         
-        bob -> issueOrder();
+        bob -> issueOrder(false, deck, neutral);
 
     }
 
@@ -123,32 +125,21 @@ void testPlayer() {
     // --- Show attack/defend options ---
 
     cout << endl << "=== Territories to Attack: Alice ===" << endl;
-    alice -> toAttackPrint();
-
-    cout << endl << "=== Results of toAttack method for Alice: ===" << endl;
-    for(Territory* t : alice -> toAttack()) { cout << *t << endl; }
+    cout << alice -> toAttackString();
 
     cout << endl << "=== Territories to Attack: Bob ===" << endl;
-    bob -> toAttackPrint();
-
-    cout << endl << "=== Results of toAttack method for Bob: ===" << endl;
-    for(Territory* t : bob -> toAttack()) { cout << *t << endl; }
+    cout << bob -> toAttackString();
 
     cout << endl << "=== Territories to Defend: Alice ===" << endl;
-    alice -> toDefendPrint();
-
-    cout << endl << "=== Results of toDefend method for Alice: ===" << endl;
-    for(Territory* t : alice -> toDefend()) { cout << *t << endl; }
+    cout << alice -> toDefendString();
 
     cout << endl << "=== Territories to Defend: Bob ===" << endl;
-    bob -> toDefendPrint();
-
-    cout << endl << "=== Results of toDefend method for Bob: ===" << endl;
-    for(Territory* t : bob -> toDefend()) { cout << *t << endl; }
+    cout << bob -> toDefendString();
 
     // --- Cleanup ---
     delete alice;
     delete bob;
+    delete neutral;
     delete gameMap;
     delete deck;
 

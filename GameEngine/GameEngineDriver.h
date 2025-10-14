@@ -14,9 +14,24 @@ using namespace WarzoneEngine;
  */
 void testGameStates();
 
+
 /**
- * @brief Simulates a full automatic game sequence with multiple players on a predefined map.
+ * @brief Test function for startup phase method.
+ * Allows user to select a map, and to add players.
+ */
+
+void testStartupPhase();
+
+
+/**
+ * @brief Test function to test the gameplay loop
+ */
+
+void testMainGameLoop();
+
+/**
+ * @brief Simulates a full automatic game sequence with multiple players on user-inputted predefined map.
  * The user can specify the maximum number of turns to simulate and whether to print detailed outputs.
  * After the simulation ends, the user is prompted to play again or exit.
  */
-void simulateRealGame();
+void simulateGame();

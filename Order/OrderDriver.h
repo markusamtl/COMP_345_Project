@@ -9,7 +9,8 @@ using namespace WarzonePlayer;
 using namespace WarzoneMap;
 
 /**
- * @brief Test function for the Order system.
- * This free function demonstrates the creation and execution of various Warzone Orders
+ * @brief Demonstrates order functionality
+ * Does the same thing the above method does, except a card is drawn when Alice beats Bob
  */
-void testOrderList();
+
+void testOrderExecution();

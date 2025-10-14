@@ -12,9 +12,14 @@ using namespace WarzoneEngine;
 
 int main() {
     
-    testOrderExecution();
+    //PART 2
     testStartupPhase();
+    
+    //PART 3
     testMainGameLoop();
+    
+    //PART 4
+    testOrderExecution();
     
     return 0;
 

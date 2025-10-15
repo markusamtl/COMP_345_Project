@@ -197,6 +197,8 @@ namespace WarzoneEngine {
         }
     }
 
+    void GameEngine::setState(const EngineState& gameState){ state = gameState;}
+
     /*--------------------------------------Helper & Internal Methods--------------------------------------------*/
 
     bool GameEngine::isCurrentStateCorrect(EngineState expected, const string& cmd) {
@@ -1031,7 +1033,10 @@ namespace WarzoneEngine {
         //Get map from MapLoader
         MapLoader loader;
         int loaderReturnCode = loader.importMapInfo(path);
-        string mapName = loader.getMapName(); //Extracted from MapLoader after parsing path
+
+        string mapName = "Unknown Map";
+
+        if(loaderReturnCode != MAP_FILE_NOT_FOUND){ mapName = loader.getMapName(); }//Extracted from MapLoader after parsing path
 
         // --- Handle Import Errors ---
         if(loaderReturnCode != MAP_OK){ 
@@ -2152,7 +2157,7 @@ namespace WarzoneEngine {
 
     }
 
-    void GameEngine::gameplayPhase(bool surpressOutput, string startLog) {
+    void GameEngine::gameplayPhase(bool surpressOutput, string startLog, string filePath) {
 
         //---------------------------- Safety Checks ----------------------------
         if(gameMap == nullptr || players.empty()) { return; }
@@ -2173,6 +2178,17 @@ namespace WarzoneEngine {
 
         //Build filename with labeled components
         ostringstream filenameBuilder;
+        filenameBuilder << filePath;
+
+        //--------- Ensure directory exists before creating the file -------------
+        try{ filesystem::create_directories(filePath); } 
+        catch(const std::filesystem::filesystem_error& e){
+
+            cerr << "[Error] Failed to create directory: " << filePath << "\nReason: " << e.what() << endl;
+            return;
+
+        }
+
         filenameBuilder << "Y" << (localTime.tm_year + 1900)
                         << "_M" << setw(2) << setfill('0') << (localTime.tm_mon + 1)
                         << "_D" << setw(2) << setfill('0') << localTime.tm_mday
@@ -2185,39 +2201,37 @@ namespace WarzoneEngine {
         ofstream logFile(logFileName);
         if(!logFile.is_open()) { return; }
 
-        auto logOutput = [&](const string& text){ logFile << text << endl; };
-
         //---------------------------- Initialization ----------------------------
         bool gameOver = false;
-        logOutput(startLog);
+        logFile << startLog << endl;
         cout << ("===============================\n");
         cout << ("=== ENTERING GAMEPLAY PHASE ===\n");
         cout << ("===============================\n");
-        logOutput("[GameplayPhase] Beginning Turn " + to_string(getTurn()));
+        logFile << "[GameplayPhase] Beginning Turn " + to_string(getTurn()) << endl;
 
         //---------------------------- Main Game Loop ----------------------------
         while(!gameOver) {
 
             //---------------- Reinforcement Phase ----------------//
             string reinforceResult = engineAssignReinforcement(surpressOutput);
-            logOutput(reinforceResult);
+            logFile << reinforceResult << endl;
 
             //---------------- Issue Orders Phase ----------------//
             string issueResult = engineIssueOrder(surpressOutput);
-            logOutput(issueResult);
+            logFile << issueResult << endl;
 
             //---------------- End Issue Orders Phase ----------------//
             string endIssueResult = engineEndIssueOrder(surpressOutput);
-            logOutput(endIssueResult);
+            logFile << endIssueResult << endl;
 
             //---------------- Execute Orders Phase ----------------//
             string executeResult = engineExecuteOrder(surpressOutput);
-            logOutput(executeResult);
+            logFile << executeResult << endl;
 
             //Check if game ended (state == Win)
             if(state == EngineState::Win) {
 
-                logOutput("\n[GameplayPhase] Win condition reached. Ending simulation.");
+                logFile << "\n[GameplayPhase] Win condition reached. Ending simulation." << endl;
                 gameOver = true;
                 break;
 
@@ -2225,22 +2239,22 @@ namespace WarzoneEngine {
 
             //---------------- End Execute Orders Phase ----------------//
             string endExecuteResult = engineEndExecuteOrder(surpressOutput);
-            logOutput(endExecuteResult);
+            logFile << endExecuteResult << endl;
 
             //---------------- Increment Turn ----------------//
-            logOutput("\n[GameplayPhase] Proceeding to Turn " + to_string(getTurn()));
-            logOutput("---------------------------------------------------\n\n");
-            logOutput("[GameplayPhase] Beginning Turn " + to_string(getTurn()) + "\n\n");
+            logFile << "\n[GameplayPhase] Proceeding to Turn " + to_string(getTurn()) << endl;
+            logFile << "---------------------------------------------------\n\n" << endl;
+            logFile << "[GameplayPhase] Beginning Turn " + to_string(getTurn()) + "\n\n" << endl;
 
 
         }
 
         //---------------------------- Game End Summary ----------------------------
-        logOutput("\n[GameplayPhase] Game ended after " + to_string(getTurn()) + " turns.");
-        if(state == EngineState::Win) { logOutput("[GameplayPhase] Final state: Win condition reached."); } 
-        else { logOutput("[GameplayPhase] Final state: Unexpected termination."); }
+        logFile << "\n[GameplayPhase] Game ended after " + to_string(getTurn()) + " turns." << endl;
+        if(state == EngineState::Win) { logFile << "[GameplayPhase] Final state: Win condition reached." << endl; } 
+        else { logFile << "[GameplayPhase] Final state: Unexpected termination." << endl; }
 
-        logOutput("[GameplayPhase] Simulation log saved to: " + logFileName);
+        logFile << "[GameplayPhase] Simulation log saved to: " + logFileName << endl;
         logFile.close();
 
     }
@@ -2341,7 +2355,7 @@ namespace WarzoneEngine {
             
             }
 
-            gameplayPhase(surpressOutput, intialLog);
+            gameplayPhase(surpressOutput, intialLog, "../GameEngine/Games/");
 
             //---------------------------- Phase 3: End Phase --------------------------//
             if(!surpressOutput){

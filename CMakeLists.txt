@@ -20,6 +20,7 @@ set(SOURCES_COMMON
     Order/Order.cpp
     Card/Card.cpp
     GameEngine/GameEngine.cpp
+    CommandProcessing/CommandProcessing.cpp
 
     # Test functions (ensure these files do NOT define main())
     Map/MapDriver.cpp
@@ -27,6 +28,8 @@ set(SOURCES_COMMON
     Order/OrderDriver.cpp
     Card/CardDriver.cpp
     GameEngine/GameEngineDriver.cpp
+    CommandProcessing/CommandProcessingDriver.cpp
+
 )
 
 # ---- Normal run target: -O2 ----

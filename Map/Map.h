@@ -58,6 +58,45 @@ namespace WarzoneMap {
             */
             static pair<bool, int> isStrInt(const string& inputStr);
 
+            /**
+             * @brief Converts an input string to lowercase
+             * @param inputStr string to be converted to lowercase
+             * @return Lowercase version of the input string
+             */
+            static string toLower(const string& inputStr);
+
+            /**
+             * @brief Split a string into component parts, based on a character used to check where to split
+             * 
+             * @param inputStr input string
+             * @param splitChar Character delimiter used to find where to split a string
+             * @return A vector of strings, split based on the split character
+             */
+            static vector<string> split(const string& inputStr, char splitChar);
+
+            /**
+             * @brief Computes a deterministic 64-bit numeric identifier for a string using the FNV-1a hash algorithm.
+             *
+             * This method converts the alphanumeric `ID` string of a Territory into a unique, uniform numeric value
+             * (`numericTerrID`) through the Fowler–Noll–Vo (FNV-1a) hashing process. The resulting value is independent of
+             * the string’s length or composition, ensuring consistent magnitude and distribution across all territory names.
+             *
+             * ### Algorithm Summary
+             * - Hash variant: **FNV-1a (64-bit)**
+             * - Offset basis: `1469598103934665603`
+             * - Prime multiplier: `1099511628211`
+             * - Final value is reduced modulo a large 64-bit prime (`22801763489`) for bounded magnitude.
+             *
+             * ### Benefits
+             * - Deterministic, Uniform, nearly 100% guarenteed to be Collision-proof, lightweight
+             *
+             * @note The resulting hash enables consistent continent and player hash-sum comparisons,
+             *       making it suitable for both map validation and AI threat assessment.
+             *
+             * @see https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+             */
+            static long long hashStringToNum(const string& inputStr);
+
     };
 
     // Forward declarations
@@ -401,26 +440,7 @@ namespace WarzoneMap {
 
             /**
              * @brief Computes a deterministic 64-bit numeric identifier for this Territory using the FNV-1a hash algorithm.
-             *
-             * This method converts the alphanumeric `ID` string of a Territory into a unique, uniform numeric value
-             * (`numericTerrID`) through the Fowler–Noll–Vo (FNV-1a) hashing process. The resulting value is independent of
-             * the string’s length or composition, ensuring consistent magnitude and distribution across all territory names.
-             *
-             * ### Algorithm Summary
-             * - Hash variant: **FNV-1a (64-bit)**
-             * - Offset basis: `1469598103934665603`
-             * - Prime multiplier: `1099511628211`
-             * - Final value is reduced modulo a large 64-bit prime (`22801763489`) for bounded magnitude.
-             *
-             * ### Benefits
-             * - Deterministic, Uniform, nearly 100% guarenteed to be Collision-proof, lightweight
-             *
-             * @note The resulting hash enables consistent continent and player hash-sum comparisons,
-             *       making it suitable for both map validation and AI threat assessment.
-             *
-             * @see https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
              */
-
             void computeNumericTerrID();
             
         };

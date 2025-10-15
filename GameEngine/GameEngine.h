@@ -262,6 +262,12 @@ namespace WarzoneEngine {
          */
         const string getStateAsString() const;
 
+        /**
+         * @brief Set the current engine state.
+         * @param gameState reference to the desired EngineState.
+         */
+        void setState(const EngineState& gameState);
+
         //-------- Helper and Internal Methods ---------//
 
         /**
@@ -521,8 +527,9 @@ namespace WarzoneEngine {
          * @brief Runs the complete Warzone main game loop (reinforcement -> issue orders -> execute orders).
          * @param surpressOutput Suppresses console output when true.
          * @param startUpMessage Message from start up to log
+         * @param filePath Filepath to where game should be saved to.
          */
-        void gameplayPhase(bool surpressOutput, string startUpMessage);
+        void gameplayPhase(bool surpressOutput, string startUpMessage, string filePath);
 
         /**
          * @brief Handles the game ending

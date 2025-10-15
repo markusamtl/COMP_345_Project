@@ -42,6 +42,73 @@ namespace WarzoneMap {
 
     }
 
+   
+    string StringHandling::toLower(const string& inputStr){
+
+        ostringstream retStr;
+
+        for(char c : inputStr){ //Avoid dealing with weird characters
+
+            retStr << static_cast<char>(tolower(static_cast<unsigned char>(c)));
+        
+        }
+
+        return retStr.str();
+
+    }
+
+    vector<string> StringHandling::split(const string& inputStr, char splitChar) {
+
+        vector<string> retStrVec;
+        ostringstream os;
+
+        for(size_t i = 0; i < inputStr.size(); i++) {
+
+            char c = inputStr[i];
+
+            if(c == splitChar) {
+
+                // Push current token and reset accumulator
+                retStrVec.push_back(os.str());
+                os.str("");
+                os.clear();
+
+            } else { os << c; }
+
+        }
+
+        //Push the final token, if any content remains)
+        if(!os.str().empty()){ retStrVec.push_back(os.str()); }
+
+        return retStrVec;
+
+    }
+
+
+    long long StringHandling::hashStringToNum(const string& inputStr){
+
+        const uint64_t FNV_OFFSET = 1469598103934665603ULL;
+        const uint64_t FNV_PRIME  = 1099511628211ULL;
+
+        uint64_t hash = FNV_OFFSET;
+
+        // Apply XOR and multiply for each character in the ID
+        for(unsigned char c : inputStr) {
+
+            hash ^= static_cast<uint64_t>(c);
+            hash *= FNV_PRIME;
+        
+        }
+
+        //Reduce to a fixed 64-bit prime modulus to keep magnitudes reasonable
+        const uint64_t MOD_LIMIT = 29996224275833ULL; //1 trillionith prime
+        hash = hash % MOD_LIMIT;
+
+        // Store hashed string long long
+        return static_cast<long long>(hash);
+
+    }
+
     // ================= Continent =================
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
@@ -456,26 +523,8 @@ namespace WarzoneMap {
     }
 
     void Territory::computeNumericTerrID() {
-
-        const uint64_t FNV_OFFSET = 1469598103934665603ULL;
-        const uint64_t FNV_PRIME  = 1099511628211ULL;
-
-        uint64_t hash = FNV_OFFSET;
-
-        // Apply XOR and multiply for each character in the ID
-        for(unsigned char c : ID) {
-
-            hash ^= static_cast<uint64_t>(c);
-            hash *= FNV_PRIME;
         
-        }
-
-        //Reduce to a fixed 64-bit prime modulus to keep magnitudes reasonable
-        const uint64_t MOD_LIMIT = 29996224275833ULL; //1 trillionith prime
-        hash = hash % MOD_LIMIT;
-
-        // Store as signed long long
-        this -> numericTerrID = static_cast<long long>(hash);
+        this -> numericTerrID = StringHandling::hashStringToNum(this -> getID());
 
     }
 

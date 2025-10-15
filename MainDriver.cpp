@@ -3,6 +3,8 @@
 #include "Player/PlayerDriver.h"
 #include "Order/OrderDriver.h"
 #include "Card/CardDriver.h"
+#include "CommandProcessing/CommandProcessingDriver.h"
+#include "CommandProcessing/CommandProcessing.h"
 #include "GameEngine/GameEngineDriver.h"
 #include "GameEngine/GameEngine.h"
 
@@ -12,14 +14,17 @@ using namespace WarzoneEngine;
 
 int main() {
     
+    //PART 1
+    testCommandProcessorCLI();
+
     //PART 2
-    testStartupPhase();
+    //testStartupPhase();
     
     //PART 3
-    testMainGameLoop();
+    //testMainGameLoop();
     
     //PART 4
-    testOrderExecution();
+    //testOrderExecution();
     
     return 0;
 

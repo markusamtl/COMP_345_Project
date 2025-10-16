@@ -204,6 +204,18 @@ namespace WarzoneCommand {
             vector<Command*> commandList;
             GameEngine* engine;
 
+        protected:
+
+            /**
+             * @brief Hook method for reading commands.
+             * 
+             * - Default implementation: reads from console.
+             * - FileCommandProcessorAdapter overrides this to read from a file.
+             * 
+             * @return Raw input string from the input source.
+             */
+            virtual string readCommandFromSource();
+
             /**
              * @brief Reads a command string directly from console input and stores it.
              * @return Pointer to the created Command object.
@@ -216,17 +228,14 @@ namespace WarzoneCommand {
              */
             void saveCommand(Command* command);
 
-        protected:
-
             /**
-             * @brief Hook method for reading commands.
-             * 
-             * - Default implementation: reads from console.
-             * - FileCommandProcessorAdapter overrides this to read from a file.
-             * 
-             * @return Raw input string from the input source.
+             * @brief Launches the Warzone game loop for this command processor.
+             *
+             * This protected virtual function runs the full Warzone state machine.
+             * The base implementation uses console input, while derived adapters
+             * (like FileCommandProcessorAdapter) may override it to use file input.
              */
-            virtual string readCommandFromSource();
+            virtual void executeGame();
 
         public:
 
@@ -293,44 +302,82 @@ namespace WarzoneCommand {
              */
             bool validate(Command* command);
 
+            /**
+             * @brief Public accessor for executeGame;
+             */
+            void runGame();
+
     };
 
     /*------------------------------------------ FILE COMMAND PROCESSOR ADAPTER CLASS --------------------------------------------------*/
 
     /**
-     * @class FileCommandProcessorAdapter
-     * @brief Adapter that enables CommandProcessor to read commands from a file instead of console.
-     * 
-     * This class implements the Adapter design pattern. It inherits from CommandProcessor,
-     * overriding readCommandFromSource() to read commands sequentially from a file stream.
-     */
-    class FileCommandProcessorAdapter : public CommandProcessor {
+ * @class FileCommandProcessorAdapter
+ * @brief Adapter that enables CommandProcessor to read commands from a file instead of console.
+ * 
+ * This class implements the Adapter design pattern. It inherits from CommandProcessor,
+ * overriding readCommandFromSource() to read commands sequentially from a file stream.
+ */
+class FileCommandProcessorAdapter : public CommandProcessor {
 
-        private:
+    private:
 
-            ifstream fileStream;
+        ifstream fileStream;
 
-        protected:
+    protected:
 
-            /**
-             * @brief Overridden method to read commands from a text file instead of console.
-             * @return Next line of command input from the file.
-             */
-            string readCommandFromSource() override;
+        /**
+         * @brief Overridden method to read commands from a text file instead of console.
+         * @return Next line of command input from the file.
+         */
+        string readCommandFromSource() override;
 
-        public:
+        /**
+         * @brief Overridden method to execute game logic using file input.
+         */
+        void executeGame() override;
 
-            /**
-             * @brief Parameterized constructor.
-             * @param engine Pointer to the active GameEngine instance.
-             * @param filename Name of the input command file.
-             */
-            FileCommandProcessorAdapter(GameEngine* engine, const string& filename);
+    public:
 
-            /**
-             * @brief Destructor
-             */
-            ~FileCommandProcessorAdapter() override;
+        //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
+
+        /**
+         * @brief Parameterized constructor.
+         * @param engine Pointer to the active GameEngine instance.
+         * @param filename Name of the input command file.
+         */
+        FileCommandProcessorAdapter(GameEngine* engine, const string& filename);
+
+        /**
+         * @brief Destructor.
+         */
+        ~FileCommandProcessorAdapter() override;
+
+        /**
+         * @brief Copy constructor.
+         * @param other FileCommandProcessorAdapter object to copy from.
+         */
+        FileCommandProcessorAdapter(const FileCommandProcessorAdapter& other);
+
+        /**
+         * @brief Assignment operator.
+         * @param other FileCommandProcessorAdapter object to assign from.
+         * @return Reference to this FileCommandProcessorAdapter.
+         */
+        FileCommandProcessorAdapter& operator=(const FileCommandProcessorAdapter& other);
+
+        /**
+         * @brief Stream insertion operator.
+         * @param os Output stream.
+         * @param fcp FileCommandProcessorAdapter object to output.
+         * @return Reference to the output stream.
+         */
+        friend ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& fcp);
+
+        /**
+         * @brief Public accessor for executeGame()
+         */
+        void runGame();
 
     };
 

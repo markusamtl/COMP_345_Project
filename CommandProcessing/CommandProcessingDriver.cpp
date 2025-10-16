@@ -2,233 +2,273 @@
 
 void testCommandProcessorCLI() {
 
-    //---------------------------- Setup Phase ----------------------------
     GameEngine* engine = new GameEngine();
+    engine -> setMaxTurns(500000);
     CommandProcessor* processor = new CommandProcessor(engine);
 
+    processor -> runGame();
+
+    delete processor;
+    delete engine;
+
+}
+
+void testFileCommandProcessorAdapter(const vector<string>& fileList){
+
     cout << "=============================================\n";
-    cout << "          TEST: COMMAND PROCESSOR (CLI)      \n";
+    cout << "  TEST: FileCommandProcessorAdapter Execution \n";
     cout << "=============================================\n\n";
 
-    cout << "[Driver] This test demonstrates the CommandProcessor in console mode.\n";
-    //---------------------------- Initialization ----------------------------
-    bool running = true;
-    ostringstream sessionLog; // Accumulates all console I/O before gameplayPhase
+    if(fileList.empty()){
 
-    //---------------------------- Command Loop ----------------------------
-    while(running){
+        cerr << "[Driver] Error: No command files provided.\n";
+        return;
 
-        //---------------------- Show valid commands for current state ----------------------//
-        EngineState state = engine -> getState();
+    }
 
-        cout << "\n[Driver] Current State: " << engine -> getStateAsString() << endl;
-        sessionLog << "\n[Driver] Current State: " << engine -> getStateAsString() << endl;
+    //---------------------------- File Processing Loop ----------------------------//
+    for(const string& fileName : fileList){
 
-        cout << "[Driver] Available commands: ";
-        sessionLog << "[Driver] Available commands: ";
+        cout << "---------------------------------------------------\n";
+        cout << "[Driver] Starting new simulation using file: " << fileName << endl;
+        cout << "---------------------------------------------------\n";
 
-        switch(state){
+        //---------------------------- Setup Phase ----------------------------//
+        GameEngine* engine = new GameEngine();
+        engine -> setMaxTurns(500000);
+        FileCommandProcessorAdapter* adapter = new FileCommandProcessorAdapter(engine, fileName);
 
-            case EngineState::Start:
-                cout << "loadmap <mapfile>\n";
-                sessionLog << "loadmap <mapfile>\n";
-                break;
+        //---------------------------- Validation ----------------------------//
+        if(!adapter){
 
-            case EngineState::MapLoaded:
-                cout << "validatemap\n";
-                sessionLog << "validatemap\n";
-                break;
-
-            case EngineState::MapValidated:
-                cout << "addplayer <playername>\n";
-                sessionLog << "addplayer <playername>\n";
-                break;
-
-            case EngineState::PlayersAdded:
-                cout << "addplayer <playername>  OR  gamestart\n";
-                sessionLog << "addplayer <playername>  OR  gamestart\n";
-                break;
-
-            case EngineState::Win:
-                cout << "Replay  OR  Quit\n";
-                sessionLog << "Replay  OR  Quit\n";
-                break;
-
-            case EngineState::AssignReinforcement:
-            case EngineState::IssueOrders:
-            case EngineState::ExecuteOrders:
-                cout << "Game running...\n";
-                sessionLog << "Game running...\n";
-                break;
-
-            default:
-                cout << "Quit\n";
-                sessionLog << "Quit\n";
-                break;
-        }
-
-        cout << "[Driver] Please enter your command: " << endl;
-        sessionLog << "[Driver] Please enter your command:\n";
-
-        //Get command from processor
-        Command* cmd = processor -> getCommand();
-        if(cmd == nullptr){ continue; }
-        else{ sessionLog << cmd -> toString(); }
-
-        string cmdName = cmd -> getCommandName();
-        vector<string> args = cmd -> getCommandArgs();
-        long long cmdHash = StringHandling::hashStringToNum(cmdName);
-        ostringstream output;
-
-        //Validate command against current GameEngine state
-        if(!processor -> validate(cmd)){
-
-            string effect = "[Driver] Invalid command '" + cmd -> toString() + "' in state: " + engine -> getStateAsString() + "\n";
-            cmd -> setEffect(effect);
-            cout << effect;
-            sessionLog << effect;
+            cerr << "[Driver] Error: Failed to initialize FileCommandProcessorAdapter for file: " << fileName << endl;
+            delete engine;
             continue;
 
         }
 
-        //---------------------- Command Execution (Hash-Based Switch) ----------------------//
-        switch(cmdHash){
+        //---------------------------- Execution ----------------------------//
+        adapter -> runGame();
 
-            case LOADMAP_COMMAND_HASH: {
+        //---------------------------- Cleanup ----------------------------//
+        delete adapter;
+        delete engine;
 
-                if(args.empty()){
-
-                    output << "[Driver] Error: Missing map file argument.\n";
-                    break;
-
-                }
-
-                string result = engine -> engineLoadMap(args[0], false);
-                output << result;
-
-                if(result.find("failed") != string::npos || result.find("error") != string::npos){
-
-                    output << "\n[Driver] Map loading failed. Returning to Start state.\n";
-                    engine -> setState(EngineState::Start);
-
-                } else {
-
-                    engine -> setState(EngineState::MapLoaded);
-
-                }
-
-                break;
-
-            }
-
-            case VALIDATEMAP_COMMAND_HASH: {
-
-                string result = engine -> engineValidateMap(false);
-                output << result << endl;
-
-                if(result.find("invalid") != string::npos || result.find("failed") != string::npos){
-
-                    output << "[Driver] Map validation failed. Returning to Start state.\n";
-                    engine -> setState(EngineState::Start);
-
-                } else {
-
-                    engine -> setState(EngineState::MapValidated);
-
-                }
-
-                break;
-
-            }
-
-            case ADDPLAYER_COMMAND_HASH: {
-
-                if(args.empty()){
-
-                    output << "[Driver] Error: Missing player name argument.\n";
-                    break;
-
-                //Make sure that the number of players added does not exceed the maximum number of territories in the map
-                } else if(engine -> getGameMap() != nullptr && 
-                          engine -> getPlayers().size() == engine -> getGameMap() -> getTerritories().size()) {
-
-                    output << "[Driver] Error: Too many player added: Starting the game now!" << endl;
-                    engine -> setState(EngineState::PlayersAdded);
-
-                }
-
-                string result = engine -> engineAddPlayer(args[0], false);
-                output << result << endl;
-                engine -> setState(EngineState::PlayersAdded);
-                break;
-
-            }
-
-            case GAMESTART_COMMAND_HASH: {
-
-                //Make sure at least 2 players exist in the game before starting
-                if(engine -> getPlayers().size() < 2) {
-
-                    output << "[Driver] Error: You need at LEAST 2 players to play a game.\n" << endl;
-                    engine -> setState(EngineState::PlayersAdded);
-                    break;
-
-                }
-
-                string result = engine -> engineGameStart(false);
-                output << result << endl;
-
-                // Pass session log + file path to gameplayPhase
-                engine -> gameplayPhase(false, sessionLog.str(), "../CommandProcessing/Games/");
-                sessionLog.str("");
-                sessionLog.clear();
-                break;
-
-            }
-
-            case REPLAY_COMMAND_HASH: {
-
-                output << "[Driver] Restarting game session.\n" << endl;
-                engine -> setState(EngineState::Start);
-
-                //Clear string logs
-                sessionLog.str("");
-                sessionLog.clear();
-
-                break;
-
-            }
-
-            case QUIT_COMMAND_HASH: {
-
-                output << "[Driver] Exiting game. Goodbye!\n" << endl;
-                engine -> setState(EngineState::End);
-                running = false;
-                break;
-
-            }
-
-            default: {
-
-                output << "[Driver] Unknown or unsupported command: " << cmdName << "\n" << endl;
-                break;
-
-            }
-
-        }
-
-        //---------------------- Log & Display ----------------------//
-        string effectText = output.str();
-        cout << effectText;
-        sessionLog << effectText;
-        cmd -> setEffect(effectText);
+        cout << "[Driver] Completed simulation for file: " << fileName << "\n\n";
 
     }
 
-    //---------------------------- Cleanup ----------------------------
-    delete processor;
-    delete engine;
+    cout << "=============================================\n";
+    cout << "     All FileCommandProcessor Tests Done      \n";
+    cout << "=============================================\n\n";
 
-    cout << "[Driver] Simulation complete. Gameplay logs handled by GameEngine.\n";
+}
+
+/**
+ * @brief Driver function to create test files for the CommandProcessor and FileCommandProcessorAdapter.
+ * 
+ * This function automatically generates 8 test input files in the directory:
+ * "../CommandProcessor/FileCommandProcessorAdapterInputs/"
+ * 
+ * Each file simulates a different game startup or edge case scenario for the
+ * Warzone Command Processor (as required by A2 - Part 1 testing specifications).
+ * 
+ * All map files are assumed to exist under "../Map/test_maps/".
+ */
+void testFileCommandProcessorAdapterDriver(){
+
+    cout << "=============================================\n";
+    cout << "      TEST: FileCommandProcessorAdapter      \n";
+    cout << "=============================================\n\n\n";
+
+    //---------------------------- Setup Phase ----------------------------//
+    const string basePath = "../CommandProcessing/FileCommandProcessorAdapterInputs/";
+
+    if(!fs::exists(basePath)){
+
+        cout << "[Driver] Directory not found: " << basePath << endl;
+        cout << "[Driver] Creating directory...\n";
+
+        try{
+
+            fs::create_directories(basePath);
+            cout << "[Driver] Directory created successfully.\n\n";
+
+        }catch(const fs::filesystem_error& e){
+
+            cerr << "[Driver] Error: Failed to create directory: " << e.what() << endl;
+            return;
+
+        }
+
+    } else {
+
+        cout << "[Driver] Directory already exists: " << basePath << "\n\n";
+
+    }
+
+    vector<string> fileNames = {
+        "test1.txt",
+        "test2.txt",
+        "test3.txt",
+        "test4.txt",
+        "test5.txt",
+        "test6.txt",
+        "test7.txt",
+        "test8.txt",
+    };
+
+    //---------------------------- File Contents ----------------------------//
+    cout << "=============================================\n";
+    cout << "       Setting Up files to be read from      \n";
+    cout << "=============================================\n\n";
+
+    vector<vector<string>> fileContents;
+
+    //(1) Working game with Brazil map, 6 players, quit after start
+    fileContents.push_back({
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap",
+        "addplayer Alice",
+        "addplayer Bob",
+        "addplayer Carl",
+        "addplayer Dan",
+        "addplayer Erica",
+        "addplayer Francine",
+        "gamestart",
+        "quit"
+    });
+
+    //(2) Replay game instead of quitting, call 'ohio'
+    fileContents.push_back({
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap",
+        "addplayer Alice",
+        "addplayer Bob",
+        "addplayer Carl",
+        "addplayer Dan",
+        "addplayer Erica",
+        "addplayer Francine",
+        "gamestart",
+        "replay",
+        "loadmap ../Map/test_maps/Ohio/Ohio.map",
+        "validatemap",
+        "addplayer Alice",
+        "addplayer Bob",
+        "addplayer Carl",
+        "addplayer Dan",
+        "addplayer Erica",
+        "addplayer Francine",
+        "gamestart",
+        "quit"
+    });
+
+    //(3) Montreal fails to be loaded since it's not written properly, then tries to load giberish, then Brazil loads but adds 67 players, plays until end, quits
+    vector<string> cmds = {
+        
+        "loadmap ../Map/test_maps/Montreal/Montreal.map",
+        "loadmap ../Map/test_maps/005_I72_V-22/005_I72_V-22.map",
+        "validatemap",
+        "loadmap ../Map/test_maps/jksdhiufhre/jksdhiufhre.map",
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap"
+    
+    };
+
+    // Add 67 players (Brazil has 66 territories)
+    for(int i = 1; i <= 67; i++){
+
+        cmds.push_back("addplayer Player" + to_string(i));
+
+    }
+
+    cmds.push_back("gamestart");
+    cmds.push_back("quit");
+
+    fileContents.push_back(cmds);
+    
+
+    //(5) NO TEXT
+    fileContents.push_back({""});
+
+    //(5) Only loadmap (empty scenario after map load)
+    fileContents.push_back({ "loadmap ../Map/test_maps/Brazil/Brazil.map" });
+
+    //(6) Ends after validatemap
+    fileContents.push_back({
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap"
+    });
+
+    // (7) Ends after addplayer
+    fileContents.push_back({
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap",
+        "addplayer Alice"
+    });
+
+    //(8) Ends after gamestart
+    fileContents.push_back({
+        "loadmap ../Map/test_maps/Brazil/Brazil.map",
+        "validatemap",
+        "addplayer Alice",
+        "addplayer Bob",
+        "gamestart"
+    });
+
+    //---------------------------- File Creation Loop ----------------------------//
+    for(size_t i = 0; i < fileNames.size(); i++){
+
+        string fullPath = basePath + fileNames[i];
+        ofstream out(fullPath);
+
+        if(!out.is_open()){
+
+            cerr << "[Driver] Error: Could not create file: " << fullPath << endl;
+            continue;
+
+        }
+
+        cout << "[Driver] Building file: " << fullPath << endl;
+
+        for(const string& line : fileContents[i]){
+
+            out << line << "\n";
+
+        }
+
+        out.close();
+        cout << "[Driver] Successfully wrote " << fileContents[i].size() 
+             << " lines to file: " << fileNames[i] << "\n\n";
+
+    }
+
+    cout << "=============================================\n";
+    cout << "    END: FileCommandProcessorAdapter Test    \n";
+    cout << "=============================================\n\n";
+
+    vector<string> newFileNames;
+    newFileNames.reserve(fileNames.size());
+    ostringstream os;
+
+    for(string file : fileNames){ 
+
+        os << basePath << file;
+        newFileNames.push_back(os.str());
+
+        //Reset buffer
+        os.str("");
+        os.clear();
+
+    }
+
+    testFileCommandProcessorAdapter(newFileNames);
+
+}
+
+void testCommandProcessor(){
+
+    testCommandProcessorCLI();
+    //testFileCommandProcessorAdapterDriver();
 
 }

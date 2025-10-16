@@ -5,6 +5,7 @@ namespace WarzoneCommand {
     //====================================== COMMAND CLASS ===========================================//
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
+
     Command::Command() {
 
         this -> commandName = "";
@@ -37,7 +38,6 @@ namespace WarzoneCommand {
 
     }
 
-
     Command::Command(const string& name, const vector<string>& args) {
 
         this -> commandName = StringHandling::toLower(StringHandling::trim(name));
@@ -55,7 +55,6 @@ namespace WarzoneCommand {
     }
 
     Command::~Command(){} //No dynamically allocated memory; nothing to release
-
 
     Command& Command::operator=(const Command& other) {
 
@@ -107,7 +106,7 @@ namespace WarzoneCommand {
     string Command::getEffect() const { return effect; }
     void Command::setEffect(const string& e){ this -> effect = e; }
 
-    //------------------------------- Class Methods ------------------------------------//
+    //------------------------------- Public Methods ------------------------------------//
 
     string Command::processInput(string inputString) {
 
@@ -180,7 +179,6 @@ namespace WarzoneCommand {
         return os.str();
 
     }
-
 
     string Command::toString() const {
 
@@ -362,13 +360,32 @@ namespace WarzoneCommand {
 
     }
 
-    //-- Accessors & Mutators --//
+    //------------------------------ Accessors & Mutators ------------------------------//
 
     vector<Command*> CommandProcessor::getCommandList() const { return commandList; }
 
     GameEngine* CommandProcessor::getEngine() const { return engine; }
 
-    //-- Core Private Methods --//
+    //------------------------------- Protected Methods ------------------------------------//
+
+    string CommandProcessor::readCommandFromSource() {
+
+        string input;
+        cout << "Enter command: ";
+
+        if(!getline(cin, input)) {
+            
+            if(cin.eof()) { cout << "\n[CommandProcessor] End-of-input detected (Ctrl+Z pressed). Exiting command loop.\n"; } 
+            else { cerr << "\n[CommandProcessor] Input error encountered.\n"; }
+
+            cin.clear(); //Clear read-in buffer
+            return "__EOF__"; //Sentinel value to quit loops
+
+        }
+
+        return input;
+        
+    }
 
     Command* CommandProcessor::readCommand(){
 
@@ -385,7 +402,6 @@ namespace WarzoneCommand {
 
     }
 
-
     void CommandProcessor::saveCommand(Command* command){
 
         if(command == nullptr){ return; }
@@ -397,18 +413,241 @@ namespace WarzoneCommand {
 
     }
 
-    //-- Protected Method (Adapter Hook) --//
+    void CommandProcessor::executeGame(){
 
-    string CommandProcessor::readCommandFromSource(){
+        //---------------------------- Setup Phase ----------------------------
+        GameEngine* engine = this -> engine; 
 
-        string input;
-        cout << "Enter command: ";
-        getline(cin, input);
-        return input;
+        cout << "=============================================\n";
+        cout << "   Simulating Game From CommandProcessor     \n";
+        cout << "=============================================\n\n";
+        //---------------------------- Initialization ----------------------------
+
+        bool running = true;
+        ostringstream sessionLog; //Accumulate all console I/O before gameplayPhase
+
+        //---------------------------- Command Loop ----------------------------
+        while(running){
+
+            //Show valid commands for current state
+            EngineState state = engine -> getState();
+
+            cout << "\n[CommandProcessor] Current State: " << engine -> getStateAsString() << endl;
+            sessionLog << "\n[CommandProcessor] Current State: " << engine -> getStateAsString() << endl;
+
+            cout << "[CommandProcessor] Available commands: ";
+            sessionLog << "[CommandProcessor] Available commands: ";
+
+            switch(state){
+
+                case EngineState::Start:
+
+                    cout << "loadmap <mapfile>\n";
+                    sessionLog << "loadmap <mapfile>\n";
+                    break;
+
+                case EngineState::MapLoaded:
+
+                    cout << "validatemap\n";
+                    sessionLog << "validatemap\n";
+                    break;
+
+                case EngineState::MapValidated:
+
+                    cout << "addplayer <playername>\n";
+                    sessionLog << "addplayer <playername>\n";
+                    break;
+
+                case EngineState::PlayersAdded:
+
+                    cout << "addplayer <playername>  OR  gamestart\n";
+                    sessionLog << "addplayer <playername>  OR  gamestart\n";
+                    break;
+
+                case EngineState::Win:
+
+                    cout << "replay  OR  quit\n";
+                    sessionLog << "replay  OR  quit\n";
+                    break;
+
+                case EngineState::AssignReinforcement:
+                case EngineState::IssueOrders:
+                case EngineState::ExecuteOrders:
+
+                    cout << "Game running...\n";
+                    sessionLog << "Game running...\n";
+                    break;
+
+                default:
+
+                    cout << "Invalid State!\n";
+                    sessionLog << "Invalid State!\n";
+                    break;
+
+            }
+
+            cout << "[CommandProcessor] Please enter your command: " << endl;
+            sessionLog << "[CommandProcessor] Please enter your command:\n";
+
+            //Get command from processor
+            Command* cmd = this -> getCommand();
+
+            //Break gameloop gracefully
+            if (cmd -> getCommandName() == "__EOF__") {
+
+                cout << "[CommandProcessor] Exiting simulation (EOF reached).\n";
+                break;
+
+            }
+
+            else if(cmd == nullptr){ continue; }
+            else{ sessionLog << cmd -> toString(); }
+
+            if(cmd == nullptr){ continue; }
+            else{ sessionLog << cmd -> toString(); }
+
+            string cmdName = cmd -> getCommandName();
+            vector<string> args = cmd -> getCommandArgs();
+            long long cmdHash = StringHandling::hashStringToNum(cmdName);
+            ostringstream output;
+
+            //Validate command against current GameEngine state
+            if(!this -> validate(cmd)){
+
+                string effect = "[CommandProcessor] Invalid command '" + cmd -> toString() + "' in state: " + engine -> getStateAsString() + "\n";
+                cmd -> setEffect(effect);
+                cout << effect;
+                sessionLog << effect;
+                continue;
+
+            }
+
+            //----------------------------- Command Execution -------------------------//
+            switch(cmdHash){
+
+                case LOADMAP_COMMAND_HASH: {
+
+                    if(args.empty()){
+
+                        output << "[FileCommandProcessorAdapter] Error: Missing map file argument.\n";
+                        break;
+
+                    }
+
+                    string result = engine -> engineLoadMap(args[0], true);
+                    output << result;
+
+                    if(result.find("failed") != string::npos || result.find("error") != string::npos){
+
+                        output << "\n[FileCommandProcessorAdapter] Map loading failed. Returning to Start state.\n";
+                        engine -> setState(EngineState::Start);
+
+                    } else {
+
+                        engine -> setState(EngineState::MapLoaded);
+
+                    }
+
+                    break;
+
+                }
+
+                case VALIDATEMAP_COMMAND_HASH: {
+
+                    string result = engine -> engineValidateMap(true);
+                    output << result << endl;
+
+                    if(engine -> getState() == EngineState::Start){
+
+                        output << "[FileCommandProcessorAdapter] Map validation failed. Returning to Start state.\n";
+                        
+                    }
+
+                    break;
+
+                }
+
+                case ADDPLAYER_COMMAND_HASH: {
+
+                    if(args.empty()){
+
+                        output << "[FileCommandProcessorAdapter] Error: Missing player name argument.\n";
+                        break;
+
+                    }
+
+                    string result = engine -> engineAddPlayer(args[0], true);
+                    output << result << endl;
+                    break;
+
+                }
+
+                case GAMESTART_COMMAND_HASH: {
+
+                    if(engine -> getPlayers().size() < 2) {
+
+                        output << "[FileCommandProcessorAdapter] Error: You need at LEAST 2 players to play a game.\n" << endl;
+                        break;
+
+                    }
+
+                    string result = engine -> engineGameStart(true);
+                    output << result << endl;
+
+                    //Pass session log + file path to gameplayPhase
+                    engine -> gameplayPhase(true, sessionLog.str(), "../CommandProcessing/Games/");
+
+                    //When game is played, clear stringbuilder buffer
+                    sessionLog.str("");
+                    sessionLog.clear();
+                    break;
+
+                }
+
+                case REPLAY_COMMAND_HASH: {
+
+                    output << "[FileCommandProcessorAdapter] Restarting game session.\n" << endl;
+
+                    //When game is played, clear stringbuilder buffer
+                    sessionLog.str("");
+                    sessionLog.clear();
+
+                    break;
+
+                }
+
+                case QUIT_COMMAND_HASH: {
+
+                    output << "[FileCommandProcessorAdapter] Exiting game. Goodbye!\n" << endl;
+                    engine -> engineEnd();
+                    running = false;
+                    break;
+
+                }
+
+                default: {
+
+                    output << "[FileCommandProcessorAdapter] Unknown or unsupported command: " << cmdName << "\n" << endl;
+                    break;
+
+                }
+
+            }
+
+            //---------------------- Log & Display ----------------------//
+            string effectText = output.str();
+            cout << effectText;
+            sessionLog << effectText;
+            cmd -> setEffect(effectText);
+
+        }
+
+        //---------------------------- Cleanup ----------------------------
+        cout << "[CommandProcessor] Simulation complete. Gameplay logs handled by GameEngine.\n";
 
     }
 
-    //------- Public Methods ---------//
+    //------------------------------- Public Methods ------------------------------------//
 
     Command* CommandProcessor::getCommand(){
 
@@ -443,50 +682,120 @@ namespace WarzoneCommand {
         switch(hash){
 
             case(LOADMAP_COMMAND_HASH):
+
                 return (state == EngineState::Start || state == EngineState::MapLoaded);
 
             case(VALIDATEMAP_COMMAND_HASH):
+            
                 return (state == EngineState::MapLoaded);
 
             case(ADDPLAYER_COMMAND_HASH):
+
                 return (state == EngineState::MapValidated || state == EngineState::PlayersAdded);
 
             case(GAMESTART_COMMAND_HASH):
+
                 return (state == EngineState::PlayersAdded);
 
             case(REPLAY_COMMAND_HASH):
+
                 return (state == EngineState::Win);
 
             case(QUIT_COMMAND_HASH):
+
                 return (state == EngineState::Win);
 
             default:
+
                 return false;
 
         }
 
     }
 
+    void CommandProcessor::runGame(){
+
+        executeGame();
+
+    }
+
     /*------------------------------------------ FILE COMMAND PROCESSOR ADAPTER --------------------------------------------------*/
 
-    FileCommandProcessorAdapter::FileCommandProcessorAdapter(GameEngine* engine, const string& filename)
-    : CommandProcessor(engine) {
+    //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
 
+    FileCommandProcessorAdapter::FileCommandProcessorAdapter(GameEngine* engine, const string& filename):CommandProcessor(engine) {
+
+        //Safety: ensure any previous stream state is reset
+        if(fileStream.is_open()){ fileStream.close(); }
+
+        fileStream.clear(); //Reset flags (EOF, failbit, etc.)
+
+        //Attempt to open file 
         fileStream.open(filename);
 
-        if(!fileStream.is_open()){
-
-            cerr << "[FileCommandProcessorAdapter] Error: Could not open file '" << filename << "'." << endl;
-
-        }
+        if(!fileStream.is_open()){ cerr << "[FileCommandProcessorAdapter] Error: Could not open file '" << filename << "'." << endl; } 
+        else { cout << "[FileCommandProcessorAdapter] File opened successfully: " << filename << endl; }
 
     }
 
     FileCommandProcessorAdapter::~FileCommandProcessorAdapter(){
 
         if(fileStream.is_open()){ fileStream.close(); }
+        fileStream.clear();
 
     }
+
+    FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter& other) : CommandProcessor(other) {
+
+        if(other.fileStream.is_open()){
+
+            //Cannot directly copy stream position, reopen with same filename if possible
+            cerr << "[FileCommandProcessorAdapter] Warning: Copying adapter will not duplicate stream position.\n";
+
+        }
+
+    }
+
+    FileCommandProcessorAdapter& FileCommandProcessorAdapter::operator=(const FileCommandProcessorAdapter& other){
+
+        if(this != &other){
+
+            CommandProcessor::operator=(other);
+
+            if(fileStream.is_open()){ fileStream.close(); }
+
+            if(other.fileStream.is_open()){
+
+                cerr << "[FileCommandProcessorAdapter] Warning: Assignment operator does not clone stream position.\n";
+
+            }
+
+        }
+
+        return *this;
+
+    }
+
+    ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& fcp){
+
+        os << "[FileCommandProcessorAdapter] Adapter currently ";
+
+        if(fcp.fileStream.is_open()){
+
+            os << "has an open file stream.\n";
+
+        } else {
+
+            os << "does not have an open file stream.\n";
+
+        }
+
+        os << static_cast<const CommandProcessor&>(fcp); //Output base class data
+        return os;
+
+    }
+
+    //------------------------------- Protected Methods ------------------------------------//
 
     string FileCommandProcessorAdapter::readCommandFromSource(){
 
@@ -503,6 +812,221 @@ namespace WarzoneCommand {
             return "";
 
         }
+
+    }
+
+    void FileCommandProcessorAdapter::executeGame(){
+
+        //---------------------------- Setup Phase ----------------------------
+        GameEngine* engine = this -> getEngine(); 
+
+        if(engine == nullptr){
+
+            cerr << "[FileCommandProcessorAdapter] Error: GameEngine reference is null.\n";
+            return;
+
+        }
+
+        if(!fileStream.is_open()){
+
+            cerr << "[FileCommandProcessorAdapter] Error: No valid input file is open.\n";
+            return;
+
+        }
+
+        cout << "\n=============================================\n";
+        cout << "   Simulating Game From FileCommandProcessor  \n";
+        cout << "=============================================\n";
+
+        //---------------------------- Initialization ----------------------------
+        bool running = true;
+        ostringstream sessionLog; //Accumulate all file-based I/O before gameplayPhase
+        string rawInput;
+
+        //---------------------------- File Command Loop ----------------------------
+        while(running && getline(fileStream, rawInput)){
+
+            //Skip empty lines
+            if(StringHandling::trim(rawInput).empty()){ continue; }
+
+            cout << "\n[FileCommandProcessorAdapter] Current State: " << engine -> getStateAsString() << endl;
+            sessionLog << "\n[FileCommandProcessorAdapter] Current State: " << engine -> getStateAsString() << endl;
+
+            cout << "[FileCommandProcessorAdapter] Reading Command: " << rawInput << endl;
+            sessionLog << "[FileCommandProcessorAdapter] Reading Command: " << rawInput << endl;
+
+            //Build command object
+            Command* cmd = new Command(rawInput);
+            string parseResult = cmd -> processInput(rawInput);
+            cmd -> setEffect(parseResult);
+            saveCommand(cmd);
+
+            string cmdName = cmd -> getCommandName();
+            vector<string> args = cmd -> getCommandArgs();
+            long long cmdHash = StringHandling::hashStringToNum(cmdName);
+            ostringstream output;
+
+            //Validate command against current GameEngine state
+            if(!this -> validate(cmd)){
+
+                string effect = "[FileCommandProcessorAdapter] Invalid command '" + cmd -> toString() 
+                                + "' in state: " + engine -> getStateAsString() + "\n";
+                cmd -> setEffect(effect);
+                cout << effect;
+                sessionLog << effect;
+                continue;
+
+            }
+
+            //----------------------------- Command Execution -------------------------//
+            switch(cmdHash){
+
+                case LOADMAP_COMMAND_HASH: {
+
+                    if(args.empty()){
+
+                        output << "[FileCommandProcessorAdapter] Error: Missing map file argument.\n";
+                        break;
+
+                    }
+
+                    string result = engine -> engineLoadMap(args[0], true);
+                    output << result;
+
+                    if(result.find("failed") != string::npos || result.find("error") != string::npos){
+
+                        output << "\n[FileCommandProcessorAdapter] Map loading failed. Returning to Start state.\n";
+                        engine -> setState(EngineState::Start);
+
+                    } else {
+
+                        engine -> setState(EngineState::MapLoaded);
+
+                    }
+
+                    break;
+
+                }
+
+                case VALIDATEMAP_COMMAND_HASH: {
+
+                    string result = engine -> engineValidateMap(true);
+                    output << result << endl;
+
+                    if(engine -> getState() == EngineState::Start){
+
+                        output << "[FileCommandProcessorAdapter] Map validation failed. Returning to Start state.\n";
+                        
+                    }
+
+                    break;
+
+                }
+
+                case ADDPLAYER_COMMAND_HASH: {
+
+                    if(args.empty()){
+
+                        output << "[FileCommandProcessorAdapter] Error: Missing player name argument.\n";
+                        break;
+
+                    }
+
+                    string result = engine -> engineAddPlayer(args[0], true);
+                    output << result << endl;
+                    break;
+
+                }
+
+                case GAMESTART_COMMAND_HASH: {
+
+                    if(engine -> getPlayers().size() < 2) {
+
+                        output << "[FileCommandProcessorAdapter] Error: You need at LEAST 2 players to play a game.\n" << endl;
+                        break;
+
+                    }
+
+                    string result = engine -> engineGameStart(true);
+                    output << result << endl;
+
+                    //Pass session log + file path to gameplayPhase
+                    engine -> gameplayPhase(true, sessionLog.str(), "../CommandProcessing/Games/");
+
+                    //When game is played, clear stringbuilder buffer
+                    sessionLog.str("");
+                    sessionLog.clear();
+                    break;
+
+                }
+
+                case REPLAY_COMMAND_HASH: {
+
+                    output << "[FileCommandProcessorAdapter] Restarting game session.\n" << endl;
+
+                    //When game is played, clear stringbuilder buffer
+                    sessionLog.str("");
+                    sessionLog.clear();
+
+                    break;
+
+                }
+
+                case QUIT_COMMAND_HASH: {
+
+                    output << "[FileCommandProcessorAdapter] Exiting game. Goodbye!\n" << endl;
+                    engine -> engineEnd();
+                    running = false;
+                    break;
+
+                }
+
+                default: {
+
+                    output << "[FileCommandProcessorAdapter] Unknown or unsupported command: " << cmdName << "\n" << endl;
+                    break;
+
+                }
+
+            }
+
+            //---------------------- Log & Display ----------------------//
+            string effectText = output.str();
+            cout << effectText;
+            sessionLog << effectText;
+            cmd -> setEffect(effectText);
+
+        }
+
+        //---------------------------- EOF Safety Check ----------------------------//
+        if(engine -> getState() != EngineState::End){
+
+            cout << "\n[FileCommandProcessorAdapter] Warning: Command file ended before reaching END state.\n";
+            cout << "[FileCommandProcessorAdapter] Current state: " << engine -> getStateAsString() << endl;
+            cout << "[FileCommandProcessorAdapter] Terminating simulation and cleaning up...\n";
+
+            //Gracefully reset engine and free memory
+            engine -> clearGame();       //Frees map, deck, and all players
+            engine -> setState(EngineState::End);
+
+            //Close file stream if still open
+            if(fileStream.is_open()){ fileStream.close(); }
+
+            cout << "[FileCommandProcessorAdapter] Game terminated prematurely. All resources freed.\n";
+            return;
+
+        }
+
+        //---------------------------- Cleanup ----------------------------//
+        cout << "[FileCommandProcessorAdapter] Simulation complete. Gameplay logs handled by GameEngine.\n";
+
+    }
+
+    //------------------------------- Public Methods ------------------------------------//
+
+    void FileCommandProcessorAdapter::runGame() {
+
+        executeGame();
 
     }
 

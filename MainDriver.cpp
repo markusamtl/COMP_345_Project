@@ -13,18 +13,18 @@ using namespace std;
 using namespace WarzoneEngine;
 
 int main() {
-    
+
     //PART 1
-    testCommandProcessorCLI();
+    testCommandProcessor();
 
     //PART 2
-    //testStartupPhase();
+    testStartupPhase();
     
     //PART 3
-    //testMainGameLoop();
+    testMainGameLoop();
     
     //PART 4
-    //testOrderExecution();
+    testOrderExecution();
     
     return 0;
 

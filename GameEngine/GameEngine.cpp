@@ -1165,11 +1165,21 @@ namespace WarzoneEngine {
         if(!isCurrentStateCorrect(EngineState::MapLoaded, "validatemap")){ return "[ValidateMap] Error: Current state is not validatemap!"; }
         
         //Temporaraily set the state back to the start. Do this in case the validation fails
-        state = EngineState::Start;
         
         //Validate Map
-        if(gameMap == nullptr){ return "[ValidateMap] No map to validate"; }
-        if(!(gameMap -> validate())){ return "[ValidateMap] Invalid Map"; }
+        if(gameMap == nullptr){ 
+            
+            state = EngineState::Start;
+            return "[ValidateMap] No map to validate"; 
+        
+        }
+        
+        if(!(gameMap -> validate())){ 
+        
+            state = EngineState::Start;
+            return "[ValidateMap] Invalid Map"; 
+        
+        }
         
         state = EngineState::MapValidated;
         return surpressOutput ?  "" : "Map has been successfully validated";
@@ -1186,6 +1196,13 @@ namespace WarzoneEngine {
 
         //Check if player with that name already exists
         if(findPlayerByName(name) != nullptr){ return "[AddPlayer] Error: Player with that name already exists!"; }
+
+        //Check if too many players have been added to the game
+        if(playerQueue.size() >= gameMap -> getTerritories().size()) {
+
+            return "[AddPlayer] Error: Too many players have been added! " + name + " has NOT been added!";
+
+        }
 
         addPlayerToQueue(name);
         state = EngineState::PlayersAdded;
@@ -1826,6 +1843,7 @@ namespace WarzoneEngine {
 
     string GameEngine::engineEnd() {
 
+        state = EngineState::End;
         return "[End] The program has now terminated. Thank you for playing!";
 
     }
@@ -2189,12 +2207,17 @@ namespace WarzoneEngine {
 
         }
 
+        string currentMS = to_string(TimeUtil::getSystemTimeMillis() % 1000);
+        string currentNS = to_string(TimeUtil::getSystemTimeNano() % 1000000);
+
+
         filenameBuilder << "Y" << (localTime.tm_year + 1900)
                         << "_M" << setw(2) << setfill('0') << (localTime.tm_mon + 1)
                         << "_D" << setw(2) << setfill('0') << localTime.tm_mday
                         << "_H" << setw(2) << setfill('0') << localTime.tm_hour
                         << "_M" << setw(2) << setfill('0') << localTime.tm_min
                         << "_S" << setw(2) << setfill('0') << localTime.tm_sec
+                        << "_MS" << currentMS << "_NS" << currentNS
                         << "_SIMULATION.txt";
 
         string logFileName = filenameBuilder.str();

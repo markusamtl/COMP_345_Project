@@ -124,7 +124,7 @@ void testMainGameLoop() {
     cout << "      TEST: CONTROLLED MAIN GAME LOOP        \n";
     cout << "=============================================\n\n";
 
-    simulateGame();
+    mainGameLoop();
 
     cout << "=============================================\n";
     cout << "          END OF MAIN GAME LOOP TEST         \n";
@@ -134,10 +134,10 @@ void testMainGameLoop() {
 
 /*---------------------------------- Automated Simulation Driver ----------------------------------*/
 
-void simulateGame() {
+void mainGameLoop() {
 
     GameEngine* gameEngine = new GameEngine();
-    gameEngine -> simulateGame();
+    gameEngine -> mainGameLoop();
     delete gameEngine;
 
 }

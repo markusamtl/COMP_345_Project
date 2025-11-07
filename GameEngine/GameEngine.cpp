@@ -899,6 +899,308 @@ namespace WarzoneEngine {
         }
 
     }
+    void GameEngine::executeOrdersPhase(bool surpressOutput, ostringstream& output) {
+    // --------- Setup (copied from engineExecuteOrder) ---------
+    vector<Player*> ordered; 
+    queue<Player*> tempQueue = playerQueue; 
+
+    Player* neutralPlayer = nullptr;
+    for (Player* p : players) {
+        if (p != nullptr && p->getPlayerName() == "Neutral") {
+            neutralPlayer = p;
+            break;
+        }
+    }
+
+    while (!tempQueue.empty()) {
+        Player* tempPlayer = tempQueue.front();
+        tempQueue.pop();
+        if (tempPlayer == neutralPlayer) continue;
+        ordered.push_back(tempPlayer);
+    }
+
+    vector<Player*> toDelete;
+
+    //---------------------------- Execute Orders ----------------------------//
+
+    // ---------------------------- First Pass: Execute ALL Deploy Orders (Round-Robin) ----------------------------
+    bool anyDeploysRemaining = true;
+
+    queue<Player*> deployQueue = playerQueue; 
+    queue<Player*> activeDeployers; 
+
+    while (anyDeploysRemaining) {
+        anyDeploysRemaining = false;
+
+        while (!deployQueue.empty()) {
+            Player* p = deployQueue.front();
+            deployQueue.pop();
+
+            if (p == nullptr) continue;
+            if (p->getPlayerName() == "Neutral") continue;
+
+            OrderList* orders = p->getPlayerOrders();
+            if (!orders || orders->size() == 0) continue;
+
+            Order* o = orders->peek();
+            if (o == nullptr) { orders->removeOrder(0); continue; }
+
+            if (o->getOrderType() == OrderType::Deploy) {
+                anyDeploysRemaining = true;
+
+                pair<bool, string> validationResult = o->validate();
+                if (!validationResult.first) {
+                    if (!surpressOutput) {
+                        output << "[ExecuteOrder] " << p->getPlayerName()
+                               << " executes an invalid Deploy:\nReason: "
+                               << validationResult.second << "\n";
+                    }
+
+                    orders->removeOrder(0);
+
+                    Order* nextTop = (orders ? orders->peek() : nullptr);
+                    if (nextTop != nullptr && nextTop->getOrderType() == OrderType::Deploy) {
+                        activeDeployers.push(p);
+                    }
+                    continue;
+                }
+
+                if (!surpressOutput) {
+                    output << "[ExecuteOrder] " << p->getPlayerName()
+                           << " Executes a Deploy order\n"
+                           << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
+                }
+
+                o->execute();
+
+                if (!surpressOutput) {
+                    output << "[ExecuteOrder] " << p->getPlayerName()
+                           << " successfully executed a Deploy order.\n"
+                           << o->getEffect() << "\n\n";
+                }
+
+                orders->removeOrder(0);
+
+                Order* nextTop = (orders ? orders->peek() : nullptr);
+                if (nextTop != nullptr && nextTop->getOrderType() == OrderType::Deploy) {
+                    activeDeployers.push(p);
+                }
+
+            } else {
+                continue; // skip non-Deploys in this phase
+            }
+        }
+
+        deployQueue = activeDeployers;
+        while (!activeDeployers.empty()) activeDeployers.pop();
+    }
+
+    // ---------------------------- Second Pass: Execute ALL Other Orders (Round-Robin) ----------------------------
+    bool anyOrdersRemaining = true;
+
+    queue<Player*> mainQueue = playerQueue;
+    queue<Player*> activeExecutors;
+
+    while (anyOrdersRemaining) {
+        anyOrdersRemaining = false;
+
+        while (!mainQueue.empty()) {
+            Player* p = mainQueue.front();
+            mainQueue.pop();
+
+            if (p == nullptr || p->getPlayerName() == "Neutral") continue;
+
+            OrderList* orders = p->getPlayerOrders();
+            if (!orders || orders->size() == 0) continue;
+
+            Order* o = orders->peek();
+            if (o == nullptr) { orders->removeOrder(0); continue; }
+
+            if (o->getOrderType() == OrderType::Deploy) {
+                // keep them rotating if more remain behind deploys
+                if (orders->size() > 1) activeExecutors.push(p);
+                continue;
+            }
+
+            anyOrdersRemaining = true;
+
+            pair<bool, string> validationResult = o->validate();
+            if (!validationResult.first) {
+                if (!surpressOutput) {
+                    output << "[ExecuteOrder]" << p->getPlayerName()
+                           << " executes an invalid order: " << *o 
+                           << ". Reason:\n" << validationResult.second << "\n";
+                }
+
+                orders->removeOrder(0);
+
+                Order* nextTop = (orders ? orders->peek() : nullptr);
+                if (nextTop != nullptr) activeExecutors.push(p);
+
+                continue;
+            }
+
+            if (!surpressOutput) {
+                output << "[ExecuteOrder] " << p->getPlayerName()
+                       << " Executes: " << *o << "\n"
+                       << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
+            }
+
+            o->execute();
+
+            if (!surpressOutput) {
+                output << "[ExecuteOrder] " << p->getPlayerName()
+                       << " is successful in issuing the order.\n"
+                       << o->getEffect() << "\n\n";
+            }
+
+            orders->removeOrder(0);
+
+            Order* nextTop = (orders ? orders->peek() : nullptr);
+            if (nextTop != nullptr) activeExecutors.push(p);
+        }
+
+        mainQueue = activeExecutors;
+        while (!activeExecutors.empty()) activeExecutors.pop();
+    }
+
+    // ----------------------------- Clearing Truces / Collecting Cards -----------------------------
+    for (Player* p: players) {
+        if (!p) continue;
+
+        p->clearNeutralEnemies();
+
+        if (p->getGenerateCardThisTurn()) {
+            Deck* gameDeck = deck;
+            if (gameDeck && p->getHand()) {
+                Card* c = gameDeck->draw();
+                if (c) p->getHand()->addCardToHand(c);
+            }
+        }
+    }
+
+    //---------------------------- Eliminate Players ----------------------------
+    for (auto it = players.begin(); it != players.end();) {
+        Player* p = *it;
+
+        if (p == nullptr || p->getPlayerName() == "Neutral") {
+            it++;
+            continue;
+        }
+
+        int terrCount = static_cast<int>(p->getOwnedTerritories().size());
+        if (terrCount == 0) {
+
+            if (!surpressOutput) {
+                output << "[" << p->getPlayerName() << "] has been eliminated from the game.\n";
+            }
+
+            queue<Player*> newQueue;
+            while (!playerQueue.empty()) {
+                Player* front = playerQueue.front();
+                playerQueue.pop();
+                if (front != p) newQueue.push(front);
+            }
+            playerQueue = newQueue;
+
+            toDelete.push_back(p);
+            it = players.erase(it);
+            continue;
+        }
+
+        it++;
+    }
+
+    // ---------------------------- Win Condition Check ----------------------------
+    int activePlayers = 0;
+    Player* potentialWinner = nullptr;
+    bool hasWon = false;
+    bool controlsMap = false;
+
+    for (Player* p : players) { 
+        if (p == nullptr) continue;
+        if (p->getPlayerName() == "Neutral") continue;
+
+        int terrCount = static_cast<int>(p->getOwnedTerritories().size()); 
+        if (terrCount > 0) { 
+            activePlayers++;
+            potentialWinner = p;
+        }
+    }
+
+    if (activePlayers == 1 && potentialWinner != nullptr) { 
+        hasWon = true;
+        currentPlayer = potentialWinner;
+    }
+
+    const unordered_map<Continent*, long long>& refTable = gameMap->getContinentLookupTable(); 
+
+    for (Player* p : ordered) {
+        if (p == nullptr) continue;
+        if (find(toDelete.begin(), toDelete.end(), p) != toDelete.end()) continue;
+
+        if (p->controlsMap(refTable)) {
+            currentPlayer = p;
+            controlsMap = true;
+            break;
+        }
+    }
+
+    //---------------------------- Deferred Cleanup ----------------------------
+    for (Player* dead : toDelete) {
+        if (dead != nullptr) {
+            if (!surpressOutput) {
+                output << "[ExecuteOrders] Deleting player object for " << dead->getPlayerName() << "\n";
+            }
+            delete dead;
+        }
+    }
+    toDelete.clear();
+
+    setTurn(getTurn() + 1); // increment turn
+
+    //---------------------------- Phase Transition (append messages) ----------------------------
+    if (getTurn() > maxTurns) {
+        state = EngineState::Win; // force game termination
+
+        if (!surpressOutput) {
+            output << "\n=== GAME ENDED: MAXIMUM TURN LIMIT REACHED ===\n"
+                   << "[ExecuteOrder] The maximum number of turns (" << maxTurns << ") has been reached.\n"
+                   << "[ExecuteOrder] No further rounds will be played. Game over.\n";
+        }
+        return;
+    } 
+    else if (hasWon && controlsMap) {
+        state = EngineState::Win;
+
+        if (!surpressOutput) {
+            output << "\n=== WINNER DETECTED ===\n"
+                   << currentPlayer->getPlayerName()
+                   << " has won! They control all continents on the map!\n"
+                   << "[ExecuteOrder] Win condition triggered.";
+        }
+        return;
+    } 
+    else if (hasWon) {
+        state = EngineState::Win;
+
+        if (!surpressOutput) {
+            output << "\n=== WINNER DETECTED ===\n"
+                   << currentPlayer->getPlayerName()
+                   << " has won! They have elimnated all non-neutral enemies!\n"
+                   << "[ExecuteOrder] Win condition triggered.";
+        }
+        return;
+    } 
+    else {
+        if (!surpressOutput) {
+            output << "[ExecuteOrder] All orders executed successfully. "
+                   << "Proceeding to next turn’s Reinforcement phase.\n";
+        }
+        return;
+    }
+}
+
 
 
     bool GameEngine::startAgain() {
@@ -1275,7 +1577,7 @@ namespace WarzoneEngine {
 
     }
 
-    string GameEngine::engineAssignReinforcement(bool surpressOutputs) {
+    string GameEngine::reinforcementPhase(bool surpressOutputs) {
 
         ostringstream output;
 
@@ -1395,414 +1697,37 @@ namespace WarzoneEngine {
         return output.str();
 
     }
-
+    
     string GameEngine::engineExecuteOrder(bool surpressOutput) {
-
-        //State Validation 
-        if(!isCurrentStateCorrect(EngineState::ExecuteOrders, "executeorder")){ 
-
-            return "[ExecuteOrder] Error: Current state is not executeorder!"; 
-
-        }
-
-        ostringstream output; //Collect all output text for logging or printing
-
-        if(!surpressOutput){
-
-            output << "\n[ExecuteOrder] === Executing Orders for Each Player ===\n";
-
-        }
-
-        //Setup
-        vector<Player*> ordered; //Vector of current player queue
-        queue<Player*> tempQueue = playerQueue; //Temporary deep copy of player queue
-
-        Player* neutralPlayer = nullptr;
-
-        for(Player* p : players){ //Get neutral player
-
-            if(p != nullptr && p -> getPlayerName() == "Neutral"){
-
-                neutralPlayer = p;
-                break;
-
-            }
-
-        }
-
-        while(!tempQueue.empty()){ //Copy player queue to a vector for easier iteration later on in the method
-            
-            Player* tempPlayer = tempQueue.front();
-
-            if(tempPlayer == neutralPlayer){ //Ignore neutral player in issuing turns
-
-                tempQueue.pop();
-                continue;
-
-            }
-
-            ordered.push_back(tempQueue.front());
-            tempQueue.pop();
-
-        }
-
-        // Vector to collect players that must be deleted later
-        vector<Player*> toDelete;
-
-        //---------------------------- Execute Orders ----------------------------//
-
-        // ---------------------------- First Pass: Execute ALL Deploy Orders (Round-Robin) ----------------------------
-        bool anyDeploysRemaining = true;
-
-        // Make a working copy of the player queue for Deploy phase iteration
-        queue<Player*> deployQueue = playerQueue; 
-        queue<Player*> activeDeployers; // Temporary to rebuild each pass
-
-        while(anyDeploysRemaining) {
-
-            anyDeploysRemaining = false; //Assume no Deploy orders remain until found
-
-            // Iterate through all players currently in deployQueue
-            while(!deployQueue.empty()) {
-
-                Player* p = deployQueue.front();
-                deployQueue.pop(); //Remove from front after peeking
-
-                if(p == nullptr){ continue; } //Skip null players
-                if(p -> getPlayerName() == "Neutral"){ continue; } //Skip neutral player
-
-                OrderList* orders = p -> getPlayerOrders();
-                if(!orders || orders -> size() == 0){ continue; } //Skip players with no orders
-
-                Order* o = orders -> peek(); //Peek at next order
-                if(o == nullptr){ orders -> removeOrder(0); continue; }
-
-                //Check if this is a Deploy order
-                if(o -> getOrderType() == OrderType::Deploy) {
-
-                    anyDeploysRemaining = true; //At least one Deploy order found
-
-                    //Validate order before execution
-                    pair<bool, string> validationResult = o -> validate();
-
-                    if(!validationResult.first){ //Invalid Deploy
-                        
-                        if(!surpressOutput){
-
-                            output << "[ExecuteOrder] " << p -> getPlayerName()
-                                   << " executes an invalid Deploy:\nReason: "
-                                   << validationResult.second << "\n";
-                        }
-
-                        orders -> removeOrder(0);
-
-                        //Check if next order is still a Deploy
-                        Order* nextTop = (orders ? orders -> peek() : nullptr);
-                        if(nextTop != nullptr && nextTop -> getOrderType() == OrderType::Deploy){ activeDeployers.push(p); }
-
-                        continue;
-
-                    }
-
-                    //Execute Deploy order
-                    if(!surpressOutput){
-
-                        output << "[ExecuteOrder] " << p -> getPlayerName()
-                               << " Executes a Deploy order\n"
-                               << "[ExecuteOrder] Order effect: " << o -> getEffect() << "\n\n";
-
-                    }
-
-                    o -> execute();
-
-                    if(!surpressOutput){
-
-                        output << "[ExecuteOrder] " << p -> getPlayerName()
-                               << " successfully executed a Deploy order.\n"
-                               << o -> getEffect() << "\n\n";
-
-                    }
-
-                    orders -> removeOrder(0); //Remove executed Deploy order
-
-                    //Check if next order is still a Deploy
-                    Order* nextTop = (orders ? orders -> peek() : nullptr);
-                    if(nextTop != nullptr && nextTop -> getOrderType() == OrderType::Deploy){ activeDeployers.push(p); }
-
-                } else { //Not a Deploy order — skip for Deploy phase
-                    
-                    continue;
-
-                }
-
-            }
-
-            //Rebuild deployQueue with only players that still have Deploys
-            deployQueue = activeDeployers;
-            while(!activeDeployers.empty()){ activeDeployers.pop(); }
-
-        }
-
-        // ---------------------------- Second Pass: Execute ALL Other Orders (Round-Robin) ----------------------------
-        bool anyOrdersRemaining = true;
-
-        // Make a working copy of the player queue for the main (non-Deploy) execution
-        queue<Player*> mainQueue = playerQueue;
-        queue<Player*> activeExecutors; // Temporary to rebuild each pass
-
-        while(anyOrdersRemaining) {
-
-            anyOrdersRemaining = false; //Assume no orders remain until found
-
-            while(!mainQueue.empty()) {
-
-                Player* p = mainQueue.front();
-                mainQueue.pop(); //Pop player from front
-
-                if(p == nullptr || p -> getPlayerName() == "Neutral"){ continue; } //Skip null or neutral players
-
-                OrderList* orders = p -> getPlayerOrders();
-                if(!orders || orders -> size() == 0){ continue; } //Skip players with no orders
-
-                Order* o = orders -> peek(); //Peek at next order
-                if(o == nullptr){ orders -> removeOrder(0); continue; }
-
-                //Skip Deploys in this phase
-                if(o -> getOrderType() == OrderType::Deploy){ continue; }
-
-                anyOrdersRemaining = true; //At least one non-Deploy order found
-
-                //Validate order before execution
-                pair<bool, string> validationResult = o -> validate();
-
-                if(!validationResult.first){ //Invalid order
-                        
-                    if(!surpressOutput){
-                        output << "[ExecuteOrder]" << p -> getPlayerName()
-                               << " executes an invalid order: " << *o 
-                               << ". Reason:\n" << validationResult.second << "\n";
-                    }
-
-                    orders -> removeOrder(0);
-
-                    //Check if next order exists
-                    Order* nextTop = (orders ? orders -> peek() : nullptr);
-                    if(nextTop != nullptr){ activeExecutors.push(p); }
-
-                    continue;
-                }
-
-                //Execute valid order
-                if(!surpressOutput){
-                    output << "[ExecuteOrder] " << p -> getPlayerName()
-                           << " Executes: " << *o << "\n"
-                           << "[ExecuteOrder] Order effect: " << o -> getEffect() << "\n\n";
-                }
-
-                o -> execute();
-
-                if(!surpressOutput){
-                    output << "[ExecuteOrder] " << p -> getPlayerName()
-                           << " is successful in issuing the order.\n"
-                           << o -> getEffect() << "\n\n";
-                }
-
-                orders -> removeOrder(0); //Remove executed order
-
-                //Check if next order exists
-                Order* nextTop = (orders ? orders -> peek() : nullptr);
-                if(nextTop != nullptr){ activeExecutors.push(p); }
-
-            }
-
-            //Rebuild mainQueue with only players that still have remaining orders
-            mainQueue = activeExecutors;
-            while(!activeExecutors.empty()){ activeExecutors.pop(); }
-
-        }
-
-        // ----------------------------- Clearing Truces / Collecting Cards -----------------------------
-        for(Player* p: players){
-
-            p -> clearNeutralEnemies(); //Clear out neutral enemy list at the end of every turn
-            
-            //Draw card if possible
-            if(p ->getGenerateCardThisTurn()){
-
-                Deck* gameDeck = deck;
-                p -> getHand() -> addCardToHand(gameDeck -> draw());
-
-            }
-
-        }
-
-        //---------------------------- Eliminate Players ----------------------------
-        for(auto it = players.begin(); it != players.end();) { //Use an iterator to allow safe removal
-
-            Player* p = *it; //Dereference iterator to get player
-
-            if(p == nullptr || p -> getPlayerName() == "Neutral") { //Make SURE that neutral cant be eliminated
-                
-                it++;
-                continue;
-
-            }
-
-            int terrCount = static_cast<int>(p->getOwnedTerritories().size());
-            if(terrCount == 0) {
-
-                if(!surpressOutput){
-
-                    output << "[" << p -> getPlayerName() << "] has been eliminated from the game.\n";
-
-                }
-
-                // Remove from playerQueue
-                queue<Player*> newQueue;
-
-                while(!playerQueue.empty()) {
-
-                    Player* front = playerQueue.front(); //Peek at front of queue
-                    playerQueue.pop(); //Remove from old queue
-                    if(front != p){ newQueue.push(front); } //Only add to new queue if not the eliminated player
-                    
-                }
-
-                playerQueue = newQueue;
-
-                // Mark player for deletion AFTER this method finishes
-                toDelete.push_back(p);
-                it = players.erase(it); //Remove from players list and get new iterator
-                continue;
-            }
-
-            it++;
-
-        }
-
-        // ---------------------------- Win Condition Check ----------------------------
-        int activePlayers = 0;
-        Player* potentialWinner = nullptr;
-        bool hasWon = false;
-        bool controlsMap = false;
-
-        //First Check: If there's only 1 non-neutral player on the map
-        for(Player* p : players) { 
-
-            if(p == nullptr){ continue; }
-            if(p -> getPlayerName() == "Neutral"){ continue; }
-
-            int terrCount = static_cast<int>(p -> getOwnedTerritories().size()); 
-            if (terrCount > 0) { 
-
-                activePlayers++;
-                potentialWinner = p;
-
-            }
-
-        }
-
-        if(activePlayers == 1 && potentialWinner != nullptr) { 
-
-            hasWon = true;
-            currentPlayer = potentialWinner;
-        
-        }
-
-        //Second Check: See if the player who won controls the entire map
-        const unordered_map<Continent*, long long>& refTable = gameMap -> getContinentLookupTable(); 
-
-        for(Player* p : ordered) {
-
-            if(p == nullptr){ continue; }
-            if(find(toDelete.begin(), toDelete.end(), p) != toDelete.end()){ continue; }
-
-            if(p -> controlsMap(refTable)) {
-                currentPlayer = p;
-                controlsMap = true;
-                break;
-            }
-            
-        }
-
-        //---------------------------- Deferred Cleanup ----------------------------
-        for(Player* dead : toDelete) {
-
-            if(dead != nullptr) {
-
-                if(!surpressOutput){
-
-                    output << "[ExecuteOrders] Deleting player object for " << dead -> getPlayerName() << "\n";
-                
-                }
-
-                delete dead;
-            
-            }
-        
-        }
-
-        toDelete.clear();
-        setTurn(getTurn() + 1); //Increment turn number by 1 at the end of the round
-
-        //---------------------------- Phase Transition ----------------------------
-        if(getTurn() > maxTurns) { //Check if the maximum number of turns has been reached
-
-            state = EngineState::Win; //Force game termination
-
-            if(!surpressOutput){
-
-                output << "\n=== GAME ENDED: MAXIMUM TURN LIMIT REACHED ===\n"
-                       << "[ExecuteOrder] The maximum number of turns (" << maxTurns << ") has been reached.\n"
-                       << "[ExecuteOrder] No further rounds will be played. Game over.\n";
-
-            }
-
-            return surpressOutput ? "[ExecuteOrder] Game ended: maximum turns reached." : output.str();
-
-        } else if(hasWon && controlsMap) {
-
-            state = EngineState::Win;
-
-            if(!surpressOutput){
-
-                output << "\n=== WINNER DETECTED ===\n"
-                       <<  currentPlayer -> getPlayerName() << " has won! They control all continents on the map!\n"
-                       << "[ExecuteOrder] Win condition triggered.";
-
-            }
-
-            return surpressOutput ? "[ExecuteOrder] Win condition triggered." : output.str();
-
-        } 
-        else if(hasWon) {
-
-            state = EngineState::Win;
-
-            if(!surpressOutput){
-
-                output << "\n=== WINNER DETECTED ===\n"
-                       <<  currentPlayer -> getPlayerName() << " has won! They have elimnated all non-neutral enemies!\n"
-                       << "[ExecuteOrder] Win condition triggered.";
-            
-            }
-
-            return surpressOutput ? "[ExecuteOrder] Win condition triggered." : output.str();
-
-        } else {
-
-            if(!surpressOutput){
-
-                output << "[ExecuteOrder] All orders executed successfully. Proceeding to next turn’s Reinforcement phase.\n";
-            
-            }
-
-            return surpressOutput ? "[ExecuteOrder] Orders executed successfully." : output.str();
-
-        }
-
-
+    // State Validation 
+    if (!isCurrentStateCorrect(EngineState::ExecuteOrders, "executeorder")) {
+        return "[ExecuteOrder] Error: Current state is not executeorder!";
     }
+
+    ostringstream output;
+
+    if (!surpressOutput) {
+        output << "\n[ExecuteOrder] === Executing Orders for Each Player ===\n";
+    }
+
+    // Delegate the heavy lifting
+    executeOrdersPhase(surpressOutput, output);
+
+    // Return concise status if suppressed; otherwise, full logs
+    if (surpressOutput) {
+        if (state == EngineState::Win) {
+            return "[ExecuteOrder] Win condition triggered or maximum turns reached.";
+        }
+        return "[ExecuteOrder] Orders executed successfully.";
+    }
+
+    return output.str();
+}
+
+
+    
+
+    
 
     string GameEngine::engineEndExecuteOrder(bool surpressOutput) {
 
@@ -1902,7 +1827,7 @@ namespace WarzoneEngine {
         if(cmd == "validatemap"){ return engineValidateMap(surpressOutputs); }
         if(cmd == "addplayer"){ return engineAddPlayer(arg, surpressOutputs); }
         if(cmd == "gamestart"){ return engineGameStart(surpressOutputs); }
-        if(cmd == "assignreinforcement"){ return engineAssignReinforcement(surpressOutputs); }
+        if(cmd == "assignreinforcement"){ return reinforcementPhase(surpressOutputs); }
         if(cmd == "issueorder"){ return engineIssueOrder(surpressOutputs); }
         if(cmd == "endissueorders"){ return engineEndIssueOrder(surpressOutputs); }
         if(cmd == "executeorder"){ return engineExecuteOrder(surpressOutputs); }
@@ -2236,7 +2161,7 @@ namespace WarzoneEngine {
         while(!gameOver) {
 
             //---------------- Reinforcement Phase ----------------//
-            string reinforceResult = engineAssignReinforcement(surpressOutput);
+            string reinforceResult = reinforcementPhase(surpressOutput);
             logFile << reinforceResult << endl;
 
             //---------------- Issue Orders Phase ----------------//
@@ -2334,7 +2259,7 @@ namespace WarzoneEngine {
 
     }
 
-    void GameEngine::simulateGame() {
+    void GameEngine::mainGameLoop() {
 
         bool restart = false; // Tracks whether to restart after a full run
 

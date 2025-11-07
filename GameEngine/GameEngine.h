@@ -374,6 +374,17 @@ namespace WarzoneEngine {
         void issueOrdersPhase(bool surpressOutput, ostringstream& output);
 
         /**
+        * @brief Executes the Execute Orders phase: runs all Deploy orders first (round-robin),
+        * then all other orders round-robin; handles truces, card rewards, eliminations,
+        * win checks, and increments the turn counter.
+        *
+        * @param surpressOutput If true, suppresses console/log output from this phase.
+        * @param output Aggregated output stream to append human-readable logs.
+        */
+        void executeOrdersPhase(bool surpressOutput, ostringstream& output);
+
+
+        /**
          * @brief Computes reinforcement count for a given player based on owned territories and continents.
          * @param p Pointer to the player.
          * @param surpressOutput Whether to capture method string output or not
@@ -432,7 +443,7 @@ namespace WarzoneEngine {
          * @param surpressOutput Boolean value to surpress outputs
          * @return Status message indicating transition to IssueOrders phase.
          */
-        string engineAssignReinforcement(bool surpressOutput);
+        string reinforcementPhase(bool surpressOutput);
 
         /**
          * @brief Prompts players to issue their orders.
@@ -545,7 +556,7 @@ namespace WarzoneEngine {
          * - Runs gameplayPhase
          * - Runs endPhase. If user wants to continue, return to startPhase. If not, break. 
          */
-        void simulateGame();
+        void mainGameLoop();
         
     };
 

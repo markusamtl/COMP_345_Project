@@ -34,4 +34,4 @@ void testMainGameLoop();
  * The user can specify the maximum number of turns to simulate and whether to print detailed outputs.
  * After the simulation ends, the user is prompted to play again or exit.
  */
-void simulateGame();
+void mainGameLoop();

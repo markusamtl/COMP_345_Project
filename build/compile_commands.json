@@ -1,0 +1,112 @@
+[
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/MainDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/MainDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/MainDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Map/Map.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/Map.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Map/Map.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Player/Player.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Player/Player.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Player/Player.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Order/Order.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Order/Order.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Order/Order.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Card/Card.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Card/Card.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Card/Card.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/GameEngine/GameEngine.cpp.o -c /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngine.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngine.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Map/MapDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Player/PlayerDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Order/OrderDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Card/CardDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Card/CardDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Card/CardDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/GameEngine/GameEngineDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/MainDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/MainDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/MainDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Map/Map.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/Map.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Map/Map.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Player/Player.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Player/Player.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Player/Player.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Order/Order.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Order/Order.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Order/Order.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Card/Card.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Card/Card.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Card/Card.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.o -c /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngine.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngine.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Card/CardDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/Card/CardDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp"
+}
+]

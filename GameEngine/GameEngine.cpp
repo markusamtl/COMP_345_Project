@@ -197,7 +197,10 @@ namespace WarzoneEngine {
         }
     }
 
-    void GameEngine::setState(const EngineState& gameState){ state = gameState;}
+    void GameEngine::setState(const EngineState& gameState){ 
+        state = gameState;
+        notify(this); // Notify observers about the state change    
+    }
 
     /*--------------------------------------Helper & Internal Methods--------------------------------------------*/
 
@@ -926,13 +929,15 @@ namespace WarzoneEngine {
 
             if(response == "yes" || response == "y") {
 
-                state = EngineState::Start;
+                setState(EngineState::Start);
+                //state = EngineState::Start;
                 cout << "\n[GameEngine] The game has been reset. You may now load a new map and begin again.\n";
                 return true;
 
             } else if(response == "no" || response == "n") {
               
-                state = EngineState::End;
+                setState(EngineState::End);
+                //state = EngineState::End;
                 cout << "\n[GameEngine] Exiting the game. See you next time!\n";
                 return false;
             
@@ -1081,7 +1086,8 @@ namespace WarzoneEngine {
         if(loaderCode != MAP_OK || gameMap == nullptr){
 
             //Return state back to the start
-            state = EngineState::Start;
+            setState(EngineState::Start);
+            //state = EngineState::Start;
             switch(loaderCode){
 
                 case INVALID_MAP_PTR:
@@ -1153,7 +1159,8 @@ namespace WarzoneEngine {
         }
 
         // --- Successful Load ---
-        state = EngineState::MapLoaded;
+        setState(EngineState::MapLoaded);
+        //state = EngineState::MapLoaded;
         return surpressOutput ? 
             "[LoadMap] Map loaded successfully, and is ready for validation." :
             "[LoadMap] Map '" + mapName + "' successfully loaded from path '" + path + "' and is ready for validation.";
@@ -1169,19 +1176,22 @@ namespace WarzoneEngine {
         //Validate Map
         if(gameMap == nullptr){ 
             
-            state = EngineState::Start;
+            setState(EngineState::Start);
+            //state = EngineState::Start;
             return "[ValidateMap] No map to validate"; 
         
         }
         
         if(!(gameMap -> validate())){ 
-        
-            state = EngineState::Start;
+            
+            setState(EngineState::Start);
+            //state = EngineState::Start;
             return "[ValidateMap] Invalid Map"; 
         
         }
         
-        state = EngineState::MapValidated;
+        setState(EngineState::MapValidated);
+        //state = EngineState::MapValidated;
         return surpressOutput ?  "" : "Map has been successfully validated";
 
     }
@@ -1205,7 +1215,8 @@ namespace WarzoneEngine {
         }
 
         addPlayerToQueue(name);
-        state = EngineState::PlayersAdded;
+        setState(EngineState::PlayersAdded);
+        //state = EngineState::PlayersAdded;
 
         return surpressOutput ? "" : "[AddPlayer] Player: " + name +  " has been added";
 
@@ -1267,7 +1278,8 @@ namespace WarzoneEngine {
 
         }
 
-        state = EngineState::AssignReinforcement;
+        setState(EngineState::AssignReinforcement);
+        //state = EngineState::AssignReinforcement;
 
         if(!suppressOutput){ output << "\n[GameEngine] Game setup complete, moving to reinforcement phase.\n"; }
 
@@ -1329,7 +1341,8 @@ namespace WarzoneEngine {
         }
 
         //Advance game engine state 
-        state = EngineState::IssueOrders;
+        setState(EngineState::IssueOrders);
+        //state = EngineState::IssueOrders;
 
         return surpressOutputs 
             ? "[AssignReinforcement] Reinforcement phase executed successfully."
@@ -1367,7 +1380,8 @@ namespace WarzoneEngine {
         }
 
         //Transition to next phase
-        state = EngineState::ExecuteOrders;
+        setState(EngineState::ExecuteOrders);
+        //state = EngineState::ExecuteOrders;
 
         ostringstream output;
 
@@ -1748,7 +1762,8 @@ namespace WarzoneEngine {
         //---------------------------- Phase Transition ----------------------------
         if(getTurn() > maxTurns) { //Check if the maximum number of turns has been reached
 
-            state = EngineState::Win; //Force game termination
+            setState(EngineState::Win);
+            //state = EngineState::Win; //Force game termination
 
             if(!surpressOutput){
 
@@ -1762,7 +1777,8 @@ namespace WarzoneEngine {
 
         } else if(hasWon && controlsMap) {
 
-            state = EngineState::Win;
+            setState(EngineState::Win);
+            //state = EngineState::Win;
 
             if(!surpressOutput){
 
@@ -1777,7 +1793,8 @@ namespace WarzoneEngine {
         } 
         else if(hasWon) {
 
-            state = EngineState::Win;
+            setState(EngineState::Win);
+            //state = EngineState::Win;
 
             if(!surpressOutput){
 
@@ -1807,7 +1824,8 @@ namespace WarzoneEngine {
     string GameEngine::engineEndExecuteOrder(bool surpressOutput) {
 
         if(!isCurrentStateCorrect(EngineState::ExecuteOrders, "endexecuteorder")){ return "[EndExecuteOrder] Error: Current state is not endexecuteorder!"; }
-        state = EngineState::AssignReinforcement;
+        setState(EngineState::AssignReinforcement);
+        //state = EngineState::AssignReinforcement;
 
         return surpressOutput ? 
             "[EndExecuteOrder] End of Turn: " + to_string(turn) + "\n[EndExecuteOrder] Returning to [AssignReinforcement]"
@@ -1825,14 +1843,16 @@ namespace WarzoneEngine {
 
         if(startNewGame) { 
 
-            state = EngineState::Start;
+            setState(EngineState::Start);
+            //state = EngineState::Start;
             output << "[GameEngine] Starting new game";
 
             return output.str();
 
         } else {
 
-            state = EngineState::End;
+            setState(EngineState::End);
+            //state = EngineState::End;
             output << "[GameEngine] Terminating Game.";
 
             return output.str();
@@ -1843,7 +1863,8 @@ namespace WarzoneEngine {
 
     string GameEngine::engineEnd() {
 
-        state = EngineState::End;
+        setState(EngineState::End);
+        //state = EngineState::End;
         return "[End] The program has now terminated. Thank you for playing!";
 
     }
@@ -2304,13 +2325,15 @@ namespace WarzoneEngine {
 
             if(restart) {
 
-                state = EngineState::Start;
+                setState(EngineState::Start);
+                //state = EngineState::Start;
                 cout << "\n[EndPhase] Game reset successful. Returning to Start state.\n";
                 return true; //Restart requested
 
             } else {
 
-                state = EngineState::End;
+                setState(EngineState::End);
+                //state = EngineState::End;
                 cout << "\n[EndPhase] Game terminated by user. Exiting program.\n";
                 return false; //Game fully ended
 
@@ -2408,6 +2431,10 @@ namespace WarzoneEngine {
         cout << "          WARZONE SIMULATION ENDED           \n";
         cout << "=============================================\n";
 
+    }
+
+    string GameEngine::stringToLog() {
+        return "Game Engine new state: " + getStateAsString();
     }
 
 }

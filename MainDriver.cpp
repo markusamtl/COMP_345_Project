@@ -7,6 +7,8 @@
 #include "CommandProcessing/CommandProcessing.h"
 #include "GameEngine/GameEngineDriver.h"
 #include "GameEngine/GameEngine.h"
+#include "LoggingObserver/LoggingObserverDriver.h"
+#include "LoggingObserver/LoggingObserver.h"
 
 
 using namespace std;
@@ -25,7 +27,9 @@ int main() {
     
     //PART 4
     testOrderExecution();
-    
+
+    //PART 5
+    testLoggingObserver();
     return 0;
 
 }

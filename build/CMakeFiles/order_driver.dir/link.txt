@@ -1,0 +1,1 @@
+/usr/bin/g++  -Wall -Wextra -g -g CMakeFiles/order_driver.dir/Order/Order.cpp.o CMakeFiles/order_driver.dir/Player/Player.cpp.o CMakeFiles/order_driver.dir/Card/Card.cpp.o CMakeFiles/order_driver.dir/Map/Map.cpp.o CMakeFiles/order_driver.dir/Order/OrderDriver.cpp.o -o order_driver 

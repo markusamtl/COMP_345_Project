@@ -12,6 +12,7 @@
 #include "../Player/Player.h"
 #include "../Order/Order.h"
 #include "../Card/Card.h"
+#include "../LoggingObserver/LoggingObserver.h"
 
 namespace WarzoneEngine {
 
@@ -41,6 +42,9 @@ namespace WarzoneEngine {
     using WarzoneCard::Hand;
     using WarzoneCard::Card;
     using WarzoneCard::CardType;
+
+    using WarzoneLog::Subject;
+    using WarzoneLog::ILoggable;
 
 
     /*------------------------------------------ENGINE STATE ENUM--------------------------------------------------*/
@@ -98,7 +102,7 @@ namespace WarzoneEngine {
      * @see WarzoneCard::Deck
      * @see WarzoneOrder::OrderList
      */
-    class GameEngine {
+    class GameEngine : public Subject, public ILoggable {
     private:
 
         //------- Game Attributes -------//
@@ -547,6 +551,7 @@ namespace WarzoneEngine {
          */
         void simulateGame();
         
+        string stringToLog() override;
     };
 
 }

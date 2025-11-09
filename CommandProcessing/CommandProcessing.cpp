@@ -104,7 +104,10 @@ namespace WarzoneCommand {
     void Command::setCommandArgs(const vector<string>& args){ this -> commandArgs = args; }
 
     string Command::getEffect() const { return effect; }
-    void Command::setEffect(const string& e){ this -> effect = e; }
+    void Command::setEffect(const string& e){ 
+        this -> effect = e;
+        notify(this); //Notify observers of effect change
+    }
 
     //------------------------------- Public Methods ------------------------------------//
 
@@ -289,6 +292,10 @@ namespace WarzoneCommand {
 
     }
 
+    string Command::stringToLog() {
+        return "Command's Effect: " + effect;
+    }
+
     /*------------------------------------------ COMMAND PROCESSOR CLASS --------------------------------------------------*/
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
@@ -411,6 +418,7 @@ namespace WarzoneCommand {
         //Effect string will later be used in Part 5 for logging
         cout << "[CommandProcessor] Command saved: " << command -> toString() << endl;
 
+        notify(this);
     }
 
     void CommandProcessor::executeGame(){
@@ -717,6 +725,11 @@ namespace WarzoneCommand {
 
         executeGame();
 
+    }
+
+    string CommandProcessor::stringToLog() {
+        Command* lastCommand = commandList.back();
+        return "Command: " + lastCommand->toString();
     }
 
     /*------------------------------------------ FILE COMMAND PROCESSOR ADAPTER --------------------------------------------------*/

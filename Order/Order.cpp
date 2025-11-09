@@ -135,6 +135,10 @@ namespace WarzoneOrder {
 
     void Order::setEffect(const string& e) { this -> effect = e; }
 
+    string Order::stringToLog() {
+        return "Order Executed: " + getOrderTypeString();
+    }
+
     //-- Interface Class Methods (Defined in the header, no need for implementation) --//
 
 
@@ -288,6 +292,7 @@ namespace WarzoneOrder {
         this -> setEffect("Deploy successful: placed " + to_string(numArmies) +
                         " armies on " + target->getID() + ".");
 
+        notify(this); // Notify observers about the execution of this order
     }
 
 
@@ -616,6 +621,7 @@ namespace WarzoneOrder {
 
         }
 
+        notify(this); // Notify observers about the execution of this order
     }
 
     // ================= Bomb ================= //
@@ -785,6 +791,7 @@ namespace WarzoneOrder {
         this->setEffect("Bomb order executed. Player " + target -> getOwner() -> getPlayerName() + ", at territory " 
                         + target -> getID() + ", lost " + to_string(armiesToRemove) + " armies.");
 
+        notify(this); // Notify observers about the execution of this order
     }
 
     // ================= Blockade ================= //
@@ -952,6 +959,7 @@ namespace WarzoneOrder {
                           " armies and belongs to Neutral player (" +
                           neutralPlayer->getPlayerName() + ").");
     
+        notify(this); // Notify observers about the execution of this order
     }
 
 
@@ -1156,6 +1164,7 @@ namespace WarzoneOrder {
                           " armies from " + source -> getID() +
                           " to " + target -> getID() + ".");
         
+        notify(this); // Notify observers about the execution of this order
     }
 
 
@@ -1303,6 +1312,7 @@ namespace WarzoneOrder {
                         " and " + targetPlayer -> getPlayerName() +
                         " cannot attack each other this turn.");
 
+        notify(this); // Notify observers about the execution of this order
     }
 
 
@@ -1394,8 +1404,11 @@ namespace WarzoneOrder {
 
     void OrderList::addOrder(Order* o) {
 
-        if(o != nullptr) { orders.push_back(o); }
-    
+        if(o != nullptr) 
+        {
+            orders.push_back(o);
+            notify(this);
+        }
     }
 
     void OrderList::removeOrder(int index) {
@@ -1509,6 +1522,11 @@ namespace WarzoneOrder {
 
         return orders.size();
 
+    }
+
+    string OrderList::stringToLog() {
+        Order* order = orders.back();
+        return "Order Issued" + order->getOrderTypeString();
     }
 
 }

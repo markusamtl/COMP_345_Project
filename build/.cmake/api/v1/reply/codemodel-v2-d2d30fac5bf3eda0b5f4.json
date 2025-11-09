@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "COMP_345_Project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "main_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_driver-Debug-9d537b5def2b88d31ba3.json",
+					"name" : "main_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_driver_vg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_driver_vg-Debug-43cb6eea6052d2efbdb1.json",
+					"name" : "main_driver_vg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "run::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-run-Debug-8488c78d6ecf62b3a152.json",
+					"name" : "run",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "run_main_valgrind::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-run_main_valgrind-Debug-a35aba62fc23efa1de59.json",
+					"name" : "run_main_valgrind",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/samueld/COMP345/COMP_345_Project/build",
+		"source" : "/home/samueld/COMP345/COMP_345_Project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

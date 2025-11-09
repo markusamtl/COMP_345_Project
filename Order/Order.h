@@ -7,8 +7,10 @@
 #include <utility>
 
 #include "../Player/Player.h"
+#include "../LoggingObserver/LoggingObserver.h"
 
 namespace WarzonePlayer { class Player; } //Forward declaration
+namespace WarzoneLog { class Subject; class ILoggable; } //Forward declaration
 using namespace std;
 
 namespace WarzoneOrder {
@@ -16,6 +18,9 @@ namespace WarzoneOrder {
     using WarzoneMap::Territory;
     using WarzoneMap::Map;
     using WarzonePlayer::Player;
+
+    using WarzoneLog::Subject;
+    using WarzoneLog::ILoggable;
 
     /*------------------------------------------TIME UTILITY CLASS--------------------------------------------------*/
 
@@ -89,7 +94,7 @@ namespace WarzoneOrder {
      * @see Airlift
      * @see Negotiate
      */
-    class Order {
+    class Order : public Subject, public ILoggable {
 
         protected:
 
@@ -248,6 +253,7 @@ namespace WarzoneOrder {
          */
         virtual void execute() = 0;
 
+        string stringToLog() override;
     };
 
     /*------------------------------------------ SINGLE ORDER SUB-CLASSES------------------------------------------------*/
@@ -943,7 +949,7 @@ namespace WarzoneOrder {
      * @class OrderList
      * @brief Manages a collection of Order objects for a player.
      */
-    class OrderList {
+    class OrderList : public Subject, public ILoggable {
         
         private:
 
@@ -1085,6 +1091,7 @@ namespace WarzoneOrder {
              */
             size_t size() const;
             
+            string stringToLog() override;
     };
 
 }

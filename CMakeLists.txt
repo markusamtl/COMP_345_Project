@@ -21,6 +21,7 @@ set(SOURCES_COMMON
     Card/Card.cpp
     GameEngine/GameEngine.cpp
     CommandProcessing/CommandProcessing.cpp
+    LoggingObserver/LoggingObserver.cpp
 
     # Test functions (ensure these files do NOT define main())
     Map/MapDriver.cpp
@@ -29,6 +30,8 @@ set(SOURCES_COMMON
     Card/CardDriver.cpp
     GameEngine/GameEngineDriver.cpp
     CommandProcessing/CommandProcessingDriver.cpp
+    LoggingObserver/LoggingObserverDriver.cpp
+
 
 )
 

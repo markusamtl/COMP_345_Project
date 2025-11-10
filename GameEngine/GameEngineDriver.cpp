@@ -1,4 +1,5 @@
 #include "GameEngineDriver.h"
+#include "LoggingObserver/LoggingObserver.h"
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -6,11 +7,15 @@
 #include <fstream>
 
 using namespace WarzoneEngine;
+using namespace WarzoneLog;
 
 /*---------------------------------- Manual Console Driver ----------------------------------*/
 
-void testGameStates() {
+void testGameStates(){
+
     GameEngine engine;
+    LogObserver logger;
+    engine.attach(&logger);
 
     cout << "=== WARZONE GAME ENGINE CONSOLE ===\n"
          << "Available commands (case-insensitive):\n"
@@ -40,16 +45,15 @@ void testGameStates() {
          << "====================================\n\n";
 
     string line;
-    while(engine.getState() != EngineState::End && getline(cin, line)) {
-        
-        if(line.empty()) continue;
+    while(engine.getState() != EngineState::End && getline(cin, line)){
+
+        if(line.empty()){ continue; }
 
         stringstream ss(line);
-        
         string cmd, arg;
         ss >> cmd;
         getline(ss, arg);
-        
+
         if(!arg.empty() && arg[0] == ' '){ arg.erase(0, 1); }
 
         string result = engine.processCommand(cmd, arg, true);
@@ -59,66 +63,66 @@ void testGameStates() {
     }
 
     cout << "\n=== GAME ENGINE TERMINATED ===\n";
-
 }
 
-//---------------------------------- Startup Phase Test -------------------------------------------
+/*---------------------------------- Startup Phase Test -------------------------------------------*/
 
-void testStartupPhase() {
+void testStartupPhase(){
 
     cout << "=============================================\n";
     cout << "             TEST: STARTUP PHASE             \n";
     cout << "=============================================\n\n";
 
     GameEngine* gameEngine = new GameEngine();
+    LogObserver* logger = new LogObserver();
+    gameEngine->attach(logger);
 
     bool suppressPrints = false;
     char userChoice;
 
     cout << "Would you like to suppress console output during the startup phase? (y/n): ";
 
-    while(true) {
+    while(true){
 
-        if(!(cin >> userChoice)) {
-            
+        if(!(cin >> userChoice)){
+
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid input. Please enter 'y' or 'n': ";
             continue;
-
         }
 
         userChoice = tolower(userChoice);
-        if(userChoice == 'y') {
-
+        if(userChoice == 'y'){
             suppressPrints = true;
             break;
-        
-        } else if (userChoice == 'n') {
-            
+        }
+        else if(userChoice == 'n'){
             suppressPrints = false;
             break;
-
-        } else { cout << "Invalid selection. Please enter 'y' or 'n': "; }
-    
+        }
+        else{
+            cout << "Invalid selection. Please enter 'y' or 'n': ";
+        }
     }
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear newline
 
     cout << "\n[Driver] Starting startup phase..." << endl;
-    gameEngine -> startupPhase(suppressPrints);
+    gameEngine->startupPhase(suppressPrints);
 
+    gameEngine->detach(logger);
+    delete logger;
     delete gameEngine;
 
     cout << "\n=============================================\n";
-    cout << "           END OF STARTUP PHASE TEST           \n";
+    cout << "           END OF STARTUP PHASE TEST         \n";
     cout << "=============================================\n\n";
-
 }
 
-//---------------------------------- Gameplay Phase Test -------------------------------------------
+/*---------------------------------- Gameplay Phase Test -------------------------------------------*/
 
-void testMainGameLoop() {
+void testMainGameLoop(){
 
     cout << "=============================================\n";
     cout << "      TEST: CONTROLLED MAIN GAME LOOP        \n";
@@ -129,15 +133,20 @@ void testMainGameLoop() {
     cout << "=============================================\n";
     cout << "          END OF MAIN GAME LOOP TEST         \n";
     cout << "=============================================\n\n";
-
 }
 
 /*---------------------------------- Automated Simulation Driver ----------------------------------*/
 
-void mainGameLoop() {
+void mainGameLoop(){
 
     GameEngine* gameEngine = new GameEngine();
+    LogObserver* logger = new LogObserver();
+    
+    gameEngine -> attach(logger);
     gameEngine -> mainGameLoop();
-    delete gameEngine;
 
+    gameEngine->detach(logger);
+    delete logger;
+    delete gameEngine;
+    
 }

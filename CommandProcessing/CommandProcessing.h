@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "../GameEngine/GameEngine.h"
+#include "../LoggingObserver/LoggingObserver.h"
 
 using namespace std;
 using namespace WarzoneEngine;
@@ -22,6 +23,9 @@ namespace WarzoneCommand {
 
     using WarzoneEngine::EngineState;
     using WarzoneMap::StringHandling;
+
+    using WarzoneLog::Subject;
+    using WarzoneLog::ILoggable;
     /*------------------------------------------ COMMAND CLASS --------------------------------------------------*/
 
     /**
@@ -36,7 +40,7 @@ namespace WarzoneCommand {
      * Commands are validated against the current GameEngine state
      * and stored by the CommandProcessor.
      */
-    class Command {
+    class Command : public Subject, public ILoggable {
 
         private:
 
@@ -181,6 +185,8 @@ namespace WarzoneCommand {
              */
             bool isCommandNameValid(const string& commandName) const;
 
+            string stringToLog() override;
+
     };
 
      /**
@@ -196,7 +202,7 @@ namespace WarzoneCommand {
      * It also provides a hook method (readCommandFromSource) that can be
      * overridden by adapter subclasses to support different input sources (e.g., file input).
      */
-    class CommandProcessor {
+    class CommandProcessor : public Subject, public ILoggable {
 
         private:
 
@@ -221,12 +227,6 @@ namespace WarzoneCommand {
              * @return Pointer to the created Command object.
              */
             Command* readCommand();
-
-            /**
-             * @brief Saves a validated Command object into commandList.
-             * @param command Pointer to Command to store.
-             */
-            void saveCommand(Command* command);
 
             /**
              * @brief Launches the Warzone game loop for this command processor.
@@ -296,6 +296,12 @@ namespace WarzoneCommand {
             Command* getCommand();
 
             /**
+             * @brief Saves a validated Command object into commandList.
+             * @param command Pointer to Command to store.
+             */
+            void saveCommand(Command* command);
+
+            /**
              * @brief Validates whether a command is valid in the current GameEngine state.
              * @param command Pointer to the Command to validate.
              * @return True if valid, false otherwise.
@@ -306,6 +312,8 @@ namespace WarzoneCommand {
              * @brief Public accessor for executeGame;
              */
             void runGame();
+
+            string stringToLog() override;
 
     };
 

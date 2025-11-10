@@ -7,6 +7,7 @@
 #include <utility>
 
 #include "../Player/Player.h"
+#include "../LoggingObserver/LoggingObserver.h"
 
 namespace WarzonePlayer { class Player; } //Forward declaration
 using namespace std;
@@ -89,7 +90,7 @@ namespace WarzoneOrder {
      * @see Airlift
      * @see Negotiate
      */
-    class Order {
+    class Order : public WarzoneLog::Subject, public WarzoneLog::ILoggable {
 
         protected:
 
@@ -247,6 +248,17 @@ namespace WarzoneOrder {
          * @see Negotiate::execute()
          */
         virtual void execute() = 0;
+
+        /**
+         * @brief Returns the string to be written to the log file.
+         * 
+         * Provides the textual content used by the Observer pattern
+         * when the Order triggers a notification event.
+         * 
+         * @return A formatted string containing the order type and effect.
+         */
+        std::string stringToLog() override;
+
 
     };
 
@@ -943,7 +955,7 @@ namespace WarzoneOrder {
      * @class OrderList
      * @brief Manages a collection of Order objects for a player.
      */
-    class OrderList {
+    class OrderList : public WarzoneLog::Subject, public WarzoneLog::ILoggable {
         
         private:
 
@@ -1000,11 +1012,10 @@ namespace WarzoneOrder {
             //-- Accessors and Mutators --//
 
             /**
-             * @brief Get the vector of Orders.
-             * @return A pointer to the vector of Order pointers.
+             * @brief Get the vector of Orders (non-const version).
+             * @return A reference to the vector of Order pointers.
              */
-            const vector<Order*>& getOrders() const { return orders; }
-            vector<Order*>& getOrders() { return orders; }
+            vector<Order*>& getOrders();
 
             /**
              * @brief Set the vector of Orders.
@@ -1084,6 +1095,17 @@ namespace WarzoneOrder {
              * @return The number of orders in the list as a size_t.
              */
             size_t size() const;
+
+            /**
+             * @brief Generates a log string describing the latest change to the OrderList.
+             * 
+             * This method is called automatically by the Observer pattern whenever
+             * the OrderList triggers a notification (e.g., when an order is added,
+             * removed, moved, or replaced). 
+             * @return A formatted string describing the current status of the OrderList.
+             */
+            std::string stringToLog() override;
+
             
     };
 

@@ -11,9 +11,10 @@ AUTHORS:
 
 Markus A. Amalfi (Team Lead)
 Anh Thien Nguyen
+Rim Charafeddine
 Samuel Dessureault
 Souméya Diop
-Rim Charafeddine
+
 
 
 ## Requirements

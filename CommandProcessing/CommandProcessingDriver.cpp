@@ -1,274 +1,241 @@
 #include "CommandProcessingDriver.h"
+#include "../LoggingObserver/LoggingObserver.h"
 
-void testCommandProcessorCLI() {
+using namespace WarzoneCommand;
+using namespace WarzoneEngine;
+using namespace WarzoneLog;
+namespace fs = std::filesystem;
 
-    GameEngine* engine = new GameEngine();
-    engine -> setMaxTurns(500000);
-    CommandProcessor* processor = new CommandProcessor(engine);
+/*==============================================================*/
+/*------------------- CommandProcessor CLI Test ----------------*/
+/*==============================================================*/
 
-    processor -> runGame();
+void testCommandProcessorCLI(){
 
-    delete processor;
-    delete engine;
+	cout << "=============================================\n";
+	cout << "     TEST: CommandProcessor (CLI Input)      \n";
+	cout << "=============================================\n\n";
 
+	//--------------------------- Setup ---------------------------//
+	GameEngine* engine = new GameEngine();
+	engine->setMaxTurns(500000);
+
+	CommandProcessor* processor = new CommandProcessor(engine);
+	LogObserver* logger = new LogObserver();
+
+	engine->attach(logger);
+	processor->attach(logger);
+
+	cout << "[Driver] LogObserver attached to GameEngine and CommandProcessor.\n";
+	cout << "[Driver] Log file will be written to ../GameLogs/.\n\n";
+
+	//--------------------------- Run Game ------------------------//
+	processor->runGame();
+
+	//--------------------------- Cleanup -------------------------//
+	engine->detach(logger);
+	processor->detach(logger);
+
+	delete processor;
+	delete engine;
+	delete logger;
+
+	cout << "=============================================\n";
+	cout << "      CLI CommandProcessor Test Complete      \n";
+	cout << "=============================================\n\n";
 }
+
+
+/*==============================================================*/
+/*------------- FileCommandProcessorAdapter Test ----------------*/
+/*==============================================================*/
 
 void testFileCommandProcessorAdapter(const vector<string>& fileList){
 
-    cout << "=============================================\n";
-    cout << "  TEST: FileCommandProcessorAdapter Execution \n";
-    cout << "=============================================\n\n";
+	cout << "=============================================\n";
+	cout << "  TEST: FileCommandProcessorAdapter Execution \n";
+	cout << "=============================================\n\n";
 
-    if(fileList.empty()){
+	if(fileList.empty()){
+		cerr << "[Driver] Error: No command files provided.\n";
+		return;
+	}
 
-        cerr << "[Driver] Error: No command files provided.\n";
-        return;
+	//-------------------- Iterate Through Files ------------------//
+	for(const string& fileName : fileList){
 
-    }
+		cout << "---------------------------------------------------\n";
+		cout << "[Driver] Starting new simulation using file: " << fileName << endl;
+		cout << "---------------------------------------------------\n";
 
-    //---------------------------- File Processing Loop ----------------------------//
-    for(const string& fileName : fileList){
+		//--------------------------- Setup -------------------------//
+		GameEngine* engine = new GameEngine();
+		engine->setMaxTurns(500000);
 
-        cout << "---------------------------------------------------\n";
-        cout << "[Driver] Starting new simulation using file: " << fileName << endl;
-        cout << "---------------------------------------------------\n";
+		FileCommandProcessorAdapter* adapter = new FileCommandProcessorAdapter(engine, fileName);
+		if(!adapter){
+			cerr << "[Driver] Error: Failed to initialize FileCommandProcessorAdapter for file: " << fileName << endl;
+			delete engine;
+			continue;
+		}
 
-        //---------------------------- Setup Phase ----------------------------//
-        GameEngine* engine = new GameEngine();
-        engine -> setMaxTurns(500000);
-        FileCommandProcessorAdapter* adapter = new FileCommandProcessorAdapter(engine, fileName);
+		LogObserver* logger = new LogObserver();
+		engine->attach(logger);
+		adapter->attach(logger);
 
-        //---------------------------- Validation ----------------------------//
-        if(!adapter){
+		cout << "[Driver] LogObserver attached to GameEngine and FileCommandProcessorAdapter.\n";
+		cout << "[Driver] Logging session for: " << fileName << "\n\n";
 
-            cerr << "[Driver] Error: Failed to initialize FileCommandProcessorAdapter for file: " << fileName << endl;
-            delete engine;
-            continue;
+		//--------------------------- Run Game ----------------------//
+		adapter -> runGame();
 
-        }
+		//--------------------------- Cleanup -----------------------//
+		engine->detach(logger);
+		adapter->detach(logger);
 
-        //---------------------------- Execution ----------------------------//
-        adapter -> runGame();
+		delete adapter;
+		delete engine;
+		delete logger;
 
-        //---------------------------- Cleanup ----------------------------//
-        delete adapter;
-        delete engine;
+		cout << "[Driver] Completed simulation for file: " << fileName << "\n\n";
+	}
 
-        cout << "[Driver] Completed simulation for file: " << fileName << "\n\n";
-
-    }
-
-    cout << "=============================================\n";
-    cout << "     All FileCommandProcessor Tests Done      \n";
-    cout << "=============================================\n\n";
-
+	cout << "=============================================\n";
+	cout << "     All FileCommandProcessor Tests Done      \n";
+	cout << "=============================================\n\n";
 }
 
-/**
- * @brief Driver function to create test files for the CommandProcessor and FileCommandProcessorAdapter.
- * 
- * This function automatically generates 8 test input files in the directory:
- * "../CommandProcessor/FileCommandProcessorAdapterInputs/"
- * 
- * Each file simulates a different game startup or edge case scenario for the
- * Warzone Command Processor (as required by A2 - Part 1 testing specifications).
- * 
- * All map files are assumed to exist under "../Map/test_maps/".
- */
+
+/*==============================================================*/
+/*---------- FileCommandProcessorAdapter Driver Setup -----------*/
+/*==============================================================*/
+
 void testFileCommandProcessorAdapterDriver(){
 
-    cout << "=============================================\n";
-    cout << "      TEST: FileCommandProcessorAdapter      \n";
-    cout << "=============================================\n\n\n";
+	cout << "=============================================\n";
+	cout << "      TEST: FileCommandProcessorAdapter      \n";
+	cout << "=============================================\n\n";
 
-    //---------------------------- Setup Phase ----------------------------//
-    const string basePath = "../CommandProcessing/FileCommandProcessorAdapterInputs/";
+	const string basePath = "../CommandProcessing/FileCommandProcessorAdapterInputs/";
 
-    if(!fs::exists(basePath)){
+	//---------------------- Directory Setup ----------------------//
+	if(!fs::exists(basePath)){
+		cout << "[Driver] Directory not found: " << basePath << endl;
+		cout << "[Driver] Creating directory...\n";
 
-        cout << "[Driver] Directory not found: " << basePath << endl;
-        cout << "[Driver] Creating directory...\n";
+		try{
+			fs::create_directories(basePath);
+			cout << "[Driver] Directory created successfully.\n\n";
+		}
+		catch(const fs::filesystem_error& e){
+			cerr << "[Driver] Error: Failed to create directory: " << e.what() << endl;
+			return;
+		}
+	}
 
-        try{
+	else{ cout << "[Driver] Directory already exists: " << basePath << "\n\n"; }
 
-            fs::create_directories(basePath);
-            cout << "[Driver] Directory created successfully.\n\n";
+	//---------------------- File Definitions ---------------------//
+	vector<string> fileNames = {
+		"test1.txt","test2.txt","test3.txt","test4.txt",
+		"test5.txt","test6.txt","test7.txt","test8.txt"
+	};
 
-        }catch(const fs::filesystem_error& e){
+	vector<vector<string>> fileContents;
 
-            cerr << "[Driver] Error: Failed to create directory: " << e.what() << endl;
-            return;
+	// (1) Normal game flow - Brazil map, 6 players, quit
+	fileContents.push_back({
+		"loadmap ../Map/test_maps/Brazil/Brazil.map",
+		"validatemap",
+		"addplayer Alice","addplayer Bob","addplayer Carl",
+		"addplayer Dan","addplayer Erica","addplayer Francine",
+		"gamestart","quit"
+	});
 
-        }
+	// (2) Replay game sequence
+	fileContents.push_back({
+		"loadmap ../Map/test_maps/Brazil/Brazil.map",
+		"validatemap",
+		"addplayer Alice","addplayer Bob","addplayer Carl",
+		"addplayer Dan","addplayer Erica","addplayer Francine",
+		"gamestart","replay",
+		"loadmap ../Map/test_maps/Ohio/Ohio.map",
+		"validatemap",
+		"addplayer Alice","addplayer Bob","addplayer Carl",
+		"addplayer Dan","addplayer Erica","addplayer Francine",
+		"gamestart","quit"
+	});
 
-    } else {
+	// (3) Multiple map load attempts and too many players
+	vector<string> cmds = {
+		"loadmap ../Map/test_maps/Montreal/Montreal.map",
+		"loadmap ../Map/test_maps/005_I72_V-22/005_I72_V-22.map",
+		"validatemap",
+		"loadmap ../Map/test_maps/jksdhiufhre/jksdhiufhre.map",
+		"loadmap ../Map/test_maps/Brazil/Brazil.map",
+		"validatemap"
+	};
+	for(int i = 1; i <= 67; i++){ cmds.push_back("addplayer Player" + to_string(i)); }
+	cmds.push_back("gamestart");
+	cmds.push_back("quit");
+	fileContents.push_back(cmds);
 
-        cout << "[Driver] Directory already exists: " << basePath << "\n\n";
+	// (4) Empty file
+	fileContents.push_back({""});
 
-    }
+	// (5) Only loadmap
+	fileContents.push_back({"loadmap ../Map/test_maps/Brazil/Brazil.map"});
 
-    vector<string> fileNames = {
-        "test1.txt",
-        "test2.txt",
-        "test3.txt",
-        "test4.txt",
-        "test5.txt",
-        "test6.txt",
-        "test7.txt",
-        "test8.txt",
-    };
+	// (6) Ends after validatemap
+	fileContents.push_back({
+		"loadmap ../Map/test_maps/Brazil/Brazil.map","validatemap"
+	});
 
-    //---------------------------- File Contents ----------------------------//
-    cout << "=============================================\n";
-    cout << "       Setting Up files to be read from      \n";
-    cout << "=============================================\n\n";
+	// (7) Ends after addplayer
+	fileContents.push_back({
+		"loadmap ../Map/test_maps/Brazil/Brazil.map","validatemap","addplayer Alice"
+	});
 
-    vector<vector<string>> fileContents;
+	// (8) Ends after gamestart
+	fileContents.push_back({
+		"loadmap ../Map/test_maps/Brazil/Brazil.map","validatemap",
+		"addplayer Alice","addplayer Bob","gamestart"
+	});
 
-    //(1) Working game with Brazil map, 6 players, quit after start
-    fileContents.push_back({
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap",
-        "addplayer Alice",
-        "addplayer Bob",
-        "addplayer Carl",
-        "addplayer Dan",
-        "addplayer Erica",
-        "addplayer Francine",
-        "gamestart",
-        "quit"
-    });
+	//---------------------- Write Test Files ----------------------//
+	for(size_t i = 0; i < fileNames.size(); i++){
+		string fullPath = basePath + fileNames[i];
+		ofstream out(fullPath);
 
-    //(2) Replay game instead of quitting, call 'ohio'
-    fileContents.push_back({
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap",
-        "addplayer Alice",
-        "addplayer Bob",
-        "addplayer Carl",
-        "addplayer Dan",
-        "addplayer Erica",
-        "addplayer Francine",
-        "gamestart",
-        "replay",
-        "loadmap ../Map/test_maps/Ohio/Ohio.map",
-        "validatemap",
-        "addplayer Alice",
-        "addplayer Bob",
-        "addplayer Carl",
-        "addplayer Dan",
-        "addplayer Erica",
-        "addplayer Francine",
-        "gamestart",
-        "quit"
-    });
+		if(!out.is_open()){
+			cerr << "[Driver] Error: Could not create file: " << fullPath << endl;
+			continue;
+		}
 
-    //(3) Montreal fails to be loaded since it's not written properly, then tries to load giberish, then Brazil loads but adds 67 players, plays until end, quits
-    vector<string> cmds = {
-        
-        "loadmap ../Map/test_maps/Montreal/Montreal.map",
-        "loadmap ../Map/test_maps/005_I72_V-22/005_I72_V-22.map",
-        "validatemap",
-        "loadmap ../Map/test_maps/jksdhiufhre/jksdhiufhre.map",
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap"
-    
-    };
+		cout << "[Driver] Building file: " << fullPath << endl;
+		for(const string& line : fileContents[i]) out << line << "\n";
+		out.close();
 
-    // Add 67 players (Brazil has 66 territories)
-    for(int i = 1; i <= 67; i++){
+		cout << "[Driver] Successfully wrote " << fileContents[i].size()
+			 << " lines to file: " << fileNames[i] << "\n\n";
+	}
 
-        cmds.push_back("addplayer Player" + to_string(i));
+	//---------------------- Execute Tests ------------------------//
+	vector<string> fullPaths;
+	fullPaths.reserve(fileNames.size());
+	for(const string& f : fileNames){
+		fullPaths.push_back(basePath + f);
+	}
 
-    }
-
-    cmds.push_back("gamestart");
-    cmds.push_back("quit");
-
-    fileContents.push_back(cmds);
-    
-
-    //(5) NO TEXT
-    fileContents.push_back({""});
-
-    //(5) Only loadmap (empty scenario after map load)
-    fileContents.push_back({ "loadmap ../Map/test_maps/Brazil/Brazil.map" });
-
-    //(6) Ends after validatemap
-    fileContents.push_back({
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap"
-    });
-
-    // (7) Ends after addplayer
-    fileContents.push_back({
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap",
-        "addplayer Alice"
-    });
-
-    //(8) Ends after gamestart
-    fileContents.push_back({
-        "loadmap ../Map/test_maps/Brazil/Brazil.map",
-        "validatemap",
-        "addplayer Alice",
-        "addplayer Bob",
-        "gamestart"
-    });
-
-    //---------------------------- File Creation Loop ----------------------------//
-    for(size_t i = 0; i < fileNames.size(); i++){
-
-        string fullPath = basePath + fileNames[i];
-        ofstream out(fullPath);
-
-        if(!out.is_open()){
-
-            cerr << "[Driver] Error: Could not create file: " << fullPath << endl;
-            continue;
-
-        }
-
-        cout << "[Driver] Building file: " << fullPath << endl;
-
-        for(const string& line : fileContents[i]){
-
-            out << line << "\n";
-
-        }
-
-        out.close();
-        cout << "[Driver] Successfully wrote " << fileContents[i].size() 
-             << " lines to file: " << fileNames[i] << "\n\n";
-
-    }
-
-    cout << "=============================================\n";
-    cout << "    END: FileCommandProcessorAdapter Test    \n";
-    cout << "=============================================\n\n";
-
-    vector<string> newFileNames;
-    newFileNames.reserve(fileNames.size());
-    ostringstream os;
-
-    for(string file : fileNames){ 
-
-        os << basePath << file;
-        newFileNames.push_back(os.str());
-
-        //Reset buffer
-        os.str("");
-        os.clear();
-
-    }
-
-    testFileCommandProcessorAdapter(newFileNames);
-
+	testFileCommandProcessorAdapter(fullPaths);
 }
 
+
+/*==============================================================*/
+/*--------------------- Unified Test Runner --------------------*/
+/*==============================================================*/
+
 void testCommandProcessor(){
-
-    testCommandProcessorCLI();
-    //testFileCommandProcessorAdapterDriver();
-
+	testCommandProcessorCLI();
+	testFileCommandProcessorAdapterDriver();
 }

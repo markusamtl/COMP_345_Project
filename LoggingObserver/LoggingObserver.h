@@ -19,7 +19,7 @@ namespace WarzoneLog {
 
     class Subject{
         public:
-            ~Subject() = default;
+            ~Subject();
             void attach(Observer* o);
             void detach(Observer* o);
             void notify(ILoggable* loggable);

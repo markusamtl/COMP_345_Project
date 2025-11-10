@@ -1,0 +1,349 @@
+
+[CommandProcessor] Current State: Start
+[CommandProcessor] Available commands: loadmap <mapfile>
+[CommandProcessor] Please enter your command:
+loadmap ../Map/test_maps/Brazil/Brazil.maploadmap ../Map/test_maps/Brazil/Brazil.map[LoadMap] Map loaded successfully, and is ready for validation.
+[CommandProcessor] Current State: Map Loaded
+[CommandProcessor] Available commands: validatemap
+[CommandProcessor] Please enter your command:
+validatemapvalidatemap
+
+[CommandProcessor] Current State: Map Validated
+[CommandProcessor] Available commands: addplayer <playername>
+[CommandProcessor] Please enter your command:
+addplayer Henryaddplayer Henry
+
+[CommandProcessor] Current State: Players Addition
+[CommandProcessor] Available commands: addplayer <playername>  OR  gamestart
+[CommandProcessor] Please enter your command:
+gamestartgamestart[FileCommandProcessorAdapter] Error: You need at LEAST 2 players to play a game.
+
+
+[CommandProcessor] Current State: Players Addition
+[CommandProcessor] Available commands: addplayer <playername>  OR  gamestart
+[CommandProcessor] Please enter your command:
+addplayer Julieaddplayer Julie
+
+[CommandProcessor] Current State: Players Addition
+[CommandProcessor] Available commands: addplayer <playername>  OR  gamestart
+[CommandProcessor] Please enter your command:
+gamestartgamestart
+[GameplayPhase] Beginning Turn 1
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 2
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 2
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 3
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 3
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 3
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 4
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 4
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 5
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 5
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 5
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 6
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 6
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 6
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 7
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 7
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 7
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 8
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 8
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 8
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 9
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 9
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 9
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 10
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 10
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 10
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 11
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 11
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 11
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 12
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 12
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 12
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 13
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 13
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 13
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 14
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 14
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 14
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 15
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 15
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 15
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 16
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 16
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 16
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 17
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 17
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 17
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 18
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 18
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 18
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 19
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 19
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 19
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 20
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 20
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 20
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 21
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 21
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 21
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 22
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 22
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 22
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Orders executed successfully.
+[EndExecuteOrder] End of Turn: 23
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 23
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 23
+
+
+[AssignReinforcement] Reinforcement phase executed successfully.
+[IssueOrder] Orders issued successfully.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+[ExecuteOrder] Win condition triggered.
+
+[GameplayPhase] Win condition reached. Ending simulation.
+
+[GameplayPhase] Game ended after 24 turns.
+[GameplayPhase] Final state: Win condition reached.
+[GameplayPhase] Simulation log saved to: ../CommandProcessing/Games/Y2025_M11_D09_H19_M21_S51_MS670_NS320441_SIMULATION.txt

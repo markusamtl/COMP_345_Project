@@ -1,0 +1,590 @@
+Not enough players to shuffle.
+[GameStart]  Added neutral player.
+
+[Assignment] === Assigning Territories to Players ===
+[Assignment] k receives: Juberri, Pas de la Casa, La Massana, La Cortinada, Santa Coloma, Meritxell, Tristaina, Estanys Juclar, Canolich, Erts, Sispony, Pic Estanyó, Rabassa, Montmalus, Pessons, Bixessarri, Pic de Carroi, Canillo, Prat Primer, Comapedrosa, Ordino, Terreny Concordia, Llorts
+[Assignment] j receives: Encamp, Arcalis, Soldeu, Sant Julia, Riu Madriu, Port, Escaldes-engordany, Ransol, Andorra la Vella, Pic d'Enclar, Vall d'Incles, Gran Valira, El Serrat, Alt del Griu, Solana, Obaga, La Portelleta, Perafita, Arinsal, Pic Negre, Pal, Port Envalira, Casamanya
+[Assignment] Neutral player receives leftover territories: Port Siguer
+
+[Assignment] === Territory Assignment Complete ===
+
+k had 50 armies added to their reinforcement pool
+k had the following cards added to their hand: Diplomacy, Bomb
+j had 50 armies added to their reinforcement pool
+j had the following cards added to their hand: Bomb, Bomb
+
+[GameEngine] Game setup complete, moving to reinforcement phase.
+
+[GameplayPhase] Beginning Turn 1
+
+[AssignReinforcement] === Assigning Reinforcements to Players ===
+
+[Reinforcement] Calculating reinforcement for player: k
+[Reinforcement] Base armies from territories (23 owned): 7
+[Reinforcement] Final reinforcement pool contribution: 50
+[Reinforcement] Total armies calculated for deployment: 57
+[AssignReinforcement] k receives 57 new armies (Pool: 107).
+
+[Reinforcement] Calculating reinforcement for player: j
+[Reinforcement] Base armies from territories (23 owned): 7
+[Reinforcement] Final reinforcement pool contribution: 50
+[Reinforcement] Total armies calculated for deployment: 57
+[AssignReinforcement] j receives 57 new armies (Pool: 107).
+
+[AssignReinforcement] === All Reinforcements Assigned ===
+
+
+
+[IssueOrder] === Issuing Orders for Each Player ===
+
+[IssueOrder] Player: k is beginning their IssueOrder phase:
+
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] Player: k has issued a NEGOTIATE Order with player: j (Total Threat Score = 72602, Continent Weighted).
+[IssueOrder] k is distributing 107 reinforcement armies.
+[IssueOrder] k adds 5 army/armies to Sispony (Remaining pool before deploy: 107)
+[IssueOrder] k adds 39 army/armies to Ordino (Remaining pool before deploy: 102)
+[IssueOrder] k adds 11 army/armies to Erts (Remaining pool before deploy: 63)
+[IssueOrder] k adds 24 army/armies to La Cortinada (Remaining pool before deploy: 52)
+[IssueOrder] k adds 5 army/armies to Bixessarri (Remaining pool before deploy: 28)
+[IssueOrder] k adds 5 army/armies to Comapedrosa (Remaining pool before deploy: 23)
+[IssueOrder] k adds 7 army/armies to Rabassa (Remaining pool before deploy: 18)
+[IssueOrder] k adds 5 army/armies to Llorts (Remaining pool before deploy: 11)
+[IssueOrder] k adds 2 army/armies to Santa Coloma (Remaining pool before deploy: 6)
+[IssueOrder] k adds 2 army/armies to La Massana (Remaining pool before deploy: 4)
+[IssueOrder] k adds 1 army/armies to Meritxell (Remaining pool before deploy: 2)
+[IssueOrder] k adds 1 army/armies to Tristaina (Remaining pool before deploy: 1)
+[IssueOrder] k has finished deploying all reinforcements.
+
+[IssueOrder] k has used a Diplomacy card.
+[IssueOrder] k issued a Negotiate order.
+[IssueOrder] k has completed all defensive reinforcements.
+
+[IssueOrder] Player: j is beginning their IssueOrder phase:
+
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j is distributing 107 reinforcement armies.
+[IssueOrder] j adds 14 army/armies to Gran Valira (Remaining pool before deploy: 107)
+[IssueOrder] j adds 35 army/armies to Soldeu (Remaining pool before deploy: 93)
+[IssueOrder] j adds 24 army/armies to Riu Madriu (Remaining pool before deploy: 58)
+[IssueOrder] j adds 5 army/armies to Port (Remaining pool before deploy: 34)
+[IssueOrder] j adds 5 army/armies to Escaldes-engordany (Remaining pool before deploy: 29)
+[IssueOrder] j adds 5 army/armies to Pic d'Enclar (Remaining pool before deploy: 24)
+[IssueOrder] j adds 5 army/armies to Alt del Griu (Remaining pool before deploy: 19)
+[IssueOrder] j adds 7 army/armies to Encamp (Remaining pool before deploy: 14)
+[IssueOrder] j adds 1 army/armies to El Serrat (Remaining pool before deploy: 7)
+[IssueOrder] j adds 1 army/armies to Vall d'Incles (Remaining pool before deploy: 6)
+[IssueOrder] j adds 2 army/armies to Casamanya (Remaining pool before deploy: 5)
+[IssueOrder] j adds 1 army/armies to Port Envalira (Remaining pool before deploy: 3)
+[IssueOrder] j adds 1 army/armies to Ransol (Remaining pool before deploy: 2)
+[IssueOrder] j adds 1 army/armies to Sant Julia (Remaining pool before deploy: 1)
+[IssueOrder] j has finished deploying all reinforcements.
+
+[IssueOrder] j had no valid card orders to issue.
+[IssueOrder] j has completed all defensive reinforcements.
+
+[IssueOrder] === All Orders Successfully Issued ===
+
+[EndIssueOrders] All players: k, j, Neutral have finished issuing orders.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+
+[ExecuteOrder] === Executing Orders for Each Player ===
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 5 army/armies to territory Sispony.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Sispony.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 14 army/armies to territory Gran Valira.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 14 armies on Gran Valira.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 39 army/armies to territory Ordino.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 39 armies on Ordino.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 35 army/armies to territory Soldeu.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 35 armies on Soldeu.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 11 army/armies to territory Erts.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 11 armies on Erts.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 24 army/armies to territory Riu Madriu.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 24 armies on Riu Madriu.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 24 army/armies to territory La Cortinada.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 24 armies on La Cortinada.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 5 army/armies to territory Port.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Port.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 5 army/armies to territory Bixessarri.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Bixessarri.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 5 army/armies to territory Escaldes-engordany.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Escaldes-engordany.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 5 army/armies to territory Comapedrosa.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Comapedrosa.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 5 army/armies to territory Pic d'Enclar.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Pic d'Enclar.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 7 army/armies to territory Rabassa.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 7 armies on Rabassa.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 5 army/armies to territory Alt del Griu.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Alt del Griu.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 5 army/armies to territory Llorts.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 5 armies on Llorts.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 7 army/armies to territory Encamp.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 7 armies on Encamp.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 2 army/armies to territory Santa Coloma.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 2 armies on Santa Coloma.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory El Serrat.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on El Serrat.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 2 army/armies to territory La Massana.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 2 armies on La Massana.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Vall d'Incles.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Vall d'Incles.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Meritxell.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Meritxell.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 2 army/armies to territory Casamanya.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 2 armies on Casamanya.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Tristaina.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Tristaina.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Port Envalira.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Port Envalira.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Ransol.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Ransol.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Sant Julia.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Sant Julia.
+
+[ExecuteOrder] k Executes: Negotiate Order: k negotiates peace with j
+[ExecuteOrder] Order effect: Player k intends to declare a truce with player j.
+
+[ExecuteOrder] k is successful in issuing the order.
+Negotiate successful: k and j cannot attack each other this turn.
+
+[ExecuteOrder] All orders executed successfully. Proceeding to next turnâ€™s Reinforcement phase.
+
+[EndExecuteOrder] Returning to [AssignReinforcement]
+
+[GameplayPhase] Proceeding to Turn 2
+---------------------------------------------------
+
+
+[GameplayPhase] Beginning Turn 2
+
+
+
+[AssignReinforcement] === Assigning Reinforcements to Players ===
+
+[Reinforcement] Calculating reinforcement for player: k
+[Reinforcement] Base armies from territories (23 owned): 7
+[Reinforcement] Final reinforcement pool contribution: 0
+[Reinforcement] Total armies calculated for deployment: 7
+[AssignReinforcement] k receives 7 new armies (Pool: 7).
+
+[Reinforcement] Calculating reinforcement for player: j
+[Reinforcement] Base armies from territories (23 owned): 7
+[Reinforcement] Final reinforcement pool contribution: 0
+[Reinforcement] Total armies calculated for deployment: 7
+[AssignReinforcement] j receives 7 new armies (Pool: 7).
+
+[AssignReinforcement] === All Reinforcements Assigned ===
+
+
+
+[IssueOrder] === Issuing Orders for Each Player ===
+
+[IssueOrder] Player: k is beginning their IssueOrder phase:
+
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] k has a DEPLOY order prepared.
+[IssueOrder] Player: k has issued a BOMB Order: Player k intends to bomb j on territory Soldeu. This territory contains 36 armies.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k has an ADVANCE order queued.
+[IssueOrder] k is distributing 7 reinforcement armies.
+[IssueOrder] k adds 3 army/armies to Prat Primer (Remaining pool before deploy: 7)
+[IssueOrder] k adds 1 army/armies to Terreny Concordia (Remaining pool before deploy: 4)
+[IssueOrder] k adds 1 army/armies to Canillo (Remaining pool before deploy: 3)
+[IssueOrder] k adds 1 army/armies to Pic de Carroi (Remaining pool before deploy: 2)
+[IssueOrder] k adds 1 army/armies to Montmalus (Remaining pool before deploy: 1)
+[IssueOrder] k has finished deploying all reinforcements.
+
+[IssueOrder] k has used a Bomb card.
+[IssueOrder] k issued a Bomb order.
+[IssueOrder] k orders an Advance from Tristaina (2 armies) to attack Arcalis (1 defenders) with 1 armies.
+[IssueOrder] k orders an Advance from Santa Coloma (3 armies) to attack Andorra la Vella (1 defenders) with 2 armies.
+[IssueOrder] k orders an Advance from Sispony (6 armies) to attack Obaga (1 defenders) with 5 armies.
+[IssueOrder] k orders an Advance from Comapedrosa (6 armies) to attack Arcalis (1 defenders) with 5 armies.
+[IssueOrder] k orders an Advance from Llorts (6 armies) to attack Arcalis (1 defenders) with 5 armies.
+[IssueOrder] k orders an Advance from Rabassa (8 armies) to attack Pic Negre (1 defenders) with 7 armies.
+[IssueOrder] k orders an Advance from Erts (12 armies) to attack Pal (1 defenders) with 11 armies.
+[IssueOrder] k orders an Advance from La Cortinada (25 armies) to attack Port (6 defenders) with 24 armies.
+[IssueOrder] k orders an Advance from Ordino (40 armies) to attack Encamp (8 defenders) with 39 armies.
+[IssueOrder] k has completed all defensive reinforcements.
+
+[IssueOrder] Player: j is beginning their IssueOrder phase:
+
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] j has a DEPLOY order prepared.
+[IssueOrder] Player: j has issued a BOMB Order: Player j intends to bomb k on territory Ordino. This territory contains 40 armies.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j has an ADVANCE order queued.
+[IssueOrder] j is distributing 7 reinforcement armies.
+[IssueOrder] j adds 1 army/armies to Arcalis (Remaining pool before deploy: 7)
+[IssueOrder] j adds 3 army/armies to Pal (Remaining pool before deploy: 6)
+[IssueOrder] j adds 1 army/armies to Arinsal (Remaining pool before deploy: 3)
+[IssueOrder] j adds 1 army/armies to Pic Negre (Remaining pool before deploy: 2)
+[IssueOrder] j adds 1 army/armies to Perafita (Remaining pool before deploy: 1)
+[IssueOrder] j has finished deploying all reinforcements.
+
+[IssueOrder] j has used a Bomb card.
+[IssueOrder] j issued a Bomb order.
+[IssueOrder] j orders an Advance from Port Envalira (2 armies) to attack Pas de la Casa (1 defenders) with 1 armies.
+[IssueOrder] j orders an Advance from Vall d'Incles (2 armies) to attack Estanys Juclar (1 defenders) with 1 armies.
+[IssueOrder] j orders an Advance from Ransol (2 armies) to attack Terreny Concordia (1 defenders) with 1 armies.
+[IssueOrder] j orders an Advance from Casamanya (3 armies) to attack Pic Estanyó (1 defenders) with 2 armies.
+[IssueOrder] j orders an Advance from Port (6 armies) to attack Canillo (1 defenders) with 5 armies.
+[IssueOrder] j orders an Advance from Pic d'Enclar (6 armies) to attack Pic de Carroi (1 defenders) with 5 armies.
+[IssueOrder] j orders an Advance from Alt del Griu (6 armies) to attack Terreny Concordia (1 defenders) with 5 armies.
+[IssueOrder] j orders an Advance from Encamp (8 armies) to attack Meritxell (2 defenders) with 7 armies.
+[IssueOrder] j orders an Advance from Gran Valira (15 armies) to attack Prat Primer (1 defenders) with 14 armies.
+[IssueOrder] j orders an Advance from Riu Madriu (25 armies) to attack Montmalus (1 defenders) with 24 armies.
+[IssueOrder] j orders an Advance from Soldeu (36 armies) to attack Pas de la Casa (1 defenders) with 35 armies.
+[IssueOrder] j has completed all defensive reinforcements.
+
+[IssueOrder] === All Orders Successfully Issued ===
+
+[EndIssueOrders] All players: k, j, Neutral have finished issuing orders.
+[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.
+
+[ExecuteOrder] === Executing Orders for Each Player ===
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 3 army/armies to territory Prat Primer.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 3 armies on Prat Primer.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Arcalis.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Arcalis.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Terreny Concordia.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Terreny Concordia.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 3 army/armies to territory Pal.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 3 armies on Pal.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Canillo.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Canillo.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Arinsal.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Arinsal.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Pic de Carroi.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Pic de Carroi.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Pic Negre.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Pic Negre.
+
+[ExecuteOrder] k Executes a Deploy order
+[ExecuteOrder] Order effect: Player k deploys 1 army/armies to territory Montmalus.
+
+[ExecuteOrder] k successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Montmalus.
+
+[ExecuteOrder] j Executes a Deploy order
+[ExecuteOrder] Order effect: Player j deploys 1 army/armies to territory Perafita.
+
+[ExecuteOrder] j successfully executed a Deploy order.
+Deploy successful: placed 1 armies on Perafita.
+
+[ExecuteOrder] k Executes: Bomb Order: k bombs Soldeu, owned by j. This territory has 36 armies on it
+[ExecuteOrder] Order effect: Player k intends to bomb j on territory Soldeu. This territory contains 36 armies.
+
+[ExecuteOrder] k is successful in issuing the order.
+Bomb order executed. Player j, at territory Soldeu, lost 18 armies.
+
+[ExecuteOrder] j Executes: Bomb Order: j bombs Ordino, owned by k. This territory has 40 armies on it
+[ExecuteOrder] Order effect: Player j intends to bomb k on territory Ordino. This territory contains 40 armies.
+
+[ExecuteOrder] j is successful in issuing the order.
+Bomb order executed. Player k, at territory Ordino, lost 20 armies.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 1 armies from Tristaina, owned by: k to Arcalis, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 1 army/armies, from Tristaina, to Arcalis.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle failed: defender j beat k, and holds onto Arcalis with 2 armies remaining.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 1 armies from Port Envalira, owned by: j to Pas de la Casa, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 1 army/armies, from Port Envalira, to Pas de la Casa.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle failed: defender k beat j, and holds onto Pas de la Casa with 1 armies remaining.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 2 armies from Santa Coloma, owned by: k to Andorra la Vella, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 2 army/armies, from Santa Coloma, to Andorra la Vella.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle failed: defender j beat k, and holds onto Andorra la Vella with 1 armies remaining.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 1 armies from Vall d'Incles, owned by: j to Estanys Juclar, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 1 army/armies, from Vall d'Incles, to Estanys Juclar.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle failed: defender k beat j, and holds onto Estanys Juclar with 1 armies remaining.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 5 armies from Sispony, owned by: k to Obaga, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 5 army/armies, from Sispony, to Obaga.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle successful: k defeated j, and conquered Obaga with 4 surviving armies.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 1 armies from Ransol, owned by: j to Terreny Concordia, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 1 army/armies, from Ransol, to Terreny Concordia.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle failed: defender k beat j, and holds onto Terreny Concordia with 2 armies remaining.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 5 armies from Comapedrosa, owned by: k to Arcalis, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 5 army/armies, from Comapedrosa, to Arcalis.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle successful: k defeated j, and conquered Arcalis with 3 surviving armies.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 2 armies from Casamanya, owned by: j to Pic Estanyó, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 2 army/armies, from Casamanya, to Pic Estanyó.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle inconclusive: j tried to beat k, but didn't have enough armies to move in. The defender clings onto Pic Estanyó with 1 army, after a desperate defense.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 5 armies from Llorts, owned by: k to Arcalis, owned by: k
+[ExecuteOrder] Order effect: Player k intends to move 5 army/armies, from Llorts, to Arcalis.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance successful: moved 5 armies from Llorts to Arcalis.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 5 armies from Port, owned by: j to Canillo, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 5 army/armies, from Port, to Canillo.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle successful: j defeated k, and conquered Canillo with 3 surviving armies.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 7 armies from Rabassa, owned by: k to Pic Negre, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 7 army/armies, from Rabassa, to Pic Negre.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle successful: k defeated j, and conquered Pic Negre with 5 surviving armies.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 5 armies from Pic d'Enclar, owned by: j to Pic de Carroi, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 5 army/armies, from Pic d'Enclar, to Pic de Carroi.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle failed: defender k beat j, and holds onto Pic de Carroi with 2 armies remaining.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 11 armies from Erts, owned by: k to Pal, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 11 army/armies, from Erts, to Pal.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle successful: k defeated j, and conquered Pal with 3 surviving armies.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 5 armies from Alt del Griu, owned by: j to Terreny Concordia, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 5 army/armies, from Alt del Griu, to Terreny Concordia.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle successful: j defeated k, and conquered Terreny Concordia with 3 surviving armies.
+
+[ExecuteOrder] k Executes: Advance Order: k moves 24 armies from La Cortinada, owned by: k to Port, owned by: j
+[ExecuteOrder] Order effect: Player k intends to move 24 army/armies, from La Cortinada, to Port.
+
+[ExecuteOrder] k is successful in issuing the order.
+Advance battle successful: k defeated j, and conquered Port with 23 surviving armies.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 7 armies from Encamp, owned by: j to Meritxell, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 7 army/armies, from Encamp, to Meritxell.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle successful: j defeated k, and conquered Meritxell with 5 surviving armies.
+
+[ExecuteOrder]k executes an invalid order: Advance Order: k moves 39 armies from Ordino, owned by: k to Encamp, owned by: j. Reason:
+[IssueOrder] This advance order is invalid: attempted to move 39 armies, but source territory Ordino only has 20 armies available.
+[ExecuteOrder] j Executes: Advance Order: j moves 14 armies from Gran Valira, owned by: j to Prat Primer, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 14 army/armies, from Gran Valira, to Prat Primer.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle failed: defender k beat j, and holds onto Prat Primer with 4 armies remaining.
+
+[ExecuteOrder] j Executes: Advance Order: j moves 24 armies from Riu Madriu, owned by: j to Montmalus, owned by: k
+[ExecuteOrder] Order effect: Player j intends to move 24 army/armies, from Riu Madriu, to Montmalus.
+
+[ExecuteOrder] j is successful in issuing the order.
+Advance battle successful: j defeated k, and conquered Montmalus with 23 surviving armies.
+
+[ExecuteOrder]j executes an invalid order: Advance Order: j moves 35 armies from Soldeu, owned by: j to Pas de la Casa, owned by: k. Reason:
+[IssueOrder] This advance order is invalid: attempted to move 35 armies, but source territory Soldeu only has 18 armies available.
+
+=== GAME ENDED: MAXIMUM TURN LIMIT REACHED ===
+[ExecuteOrder] The maximum number of turns (2) has been reached.
+[ExecuteOrder] No further rounds will be played. Game over.
+
+
+[GameplayPhase] Win condition reached. Ending simulation.
+
+[GameplayPhase] Game ended after 3 turns.
+[GameplayPhase] Final state: Win condition reached.
+[GameplayPhase] Simulation log saved to: ../GameEngine/Games/Y2025_M11_D09_H19_M24_S23_MS748_NS339092_SIMULATION.txt

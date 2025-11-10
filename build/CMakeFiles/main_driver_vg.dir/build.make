@@ -153,10 +153,38 @@ CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngine.cpp -o CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.s
 
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o: ../CommandProcessing/CommandProcessing.cpp
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o -MF CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o.d -o CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o -c /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessing.cpp
+
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessing.cpp > CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.i
+
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessing.cpp -o CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.s
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o: ../LoggingObserver/LoggingObserver.cpp
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o -MF CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserver.cpp
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserver.cpp > CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.i
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserver.cpp -o CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.s
+
 CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
 CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o: ../Map/MapDriver.cpp
 CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp
 
 CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.s: cmake_force
 CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
 CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o: ../Player/PlayerDriver.cpp
 CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp
 
 CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.i: cmake_force
@@ -184,7 +212,7 @@ CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.s: cmake_force
 CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
 CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o: ../Order/OrderDriver.cpp
 CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp
 
 CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.i: cmake_force
@@ -198,7 +226,7 @@ CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.s: cmake_force
 CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
 CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o: ../Card/CardDriver.cpp
 CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Card/CardDriver.cpp
 
 CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.i: cmake_force
@@ -212,7 +240,7 @@ CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.s: cmake_force
 CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
 CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o: ../GameEngine/GameEngineDriver.cpp
 CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp
 
 CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.i: cmake_force
@@ -223,6 +251,34 @@ CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/GameEngine/GameEngineDriver.cpp -o CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.s
 
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o: ../CommandProcessing/CommandProcessingDriver.cpp
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessingDriver.cpp
+
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessingDriver.cpp > CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.i
+
+CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/CommandProcessing/CommandProcessingDriver.cpp -o CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.s
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o: CMakeFiles/main_driver_vg.dir/flags.make
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o: ../LoggingObserver/LoggingObserverDriver.cpp
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o: CMakeFiles/main_driver_vg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o -MF CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o.d -o CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp > CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.i
+
+CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp -o CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.s
+
 # Object files for target main_driver_vg
 main_driver_vg_OBJECTS = \
 "CMakeFiles/main_driver_vg.dir/MainDriver.cpp.o" \
@@ -231,11 +287,15 @@ main_driver_vg_OBJECTS = \
 "CMakeFiles/main_driver_vg.dir/Order/Order.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/Card/Card.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.o" \
+"CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o" \
+"CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o" \
 "CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o" \
-"CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o"
+"CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o" \
+"CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o" \
+"CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o"
 
 # External object files for target main_driver_vg
 main_driver_vg_EXTERNAL_OBJECTS =
@@ -246,14 +306,18 @@ main_driver_vg: CMakeFiles/main_driver_vg.dir/Player/Player.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Order/Order.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Card/Card.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.o
+main_driver_vg: CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessing.cpp.o
+main_driver_vg: CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Order/OrderDriver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/Card/CardDriver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.o
+main_driver_vg: CMakeFiles/main_driver_vg.dir/CommandProcessing/CommandProcessingDriver.cpp.o
+main_driver_vg: CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o
 main_driver_vg: CMakeFiles/main_driver_vg.dir/build.make
 main_driver_vg: CMakeFiles/main_driver_vg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable main_driver_vg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable main_driver_vg"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main_driver_vg.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,0 +1,6 @@
+Command's Effect: Player successfully added.
+Command: addplayer Alice
+Order IssuedDeploy
+Game Engine new state: Map Loaded
+Game Engine new state: Map Validated
+Game Engine new state: Players Addition

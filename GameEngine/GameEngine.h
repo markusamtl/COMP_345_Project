@@ -436,7 +436,7 @@ namespace WarzoneEngine {
          * @param surpressOutput Boolean value to surpress outputs
          * @return Status message indicating transition to IssueOrders phase.
          */
-        string engineAssignReinforcement(bool surpressOutput);
+        string reinforcementPhase(bool surpressOutput);
 
         /**
          * @brief Prompts players to issue their orders.

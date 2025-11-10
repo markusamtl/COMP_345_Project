@@ -1287,7 +1287,7 @@ namespace WarzoneEngine {
 
     }
 
-    string GameEngine::engineAssignReinforcement(bool surpressOutputs) {
+    string GameEngine::reinforcementPhase(bool surpressOutputs) {
 
         ostringstream output;
 
@@ -1923,7 +1923,7 @@ namespace WarzoneEngine {
         if(cmd == "validatemap"){ return engineValidateMap(surpressOutputs); }
         if(cmd == "addplayer"){ return engineAddPlayer(arg, surpressOutputs); }
         if(cmd == "gamestart"){ return engineGameStart(surpressOutputs); }
-        if(cmd == "assignreinforcement"){ return engineAssignReinforcement(surpressOutputs); }
+        if(cmd == "assignreinforcement"){ return reinforcementPhase(surpressOutputs); }
         if(cmd == "issueorder"){ return engineIssueOrder(surpressOutputs); }
         if(cmd == "endissueorders"){ return engineEndIssueOrder(surpressOutputs); }
         if(cmd == "executeorder"){ return engineExecuteOrder(surpressOutputs); }
@@ -2257,7 +2257,7 @@ namespace WarzoneEngine {
         while(!gameOver) {
 
             //---------------- Reinforcement Phase ----------------//
-            string reinforceResult = engineAssignReinforcement(surpressOutput);
+            string reinforceResult = reinforcementPhase(surpressOutput);
             logFile << reinforceResult << endl;
 
             //---------------- Issue Orders Phase ----------------//

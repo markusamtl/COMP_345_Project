@@ -2357,7 +2357,7 @@ namespace WarzoneEngine {
 
     }
 
-    void GameEngine::simulateGame() {
+    void GameEngine::mainGameLoop() {
 
         bool restart = false; // Tracks whether to restart after a full run
 

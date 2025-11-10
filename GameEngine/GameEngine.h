@@ -549,7 +549,7 @@ namespace WarzoneEngine {
          * - Runs gameplayPhase
          * - Runs endPhase. If user wants to continue, return to startPhase. If not, break. 
          */
-        void simulateGame();
+        void mainGameLoop();
         
         string stringToLog() override;
     };

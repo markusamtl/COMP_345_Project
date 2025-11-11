@@ -43,6 +43,8 @@ namespace WarzoneEngine {
         playerQueue = {};
         currentPlayer = nullptr;
 
+        logAndNotify("[GameEngine] GameEngine initialized in Start state.");
+
     }
 
     GameEngine::~GameEngine() { clearGame(); }
@@ -232,6 +234,8 @@ namespace WarzoneEngine {
 
         while(!playerQueue.empty()){ playerQueue.pop(); } //Clear the queue
         currentPlayer = nullptr; //Previously deleted in players loop
+
+        logAndNotify("[GameEngine] All game data cleared and engine reset.");
 
     }
 
@@ -688,7 +692,7 @@ namespace WarzoneEngine {
 
         }
 
-}
+    }
 
     void GameEngine::handleNegotiateOrder(Player* p, Player* neutralPlayer, vector<Player*> neutrals, Order* issuedOrder, bool surpressOutput, ostringstream& output) {
 
@@ -902,308 +906,314 @@ namespace WarzoneEngine {
         }
 
     }
-    // GameEngine.cpp
-void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& output) {
-    // --------- Setup ---------
-    std::vector<Player*> ordered; 
-    std::queue<Player*> tempQueue = playerQueue; 
+    
+    void GameEngine::executeOrdersPhase(bool surpressOutput, ostringstream& output) {
+        // --------- Setup (copied from engineExecuteOrder) ---------
+        vector<Player*> ordered; 
+        queue<Player*> tempQueue = playerQueue; 
 
-    Player* neutralPlayer = nullptr;
-    for (Player* p : players) {
-        if (p != nullptr && p->getPlayerName() == "Neutral") {
-            neutralPlayer = p;
-            break;
+        Player* neutralPlayer = nullptr;
+        for (Player* p : players) {
+            if (p != nullptr && p->getPlayerName() == "Neutral") {
+                neutralPlayer = p;
+                break;
+            }
         }
-    }
 
-    while (!tempQueue.empty()) {
-        Player* tempPlayer = tempQueue.front();
-        tempQueue.pop();
-        if (tempPlayer == neutralPlayer) continue;
-        ordered.push_back(tempPlayer);
-    }
+        while (!tempQueue.empty()) {
 
-    std::vector<Player*> toDelete;
+            Player* tempPlayer = tempQueue.front();
+            tempQueue.pop();
+            if (tempPlayer == neutralPlayer) continue;
+            ordered.push_back(tempPlayer);
+        
+        }
 
-    //---------------------------- Execute Orders ----------------------------//
+        vector<Player*> toDelete;
 
-    // ---------------------------- First Pass: Execute ALL Deploy Orders (Round-Robin) ----------------------------
-    bool anyDeploysRemaining = true;
+        //---------------------------- Execute Orders ----------------------------//
 
-    std::queue<Player*> deployQueue = playerQueue; 
-    std::queue<Player*> activeDeployers; 
+        // ---------------------------- First Pass: Execute ALL Deploy Orders (Round-Robin) ----------------------------
+        bool anyDeploysRemaining = true;
 
-    while (anyDeploysRemaining) {
-        anyDeploysRemaining = false;
+        queue<Player*> deployQueue = playerQueue; 
+        queue<Player*> activeDeployers; 
 
-        while (!deployQueue.empty()) {
-            Player* p = deployQueue.front();
-            deployQueue.pop();
+        while (anyDeploysRemaining) {
+            anyDeploysRemaining = false;
 
-            if (p == nullptr) continue;
-            if (p->getPlayerName() == "Neutral") continue;
+            while (!deployQueue.empty()) {
+                Player* p = deployQueue.front();
+                deployQueue.pop();
 
-            OrderList* orders = p->getPlayerOrders();
-            if (!orders || orders->size() == 0) continue;
+                if (p == nullptr) continue;
+                if (p->getPlayerName() == "Neutral") continue;
 
-            Order* o = orders->peek();
-            if (o == nullptr) { orders->removeOrder(0); continue; }
+                OrderList* orders = p->getPlayerOrders();
+                if (!orders || orders->size() == 0) continue;
 
-            if (o->getOrderType() == OrderType::Deploy) {
-                anyDeploysRemaining = true;
+                Order* o = orders->peek();
+                if (o == nullptr) { orders->removeOrder(0); continue; }
 
-                std::pair<bool,std::string> validationResult = o->validate();
-                if (!validationResult.first) {
+                if (o->getOrderType() == OrderType::Deploy) {
+                    anyDeploysRemaining = true;
+
+                    pair<bool, string> validationResult = o->validate();
+                    if (!validationResult.first) {
+                        if (!surpressOutput) {
+                            output << "[ExecuteOrder] " << p->getPlayerName()
+                                << " executes an invalid Deploy:\nReason: "
+                                << validationResult.second << "\n";
+                        }
+
+                        orders->removeOrder(0);
+
+                        Order* nextTop = (orders ? orders->peek() : nullptr);
+                        if (nextTop != nullptr && nextTop->getOrderType() == OrderType::Deploy) {
+                            activeDeployers.push(p);
+                        }
+                        continue;
+                    }
+
                     if (!surpressOutput) {
                         output << "[ExecuteOrder] " << p->getPlayerName()
-                               << " executes an invalid Deploy:\nReason: "
-                               << validationResult.second << "\n";
+                            << " Executes a Deploy order\n"
+                            << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
                     }
+
+                    o->execute();
+
+                    if (!surpressOutput) {
+                        output << "[ExecuteOrder] " << p->getPlayerName()
+                            << " successfully executed a Deploy order.\n"
+                            << o->getEffect() << "\n\n";
+                    }
+
                     orders->removeOrder(0);
 
                     Order* nextTop = (orders ? orders->peek() : nullptr);
                     if (nextTop != nullptr && nextTop->getOrderType() == OrderType::Deploy) {
                         activeDeployers.push(p);
                     }
+
+                } else {
+                    continue; // skip non-Deploys in this phase
+                }
+            }
+
+            deployQueue = activeDeployers;
+            while (!activeDeployers.empty()) activeDeployers.pop();
+        }
+
+        // ---------------------------- Second Pass: Execute ALL Other Orders (Round-Robin) ----------------------------
+        bool anyOrdersRemaining = true;
+
+        queue<Player*> mainQueue = playerQueue;
+        queue<Player*> activeExecutors;
+
+        while (anyOrdersRemaining) {
+            anyOrdersRemaining = false;
+
+            while (!mainQueue.empty()) {
+                Player* p = mainQueue.front();
+                mainQueue.pop();
+
+                if (p == nullptr || p->getPlayerName() == "Neutral") continue;
+
+                OrderList* orders = p->getPlayerOrders();
+                if (!orders || orders->size() == 0) continue;
+
+                Order* o = orders->peek();
+                if (o == nullptr) { orders->removeOrder(0); continue; }
+
+                if (o->getOrderType() == OrderType::Deploy) {
+                    // keep them rotating if more remain behind deploys
+                    if (orders->size() > 1) activeExecutors.push(p);
+                    continue;
+                }
+
+                anyOrdersRemaining = true;
+
+                pair<bool, string> validationResult = o->validate();
+                if (!validationResult.first) {
+                    if (!surpressOutput) {
+                        output << "[ExecuteOrder]" << p->getPlayerName()
+                            << " executes an invalid order: " << *o 
+                            << ". Reason:\n" << validationResult.second << "\n";
+                    }
+
+                    orders->removeOrder(0);
+
+                    Order* nextTop = (orders ? orders->peek() : nullptr);
+                    if (nextTop != nullptr) activeExecutors.push(p);
+
                     continue;
                 }
 
                 if (!surpressOutput) {
                     output << "[ExecuteOrder] " << p->getPlayerName()
-                           << " Executes a Deploy order\n"
-                           << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
+                        << " Executes: " << *o << "\n"
+                        << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
                 }
 
                 o->execute();
 
                 if (!surpressOutput) {
                     output << "[ExecuteOrder] " << p->getPlayerName()
-                           << " successfully executed a Deploy order.\n"
-                           << o->getEffect() << "\n\n";
-                }
-
-                orders->removeOrder(0);
-
-                Order* nextTop = (orders ? orders->peek() : nullptr);
-                if (nextTop != nullptr && nextTop->getOrderType() == OrderType::Deploy) {
-                    activeDeployers.push(p);
-                }
-
-            } else {
-                continue; // skip non-Deploys in this phase
-            }
-        }
-
-        deployQueue = activeDeployers;
-        while (!activeDeployers.empty()) activeDeployers.pop();
-    }
-
-    // ---------------------------- Second Pass: Execute ALL Other Orders (Round-Robin) ----------------------------
-    bool anyOrdersRemaining = true;
-
-    std::queue<Player*> mainQueue = playerQueue;
-    std::queue<Player*> activeExecutors;
-
-    while (anyOrdersRemaining) {
-        anyOrdersRemaining = false;
-
-        while (!mainQueue.empty()) {
-            Player* p = mainQueue.front();
-            mainQueue.pop();
-
-            if (p == nullptr || p->getPlayerName() == "Neutral") continue;
-
-            OrderList* orders = p->getPlayerOrders();
-            if (!orders || orders->size() == 0) continue;
-
-            Order* o = orders->peek();
-            if (o == nullptr) { orders->removeOrder(0); continue; }
-
-            if (o->getOrderType() == OrderType::Deploy) {
-                if (orders->size() > 1) activeExecutors.push(p);
-                continue;
-            }
-
-            anyOrdersRemaining = true;
-
-            std::pair<bool,std::string> validationResult = o->validate();
-            if (!validationResult.first) {
-                if (!surpressOutput) {
-                    output << "[ExecuteOrder]" << p->getPlayerName()
-                           << " executes an invalid order: " << *o 
-                           << ". Reason:\n" << validationResult.second << "\n";
+                        << " is successful in issuing the order.\n"
+                        << o->getEffect() << "\n\n";
                 }
 
                 orders->removeOrder(0);
 
                 Order* nextTop = (orders ? orders->peek() : nullptr);
                 if (nextTop != nullptr) activeExecutors.push(p);
+            }
 
+            mainQueue = activeExecutors;
+            while (!activeExecutors.empty()) activeExecutors.pop();
+        }
+
+        // ----------------------------- Clearing Truces / Collecting Cards -----------------------------
+        for (Player* p: players) {
+            if (!p) continue;
+
+            p->clearNeutralEnemies();
+
+            if (p->getGenerateCardThisTurn()) {
+                Deck* gameDeck = deck;
+                if (gameDeck && p->getHand()) {
+                    Card* c = gameDeck->draw();
+                    if (c) p->getHand()->addCardToHand(c);
+                }
+            }
+        }
+
+        //---------------------------- Eliminate Players ----------------------------
+        for (auto it = players.begin(); it != players.end();) {
+            Player* p = *it;
+
+            if (p == nullptr || p->getPlayerName() == "Neutral") {
+                it++;
                 continue;
             }
 
-            if (!surpressOutput) {
-                output << "[ExecuteOrder] " << p->getPlayerName()
-                       << " Executes: " << *o << "\n"
-                       << "[ExecuteOrder] Order effect: " << o->getEffect() << "\n\n";
+            int terrCount = static_cast<int>(p->getOwnedTerritories().size());
+            if (terrCount == 0) {
+
+                if (!surpressOutput) {
+                    output << "[" << p->getPlayerName() << "] has been eliminated from the game.\n";
+                }
+
+                queue<Player*> newQueue;
+                while (!playerQueue.empty()) {
+                    Player* front = playerQueue.front();
+                    playerQueue.pop();
+                    if (front != p) newQueue.push(front);
+                }
+                playerQueue = newQueue;
+
+                toDelete.push_back(p);
+                it = players.erase(it);
+                continue;
             }
 
-            o->execute();
-
-            if (!surpressOutput) {
-                output << "[ExecuteOrder] " << p->getPlayerName()
-                       << " is successful in issuing the order.\n"
-                       << o->getEffect() << "\n\n";
-            }
-
-            orders->removeOrder(0);
-
-            Order* nextTop = (orders ? orders->peek() : nullptr);
-            if (nextTop != nullptr) activeExecutors.push(p);
-        }
-
-        mainQueue = activeExecutors;
-        while (!activeExecutors.empty()) activeExecutors.pop();
-    }
-
-    // ----------------------------- Clearing Truces / Collecting Cards -----------------------------
-    for (Player* p: players) {
-        if (!p) continue;
-
-        p->clearNeutralEnemies();
-
-        if (p->getGenerateCardThisTurn()) {
-            Deck* gameDeck = deck;
-            if (gameDeck && p->getHand()) {
-                Card* c = gameDeck->draw();
-                if (c) p->getHand()->addCardToHand(c);
-            }
-        }
-    }
-
-    //---------------------------- Eliminate Players ----------------------------
-    for (auto it = players.begin(); it != players.end();) {
-        Player* p = *it;
-
-        if (p == nullptr || p->getPlayerName() == "Neutral") {
             it++;
-            continue;
         }
 
-        int terrCount = static_cast<int>(p->getOwnedTerritories().size());
-        if (terrCount == 0) {
+        // ---------------------------- Win Condition Check ----------------------------
+        int activePlayers = 0;
+        Player* potentialWinner = nullptr;
+        bool hasWon = false;
+        bool controlsMap = false;
+
+        for (Player* p : players) { 
+            if (p == nullptr) continue;
+            if (p->getPlayerName() == "Neutral") continue;
+
+            int terrCount = static_cast<int>(p->getOwnedTerritories().size()); 
+            if (terrCount > 0) { 
+                activePlayers++;
+                potentialWinner = p;
+            }
+        }
+
+        if (activePlayers == 1 && potentialWinner != nullptr) { 
+            hasWon = true;
+            currentPlayer = potentialWinner;
+        }
+
+        const unordered_map<Continent*, long long>& refTable = gameMap->getContinentLookupTable(); 
+
+        for (Player* p : ordered) {
+            if (p == nullptr) continue;
+            if (find(toDelete.begin(), toDelete.end(), p) != toDelete.end()) continue;
+
+            if (p->controlsMap(refTable)) {
+                currentPlayer = p;
+                controlsMap = true;
+                break;
+            }
+        }
+
+        //---------------------------- Deferred Cleanup ----------------------------
+        for (Player* dead : toDelete) {
+            if (dead != nullptr) {
+                if (!surpressOutput) {
+                    output << "[ExecuteOrders] Deleting player object for " << dead->getPlayerName() << "\n";
+                }
+                delete dead;
+            }
+        }
+        toDelete.clear();
+
+        setTurn(getTurn() + 1); // increment turn
+
+        //---------------------------- Phase Transition (append messages) ----------------------------
+        if (getTurn() > maxTurns) {
+            state = EngineState::Win; // force game termination
 
             if (!surpressOutput) {
-                output << "[" << p->getPlayerName() << "] has been eliminated from the game.\n";
+                output << "\n=== GAME ENDED: MAXIMUM TURN LIMIT REACHED ===\n"
+                    << "[ExecuteOrder] The maximum number of turns (" << maxTurns << ") has been reached.\n"
+                    << "[ExecuteOrder] No further rounds will be played. Game over.\n";
             }
+            return;
+        } 
+        else if (hasWon && controlsMap) {
+            state = EngineState::Win;
 
-            std::queue<Player*> newQueue;
-            while (!playerQueue.empty()) {
-                Player* front = playerQueue.front();
-                playerQueue.pop();
-                if (front != p) newQueue.push(front);
-            }
-            playerQueue = newQueue;
-
-            toDelete.push_back(p);
-            it = players.erase(it);
-            continue;
-        }
-
-        it++;
-    }
-
-    // ---------------------------- Win Condition Check ----------------------------
-    int activePlayers = 0;
-    Player* potentialWinner = nullptr;
-    bool hasWon = false;
-    bool controlsMap = false;
-
-    for (Player* p : players) { 
-        if (p == nullptr) continue;
-        if (p->getPlayerName() == "Neutral") continue;
-
-        int terrCount = static_cast<int>(p->getOwnedTerritories().size()); 
-        if (terrCount > 0) { 
-            activePlayers++;
-            potentialWinner = p;
-        }
-    }
-
-    if (activePlayers == 1 && potentialWinner != nullptr) { 
-        hasWon = true;
-        currentPlayer = potentialWinner;
-    }
-
-    const std::unordered_map<Continent*, long long>& refTable = gameMap->getContinentLookupTable(); 
-
-    for (Player* p : ordered) {
-        if (p == nullptr) continue;
-        if (std::find(toDelete.begin(), toDelete.end(), p) != toDelete.end()) continue;
-
-        if (p->controlsMap(refTable)) {
-            currentPlayer = p;
-            controlsMap = true;
-            break;
-        }
-    }
-
-    //---------------------------- Deferred Cleanup ----------------------------
-    for (Player* dead : toDelete) {
-        if (dead != nullptr) {
             if (!surpressOutput) {
-                output << "[ExecuteOrders] Deleting player object for " << dead->getPlayerName() << "\n";
+                output << "\n=== WINNER DETECTED ===\n"
+                    << currentPlayer->getPlayerName()
+                    << " has won! They control all continents on the map!\n"
+                    << "[ExecuteOrder] Win condition triggered.";
             }
-            delete dead;
+            return;
+        } 
+        else if (hasWon) {
+            state = EngineState::Win;
+
+            if (!surpressOutput) {
+                output << "\n=== WINNER DETECTED ===\n"
+                    << currentPlayer->getPlayerName()
+                    << " has won! They have elimnated all non-neutral enemies!\n"
+                    << "[ExecuteOrder] Win condition triggered.";
+            }
+
+            return;
+        
+        } else {
+
+            if (!surpressOutput) {
+                output << "[ExecuteOrder] All orders executed successfully. "
+                    << "Proceeding to next turn’s Reinforcement phase.\n";
+            }
+
+            return;
         }
+
     }
-    toDelete.clear();
-
-    setTurn(getTurn() + 1); // increment turn
-
-    //---------------------------- Phase Transition (append messages) ----------------------------
-    if (getTurn() > maxTurns) {
-        setState(EngineState::Win); // force game termination
-
-        if (!surpressOutput) {
-            output << "\n=== GAME ENDED: MAXIMUM TURN LIMIT REACHED ===\n"
-                   << "[ExecuteOrder] The maximum number of turns (" << maxTurns << ") has been reached.\n"
-                   << "[ExecuteOrder] No further rounds will be played. Game over.\n";
-        }
-        return;
-    } 
-    else if (hasWon && controlsMap) {
-        setState(EngineState::Win);
-
-        if (!surpressOutput) {
-            output << "\n=== WINNER DETECTED ===\n"
-                   << currentPlayer->getPlayerName()
-                   << " has won! They control all continents on the map!\n"
-                   << "[ExecuteOrder] Win condition triggered.";
-        }
-        return;
-    } 
-    else if (hasWon) {
-        setState(EngineState::Win);
-
-        if (!surpressOutput) {
-            output << "\n=== WINNER DETECTED ===\n"
-                   << currentPlayer->getPlayerName()
-                   << " has won! They have elimnated all non-neutral enemies!\n"
-                   << "[ExecuteOrder] Win condition triggered.";
-        }
-        return;
-    } 
-    else {
-        if (!surpressOutput) {
-            output << "[ExecuteOrder] All orders executed successfully. "
-                   << "Proceeding to next turn’s Reinforcement phase.\n";
-        }
-        return;
-    }
-}
-
-
 
     bool GameEngine::startAgain() {
 
@@ -1326,57 +1336,58 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
     /*-------------------------------------------Game Commands---------------------------------------------------*/
 
-    string GameEngine::engineLoadMap(const string& path, bool surpressOutput) {
-        
-        if(!isCurrentStateCorrect(EngineState::Start, "loadmap")){ 
-            
-            return "[LoadMap] Error: Current state is not loadmap!"; 
-        
+    string GameEngine::engineLoadMap(const string& path, bool surpressOutput){
+
+        string result;
+
+        if(!isCurrentStateCorrect(EngineState::Start, "loadmap")){
+            result = "[LoadMap] Error: Current state is not loadmap!";
+            logAndNotify(result);
+            return result;
         }
 
         clearGame(); //Reset current game data before loading new map
 
-        //Get map from MapLoader
         MapLoader loader;
         int loaderReturnCode = loader.importMapInfo(path);
 
         string mapName = "Unknown Map";
-
-        if(loaderReturnCode != MAP_FILE_NOT_FOUND){ mapName = loader.getMapName(); }//Extracted from MapLoader after parsing path
+        if(loaderReturnCode != MAP_FILE_NOT_FOUND){
+            mapName = loader.getMapName();
+        }
 
         // --- Handle Import Errors ---
-        if(loaderReturnCode != MAP_OK){ 
-            
+        if(loaderReturnCode != MAP_OK){
+
             switch(loaderReturnCode){
 
                 case MAP_FILE_NOT_FOUND:
-
-                    return surpressOutput
-
+                    result = surpressOutput
                         ? "[LoadMap] Import failed: File not found."
                         : "[LoadMap] Import failed: File not found at path '" + path + "' for map '" + mapName + "'.";
+                    break;
 
                 case MAP_INVALID_SECTION:
-                
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Import failed: Invalid or missing section headers."
                         : "[LoadMap] Import failed: Invalid or missing section headers in map file '" + path + "' (" + mapName + ").";
+                    break;
 
                 case MAP_PARSE_ERROR:
-
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Import failed: Syntax or formatting error while parsing."
                         : "[LoadMap] Import failed: Syntax or formatting error while parsing map file '" + path + "' (" + mapName + ").";
+                    break;
 
                 default:
-
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Import failed: Unknown error while importing."
                         : "[LoadMap] Import failed: Unknown error while importing map file '" + path + "' (" + mapName + ").";
-
-                
+                    break;
             }
-        
+
+            logAndNotify(result);
+            return result;
         }
 
         pair<int, Map*> loadResults = loader.loadMap();
@@ -1385,160 +1396,194 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
         // --- Handle Build/Validation Errors ---
         if(loaderCode != MAP_OK || gameMap == nullptr){
+            state = EngineState::Start;
 
-            //Return state back to the start
-            setState(EngineState::Start);
-            //state = EngineState::Start;
             switch(loaderCode){
-
                 case INVALID_MAP_PTR:
-                
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Map pointer returned null."
                         : "[LoadMap] Load failed: Map pointer returned null for map '" + mapName + "' (" + path + ").";
-                
+                    break;
+
                 case INVALID_AUTHOR:
-                    
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Missing or invalid author field."
                         : "[LoadMap] Load failed: Missing or invalid author field in map '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_IMAGE:
-
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid image reference."
                         : "[LoadMap] Load failed: Map image reference invalid or missing in '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_WRAP:
-                
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid wrapping metadata."
                         : "[LoadMap] Load failed: Invalid wrapping information in '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_SCROLL:
-
-                    return surpressOutput
-
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid scroll field."
                         : "[LoadMap] Load failed: Scroll behavior field invalid or missing in '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_WARN:
-
-                    return surpressOutput
-
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Warning detected during parsing."
                         : "[LoadMap] Load failed: Warning detected during parsing of map '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_CONTINENT:
-
-                    return surpressOutput
-
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid or disconnected continent definition."
                         : "[LoadMap] Load failed: One or more continents are disconnected or improperly defined in '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_TERRITORY:
-
-                    return surpressOutput
-
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid territory definition."
                         : "[LoadMap] Load failed: One or more territories are missing, duplicated, or mislinked in '" + mapName + "' (" + path + ").";
+                    break;
 
                 case INVALID_MAP_STRUCTURE:
-
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Invalid map structure."
                         : "[LoadMap] Load failed: Map graph is not connected or violates structure rules in '" + mapName + "' (" + path + ").";
+                    break;
 
                 default:
-
-                    return surpressOutput
+                    result = surpressOutput
                         ? "[LoadMap] Load failed: Unknown structural error."
                         : "[LoadMap] Load failed: Unknown structural error while loading map '" + mapName + "' (" + path + ").";
-
+                    break;
             }
 
+            logAndNotify(result);
+            return result;
         }
 
         // --- Successful Load ---
-        setState(EngineState::MapLoaded);
-        //state = EngineState::MapLoaded;
-        return surpressOutput ? 
-            "[LoadMap] Map loaded successfully, and is ready for validation." :
-            "[LoadMap] Map '" + mapName + "' successfully loaded from path '" + path + "' and is ready for validation.";
+        state = EngineState::MapLoaded;
+        result = surpressOutput
+            ? "[LoadMap] Map loaded successfully, and is ready for validation."
+            : "[LoadMap] Map '" + mapName + "' successfully loaded from path '" + path + "' and is ready for validation.";
 
+        logAndNotify(result);
+        return result;
+    
     }
 
-    string GameEngine::engineValidateMap(bool surpressOutput) {
+    string GameEngine::engineValidateMap(bool surpressOutput){
 
-        if(!isCurrentStateCorrect(EngineState::MapLoaded, "validatemap")){ return "[ValidateMap] Error: Current state is not validatemap!"; }
-        
-        //Temporaraily set the state back to the start. Do this in case the validation fails
-        
-        //Validate Map
-        if(gameMap == nullptr){ 
-            
-            setState(EngineState::Start);
-            //state = EngineState::Start;
-            return "[ValidateMap] No map to validate"; 
-        
-        }
-        
-        if(!(gameMap -> validate())){ 
-            
-            setState(EngineState::Start);
-            //state = EngineState::Start;
-            return "[ValidateMap] Invalid Map"; 
-        
-        }
-        
-        setState(EngineState::MapValidated);
-        //state = EngineState::MapValidated;
-        return surpressOutput ?  "" : "Map has been successfully validated";
+        string result;
 
+        if(!isCurrentStateCorrect(EngineState::MapLoaded, "validatemap")){
+            result = "[ValidateMap] Error: Current state is not validatemap!";
+            logAndNotify(result);
+            return result;
+        }
+
+        // Validate Map
+        if(gameMap == nullptr){
+            state = EngineState::Start;
+            result = "[ValidateMap] No map to validate.";
+            logAndNotify(result);
+            return result;
+        }
+
+        if(!(gameMap->validate())){
+            state = EngineState::Start;
+            result = "[ValidateMap] Invalid map.";
+            logAndNotify(result);
+            return result;
+        }
+
+        state = EngineState::MapValidated;
+        result = surpressOutput
+            ? "[ValidateMap] Map validated successfully."
+            : "[ValidateMap] Map has been successfully validated.";
+
+        logAndNotify(result);
+        return result;
     }
 
-    string GameEngine::engineAddPlayer(const string& name, bool surpressOutput) {
-        
-        if(state != EngineState::MapValidated && state != EngineState::PlayersAdded) {
-            return "[AddPlayer] Error: Not in a state to add players!";
+    string GameEngine::engineAddPlayer(const string& name, bool surpressOutput){
+
+        string result;
+
+        if(state != EngineState::MapValidated && state != EngineState::PlayersAdded){
+            result = "[AddPlayer] Error: Not in a state to add players!";
+            logAndNotify(result);
+            return result;
         }
 
-        if(name.empty()) { return "[AddPlayer] Error: Player name cannot be empty!"; }
+        if(name.empty()){
+            result = "[AddPlayer] Error: Player name cannot be empty!";
+            logAndNotify(result);
+            return result;
+        }
 
-        //Check if player with that name already exists
-        if(findPlayerByName(name) != nullptr){ return "[AddPlayer] Error: Player with that name already exists!"; }
+        // Check if player with that name already exists
+        if(findPlayerByName(name) != nullptr){
+            result = "[AddPlayer] Error: Player with that name already exists!";
+            logAndNotify(result);
+            return result;
+        }
 
-        //Check if too many players have been added to the game
-        if(playerQueue.size() >= gameMap -> getTerritories().size()) {
-
-            return "[AddPlayer] Error: Too many players have been added! " + name + " has NOT been added!";
-
+        // Check if too many players have been added to the game
+        if(playerQueue.size() >= gameMap->getTerritories().size()){
+            result = "[AddPlayer] Error: Too many players have been added! " + name + " has NOT been added!";
+            logAndNotify(result);
+            return result;
         }
 
         addPlayerToQueue(name);
         setState(EngineState::PlayersAdded);
         //state = EngineState::PlayersAdded;
 
-        return surpressOutput ? "" : "[AddPlayer] Player: " + name +  " has been added";
+        result = surpressOutput
+            ? "[AddPlayer] Player added successfully: " + name
+            : "[AddPlayer] Player: " + name + " has been added.";
 
+        logAndNotify(result);
+        return result;
+    
     }
 
-    string GameEngine::engineGameStart(bool suppressOutput) {
+    string GameEngine::engineGameStart(bool suppressOutput){
 
-        if(!isCurrentStateCorrect(EngineState::PlayersAdded, "gamestart")){ return "[GameStart] Error: Current state is not gamestart!"; }
-        if(playerQueue.size() < 2){ return "[GameStart] Error: At least least 2 players are required to play"; }
-        if(gameMap == nullptr){ return "[GameStart] Error: No map object was provided"; }
+        string result;
+
+        if(!isCurrentStateCorrect(EngineState::PlayersAdded, "gamestart")){
+            result = "[GameStart] Error: Current state is not gamestart!";
+            logAndNotify(result);
+            return result;
+        }
+
+        if(playerQueue.size() < 2){
+            result = "[GameStart] Error: At least 2 players are required to play.";
+            logAndNotify(result);
+            return result;
+        }
+
+        if(gameMap == nullptr){
+            result = "[GameStart] Error: No map object was provided.";
+            logAndNotify(result);
+            return result;
+        }
 
         ostringstream output;
 
         //----- Shuffle Players -----
-        string shuffleResult = shufflePlayers(suppressOutput); //Don't bother shuffling the neutral player
+        string shuffleResult = shufflePlayers(suppressOutput);
         if(!suppressOutput){ output << shuffleResult; }
 
         //Always set the game to have a neutral player to handle order logic
-        Player* neutral = new Player("Neutral", gameMap -> buildEmptyContinentHashmap());
+        Player* neutral = new Player("Neutral", gameMap->buildEmptyContinentHashmap());
         players.push_back(neutral);
-        if(!suppressOutput){ output << "[GameStart]  Added neutral player." << endl; }
+        if(!suppressOutput){ output << "[GameStart] Added neutral player.\n"; }
 
         //----- Randomly Assign Territories -----
         string assignResult = assignTerritories(suppressOutput);
@@ -1546,37 +1591,31 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
         //----- Instantiate deck with an appropriate number of cards -----
         if(deck == nullptr){ deck = new Deck(static_cast<int>(players.size())); }
-        else{ deck -> setNumOfPlayers(static_cast<int>(players.size())); } //Update deck to have correct number of players
+        else{ deck->setNumOfPlayers(static_cast<int>(players.size())); }
 
-        //Raise reinforcement pool, assign 2 cards 
-        for(Player* p : players) { 
+        //----- Reinforcement and Initial Cards -----
+        for(Player* p : players){
 
-            if(p -> getPlayerName() == "Neutral"){ continue; } //Skip neutral player, they shouldn't be considered
+            if(p->getPlayerName() == "Neutral"){ continue; }
 
-            //Set the reinforcement pool for a player to be 50
-            p -> setReinforcementPool(50);
+            p->setReinforcementPool(50);
+            if(!suppressOutput){ output << p->getPlayerName() << " had 50 armies added to their reinforcement pool.\n"; }
 
-            if(!suppressOutput){ output << p -> getPlayerName() << " had 50 armies added to their reinforcement pool\n"; }
+            if(deck != nullptr && p->getHand() != nullptr){
 
-            //Give each player 2 cards to start with
-            if(deck != nullptr && p -> getHand() != nullptr) { //Make sure deck and hand exist
+                Card* c1 = deck->draw();
+                Card* c2 = deck->draw();
 
-                Card* c1 = deck -> draw();
-                Card* c2 = deck -> draw();
-                if(c1 != nullptr){ p -> getHand() -> addCardToHand(c1); }
-                if(c2 != nullptr){ p -> getHand() -> addCardToHand(c2); }
+                if(c1 != nullptr){ p->getHand()->addCardToHand(c1); }
+                if(c2 != nullptr){ p->getHand()->addCardToHand(c2); }
 
-                if(!suppressOutput){ 
-                    
-                    output << p -> getPlayerName() 
-                           << " had the following cards added to their hand: " 
-                           << c1 -> getTypeString() << ", "
-                           << c2 -> getTypeString() << endl;
-                
+                if(!suppressOutput){
+                    output << p->getPlayerName()
+                        << " had the following cards added to their hand: "
+                        << c1->getTypeString() << ", "
+                        << c2->getTypeString() << "\n";
                 }
-
             }
-
         }
 
         setState(EngineState::AssignReinforcement);
@@ -1584,100 +1623,117 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
         if(!suppressOutput){ output << "\n[GameEngine] Game setup complete, moving to reinforcement phase.\n"; }
 
-        return suppressOutput ?  "[GameEngine] Game setup complete, moving to reinforcement phase." : output.str();
+        result = suppressOutput
+            ? "[GameEngine] Game setup complete, moving to reinforcement phase."
+            : output.str();
 
+        logAndNotify(result);
+        return result;
     }
 
-    string GameEngine::reinforcementPhase(bool surpressOutputs) {
+    string GameEngine::reinforcementPhase(bool surpressOutputs){
 
+        string result;
         ostringstream output;
 
         //Validate current state and prerequisites
-        if(!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")) {
-            
-            return "[AssignReinforcement] Error: Current state is not assignreinforcement!";
-        
+        if(!isCurrentStateCorrect(EngineState::AssignReinforcement, "assignreinforcement")){
+            result = "[AssignReinforcement] Error: Current state is not assignreinforcement!";
+            logAndNotify(result);
+            return result;
         }
 
-        if(!gameMap) { return "[AssignReinforcement] Error: No map object was provided."; }
+        if(!gameMap){
+            result = "[AssignReinforcement] Error: No map object was provided.";
+            logAndNotify(result);
+            return result;
+        }
 
-        if(!surpressOutputs) { output << "\n[AssignReinforcement] === Assigning Reinforcements to Players ===\n\n"; }
+        if(!surpressOutputs){
+            output << "\n[AssignReinforcement] === Assigning Reinforcements to Players ===\n\n";
+        }
 
         //Assign reinforcement pools to each active player
-        for(Player* p : players) {
+        for(Player* p : players){
 
-            if(p == nullptr || p->getPlayerName() == "Neutral") { continue; } //Skip neutral player
+            if(p == nullptr || p->getPlayerName() == "Neutral"){ continue; }
 
             pair<int, string> reinforcementInfo = computeReinforcementFor(p, surpressOutputs);
+            if(!surpressOutputs){ output << reinforcementInfo.second; }
 
-            if(!surpressOutputs) { output << reinforcementInfo.second; }
             int numArmiesToAdd = reinforcementInfo.first;
 
-            if(numArmiesToAdd <= 0) {
-
-                if(!surpressOutputs) { //This shouldnt happen, this is a just in case
-                    
-                    output << "[AssignReinforcement] " << p->getPlayerName() << " receives 0 armies (no territories controlled).\n";
+            if(numArmiesToAdd <= 0){
+                if(!surpressOutputs){
+                    output << "[AssignReinforcement] " << p->getPlayerName()
+                        << " receives 0 armies (no territories controlled).\n";
                 }
-
                 continue;
-            
             }
 
-            //Add to player's reinforcement pool
-            int previousPool = p -> getReinforcementPool();
-            p -> setReinforcementPool(previousPool + numArmiesToAdd);
+            int previousPool = p->getReinforcementPool();
+            p->setReinforcementPool(previousPool + numArmiesToAdd);
 
-            if(!surpressOutputs) {
-
-                output << "[AssignReinforcement] " << p -> getPlayerName() << " receives " << numArmiesToAdd 
-                       << " new armies (Pool: " << p -> getReinforcementPool() << ").\n\n";
-
+            if(!surpressOutputs){
+                output << "[AssignReinforcement] " << p->getPlayerName()
+                    << " receives " << numArmiesToAdd
+                    << " new armies (Pool: " << p->getReinforcementPool() << ").\n\n";
             }
-
         }
 
-        if (!surpressOutputs) {
+        if(!surpressOutputs){
             output << "[AssignReinforcement] === All Reinforcements Assigned ===\n\n";
         }
 
-        //Advance game engine state 
-        setState(EngineState::IssueOrders);
-        //state = EngineState::IssueOrders;
+        state = EngineState::IssueOrders;
 
-        return surpressOutputs 
+        result = surpressOutputs
             ? "[AssignReinforcement] Reinforcement phase executed successfully."
             : output.str();
 
+        logAndNotify(result);
+        return result;
     }
 
-    string GameEngine::engineIssueOrder(bool surpressOutput) {
+    string GameEngine::engineIssueOrder(bool surpressOutput){
 
-        if(!isCurrentStateCorrect(EngineState::IssueOrders, "issueorder")){ 
-            
-            return "[IssueOrder] Error: Current state is not issueorder!"; 
-        
+        string result;
+
+        if(!isCurrentStateCorrect(EngineState::IssueOrders, "issueorder")){
+            result = "[IssueOrder] Error: Current state is not issueorder!";
+            logAndNotify(result);
+            return result;
         }
 
-        ostringstream output; //Collect all output text for logging or printing
+        ostringstream output;
 
-        if(!surpressOutput){ output << "\n[IssueOrder] === Issuing Orders for Each Player ===\n\n"; }
+        if(!surpressOutput){
+            output << "\n[IssueOrder] === Issuing Orders for Each Player ===\n\n";
+        }
 
         issueOrdersPhase(surpressOutput, output);
 
-        if(!surpressOutput){ output << "[IssueOrder] === All Orders Successfully Issued ===\n"; }
+        if(!surpressOutput){
+            output << "[IssueOrder] === All Orders Successfully Issued ===\n";
+        }
 
-        return surpressOutput ? "[IssueOrder] Orders issued successfully." : output.str();
+        result = surpressOutput
+            ? "[IssueOrder] Orders issued successfully."
+            : output.str();
 
+        logAndNotify(result);
+        return result;
     }
 
-    string GameEngine::engineEndIssueOrder(bool surpressOutput) {
+    string GameEngine::engineEndIssueOrder(bool surpressOutput){
+
+        string result;
 
         //Validate current state before proceeding
-        if(!isCurrentStateCorrect(EngineState::IssueOrders, "endissueorders")) { 
-            
-            return "[EndIssueOrders] Error: Current state is not IssueOrders."; 
-        
+        if(!isCurrentStateCorrect(EngineState::IssueOrders, "endissueorders")){
+            result = "[EndIssueOrders] Error: Current state is not IssueOrders.";
+            logAndNotify(result);
+            return result;
         }
 
         //Transition to next phase
@@ -1686,104 +1742,127 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
         ostringstream output;
 
-        if(!surpressOutput) {
-
+        if(!surpressOutput){
             output << "[EndIssueOrders] All players: ";
 
-            for(size_t i = 0; i < players.size(); ++i) {
+            for(size_t i = 0; i < players.size(); ++i){
 
-                if(players[i] != nullptr) {
-
-                    output << players[i] -> getPlayerName();
-                    if(i < players.size() - 1){ output << ", "; } //Manage commas
-                
+                if(players[i] != nullptr){
+                    output << players[i]->getPlayerName();
+                    if(i < players.size() - 1){ output << ", "; }
                 }
-
             }
 
-            output << " have finished issuing orders.\n";            
-
+            output << " have finished issuing orders.\n";
         }
 
         output << "[EndIssueOrders] Transitioning from IssueOrders phase to ExecuteOrders phase.";
 
-        return output.str();
+        result = surpressOutput
+            ? "[EndIssueOrders] Transitioned to ExecuteOrders phase."
+            : output.str();
 
+        logAndNotify(result);
+        return result;
     }
 
-    string GameEngine::engineExecuteOrder(bool surpressOutput) {
-    // State Validation 
-    if (!isCurrentStateCorrect(EngineState::ExecuteOrders, "executeorder")) {
-        return "[ExecuteOrder] Error: Current state is not executeorder!";
-    }
+    string GameEngine::engineExecuteOrder(bool surpressOutput){
 
-    std::ostringstream output;
+        string result;
 
-    if (!surpressOutput) {
-        output << "\n[ExecuteOrder] === Executing Orders for Each Player ===\n";
-    }
-
-    // Delegate the heavy lifting
-    executeOrdersPhase(surpressOutput, output);
-
-    // Return concise status if suppressed; otherwise, full logs
-    if (surpressOutput) {
-        if (state == EngineState::Win) {
-            return "[ExecuteOrder] Win condition triggered or maximum turns reached.";
+        //Validate current state
+        if(!isCurrentStateCorrect(EngineState::ExecuteOrders, "executeorder")){
+            result = "[ExecuteOrder] Error: Current state is not executeorder!";
+            logAndNotify(result);
+            return result;
         }
-        return "[ExecuteOrder] Orders executed successfully.";
+
+        ostringstream output;
+
+        if(!surpressOutput){
+            output << "\n[ExecuteOrder] === Executing Orders for Each Player ===\n";
+        }
+
+        //Delegate the heavy lifting
+        executeOrdersPhase(surpressOutput, output);
+
+        //Build result message based on state
+        if(state == EngineState::Win){
+            result = "[ExecuteOrder] Win condition triggered or maximum turns reached.";
+        }
+        else{
+            result = surpressOutput
+                ? "[ExecuteOrder] Orders executed successfully."
+                : output.str();
+        }
+
+        logAndNotify(result);
+        return result;
     }
 
-    return output.str();
-}
+    string GameEngine::engineEndExecuteOrder(bool surpressOutput){
 
+        string result;
 
-    string GameEngine::engineEndExecuteOrder(bool surpressOutput) {
+        if(!isCurrentStateCorrect(EngineState::ExecuteOrders, "endexecuteorder")){
+            result = "[EndExecuteOrder] Error: Current state is not endexecuteorder!";
+            logAndNotify(result);
+            return result;
+        }
 
-        if(!isCurrentStateCorrect(EngineState::ExecuteOrders, "endexecuteorder")){ return "[EndExecuteOrder] Error: Current state is not endexecuteorder!"; }
-        setState(EngineState::AssignReinforcement);
-        //state = EngineState::AssignReinforcement;
+        state = EngineState::AssignReinforcement;
 
-        return surpressOutput ? 
-            "[EndExecuteOrder] End of Turn: " + to_string(turn) + "\n[EndExecuteOrder] Returning to [AssignReinforcement]"
+        result = surpressOutput
+            ? "[EndExecuteOrder] End of Turn: " + to_string(turn) + "\n[EndExecuteOrder] Returning to [AssignReinforcement]"
             : "[EndExecuteOrder] Returning to [AssignReinforcement]";
-    
+
+        logAndNotify(result);
+        return result;
+
     }
 
-    string GameEngine::engineWin() {
+    string GameEngine::engineWin(){
 
-        if (!isCurrentStateCorrect(EngineState::Win, "win")){ return "[WIN] Error: Current state is not win!"; }
+        string result;
 
-        ostringstream output; //Collect all output text for logging or printing
-        
+        if(!isCurrentStateCorrect(EngineState::Win, "win")){
+            result = "[WIN] Error: Current state is not win!";
+            logAndNotify(result);
+            return result;
+        }
+
+        ostringstream output;
+
         bool startNewGame = startAgain();
 
-        if(startNewGame) { 
-
-            setState(EngineState::Start);
-            //state = EngineState::Start;
-            output << "[GameEngine] Starting new game";
-
-            return output.str();
-
+        if(startNewGame){
+            
+            state = EngineState::Start;
+            output << "[GameEngine] Starting new game.";
+            result = output.str();
+            logAndNotify(result);
+            return result;
+        
         } else {
 
-            setState(EngineState::End);
-            //state = EngineState::End;
-            output << "[GameEngine] Terminating Game.";
-
-            return output.str();
-
+            state = EngineState::End;
+            output << "[GameEngine] Terminating game.";
+            result = output.str();
+            logAndNotify(result);
+            return result;
+        
         }
-    
+
     }
 
-    string GameEngine::engineEnd() {
+    string GameEngine::engineEnd(){
 
-        setState(EngineState::End);
-        //state = EngineState::End;
-        return "[End] The program has now terminated. Thank you for playing!";
+        string result;
 
+        state = EngineState::End;
+        result = "[End] The program has now terminated. Thank you for playing!";
+        logAndNotify(result);
+        return result;
     }
 
     /*-----------------------------------------Player Queue Management-------------------------------------------*/
@@ -2113,111 +2192,58 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
     }
 
-    void GameEngine::gameplayPhase(bool surpressOutput, string startLog, string filePath) {
+    void GameEngine::gameplayPhase(bool surpressOutput){
 
-        //---------------------------- Safety Checks ----------------------------
-        if(gameMap == nullptr || players.empty()) { return; }
+        if(gameMap == nullptr || players.empty()){ return; }
 
-        //---------------------------- Log File Setup ----------------------------
+        bool gameOver = false;
+        logAndNotify("[GameplayPhase] Beginning Turn " + to_string(getTurn()));
 
-        //Get current time
-        auto now = chrono::system_clock::now();
-        time_t currentTime = chrono::system_clock::to_time_t(now);
-        tm localTime{};
-
-        //Handle OS shenanigans
-        #ifdef _WIN32
-            localtime_s(&localTime, &currentTime);
-        #else
-            localtime_r(&currentTime, &localTime);
-        #endif
-
-        //Build filename with labeled components
-        ostringstream filenameBuilder;
-        filenameBuilder << filePath;
-
-        //--------- Ensure directory exists before creating the file -------------
-        try{ filesystem::create_directories(filePath); } 
-        catch(const std::filesystem::filesystem_error& e){
-
-            cerr << "[Error] Failed to create directory: " << filePath << "\nReason: " << e.what() << endl;
-            return;
-
+        if(!surpressOutput){
+            cout << ("===============================\n");
+            cout << ("=== ENTERING GAMEPLAY PHASE ===\n");
+            cout << ("===============================\n");
         }
 
-        string currentMS = to_string(TimeUtil::getSystemTimeMillis() % 1000);
-        string currentNS = to_string(TimeUtil::getSystemTimeNano() % 1000000);
+        while(!gameOver){
 
-
-        filenameBuilder << "Y" << (localTime.tm_year + 1900)
-                        << "_M" << setw(2) << setfill('0') << (localTime.tm_mon + 1)
-                        << "_D" << setw(2) << setfill('0') << localTime.tm_mday
-                        << "_H" << setw(2) << setfill('0') << localTime.tm_hour
-                        << "_M" << setw(2) << setfill('0') << localTime.tm_min
-                        << "_S" << setw(2) << setfill('0') << localTime.tm_sec
-                        << "_MS" << currentMS << "_NS" << currentNS
-                        << "_SIMULATION.txt";
-
-        string logFileName = filenameBuilder.str();
-        ofstream logFile(logFileName);
-        if(!logFile.is_open()) { return; }
-
-        //---------------------------- Initialization ----------------------------
-        bool gameOver = false;
-        logFile << startLog << endl;
-        cout << ("===============================\n");
-        cout << ("=== ENTERING GAMEPLAY PHASE ===\n");
-        cout << ("===============================\n");
-        logFile << "[GameplayPhase] Beginning Turn " + to_string(getTurn()) << endl;
-
-        //---------------------------- Main Game Loop ----------------------------
-        while(!gameOver) {
-
-            //---------------- Reinforcement Phase ----------------//
+            // ---------------- Reinforcement Phase ----------------
             string reinforceResult = reinforcementPhase(surpressOutput);
-            logFile << reinforceResult << endl;
+            logAndNotify(reinforceResult);
 
-            //---------------- Issue Orders Phase ----------------//
+            // ---------------- Issue Orders Phase ----------------
             string issueResult = engineIssueOrder(surpressOutput);
-            logFile << issueResult << endl;
+            logAndNotify(issueResult);
 
-            //---------------- End Issue Orders Phase ----------------//
+            // ---------------- End Issue Orders Phase ----------------
             string endIssueResult = engineEndIssueOrder(surpressOutput);
-            logFile << endIssueResult << endl;
+            logAndNotify(endIssueResult);
 
-            //---------------- Execute Orders Phase ----------------//
+            // ---------------- Execute Orders Phase ----------------
             string executeResult = engineExecuteOrder(surpressOutput);
-            logFile << executeResult << endl;
+            logAndNotify(executeResult);
 
-            //Check if game ended (state == Win)
-            if(state == EngineState::Win) {
-
-                logFile << "\n[GameplayPhase] Win condition reached. Ending simulation." << endl;
+            // Check if game ended (state == Win)
+            if(state == EngineState::Win){
+                logAndNotify("[GameplayPhase] Win condition reached. Ending simulation.");
                 gameOver = true;
                 break;
-
             }
 
-            //---------------- End Execute Orders Phase ----------------//
+            // ---------------- End Execute Orders Phase ----------------
             string endExecuteResult = engineEndExecuteOrder(surpressOutput);
-            logFile << endExecuteResult << endl;
+            logAndNotify(endExecuteResult);
 
-            //---------------- Increment Turn ----------------//
-            logFile << "\n[GameplayPhase] Proceeding to Turn " + to_string(getTurn()) << endl;
-            logFile << "---------------------------------------------------\n\n" << endl;
-            logFile << "[GameplayPhase] Beginning Turn " + to_string(getTurn()) + "\n\n" << endl;
-
-
+            // ---------------- Increment Turn ----------------
+            setTurn(getTurn() + 1);
+            logAndNotify("[GameplayPhase] Proceeding to Turn " + to_string(getTurn()));
         }
 
-        //---------------------------- Game End Summary ----------------------------
-        logFile << "\n[GameplayPhase] Game ended after " + to_string(getTurn()) + " turns." << endl;
-        if(state == EngineState::Win) { logFile << "[GameplayPhase] Final state: Win condition reached." << endl; } 
-        else { logFile << "[GameplayPhase] Final state: Unexpected termination." << endl; }
-
-        logFile << "[GameplayPhase] Simulation log saved to: " + logFileName << endl;
-        logFile.close();
-
+        // ---------------- Summary ----------------
+        logAndNotify("[GameplayPhase] Game ended after " + to_string(getTurn()) + " turns.");
+        logAndNotify(state == EngineState::Win
+            ? "[GameplayPhase] Final state: Win condition reached."
+            : "[GameplayPhase] Final state: Unexpected termination.");
     }
 
     bool GameEngine::endPhase() {
@@ -2274,13 +2300,23 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
 
     }
 
-    void GameEngine::mainGameLoop() {
+    void GameEngine::logAndNotify(const std::string& message){
 
-        bool restart = false; // Tracks whether to restart after a full run
+        engineLogMessage = message;
+        notify(this);
+    
+    }
 
-        do {
+    std::string GameEngine::stringToLog(){ return "[GameEngine] " + engineLogMessage; }
 
-            //---------------------------- Phase 0: User Preference ----------------------------//
+    void GameEngine::mainGameLoop(){
+
+        bool restart = false;
+
+        do{
+
+            logAndNotify("[GameEngine] Starting main game loop.");
+
             bool surpressOutput = false;
             string response;
 
@@ -2288,66 +2324,64 @@ void GameEngine::executeOrdersPhase(bool surpressOutput, std::ostringstream& out
             cout << "        WARZONE GAME SIMULATION START        \n";
             cout << "=============================================\n\n";
 
+      
+            // Flush any leftover characters (newline, extra input) before new prompt
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
             cout << "Would you like to suppress console output? (yes/y to suppress, no/n for full output): ";
             getline(cin, response);
 
-            //Trim whitespace and normalize to lowercase
+            // normalize input
             response.erase(remove_if(response.begin(), response.end(), ::isspace), response.end());
             transform(response.begin(), response.end(), response.begin(), ::tolower);
 
-            if(response == "yes" || response == "y") {
-                
+            if(response == "yes" || response == "y"){
                 surpressOutput = true;
-                cout << "\n[Simulation] Console output will be suppressed. All results will be written to the log file.\n";
-            
+                cout << "\n[Simulation] Console output will be suppressed. Logs will still be recorded by observers.\n";
             } else {
-                
                 cout << "\n[Simulation] Console output will be displayed during the simulation.\n";
-            
             }
 
-            //---------------------------- Phase 1: Startup ----------------------------//
+            // ---------------- Startup Phase ----------------
             if(!surpressOutput){ cout << "\n=== STARTUP PHASE ===\n"; }
-            string intialLog = startupPhase(surpressOutput);
+            string initialLog = startupPhase(surpressOutput);
+            logAndNotify("[GameEngine] Startup phase completed.");
 
-            //---------------------------- Phase 2: Gameplay ---------------------------//
+            // ---------------- Gameplay Phase ----------------
             if(!surpressOutput){
-
                 cout << "\n=== GAMEPLAY PHASE ===\n";
                 cout << "[Simulation] Entering main gameplay loop...\n";
-            
             }
 
-            gameplayPhase(surpressOutput, intialLog, "../GameEngine/Games/");
+            gameplayPhase(surpressOutput);
+            logAndNotify("[GameEngine] Gameplay phase completed.");
 
-            //---------------------------- Phase 3: End Phase --------------------------//
+            // ---------------- End Phase ----------------
             if(!surpressOutput){
                 cout << "\n=== END PHASE ===\n";
                 cout << "[Simulation] Entering end phase...\n";
             }
 
-            restart = endPhase(); // Now controls loop continuation
+            restart = endPhase();
+            logAndNotify("[GameEngine] End phase completed.");
 
             if(!surpressOutput){
-
-                if(restart){ cout << "\n[Simulation] Restarting game upon user request.\n"; } 
+                if(restart){ cout << "\n[Simulation] Restarting game upon user request.\n"; }
                 else{ cout << "\n[Simulation] Game fully ended. Exiting simulation.\n"; }
-            
             }
 
-            // If the player requested a restart, reset the game engine before the next run
-            if(restart) {
-
+            if(restart){
                 cout << "\n[GameEngine] The game has been reset. You may now load a new map and begin again.\n";
-
+                logAndNotify("[GameEngine] Restarting simulation per user request.");
             }
 
-        } while(restart); // Repeat full simulation if restart was requested
+        } while(restart);
 
+        logAndNotify("[GameEngine] Simulation ended.");
         cout << "\n=============================================\n";
         cout << "          WARZONE SIMULATION ENDED           \n";
         cout << "=============================================\n";
-
     }
 
     string GameEngine::stringToLog() {

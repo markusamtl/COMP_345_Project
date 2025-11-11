@@ -1,15 +1,12 @@
 #pragma once
-
-#include "LoggingObserver.h"
-#include "../GameEngine/GameEngine.h"
-#include "../Order/Order.h"
-#include "../CommandProcessing/CommandProcessing.h"
 #include <iostream>
 
-using namespace std;
-using namespace WarzoneLog;
-using namespace WarzoneEngine;
-using namespace WarzoneOrder;
-using namespace WarzoneCommand;
-
+/**
+ * @brief Test driver for verifying the LoggingObserver system.
+ * 
+ * Demonstrates:
+ * - CommandProcessor and Command logging
+ * - OrderList and Order logging
+ * - GameEngine state change logging
+ */
 void testLoggingObserver();

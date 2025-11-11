@@ -135,11 +135,12 @@ namespace WarzoneOrder {
 
     void Order::setEffect(const string& e) { this -> effect = e; }
 
-    string Order::stringToLog() {
-        return "Order Executed: " + getOrderTypeString();
+    //-- Interface Class Methods --//
+
+    std::string Order::stringToLog() {
+        return "[OrderLog] " + getOrderTypeString() + " | Effect: " + (effect.empty() ? "None" : effect);
     }
 
-    //-- Interface Class Methods (Defined in the header, no need for implementation) --//
 
 
     /*------------------------------------------ SINGLE ORDER SUB-CLASSES ------------------------------------------------*/
@@ -279,6 +280,7 @@ namespace WarzoneOrder {
         if(validateResults.first == false) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -292,7 +294,8 @@ namespace WarzoneOrder {
         this -> setEffect("Deploy successful: placed " + to_string(numArmies) +
                         " armies on " + target->getID() + ".");
 
-        notify(this); // Notify observers about the execution of this order
+        notify(this);
+
     }
 
 
@@ -476,6 +479,7 @@ namespace WarzoneOrder {
         if(!validateResults.first) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -621,7 +625,8 @@ namespace WarzoneOrder {
 
         }
 
-        notify(this); // Notify observers about the execution of this order
+        notify(this);
+
     }
 
     // ================= Bomb ================= //
@@ -779,6 +784,7 @@ namespace WarzoneOrder {
         if(!validateResults.first) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -791,7 +797,8 @@ namespace WarzoneOrder {
         this->setEffect("Bomb order executed. Player " + target -> getOwner() -> getPlayerName() + ", at territory " 
                         + target -> getID() + ", lost " + to_string(armiesToRemove) + " armies.");
 
-        notify(this); // Notify observers about the execution of this order
+        notify(this);
+        
     }
 
     // ================= Blockade ================= //
@@ -943,6 +950,7 @@ namespace WarzoneOrder {
         if(!validateResults.first) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -958,6 +966,8 @@ namespace WarzoneOrder {
                           + std::to_string(target->getNumArmies()) +
                           " armies and belongs to Neutral player (" +
                           neutralPlayer->getPlayerName() + ").");
+
+        notify(this);
     
         notify(this); // Notify observers about the execution of this order
     }
@@ -1147,6 +1157,7 @@ namespace WarzoneOrder {
         if(!validateResults.first) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -1163,6 +1174,8 @@ namespace WarzoneOrder {
                           " moved " + to_string(armiesToMove) +
                           " armies from " + source -> getID() +
                           " to " + target -> getID() + ".");
+
+        notify(this);
         
         notify(this); // Notify observers about the execution of this order
     }
@@ -1299,6 +1312,7 @@ namespace WarzoneOrder {
         if(!validateResults.first) {
 
             this -> setEffect(validateResults.second);
+            notify(this);
             return;
 
         }
@@ -1312,7 +1326,8 @@ namespace WarzoneOrder {
                         " and " + targetPlayer -> getPlayerName() +
                         " cannot attack each other this turn.");
 
-        notify(this); // Notify observers about the execution of this order
+        notify(this);
+
     }
 
 
@@ -1381,8 +1396,8 @@ namespace WarzoneOrder {
 
     //-- Accessors and Mutators --//
 
-    //vector<Order*> OrderList::getOrders() const { return orders; }
-
+    vector<Order*>& OrderList::getOrders() { return orders; }
+    
     void OrderList::setOrders(const vector<Order*> newOrders) { 
     
         // Clean up existing orders
@@ -1404,11 +1419,13 @@ namespace WarzoneOrder {
 
     void OrderList::addOrder(Order* o) {
 
-        if(o != nullptr) 
-        {
-            orders.push_back(o);
+        if(o != nullptr) { 
+            
+            orders.push_back(o); 
             notify(this);
+
         }
+    
     }
 
     void OrderList::removeOrder(int index) {
@@ -1417,6 +1434,7 @@ namespace WarzoneOrder {
 
             delete orders[index]; //Free memory of the removed order
             orders.erase(orders.begin() + index);  //Shift all elements in the OrderList to the left by 1 index
+            notify(this);
 
         }
 
@@ -1431,6 +1449,7 @@ namespace WarzoneOrder {
             if(orders[i] == orderPtr) {
                 delete orders[i];                      // free memory
                 orders.erase(orders.begin() + i);      // erase slot
+                notify(this);
                 return;
             
             }
@@ -1452,6 +1471,7 @@ namespace WarzoneOrder {
             Order* tempOrder = orders[oldPos]; //Take out the order
             orders.erase(orders.begin() + oldPos); //Remove from old position
             orders.insert(orders.begin() + newPos, tempOrder); //Insert at new position
+            notify(this);
 
         }
 
@@ -1473,6 +1493,8 @@ namespace WarzoneOrder {
 
     void OrderList::replaceOrder(int index, Order* newOrder) {
         
+        notify(this);
+
         //Verify both newOrder pointer is valid
         if(newOrder == nullptr){ return; }
 
@@ -1498,6 +1520,8 @@ namespace WarzoneOrder {
 
     void OrderList::replaceOrder(Order* oldOrder, Order* newOrder) {
         
+        notify(this);
+
         //Verify both Order pointers are valid
         if(oldOrder == nullptr || newOrder == nullptr){ return; }
 
@@ -1518,10 +1542,10 @@ namespace WarzoneOrder {
     
     }
 
-    size_t OrderList::size() const {
+    size_t OrderList::size() const { return orders.size(); }
 
-        return orders.size();
-
+    std::string OrderList::stringToLog(){
+        return "[OrderList] State updated. Total orders: " + std::to_string(orders.size());
     }
 
     string OrderList::stringToLog() {

@@ -22,6 +22,7 @@ set(SOURCES_COMMON
     GameEngine/GameEngine.cpp
     CommandProcessing/CommandProcessing.cpp
     LoggingObserver/LoggingObserver.cpp
+    PlayerStrategies/PlayerStrategies.cpp
 
     # Test functions (ensure these files do NOT define main())
     Map/MapDriver.cpp
@@ -31,6 +32,7 @@ set(SOURCES_COMMON
     GameEngine/GameEngineDriver.cpp
     CommandProcessing/CommandProcessingDriver.cpp
     LoggingObserver/LoggingObserverDriver.cpp
+    PlayerStrategies/PlayerStrategiesDriver.cpp
 
 )
 

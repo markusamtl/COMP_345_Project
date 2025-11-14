@@ -29,6 +29,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/main_driver_vg.dir/Player/Player.cpp.o.d"
   "CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o"
   "CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.o.d"
+  "CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.o"
+  "CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.o.d"
+  "CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o"
+  "CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o.d"
   "main_driver_vg"
   "main_driver_vg.pdb"
 )

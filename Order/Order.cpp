@@ -625,6 +625,10 @@ namespace WarzoneOrder {
 
         }
 
+        // If a neutral player was attacked, change their strategy to aggressive.
+        if (oldOwner->getStrategyType() == PlayerStrategyType::NEUTRAL)
+            oldOwner->setStrategyType(PlayerStrategyType::AGGRESSIVE);
+
         notify(this);
 
     }

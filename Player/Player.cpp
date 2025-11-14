@@ -1,7 +1,9 @@
 #include "Player.h"
 #include "../Order/Order.h"
+#include "../PlayerStrategies/PlayerStrategies.h"
 
 using namespace std;
+using namespace WarzonePlayerStrategy;
 
 namespace WarzonePlayer {
 
@@ -191,6 +193,7 @@ namespace WarzonePlayer {
         this -> generateCardThisTurn = false;
         this -> reinforcementPool = 0;
         this -> continentLookupTablePlayer = {};
+        this -> strategy = new HumanPlayerStrategy();
 
     }
 
@@ -204,7 +207,7 @@ namespace WarzonePlayer {
         this -> generateCardThisTurn = false;
         this -> reinforcementPool = 0;
         this -> continentLookupTablePlayer = emptyHashMap;
-
+        this -> strategy = new HumanPlayerStrategy();
     }
 
     Player::Player(const string& name, vector<Player*> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
@@ -219,6 +222,32 @@ namespace WarzonePlayer {
         this -> generateCardThisTurn = generateCard;
         this -> reinforcementPool = reinforcmentPool;
         this -> continentLookupTablePlayer = emptyHashMap;
+        this -> strategy = new HumanPlayerStrategy();
+
+
+        //Assign ownership of each territory to this player
+        for (Territory* terr : this->ownedTerritories.getTerritories()) {
+
+            //Make sure each territory exists
+            if(terr != nullptr) { terr -> setOwner(this); }
+
+        }
+
+    }
+
+    Player::Player(const string& name, vector<Player*> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
+                   bool generateCard, int reinforcmentPool, const unordered_map<Continent*, long long>& emptyHashMap, PlayerStrategy* strategy){
+
+
+        this -> playerName = name;
+        this -> neutralEnemies = neutralEnemies;
+        this -> ownedTerritories = ownedTerritories;
+        this -> playerHand = hand;
+        this -> playerOrders = orders;
+        this -> generateCardThisTurn = generateCard;
+        this -> reinforcementPool = reinforcmentPool;
+        this -> continentLookupTablePlayer = emptyHashMap;
+        this -> strategy = strategy;
 
 
         //Assign ownership of each territory to this player
@@ -236,6 +265,7 @@ namespace WarzonePlayer {
         // Release hand and orders
         delete this -> playerHand; 
         delete this -> playerOrders;
+        delete this -> strategy;
 
         // Reset ownership for territories
         for(Territory* terr : this -> ownedTerritories.getTerritories()) {
@@ -258,6 +288,7 @@ namespace WarzonePlayer {
         this -> playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
         this -> generateCardThisTurn = other.generateCardThisTurn;
         this -> continentLookupTablePlayer = other.continentLookupTablePlayer;
+        this -> strategy = (other.strategy ? other.strategy->clone() : nullptr);
 
         //Update ownership of copied territories
         for (Territory* terr : this->ownedTerritories.getTerritories()) {
@@ -275,6 +306,7 @@ namespace WarzonePlayer {
             // Clean up existing dynamic allocations
             delete this -> playerHand;
             delete this -> playerOrders;
+            delete this -> strategy;
 
             // Copy basic fields
             this->playerName = other.playerName;
@@ -284,6 +316,7 @@ namespace WarzonePlayer {
             this->playerOrders = (other.playerOrders ? new OrderList(*other.playerOrders) : nullptr);
             this->generateCardThisTurn = other.generateCardThisTurn;
             this -> continentLookupTablePlayer = other.continentLookupTablePlayer;
+            this -> strategy = (other.strategy ? other.strategy->clone() : nullptr);
 
             // --- Fix: update ownership of copied territories ---
             for (Territory* terr : this->ownedTerritories.getTerritories()) {
@@ -420,8 +453,7 @@ namespace WarzonePlayer {
 
     //----------------- Class Methods -------------------//
 
-    unordered_map<Territory*, Territory*> Player::toAttack() {
-
+    unordered_map<Territory*, Territory*> Player::computeAttackMap() {
         unordered_map<Territory*, Territory*> attackMap; //Mapping of owned territory, best enemy target
 
         //Iterate through all owned territories
@@ -474,81 +506,18 @@ namespace WarzonePlayer {
 
         }
 
-        return attackMap;
+        return attackMap;        
+    }
 
+    unordered_map<Territory*, Territory*> Player::toAttack() {
+        return strategy->toAttack(this);
     }
 
     string Player::toAttackString() {
-
-        stringstream retStr;
-
-        //Get all owned territories
-        vector<Territory*> owned = ownedTerritories.getTerritories();
-
-        //Sort owned territories by ID for consistent output
-        sort(owned.begin(), owned.end(), Territory::territoryIDCompare);
-
-        //Iterate through all owned territories
-        for(Territory* terr : owned) {
-
-            if(terr == nullptr){ continue; }
-
-            retStr << "From: " << terr -> getID() << ", " << playerName << " can attack: ";
-
-            vector<Territory*> neighbors = terr -> getNeighbors();
-
-            //Sort neighbors using the same attack priority logic
-            sort(neighbors.begin(), neighbors.end(), Territory::territoryAttackPriorityCompare);
-
-            bool foundEnemy = false;
-
-            for(size_t i = 0; i < neighbors.size(); i++) {
-
-                Territory* neighbor = neighbors[i];
-                if(neighbor == nullptr){ continue; }
-
-                Player* neighOwner = neighbor -> getOwner();
-
-                //Check for neutral enemies
-                bool neutralEnemyCheck = false;
-                if(neighOwner != nullptr) {
-
-                    neutralEnemyCheck = find(
-                        neutralEnemies.begin(),
-                        neutralEnemies.end(),
-                        neighOwner
-                    ) != neutralEnemies.end();
-
-                }
-
-                //Skip if owned by self, neutral enemy, or no one
-                if(neighOwner == this || neutralEnemyCheck || neighOwner == nullptr){ continue; }
-
-                //Append enemy info
-                retStr << neighbor -> getID() << " (" << neighbor -> getNumArmies() << " armies)";
-                foundEnemy = true;
-
-                //Comma separation if not last valid enemy
-                if(i < neighbors.size() - 1){ retStr << ", "; }
-
-            }
-
-            if(!foundEnemy) {
-
-                retStr << "no enemies";
-
-            }
-
-            retStr << endl;
-
-        }
-
-        return retStr.str();
-
+        return strategy->toAttackString(this);
     }
 
-    unordered_map<Territory*, Territory*> Player::toDefend() {
-
+    unordered_map<Territory*, Territory*> Player::computeDefendMap() {
         //Get all territories owned by this player that border at least one enemy territory
         vector<Territory*> borderTerritories = getTerritoriesAdjacentToEnemy();
 
@@ -597,115 +566,14 @@ namespace WarzonePlayer {
         }
 
         return defenseMap;
+    }
 
+    unordered_map<Territory*, Territory*> Player::toDefend() {
+        return strategy->toDefend(this);
     }
 
     string Player::toDefendString() {
-
-        //Get all territories owned by this player that border at least one enemy territory
-        vector<Territory*> borderTerritories = getTerritoriesAdjacentToEnemy();
-
-        if(borderTerritories.empty()) { //This should not happen
-            stringstream retStr;
-            retStr << "Player " << playerName << " has no territories adjacent to enemies." << endl;
-            return retStr.str();
-        }
-
-        //Convert border territories to an unordered_set for O(1) lookup
-        unordered_set<Territory*> visited(borderTerritories.begin(), borderTerritories.end());
-
-        //Queue for BFS-style propagation
-        queue<pair<Territory*, int>> q; //Each pair holds a territory, and a layer distance
-
-        //Add adjacent territories to queue
-        for(Territory* t : borderTerritories){ if(t != nullptr){ q.push({t, 0}); } }
-
-        //Map: layer number -> territories at that layer
-        unordered_map<int, vector<Territory*>> layerMap;
-
-        //Map: territory -> next defensive target toward the enemy
-        unordered_map<Territory*, Territory*> defenseRouting;
-
-        //Perform BFS to propagate inward through owned territories
-        while(!q.empty()) {
-
-            //Get current territory info
-            pair<Territory*, int> currTerrInfo = q.front();
-            q.pop();
-
-            Territory* current = currTerrInfo.first;
-            int layer = currTerrInfo.second;
-
-            if(current == nullptr) { continue; }
-
-            //Add this territory to its corresponding layer
-            layerMap[layer].push_back(current);
-
-            //Propagate to neighboring owned territories not yet visited
-            for(Territory* neighbor : current -> getNeighbors()) {
-
-                if(neighbor == nullptr) { continue; }
-
-                Player* owner = neighbor -> getOwner();
-
-                //Only expand to territories owned by this player and not yet visited
-                if(owner == this && visited.find(neighbor) == visited.end()) {
-
-                    visited.insert(neighbor);
-                    q.push({neighbor, layer + 1});
-
-                    //Mark that this territory should send reinforcements toward "current"
-                    defenseRouting[neighbor] = current;
-
-                }
-
-            }
-
-            //Frontline (enemy-adjacent) territories have no next defensive target
-            if(defenseRouting.find(current) == defenseRouting.end()) {
-                defenseRouting[current] = nullptr;
-            }
-
-        }
-
-        //Build the string output
-        stringstream retStr;
-        retStr << "Player " << playerName << " defensive propagation structure:" << endl;
-
-        //Sort layers numerically (0, 1, 2, ...)
-        vector<int> layers;
-        for(pair<int, vector<Territory*>> entry : layerMap) { layers.push_back(entry.first); }
-        sort(layers.begin(), layers.end());
-
-        for(int layer : layers) {
-
-            vector<Territory*>& terrs = layerMap[layer];
-            if(terrs.empty()) { continue; }
-
-            //Sort territories within this layer by army count (weakest first)
-            sort(terrs.begin(), terrs.end(), Territory::territoryNumArmiesCompareAscend);
-
-            if(layer == 0) { retStr << "  Layer " << layer << " (enemy-adjacent):" << endl; } 
-            else { retStr << "  Layer " << layer << " (" << layer << " territories away from enemy):" << endl; }
-
-            for(Territory* t : terrs) {
-
-                if(t == nullptr) { continue; }
-
-                Territory* next = defenseRouting[t];
-
-                retStr << "    " << t -> getID() 
-                    << " (" << t -> getNumArmies() << " armies)"
-                    << "  to  " 
-                    << (next ? next -> getID() : "None")
-                    << endl;
-
-            }
-
-        }
-
-        return retStr.str();
-
+        return strategy->toDefendString(this);
     }
 
     void Player::deployReinforcements(ostringstream& output, bool surpressOutput) {
@@ -1097,25 +965,8 @@ namespace WarzonePlayer {
     }
 
     string Player::issueOrder(bool surpressOutput, Deck* gameDeck, Player* neutralPlayer) {
-
         ostringstream output; //Collect all log outputs here
-
-        if(this -> playerOrders == nullptr) { return "[IssueOrder] Error: Player order list not initialized.\n"; }
-
-        //PART 1: DEPLOYING ARMIES ACROSS WEAKEST TERRITORIES
-        deployReinforcements(output, surpressOutput);
-
-        //PART 2: TRYING TO USE A CARD TO ORDER 
-        issueCardOrders(output, surpressOutput, gameDeck);
-
-        //PART 3: ADVANCE (ATTACK LOGIC) 
-        issueAttackOrders(output, surpressOutput, neutralPlayer);
-
-        //PART 4: ADVANCE (DEFENCE LOGIC)
-        issueDefendOrders(output, surpressOutput);
-
-        return output.str();
-
+        return strategy->issueOrder(this, output, surpressOutput, gameDeck, neutralPlayer);
     }
 
     bool Player::canIssueCardOrder(int orderType) const {
@@ -1433,4 +1284,44 @@ namespace WarzonePlayer {
 
     }
 
+    PlayerStrategyType Player::getStrategyType() const {
+        return strategy->getStrategyType();
+    }
+
+    void Player::setStrategyType(PlayerStrategyType strategyType) {
+        delete strategy; //Clean up existing strategy
+
+        //Create new strategy based on the specified type
+        switch (strategyType) {
+            case PlayerStrategyType::HUMAN:
+                strategy = new HumanPlayerStrategy();
+                break;
+            case PlayerStrategyType::AGGRESSIVE:
+                strategy = new AggressivePlayerStrategy();
+                break;
+            case PlayerStrategyType::BENEVOLENT:
+                strategy = new BenevolentPlayerStrategy();
+                break;
+            case PlayerStrategyType::NEUTRAL:
+                strategy = new NeutralPlayerStrategy();
+                break;
+            case PlayerStrategyType::CHEATER:
+                strategy = new CheaterPlayerStrategy();
+                break;
+            default:
+                strategy = new HumanPlayerStrategy(); //Default to human if unknown
+                break;
+        }
+    }
+
+    string Player::getStrategyTypeString() const {
+        switch (strategy->getStrategyType()){
+            case PlayerStrategyType::HUMAN: return "Human";
+            case PlayerStrategyType::AGGRESSIVE: return "Aggressive";
+            case PlayerStrategyType::BENEVOLENT: return "Benevolent";
+            case PlayerStrategyType::NEUTRAL: return "Neutral";
+            case PlayerStrategyType::CHEATER: return "Cheater";
+            default: return "Unknown";
+        }
+    }
 }

@@ -41,6 +41,11 @@
 },
 {
   "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.o -c /home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategies.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategies.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
   "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/Map/MapDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp",
   "file": "/home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp"
 },
@@ -73,6 +78,11 @@
   "directory": "/home/samueld/COMP345/COMP_345_Project/build",
   "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/LoggingObserver/LoggingObserverDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp",
   "file": "/home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O2 -std=gnu++17 -o CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategiesDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategiesDriver.cpp"
 },
 {
   "directory": "/home/samueld/COMP345/COMP_345_Project/build",
@@ -116,6 +126,11 @@
 },
 {
   "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.o -c /home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategies.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategies.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
   "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/Map/MapDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp",
   "file": "/home/samueld/COMP345/COMP_345_Project/Map/MapDriver.cpp"
 },
@@ -148,5 +163,10 @@
   "directory": "/home/samueld/COMP345/COMP_345_Project/build",
   "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/LoggingObserver/LoggingObserverDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp",
   "file": "/home/samueld/COMP345/COMP_345_Project/LoggingObserver/LoggingObserverDriver.cpp"
+},
+{
+  "directory": "/home/samueld/COMP345/COMP_345_Project/build",
+  "command": "/usr/bin/g++  -I/home/samueld/COMP345/COMP_345_Project -g -Wall -Wextra -g -O3 -std=gnu++17 -o CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o -c /home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategiesDriver.cpp",
+  "file": "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategiesDriver.cpp"
 }
 ]

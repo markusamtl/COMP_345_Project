@@ -11,6 +11,7 @@
 #include "../Map/Map.h"
 #include "../Card/Card.h"
 #include "../Order/Order.h"
+#include "../PlayerStrategies/PlayerStrategies.h"
 
 namespace WarzoneOrder { class OrderList; }  //Forward declaration for order list
 
@@ -26,6 +27,8 @@ namespace WarzonePlayer {
     using WarzoneCard::Deck;
     using WarzoneCard::Hand;
     using WarzoneCard::Card;
+    using WarzonePlayerStrategy::PlayerStrategy;
+    using WarzonePlayerStrategy::PlayerStrategyType;
 
     /**
      * @brief Manages a Player's owned territories using both a vector (for iteration), and an unordered_map (for fast lookups).
@@ -33,7 +36,6 @@ namespace WarzonePlayer {
     class PlayerTerrContainer {
 
         private:
-
             vector<Territory*> territories; //Iteration
             unordered_map<string, Territory*> territoryIndex; //For O(1) lookup by ID
 
@@ -150,6 +152,7 @@ namespace WarzonePlayer {
         private:
 
             //-- Player Attributes --//
+            PlayerStrategy* strategy;
             string playerName;
             vector<Player*> neutralEnemies;
             PlayerTerrContainer ownedTerritories;
@@ -189,7 +192,21 @@ namespace WarzonePlayer {
              */
             Player(const string& name, vector<Player*> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
                    bool generateCard, int reinforcementPool, const unordered_map<Continent*, long long>& emptyHashMap);
-
+            
+            /**
+             * @brief Constructs a player with a given name, list of territories, hand, order list and player strategy.
+             * @param name The name of the player.
+             * @param neutralEnemies The list of players that the player may not attack
+             * @param ownedTerritories The list of owned territories
+             * @param hand Pointer to the player's hand of cards.
+             * @param orders Pointer to the player's order list.
+             * @param generateCardThisTurn Boolean flag to determine whether a card should be added to the player's hand
+             * @param reinforcementPool Keep track of how many armies a player can deploy at one time
+             * @param emptyHashMap Hashmap used to keep track of player progress towards continent capture
+             * @param strategy Player strategy for this player.
+             */
+            Player(const string& name, vector<Player*> neutralEnemies, PlayerTerrContainer ownedTerritories, Hand* hand, OrderList* orders, 
+                   bool generateCard, int reinforcementPool, const unordered_map<Continent*, long long>& emptyHashMap, PlayerStrategy* strategy);
             /**
              * @brief Destructor. Cleans up player's hand and orders if allocated.
              */
@@ -507,7 +524,13 @@ namespace WarzonePlayer {
              * @return True if the player owns all continents, false otherwise.
              */
             bool controlsMap(const unordered_map<Continent*, long long>& continentSums) const;
+            
+            unordered_map<Territory*, Territory*> computeAttackMap();
+            unordered_map<Territory*, Territory*> computeDefendMap();
 
+            PlayerStrategyType getStrategyType() const;
+            void setStrategyType(PlayerStrategyType strategyType);
+            string getStrategyTypeString() const;
     };
 
 }

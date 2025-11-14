@@ -85,12 +85,12 @@ clean: CMakeFiles/run_main_valgrind.dir/clean
 CMakeFiles/main_driver.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target main_driver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target main_driver"
 .PHONY : CMakeFiles/main_driver.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main_driver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 18
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main_driver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/main_driver.dir/rule
@@ -111,12 +111,12 @@ CMakeFiles/main_driver.dir/clean:
 CMakeFiles/main_driver_vg.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32 "Built target main_driver_vg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target main_driver_vg"
 .PHONY : CMakeFiles/main_driver_vg.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main_driver_vg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 18
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main_driver_vg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/main_driver_vg.dir/rule
@@ -137,12 +137,12 @@ CMakeFiles/main_driver_vg.dir/clean:
 CMakeFiles/run.dir/all: CMakeFiles/main_driver.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=33 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=37 "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/run.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/run.dir/rule
@@ -163,12 +163,12 @@ CMakeFiles/run.dir/clean:
 CMakeFiles/run_main_valgrind.dir/all: CMakeFiles/main_driver_vg.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_main_valgrind.dir/build.make CMakeFiles/run_main_valgrind.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_main_valgrind.dir/build.make CMakeFiles/run_main_valgrind.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=34 "Built target run_main_valgrind"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samueld/COMP345/COMP_345_Project/build/CMakeFiles --progress-num=38 "Built target run_main_valgrind"
 .PHONY : CMakeFiles/run_main_valgrind.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run_main_valgrind.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/run_main_valgrind.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/samueld/COMP345/COMP_345_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/run_main_valgrind.dir/rule

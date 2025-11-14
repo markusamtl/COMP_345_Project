@@ -573,6 +573,60 @@ Player/PlayerDriver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/Player/PlayerDriver.cpp.s
 .PHONY : Player/PlayerDriver.cpp.s
 
+PlayerStrategies/PlayerStrategies.o: PlayerStrategies/PlayerStrategies.cpp.o
+.PHONY : PlayerStrategies/PlayerStrategies.o
+
+# target to build an object file
+PlayerStrategies/PlayerStrategies.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.o
+.PHONY : PlayerStrategies/PlayerStrategies.cpp.o
+
+PlayerStrategies/PlayerStrategies.i: PlayerStrategies/PlayerStrategies.cpp.i
+.PHONY : PlayerStrategies/PlayerStrategies.i
+
+# target to preprocess a source file
+PlayerStrategies/PlayerStrategies.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.i
+.PHONY : PlayerStrategies/PlayerStrategies.cpp.i
+
+PlayerStrategies/PlayerStrategies.s: PlayerStrategies/PlayerStrategies.cpp.s
+.PHONY : PlayerStrategies/PlayerStrategies.s
+
+# target to generate assembly for a file
+PlayerStrategies/PlayerStrategies.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategies.cpp.s
+.PHONY : PlayerStrategies/PlayerStrategies.cpp.s
+
+PlayerStrategies/PlayerStrategiesDriver.o: PlayerStrategies/PlayerStrategiesDriver.cpp.o
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.o
+
+# target to build an object file
+PlayerStrategies/PlayerStrategiesDriver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.cpp.o
+
+PlayerStrategies/PlayerStrategiesDriver.i: PlayerStrategies/PlayerStrategiesDriver.cpp.i
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.i
+
+# target to preprocess a source file
+PlayerStrategies/PlayerStrategiesDriver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.i
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.cpp.i
+
+PlayerStrategies/PlayerStrategiesDriver.s: PlayerStrategies/PlayerStrategiesDriver.cpp.s
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.s
+
+# target to generate assembly for a file
+PlayerStrategies/PlayerStrategiesDriver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.s
+.PHONY : PlayerStrategies/PlayerStrategiesDriver.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -630,6 +684,12 @@ help:
 	@echo "... Player/PlayerDriver.o"
 	@echo "... Player/PlayerDriver.i"
 	@echo "... Player/PlayerDriver.s"
+	@echo "... PlayerStrategies/PlayerStrategies.o"
+	@echo "... PlayerStrategies/PlayerStrategies.i"
+	@echo "... PlayerStrategies/PlayerStrategies.s"
+	@echo "... PlayerStrategies/PlayerStrategiesDriver.o"
+	@echo "... PlayerStrategies/PlayerStrategiesDriver.i"
+	@echo "... PlayerStrategies/PlayerStrategiesDriver.s"
 .PHONY : help
 
 

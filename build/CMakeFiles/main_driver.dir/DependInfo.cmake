@@ -23,6 +23,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/samueld/COMP345/COMP_345_Project/Order/OrderDriver.cpp" "CMakeFiles/main_driver.dir/Order/OrderDriver.cpp.o" "gcc" "CMakeFiles/main_driver.dir/Order/OrderDriver.cpp.o.d"
   "/home/samueld/COMP345/COMP_345_Project/Player/Player.cpp" "CMakeFiles/main_driver.dir/Player/Player.cpp.o" "gcc" "CMakeFiles/main_driver.dir/Player/Player.cpp.o.d"
   "/home/samueld/COMP345/COMP_345_Project/Player/PlayerDriver.cpp" "CMakeFiles/main_driver.dir/Player/PlayerDriver.cpp.o" "gcc" "CMakeFiles/main_driver.dir/Player/PlayerDriver.cpp.o.d"
+  "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategies.cpp" "CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.o" "gcc" "CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategies.cpp.o.d"
+  "/home/samueld/COMP345/COMP_345_Project/PlayerStrategies/PlayerStrategiesDriver.cpp" "CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o" "gcc" "CMakeFiles/main_driver.dir/PlayerStrategies/PlayerStrategiesDriver.cpp.o.d"
   )
 
 # Targets to which this target links.

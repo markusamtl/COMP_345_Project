@@ -8,9 +8,11 @@
 
 #include "../Player/Player.h"
 #include "../LoggingObserver/LoggingObserver.h"
+#include "PlayerStrategies/PlayerStrategies.h"
 
 namespace WarzonePlayer { class Player; } //Forward declaration
 namespace WarzoneLog { class Subject; class ILoggable; } //Forward declaration
+namespace WarzonePlayerStrategy { enum class PlayerStrategyType; }
 using namespace std;
 
 namespace WarzoneOrder {
@@ -21,6 +23,7 @@ namespace WarzoneOrder {
 
     using WarzoneLog::Subject;
     using WarzoneLog::ILoggable;
+    using WarzonePlayerStrategy::PlayerStrategyType;
 
     /*------------------------------------------TIME UTILITY CLASS--------------------------------------------------*/
 

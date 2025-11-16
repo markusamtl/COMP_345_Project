@@ -1549,12 +1549,11 @@ namespace WarzoneOrder {
     size_t OrderList::size() const { return orders.size(); }
 
     std::string OrderList::stringToLog(){
-        return "[OrderList] State updated. Total orders: " + std::to_string(orders.size());
-    }
-
-    string OrderList::stringToLog() {
+        if(orders.empty()) {
+            return "[OrderList] No orders.";
+        }
         Order* order = orders.back();
-        return "Order Issued" + order->getOrderTypeString();
+        return "[OrderList] Order Issued: " + order->getOrderTypeString();
     }
 
 }

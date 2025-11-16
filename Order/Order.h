@@ -1112,9 +1112,6 @@ namespace WarzoneOrder {
              * @return A formatted string describing the current status of the OrderList.
              */
             std::string stringToLog() override;
-
-            
-            string stringToLog() override;
     };
 
 }

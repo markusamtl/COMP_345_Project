@@ -2384,8 +2384,6 @@ namespace WarzoneEngine {
         cout << "=============================================\n";
     }
 
-    string GameEngine::stringToLog() {
-        return "Game Engine new state: " + getStateAsString();
-    }
+    // stringToLog is implemented above (returns the latest engineLogMessage).
 
 }

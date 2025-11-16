@@ -233,10 +233,6 @@ namespace WarzoneCommand {
         return "Command's Effect: " + effect;
     }
 
-    string Command::stringToLog() {
-        return "Command's Effect: " + effect;
-    }
-
     /*------------------------------------------ COMMAND PROCESSOR CLASS --------------------------------------------------*/
 
     //-- Constructors, Destructor, Copy Constructor, Assignment Operator, Stream Insertion Operator --//
@@ -629,11 +625,6 @@ namespace WarzoneCommand {
 
     string CommandProcessor::stringToLog() {
         if (commandList.empty()) return "Command: <none>";
-        Command* lastCommand = commandList.back();
-        return "Command: " + lastCommand->toString();
-    }
-
-    string CommandProcessor::stringToLog() {
         Command* lastCommand = commandList.back();
         return "Command: " + lastCommand->toString();
     }

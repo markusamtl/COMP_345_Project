@@ -24,6 +24,7 @@ namespace WarzonePlayerStrategy {
         protected:
             PlayerStrategyType strategyType;
         public:
+            virtual ~PlayerStrategy() = default;
             virtual string issueOrder(Player* player, ostringstream& output, bool surpressOutput, Deck* gameDeck, Player* neutralPlayer) = 0;
             virtual unordered_map<Territory*, Territory*> toAttack(Player* player) = 0;
             virtual unordered_map<Territory*, Territory*> toDefend(Player* player) = 0;

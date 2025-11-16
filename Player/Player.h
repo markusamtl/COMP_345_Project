@@ -11,7 +11,9 @@
 #include "../Map/Map.h"
 #include "../Card/Card.h"
 #include "../Order/Order.h"
-#include "../PlayerStrategies/PlayerStrategies.h"
+
+// Forward-declare player strategy types to avoid circular include between Player and PlayerStrategies
+namespace WarzonePlayerStrategy { class PlayerStrategy; enum class PlayerStrategyType; }
 
 namespace WarzoneOrder { class OrderList; }  //Forward declaration for order list
 

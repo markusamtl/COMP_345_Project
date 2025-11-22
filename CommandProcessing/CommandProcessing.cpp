@@ -207,10 +207,59 @@ namespace WarzoneCommand {
             case REPLAY_COMMAND_HASH:
             case QUIT_COMMAND_HASH:
                 return true;
-
-            default:
-                return false;
         }
+
+        // Special handling for 'tournament'
+        string lowered = StringHandling::toLower(StringHandling::trim(inputCommandName));
+        if (lowered == "tournament") {
+            // syntactic validation: ensure flags -M -P -G -D are present and followed by values
+            bool hasM = false, hasP = false, hasG = false, hasD = false;
+            for (size_t i = 0; i + 1 < inputCommandArgs.size(); ++i) {
+                string flag = StringHandling::toLower(StringHandling::trim(inputCommandArgs[i]));
+                if (flag == "-m") { hasM = true; ++i; continue; }
+                if (flag == "-p") { hasP = true; ++i; continue; }
+                if (flag == "-g") { hasG = true; ++i; continue; }
+                if (flag == "-d") { hasD = true; ++i; continue; }
+            }
+
+            if (!(hasM && hasP && hasG && hasD)) return false;
+
+            // we put values into a map for validation
+            string mapsVal = "", stratsVal = "", gVal = "", dVal = "";
+            for (size_t i = 0; i + 1 < inputCommandArgs.size(); ++i) {
+                string flag = StringHandling::toLower(StringHandling::trim(inputCommandArgs[i]));
+                string val = StringHandling::trim(inputCommandArgs[i+1]);
+                if (flag == "-m") { mapsVal = val; ++i; }
+                else if (flag == "-p") { stratsVal = val; ++i; }
+                else if (flag == "-g") { gVal = val; ++i; }
+                else if (flag == "-d") { dVal = val; ++i; }
+            }
+
+            // validate maps: 1..5 entries
+            vector<string> maps = StringHandling::split(mapsVal, ','); // split turns mapsVal from string to a list
+            if (maps.empty() || maps.size() > 5) return false;
+
+            // validate strategies: 2..4 entries
+            vector<string> strats = StringHandling::split(stratsVal, ',');
+            if (strats.size() < 2 || strats.size() > 4) return false;
+
+            // validate G: 1..5
+            try {
+                int g = stoi(gVal);
+                if (g < 1 || g > 5) return false;
+            } catch (...) { return false; }
+
+            // validate D: 10..50
+            try {
+                int d = stoi(dVal);
+                if (d < 10 || d > 50) return false;
+            } catch (...) { return false; }
+
+            return true;
+        }
+
+        // unknown command
+        return false;
     }
 
     bool Command::isCommandNameValid(const string& inputStr) const {
@@ -225,8 +274,14 @@ namespace WarzoneCommand {
             case QUIT_COMMAND_HASH:
                 return true;
             default:
-                return false;
+                break;
         }
+
+        // Accept 'tournament' 
+        string lowered = StringHandling::toLower(StringHandling::trim(inputStr));
+        if (lowered == "tournament") return true;
+
+        return false;
     }
 
     string Command::stringToLog() {
@@ -613,12 +668,17 @@ namespace WarzoneCommand {
             case REPLAY_COMMAND_HASH:
             case QUIT_COMMAND_HASH:
                 return (state == EngineState::Win);
-
             default:
-                return false;
+                break;
         }
-    }
 
+        // 'tournament' Start-state command 
+        if (StringHandling::toLower(StringHandling::trim(cmdName)) == "tournament") {
+            return (state == EngineState::Start);
+        }
+
+        return false;
+    }
     void CommandProcessor::runGame() {
         executeGame();
     }

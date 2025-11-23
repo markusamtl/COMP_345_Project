@@ -589,6 +589,27 @@ namespace WarzoneEngine {
              * - Runs endPhase. If user wants to continue, return to startPhase. If not, break. 
              */
             void mainGameLoop();
+
+            /**
+             * @brief Runs an automated tournament across multiple maps and strategies.
+             *
+             * For each map in `maps`, plays `numGames` games using the provided
+             * `strategies` (each strategy represents one player). Each game is
+             * limited to `maxTurns` turns and is declared a draw if no winner is
+             * found within that limit. Results are logged via the engine's
+             * observer mechanism and returned as an MxG matrix of strings
+             * (winner strategy name or "Draw").
+             *
+             * @param maps Vector of map file paths to play on (1..5 entries recommended).
+             * @param strategies Vector of player strategy names (2..4 entries recommended).
+             * @param numGames Number of games to play per map (G).
+             * @param maxTurns Maximum number of turns before declaring a draw (D).
+             * @return Matrix [maps.size()][numGames] containing winner strategy names or "Draw".
+             */
+            std::vector<std::vector<std::string>> runTournament(const std::vector<std::string>& maps,
+                                                               const std::vector<std::string>& strategies,
+                                                               int numGames,
+                                                               int maxTurns);
             
         };
 

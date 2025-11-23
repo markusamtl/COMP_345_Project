@@ -1,6 +1,7 @@
 #include "GameEngine.h"
 #include <sstream>
 #include <algorithm>
+#include "../PlayerStrategies/PlayerStrategies.h"
 
 namespace WarzoneEngine {
 
@@ -2385,5 +2386,155 @@ namespace WarzoneEngine {
     }
 
     // stringToLog is implemented above (returns the latest engineLogMessage).
+
+    
+    //runTournament function, returns a 2D vector of strings 
+    std::vector<std::vector<std::string>> GameEngine::runTournament(const std::vector<std::string>& maps,
+                                                                     const std::vector<std::string>& strategies,
+                                                                     int numGames,
+                                                                     int maxTurns) {
+
+        //create a table with one row per map and one column per game
+        std::vector<std::vector<std::string>> results;
+        results.resize(maps.size(), std::vector<std::string>(numGames, "Draw")); //initialize every cell to draw
+
+        ostringstream header; //to build header using <<
+        header << "Tournament mode:\n";
+        header << "M: ";
+        for (size_t i = 0; i < maps.size(); ++i) {
+            header << maps[i] << (i + 1 < maps.size() ? ", " : "\n");
+        }
+        header << "P: ";
+        for (size_t i = 0; i < strategies.size(); ++i) {
+            header << strategies[i] << (i + 1 < strategies.size() ? ", " : "\n");
+        }
+        header << "G: " << numGames << "\n";
+        header << "D: " << maxTurns << "\n";
+        logAndNotify(header.str()); //for the observers
+
+        if (maps.empty() || strategies.size() < 2 || numGames < 1 || maxTurns < 1) {
+            logAndNotify("[Tournament] Invalid tournament parameters.");
+            return results;
+        }
+
+        // Helper to map strategy name to enum
+        auto mapNameToType = [&](const std::string& s) -> WarzonePlayerStrategy::PlayerStrategyType {
+            std::string low = WarzoneMap::StringHandling::toLower(WarzoneMap::StringHandling::trim(s));
+            if (low == "aggressive") return WarzonePlayerStrategy::PlayerStrategyType::AGGRESSIVE;
+            if (low == "benevolent") return WarzonePlayerStrategy::PlayerStrategyType::BENEVOLENT;
+            if (low == "neutral") return WarzonePlayerStrategy::PlayerStrategyType::NEUTRAL;
+            if (low == "cheater") return WarzonePlayerStrategy::PlayerStrategyType::CHEATER;
+            return WarzonePlayerStrategy::PlayerStrategyType::HUMAN; // if unknown, invalid
+        };
+
+        // Save original engine state parameters to restore later
+        int originalMaxTurns = getMaxTurns();
+        EngineState originalState = getState();
+
+        //main loop for each map for each game
+        for (size_t mi = 0; mi < maps.size(); ++mi) {
+            const std::string& mapPath = maps[mi];
+
+            for (int g = 0; g < numGames; ++g) {
+
+                // reset state for each game
+                clearGame();
+
+                // Load and validate map
+                string loadMsg = engineLoadMap(mapPath, true);
+                if (loadMsg.find("failed") != string::npos || loadMsg.find("Error") != string::npos) { //npos cte not found
+                    results[mi][g] = "MapLoadError";
+                    logAndNotify("[Tournament] Map load failed for '" + mapPath + "'. Marking game as MapLoadError.");
+                    continue;
+                }
+
+                string valMsg = engineValidateMap(true);
+                if (valMsg.find("Invalid") != string::npos || getState() != EngineState::MapValidated) {
+                    results[mi][g] = "MapInvalid";
+                    logAndNotify("[Tournament] Map validation failed for '" + mapPath + "'. Marking game as MapInvalid.");
+                    continue;
+                }
+
+                // Add players for this game from strategy list
+                vector<string> createdNames;
+                for (size_t pi = 0; pi < strategies.size(); ++pi) {
+                    string playerName = strategies[pi] + "_P" + to_string(pi + 1) + "_G" + to_string(g + 1);
+                    engineAddPlayer(playerName, true);
+                    createdNames.push_back(playerName);
+                }
+
+                // After players added, assign their strategies (reject Human)
+                bool badStrategy = false;
+                for (size_t pi = 0; pi < strategies.size(); ++pi) {
+                    WarzonePlayerStrategy::PlayerStrategyType t = mapNameToType(strategies[pi]);
+                    if (t == WarzonePlayerStrategy::PlayerStrategyType::HUMAN) {
+                        badStrategy = true;
+                        break;
+                    }
+
+                    Player* p = findPlayerByName(createdNames[pi]);
+                    if (p) p->setStrategyType(t);
+                }
+
+                if (badStrategy) {
+                    results[mi][g] = "InvalidStrategy";
+                    logAndNotify("[Tournament] Invalid (human/unknown) strategy found for game. Marking as InvalidStrategy.");
+                    clearGame();
+                    continue;
+                }
+
+                // Start the game and run non-interactively
+                engineGameStart(true);
+
+                // Limit turns to provided maxTurns for the tournament
+                int savedMax = getMaxTurns();
+                setMaxTurns(maxTurns);
+                setTurn(1);
+
+                gameplayPhase(true); // run until Win or maxTurns reached
+
+                // Determine result
+                if (getState() == EngineState::Win && getCurrentPlayer() != nullptr) {
+                    string winnerStr = getCurrentPlayer()->getStrategyTypeString();
+                    results[mi][g] = winnerStr;
+                    logAndNotify("[Tournament] Map '" + mapPath + "' Game " + to_string(g + 1) + ": Winner = " + winnerStr);
+                } else {
+                    results[mi][g] = "Draw";
+                    logAndNotify("[Tournament] Map '" + mapPath + "' Game " + to_string(g + 1) + ": Result = Draw");
+                }
+
+                // Cleanup before next game
+                clearGame();
+
+                // Restore max turns 
+                setMaxTurns(savedMax);
+
+            } // per game
+        } // per map
+
+        // Log final table
+        ostringstream table;
+        table << "\nResults:\n";
+        // Header
+        table << "\t";
+        for (int g = 0; g < numGames; ++g) table << "Game " << (g + 1) << "\t";
+        table << "\n";
+
+        for (size_t mi = 0; mi < maps.size(); ++mi) {
+            table << "Map " << (mi + 1) << "\t";
+            for (int g = 0; g < numGames; ++g) {
+                table << results[mi][g] << "\t";
+            }
+            table << "\n";
+        }
+
+        logAndNotify(table.str());
+
+        // Restore engine state values
+        setMaxTurns(originalMaxTurns);
+        setState(originalState);
+
+        return results;
+    }
 
 }

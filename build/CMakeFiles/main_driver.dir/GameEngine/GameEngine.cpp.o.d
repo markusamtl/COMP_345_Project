@@ -882,4 +882,5 @@ CMakeFiles/main_driver.dir/GameEngine/GameEngine.cpp.o: \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Map/Map.h \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/../Order/Order.h \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/../Card/Card.h \
-  /Users/soumeyadiop/Desktop/comp345/GameEngine/../LoggingObserver/LoggingObserver.h
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../LoggingObserver/LoggingObserver.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../PlayerStrategies/PlayerStrategies.h

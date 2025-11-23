@@ -4421,6 +4421,7 @@ CMakeFiles/main_driver_vg.dir/GameEngine/GameEngine.cpp.o: /Users/soumeyadiop/De
   /Users/soumeyadiop/Desktop/comp345/Player/Player.h \
   /Users/soumeyadiop/Desktop/comp345/Order/Order.h \
   /Users/soumeyadiop/Desktop/comp345/Player/Player.h \
+  /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/PlayerStrategies.h \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngine.h \
   /Users/soumeyadiop/Desktop/comp345/Card/Card.h \
   /Users/soumeyadiop/Desktop/comp345/Map/Map.h \

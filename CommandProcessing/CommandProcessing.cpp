@@ -527,6 +527,50 @@ namespace WarzoneCommand {
                 continue;
             }
 
+            // Special execution for tournament command (non-interactive)
+            if (StringHandling::toLower(StringHandling::trim(cmdName)) == "tournament") {
+                
+                string mapsVal = "";
+                string stratsVal = "";
+                string gVal = "";
+                string dVal = "";
+
+                for (size_t i = 0; i + 1 < args.size(); ++i) {
+                    string flag = StringHandling::toLower(StringHandling::trim(args[i]));
+                    string val = StringHandling::trim(args[i+1]);
+                    if (flag == "-m") { mapsVal = val; ++i; }
+                    else if (flag == "-p") { stratsVal = val; ++i; }
+                    else if (flag == "-g") { gVal = val; ++i; }
+                    else if (flag == "-d") { dVal = val; ++i; }
+                }
+
+                vector<string> maps = StringHandling::split(mapsVal, ',');
+                vector<string> strats = StringHandling::split(stratsVal, ',');
+                int G = 0;
+                int D = 0;
+                try { G = stoi(gVal); } catch(...) { G = 0; }
+                try { D = stoi(dVal); } catch(...) { D = 0; }
+
+                if (maps.empty() || strats.size() < 2 || G < 1 || D < 1) {
+                    string err = "[CommandProcessor] Tournament: invalid parameters."
+                                 " Expected -M <maps> -P <strategies> -G <1..5> -D <10..50>";
+                    output << err << endl;
+                    if(!suppressOutput) cout << err << endl;
+                    cmd->setEffect(err);
+                    sessionLog << err;
+                    continue;
+                }
+
+                // Execute tournament via GameEngine
+                auto results = engine->runTournament(maps, strats, G, D);
+
+                output << "[CommandProcessor] Tournament executed. Results logged." << endl;
+                if(!suppressOutput) cout << "[CommandProcessor] Tournament executed. Results logged." << endl;
+                sessionLog << "[CommandProcessor] Tournament executed." << endl;
+                cmd->setEffect("[CommandProcessor] Tournament executed.");
+                continue; // Move to next command
+            }
+
             //----------------------------- Command Execution -------------------------//
             switch(cmdHash){
 
@@ -807,6 +851,50 @@ namespace WarzoneCommand {
                 cmd->setEffect(effect);
                 cout << effect;
                 sessionLog << effect;
+                continue;
+            }
+
+            // Special execution for tournament command (non-interactive)
+            if (StringHandling::toLower(StringHandling::trim(cmdName)) == "tournament") {
+                
+                string mapsVal = "";
+                string stratsVal = "";
+                string gVal = "";
+                string dVal = "";
+
+                for (size_t i = 0; i + 1 < args.size(); ++i) {
+                    string flag = StringHandling::toLower(StringHandling::trim(args[i]));
+                    string val = StringHandling::trim(args[i+1]);
+                    if (flag == "-m") { mapsVal = val; ++i; }
+                    else if (flag == "-p") { stratsVal = val; ++i; }
+                    else if (flag == "-g") { gVal = val; ++i; }
+                    else if (flag == "-d") { dVal = val; ++i; }
+                }
+
+                vector<string> maps = StringHandling::split(mapsVal, ',');
+                vector<string> strats = StringHandling::split(stratsVal, ',');
+                int G = 0;
+                int D = 0;
+                try { G = stoi(gVal); } catch(...) { G = 0; }
+                try { D = stoi(dVal); } catch(...) { D = 0; }
+
+                if (maps.empty() || strats.size() < 2 || G < 1 || D < 1) {
+                    string err = "[FileCommandProcessorAdapter] Tournament: invalid parameters."
+                                 " Expected -M <maps> -P <strategies> -G <1..5> -D <10..50>";
+                    output << err << endl;
+                    cout << err << endl;
+                    cmd->setEffect(err);
+                    sessionLog << err;
+                    continue;
+                }
+
+                // Execute tournament via GameEngine
+                auto results = engine->runTournament(maps, strats, G, D);
+
+                output << "[FileCommandProcessorAdapter] Tournament executed. Results logged." << endl;
+                cout << "[FileCommandProcessorAdapter] Tournament executed. Results logged." << endl;
+                sessionLog << "[FileCommandProcessorAdapter] Tournament executed." << endl;
+                cmd->setEffect("[FileCommandProcessorAdapter] Tournament executed.");
                 continue;
             }
 

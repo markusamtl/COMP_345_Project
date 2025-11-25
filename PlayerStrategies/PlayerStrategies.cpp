@@ -1,5 +1,6 @@
 #include "PlayerStrategies.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -19,19 +20,92 @@ namespace WarzonePlayerStrategy {
     }
 
     string HumanPlayerStrategy::issueOrder(Player* player, ostringstream& output, bool surpressOutput, Deck* gameDeck, Player* neutralPlayer) {
-        if(player -> getPlayerOrders() == nullptr) { return "[IssueOrder] Error: Player order list not initialized.\n"; }
+        if (!player || player->getPlayerOrders() == nullptr) {
+            return "[IssueOrder] Error: Player or order list not initialized.\n";
+        }
 
-        //PART 1: DEPLOYING ARMIES ACROSS WEAKEST TERRITORIES
-        player->deployReinforcements(output, surpressOutput);
+        // If in suppressed/silent mode (e.g., tournament), perform automated behavior
+        if (surpressOutput) {
+            //PART 1: DEPLOYING ARMIES ACROSS WEAKEST TERRITORIES
+            player->deployReinforcements(output, surpressOutput);
 
-        //PART 2: TRYING TO USE A CARD TO ORDER 
-        player->issueCardOrders(output, surpressOutput, gameDeck);
+            //PART 2: TRYING TO USE A CARD TO ORDER
+            player->issueCardOrders(output, surpressOutput, gameDeck);
 
-        //PART 3: ADVANCE (ATTACK LOGIC) 
-        player->issueAttackOrders(output, surpressOutput, neutralPlayer);
+            //PART 3: ADVANCE (ATTACK LOGIC)
+            player->issueAttackOrders(output, surpressOutput, neutralPlayer);
 
-        //PART 4: ADVANCE (DEFENCE LOGIC)
-        player->issueDefendOrders(output, surpressOutput);
+            //PART 4: ADVANCE (DEFENCE LOGIC)
+            player->issueDefendOrders(output, surpressOutput);
+
+            return output.str();
+        }
+
+        // Interactive human flow (only when not suppressed)
+        output << "[Human] " << player->getPlayerName() << " is making decisions interactively.\n";
+
+        while (true) {
+            // Show concise status and menu
+            cout << "\n=== Human Player: " << player->getPlayerName() << " ===\n";
+            cout << "Reinforcements available: " << player->getReinforcementPool() << "\n";
+            cout << "Owned territories: " << player->getOwnedTerritories().getTerritories().size() << "\n";
+            cout << "Choose an action:\n";
+            cout << "  1) Deploy reinforcements\n";
+            cout << "  2) Play card(s)\n";
+            cout << "  3) Issue attack orders\n";
+            cout << "  4) Issue defend/movement orders\n";
+            cout << "  5) Show possible attacks\" (brief)\n";
+            cout << "  6) Show possible defenses\" (brief)\n";
+            cout << "  0) Finish and end ordering phase\n";
+            cout << "> ";
+
+            string choice;
+            if (!std::getline(cin, choice)) {
+                // If input closed, fallback to automatic behavior
+                output << "[Human] Input stream closed; falling back to automatic actions.\n";
+                player->deployReinforcements(output, true);
+                player->issueCardOrders(output, true, gameDeck);
+                player->issueAttackOrders(output, true, neutralPlayer);
+                player->issueDefendOrders(output, true);
+                break;
+            }
+
+            if (choice.empty()) continue;
+
+            char c = choice[0];
+            if (c == '0') {
+                output << "[Human] " << player->getPlayerName() << " finished issuing orders interactively.\n";
+                break;
+            }
+
+            switch (c) {
+                case '1':
+                    cout << "-- Deploying reinforcements (uses in-game deploy UI/output).\n";
+                    player->deployReinforcements(output, false);
+                    break;
+                case '2':
+                    cout << "-- Playing available card orders (if any).\n";
+                    player->issueCardOrders(output, false, gameDeck);
+                    break;
+                case '3':
+                    cout << "-- Issue attack orders (you will be prompted by game logic).\n";
+                    player->issueAttackOrders(output, false, neutralPlayer);
+                    break;
+                case '4':
+                    cout << "-- Issue defend/movement orders.\n";
+                    player->issueDefendOrders(output, false);
+                    break;
+                case '5':
+                    cout << toAttackString(player) << std::flush;
+                    break;
+                case '6':
+                    cout << toDefendString(player) << std::flush;
+                    break;
+                default:
+                    cout << "Invalid choice. Please enter 0-6.\n";
+                    break;
+            }
+        }
 
         return output.str();
     }

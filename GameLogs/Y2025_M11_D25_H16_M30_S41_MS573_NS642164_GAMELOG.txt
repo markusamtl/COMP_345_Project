@@ -1,0 +1,289 @@
+=============================================
+           WARZONE GAME LOG STARTED          
+=============================================
+[16:30:41.573] [GameEngine] Tournament mode:
+M: ../Map/test_maps/Brazil/Brazil.map, ../Map/test_maps/Canada/Canada.map
+P: Aggressive, Benevolent, Neutral, Cheater
+G: 2
+D: 30
+
+[16:30:41.573] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.573] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.573] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.573] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [LoadMap] Map loaded successfully, and is ready for validation.
+[16:30:41.577] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.577] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G1
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G1
+[16:30:41.577] [GameEngine] [GameEngine] Game setup complete, moving to reinforcement phase.
+[16:30:41.577] [GameEngine] [GameplayPhase] Beginning Turn 1
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.577] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.577] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.577] [GameEngine] [GameplayPhase] Proceeding to Turn 3
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.577] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.577] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.577] [GameEngine] [GameplayPhase] Proceeding to Turn 5
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.577] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.577] [GameEngine] [GameplayPhase] Win condition reached. Ending simulation.
+[16:30:41.577] [GameEngine] [GameplayPhase] Game ended after 6 turns.
+[16:30:41.577] [GameEngine] [GameplayPhase] Final state: Win condition reached.
+[16:30:41.577] [GameEngine] [Tournament] Map '../Map/test_maps/Brazil/Brazil.map' Game 1: Winner = Cheater
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.577] [GameEngine] [LoadMap] Map loaded successfully, and is ready for validation.
+[16:30:41.577] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.577] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G2
+[16:30:41.577] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G2
+[16:30:41.577] [GameEngine] [GameEngine] Game setup complete, moving to reinforcement phase.
+[16:30:41.577] [GameEngine] [GameplayPhase] Beginning Turn 1
+[16:30:41.577] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [GameplayPhase] Proceeding to Turn 3
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [GameplayPhase] Proceeding to Turn 5
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.578] [GameEngine] [GameplayPhase] Win condition reached. Ending simulation.
+[16:30:41.578] [GameEngine] [GameplayPhase] Game ended after 6 turns.
+[16:30:41.578] [GameEngine] [GameplayPhase] Final state: Win condition reached.
+[16:30:41.578] [GameEngine] [Tournament] Map '../Map/test_maps/Brazil/Brazil.map' Game 2: Winner = Cheater
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.578] [GameEngine] [LoadMap] Map loaded successfully, and is ready for validation.
+[16:30:41.578] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.578] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G1
+[16:30:41.578] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G1
+[16:30:41.578] [GameEngine] [GameEngine] Game setup complete, moving to reinforcement phase.
+[16:30:41.578] [GameEngine] [GameplayPhase] Beginning Turn 1
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.578] [GameEngine] [GameplayPhase] Proceeding to Turn 3
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.578] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [GameplayPhase] Proceeding to Turn 5
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 6
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 6
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [GameplayPhase] Proceeding to Turn 7
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.579] [GameEngine] [GameplayPhase] Win condition reached. Ending simulation.
+[16:30:41.579] [GameEngine] [GameplayPhase] Game ended after 8 turns.
+[16:30:41.579] [GameEngine] [GameplayPhase] Final state: Win condition reached.
+[16:30:41.579] [GameEngine] [Tournament] Map '../Map/test_maps/Canada/Canada.map' Game 1: Winner = Cheater
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [LoadMap] Map loaded successfully, and is ready for validation.
+[16:30:41.579] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.579] [GameEngine] [ValidateMap] Map validated successfully.
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Aggressive_P1_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Benevolent_P2_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Neutral_P3_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G2
+[16:30:41.579] [GameEngine] [AddPlayer] Player added successfully: Cheater_P4_G2
+[16:30:41.579] [GameEngine] [GameEngine] Game setup complete, moving to reinforcement phase.
+[16:30:41.579] [GameEngine] [GameplayPhase] Beginning Turn 1
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 2
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [GameplayPhase] Proceeding to Turn 3
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 4
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [GameplayPhase] Proceeding to Turn 5
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Orders executed successfully.
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 6
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [EndExecuteOrder] End of Turn: 6
+[EndExecuteOrder] Returning to [AssignReinforcement]
+[16:30:41.579] [GameEngine] [GameplayPhase] Proceeding to Turn 7
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [AssignReinforcement] Reinforcement phase executed successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [IssueOrder] Orders issued successfully.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [EndIssueOrders] Transitioned to ExecuteOrders phase.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.579] [GameEngine] [ExecuteOrder] Win condition triggered or maximum turns reached.
+[16:30:41.579] [GameEngine] [GameplayPhase] Win condition reached. Ending simulation.
+[16:30:41.579] [GameEngine] [GameplayPhase] Game ended after 8 turns.
+[16:30:41.579] [GameEngine] [GameplayPhase] Final state: Win condition reached.
+[16:30:41.579] [GameEngine] [Tournament] Map '../Map/test_maps/Canada/Canada.map' Game 2: Winner = Cheater
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[16:30:41.579] [GameEngine] 
+Results:
+	Game 1	Game 2	
+Map 1	Cheater	Cheater	
+Map 2	Cheater	Cheater	
+
+[16:30:41.579] [GameEngine] 
+Results:
+	Game 1	Game 2	
+Map 1	Cheater	Cheater	
+Map 2	Cheater	Cheater	
+

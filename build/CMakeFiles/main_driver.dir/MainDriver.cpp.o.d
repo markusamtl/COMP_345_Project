@@ -907,6 +907,7 @@ CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngineDriver.h \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngine.h \
   /Users/soumeyadiop/Desktop/comp345/LoggingObserver/LoggingObserverDriver.h \
+  /Users/soumeyadiop/Desktop/comp345/LoggingObserver/LoggingObserver.h \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/PlayerStrategiesDriver.h \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Order/Order.h \
   /Users/soumeyadiop/Desktop/comp345/GameEngine/TournamentDriver.h

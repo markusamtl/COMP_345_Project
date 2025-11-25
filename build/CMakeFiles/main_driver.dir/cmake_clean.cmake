@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main_driver.dir/GameEngine/GameEngine.cpp.o.d"
   "CMakeFiles/main_driver.dir/GameEngine/GameEngineDriver.cpp.o"
   "CMakeFiles/main_driver.dir/GameEngine/GameEngineDriver.cpp.o.d"
+  "CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.o"
+  "CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.o.d"
   "CMakeFiles/main_driver.dir/LoggingObserver/LoggingObserver.cpp.o"
   "CMakeFiles/main_driver.dir/LoggingObserver/LoggingObserver.cpp.o.d"
   "CMakeFiles/main_driver.dir/LoggingObserver/LoggingObserverDriver.cpp.o"

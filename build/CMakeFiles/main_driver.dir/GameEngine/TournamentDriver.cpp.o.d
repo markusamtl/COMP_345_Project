@@ -1,5 +1,6 @@
-CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
-  /Users/soumeyadiop/Desktop/comp345/MainDriver.cpp \
+CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.o: \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/TournamentDriver.cpp \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngine.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -791,7 +792,9 @@ CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/unistd.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/MapDriver.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
@@ -799,7 +802,6 @@ CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/file_type.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/perms.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/file_time_type.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iomanip \
@@ -811,15 +813,15 @@ CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/Map.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Map/Map.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_set \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/../Map/Map.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/../Card/Card.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/Player.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/../Map/Map.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/../Card/Card.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/random \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
@@ -870,43 +872,15 @@ CMakeFiles/main_driver.dir/MainDriver.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/uniform_random_bit_generator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/../Order/Order.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/../Order/../Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/Map/../Player/../Order/../LoggingObserver/LoggingObserver.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/../Order/Order.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/../Order/../Player/Player.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Player/../Order/../LoggingObserver/LoggingObserver.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/list \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/PlayerStrategies.h \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Player/Player.h \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Card/Card.h \
   /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Map/Map.h \
-  /Users/soumeyadiop/Desktop/comp345/Player/PlayerDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/Player/../Order/Order.h \
-  /Users/soumeyadiop/Desktop/comp345/Player/../Map/Map.h \
-  /Users/soumeyadiop/Desktop/comp345/Player/../Map/MapDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/Order/OrderDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/Order/Order.h \
-  /Users/soumeyadiop/Desktop/comp345/Order/../Map/Map.h \
-  /Users/soumeyadiop/Desktop/comp345/Order/../Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/Card/CardDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/Card/Card.h \
-  /Users/soumeyadiop/Desktop/comp345/Card/../Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/Card/../Order/Order.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/CommandProcessingDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/GameEngine.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/../Map/Map.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/../Player/Player.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/../Order/Order.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/../Card/Card.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../GameEngine/../LoggingObserver/LoggingObserver.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../CommandProcessing/CommandProcessing.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../CommandProcessing/../GameEngine/GameEngine.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/../CommandProcessing/../LoggingObserver/LoggingObserver.h \
-  /Users/soumeyadiop/Desktop/comp345/CommandProcessing/CommandProcessing.h \
-  /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngineDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/GameEngine/GameEngine.h \
-  /Users/soumeyadiop/Desktop/comp345/LoggingObserver/LoggingObserverDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/PlayerStrategiesDriver.h \
-  /Users/soumeyadiop/Desktop/comp345/PlayerStrategies/../Order/Order.h \
-  /Users/soumeyadiop/Desktop/comp345/GameEngine/TournamentDriver.h
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Order/Order.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../Card/Card.h \
+  /Users/soumeyadiop/Desktop/comp345/GameEngine/../LoggingObserver/LoggingObserver.h \
+  /Users/soumeyadiop/Desktop/comp345/LoggingObserver/LoggingObserver.h

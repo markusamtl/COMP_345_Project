@@ -30,6 +30,7 @@ set(SOURCES_COMMON
     Order/OrderDriver.cpp
     Card/CardDriver.cpp
     GameEngine/GameEngineDriver.cpp
+    GameEngine/TournamentDriver.cpp
     CommandProcessing/CommandProcessingDriver.cpp
     LoggingObserver/LoggingObserverDriver.cpp
     PlayerStrategies/PlayerStrategiesDriver.cpp

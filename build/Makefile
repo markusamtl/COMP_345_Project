@@ -317,6 +317,33 @@ GameEngine/GameEngineDriver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/GameEngine/GameEngineDriver.cpp.s
 .PHONY : GameEngine/GameEngineDriver.cpp.s
 
+GameEngine/TournamentDriver.o: GameEngine/TournamentDriver.cpp.o
+.PHONY : GameEngine/TournamentDriver.o
+
+# target to build an object file
+GameEngine/TournamentDriver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/GameEngine/TournamentDriver.cpp.o
+.PHONY : GameEngine/TournamentDriver.cpp.o
+
+GameEngine/TournamentDriver.i: GameEngine/TournamentDriver.cpp.i
+.PHONY : GameEngine/TournamentDriver.i
+
+# target to preprocess a source file
+GameEngine/TournamentDriver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/GameEngine/TournamentDriver.cpp.i
+.PHONY : GameEngine/TournamentDriver.cpp.i
+
+GameEngine/TournamentDriver.s: GameEngine/TournamentDriver.cpp.s
+.PHONY : GameEngine/TournamentDriver.s
+
+# target to generate assembly for a file
+GameEngine/TournamentDriver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver.dir/build.make CMakeFiles/main_driver.dir/GameEngine/TournamentDriver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_driver_vg.dir/build.make CMakeFiles/main_driver_vg.dir/GameEngine/TournamentDriver.cpp.s
+.PHONY : GameEngine/TournamentDriver.cpp.s
+
 LoggingObserver/LoggingObserver.o: LoggingObserver/LoggingObserver.cpp.o
 .PHONY : LoggingObserver/LoggingObserver.o
 
@@ -643,6 +670,9 @@ help:
 	@echo "... GameEngine/GameEngineDriver.o"
 	@echo "... GameEngine/GameEngineDriver.i"
 	@echo "... GameEngine/GameEngineDriver.s"
+	@echo "... GameEngine/TournamentDriver.o"
+	@echo "... GameEngine/TournamentDriver.i"
+	@echo "... GameEngine/TournamentDriver.s"
 	@echo "... LoggingObserver/LoggingObserver.o"
 	@echo "... LoggingObserver/LoggingObserver.i"
 	@echo "... LoggingObserver/LoggingObserver.s"

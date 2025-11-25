@@ -1,0 +1,37 @@
+=============================================
+           WARZONE GAME LOG STARTED          
+=============================================
+[15:30:38.458] [GameEngine] Tournament mode:
+M: Map/test_maps/Brazil/Brazil.map, Map/test_maps/Canada/Canada.map
+P: Aggressive, Benevolent, Neutral, Cheater
+G: 2
+D: 30
+
+[15:30:38.458] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.458] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.458] [GameEngine] [LoadMap] Import failed: File not found.
+[15:30:38.458] [GameEngine] [Tournament] Map load failed for 'Map/test_maps/Brazil/Brazil.map'. Marking game as MapLoadError.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [LoadMap] Import failed: File not found.
+[15:30:38.459] [GameEngine] [Tournament] Map load failed for 'Map/test_maps/Brazil/Brazil.map'. Marking game as MapLoadError.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [LoadMap] Import failed: File not found.
+[15:30:38.459] [GameEngine] [Tournament] Map load failed for 'Map/test_maps/Canada/Canada.map'. Marking game as MapLoadError.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [GameEngine] All game data cleared and engine reset.
+[15:30:38.459] [GameEngine] [LoadMap] Import failed: File not found.
+[15:30:38.459] [GameEngine] [Tournament] Map load failed for 'Map/test_maps/Canada/Canada.map'. Marking game as MapLoadError.
+[15:30:38.459] [GameEngine] 
+Results:
+	Game 1	Game 2	
+Map 1	MapLoadError	MapLoadError	
+Map 2	MapLoadError	MapLoadError	
+
+[15:30:38.459] [GameEngine] 
+Results:
+	Game 1	Game 2	
+Map 1	MapLoadError	MapLoadError	
+Map 2	MapLoadError	MapLoadError	
+

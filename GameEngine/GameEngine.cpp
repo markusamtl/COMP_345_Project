@@ -238,6 +238,9 @@ namespace WarzoneEngine {
 
         logAndNotify("[GameEngine] All game data cleared and engine reset.");
 
+        // Ensure engine state is reset so subsequent loadmap calls are valid
+        setState(EngineState::Start);
+
     }
 
     string GameEngine::shufflePlayers(bool surpressOutput) {

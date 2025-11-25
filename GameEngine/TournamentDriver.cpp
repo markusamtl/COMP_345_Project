@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <filesystem>
 
 using namespace WarzoneEngine;
 using namespace WarzoneLog;
@@ -24,11 +25,42 @@ void testTournament() {
     LogObserver logger;
     engine.attach(&logger);
 
-    // SAMPLE INPUTS - adjust paths if your map files live elsewhere
+    // SAMPLE INPUTS - map paths relative to project root
     std::vector<std::string> maps = {
-        "../Map/test_maps/Brazil/Brazil.map",
-        "../Map/test_maps/Canada/Canada.map"
+        "Map/test_maps/Brazil/Brazil.map",
+        "Map/test_maps/Canada/Canada.map"
     };
+
+    // Resolve map paths flexibly so the test works when the binary is
+    // executed from either the project root or the build directory.
+    namespace fs = std::filesystem;
+    auto resolvePath = [&](const std::string &p)->std::string{
+        fs::path candidate(p);
+        if (fs::exists(candidate)) return candidate.string();
+        // Try relative from build directory (one level up)
+        fs::path alt = fs::path("../") / candidate;
+        if (fs::exists(alt)) return alt.string();
+        // Try stripping leading ../ if present
+        std::string s = p;
+        if (s.rfind("../", 0) == 0){
+            fs::path stripped = s.substr(3);
+            if (fs::exists(stripped)) return stripped.string();
+        }
+        // Try ./ prefix
+        fs::path dot = fs::path("./") / candidate;
+        if (fs::exists(dot)) return dot.string();
+        // Not found — return original so engine will report an error
+        return p;
+    };
+
+    // Apply resolution
+    for (auto &mp : maps){
+        std::string resolved = resolvePath(mp);
+        if (resolved != mp){
+            std::cout << "[Info] Resolved map path '" << mp << "' -> '" << resolved << "'\n";
+            mp = resolved;
+        }
+    }
 
     // Tournament must use non-interactive strategies only
     std::vector<std::string> strategies = {
